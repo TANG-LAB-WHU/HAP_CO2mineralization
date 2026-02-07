@@ -1,0 +1,21 @@
+LAMMPS Data Processing Summary
+========================================
+Processing date: 2025-09-12 20:31:39
+
+PROCESSED FILES:
+  thermodynamics: 499 rows, 19 columns
+  chemical_transformation: 499 rows, 11 columns
+  proton_transfer: 499 rows, 5 columns
+  energy_fluctuations: 499 rows, 2 columns
+  msd_analysis: 2499 rows, 2 columns
+  co2_orientation: 3499 rows, 2 columns
+  temperature_evolution: 199 rows, 6 columns
+  production_temperature: 99 rows, 4 columns
+  log_analysis: Non-tabular data
+
+RDF FILES:
+  rdf_CO: 99800 rows, 4 columns
+  rdf_C_Ca: 49900 rows, 4 columns
+  rdf_C_P: 49900 rows, 4 columns
+  rdf_C_H: 99800 rows, 4 columns
+  rdf_H_O: 149700 rows, 4 columns

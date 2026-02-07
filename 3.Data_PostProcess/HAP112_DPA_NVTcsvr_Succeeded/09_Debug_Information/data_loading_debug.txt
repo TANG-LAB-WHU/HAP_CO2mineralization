@@ -1,0 +1,109 @@
+ENHANCED LAMMPS DATA LOADING DEBUG REPORT
+============================================================
+Generated: 2025-09-12 20:31:09
+
+FILE: comprehensive_thermodynamics.dat
+----------------------------------------
+  Total lines: 502
+  Data starts at line: 2
+  Successful loading method: 1
+  Data shape: (499, 19)
+  Columns: ['43900', '-30924.9', '59.0133', '-30865.9', '51.3249', '-30865.8', '-51.4206', '-51.3249', '1183.6', '-711793', '-1185.81', '-1183.6', '263.9', '662.301', '132966', '0.000577701', '-16.6563', '226.695', '263.9.1']
+  Numeric columns: ['43900', '-30924.9', '59.0133', '-30865.9', '51.3249', '-30865.8', '-51.4206', '-51.3249', '1183.6', '-711793', '-1185.81', '-1183.6', '263.9', '662.301', '132966', '0.000577701', '-16.6563', '226.695', '263.9.1']
+  Anomalies: 0
+
+FILE: co2_chemical_transformation.dat
+----------------------------------------
+  Total lines: 502
+  Data starts at line: 2
+  Successful loading method: 1
+  Data shape: (499, 11)
+  Columns: ['43900', '2', '2.1', '2.2', '2.3', '0', '0.1', '1', '0.2', '0.3', '0.4']
+  Numeric columns: ['43900', '2', '2.1', '2.2', '2.3', '0', '0.1', '1', '0.2', '0.3', '0.4']
+  Anomalies: 0
+
+FILE: proton_transfer_water_formation.dat
+----------------------------------------
+  Total lines: 502
+  Data starts at line: 2
+  Successful loading method: 1
+  Data shape: (499, 5)
+  Columns: ['43900', '3', '2', '0.556944', '1.35486']
+  Numeric columns: ['43900', '3', '2', '0.556944', '1.35486']
+  Anomalies: 0
+
+FILE: energy_fluctuations.dat
+----------------------------------------
+  Total lines: 502
+  Data starts at line: 2
+  Successful loading method: 1
+  Data shape: (499, 2)
+  Columns: ['43900', '-30924.9']
+  Numeric columns: ['43900', '-30924.9']
+  Anomalies: 0
+
+FILE: msd_analysis.dat
+----------------------------------------
+  Total lines: 2503
+  Data starts at line: 3
+  Successful loading method: 1
+  Data shape: (2499, 2)
+  Columns: ['43900', '4']
+  Numeric columns: ['43900', '4']
+  Anomalies: 0
+
+FILE: co2_orientation.dat
+----------------------------------------
+  Total lines: 3503
+  Data starts at line: 3
+  Successful loading method: 1
+  Data shape: (3499, 2)
+  Columns: ['43900', '6']
+  Numeric columns: ['43900', '6']
+  Anomalies: 1
+    - Very small values in 6: min=1.26e-30
+
+FILE: temperature_evolution.log
+----------------------------------------
+  Total lines: 201
+  Data starts at line: 1
+  Successful loading method: 1
+  Data shape: (199, 6)
+  Columns: ['Mobile', 'temp:', '292.93577631201083022', 'K', '(Target:', '973K)']
+  Numeric columns: ['292.93577631201083022']
+  Anomalies: 0
+
+FILE: production_temperature.log
+----------------------------------------
+  Total lines: 101
+  Data starts at line: 1
+  Successful loading method: 1
+  Data shape: (99, 4)
+  Columns: ['Production', 'temp:', '243.5757106929673057', 'K']
+  Numeric columns: ['243.5757106929673057']
+  Anomalies: 0
+
+FILE: rdf_CO_detailed.dat
+----------------------------------------
+  Total lines: 100302
+  Data starts at line: 3
+
+FILE: rdf_C_Ca.dat
+----------------------------------------
+  Total lines: 50402
+  Data starts at line: 3
+
+FILE: rdf_C_P.dat
+----------------------------------------
+  Total lines: 50402
+  Data starts at line: 3
+
+FILE: rdf_C_H_detailed.dat
+----------------------------------------
+  Total lines: 100302
+  Data starts at line: 3
+
+FILE: rdf_H_O_detailed.dat
+----------------------------------------
+  Total lines: 150202
+  Data starts at line: 3
