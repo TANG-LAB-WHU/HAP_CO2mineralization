@@ -1,0 +1,60 @@
+2025-11-19 12:04:48.632 | === DeepMD Training Data ===
+2025-11-19 12:04:48.656 | /mnt/shared/data:
+2025-11-19 12:04:48.656 | set.000
+2025-11-19 12:04:48.656 | type.raw
+2025-11-19 12:04:48.656 | type_map.raw
+2025-11-19 12:04:48.656 | 
+2025-11-19 12:04:48.656 | /mnt/shared/data/set.000:
+2025-11-19 12:04:48.656 | box.npy
+2025-11-19 12:04:48.656 | box.raw
+2025-11-19 12:04:48.656 | coord.npy
+2025-11-19 12:04:48.656 | coord.raw
+2025-11-19 12:04:48.656 | energy.npy
+2025-11-19 12:04:48.656 | energy.raw
+2025-11-19 12:04:48.656 | force.npy
+2025-11-19 12:04:48.656 | force.raw
+2025-11-19 12:04:48.656 | virial.npy
+2025-11-19 12:04:48.656 | virial.raw
+2025-11-19 12:04:48.658 | === Starting Training with PyTorch Backend ===
+2025-11-19 12:04:56.975 | [2025-11-19 04:04:56,974] DEEPMD INFO    DeePMD version: 3.1.0
+2025-11-19 12:04:56.975 | [2025-11-19 04:04:56,974] DEEPMD INFO    Configuration path: input.json
+2025-11-19 12:04:58.522 | [2025-11-19 04:04:58,521] DEEPMD INFO     _____               _____   __  __  _____           _     _  _   
+2025-11-19 12:04:58.522 | [2025-11-19 04:04:58,521] DEEPMD INFO    |  __ \             |  __ \ |  \/  ||  __ \         | |   (_)| |  
+2025-11-19 12:04:58.522 | [2025-11-19 04:04:58,521] DEEPMD INFO    | |  | |  ___   ___ | |__) || \  / || |  | | ______ | | __ _ | |_ 
+2025-11-19 12:04:58.522 | [2025-11-19 04:04:58,521] DEEPMD INFO    | |  | | / _ \ / _ \|  ___/ | |\/| || |  | ||______|| |/ /| || __|
+2025-11-19 12:04:58.522 | [2025-11-19 04:04:58,521] DEEPMD INFO    | |__| ||  __/|  __/| |     | |  | || |__| |        |   < | || |_ 
+2025-11-19 12:04:58.522 | [2025-11-19 04:04:58,521] DEEPMD INFO    |_____/  \___| \___||_|     |_|  |_||_____/         |_|\_\|_| \__|
+2025-11-19 12:04:58.522 | [2025-11-19 04:04:58,521] DEEPMD INFO    Please read and cite:
+2025-11-19 12:04:58.522 | [2025-11-19 04:04:58,521] DEEPMD INFO    Wang, Zhang, Han and E, Comput.Phys.Comm. 228, 178-184 (2018)
+2025-11-19 12:04:58.522 | [2025-11-19 04:04:58,521] DEEPMD INFO    Zeng et al, J. Chem. Phys., 159, 054801 (2023)
+2025-11-19 12:04:58.522 | [2025-11-19 04:04:58,521] DEEPMD INFO    Zeng et al, J. Chem. Theory Comput., 21, 4375-4385 (2025)
+2025-11-19 12:04:58.522 | [2025-11-19 04:04:58,521] DEEPMD INFO    See https://deepmd.rtfd.io/credits/ for details.
+2025-11-19 12:04:58.522 | [2025-11-19 04:04:58,521] DEEPMD INFO    --------------------------------------------------------------------------------------------------------
+2025-11-19 12:04:58.522 | [2025-11-19 04:04:58,521] DEEPMD INFO    installed to:          /opt/deepmd-kit/lib/python3.12/site-packages/deepmd
+2025-11-19 12:04:58.522 | [2025-11-19 04:04:58,521] DEEPMD INFO    source:                
+2025-11-19 12:04:58.522 | [2025-11-19 04:04:58,521] DEEPMD INFO    source branch:         HEAD
+2025-11-19 12:04:58.522 | [2025-11-19 04:04:58,521] DEEPMD INFO    source commit:         8b3dc08
+2025-11-19 12:04:58.522 | [2025-11-19 04:04:58,521] DEEPMD INFO    source commit at:      2025-06-11 13:00:46 +0200
+2025-11-19 12:04:58.522 | [2025-11-19 04:04:58,521] DEEPMD INFO    use float prec:        double
+2025-11-19 12:04:58.522 | [2025-11-19 04:04:58,521] DEEPMD INFO    build variant:         cuda
+2025-11-19 12:04:58.522 | [2025-11-19 04:04:58,521] DEEPMD INFO    Backend:               PyTorch
+2025-11-19 12:04:58.522 | [2025-11-19 04:04:58,521] DEEPMD INFO    PT ver:                v2.6.0-gUnknown
+2025-11-19 12:04:58.522 | [2025-11-19 04:04:58,521] DEEPMD INFO    Enable custom OP:      True
+2025-11-19 12:04:58.522 | [2025-11-19 04:04:58,521] DEEPMD INFO    build with PT ver:     2.6.0
+2025-11-19 12:04:58.522 | [2025-11-19 04:04:58,522] DEEPMD INFO    build with PT inc:     /opt/deepmd-kit/lib/python3.12/site-packages/torch/include
+2025-11-19 12:04:58.522 | [2025-11-19 04:04:58,522] DEEPMD INFO                           /opt/deepmd-kit/lib/python3.12/site-packages/torch/include/torch/csrc/api/include
+2025-11-19 12:04:58.522 | [2025-11-19 04:04:58,522] DEEPMD INFO    build with PT lib:     /opt/deepmd-kit/lib/python3.12/site-packages/torch/lib
+2025-11-19 12:04:58.522 | [2025-11-19 04:04:58,522] DEEPMD INFO    running on:            e90396a6d4b0
+2025-11-19 12:04:58.522 | [2025-11-19 04:04:58,522] DEEPMD INFO    computing device:      cuda:0
+2025-11-19 12:04:58.522 | [2025-11-19 04:04:58,522] DEEPMD INFO    CUDA_VISIBLE_DEVICES:  unset
+2025-11-19 12:04:58.522 | [2025-11-19 04:04:58,522] DEEPMD INFO    Count of visible GPUs: 1
+2025-11-19 12:04:58.522 | [2025-11-19 04:04:58,522] DEEPMD INFO    num_intra_threads:     8
+2025-11-19 12:04:58.522 | [2025-11-19 04:04:58,522] DEEPMD INFO    num_inter_threads:     2
+2025-11-19 12:04:58.522 | [2025-11-19 04:04:58,522] DEEPMD INFO    --------------------------------------------------------------------------------------------------------
+2025-11-19 12:04:58.575 | [2025-11-19 04:04:58,574] DEEPMD INFO    Calculate neighbor statistics... (add --skip-neighbor-stat to skip this step)
+2025-11-19 12:04:59.329 | /opt/deepmd-kit/lib/python3.12/site-packages/torch/cuda/__init__.py:235: UserWarning: 
+2025-11-19 12:04:59.329 | NVIDIA GeForce RTX 5080 with CUDA capability sm_120 is not compatible with the current PyTorch installation.
+2025-11-19 12:04:59.329 | The current PyTorch install supports CUDA capabilities sm_50 sm_60 sm_61 sm_70 sm_75 sm_80 sm_86 sm_89 sm_90 compute_90.
+2025-11-19 12:04:59.329 | If you want to use the NVIDIA GeForce RTX 5080 GPU with PyTorch, please check the instructions at https://pytorch.org/get-started/locally/
+2025-11-19 12:04:59.329 | 
+2025-11-19 12:04:59.329 |   warnings.warn(

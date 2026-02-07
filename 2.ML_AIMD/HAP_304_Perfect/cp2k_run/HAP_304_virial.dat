@@ -1,0 +1,90 @@
+
+ STRESS| Analytical stress tensor [bar]
+ STRESS|                        x                   y                   z
+ STRESS|      x        4.30396997964E+05   8.27211377502E+03   2.70178189004E+04
+ STRESS|      y        8.27211377502E+03   5.99950406618E+05  -6.32869959642E+04
+ STRESS|      z        2.70178189004E+04  -6.32869959642E+04   3.95924848684E+05
+ STRESS| 1/3 Trace                                             4.75424084422E+05
+ STRESS| Determinant                                           1.00017301688E+17
+
+ STRESS| Eigenvectors and eigenvalues of the analytical stress tensor [bar]
+ STRESS|                        1                   2                   3
+ STRESS| Eigenvalues   3.65575876505E+05   4.42707737478E+05   6.17988639283E+05
+ STRESS|      x          -0.399533067662      0.916713920501      0.002985934472
+ STRESS|      y           0.252094586776      0.106738051792      0.961797955715
+ STRESS|      z           0.881374861885      0.385022825634     -0.273743998249
+
+ STRESS| Analytical stress tensor [bar]
+ STRESS|                        x                   y                   z
+ STRESS|      x        4.28072090665E+05   7.82445630668E+03   2.62145062710E+04
+ STRESS|      y        7.82445630668E+03   5.87740905872E+05  -6.30595507036E+04
+ STRESS|      z        2.62145062710E+04  -6.30595507036E+04   3.94788003152E+05
+ STRESS| 1/3 Trace                                             4.70200333230E+05
+ STRESS| Determinant                                           9.71707105282E+16
+
+ STRESS| Eigenvectors and eigenvalues of the analytical stress tensor [bar]
+ STRESS|                        1                   2                   3
+ STRESS| Eigenvalues   3.64275849329E+05   4.39803535740E+05   6.06521614621E+05
+ STRESS|      x          -0.394114752943      0.919061234489      0.000093663452
+ STRESS|      y           0.262357707352      0.112407391332      0.958401279093
+ STRESS|      z           0.880818934234      0.377744656659     -0.285424209661
+
+ STRESS| Analytical stress tensor [bar]
+ STRESS|                        x                   y                   z
+ STRESS|      x        4.92113760215E+05  -4.81958600941E+03   3.85070178746E+04
+ STRESS|      y       -4.81958600941E+03   6.29821960966E+05  -6.48967458095E+04
+ STRESS|      z        3.85070178746E+04  -6.48967458095E+04   4.63995257119E+05
+ STRESS| 1/3 Trace                                             5.28643659433E+05
+ STRESS| Determinant                                           1.40819406821E+17
+
+ STRESS| Eigenvectors and eigenvalues of the analytical stress tensor [bar]
+ STRESS|                        1                   2                   3
+ STRESS| Eigenvalues   4.23577476169E+05   5.08280397370E+05   6.54073104762E+05
+ STRESS|      x          -0.459618576532      0.881423063755     -0.108830817269
+ STRESS|      y           0.256778316317      0.249194084657      0.933791842137
+ STRESS|      z           0.850185662297      0.401242683239     -0.340864560744
+
+ STRESS| Analytical stress tensor [bar]
+ STRESS|                        x                   y                   z
+ STRESS|      x        4.81658009312E+05  -6.09061499967E+03   3.43050975532E+04
+ STRESS|      y       -6.09061499967E+03   5.92032028057E+05  -6.35633415907E+04
+ STRESS|      z        3.43050975532E+04  -6.35633415907E+04   4.58975105283E+05
+ STRESS| 1/3 Trace                                             5.10888380884E+05
+ STRESS| Determinant                                           1.28246716349E+17
+
+ STRESS| Eigenvectors and eigenvalues of the analytical stress tensor [bar]
+ STRESS|                        1                   2                   3
+ STRESS| Eigenvalues   4.19113138997E+05   4.93498362990E+05   6.20053640666E+05
+ STRESS|      x          -0.436860207077      0.889122107180     -0.136436937805
+ STRESS|      y           0.296759039828      0.285639021833      0.911232364157
+ STRESS|      z           0.849168553206      0.357592264641     -0.388639345044
+
+ STRESS| Analytical stress tensor [bar]
+ STRESS|                        x                   y                   z
+ STRESS|      x        4.68994104663E+05  -6.77731095938E+03   2.93305927614E+04
+ STRESS|      y       -6.77731095938E+03   5.52485537045E+05  -6.19253550845E+04
+ STRESS|      z        2.93305927614E+04  -6.19253550845E+04   4.52251168537E+05
+ STRESS| 1/3 Trace                                             4.91243603415E+05
+ STRESS| Determinant                                           1.14913990062E+17
+
+ STRESS| Eigenvectors and eigenvalues of the analytical stress tensor [bar]
+ STRESS|                        1                   2                   3
+ STRESS| Eigenvalues   4.12508377512E+05   4.76071774922E+05   5.85150657811E+05
+ STRESS|      x          -0.396859360560      0.903111407965     -0.163989123845
+ STRESS|      y           0.355212027206      0.315850543834      0.879808416468
+ STRESS|      z           0.846361071685      0.290909296454     -0.446144278874
+
+ STRESS| Analytical stress tensor [bar]
+ STRESS|                        x                   y                   z
+ STRESS|      x        4.55272698310E+05  -6.43499757324E+03   2.40305234572E+04
+ STRESS|      y       -6.43499757324E+03   5.16370671312E+05  -6.01161954950E+04
+ STRESS|      z        2.40305234572E+04  -6.01161954950E+04   4.44046204062E+05
+ STRESS| 1/3 Trace                                             4.71896524561E+05
+ STRESS| Determinant                                           1.02447268492E+17
+
+ STRESS| Eigenvectors and eigenvalues of the analytical stress tensor [bar]
+ STRESS|                        1                   2                   3
+ STRESS| Eigenvalues   4.03689948912E+05   4.58474026428E+05   5.53525598345E+05
+ STRESS|      x          -0.337211703658      0.924353339330     -0.178491375100
+ STRESS|      y           0.428076121593      0.319414062455      0.845414390005
+ STRESS|      z           0.838474269753      0.208675731160     -0.503403752655

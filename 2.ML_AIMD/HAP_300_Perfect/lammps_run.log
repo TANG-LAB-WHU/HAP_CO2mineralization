@@ -1,0 +1,44 @@
+=== Checking for PyTorch model file ===
+total 3928
+drwxrwxrwx 1 root root    4096 Nov 19 05:16 .
+drwxr-xr-x 1 root root    4096 Nov 19 06:15 ..
+-rw-r--r-- 1 root root 4016818 Nov 19 06:15 hap_model.pth
+Found PyTorch model: hap_model.pth
+Model copied successfully
+total 3924
+drwxrwxrwx 1 root root    4096 Nov 19 05:16 .
+drwxrwxrwx 1 root root    4096 Nov 19 05:16 ..
+-rw-r--r-- 1 root root 4016818 Nov 19 06:15 hap_model.pth
+Starting LAMMPS with PyTorch DeepMD model...
+LAMMPS (29 Aug 2024)
+DeePMD-kit: Successfully load libcudart.so.12
+  using 8 OpenMP thread(s) per MPI task
+2025-11-19 06:15:12.036992: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-11-19 06:15:12.181390: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:477] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1763532912.220519       7 cuda_dnn.cc:8310] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1763532912.229282       7 cuda_blas.cc:1418] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+Loaded 1 plugins from /opt/deepmd-kit/lib/deepmd_lmp
+Reading data file ...
+  triclinic box = (0 0 0) to (28.272 20.637 62.58938) with tilt (0 0 0)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  1728 atoms
+  read_data CPU = 0.058 seconds
+Starting complete simulation trajectory - recording from initial structure...
+ERROR: Unknown dump_modify keyword: C (src/dump.cpp:1320)
+Last command: dump_modify xyz_complete_simulation element Ca P O H C sort id
+LAMMPS simulation with PyTorch model completed successfully
+=== PyTorch DeepMD Workflow Complete ===
+
+==========================================
+PyTorch DeepMD Workflow completed
+Surface Model: (3 0 0) surface
+Surface Parameters: 4 layers, 3x3 supercell
+CO2 Addition: true
+Number of CO2 molecules per side: 1
+Slab Method: ase
+Backend: PyTorch with DPA Descriptor
+Model: deepmd_model\hap_model.pth
+Initial Structure: lammps_run\hap_300.data
+==========================================

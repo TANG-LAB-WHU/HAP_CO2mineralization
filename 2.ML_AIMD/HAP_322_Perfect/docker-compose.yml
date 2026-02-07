@@ -1,0 +1,134 @@
+# TEMPLATE FILE: Template-docker-compose.yml
+# This file will be processed by generate_config.py
+# Placeholder: HAP_322 -> HAP_{hkl_param}
+x-gpu: &gpu
+  deploy:
+    resources:
+      reservations:
+        devices:
+          - capabilities: [gpu]
+
+services:
+  cp2k_run:
+    # image: cp2k/cp2k:2025.1_mpich_generic_cuda_P100_psmp
+    image: mycp2k-rtx5080:master_mpich_native_cuda_A100_psmp
+    restart: "no"
+    working_dir: /mnt/cp2k
+    volumes:
+      - ./cp2k_run:/mnt/cp2k
+    # Enable GPU access (Compose v3.8+)
+    gpus: all
+    environment:
+      # Fewer OpenMP threads per rank to let GPU take the heavy work
+      - OMP_NUM_THREADS=16
+      # Bind OpenMP threads to cores for better GPU utilization
+      # - OMP_PROC_BIND=close
+      # Place OpenMP threads on cores for better GPU utilization
+      # - OMP_PLACES=cores
+      # Explicitly activate GPU backend in DBCSR
+      #- DBCSR_GPU_BACKEND=CUBLAS
+      # Optional: choose specific GPU if multi-GPU system
+      #- CUDA_VISIBLE_DEVICES=0
+    # Use fewer MPI ranks to reduce GPU contention
+    # command: mpirun --bind-to core -np 12 cp2k.psmp -i HAP_322_md.inp -o HAP_322_md.log
+    command: mpirun -np 1 cp2k.psmp -i HAP_322_md.inp -o HAP_322_md.log
+    <<: *gpu
+
+  # Simple copy operation instead of inline Python for DeepMD preparation
+  deepmd_prep:
+    image: docker.m.daocloud.io/library/alpine:latest
+    working_dir: /mnt/workspace
+    volumes:
+      - ./:/mnt/workspace
+    command: sh -c "if [ -d /mnt/workspace/deepmd_data/set.000 ]; then [ -f /mnt/workspace/deepmd_data/type.raw ] || cp /mnt/workspace/deepmd_data/set.000/type.raw /mnt/workspace/deepmd_data/; fi && echo 'DeepMD data directory ready'"
+    depends_on:
+      cp2k_run:
+        condition: service_completed_successfully
+
+  deepmd_train:
+    image: ghcr.io/deepmodeling/deepmd-kit:3.1.1_cuda129
+    restart: "no"
+    working_dir: /mnt/shared/train
+    volumes:
+      - ./deepmd_data:/mnt/shared/data   # training data
+      - ./deepmd_train:/mnt/shared/train   # input.json and output location
+    environment:
+      - OMP_NUM_THREADS=8
+      - DP_INTRA_OP_PARALLELISM_THREADS=8
+      - DP_INTER_OP_PARALLELISM_THREADS=2    
+    command: bash -c "echo === DeepMD Training Data === && ls -R /mnt/shared/data && echo === Starting Training with PyTorch Backend === && dp --pt train input.json -o model"
+    depends_on:
+      deepmd_prep:
+        condition: service_completed_successfully
+    <<: *gpu
+
+  deepmd_freeze:
+    image: ghcr.io/deepmodeling/deepmd-kit:3.1.1_cuda129
+    working_dir: /mnt/shared/train
+    volumes:
+      - ./deepmd_train:/mnt/shared/train
+      - ./deepmd_model:/mnt/shared/model
+    # Wait until DeepMD training produces a valid checkpoint, then freeze to hap_model.pth
+    environment:
+      - OMP_NUM_THREADS=8
+      - DP_INTRA_OP_PARALLELISM_THREADS=8
+      - DP_INTER_OP_PARALLELISM_THREADS=2        
+    command: >-
+      bash -c '
+        echo "Waiting for DeepMD checkpoints to appear...";
+        while [ ! -f /mnt/shared/train/checkpoint ]; do
+          sleep 10;
+        done;
+        # Freeze using PyTorch backend and specify working directory
+        cd /mnt/shared/train &&
+        dp --pt freeze -o /mnt/shared/model/hap_model.pth &&
+        echo "PyTorch model frozen successfully" &&
+        ls -la /mnt/shared/model/ || {
+          echo "dp freeze failed"; exit 1; }'
+    depends_on:
+      deepmd_train:
+        condition: service_completed_successfully
+    <<: *gpu
+
+  deepmd_test:
+    image: ghcr.io/deepmodeling/deepmd-kit:3.1.1_cuda129
+    working_dir: /mnt/shared
+    volumes:
+      - ./deepmd_data:/mnt/shared/data
+      - ./deepmd_model:/mnt/shared/model
+    command: bash -c "if [ -f /mnt/shared/model/hap_model.pth ] && [ -f /mnt/shared/data/set.000/type.raw ]; then dp --pt test -m /mnt/shared/model/hap_model.pth -s /mnt/shared/data/set.000; else echo 'Model or data files not found. Skipping test.'; fi"
+    depends_on:
+      deepmd_freeze:
+        condition: service_completed_successfully
+    <<: *gpu
+
+  lammps_run:
+    image: ghcr.io/deepmodeling/deepmd-kit:3.1.1_cuda129
+    working_dir: /mnt/lammps
+    volumes:
+      - ./lammps_run:/mnt/lammps
+      - ./deepmd_model:/mnt/model
+    environment:
+      - OMP_NUM_THREADS=8
+      - DP_INTRA_OP_PARALLELISM_THREADS=8
+      - DP_INTER_OP_PARALLELISM_THREADS=2    
+    command: >-
+      bash -c '
+        echo "=== Checking for PyTorch model file ===";
+        ls -la /mnt/model/;
+        if [ ! -f /mnt/model/hap_model.pth ]; then
+          echo "ERROR: hap_model.pth not found";
+          echo "Available files in /mnt/model/:";
+          ls -la /mnt/model/;
+          exit 1;
+        fi;
+        echo "Found PyTorch model: hap_model.pth";
+        cp /mnt/model/hap_model.pth /mnt/lammps/model/;
+        echo "Model copied successfully";
+        ls -la /mnt/lammps/model/;
+        echo "Starting LAMMPS with PyTorch DeepMD model...";
+        lmp -in in.deepmd.lammps'
+    depends_on:
+      deepmd_freeze:
+        condition: service_completed_successfully
+    <<: *gpu

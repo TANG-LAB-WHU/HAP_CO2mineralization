@@ -1,0 +1,5 @@
+HAP 112
+THICKNESS 2
+vaccum 18 angstrom
+descriptor: DPA1
+LAMMPS customized atomic structure

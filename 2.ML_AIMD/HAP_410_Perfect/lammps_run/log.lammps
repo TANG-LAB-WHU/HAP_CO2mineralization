@@ -1,0 +1,559 @@
+LAMMPS (29 Aug 2024)
+  using 8 OpenMP thread(s) per MPI task
+Loaded 1 plugins from /opt/deepmd-kit/lib/deepmd_lmp
+# TEMPLATE FILE: Template-in.deepmd.lammps
+# This file will be processed by generate_config.py
+# Placeholder: hap_410_co2.data -> hap_{hkl_param}.data
+
+# ENHANCED LAMMPS input file for comprehensive CO2-HAP adsorption analysis
+# MODIFIED: High-temperature (700 C) reaction conditions with NUMERICAL STABILITY FIXES
+# ENHANCED: Surface model adaptation and comprehensive surface analysis
+# REMOVED: CO2 molecule creation (handled by create_hap_slabs.py)
+# Including: adsorption mode determination, OH-CO2 interactions, and thermodynamic analysis
+
+units metal
+boundary p p s
+atom_style atomic
+
+atom_modify map yes
+
+# Read HAP structure data file (with CO2 already placed by create_hap_slabs.py)
+read_data hap_410_co2.data
+Reading data file ...
+  triclinic box = (0 0 0) to (129.55858 20.637 37.123874) with tilt (0 0 0)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  1731 atoms
+  read_data CPU = 0.038 seconds
+
+# ==========================================
+# COMPLETE SIMULATION TRAJECTORY - START BEFORE ALL STAGES
+# ==========================================
+print "Starting complete simulation trajectory - recording from initial structure..."
+Starting complete simulation trajectory - recording from initial structure...
+dump xyz_complete_simulation all xyz 50 trajectory_complete_simulation.xyz
+dump_modify xyz_complete_simulation element Ca P O H C sort id
+
+# Publication-ready trajectory (true triclinic cell)
+dump pub_complete all custom 50 trajectory_complete_simulation.lammpstrj id type x y z
+# dump_modify pub_complete triclinic/general yes element Ca P O H C sort id first yes
+dump_modify pub_complete element Ca P O H C sort id
+
+run 0 post no
+
+CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE
+
+Your simulation uses code contributions which should be cited:
+
+- Type Label Framework: https://doi.org/10.1021/acs.jpcb.3c08419
+
+@Article{Gissinger24,
+ author = {Jacob R. Gissinger, Ilia Nikiforov, Yaser Afshar, Brendon Waters, Moon-ki Choi, Daniel S. Karls, Alexander Stukowski, Wonpil Im, Hendrik Heinz, Axel Kohlmeyer, and Ellad B. Tadmor},
+ title = {Type Label Framework for Bonded Force Fields in LAMMPS},
+ journal = {J. Phys. Chem. B},
+ year =    2024,
+ volume =  128,
+ number =  13,
+ pages =   {3282–-3297}
+}
+
+CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE
+
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+WARNING: No pairwise cutoff or binsize set. Atom sorting therefore disabled. (src/atom.cpp:2438)
+WARNING: Communication cutoff is 0.0. No ghost atoms will be generated. Atoms may get lost. (src/comm_brick.cpp:210)
+Per MPI rank memory allocation (min/avg/max) = 5.806 | 5.806 | 5.806 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press          Volume    
+         0   0              0              0              0              0              45803.961    
+Loop time of 2.038e-06 on 8 procs for 0 steps with 1731 atoms
+
+
+print "Complete simulation trajectory activated - initial frame recorded"
+Complete simulation trajectory activated - initial frame recorded
+print "Will continue recording through all simulation stages..."
+Will continue recording through all simulation stages...
+
+print "================================================"
+================================================
+print "ENHANCED CO2-HAP Adsorption Analysis (700 C HIGH-TEMPERATURE)"
+ENHANCED CO2-HAP Adsorption Analysis (700 C HIGH-TEMPERATURE)
+print "1. CO2 molecule pre-placed by create_hap_slabs.py"
+1. CO2 molecule pre-placed by create_hap_slabs.py
+print "2. Adsorption Mode Determination"
+2. Adsorption Mode Determination
+print "3. OH-CO2 Hydrogen Bonding & Polarization"
+3. OH-CO2 Hydrogen Bonding & Polarization
+print "4. Thermodynamic Analysis (Free Energy, Entropy, Enthalpy)"
+4. Thermodynamic Analysis (Free Energy, Entropy, Enthalpy)
+print "5. HIGH-TEMPERATURE CHEMICAL REACTIONS (700 C)"
+5. HIGH-TEMPERATURE CHEMICAL REACTIONS (700 C)
+print "6. SURFACE-SPECIFIC ANALYSIS AND ADAPTATION"
+6. SURFACE-SPECIFIC ANALYSIS AND ADAPTATION
+print "================================================"
+================================================
+
+# Define atom groups for comprehensive analysis
+group Ca type 1
+360 atoms in group Ca
+group P type 2
+216 atoms in group P
+group O type 3
+1010 atoms in group O
+group H type 4
+144 atoms in group H
+
+# Check if CO2 atoms exist (type 5 = Carbon)
+# group C type 5
+# variable has_co2 equal "count(C) > 0"
+variable isC atom "type==5"
+group C variable isC
+1 atoms in group C
+variable has_co2 equal "count(C) > 0"
+if "${has_co2} > 0.5" then "print 'CO2 atoms found: $(count(C))'" else "print 'WARNING: No CO2 atoms found in system'"
+print 'CO2 atoms found: $(count(C))'
+CO2 atoms found: 1
+
+# FIXED: Create HAP_surface excluding CO2 O atoms
+# First create HAP_surface with all O atoms
+group HAP_surface union Ca P O H    # All HAP atoms for thermodynamics
+1730 atoms in group HAP_surface
+
+# If CO2 exists, exclude CO2 O atoms from HAP_surface
+if "${has_co2} > 0.5" then "group CO2_mol type 5"
+group CO2_mol type 5
+1 atoms in group CO2_mol
+if "${has_co2} > 0.5" then "group CO2_oxygen type 3"
+group CO2_oxygen type 3
+1010 atoms in group CO2_oxygen
+if "${has_co2} > 0.5" then "group CO2_mol_complete union C CO2_oxygen"
+group CO2_mol_complete union C CO2_oxygen
+1011 atoms in group CO2_mol_complete
+if "${has_co2} > 0.5" then "group HAP_surface_clean subtract HAP_surface CO2_mol_complete"
+group HAP_surface_clean subtract HAP_surface CO2_mol_complete
+720 atoms in group HAP_surface_clean
+if "${has_co2} > 0.5" then "group HAP_surface delete"
+group HAP_surface delete
+if "${has_co2} > 0.5" then "group HAP_surface union HAP_surface_clean"
+group HAP_surface union HAP_surface_clean
+720 atoms in group HAP_surface
+if "${has_co2} > 0.5" then "group CO2_mol_complete delete"
+group CO2_mol_complete delete
+if "${has_co2} > 0.5" then "group CO2_oxygen delete"
+group CO2_oxygen delete
+if "${has_co2} > 0.5" then "group HAP_surface_clean delete"
+group HAP_surface_clean delete
+
+print "Initial system composition:"
+Initial system composition:
+print "  Ca atoms: $(count(Ca))"
+  Ca atoms: 360
+print "  P atoms: $(count(P))"
+  P atoms: 216
+print "  O atoms: $(count(O))"
+  O atoms: 1010
+print "  H atoms: $(count(H))"
+  H atoms: 144
+if "${has_co2} > 0.5" then "print '  C atoms (CO2): $(count(C))'"
+print '  C atoms (CO2): $(count(C))'
+  C atoms (CO2): 1
+print "  Total atoms: $(count(all))"
+  Total atoms: 1731
+print "================================================"
+================================================
+
+# Use DeepMD potential with explicit PyTorch backend
+pair_style deepmd model/hap_model.pth
+Summary of lammps deepmd module ...
+  >>> Info of deepmd-kit:
+  installed to:       /opt/deepmd-kit
+  source:             
+  source branch:      HEAD
+  source commit:      8b3dc08
+  source commit at:   2025-06-11 13:00:46 +0200
+  support model ver.: 1.1 
+  build variant:      cuda
+  build with tf inc:  /opt/deepmd-kit/lib/python3.12/site-packages/tensorflow/include;/opt/deepmd-kit/include
+  build with tf lib:  /opt/deepmd-kit/lib/python3.12/site-packages/tensorflow/libtensorflow_cc.so.2
+  build with pt lib:  torch;torch_library;/opt/deepmd-kit/lib/python3.12/site-packages/torch/lib/libc10.so;CUDA::nvrtc;torch::nvtoolsext;/opt/deepmd-kit/lib/python3.12/site-packages/torch/lib/libc10_cuda.so
+  set tf intra_op_parallelism_threads: 8
+  set tf inter_op_parallelism_threads: 2
+  >>> Info of lammps module:
+  use deepmd-kit at:  /opt/deepmd-kitif "${has_co2} > 0.5" then "pair_coeff * * Ca P O H C" else "pair_coeff * * Ca P O H"
+pair_coeff * * Ca P O H C
+
+# Define atomic masses
+mass 1 40.078  # Ca
+mass 2 30.974  # P
+mass 3 15.999  # O
+mass 4 1.008   # H
+mass 5 12.011  # C
+
+# CRITICAL FIX: Ultra-conservative timestep for extreme numerical stability
+timestep 0.0001    # unit: ps, 0.1 fs (EVEN SMALLER for stability)
+
+# ENHANCED: Use NSQ neighbor style for small systems with conservative parameters
+neighbor 1.0 nsq    # Conservative skin distance for stability
+neigh_modify every 1 delay 0 check yes
+
+# ENHANCED: Conservative communication cutoff with additional stability measures
+comm_modify cutoff 8.0  # Conservative communication cutoff for stability
+comm_style brick       # Use brick communication style for better stability
+comm_modify mode single # Single communication mode for enhanced stability
+
+# ------------------------------------
+#  System Preparation and Constraints - MODIFIED FOR SURFACE MODELS
+# ------------------------------------
+# ENHANCED: Surface-adaptive constraints for different surface models
+variable zlo equal bound(all,zmin)
+variable zhi equal bound(all,zmax)
+
+# Surface self-adaptive constraints according to the slab model
+variable surface_type string "auto_detect"
+variable total_thickness equal ${zhi}-${zlo}
+variable total_thickness equal 32.123874-${zlo}
+variable total_thickness equal 32.123874-15
+
+# FIXED: Add missing zfix variable definition
+# Adjust the fixing layer height according to slab layer height
+if "${total_thickness} < 20.0" then "variable zfix equal ${zlo}+1.0"
+variable zfix equal ${zlo}+1.0
+variable zfix equal 15+1.0
+if "${total_thickness} >= 20.0 && ${total_thickness} < 40.0" then "variable zfix equal ${zlo}+2.0"
+if "${total_thickness} >= 40.0" then "variable zfix equal ${zlo}+3.0"
+
+print "Surface adaptive constraints:"
+Surface adaptive constraints:
+print "  Total slab thickness: ${total_thickness} Angstrom"
+  Total slab thickness: 17.123874 Angstrom
+print "  Fixed layer thickness: ${zfix}-${zlo} Angstrom"
+  Fixed layer thickness: 16-15 Angstrom
+
+region bottom_layer block INF INF INF INF INF ${zfix}
+region bottom_layer block INF INF INF INF INF 16
+group bottom_atoms region bottom_layer
+243 atoms in group bottom_atoms
+group mobile_atoms subtract all bottom_atoms
+1488 atoms in group mobile_atoms
+
+# -----------------------------------------------------------------
+# *** Z-ONLY MOTION CONSTRAINTS ***
+#   1) zero lateral velocities
+velocity mobile_atoms set 0.0 0.0 NULL units box
+#   2) kill lateral forces each step
+fix freeze_xy mobile_atoms setforce 0.0 0.0 NULL
+#   3) temp compute that uses ONLY vz
+compute temp_z mobile_atoms temp/partial 0 0 1
+
+print "HIGH-TEMPERATURE CONSTRAINT SETUP (700 C Operation):"
+HIGH-TEMPERATURE CONSTRAINT SETUP (700 C Operation):
+print "  Fixed atoms in bottom layer: $(count(bottom_atoms))"
+  Fixed atoms in bottom layer: 243
+print "  Mobile atoms: $(count(mobile_atoms))"
+  Mobile atoms: 1488
+print "  Mobile fraction: $(count(mobile_atoms)/count(all)*100)%"
+  Mobile fraction: 85.961871750433274997%
+print "  Target reaction temperature: 973 K (700 C)"
+  Target reaction temperature: 973 K (700 C)
+
+# Verify CO2 molecule position if present
+if "${has_co2} > 0.5" then "compute co2_com C com"
+compute co2_com C com
+if "${has_co2} > 0.5" then "run 0 post no"
+run 0 post no
+
+CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE
+
+Your simulation uses code contributions which should be cited:
+
+- USER-DEEPMD package:
+
+@article{Wang_ComputPhysCommun_2018_v228_p178,
+  author = {Wang, Han and Zhang, Linfeng and Han, Jiequn and E, Weinan},
+  doi = {10.1016/j.cpc.2018.03.016},
+  url = {https://doi.org/10.1016/j.cpc.2018.03.016},
+  year = 2018,
+  month = {jul},
+  publisher = {Elsevier {BV}},
+  volume = 228,
+  journal = {Comput. Phys. Commun.},
+  title = {{DeePMD-kit: A deep learning package for many-body potential energy representation and molecular dynamics}},
+  pages = {178--184}
+}
+@article{Zeng_JChemPhys_2023_v159_p054801,
+  title  = {{DeePMD-kit v2: A software package for deep potential models}},
+  author =   {Jinzhe Zeng and Duo Zhang and Denghui Lu and Pinghui Mo and Zeyu Li
+         and Yixiao Chen and Mari{\'a}n Rynik and Li'ang Huang and Ziyao Li and 
+         Shaochen Shi and Yingze Wang and Haotian Ye and Ping Tuo and Jiabin
+         Yang and Ye Ding and Yifan Li and Davide Tisi and Qiyu Zeng and Han 
+         Bao and Yu Xia and Jiameng Huang and Koki Muraoka and Yibo Wang and 
+         Junhan Chang and Fengbo Yuan and Sigbj{\o}rn L{\o}land Bore and Chun
+         Cai and Yinnian Lin and Bo Wang and Jiayan Xu and Jia-Xin Zhu and 
+         Chenxing Luo and Yuzhi Zhang and Rhys E A Goodall and Wenshuo Liang
+         and Anurag Kumar Singh and Sikai Yao and Jingchao Zhang and Renata
+         Wentzcovitch and Jiequn Han and Jie Liu and Weile Jia and Darrin M
+         York and Weinan E and Roberto Car and Linfeng Zhang and Han Wang},
+  journal =  {J. Chem. Phys.},
+  volume =   159,
+  issue =    5,  
+  year =    2023,
+  pages  =   054801,
+  doi =      {10.1063/5.0155600},
+}
+@Article{Zeng_JChemTheoryComput_2025_v21_p4375,
+  author =   {Jinzhe Zeng and Duo Zhang and Anyang Peng and Xiangyu Zhang and Sensen
+             He and Yan Wang and Xinzijian Liu and Hangrui Bi and Yifan Li and Chun
+             Cai and Chengqian Zhang and Yiming Du and Jia-Xin Zhu and Pinghui Mo
+             and Zhengtao Huang and Qiyu Zeng and Shaochen Shi and Xuejian Qin and
+             Zhaoxi Yu and Chenxing Luo and Ye Ding and Yun-Pei Liu and Ruosong Shi
+             and Zhenyu Wang and Sigbj{\o}rn L{\o}land Bore and Junhan Chang and
+             Zhe Deng and Zhaohan Ding and Siyuan Han and Wanrun Jiang and Guolin
+             Ke and Zhaoqing Liu and Denghui Lu and Koki Muraoka and Hananeh Oliaei
+             and Anurag Kumar Singh and Haohui Que and Weihong Xu and Zhangmancang
+             Xu and Yong-Bin Zhuang and Jiayu Dai and Timothy J. Giese and Weile
+             Jia and Ben Xu and Darrin M. York and Linfeng Zhang and Han Wang},
+    title =    {{DeePMD-kit v3: A Multiple-Backend Framework for Machine Learning
+             Potentials}},
+  journal =  {J. Chem. Theory Comput.},
+  year =     2025,
+  volume =   21,
+  number =   9,
+  pages =    {4375--4385},
+  doi =      {10.1021/acs.jctc.5c00340},
+}
+
+CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE
+
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Generated 0 of 10 mixed pair_coeff terms from geometric mixing rule
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8
+  ghost atom cutoff = 8
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair deepmd, perpetual
+      attributes: full, newton on
+      pair build: full/nsq
+      stencil: none
+      bin: none
+Per MPI rank memory allocation (min/avg/max) = 12.13 | 12.13 | 12.13 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press          Volume    
+         0   0             -855688.79      0             -855688.79      1009001        45803.961    
+Loop time of 1.469e-06 on 8 procs for 0 steps with 1731 atoms
+
+if "${has_co2} > 0.5" then "variable co2_x_initial equal c_co2_com[1]"
+variable co2_x_initial equal c_co2_com[1]
+if "${has_co2} > 0.5" then "variable co2_y_initial equal c_co2_com[2]"
+variable co2_y_initial equal c_co2_com[2]
+if "${has_co2} > 0.5" then "variable co2_z_initial equal c_co2_com[3]"
+variable co2_z_initial equal c_co2_com[3]
+if "${has_co2} > 0.5" then "print 'Initial CO2 position: (${co2_x_initial}, ${co2_y_initial}, ${co2_z_initial})'"
+print 'Initial CO2 position: (${co2_x_initial}, ${co2_y_initial}, ${co2_z_initial})'
+Initial CO2 position: (64.997917, 10.360494, 32.123874)
+
+# ==========================================
+# Enhanced bottom fixing mechanism - prevent divergence
+# ==========================================
+
+# Apply multiple constraints to bottom atoms
+fix freeze_bottom bottom_atoms setforce 0.0 0.0 0.0
+fix nve_limit_bottom bottom_atoms nve/limit 0.001  # Limit max displacement to 0.001Å
+
+# Keep bottom atoms fixed during production (remove or comment out unfix freeze_bottom)
+# unfix freeze_bottom
+
+# Enhanced wall constraints
+variable safe_wall_z equal bound(all,zmax)+20.0  # Place top wall 20Å above highest atom
+fix wall_top all wall/lj93 zhi ${safe_wall_z} 2.0 1.0 4.0  # Stronger top wall
+fix wall_top all wall/lj93 zhi 52.123874 2.0 1.0 4.0  
+variable bottom_wall_z equal ${zlo}-2.0  # Calculate bottom wall position, adding bottom wall 2Å below lowest atom
+variable bottom_wall_z equal 15-2.0  
+fix wall_bottom all wall/lj93 zlo ${bottom_wall_z} 2.0 1.0 4.0
+fix wall_bottom all wall/lj93 zlo 13 2.0 1.0 4.0
+
+# ------------------------------------
+#  CONSERVATIVE Overlap Removal and Energy Minimization
+# ------------------------------------
+print "Conservative overlap removal and energy minimization..."
+Conservative overlap removal and energy minimization...
+
+# Check for overlaps and remove if necessary
+print "Checking for atomic overlaps..."
+Checking for atomic overlaps...
+# delete_atoms overlap 0.8 all all
+if "${has_co2} > 0.5" then "print 'Skip delete_atoms overlap when CO2 present'" else "delete_atoms overlap 0.8 all all"
+print 'Skip delete_atoms overlap when CO2 present'
+Skip delete_atoms overlap when CO2 present
+print "After overlap removal: $(count(all)) atoms remaining"
+After overlap removal: 1731 atoms remaining
+
+# Rebuild groups after potential atom deletion
+group Ca type 1
+360 atoms in group Ca
+group P type 2
+216 atoms in group P
+group O type 3
+1010 atoms in group O
+group H type 4
+144 atoms in group H
+
+# FIXED: Rebuild HAP_surface excluding CO2 O atoms
+group HAP_surface union Ca P O H
+1730 atoms in group HAP_surface
+
+# If CO2 exists, exclude CO2 O atoms from HAP_surface
+if "${has_co2} > 0.5" then "group C type 5"
+group C type 5
+1 atoms in group C
+if "${has_co2} > 0.5" then "group CO2_oxygen type 3"
+group CO2_oxygen type 3
+1010 atoms in group CO2_oxygen
+if "${has_co2} > 0.5" then "group CO2_mol_complete union C CO2_oxygen"
+group CO2_mol_complete union C CO2_oxygen
+1011 atoms in group CO2_mol_complete
+if "${has_co2} > 0.5" then "group HAP_surface_clean subtract HAP_surface CO2_mol_complete"
+group HAP_surface_clean subtract HAP_surface CO2_mol_complete
+720 atoms in group HAP_surface_clean
+if "${has_co2} > 0.5" then "group HAP_surface delete"
+group HAP_surface delete
+if "${has_co2} > 0.5" then "group HAP_surface union HAP_surface_clean"
+group HAP_surface union HAP_surface_clean
+720 atoms in group HAP_surface
+if "${has_co2} > 0.5" then "group CO2_mol_complete delete"
+group CO2_mol_complete delete
+if "${has_co2} > 0.5" then "group CO2_oxygen delete"
+group CO2_oxygen delete
+if "${has_co2} > 0.5" then "group HAP_surface_clean delete"
+group HAP_surface_clean delete
+if "${has_co2} > 0.5" then "group CO2_mol type 5"
+group CO2_mol type 5
+1 atoms in group CO2_mol
+
+group mobile_atoms subtract all bottom_atoms
+1488 atoms in group mobile_atoms
+
+# Conservative energy minimization
+print "Conservative energy minimization..."
+Conservative energy minimization...
+min_style cg
+
+dump xyz_Initminimization all xyz 10 trajectory_Initminimization.xyz
+dump_modify xyz_Initminimization element Ca P O H C sort id
+
+# Publication-ready: minimization stage with true triclinic cell
+dump pub_Initminimization all custom 10 trajectory_Initminimization.lammpstrj id type x y z
+# dump_modify pub_Initminimization triclinic/general yes element Ca P O H C sort id
+dump_modify pub_Initminimization element Ca P O H C sort id
+
+# Freeze whole CO2 during minimization to avoid advancing breakdown
+if "${has_co2} > 0.5" then "compute co2_com_pre C com"
+compute co2_com_pre C com
+if "${has_co2} > 0.5" then "run 0 post no"
+run 0 post no
+Generated 0 of 10 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 12.13 | 12.13 | 12.13 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press          Volume    
+         0   0             -855688.79      0             -855688.79      1009001.2      45803.961    
+Loop time of 1.264e-06 on 8 procs for 0 steps with 1731 atoms
+
+if "${has_co2} > 0.5" then "variable C_x_pre equal c_co2_com_pre[1]"
+variable C_x_pre equal c_co2_com_pre[1]
+if "${has_co2} > 0.5" then "variable C_y_pre equal c_co2_com_pre[2]"
+variable C_y_pre equal c_co2_com_pre[2]
+if "${has_co2} > 0.5" then "variable C_z_pre equal c_co2_com_pre[3]"
+variable C_z_pre equal c_co2_com_pre[3]
+if "${has_co2} > 0.5" then "variable dist_to_C_pre atom 'sqrt((x-v_C_x_pre)^2+(y-v_C_y_pre)^2+(z-v_C_z_pre)^2)'"
+variable dist_to_C_pre atom 'sqrt((x-v_C_x_pre)^2+(y-v_C_y_pre)^2+(z-v_C_z_pre)^2)'
+if "${has_co2} > 0.5" then "variable is_CO2_O_pre atom '(type==3) && (v_dist_to_C_pre < 2.0)'"
+variable is_CO2_O_pre atom '(type==3) && (v_dist_to_C_pre < 2.0)'
+if "${has_co2} > 0.5" then "group CO2_O_pre variable is_CO2_O_pre"
+group CO2_O_pre variable is_CO2_O_pre
+2 atoms in group CO2_O_pre
+if "${has_co2} > 0.5" then "group CO2_molecule_pre union C CO2_O_pre"
+group CO2_molecule_pre union C CO2_O_pre
+3 atoms in group CO2_molecule_pre
+if "${has_co2} > 0.5" then "fix freeze_co2 CO2_molecule_pre setforce 0.0 0.0 0.0"
+fix freeze_co2 CO2_molecule_pre setforce 0.0 0.0 0.0
+
+minimize 1.0e-8 1.0e-8 1000 10000
+Generated 0 of 10 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 15.81 | 15.81 | 15.81 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press          Volume    
+         0   0             -855688.79      0             -855688.79      1009001.1      45803.961    
+       863   0             -956315.96      0             -956315.96      1124397.8      56865.494    
+Loop time of 35.4717 on 8 procs for 863 steps with 1731 atoms
+
+772.0% CPU use with 1 MPI tasks x 8 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+     -855688.787650271  -956315.958757563  -956315.958254023
+  Force two-norm initial, final = 628.88815 640.44777
+  Force max component initial, final = 69.092688 582.5391
+  Final line search alpha, max atom move = 2.0480961e-14 1.1930961e-11
+  Iterations, force evaluations = 863 980
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 33.791     | 33.791     | 33.791     |   0.0 | 95.26
+Neigh   | 0.85045    | 0.85045    | 0.85045    |   0.0 |  2.40
+Comm    | 0.013589   | 0.013589   | 0.013589   |   0.0 |  0.04
+Output  | 0.73296    | 0.73296    | 0.73296    |   0.0 |  2.07
+Modify  | 0.015586   | 0.015586   | 0.015586   |   0.0 |  0.04
+Other   |            | 0.06819    |            |       |  0.19
+
+Nlocal:           1731 ave        1731 max        1731 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1620 ave        1620 max        1620 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:       109292 ave      109292 max      109292 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 109292
+Ave neighs/atom = 63.13807
+Neighbor list builds = 138
+Dangerous builds = 0
+
+# Unfreeze and clean up
+if "${has_co2} > 0.5" then "unfix freeze_co2"
+unfix freeze_co2
+if "${has_co2} > 0.5" then "group CO2_O_pre delete"
+group CO2_O_pre delete
+if "${has_co2} > 0.5" then "group CO2_molecule_pre delete"
+group CO2_molecule_pre delete
+if "${has_co2} > 0.5" then "uncompute co2_com_pre"
+uncompute co2_com_pre
+
+undump xyz_Initminimization
+undump pub_Initminimization
+
+# Check final forces
+variable max_force atom sqrt(fx*fx+fy*fy+fz*fz)
+compute max_force_check all reduce max v_max_force
+run 0 post no
+Generated 0 of 10 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 12.13 | 12.13 | 12.13 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press          Volume    
+       863   0             -956315.96      0             -956315.96      1119320.2      57123.455    
+Loop time of 1.178e-06 on 8 procs for 0 steps with 1731 atoms
+
+
+print "Maximum force after minimization: $(c_max_force_check) eV/Angstrom"
+Maximum force after minimization: 582.53907001254242459 eV/Angstrom
+
+# ENHANCED: Force validation with additional checks
+if "$(c_max_force_check) > 0.5" then "print 'WARNING: Forces > 0.5 eV/A detected'"
+print 'WARNING: Forces > 0.5 eV/A detected'
+WARNING: Forces > 0.5 eV/A detected
+if "$(c_max_force_check) > 5.0" then "print 'ERROR: Large forces > 5.0 eV/A!'"
+print 'ERROR: Large forces > 5.0 eV/A!'
+ERROR: Large forces > 5.0 eV/A!
+if "$(c_max_force_check) > 50.0" then "print 'CRITICAL ERROR: Very large forces > 50.0 eV/A!'"
+print 'CRITICAL ERROR: Very large forces > 50.0 eV/A!'
+CRITICAL ERROR: Very large forces > 50.0 eV/A!
+if "$(c_max_force_check) > 50.0" then "quit"
+quit
