@@ -13,4 +13,3 @@ slurm-*.out
 processed_*.csv
 
 ModelConfig
-3.Data_PostProcess
