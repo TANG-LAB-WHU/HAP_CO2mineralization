@@ -1,0 +1,18 @@
+x-gpu: &gpu
+  deploy:
+    resources:
+      reservations:
+        devices:
+          - capabilities: [gpu]
+
+services:
+  cp2k_opt:
+    image: docker.m.daocloud.io/cp2k/cp2k:2025.1_mpich_generic_cuda_P100_psmp
+    working_dir: /mnt/cp2k
+    volumes:
+      - ./cp2k_run:/mnt/cp2k       # Mount input/output directory
+    environment:
+      - OMP_NUM_THREADS=16
+    command: mpirun -np 1 cp2k.psmp -i HAP_322_opt_restart.inp -o HAP_322_opt_restart2.log
+    restart: "no"
+    <<: *gpu 

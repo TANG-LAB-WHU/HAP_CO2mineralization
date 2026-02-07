@@ -1,0 +1,17 @@
+*.wfn
+*.wfn.bak-1
+*.ckpt*
+*_forces.dat
+*.lammpstrj
+trajectory_*.xyz
+
+*.dftd
+*.restart
+*.restart.bak-1
+*_opt-pos-1.xyz
+slurm-*.out
+processed_*.csv
+
+ModelConfig
+3.Data_PostProcess
+2.ML_AIMD
