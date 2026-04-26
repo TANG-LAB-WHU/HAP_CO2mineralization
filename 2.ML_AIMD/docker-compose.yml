@@ -76,7 +76,7 @@ services:
     volumes:
       - ./Step2_dataset_synthesis/deepmd_pool:/mnt/deepmd_pool
       - ./Step3_mlip_deepmd/model:/mnt/model
-    command: bash -c "first_system=$(ls -1 /mnt/deepmd_pool | head -n 1); if [ -f /mnt/model/hap_model.pth ] && [ -n \"$first_system\" ]; then dp --pt test -m /mnt/model/hap_model.pth -s /mnt/deepmd_pool/$first_system; else echo 'Model or pooled data not found. Skipping test.'; fi"
+    command: bash -c "first_system=$$(ls -1 /mnt/deepmd_pool | head -n 1); if [ -f /mnt/model/hap_model.pth ] && [ -n \"$$first_system\" ]; then dp --pt test -m /mnt/model/hap_model.pth -s /mnt/deepmd_pool/$$first_system; else echo 'Model or pooled data not found. Skipping test.'; fi"
     depends_on:
       deepmd_freeze:
         condition: service_completed_successfully
