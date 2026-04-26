@@ -13,3 +13,4 @@ slurm-*.out
 processed_*.csv
 
 ModelConfig
+references_materials_collection/
