@@ -26,12 +26,12 @@ def main() -> int:
     parser.add_argument("--output", required=True, help="Output JSON file path")
     parser.add_argument(
         "--template",
-        default="Step3_mlip_deepmd/input.json",
+        default="Step3_mlip_deepmd/input_template.json",
         help="Template input JSON to copy model/training hyperparameters from",
     )
     parser.add_argument(
         "--container-prefix",
-        default="/mnt/shared/workspace/deepmd_pool",
+        default="/mnt/deepmd_pool",
         help="Container-visible pool path prefix",
     )
     parser.add_argument(

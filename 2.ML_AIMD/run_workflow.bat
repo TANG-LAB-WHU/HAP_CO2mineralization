@@ -52,12 +52,12 @@ if not exist "%STEP2_DIR%\generate_deepmd_data.py" (
     echo ERROR: Missing Step2 script: %STEP2_DIR%\generate_deepmd_data.py
     exit /b 1
 )
-if not exist "%STEP2_DIR%\prepare_multisystem_input.py" (
-    echo ERROR: Missing Step2 script: %STEP2_DIR%\prepare_multisystem_input.py
+if not exist "%STEP3_DIR%\prepare_multisystem_input.py" (
+    echo ERROR: Missing Step3 script: %STEP3_DIR%\prepare_multisystem_input.py
     exit /b 1
 )
-if not exist "%STEP3_DIR%\input.json" (
-    echo ERROR: Missing Step3 template: %STEP3_DIR%\input.json
+if not exist "%STEP3_DIR%\input_template.json" (
+    echo ERROR: Missing Step3 template: %STEP3_DIR%\input_template.json
     exit /b 1
 )
 if not exist "%STEP4_DIR%\Template-in.deepmd.lammps" (
@@ -106,7 +106,7 @@ if %errorlevel% neq 0 (
     exit /b 1
 )
 
-"%PYTHON_CMD%" "%STEP2_DIR%\prepare_multisystem_input.py" --pool-dir "%POOL_DIR%" --output "%MULTI_INPUT%" --template "%STEP3_DIR%\input.json" --container-prefix "/mnt/deepmd_pool"
+"%PYTHON_CMD%" "%STEP3_DIR%\prepare_multisystem_input.py" --pool-dir "%POOL_DIR%" --output "%MULTI_INPUT%" --template "%STEP3_DIR%\input_template.json" --container-prefix "/mnt/deepmd_pool"
 if %errorlevel% neq 0 (
     echo ERROR: Failed to prepare multi-system training input.
     exit /b 1
