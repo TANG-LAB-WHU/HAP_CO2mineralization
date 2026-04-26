@@ -23,6 +23,7 @@ set "STEP4_DIR=Step4_lammps_scaleup"
 set "POOL_DIR=%STEP2_DIR%\deepmd_pool"
 set "POOL_TARGET=%POOL_DIR%\%HAP_PREFIX%"
 set "MULTI_INPUT=%STEP3_DIR%\input.multisystem.json"
+set "TEST_SPLIT_JSON=%STEP3_DIR%\test_systems.json"
 set "PYTHON_CMD="
 
 echo ==========================================
@@ -136,7 +137,7 @@ if %errorlevel% neq 0 (
     exit /b 1
 )
 
-"%PYTHON_CMD%" "%STEP3_DIR%\prepare_multisystem_input.py" --pool-dir "%POOL_DIR%" --output "%MULTI_INPUT%" --template "%STEP3_DIR%\input_template.json" --container-prefix "/mnt/deepmd_pool"
+"%PYTHON_CMD%" "%STEP3_DIR%\prepare_multisystem_input.py" --pool-dir "%POOL_DIR%" --output "%MULTI_INPUT%" --template "%STEP3_DIR%\input_template.json" --container-prefix "/mnt/deepmd_pool" --train-ratio 0.8 --valid-ratio 0.1 --test-ratio 0.1 --test-output "%TEST_SPLIT_JSON%"
 if %errorlevel% neq 0 (
     echo ERROR: Failed to prepare multi-system training input.
     exit /b 1
@@ -220,5 +221,6 @@ echo LAMMPS HKL used for scale-up: %HKL_PARAM_LAMMPS%
 echo Stage1: %STEP1_DIR%
 echo Stage2 pooled system: %POOL_TARGET%
 echo Stage3 model: %STEP3_DIR%\model\hap_model.pth
+echo Stage3 test split list: %TEST_SPLIT_JSON%
 echo Stage4 outputs: %STEP4_DIR%
 echo ==========================================
