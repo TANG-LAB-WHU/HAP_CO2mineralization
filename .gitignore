@@ -14,4 +14,5 @@ processed_*.csv
 
 ModelConfig
 references_materials_collection/
-_pycache_/
+__pycache__/
+*.pyc
