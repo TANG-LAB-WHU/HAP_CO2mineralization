@@ -8,7 +8,8 @@ x-gpu: &gpu
 services:
   cp2k_run:
     # image: cp2k/cp2k:2025.1_mpich_generic_cuda_P100_psmp
-    image: mycp2k-rtx5080:master_mpich_native_cuda_A100_psmp
+    # image: mycp2k-rtx5080:master_mpich_native_cuda_A100_psmp
+    image: mycp2k-rtx5080:202601_mpich_native_cuda_A100_psmp
     restart: "no"
     working_dir: /mnt/cp2k
     volumes:
