@@ -8,7 +8,7 @@ trajectory_*.xyz
 *.dftd
 *.restart
 *.restart.bak-1
-*_opt-pos-1.xyz
+# *_opt-pos-1.xyz
 slurm-*.out
 processed_*.csv
 
@@ -16,3 +16,10 @@ ModelConfig
 references_materials_collection/
 __pycache__/
 *.pyc
+
+HAP_*_md*
+HAP_*_md.log
+HAP_*_md.restart
+HAP_*final.xyz
+HAP_*_forces.dat
+HAP_*_virial.dat
