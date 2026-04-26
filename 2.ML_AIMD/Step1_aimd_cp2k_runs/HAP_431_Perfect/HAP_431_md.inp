@@ -2,8 +2,9 @@
 
 &GLOBAL
   EPS_CHECK_DIAG 1.0E-12
-  PRINT_LEVEL LOW
+  PRINT_LEVEL MEDIUM
   PROJECT_NAME ${PROJECT}_md
+  PREFERRED_DGEMM_LIBRARY SPLA
   RUN_TYPE MD
   &DBCSR  
     USE_MEMPOOLS_CPU .TRUE.
@@ -134,7 +135,7 @@
     &END CELL
 
     &COORD
-      @include 'HAP_hkl_final.xyz'
+      @include 'HAP_431_final.xyz'
     &END COORD
 
     &KIND Ca
