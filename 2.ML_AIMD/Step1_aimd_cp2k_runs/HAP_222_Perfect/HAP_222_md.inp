@@ -1,8 +1,4 @@
-# TEMPLATE FILE: Template-HAP_hkl_md.inp
-# This file will be processed by generate_config.py
-# Placeholder: HAP_hkl -> HAP_{hkl_param}
-
-@SET PROJECT HAP_hkl
+@SET PROJECT HAP_222
 
 &GLOBAL
   EPS_CHECK_DIAG 1.0E-12

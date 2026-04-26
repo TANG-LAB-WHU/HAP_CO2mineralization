@@ -1,7 +1,3 @@
-# TEMPLATE FILE: Template-HAP_410_md.inp
-# This file will be processed by generate_config.py
-# Placeholder: HAP_410 -> HAP_{hkl_param}
-
 @SET PROJECT HAP_410
 
 &GLOBAL
