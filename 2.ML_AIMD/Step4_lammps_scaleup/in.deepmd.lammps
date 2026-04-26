@@ -1,7 +1,3 @@
-# TEMPLATE FILE: Template-in.deepmd.lammps
-# This file will be processed by generate_config.py
-# Placeholder: hap_hkl.data -> hap_{hkl_param}.data
-
 # ENHANCED LAMMPS input file for comprehensive CO2-HAP adsorption analysis
 # MODIFIED: High-temperature (700 C) reaction conditions with NUMERICAL STABILITY FIXES
 # ENHANCED: Surface model adaptation and comprehensive surface analysis
