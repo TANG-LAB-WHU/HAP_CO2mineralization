@@ -16,7 +16,8 @@ Each system directory should include:
 
 Workflow behavior:
 
-1. `run_workflow.bat` generates `deepmd_data/` for current structure.
-2. The dataset is synced to `deepmd_pool/<HAP_PREFIX>/`.
-3. `prepare_multisystem_input.py` scans `deepmd_pool/` and builds `deepmd_train/input.multisystem.json`.
-4. DeepMD training reads the generated multi-system input.
+1. `run_workflow.bat` calls `Step2_dataset_synthesis/generate_deepmd_data.py`.
+2. CP2K outputs from `Step1_aimd_cp2k_runs/HAP_<hkl>_Perfect` are converted into one DeepMD system.
+3. The system is written to `Step2_dataset_synthesis/deepmd_pool/HAP_<hkl>/`.
+4. `Step3_mlip_deepmd/prepare_multisystem_input.py` scans this pool and writes `Step3_mlip_deepmd/input.multisystem.json`.
+5. DeepMD training reads `input.multisystem.json` from `Step3_mlip_deepmd`.
