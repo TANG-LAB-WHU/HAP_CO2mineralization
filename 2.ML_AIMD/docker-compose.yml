@@ -1,0 +1,114 @@
+x-gpu: &gpu
+  deploy:
+    resources:
+      reservations:
+        devices:
+          - capabilities: [gpu]
+
+services:
+  cp2k_run:
+    # image: cp2k/cp2k:2025.1_mpich_generic_cuda_P100_psmp
+    image: mycp2k-rtx5080:master_mpich_native_cuda_A100_psmp
+    restart: "no"
+    working_dir: /mnt/cp2k
+    volumes:
+      - ./Step1_aimd_cp2k_runs/HAP_${HKL_PARAM}_Perfect:/mnt/cp2k
+    # Enable GPU access (Compose v3.8+)
+    gpus: all
+    environment:
+      # Fewer OpenMP threads per rank to let GPU take the heavy work
+      - OMP_NUM_THREADS=16
+      # Bind OpenMP threads to cores for better GPU utilization
+      # - OMP_PROC_BIND=close
+      # Place OpenMP threads on cores for better GPU utilization
+      # - OMP_PLACES=cores
+      # Explicitly activate GPU backend in DBCSR
+      #- DBCSR_GPU_BACKEND=CUBLAS
+      # Optional: choose specific GPU if multi-GPU system
+      #- CUDA_VISIBLE_DEVICES=0
+    # Use fewer MPI ranks to reduce GPU contention
+    # command: mpirun --bind-to core -np 12 cp2k.psmp -i HAP_${HKL_PARAM}_md.inp -o HAP_${HKL_PARAM}_md.log
+    command: mpirun -np 1 cp2k.psmp -i HAP_${HKL_PARAM}_md.inp -o HAP_${HKL_PARAM}_md.log
+    <<: *gpu
+
+  deepmd_train:
+    image: ghcr.io/deepmodeling/deepmd-kit:3.1.0_cuda129
+    restart: "no"
+    working_dir: /mnt/train
+    volumes:
+      - ./Step2_dataset_synthesis/deepmd_pool:/mnt/deepmd_pool
+      - ./Step3_mlip_deepmd:/mnt/train
+    environment:
+      - OMP_NUM_THREADS=8
+      - DP_INTRA_OP_PARALLELISM_THREADS=8
+      - DP_INTER_OP_PARALLELISM_THREADS=2    
+    command: bash -c "echo === DeepMD Pool Systems === && ls -la /mnt/deepmd_pool && echo === Starting Training === && dp --pt train ${DEEPMD_INPUT_FILE:-input.multisystem.json} -o model"
+    <<: *gpu
+
+  deepmd_freeze:
+    image: ghcr.io/deepmodeling/deepmd-kit:3.1.0_cuda129
+    working_dir: /mnt/train
+    volumes:
+      - ./Step3_mlip_deepmd:/mnt/train
+      - ./Step3_mlip_deepmd/model:/mnt/model
+    # Wait until DeepMD training produces a valid checkpoint, then freeze to hap_model.pth
+    environment:
+      - OMP_NUM_THREADS=8
+      - DP_INTRA_OP_PARALLELISM_THREADS=8
+      - DP_INTER_OP_PARALLELISM_THREADS=2        
+    command: >-
+      bash -c '
+        mkdir -p /mnt/model &&
+        cd /mnt/train &&
+        dp --pt freeze -o /mnt/model/hap_model.pth &&
+        echo "PyTorch model frozen successfully" &&
+        ls -la /mnt/model/ || {
+          echo "dp freeze failed"; exit 1; }'
+    depends_on:
+      deepmd_train:
+        condition: service_completed_successfully
+    <<: *gpu
+
+  deepmd_test:
+    image: ghcr.io/deepmodeling/deepmd-kit:3.1.0_cuda129
+    working_dir: /mnt
+    volumes:
+      - ./Step2_dataset_synthesis/deepmd_pool:/mnt/deepmd_pool
+      - ./Step3_mlip_deepmd/model:/mnt/model
+    command: bash -c "first_system=$(ls -1 /mnt/deepmd_pool | head -n 1); if [ -f /mnt/model/hap_model.pth ] && [ -n \"$first_system\" ]; then dp --pt test -m /mnt/model/hap_model.pth -s /mnt/deepmd_pool/$first_system; else echo 'Model or pooled data not found. Skipping test.'; fi"
+    depends_on:
+      deepmd_freeze:
+        condition: service_completed_successfully
+    <<: *gpu
+
+  lammps_run:
+    image: ghcr.io/deepmodeling/deepmd-kit:3.1.0_cuda129
+    working_dir: /mnt/scaleup
+    volumes:
+      - ./Step4_lammps_scaleup:/mnt/scaleup
+      - ./Step3_mlip_deepmd/model:/mnt/model
+    environment:
+      - OMP_NUM_THREADS=8
+      - DP_INTRA_OP_PARALLELISM_THREADS=8
+      - DP_INTER_OP_PARALLELISM_THREADS=2    
+    command: >-
+      bash -c '
+        echo "=== Checking for PyTorch model file ===";
+        ls -la /mnt/model/;
+        if [ ! -f /mnt/model/hap_model.pth ]; then
+          echo "ERROR: hap_model.pth not found";
+          echo "Available files in /mnt/model/:";
+          ls -la /mnt/model/;
+          exit 1;
+        fi;
+        echo "Found PyTorch model: hap_model.pth";
+        mkdir -p /mnt/scaleup/model;
+        cp /mnt/model/hap_model.pth /mnt/scaleup/model/;
+        echo "Model copied successfully";
+        ls -la /mnt/scaleup/model/;
+        echo "Starting LAMMPS with PyTorch DeepMD model...";
+        lmp -in in.deepmd.lammps'
+    depends_on:
+      deepmd_freeze:
+        condition: service_completed_successfully
+    <<: *gpu
