@@ -1,0 +1,30 @@
+# LAMMPS input script for GeoOpt using MACE (via MLIAP)
+# Applies to HAP surfaces
+
+units           metal
+boundary        p p p
+atom_style      atomic
+
+# 1) Read data
+read_data       ${DATA_FILE}
+
+# 2) Pair style (MACE via MLIAP)
+# Note: Ensure the elements in the data file match the order in MACE model
+pair_style      mliap model mace ${MODEL_FILE} descriptor mace ${MODEL_FILE}
+pair_coeff      * * Ca H O P C F Cl Sr Mg Si
+
+# 3) Setup output
+thermo          10
+thermo_style    custom step pe ke etotal temp press vol fmax
+
+# 4) Minimization
+min_style       cg
+minimize        1.0e-6 1.0e-8 1000 10000
+
+# 5) Dump optimized structure
+dump            1 all custom 1 ${OUTPUT_FILE}.xyz id type x y z fx fy fz
+dump_modify     1 sort id
+run             0
+undump          1
+
+print "ALL DONE"

@@ -23,3 +23,20 @@ HAP_*_md.restart
 HAP_*final.xyz
 HAP_*_forces.dat
 HAP_*_virial.dat
+# === MatterGen outputs (large binary) ===
+mattergen/results/
+5.HT_Screening/results/
+
+# === MACE pretrained model weights ===
+**/mace_pretrained_models/*.model
+**/mace_pretrained_models/*.pt
+
+# === LAMMPS outputs ===
+**/*.lammpstrj
+**/*.dcd
+**/*.restart
+**/log.lammps
+
+# === Python cache ===
+__pycache__/
+*.pyc

@@ -1,103 +1,69 @@
 # HAP_CO2mineralization
 
-This repository combines **AIMD** (ab initio molecular dynamics) and **machine-learning interatomic potentials** to study accelerated mineralization (AAM-CO2) on hydroxyapatite (HAP) surfaces across multiple Miller indices.
+This repository provides an integrated, multi-scale computational workflow to discover and study accelerated CO2 mineralization (AAM-CO2) on the surfaces of hydroxyapatite (HAP) and related Apatite-family materials.
 
-The workflow links:
-- CP2K short AIMD sampling
-- DeepMD dataset synthesis and model training/freezing
-- LAMMPS large-scale simulation with the trained model
+The workflow spans from **generative AI** for material discovery, to **high-throughput screening** with universal machine learning potentials, and finally to **high-fidelity AIMD** and **custom MLIPs** (Machine-Learning Interatomic Potentials) for precise scale-up simulations.
 
 ---
 
-## Project structure
+## Project Structure
+
+The repository is organized into distinct phases (0 to 5) that represent the full material discovery and validation lifecycle:
 
 | Directory | Description |
 |-----------|-------------|
-| **0.InitialStructureConfig** | Initial HAP structures (PDB/XYZ) for multiple facets (e.g. 002, 004, 100-513). |
-| **1.GeoOpt** | CP2K geometry optimization for each facet (`HAP_xxx_Perfect`) and optimized structures. |
-| **2.ML_AIMD** | Main four-stage pipeline (CP2K AIMD -> DeepMD data -> DeepMD train/freeze -> LAMMPS scale-up). |
-| **3.Data_PostProcess** | Post-processing of LAMMPS outputs: thermodynamics, structure/dynamics metrics, plotting. |
-| **4.Figure_Making** | Scripts/assets for publication-quality figures. |
-
-Inside `2.ML_AIMD`:
-- `Step1_aimd_cp2k_runs`: per-facet CP2K MD inputs/outputs
-- `Step2_dataset_synthesis`: CP2K -> DeepMD conversion scripts and pooled datasets
-- `Step3_mlip_deepmd`: DeepMD training/freeze inputs and model outputs
-- `Step4_lammps_scaleup`: slab generation + LAMMPS run inputs
-- `run_workflow.bat`: unified workflow entry point
-- `docker-compose.yml`: container orchestration for CP2K/DeepMD/LAMMPS
+| **mattergen/** | **[Phase 0]** Generative AI phase space search using MatterGen. Generates and evaluates novel Apatite-like compositions (e.g., Ca-P-O-H-C, Ca-Sr-P-O-H). |
+| **0.InitialStructureConfig/** | Initial HAP structures (PDB/XYZ) for multiple facets (e.g. 002, 004, 100-513). |
+| **1.GeoOpt/** | Geometry optimization for each facet. Supports classical CP2K relaxations and ultra-fast **MACE-MH-1 pre-relaxations** (`mace_prerelax/`). |
+| **5.HT_Screening/** | **[Phase 1]** High-throughput screening pipeline. Evaluates MatterGen candidates for CO2 adsorption capability using MACE-MH-1 and LAMMPS. |
+| **2.ML_AIMD/** | **[Phase 2-4]** Main high-fidelity pipeline (CP2K AIMD ➔ DeepMD/MACE Fine-tuning ➔ LAMMPS scale-up ➔ Enhanced Sampling). |
+| **3.Data_PostProcess/** | Post-processing of LAMMPS outputs: thermodynamics, structure/dynamics metrics, and cross-material comparisons. |
+| **4.Figure_Making/** | Scripts/assets for publication-quality figures. |
+| **utils/** | Shared utility scripts (e.g., `xyz_to_lammps.py`, element mappings). |
 
 ---
 
-## Unified workflow in `2.ML_AIMD`
+## Workflow Guide
 
+### Phase 0: Generative Discovery (`mattergen/`)
+Use the generative diffusion model (MatterGen) to explore the compositional phase space of Apatites.
+- **Batch Scanning**: Use `./batch_scan.sh` to run bulk generation across multiple chemical systems.
+- **Filtering**: `post_filter.py` automatically extracts stable (low energy above hull) and novel candidates for the next stage.
+
+### Phase 1: High-Throughput Screening (`5.HT_Screening/`)
+A fast, automated pipeline to rank the generated materials based on CO2 adsorption energy.
+1. **`01_composition_enumeration/`**: Enumerates Apatite super-family constraints.
+2. **`02_slab_generation/`**: Cleaves surfaces and places CO2 adsorbates via `pymatgen`.
+3. **`03_mace_screening/`**: Uses the MACE-MH-1 universal foundation model to rapidly minimize the slab+CO2 systems in LAMMPS.
+4. **`04_ranking_and_selection/`**: Ranks candidates by adsorption energy and exports the Top-N structures to the AIMD pipeline.
+
+### Phase 2-4: High-Fidelity Validation (`2.ML_AIMD/`)
+The traditional rigorous pipeline for the Top-N candidates.
 Run from `2.ML_AIMD`:
-
 ```bat
 run_workflow.bat [HKL_PARAM_TRAIN] [HKL_PARAM_LAMMPS]
 ```
-
-### Parameter behavior
-
-- `HKL_PARAM_TRAIN` (default `112`): facet used for Stage 1-3 (CP2K + DeepMD training data/model)
-- `HKL_PARAM_LAMMPS` (default = `HKL_PARAM_TRAIN`): facet used for Stage 4 slab generation and LAMMPS run
-
-Examples:
-
-```bat
-run_workflow.bat
-run_workflow.bat 213
-run_workflow.bat 112 431
-```
-
-### Stage-by-stage summary
-
-1. **Stage 1 - AIMD (CP2K)**
-   - Working folder: `Step1_aimd_cp2k_runs/HAP_<HKL_PARAM_TRAIN>_Perfect`
-   - If `<prefix>_opt-pos-1.xyz` exists but `<prefix>_final.xyz` is missing, `extract_last_frame.py` builds final coordinates.
-   - Runs service `cp2k_run` only if `<prefix>_md-pos.xyz` is absent.
-
-2. **Stage 2 - Dataset synthesis**
-   - `generate_deepmd_data.py` writes per-system data to `Step2_dataset_synthesis/deepmd_pool/HAP_<HKL_PARAM_TRAIN>`.
-   - `prepare_multisystem_input.py` generates `Step3_mlip_deepmd/input.multisystem.json`.
-
-3. **Stage 3 - DeepMD train/freeze**
-   - Runs `deepmd_train` then `deepmd_freeze` from `docker-compose.yml`.
-   - Expected model artifact: `Step3_mlip_deepmd/model/hap_model.pth`.
-
-4. **Stage 4 - LAMMPS scale-up**
-   - `create_hap_slabs.py` builds slab/data for `HKL_PARAM_LAMMPS`.
-   - Runs `lammps_run` with `Step4_lammps_scaleup/in.deepmd.lammps`.
+1. **Step 1 - AIMD (CP2K)**: Short ab-initio molecular dynamics sampling.
+2. **Step 2 - Dataset synthesis**: Converts CP2K trajectories into ML training sets.
+3. **Step 3 & 5 - MLIP Training**: Train a custom DeepMD model (`Step3_mlip_deepmd/`) or fine-tune the MACE foundation model (`Step5_mace_finetune/`).
+4. **Step 4 & 6 - Scale-up**: Large-scale LAMMPS simulations (`Step4_lammps_scaleup/`) and metadynamics for reaction pathways (`Step6_enhanced_sampling/`).
 
 ---
 
-## Runtime dependencies
-
-- **Docker + Docker Compose** (required for CP2K / DeepMD / LAMMPS services)
-- **NVIDIA GPU runtime** (the compose file requests `gpus: all`)
-- **Python 3.10+** available in active conda env or system `PATH`
-- Python packages for helper scripts (see subfolder requirements if provided)
-
-Container images are configured in `2.ML_AIMD/docker-compose.yml` (CP2K and DeepMD-kit based images).
+## Accelerated Pre-relaxation (`1.GeoOpt/mace_prerelax/`)
+To bypass expensive DFT geometry optimizations for standard surfaces, we integrate MACE-MH-1 pre-relaxation:
+- Navigate to `1.GeoOpt/mace_prerelax/`
+- Run `run_mace_prerelax.bat` to instantly optimize all 22 HAP perfect facets using a GPU-accelerated LAMMPS container.
 
 ---
 
-## Inputs and outputs (quick reference)
+## Runtime Dependencies
 
-- **Step1 input**: `Step1_aimd_cp2k_runs/HAP_xxx_Perfect/HAP_xxx_md.inp`
-- **Step1 key outputs**: `*_md-pos.xyz`, `*_md-1.ener`, `*_forces.dat`, `*_virial.dat`
-- **Step2 pooled data**: `Step2_dataset_synthesis/deepmd_pool/HAP_xxx`
-- **Step3 model**: `Step3_mlip_deepmd/model/hap_model.pth`
-- **Step4 run files**: `Step4_lammps_scaleup/hap_<HKL>.data`, LAMMPS logs/trajectory outputs
+- **Docker + Docker Compose**: Required for CP2K, DeepMD, and LAMMPS (MACE/MLIAP) services.
+- **NVIDIA GPU runtime**: Container orchestrations request `gpus: all`.
+- **Python 3.10+**: With `pymatgen`, `ase`, and `mattergen` dependencies installed.
 
----
-
-## Notes and troubleshooting
-
-- `run_workflow.bat` performs strict pre-checks and exits on missing scripts/templates.
-- If CP2K trajectory already exists (`*_md-pos.xyz`), Stage 1 is skipped intentionally.
-- In `docker-compose.yml`, shell variables inside `deepmd_test` use `$$` escaping to avoid Docker Compose interpolation warnings.
-- If containers start but jobs fail, inspect workflow output plus `docker logs <container_id>` for the failed stage.
+*Container images are configured in respective `docker-compose.yml` files throughout the repository.*
 
 ---
 

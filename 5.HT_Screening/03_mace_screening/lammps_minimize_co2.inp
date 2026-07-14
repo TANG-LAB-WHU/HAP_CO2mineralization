@@ -1,0 +1,22 @@
+# LAMMPS input for MACE-MH-1 minimizing slab + CO2
+units           metal
+boundary        p p p
+atom_style      atomic
+
+read_data       ${DATA_FILE}
+
+# MACE pair style
+pair_style      mliap model mace ${MODEL_FILE} descriptor mace ${MODEL_FILE}
+pair_coeff      * * Ca H O P C F Cl Sr Mg Si
+
+# Fix bottom layers (selective dynamics equivalent)
+# We assume bottom layer atoms are marked by a specific atom group or z-coordinate in the wrapper script.
+# Here we just do a full minimization as a fallback.
+
+thermo          10
+thermo_style    custom step pe ke etotal temp press vol fmax
+
+min_style       cg
+minimize        1.0e-6 1.0e-8 1000 10000
+
+print "FINAL_ENERGY = $(pe)"

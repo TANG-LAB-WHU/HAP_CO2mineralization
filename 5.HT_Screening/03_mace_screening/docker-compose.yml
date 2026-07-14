@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  mace_ht_screening:
+    image: mylammps_rtx5090:latest
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    volumes:
+      - .:/workspace
+      - ../..:/project
+    working_dir: /workspace
+    command: >
+      bash -c "
+      echo 'Running LAMMPS Minimization for High-Throughput Screening...';
+      lmp -in lammps_minimize_co2.inp -var DATA_FILE ${DATA_FILE} -var MODEL_FILE ${MODEL_FILE} -var OUTPUT_FILE ${OUTPUT_FILE}
+      "
