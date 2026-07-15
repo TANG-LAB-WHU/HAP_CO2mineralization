@@ -12,34 +12,34 @@ The repository is organized into distinct phases (0 to 5) that represent the ful
 
 | Directory | Description |
 |-----------|-------------|
-| **mattergen/** | **[Phase 0]** Generative AI phase space search using MatterGen. Generates and evaluates novel Apatite-like compositions (e.g., Ca-P-O-H-C, Ca-Sr-P-O-H). |
-| **0.InitialStructureConfig/** | Initial HAP structures (PDB/XYZ) for multiple facets (e.g. 002, 004, 100-513). |
-| **1.GeoOpt/** | Geometry optimization for each facet. Supports classical CP2K relaxations and ultra-fast **MACE-MH-1 pre-relaxations** (`mace_prerelax/`). |
-| **5.HT_Screening/** | **[Phase 1]** High-throughput screening pipeline. Evaluates MatterGen candidates for CO2 adsorption capability using MACE-MH-1 and LAMMPS. |
-| **2.ML_AIMD/** | **[Phase 2-4]** Main high-fidelity pipeline (CP2K AIMD ➔ DeepMD/MACE Fine-tuning ➔ LAMMPS scale-up ➔ Enhanced Sampling). |
-| **3.Data_PostProcess/** | Post-processing of LAMMPS outputs: thermodynamics, structure/dynamics metrics, and cross-material comparisons. |
-| **4.Figure_Making/** | Scripts/assets for publication-quality figures. |
+| **0.Generative_Discovery/** | **[Phase 0]** Generative AI phase space search using MatterGen. Generates and evaluates novel Apatite-like compositions (e.g., Ca-P-O-H-C, Ca-Sr-P-O-H). |
+| **data/** | Initial HAP structures (PDB/XYZ) for multiple facets (e.g. 002, 004, 100-513). |
+| **2.GeoOpt_PreRelax/** | Geometry optimization for each facet. Supports classical CP2K relaxations and ultra-fast **MACE-MH-1 pre-relaxations** (`mace_prerelax/`). |
+| **1.HT_Screening/** | **[Phase 1]** High-throughput screening pipeline. Evaluates MatterGen candidates for CO2 adsorption capability using MACE-MH-1 and LAMMPS. |
+| **3.ML_AIMD/** | **[Phase 2-4]** Main high-fidelity pipeline (CP2K AIMD ➔ DeepMD/MACE Fine-tuning ➔ LAMMPS scale-up ➔ Enhanced Sampling). |
+| **4.PostProcess_Analysis/** | Post-processing of LAMMPS outputs: thermodynamics, structure/dynamics metrics, and cross-material comparisons. |
+| **5.Figure_Publication/** | Scripts/assets for publication-quality figures. |
 | **utils/** | Shared utility scripts (e.g., `xyz_to_lammps.py`, element mappings). |
 
 ---
 
 ## Workflow Guide
 
-### Phase 0: Generative Discovery (`mattergen/`)
+### Phase 0: Generative Discovery (`0.Generative_Discovery/`)
 Use the generative diffusion model (MatterGen) to explore the compositional phase space of Apatites.
 - **Batch Scanning**: Use `./batch_scan.sh` to run bulk generation across multiple chemical systems.
 - **Filtering**: `post_filter.py` automatically extracts stable (low energy above hull) and novel candidates for the next stage.
 
-### Phase 1: High-Throughput Screening (`5.HT_Screening/`)
+### Phase 1: High-Throughput Screening (`1.HT_Screening/`)
 A fast, automated pipeline to rank the generated materials based on CO2 adsorption energy.
 1. **`01_composition_enumeration/`**: Enumerates Apatite super-family constraints.
 2. **`02_slab_generation/`**: Cleaves surfaces and places CO2 adsorbates via `pymatgen`.
 3. **`03_mace_screening/`**: Uses the MACE-MH-1 universal foundation model to rapidly minimize the slab+CO2 systems in LAMMPS.
 4. **`04_ranking_and_selection/`**: Ranks candidates by adsorption energy and exports the Top-N structures to the AIMD pipeline.
 
-### Phase 2-4: High-Fidelity Validation (`2.ML_AIMD/`)
+### Phase 2-4: High-Fidelity Validation (`3.ML_AIMD/`)
 The traditional rigorous pipeline for the Top-N candidates.
-Run from `2.ML_AIMD`:
+Run from `3.ML_AIMD`:
 ```bat
 run_workflow.bat [HKL_PARAM_TRAIN] [HKL_PARAM_LAMMPS]
 ```
@@ -50,9 +50,9 @@ run_workflow.bat [HKL_PARAM_TRAIN] [HKL_PARAM_LAMMPS]
 
 ---
 
-## Accelerated Pre-relaxation (`1.GeoOpt/mace_prerelax/`)
+## Accelerated Pre-relaxation (`2.GeoOpt_PreRelax/mace_prerelax/`)
 To bypass expensive DFT geometry optimizations for standard surfaces, we integrate MACE-MH-1 pre-relaxation:
-- Navigate to `1.GeoOpt/mace_prerelax/`
+- Navigate to `2.GeoOpt_PreRelax/mace_prerelax/`
 - Run `run_mace_prerelax.bat` to instantly optimize all 22 HAP perfect facets using a GPU-accelerated LAMMPS container.
 
 ---
