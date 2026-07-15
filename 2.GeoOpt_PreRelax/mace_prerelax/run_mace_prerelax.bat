@@ -16,7 +16,7 @@ if not exist "%MODEL_FILE%" (
     exit /b 1
 )
 
-REM Loop over all HAP_xxx_Perfect directories in 1.GeoOpt
+REM Loop over all HAP_xxx_Perfect directories in 2.GeoOpt_PreRelax
 for /d %%D in (..\HAP_*_Perfect) do (
     set DIR_NAME=%%~nxD
     echo.

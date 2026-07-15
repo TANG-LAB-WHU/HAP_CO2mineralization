@@ -2046,7 +2046,7 @@ def main():
     """Main execution function"""
     
     # Define paths
-    input_directory = "../../../../../2.ML_AIMD/Complete_Crystal/HAP002/THICKNESS/HAP112_DPA_NVTcsvr_Succeeded/lammps_run"
+    input_directory = "../../../../../3.ML_AIMD/Complete_Crystal/HAP002/THICKNESS/HAP112_DPA_NVTcsvr_Succeeded/lammps_run"
     output_directory = "."
     
     # Check if input directory exists

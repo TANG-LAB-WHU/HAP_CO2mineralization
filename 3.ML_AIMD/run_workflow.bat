@@ -2,7 +2,7 @@
 setlocal enabledelayedexpansion
 
 REM ============================================================
-REM Four-stage unified workflow for 2.ML_AIMD
+REM Four-stage unified workflow for 3.ML_AIMD
 REM 1) AIMD (CP2K)
 REM 2) Training dataset synthesis
 REM 3) DeepMD training + freeze
@@ -27,7 +27,7 @@ set "TEST_SPLIT_JSON=%STEP3_DIR%\test_systems.json"
 set "PYTHON_CMD="
 
 echo ==========================================
-echo 2.ML_AIMD Unified Workflow
+echo 3.ML_AIMD Unified Workflow
 echo Training HKL: %HKL_PARAM_TRAIN%
 echo LAMMPS HKL: %HKL_PARAM_LAMMPS%
 echo Training structure prefix: %HAP_PREFIX%
