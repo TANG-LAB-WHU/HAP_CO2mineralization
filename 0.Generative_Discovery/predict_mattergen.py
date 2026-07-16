@@ -1,7 +1,8 @@
 #!/usr/bin/env python3  
 """  
-Ca-P-O-H-C Material Phase Space Prediction Script  
-Uses MatterGen's chemical system conditional generation functionality  
+Generative Discovery of Novel Apatite-Family Materials via MatterGen  
+Explores arbitrary chemical systems (e.g., Ca-P-O-H-C, Ca-Sr-P-O-H) using  
+diffusion-based conditional generation, with TRI2024-corrected stability evaluation.  
 """  
   
 import os  
@@ -42,14 +43,14 @@ def main():
     parser.add_argument(  
         '--batch-size',  
         type=int,  
-        default=16,  
-        help='Number of structures to generate per batch (default: 16)'  
+        default=64,  
+        help='Number of structures to generate per batch (default: 64)'  
     )  
     parser.add_argument(  
         '--num-batches',  
         type=int,  
-        default=10,  
-        help='Number of batches to generate (default: 10)'  
+        default=50,  
+        help='Number of batches to generate (default: 50)'  
     )  
     parser.add_argument(  
         '--guidance-factor',  
@@ -83,9 +84,9 @@ def main():
     parser.add_argument(  
         '--mattersim-model',  
         type=str,  
-        default='MatterSim-v1.0.0-1M.pth',  
+        default='MatterSim-v1.0.0-5M.pth',  
         choices=['MatterSim-v1.0.0-1M.pth', 'MatterSim-v1.0.0-5M.pth'],  
-        help='MatterSim model to use for relaxation (default: MatterSim-v1.0.0-1M.pth)'  
+        help='MatterSim model to use for relaxation (default: MatterSim-v1.0.0-5M.pth)'  
     )  
     parser.add_argument(  
         '--skip-relax',  
@@ -216,7 +217,8 @@ def main():
         # Check if reference dataset exists  
         reference_dataset = repo_root / "data-release" / "alex-mp" / "reference_TRI2024correction.gz"  
   
-        if not reference_dataset.exists():  
+        # Check if reference dataset exists and is a real file (not just an LFS pointer)  
+        if not reference_dataset.exists() or reference_dataset.stat().st_size < 1024:  
             print("Checking reference dataset...")  
             print("Downloading reference dataset...")  
   
@@ -228,13 +230,19 @@ def main():
                 subprocess.run([  
                     'git', 'lfs', 'pull', '-I',  
                     'data-release/alex-mp/reference_TRI2024correction.gz',  
-                    '--exclude=""'  
+                    '--exclude='  
                 ], check=True)  
+                
+                # Verify if the pull actually succeeded
+                if not reference_dataset.exists() or reference_dataset.stat().st_size < 1024:
+                    print("Error: Dataset is missing or still looks like an LFS pointer after pull.")
+                    print("Check your Git LFS installation and repository access.")
+                    sys.exit(1)
+                    
                 print("Reference dataset downloaded successfully")  
             except subprocess.CalledProcessError as e:  
                 print(f"Error downloading reference dataset: {e}")  
                 print("Evaluation cannot proceed without reference dataset")  
-                os.chdir(original_dir)  
                 sys.exit(1)  
             finally:  
                 # Change back to original directory  
