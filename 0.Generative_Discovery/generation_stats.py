@@ -5,6 +5,7 @@ Generate summary statistics for MatterGen outputs.
 
 import sys
 from pathlib import Path
+import argparse
 
 def print_stats(structures_path):
     try:
@@ -32,15 +33,25 @@ def print_stats(structures_path):
         
     except ImportError:
         print("Error: 'ase' is required to run this script. Please install it.")
-        
-if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print("Usage: python generation_stats.py <path_to_extxyz>")
         sys.exit(1)
-        
-    path = Path(sys.argv[1])
+
+def main():
+    parser = argparse.ArgumentParser(
+        description='Generate summary statistics for MatterGen outputs'
+    )
+    parser.add_argument(
+        'structures_path',
+        type=str,
+        help='Path to the .extxyz file containing generated structures'
+    )
+    args = parser.parse_args()
+
+    path = Path(args.structures_path)
     if not path.exists():
         print(f"Error: {path} not found.")
         sys.exit(1)
-        
+
     print_stats(path)
+
+if __name__ == "__main__":
+    main()
