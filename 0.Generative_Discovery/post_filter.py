@@ -41,16 +41,20 @@ def main():
         print("Error: 'ase' is required to process structures. Please install it.")
         return
         
-    if len(frames) != len(metrics):
-        print(f"Warning: Number of structures ({len(frames)}) does not match metrics ({len(metrics)})")
+    ehull_list = metrics.get("energy_above_hull", [])
+    novelty_list = metrics.get("novelty", [])
+    
+    num_metrics = len(ehull_list) if ehull_list else 0
+    if len(frames) != num_metrics:
+        print(f"Warning: Number of structures ({len(frames)}) does not match metrics length ({num_metrics})")
         
     output_dir.mkdir(parents=True, exist_ok=True)
     
     saved_count = 0
-    for idx, (structure, metric) in enumerate(zip(frames, metrics)):
-        # Extract metrics
-        ehull = metric.get("energy_above_hull", 100.0)
-        is_novel = metric.get("novelty", False)
+    for idx, structure in enumerate(frames):
+        # Extract metrics for this specific structure
+        ehull = ehull_list[idx] if idx < len(ehull_list) else 100.0
+        is_novel = novelty_list[idx] if idx < len(novelty_list) else False
         
         # Check criteria
         if ehull <= args.ehull_threshold:
