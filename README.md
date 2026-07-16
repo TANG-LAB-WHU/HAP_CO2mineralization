@@ -2,7 +2,7 @@
 
 ![Project Status](https://img.shields.io/badge/Status-Active-brightgreen)
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
-![Machine Learning](https://img.shields.io/badge/AI4Science-MatterGen%20%7C%20MACE%20%7C%20DeepMD-orange)
+![Machine Learning](https://img.shields.io/badge/AI4Science-MatterGen%20%7C%20MACE%20%7C%20DeepMD%20%7C%20CP2K%20%7C%20LAMMPS-orange)
 
 ## 📖 Introduction & Scientific Background
 
