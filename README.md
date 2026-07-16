@@ -1,4 +1,4 @@
-# HAP_CO2mineralization: AI-Driven Materials Discovery for Biomimetic CO2 Mineralization
+# AI-Driven Materials Discovery for Biomimetic CO2 Mineralization
 
 ![Project Status](https://img.shields.io/badge/Status-Active-brightgreen)
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
