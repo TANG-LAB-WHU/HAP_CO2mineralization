@@ -1,0 +1,10 @@
+claim_id,status,claim,source_type,evidence_path,citation_key,owner,notes
+C001,supported,"Mineral carbonation at hydrated interfaces couples multiple molecular-scale steps.",review,,qomi2022mineralization,Shawn,"Use for background, not HAP-specific performance."
+C002,supported,"MatterGen provides diffusion-based generation of inorganic crystal structures.",primary_publication,,zeni2025mattergen,Shawn,"Method-level claim only."
+C003,supported,"MACE uses higher-order equivariant message passing for atomistic force fields.",primary_publication,,batatia2022mace,Shawn,"Does not by itself validate transfer to HAP-CO2."
+C004,planned,"The repository will screen apatite compositions and facets before high-fidelity validation.",repository,README.md,,Shawn,"Study design; not a completed result."
+R1,pending,"Generated candidate validity, novelty, stability, and survivor counts.",computational_artifact,0.Generative_Discovery/results/,,Shawn,"Requires a run manifest and verified summary."
+R2,pending,"Relative adsorption ranking across composition and facet.",computational_artifact,1.HT_Screening/results/,,Shawn,"Verify energy convention and failed-run handling."
+R3,pending,"System-specific MLIP accuracy and production stability.",computational_artifact,3.ML_AIMD/,,Shawn,"Record split design, units, seeds, and go/no-go threshold."
+R4,pending,"Hydrated-interface dynamics and free-energy mechanism.",computational_artifact,4.PostProcess_Analysis/,,Shawn,"Requires convergence and reweighting checks."
+

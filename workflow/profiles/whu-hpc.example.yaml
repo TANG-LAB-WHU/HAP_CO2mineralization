@@ -1,0 +1,28 @@
+schema_version: 1
+name: whu-hpc-template
+enabled: false
+backend: ssh_slurm
+scheduler: slurm
+
+connection:
+  host_alias: whu-hpc
+  username: null
+  remote_repo_dir: null
+  credentials: external_only
+
+allocation:
+  account: null
+  partition: null
+  qos: null
+
+safety:
+  submit_enabled: false
+  cancel_requires_confirmation: true
+  sync_requires_confirmation: true
+  credentials_in_repository: forbidden
+
+provenance:
+  manifest_schema: workflow/schemas/run_manifest.example.json
+  require_clean_commit: true
+  require_config_checksum: true
+

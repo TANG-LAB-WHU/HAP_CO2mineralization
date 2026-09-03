@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "run_id": "YYYYMMDD-HHMM-stage-shortname",
+  "status": "planned|running|completed|failed|cancelled",
+  "backend": "local|slurm",
+  "stage": "candidate_generation|screening|aimd|mlip_training|scaleup|enhanced_sampling|analysis",
+  "git": {
+    "repository": "TANG-LAB-WHU/HAP_CO2mineralization",
+    "branch": "shawn_dev",
+    "commit": "FULL_COMMIT_SHA",
+    "dirty": false
+  },
+  "configuration": {
+    "path": "relative/path/to/config",
+    "sha256": "CONFIG_CHECKSUM"
+  },
+  "inputs": [
+    {
+      "path": "relative/or/stable/external/path",
+      "sha256": "INPUT_CHECKSUM"
+    }
+  ],
+  "environment": {
+    "software": {},
+    "container": null,
+    "scheduler_job_id": null
+  },
+  "outputs": [
+    {
+      "path": "relative/or/stable/external/path",
+      "sha256": "OUTPUT_CHECKSUM"
+    }
+  ],
+  "metrics": {},
+  "started_at": null,
+  "finished_at": null,
+  "notes": ""
+}
+

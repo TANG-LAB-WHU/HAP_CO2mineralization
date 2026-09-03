@@ -1,0 +1,10 @@
+# Local research-writing outputs
+paper/.quarto/
+paper/_output/
+paper/*.pdf
+paper/*.tex
+literature/pdfs/
+research/private/
+workflow/profiles/*.local.yaml
+.research-runs/
+

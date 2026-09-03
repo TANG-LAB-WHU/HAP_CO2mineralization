@@ -1,0 +1,40 @@
+schema_version: 1
+last_updated: 2026-09-03
+active_branch: shawn_dev
+workflow_mode: local_writing
+
+project:
+  short_name: HAP_CO2mineralization
+  working_title: AI-Driven Multiscale Discovery of Apatite Surfaces for CO2 Mineralization
+  manuscript: paper/manuscript.qmd
+  bibliography: paper/references.bib
+  evidence_ledger: literature/evidence.csv
+
+research_question: >-
+  Which apatite compositions and surface environments warrant high-fidelity
+  investigation for interfacial CO2 mineralization, and what atomistic mechanisms
+  control their behavior under hydration?
+
+current_stage: structure_manuscript_and_evidence
+current_decision: define_claims_and_required_results_before_expensive_compute
+
+compute:
+  default_backend: local_lightweight
+  local_profile: workflow/profiles/local.yaml
+  hpc:
+    enabled: false
+    profile_template: workflow/profiles/whu-hpc.example.yaml
+    credentials_in_repository: forbidden
+
+result_gates:
+  candidate_screening: pending_definition
+  adsorption_ranking: pending_definition
+  mlip_validation: pending_definition
+  enhanced_sampling: pending_definition
+
+next_actions:
+  - review manuscript scope with the research team
+  - perform a focused HAP-surface and HAP-CO2 literature search
+  - inventory existing artifacts under phases 0 through 5
+  - define quantitative go/no-go gates before new compute
+

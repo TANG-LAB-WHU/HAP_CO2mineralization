@@ -1,0 +1,19 @@
+project:
+  type: default
+  output-dir: _output
+
+bibliography: references.bib
+link-citations: true
+
+format:
+  html:
+    toc: true
+    number-sections: true
+    code-fold: true
+    theme: cosmo
+
+execute:
+  echo: false
+  warning: false
+  freeze: auto
+

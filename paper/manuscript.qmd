@@ -1,0 +1,131 @@
+---
+title: "AI-Driven Multiscale Discovery of Apatite Surfaces for CO₂ Mineralization"
+subtitle: "Living manuscript — structure draft"
+author:
+  - name: Shawn Zhang
+  - name: Siqi Tang
+date: last-modified
+abstract: |
+  Mineral carbonation can provide durable carbon storage, but resolving interfacial reaction mechanisms while screening a broad materials space remains computationally demanding. We present a multiscale workflow that links generative crystal design, high-throughput surface screening, first-principles molecular dynamics, machine-learning interatomic potentials, large-scale molecular dynamics, and enhanced sampling for hydroxyapatite and related apatite-family materials. This living draft currently defines the study design and evidence requirements. Numerical findings will be added only after the corresponding artifacts and run manifests are recorded in the evidence ledger.
+keywords:
+  - carbon mineralization
+  - hydroxyapatite
+  - machine-learning interatomic potentials
+  - molecular dynamics
+  - materials discovery
+---
+
+::: {.callout-warning}
+## Draft status
+
+The methods framework is grounded in the current repository. All result statements below are explicitly marked `TODO-EVIDENCE` until verified computational artifacts are linked in `literature/evidence.csv`.
+:::
+
+# Introduction
+
+Carbon mineralization converts carbon dioxide into thermodynamically stable solid carbonates and is therefore attractive for durable storage. At hydrated mineral interfaces, the overall process couples water adsorption, dissolution or exposure of reactive cations, aqueous carbon speciation, ion pairing, nucleation, and crystal growth [@qomi2022mineralization]. These coupled events span electronic, atomistic, and mesoscopic scales, making a single simulation method insufficient for both broad discovery and mechanistic resolution.
+
+Hydroxyapatite (HAP), $\mathrm{Ca_{10}(PO_4)_6(OH)_2}$, provides a calcium-rich, chemically tunable crystalline platform. Its apatite structure supports compositional substitutions and exposes crystallographically distinct surfaces, motivating a search over both chemistry and facet. The central hypothesis of this work is that an integrated discovery-and-validation pipeline can identify apatite compositions and interfaces with favorable CO₂ interaction while retaining a traceable route from generated structure to mechanistic simulation.
+
+Recent generative models expand the accessible inorganic crystal space. MatterGen uses diffusion-based generation and property conditioning to propose stable and diverse inorganic structures [@zeni2025mattergen]. Yet generation alone does not establish interfacial reactivity. Fast atomistic screening, first-principles validation, and uncertainty-aware model assessment remain necessary before a candidate can support a mechanistic claim.
+
+Here we structure that validation as a sequence: generative candidate discovery; apatite-aware filtering; surface and adsorbate construction; rapid screening with machine-learning interatomic potentials; CP2K-based first-principles sampling; system-specific Deep Potential or MACE training; LAMMPS scale-up; and enhanced-sampling analysis. The resulting design is intended to connect candidate ranking with interpretable interfacial observables while preserving computational provenance.
+
+# Research questions and contributions
+
+The study is organized around four questions:
+
+1. Which generated or substituted apatite compositions satisfy structural and thermodynamic screening criteria?
+2. How strongly do composition and exposed facet alter the stability and geometry of adsorbed CO₂?
+3. Can system-specific machine-learning interatomic potentials reproduce the relevant first-principles energy and force landscape with quantified uncertainty?
+4. Which hydrated interfacial configurations and collective variables control carbonate-forming pathways?
+
+The intended contributions are a reproducible multiscale pipeline, a screened candidate set, validated atomistic models, and mechanistic hypotheses tied to explicit evidence artifacts. These are objectives rather than completed findings at the current draft stage.
+
+# Methods
+
+## Workflow overview
+
+The repository implements a staged workflow. Static HAP structures are stored under `data/`. Generated structures enter through `0.Generative_Discovery/`; surface construction and rapid screening are organized under `1.HT_Screening/`; geometry pre-relaxation is performed under `2.GeoOpt_PreRelax/`; first-principles sampling, dataset synthesis, potential training, scale-up, and enhanced sampling are organized under `3.ML_AIMD/`; analysis and publication assets are located under `4.PostProcess_Analysis/` and `5.Figure_Publication/`.
+
+Each scientific run should record its Git commit, configuration, inputs, environment, outputs, metrics, and status using the run-manifest contract in `workflow/schemas/run_manifest.example.json`. This separates reproducible evidence from transient logs and large trajectories.
+
+## Generative candidate discovery
+
+MatterGen is used to explore apatite-like compositional and structural space [@zeni2025mattergen]. Generated structures are filtered for chemical validity, structural plausibility, novelty, and thermodynamic stability before surface construction. Screening thresholds, model versions, seeds, generation counts, and exclusion reasons must be recorded for each campaign.
+
+## Surface construction and rapid screening
+
+Candidate bulk structures are converted into surface slabs using crystallographic operations implemented with pymatgen [@ong2013pymatgen]. The screening design spans selected Miller indices, surface terminations, and CO₂ placements. Each adsorption comparison must use a consistent energy convention and record relaxation settings, cell dimensions, charge assumptions, and reference energies.
+
+MACE provides higher-order equivariant message passing for atomistic force fields [@batatia2022mace] and is used for rapid pre-relaxation or ranking where its elemental coverage and domain validity are established. Foundation-model scores are treated as screening evidence, not as substitutes for system-specific first-principles validation.
+
+## First-principles sampling
+
+High-priority configurations are sampled with CP2K, an electronic-structure and molecular-dynamics package designed for condensed-phase and periodic systems [@kuhne2020cp2k]. The final manuscript will report the exchange-correlation functional, dispersion correction, pseudopotentials, basis sets, cutoffs, cell, ensemble, thermostat or barostat, time step, trajectory length, and convergence criteria. The exact values must be extracted from committed input files and run manifests.
+
+## Machine-learning interatomic potentials
+
+Deep Potential molecular dynamics represents the potential-energy surface with symmetry-preserving neural models trained against ab initio energies and forces [@zhang2018deep]. The alternative MACE route uses equivariant higher-body-order representations [@batatia2022mace]. Dataset splits must prevent leakage between correlated trajectory frames. Validation will report energy and force errors, per-element behavior, learning curves, extrapolation diagnostics, and stability in downstream dynamics.
+
+## Large-scale dynamics and enhanced sampling
+
+Validated potentials are deployed in LAMMPS for larger spatial and temporal scales [@plimpton1995lammps]. Structural and kinetic observables may include density profiles, coordination numbers, radial distribution functions, residence times, carbon speciation, and ion-pair statistics. Enhanced-sampling calculations use PLUMED-compatible protocols and must disclose collective variables, bias parameters, convergence diagnostics, and reweighting procedures [@bonomi2019plumed].
+
+## Reproducibility and evidence control
+
+Source code, manuscript text, bibliographic records, and compact run manifests are versioned in Git. Large raw trajectories and model checkpoints remain in external storage and are referenced by stable paths or checksums. `literature/evidence.csv` maps every central claim to either a verified publication or a computational artifact. Automated checks reject undefined citation keys and surface unresolved evidence markers.
+
+# Results
+
+::: {.callout-important}
+## TODO-EVIDENCE R1 — candidate generation
+
+Report generation count, validity, uniqueness, novelty, stability filters, surviving compositions, and full exclusion flow. Required artifacts: generation summary, model/version metadata, filtering configuration, and candidate table.
+:::
+
+## Candidate and facet screening
+
+::: {.callout-important}
+## TODO-EVIDENCE R2 — adsorption ranking
+
+Report the candidate-by-facet matrix, energy definition, uncertainty, relaxation failures, structural motifs, and sensitivity to initialization. Do not rank candidates until reference energies and failed-run handling are verified.
+:::
+
+## First-principles dataset and model validation
+
+::: {.callout-important}
+## TODO-EVIDENCE R3 — MLIP validity
+
+Report dataset composition and independence of splits; energy/force errors with units; seed variation; learning curves; outlier structures; and stability under production conditions. State an explicit go/no-go criterion before scale-up.
+:::
+
+## Interfacial dynamics and reaction pathways
+
+::: {.callout-important}
+## TODO-EVIDENCE R4 — mechanism
+
+Report hydrated-interface observables and free-energy profiles only after convergence and reweighting checks. Separate observed transitions from proposed mechanisms.
+:::
+
+# Discussion
+
+The discussion will compare the screened apatite interfaces with established molecular-scale descriptions of mineral carbonation [@qomi2022mineralization]. Particular attention should be given to where a calcium-phosphate surface differs from better-studied silicate, hydroxide, or oxide interfaces. The limits of foundation-model transfer, finite cells, simulated time scales, protonation state, water-film thickness, and collective-variable selection must be discussed alongside positive findings.
+
+# Conclusions
+
+This draft establishes the study logic and the evidence required to support each contribution. Conclusions about material ranking, model accuracy, and reaction mechanisms remain pending until linked results pass the predefined validation checks.
+
+# Data and code availability
+
+Code and compact provenance records are maintained in the project repository. The final version will provide the archival location, release identifier, licenses, and access method for large datasets and trained models.
+
+# Acknowledgements
+
+TODO: add funding, computing allocations, institutional resources, and contributors after author review.
+
+# References {.unnumbered}
+
+::: {#refs}
+:::
+
