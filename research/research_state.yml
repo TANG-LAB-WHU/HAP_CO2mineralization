@@ -9,14 +9,15 @@ project:
   manuscript: paper/manuscript.qmd
   bibliography: paper/references.bib
   evidence_ledger: literature/evidence.csv
+  artifact_inventory: research/artifact_inventory.csv
 
 research_question: >-
   Which apatite compositions and surface environments warrant high-fidelity
   investigation for interfacial CO2 mineralization, and what atomistic mechanisms
   control their behavior under hydration?
 
-current_stage: structure_manuscript_and_evidence
-current_decision: define_claims_and_required_results_before_expensive_compute
+current_stage: research_integrity_baseline
+current_decision: quarantine_legacy_results_until_provenance_and_quality_gates_pass
 
 compute:
   default_backend: local_lightweight
@@ -27,14 +28,28 @@ compute:
     credentials_in_repository: forbidden
 
 result_gates:
-  candidate_screening: pending_definition
-  adsorption_ranking: pending_definition
-  mlip_validation: pending_definition
-  enhanced_sampling: pending_definition
+  candidate_screening: blocked_missing_results_and_manifest
+  adsorption_ranking: blocked_pipeline_not_implemented
+  geometry_optimization: blocked_incomplete_failed_or_unreviewed_runs
+  aimd_dataset: blocked_insufficient_or_invalid_trajectories
+  mlip_validation: blocked_missing_dataset_and_model
+  enhanced_sampling: blocked_not_implemented
+
+manuscript_evidence:
+  eligible_computational_artifacts: 0
+  legacy_artifacts_default: ineligible
+  synthetic_fallback_data: forbidden
+
+known_blockers:
+  - eight tracked CP2K or XYZ files contain unresolved Git conflict markers
+  - no candidate-generation or adsorption-ranking result set is present
+  - existing AIMD trajectories are too short, incomplete, or unstable
+  - legacy HAP112 postprocessing lacks raw inputs and reports poor quality
+  - no populated MLIP dataset, validated model, scale-up run, or enhanced-sampling run is present
+  - bibliography metadata and claim-specific locators require primary-source verification
 
 next_actions:
-  - review manuscript scope with the research team
-  - perform a focused HAP-surface and HAP-CO2 literature search
-  - inventory existing artifacts under phases 0 through 5
+  - review the artifact inventory and ineligibility decisions with the research team
+  - resolve legacy conflict markers only after a separate scientific-input review
+  - perform a focused HAP-surface and HAP-CO2 literature search when online research is authorized
   - define quantitative go/no-go gates before new compute
-

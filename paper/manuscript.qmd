@@ -6,7 +6,7 @@ author:
   - name: Siqi Tang
 date: last-modified
 abstract: |
-  Mineral carbonation can provide durable carbon storage, but resolving interfacial reaction mechanisms while screening a broad materials space remains computationally demanding. We present a multiscale workflow that links generative crystal design, high-throughput surface screening, first-principles molecular dynamics, machine-learning interatomic potentials, large-scale molecular dynamics, and enhanced sampling for hydroxyapatite and related apatite-family materials. This living draft currently defines the study design and evidence requirements. Numerical findings will be added only after the corresponding artifacts and run manifests are recorded in the evidence ledger.
+  This living draft defines a proposed multiscale study of carbon mineralization on hydroxyapatite and related apatite-family materials. The design links generative crystal design, high-throughput surface screening, first-principles molecular dynamics, machine-learning interatomic potentials, large-scale molecular dynamics, and enhanced sampling. The repository currently contains a mixture of implemented tooling, placeholders, and unqualified legacy artifacts; it does not yet contain manuscript-eligible computational results. Numerical findings will be added only after the corresponding artifacts, run manifests, and validation decisions are recorded in the evidence ledger.
 keywords:
   - carbon mineralization
   - hydroxyapatite
@@ -18,7 +18,7 @@ keywords:
 ::: {.callout-warning}
 ## Draft status
 
-The methods framework is grounded in the current repository. All result statements below are explicitly marked `TODO-EVIDENCE` until verified computational artifacts are linked in `literature/evidence.csv`.
+The study design is grounded in the current repository, but not every computational stage is implemented. All result statements below are explicitly marked `TODO-EVIDENCE` until verified computational artifacts are linked in `literature/evidence.csv`. Existing bibliography records are retained as seed metadata and remain pending claim-specific source verification in the evidence ledger.
 :::
 
 # Introduction
@@ -29,7 +29,7 @@ Hydroxyapatite (HAP), $\mathrm{Ca_{10}(PO_4)_6(OH)_2}$, provides a calcium-rich,
 
 Recent generative models expand the accessible inorganic crystal space. MatterGen uses diffusion-based generation and property conditioning to propose stable and diverse inorganic structures [@zeni2025mattergen]. Yet generation alone does not establish interfacial reactivity. Fast atomistic screening, first-principles validation, and uncertainty-aware model assessment remain necessary before a candidate can support a mechanistic claim.
 
-Here we structure that validation as a sequence: generative candidate discovery; apatite-aware filtering; surface and adsorbate construction; rapid screening with machine-learning interatomic potentials; CP2K-based first-principles sampling; system-specific Deep Potential or MACE training; LAMMPS scale-up; and enhanced-sampling analysis. The resulting design is intended to connect candidate ranking with interpretable interfacial observables while preserving computational provenance.
+Here we propose that validation as a sequence: generative candidate discovery; apatite-aware filtering; surface and adsorbate construction; rapid screening with machine-learning interatomic potentials; CP2K-based first-principles sampling; system-specific Deep Potential or MACE training; LAMMPS scale-up; and enhanced-sampling analysis. The design is intended to connect candidate ranking with interpretable interfacial observables while preserving computational provenance. Completion and scientific qualification of these stages remain pending.
 
 # Research questions and contributions
 
@@ -46,23 +46,25 @@ The intended contributions are a reproducible multiscale pipeline, a screened ca
 
 ## Workflow overview
 
-The repository implements a staged workflow. Static HAP structures are stored under `data/`. Generated structures enter through `0.Generative_Discovery/`; surface construction and rapid screening are organized under `1.HT_Screening/`; geometry pre-relaxation is performed under `2.GeoOpt_PreRelax/`; first-principles sampling, dataset synthesis, potential training, scale-up, and enhanced sampling are organized under `3.ML_AIMD/`; analysis and publication assets are located under `4.PostProcess_Analysis/` and `5.Figure_Publication/`.
+The repository organizes a staged workflow. Static HAP structures are stored under `data/`. Candidate-generation scripts are under `0.Generative_Discovery/`; planned surface construction and rapid screening are organized under `1.HT_Screening/`; legacy geometry-optimization inputs and artifacts are under `2.GeoOpt_PreRelax/`; first-principles sampling inputs and partial dataset/model tooling are under `3.ML_AIMD/`; analysis and publication placeholders are under `4.PostProcess_Analysis/` and `5.Figure_Publication/`.
+
+At the current baseline, candidate-generation results and adsorption rankings are absent, several screening and enhanced-sampling components are placeholders, geometry-optimization outcomes have mixed completion states, and the available AIMD artifacts are incomplete, too short for their intended use, or unstable. The legacy HAP112 postprocessing set is rejected as manuscript evidence because its raw inputs are absent, its quality report is poor, and its historical parser allowed synthetic RDF-like fallback data. These files are retained for audit and negative-result tracking; none is a finding.
 
 Each scientific run should record its Git commit, configuration, inputs, environment, outputs, metrics, and status using the run-manifest contract in `workflow/schemas/run_manifest.example.json`. This separates reproducible evidence from transient logs and large trajectories.
 
 ## Generative candidate discovery
 
-MatterGen is used to explore apatite-like compositional and structural space [@zeni2025mattergen]. Generated structures are filtered for chemical validity, structural plausibility, novelty, and thermodynamic stability before surface construction. Screening thresholds, model versions, seeds, generation counts, and exclusion reasons must be recorded for each campaign.
+MatterGen is planned for exploring apatite-like compositional and structural space [@zeni2025mattergen]. A qualifying campaign would filter generated structures for chemical validity, structural plausibility, novelty, and thermodynamic stability before surface construction. Screening thresholds, model versions, seeds, generation counts, and exclusion reasons must be recorded for each campaign. No qualifying campaign is currently recorded.
 
 ## Surface construction and rapid screening
 
-Candidate bulk structures are converted into surface slabs using crystallographic operations implemented with pymatgen [@ong2013pymatgen]. The screening design spans selected Miller indices, surface terminations, and CO₂ placements. Each adsorption comparison must use a consistent energy convention and record relaxation settings, cell dimensions, charge assumptions, and reference energies.
+Candidate bulk structures are intended to be converted into surface slabs using crystallographic operations implemented with pymatgen [@ong2013pymatgen]. The planned screening design spans selected Miller indices, surface terminations, and CO₂ placements. Each adsorption comparison must use a consistent energy convention and record relaxation settings, cell dimensions, charge assumptions, and reference energies. The repository does not yet implement a complete adsorption-energy workflow.
 
-MACE provides higher-order equivariant message passing for atomistic force fields [@batatia2022mace] and is used for rapid pre-relaxation or ranking where its elemental coverage and domain validity are established. Foundation-model scores are treated as screening evidence, not as substitutes for system-specific first-principles validation.
+MACE provides higher-order equivariant message passing for atomistic force fields [@batatia2022mace] and is proposed for rapid pre-relaxation or ranking where its elemental coverage and domain validity can be established. Foundation-model scores, if generated, will be treated as screening evidence rather than substitutes for system-specific first-principles validation.
 
 ## First-principles sampling
 
-High-priority configurations are sampled with CP2K, an electronic-structure and molecular-dynamics package designed for condensed-phase and periodic systems [@kuhne2020cp2k]. The final manuscript will report the exchange-correlation functional, dispersion correction, pseudopotentials, basis sets, cutoffs, cell, ensemble, thermostat or barostat, time step, trajectory length, and convergence criteria. The exact values must be extracted from committed input files and run manifests.
+High-priority configurations are intended to be sampled with CP2K, an electronic-structure and molecular-dynamics package designed for condensed-phase and periodic systems [@kuhne2020cp2k]. The final manuscript will report the exchange-correlation functional, dispersion correction, pseudopotentials, basis sets, cutoffs, cell, ensemble, thermostat or barostat, time step, trajectory length, and convergence criteria. Exact values must be extracted from reviewed input files and run manifests; legacy inputs and logs are not assumed valid.
 
 ## Machine-learning interatomic potentials
 
@@ -70,7 +72,7 @@ Deep Potential molecular dynamics represents the potential-energy surface with s
 
 ## Large-scale dynamics and enhanced sampling
 
-Validated potentials are deployed in LAMMPS for larger spatial and temporal scales [@plimpton1995lammps]. Structural and kinetic observables may include density profiles, coordination numbers, radial distribution functions, residence times, carbon speciation, and ion-pair statistics. Enhanced-sampling calculations use PLUMED-compatible protocols and must disclose collective variables, bias parameters, convergence diagnostics, and reweighting procedures [@bonomi2019plumed].
+Validated potentials would be deployed in LAMMPS for larger spatial and temporal scales [@plimpton1995lammps]. Structural and kinetic observables may include density profiles, coordination numbers, radial distribution functions, residence times, carbon speciation, and ion-pair statistics. Planned enhanced-sampling calculations would use PLUMED-compatible protocols and must disclose collective variables, bias parameters, convergence diagnostics, and reweighting procedures [@bonomi2019plumed]. No qualifying scale-up or enhanced-sampling result is currently recorded.
 
 ## Reproducibility and evidence control
 
@@ -118,7 +120,7 @@ This draft establishes the study logic and the evidence required to support each
 
 # Data and code availability
 
-Code and compact provenance records are maintained in the project repository. The final version will provide the archival location, release identifier, licenses, and access method for large datasets and trained models.
+Code, the living manuscript, and compact provenance records are maintained in the project repository. Large datasets, trajectories, and trained models are not yet archived for publication. The final version will provide the archival location, release identifier, licenses, and access method after those records exist and are reviewed.
 
 # Acknowledgements
 
@@ -128,4 +130,3 @@ TODO: add funding, computing allocations, institutional resources, and contribut
 
 ::: {#refs}
 :::
-

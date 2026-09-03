@@ -1,21 +1,20 @@
 #!/usr/bin/env python3
 """
-ENHANCED LAMMPS CO2-HAP Adsorption Analysis Post-processing Script - FIXED VERSION
+LEGACY LAMMPS CO2-HAP Adsorption Analysis Post-processing Script
 ================================================================================
 
-Purpose: Complete data loading and visualization for all analysis categories
+Purpose: Load and visualize legacy analysis outputs while failing closed when
+required source data are missing or invalid.
 Author: Generated for HAP4CCUS project
 Date: 2025
 
-MAJOR FIXES:
-- Fixed array dimension mismatch issues in structural analysis
-- Enhanced RDF data parsing for zero-value datasets
-- Added robust error handling for thermodynamic analysis
-- Improved data alignment checks before concatenation operations
-- Added fallback data generation for empty RDF files
+SCIENTIFIC-INTEGRITY RULE:
+- Never substitute synthetic or sample values for missing, malformed, or all-zero
+  scientific inputs. Such inputs invalidate the analysis and must stop the run.
 """
 
 import os
+import math
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -26,6 +25,10 @@ import re
 from scipy import stats
 from scipy.signal import find_peaks
 warnings.filterwarnings('ignore')
+
+
+class DataValidationError(RuntimeError):
+    """Raised when required scientific input cannot support an analysis."""
 
 # Set up matplotlib for high-quality plots
 plt.rcParams['figure.dpi'] = 300
@@ -109,70 +112,110 @@ class LAMMPSPostProcessor:
             with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
                 lines = f.readlines()
             
-            # Parse header information
-            time_step = None
-            num_bins = None
-            
-            for line in lines[:5]:
-                if 'TimeStep' in line and 'Number-of-rows' in line:
-                    continue
-                elif line.strip() and not line.startswith('#'):
-                    parts = line.strip().split()
-                    if len(parts) == 2:
-                        try:
-                            time_step = int(parts[0])
-                            num_bins = int(parts[1])
-                            break
-                        except ValueError:
-                            continue
-            
-            if time_step is None or num_bins is None:
-                print(f"   ⚠ Could not parse RDF header for {file_path.name}")
-                return None
-            
-            print(f"   📊 RDF Header: TimeStep={time_step}, Bins={num_bins}")
-            
-            # Parse data section
+            content_lines = [
+                (line_number, line.strip())
+                for line_number, line in enumerate(lines, start=1)
+                if line.strip() and not line.lstrip().startswith('#')
+            ]
+            if not content_lines:
+                raise DataValidationError(f"RDF input is empty: {file_path.name}")
+
+            # LAMMPS fix ave/time vector output is a sequence of blocks. Each
+            # block starts with "TimeStep Number-of-rows" followed by exactly
+            # that many rows. Reject partial blocks rather than silently using
+            # the subset that happened to parse.
             data_lines = []
-            data_started = False
-            
-            for line in lines:
-                line = line.strip()
-                if not line or line.startswith('#'):
-                    continue
-                
-                parts = line.split()
-                
-                # Skip header line
-                if len(parts) == 2 and not data_started:
-                    data_started = True
-                    continue
-                
-                # Parse data lines
-                if data_started and len(parts) >= 4:
+            first_time_step = None
+            expected_num_bins = None
+            cursor = 0
+
+            while cursor < len(content_lines):
+                header_line_number, header = content_lines[cursor]
+                header_parts = header.split()
+                if len(header_parts) != 2:
+                    raise DataValidationError(
+                        f"Malformed RDF block header in {file_path.name} "
+                        f"at line {header_line_number}"
+                    )
+                try:
+                    time_step = int(header_parts[0])
+                    num_bins = int(header_parts[1])
+                except ValueError as exc:
+                    raise DataValidationError(
+                        f"Could not parse the RDF block header in {file_path.name} "
+                        f"at line {header_line_number}"
+                    ) from exc
+                if num_bins <= 0:
+                    raise DataValidationError(
+                        f"RDF block has no bins in {file_path.name} "
+                        f"at line {header_line_number}"
+                    )
+                if expected_num_bins is None:
+                    first_time_step = time_step
+                    expected_num_bins = num_bins
+                elif num_bins != expected_num_bins:
+                    raise DataValidationError(
+                        f"Inconsistent RDF bin count in {file_path.name} "
+                        f"at line {header_line_number}: expected "
+                        f"{expected_num_bins}, got {num_bins}"
+                    )
+
+                cursor += 1
+                if cursor + num_bins > len(content_lines):
+                    raise DataValidationError(
+                        f"Truncated RDF block in {file_path.name} "
+                        f"at line {header_line_number}: expected {num_bins} rows"
+                    )
+
+                for expected_row in range(1, num_bins + 1):
+                    data_line_number, data_line = content_lines[cursor]
+                    parts = data_line.split()
+                    if len(parts) < 4:
+                        raise DataValidationError(
+                            f"Malformed RDF row in {file_path.name} "
+                            f"at line {data_line_number}"
+                        )
                     try:
                         row = int(parts[0])
                         distance = float(parts[1])
                         g_r = float(parts[2])
-                        coord_num = float(parts[3]) if len(parts) > 3 else 0.0
-                        data_lines.append([row, distance, g_r, coord_num])
-                    except (ValueError, IndexError):
-                        continue
-            
-            if not data_lines:
-                print(f"   ⚠ No valid data found in {file_path.name}")
-                # Generate sample data for visualization
-                print(f"   🔧 Generating sample RDF data for {file_path.name}")
-                return self.generate_sample_rdf_data(file_path.name)
+                        coord_num = float(parts[3])
+                    except (ValueError, IndexError) as exc:
+                        raise DataValidationError(
+                            f"Could not parse RDF row in {file_path.name} "
+                            f"at line {data_line_number}"
+                        ) from exc
+                    if row != expected_row:
+                        raise DataValidationError(
+                            f"Unexpected RDF row index in {file_path.name} "
+                            f"at line {data_line_number}: expected "
+                            f"{expected_row}, got {row}"
+                        )
+                    if not all(math.isfinite(value) for value in (distance, g_r, coord_num)):
+                        raise DataValidationError(
+                            f"Non-finite RDF value in {file_path.name} "
+                            f"at line {data_line_number}"
+                        )
+                    if distance < 0 or g_r < 0:
+                        raise DataValidationError(
+                            f"Negative RDF distance or g(r) in {file_path.name} "
+                            f"at line {data_line_number}"
+                        )
+                    data_lines.append([row, distance, g_r, coord_num])
+                    cursor += 1
+
+            print(
+                f"   📊 RDF Header: TimeStep={first_time_step}, "
+                f"Bins={expected_num_bins}"
+            )
             
             # Create DataFrame
             data = pd.DataFrame(data_lines, columns=['Row', 'Distance', 'g_r', 'Coordination'])
             
-            # Check if all g_r values are zero (which seems to be the case)
-            if data['g_r'].sum() == 0:
-                print(f"   ⚠ All g(r) values are zero in {file_path.name}")
-                print(f"   🔧 Generating realistic sample data for visualization")
-                return self.generate_sample_rdf_data(file_path.name, data['Distance'].values)
+            if all(row[2] == 0.0 for row in data_lines):
+                raise DataValidationError(
+                    f"All g(r) values are zero in {file_path.name}"
+                )
             
             print(f"   ✓ RDF data loaded: {len(data)} points")
             print(f"   ✓ Distance range: {data['Distance'].min():.3f} - {data['Distance'].max():.3f} Å")
@@ -180,62 +223,12 @@ class LAMMPSPostProcessor:
             
             return data
             
+        except DataValidationError:
+            raise
         except Exception as e:
-            print(f"   ✗ Error parsing RDF {file_path.name}: {e}")
-            return self.generate_sample_rdf_data(file_path.name)
-    
-    def generate_sample_rdf_data(self, filename, distances=None):
-        """Generate realistic sample RDF data for visualization when actual data is unavailable"""
-        
-        if distances is None:
-            distances = np.linspace(0.5, 8.0, 200)
-        else:
-            distances = np.array(distances)
-        
-        # Generate realistic RDF patterns based on atom pair types
-        if 'Ca_O' in filename or 'CA_O' in filename.upper():
-            # Ca-O first shell around 2.3 Å
-            g_r = 3.5 * np.exp(-(distances-2.3)**2/0.05) + \
-                  1.8 * np.exp(-(distances-4.6)**2/0.2) + \
-                  np.maximum(0, np.random.normal(1.0, 0.1, len(distances)))
-        elif 'P_O' in filename or 'P-O' in filename:
-            # P-O first shell around 1.55 Å
-            g_r = 4.2 * np.exp(-(distances-1.55)**2/0.02) + \
-                  2.1 * np.exp(-(distances-3.1)**2/0.15) + \
-                  np.maximum(0, np.random.normal(1.0, 0.1, len(distances)))
-        elif 'H_O' in filename or 'H-O' in filename:
-            # H-O hydrogen bonding around 1.8-2.0 Å
-            g_r = 2.8 * np.exp(-(distances-1.9)**2/0.03) + \
-                  1.5 * np.exp(-(distances-3.2)**2/0.2) + \
-                  np.maximum(0, np.random.normal(1.0, 0.15, len(distances)))
-        elif 'C_' in filename or 'CO' in filename:
-            # C-O interactions
-            g_r = 2.2 * np.exp(-(distances-1.2)**2/0.02) + \
-                  1.3 * np.exp(-(distances-2.8)**2/0.1) + \
-                  np.maximum(0, np.random.normal(1.0, 0.1, len(distances)))
-        else:
-            # Generic RDF pattern
-            g_r = 2.0 * np.exp(-(distances-2.0)**2/0.1) + \
-                  1.2 * np.exp(-(distances-4.0)**2/0.3) + \
-                  np.maximum(0, np.random.normal(1.0, 0.1, len(distances)))
-        
-        # Ensure g(r) goes to 1 at large distances
-        g_r = g_r * np.exp(-distances/10) + 1.0
-        
-        # Calculate coordination number
-        dr = distances[1] - distances[0] if len(distances) > 1 else 0.1
-        coord_num = np.cumsum(4 * np.pi * distances**2 * (g_r - 1.0) * dr * 0.05)  # density factor
-        
-        data = pd.DataFrame({
-            'Row': range(1, len(distances)+1),
-            'Distance': distances,
-            'g_r': g_r,
-            'Coordination': coord_num
-        })
-        
-        print(f"   ✓ Generated sample RDF for {filename}: {len(data)} points")
-        
-        return data
+            raise DataValidationError(
+                f"Could not parse RDF data in {file_path.name}: {e}"
+            ) from e
     
     def load_data_with_enhanced_validation(self, file_path):
         """Enhanced data loading with comprehensive validation and RDF format handling"""
@@ -244,8 +237,10 @@ class LAMMPSPostProcessor:
         self.data_debug[file_path.name] = inspection
         
         if 'error' in inspection:
-            print(f"✗ Cannot inspect {file_path.name}: {inspection['error']}")
-            return None
+            raise DataValidationError(
+                f"Cannot inspect required input {file_path.name}: "
+                f"{inspection['error']}"
+            )
             
         print(f"📋 Inspecting {file_path.name}:")
         print(f"   Lines: {inspection['line_count']}")
@@ -291,8 +286,24 @@ class LAMMPSPostProcessor:
                     continue
             
             if data is None:
-                print(f"   ❌ All loading methods failed for {file_path.name}")
-                return None
+                raise DataValidationError(
+                    f"All loading methods failed for required input {file_path.name}"
+                )
+
+            numeric_data = data.select_dtypes(include=[np.number])
+            numeric_values = numeric_data.to_numpy(dtype=float, copy=False)
+            if numeric_values.size == 0:
+                raise DataValidationError(
+                    f"Required input contains no numeric values: {file_path.name}"
+                )
+            if not np.isfinite(numeric_values).all():
+                raise DataValidationError(
+                    f"Required input contains non-finite values: {file_path.name}"
+                )
+            if np.all(numeric_values == 0):
+                raise DataValidationError(
+                    f"All numeric values are zero in required input {file_path.name}"
+                )
             
             # Enhanced data validation and anomaly detection
             anomalies = []
@@ -342,10 +353,14 @@ class LAMMPSPostProcessor:
             
             return data
             
+        except DataValidationError:
+            raise
         except Exception as e:
             print(f"✗ Critical error loading {file_path}: {e}")
             self.data_debug[file_path.name]['critical_error'] = str(e)
-            return None
+            raise DataValidationError(
+                f"Could not parse required input {file_path.name}: {e}"
+            ) from e
     
     def load_data(self):
         """Enhanced data loading with comprehensive file analysis"""
@@ -365,12 +380,18 @@ class LAMMPSPostProcessor:
             'production_temperature': 'production_temperature.log'
         }
         
-        rdf_files = {
+        required_rdf_files = {
             'rdf_CO': 'rdf_CO_detailed.dat',
             'rdf_C_Ca': 'rdf_C_Ca.dat',
             'rdf_C_P': 'rdf_C_P.dat',
             'rdf_C_H': 'rdf_C_H_detailed.dat',
-            'rdf_H_O': 'rdf_H_O_detailed.dat',
+            'rdf_H_O': 'rdf_H_O_detailed.dat'
+        }
+
+        # These legacy analysis inputs remain supported when present, but the
+        # current LAMMPS producer does not emit them. A present invalid optional
+        # file is still fatal; an absent one is not a missing required source.
+        optional_rdf_files = {
             'rdf_Ca_O': 'rdf_Ca_O.dat',
             'rdf_P_O': 'rdf_P_O.dat',
             'rdf_OH_bonds': 'rdf_OH_bonds.dat'
@@ -386,13 +407,15 @@ class LAMMPSPostProcessor:
                     self.data[key] = data
                     print(f"✓ Successfully loaded {filename}")
                 else:
-                    print(f"✗ Failed to load {filename}")
+                    raise DataValidationError(
+                        f"Failed to load required input file: {filename}"
+                    )
             else:
-                print(f"⚠ File not found: {filename}")
+                raise DataValidationError(f"Required input file is missing: {filename}")
         
         # Load RDF files
         self.data['rdf'] = {}
-        for key, filename in rdf_files.items():
+        for key, filename in required_rdf_files.items():
             file_path = self.input_dir / filename
             if file_path.exists():
                 print(f"Loading RDF {filename}...")
@@ -401,7 +424,23 @@ class LAMMPSPostProcessor:
                     self.data['rdf'][key] = data
                     print(f"✓ Successfully loaded RDF {filename}")
                 else:
-                    print(f"✗ Failed to load RDF {filename}")
+                    raise DataValidationError(f"Failed to load required RDF file: {filename}")
+            else:
+                raise DataValidationError(f"Required RDF file is missing: {filename}")
+
+        for key, filename in optional_rdf_files.items():
+            file_path = self.input_dir / filename
+            if not file_path.exists():
+                print(f"ℹ Optional RDF file not present: {filename}")
+                continue
+            print(f"Loading optional RDF {filename}...")
+            data = self.load_data_with_enhanced_validation(file_path)
+            if data is None:
+                raise DataValidationError(
+                    f"Failed to load optional RDF file that is present: {filename}"
+                )
+            self.data['rdf'][key] = data
+            print(f"✓ Successfully loaded optional RDF {filename}")
         
         self.analyze_log_file()
         self.save_debug_information()
@@ -465,8 +504,7 @@ class LAMMPSPostProcessor:
         log_file = self.input_dir / "log.lammps"
         
         if not log_file.exists():
-            print("⚠ log.lammps file not found")
-            return
+            raise DataValidationError("Required input file is missing: log.lammps")
         
         try:
             encodings = ['utf-8', 'gbk', 'latin-1', 'cp1252', 'ascii']
@@ -481,9 +519,12 @@ class LAMMPSPostProcessor:
                 except UnicodeDecodeError:
                     continue
             
-            if content is None:
-                print("✗ Could not read log file with any encoding")
-                return
+            if content is None or not content.strip():
+                raise DataValidationError("Required log.lammps is empty or unreadable")
+            if not re.search(r'\bLAMMPS\b', content, re.IGNORECASE):
+                raise DataValidationError(
+                    "Required log.lammps does not contain recognizable LAMMPS output"
+                )
             
             log_analysis = {
                 'warnings': [],
@@ -497,6 +538,10 @@ class LAMMPSPostProcessor:
             errors = re.findall(r'ERROR: (.+)', content, re.IGNORECASE)
             log_analysis['warnings'] = warnings
             log_analysis['errors'] = errors if errors else []
+            if errors:
+                raise DataValidationError(
+                    f"log.lammps contains {len(errors)} LAMMPS error record(s)"
+                )
             
             temp_patterns = [
                 r'temp[:\s]+([\d.]+)\s*K',
@@ -538,10 +583,18 @@ class LAMMPSPostProcessor:
                     except ValueError:
                         continue
             
-            if 'completed' in content.lower() or 'finished' in content.lower():
-                log_analysis['simulation_progress']['completed'] = True
-            else:
-                log_analysis['simulation_progress']['completed'] = False
+            completed = bool(
+                re.search(
+                    r'(?:Loop time of|Total wall time:|SIMULATION COMPLETED SUCCESSFULLY)',
+                    content,
+                    re.IGNORECASE,
+                )
+            )
+            log_analysis['simulation_progress']['completed'] = completed
+            if not completed:
+                raise DataValidationError(
+                    "log.lammps has no recognized successful-completion marker"
+                )
             
             issue_count = len(warnings) + len(errors)
             temp_issues = 1 if log_analysis.get('temperature_issues', {}).get('stability_score') == 'poor' else 0
@@ -557,8 +610,10 @@ class LAMMPSPostProcessor:
             self.data['log_analysis'] = log_analysis
             print(f"✓ Log file analysis completed: {len(warnings)} warnings, {len(errors)} errors, quality={log_analysis['simulation_quality']}")
             
+        except DataValidationError:
+            raise
         except Exception as e:
-            print(f"✗ Error analyzing log file: {e}")
+            raise DataValidationError(f"Could not analyze log.lammps: {e}") from e
     
     def analyze_thermodynamics(self):
         """Comprehensive thermodynamic analysis with dimension safety checks"""
@@ -1963,6 +2018,7 @@ Coordination Shells:"""
             except Exception as e:
                 print(f"⚠ Warning: Thermodynamic analysis failed: {e}")
                 self.save_error_info("thermodynamic_analysis", e)
+                raise
             
             print("\n🔄 Step 3: Analyzing chemical transformations...")
             try:
@@ -1970,6 +2026,7 @@ Coordination Shells:"""
             except Exception as e:
                 print(f"⚠ Warning: Chemical analysis failed: {e}")
                 self.save_error_info("chemical_analysis", e)
+                raise
             
             print("\n🔄 Step 4: Analyzing structural properties...")
             try:
@@ -1977,6 +2034,7 @@ Coordination Shells:"""
             except Exception as e:
                 print(f"⚠ Warning: Structural analysis failed: {e}")
                 self.save_error_info("structural_analysis", e)
+                raise
             
             print("\n🔄 Step 5: Analyzing radial distribution functions...")
             try:
@@ -1984,6 +2042,7 @@ Coordination Shells:"""
             except Exception as e:
                 print(f"⚠ Warning: RDF analysis failed: {e}")
                 self.save_error_info("rdf_analysis", e)
+                raise
             
             print("\n🔄 Step 6: Analyzing molecular dynamics...")
             try:
@@ -1991,6 +2050,7 @@ Coordination Shells:"""
             except Exception as e:
                 print(f"⚠ Warning: Dynamics analysis failed: {e}")
                 self.save_error_info("dynamics_analysis", e)
+                raise
             
             print("\n🔄 Step 7: Generating summary report...")
             try:
@@ -1998,6 +2058,7 @@ Coordination Shells:"""
             except Exception as e:
                 print(f"⚠ Warning: Summary report generation failed: {e}")
                 self.save_error_info("summary_report", e)
+                raise
             
             print("\n🔄 Step 8: Processing raw data...")
             try:
@@ -2005,6 +2066,7 @@ Coordination Shells:"""
             except Exception as e:
                 print(f"⚠ Warning: Raw data processing failed: {e}")
                 self.save_error_info("raw_data_processing", e)
+                raise
             
             print("\n🔄 Step 9: Generating quality control report...")
             try:
@@ -2012,6 +2074,7 @@ Coordination Shells:"""
             except Exception as e:
                 print(f"⚠ Warning: Quality control report failed: {e}")
                 self.save_error_info("quality_control", e)
+                raise
             
             print("\n" + "[SUCCESS] " + "="*68)
             print("[SUCCESS] ENHANCED ANALYSIS COMPLETED WITH BUG FIXES!")
@@ -2041,6 +2104,9 @@ Coordination Shells:"""
             print("Debug information available in 09_Debug_Information/")
             
             self.save_error_info("critical_analysis_error", e)
+            return False
+
+        return True
 
 def main():
     """Main execution function"""
@@ -2053,13 +2119,13 @@ def main():
     if not Path(input_directory).exists():
         print(f"❌ Input directory not found: {input_directory}")
         print("Please adjust the path in the script or ensure the directory exists.")
-        return
+        return 2
     
     # Initialize post-processor
     processor = LAMMPSPostProcessor(input_directory, output_directory)
     
     # Run complete analysis
-    processor.run_complete_enhanced_analysis()
+    return 0 if processor.run_complete_enhanced_analysis() else 1
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

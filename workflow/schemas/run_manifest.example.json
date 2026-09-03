@@ -31,9 +31,21 @@
       "sha256": "OUTPUT_CHECKSUM"
     }
   ],
-  "metrics": {},
+  "metrics": {
+    "replace_with_metric_name": {
+      "value": null,
+      "unit": "replace-with-explicit-unit"
+    }
+  },
+  "validation": {
+    "criteria": [
+      "replace with a predefined scientific acceptance criterion"
+    ],
+    "passed": false,
+    "reviewer": null,
+    "reviewed_at": null
+  },
   "started_at": null,
   "finished_at": null,
-  "notes": ""
+  "notes": "Template values are intentionally ineligible until replaced and reviewed."
 }
-
