@@ -16,33 +16,76 @@ from unittest import mock
 from scripts.check_manuscript import (
     EVIDENCE_COLUMNS,
     INVENTORY_COLUMNS,
+    ROOT as PROJECT_ROOT,
     validate_repository,
 )
+
+
+REFERENCE_COLUMNS = [
+    "citation_key",
+    "reference_status",
+    "title",
+    "authors",
+    "year",
+    "venue",
+    "doi",
+    "doi_status",
+    "publisher_url",
+    "metadata_source_url",
+    "verified_by",
+    "verified_at",
+    "notes",
+]
 
 
 class ResearchValidationTests(unittest.TestCase):
     def setUp(self) -> None:
         self.temporary_directory = tempfile.TemporaryDirectory()
         self.root = Path(self.temporary_directory.name)
-        self._write("paper/manuscript.qmd", "# Draft\n\nClaim [@seed].\n\n## TODO-EVIDENCE R1\n")
+        self._write(
+            "paper/manuscript.qmd",
+            "# Draft\n\n<!-- CLAIM: C1 -->\nClaim [@seed].\n\n## TODO-EVIDENCE R1\n",
+        )
         self._write(
             "paper/references.bib",
-            "@article{seed,\n  author = {Example, A.},\n  title = {Seed},\n  year = {2020}\n}\n",
+            "@article{seed,\n  author = {Example, A.},\n  title = {Seed},\n"
+            "  year = {2020},\n  doi = {10.1000/seed}\n}\n",
         )
         self.evidence_rows = [
             self._evidence_row(
+                evidence_id="E001",
                 claim_id="C1",
-                status="pending",
-                claim="Seed literature claim awaiting verification.",
+                status="supported",
+                claim="Seed literature claim.",
                 source_type="primary_publication",
                 citation_key="seed",
+                source_locator="p. 1, Results, paragraph 1",
+                verified_by="Researcher",
+                verified_at="2026-09-03",
             ),
             self._evidence_row(
+                evidence_id="E002",
                 claim_id="R1",
                 status="pending",
                 claim="Planned computational result.",
                 source_type="computational_artifact",
             ),
+        ]
+        self.reference_rows = [
+            self._reference_row(
+                citation_key="seed",
+                reference_status="verified",
+                title="Seed",
+                authors="Example, A.",
+                year="2020",
+                venue="Example Journal",
+                doi="10.1000/seed",
+                doi_status="verified",
+                publisher_url="https://publisher.example/seed",
+                metadata_source_url="https://doi.org/10.1000/seed",
+                verified_by="Researcher",
+                verified_at="2026-09-03",
+            )
         ]
         self.inventory_rows = [
             self._inventory_row(
@@ -55,6 +98,9 @@ class ResearchValidationTests(unittest.TestCase):
             )
         ]
         self._write_csv("literature/evidence.csv", EVIDENCE_COLUMNS, self.evidence_rows)
+        self._write_csv(
+            "literature/references.csv", REFERENCE_COLUMNS, self.reference_rows
+        )
         self._write_csv(
             "research/artifact_inventory.csv", INVENTORY_COLUMNS, self.inventory_rows
         )
@@ -90,6 +136,13 @@ class ResearchValidationTests(unittest.TestCase):
     def _inventory_row(**overrides: str) -> dict[str, str]:
         row = {column: "" for column in INVENTORY_COLUMNS}
         row.update({"manuscript_eligible": "no", "notes": "Test fixture."})
+        row.update(overrides)
+        return row
+
+    @staticmethod
+    def _reference_row(**overrides: str) -> dict[str, str]:
+        row = {column: "" for column in REFERENCE_COLUMNS}
+        row.update({"reference_status": "candidate", "doi_status": "pending"})
         row.update(overrides)
         return row
 
@@ -164,6 +217,7 @@ class ResearchValidationTests(unittest.TestCase):
         self._write(manifest_path, json.dumps(manifest, indent=2) + "\n")
         self.evidence_rows.append(
             self._evidence_row(
+                evidence_id="E003",
                 claim_id="RUN1",
                 status="supported",
                 claim="Test computational result.",
@@ -198,19 +252,314 @@ class ResearchValidationTests(unittest.TestCase):
             "research/artifact_inventory.csv", INVENTORY_COLUMNS, self.inventory_rows
         )
 
+    def _rewrite_references(self) -> None:
+        self._write_csv(
+            "literature/references.csv", REFERENCE_COLUMNS, self.reference_rows
+        )
+
     def test_valid_pending_baseline_passes(self) -> None:
         self.assertEqual([], self._validate().errors)
 
+    def test_missing_reference_registry_fails(self) -> None:
+        (self.root / "literature/references.csv").unlink()
+        errors = self._validate().errors
+        self.assertTrue(any("literature/references.csv" in error for error in errors))
+
+    def test_duplicate_reference_key_fails(self) -> None:
+        self.reference_rows.append(dict(self.reference_rows[0]))
+        self._rewrite_references()
+        errors = self._validate().errors
+        self.assertTrue(any("duplicate reference citation keys" in error for error in errors))
+
+    def test_duplicate_bibtex_key_fails(self) -> None:
+        entry = (
+            "@article{seed,\n  author = {Example, A.},\n  title = {Seed},\n"
+            "  year = {2020},\n  doi = {10.1000/seed}\n}\n"
+        )
+        self._write("paper/references.bib", entry + entry)
+        errors = self._validate().errors
+        self.assertTrue(any("duplicate bibliography keys" in error for error in errors))
+
+    def test_unsupported_reference_status_fails(self) -> None:
+        self.reference_rows[0]["reference_status"] = "machine_verified"
+        self._rewrite_references()
+        errors = self._validate().errors
+        self.assertTrue(any("unsupported reference status" in error for error in errors))
+
+    def test_verified_reference_requires_complete_metadata_and_review(self) -> None:
+        for field_name in (
+            "authors",
+            "venue",
+            "publisher_url",
+            "metadata_source_url",
+            "verified_by",
+            "verified_at",
+        ):
+            with self.subTest(field_name=field_name):
+                original = self.reference_rows[0][field_name]
+                self.reference_rows[0][field_name] = ""
+                self._rewrite_references()
+                errors = self._validate().errors
+                self.assertTrue(
+                    any(field_name in error and "verified reference" in error for error in errors)
+                )
+                self.reference_rows[0][field_name] = original
+
+    def test_verified_reference_rejects_truncated_authors(self) -> None:
+        self.reference_rows[0]["authors"] = "Example, A. and others"
+        self._rewrite_references()
+        errors = self._validate().errors
+        self.assertTrue(any("complete ordered author list" in error for error in errors))
+
+    def test_verified_reference_doi_state_must_be_consistent(self) -> None:
+        self.reference_rows[0]["doi_status"] = "not_assigned"
+        self._rewrite_references()
+        errors = self._validate().errors
+        self.assertTrue(any("doi_status" in error for error in errors))
+
+    def test_metadata_partial_cannot_claim_human_verification(self) -> None:
+        self.reference_rows[0].update(
+            {
+                "reference_status": "metadata_partial",
+                "verified_by": "Shawn",
+                "verified_at": "2026-09-03",
+                "notes": "Machine metadata check; human review pending.",
+            }
+        )
+        self._rewrite_references()
+        errors = self._validate().errors
+        self.assertTrue(
+            any("must leave verified_by and verified_at blank" in error for error in errors)
+        )
+
+    def test_nonverified_reference_cannot_enter_bibliography(self) -> None:
+        self.reference_rows[0].update(
+            {
+                "reference_status": "metadata_partial",
+                "verified_by": "",
+                "verified_at": "",
+                "notes": "Machine metadata check; human review pending.",
+            }
+        )
+        self._rewrite_references()
+        errors = self._validate().errors
+        self.assertTrue(any("non-verified references" in error for error in errors))
+
+    def test_verified_bibliography_requires_doi(self) -> None:
+        self._write(
+            "paper/references.bib",
+            "@article{seed,\n  author = {Example, A.},\n  title = {Seed},\n"
+            "  year = {2020}\n}\n",
+        )
+        errors = self._validate().errors
+        self.assertTrue(any("BibTeX DOI is required" in error for error in errors))
+
+    def test_verified_bibliography_rejects_wrong_doi(self) -> None:
+        self._write(
+            "paper/references.bib",
+            "@article{seed,\n  author = {Example, A.},\n  title = {Seed},\n"
+            "  year = {2020},\n  doi = {10.1000/wrong}\n}\n",
+        )
+        errors = self._validate().errors
+        self.assertTrue(any("BibTeX DOI does not match references.csv" in error for error in errors))
+
+    def test_verified_bibliography_rejects_swapped_dois(self) -> None:
+        self.reference_rows.append(
+            self._reference_row(
+                citation_key="seed2",
+                reference_status="verified",
+                title="Second Seed",
+                authors="Example, B.",
+                year="2021",
+                venue="Example Journal",
+                doi="10.1000/seed2",
+                doi_status="verified",
+                publisher_url="https://publisher.example/seed2",
+                metadata_source_url="https://doi.org/10.1000/seed2",
+                verified_by="Researcher",
+                verified_at="2026-09-03",
+            )
+        )
+        self._rewrite_references()
+        self._write(
+            "paper/references.bib",
+            "@article{seed,\n  author = {Example, A.},\n  title = {Seed},\n"
+            "  year = {2020},\n  doi = {10.1000/seed2}\n}\n"
+            "@article{seed2,\n  author = {Example, B.},\n  title = {Second Seed},\n"
+            "  year = {2021},\n  doi = {10.1000/seed}\n}\n",
+        )
+        errors = self._validate().errors
+        mismatches = [
+            error for error in errors if "BibTeX DOI does not match references.csv" in error
+        ]
+        self.assertEqual(2, len(mismatches))
+
+    def test_bibliography_normalizes_legal_doi_variants(self) -> None:
+        for doi in (
+            "HTTPS://DOI.ORG/10.1000/SEED.",
+            "http://doi.org/10.1000/SEED,",
+            "DOI: 10.1000/SEED;",
+        ):
+            with self.subTest(doi=doi):
+                self._write(
+                    "paper/references.bib",
+                    "@article{seed,\n  author = {Example, A.},\n  title = {Seed},\n"
+                    f"  year = {{2020}},\n  doi = {{{doi}}}\n}}\n",
+                )
+                self.assertEqual([], self._validate().errors)
+
+    def test_bibliography_rejects_doi_when_registry_says_not_assigned(self) -> None:
+        self.reference_rows[0]["doi"] = ""
+        self.reference_rows[0]["doi_status"] = "not_assigned"
+        self._rewrite_references()
+        self._write(
+            "paper/references.bib",
+            "@article{seed,\n  author = {Example, A.},\n  title = {Seed},\n"
+            "  year = {2020},\n  doi = {10.1000/unregistered}\n}\n",
+        )
+        errors = self._validate().errors
+        self.assertTrue(any("DOI not assigned in references.csv" in error for error in errors))
+
+    def test_bibliography_allows_missing_doi_when_not_assigned(self) -> None:
+        self.reference_rows[0]["doi"] = ""
+        self.reference_rows[0]["doi_status"] = "not_assigned"
+        self._rewrite_references()
+        self._write(
+            "paper/references.bib",
+            "@article{seed,\n  author = {Example, A.},\n  title = {Seed},\n"
+            "  year = {2020}\n}\n",
+        )
+        self.assertEqual([], self._validate().errors)
+
+    def test_verified_bibliography_rejects_year_mismatch(self) -> None:
+        self._write(
+            "paper/references.bib",
+            "@article{seed,\n  author = {Example, A.},\n  title = {Seed},\n"
+            "  year = {2021},\n  doi = {10.1000/seed}\n}\n",
+        )
+        errors = self._validate().errors
+        self.assertTrue(any("BibTeX year does not match references.csv" in error for error in errors))
+
+    def test_verified_bibliography_rejects_title_mismatch(self) -> None:
+        self._write(
+            "paper/references.bib",
+            "@article{seed,\n  author = {Example, A.},\n  title = {Different words},\n"
+            "  year = {2020},\n  doi = {10.1000/seed}\n}\n",
+        )
+        errors = self._validate().errors
+        self.assertTrue(any("BibTeX title does not match references.csv" in error for error in errors))
+
+    def test_bibliography_normalizes_unicode_case_braces_and_whitespace_in_title(self) -> None:
+        self.reference_rows[0]["title"] = "Café surface"
+        self._rewrite_references()
+        self._write(
+            "paper/references.bib",
+            "@article{seed,\n  author = {Example, A.},\n"
+            "  title = {{{CAFÉ}}   Surface},\n  year = {2020},\n"
+            "  doi = {10.1000/seed}\n}\n",
+        )
+        self.assertEqual([], self._validate().errors)
+
+    def test_verified_bibliography_requires_core_fields(self) -> None:
+        fields = {
+            "title": "  title = {Seed},\n",
+            "author": "  author = {Example, A.},\n",
+            "year": "  year = {2020},\n",
+        }
+        for missing in fields:
+            with self.subTest(missing=missing):
+                body = "".join(value for name, value in fields.items() if name != missing)
+                self._write(
+                    "paper/references.bib",
+                    "@article{seed,\n" + body + "  doi = {10.1000/seed}\n}\n",
+                )
+                errors = self._validate().errors
+                self.assertTrue(
+                    any(f"BibTeX {missing} is required" in error for error in errors)
+                )
+
+    def test_real_verified_bibliography_passes_metadata_checks(self) -> None:
+        self.assertEqual([], validate_repository(PROJECT_ROOT, check_git=True).errors)
+
+    def test_tracked_zotero_database_fails(self) -> None:
+        self._write("literature/zotero/zotero.sqlite", "not-a-real-database\n")
+        self._initialize_git()
+        errors = validate_repository(self.root, check_git=True).errors
+        self.assertTrue(any("Zotero database or attachment" in error for error in errors))
+
     def test_undefined_citation_fails(self) -> None:
-        self._write("paper/manuscript.qmd", "# Draft\n\nClaim [@missing].\n")
+        self._write(
+            "paper/manuscript.qmd",
+            "# Draft\n\n<!-- CLAIM: C1 -->\nClaim [@missing].\n",
+        )
         errors = self._validate().errors
         self.assertTrue(any("undefined citation keys" in error for error in errors))
 
-    def test_duplicate_claim_id_fails(self) -> None:
-        self.evidence_rows.append(dict(self.evidence_rows[0]))
+    def test_duplicate_claim_source_relationship_fails(self) -> None:
+        duplicate = dict(self.evidence_rows[0])
+        duplicate["evidence_id"] = "E099"
+        self.evidence_rows.append(duplicate)
         self._rewrite_evidence()
         errors = self._validate().errors
-        self.assertTrue(any("duplicate claim IDs" in error for error in errors))
+        self.assertTrue(any("duplicate claim-source relationships" in error for error in errors))
+
+    def test_multiple_sources_can_share_a_claim_id(self) -> None:
+        relationship_columns = [
+            "evidence_id",
+            *[column for column in EVIDENCE_COLUMNS if column != "evidence_id"],
+        ]
+        self.evidence_rows[0]["evidence_id"] = "E001"
+        self.evidence_rows[1]["evidence_id"] = "E002"
+        second_source = self._evidence_row(
+            evidence_id="E003",
+            claim_id="C1",
+            status="pending",
+            claim="Seed literature claim awaiting verification.",
+            source_type="primary_publication",
+            citation_key="seed2",
+        )
+        self.evidence_rows.append(second_source)
+        self.reference_rows.append(
+            self._reference_row(
+                citation_key="seed2",
+                reference_status="verified",
+                title="Second Seed",
+                authors="Example, B.",
+                year="2021",
+                venue="Example Journal",
+                doi="10.1000/seed2",
+                doi_status="verified",
+                publisher_url="https://publisher.example/seed2",
+                metadata_source_url="https://doi.org/10.1000/seed2",
+                verified_by="Researcher",
+                verified_at="2026-09-03",
+            )
+        )
+        self._write(
+            "paper/references.bib",
+            "@article{seed,\n  author = {Example, A.},\n  title = {Seed},\n"
+            "  year = {2020},\n  doi = {10.1000/seed}\n}\n"
+            "@article{seed2,\n  author = {Example, B.},\n  title = {Second Seed},\n"
+            "  year = {2021},\n  doi = {10.1000/seed2}\n}\n",
+        )
+        self._write_csv(
+            "literature/evidence.csv", relationship_columns, self.evidence_rows
+        )
+        self._rewrite_references()
+        self.assertEqual([], self._validate().errors)
+
+    def test_duplicate_evidence_id_fails(self) -> None:
+        relationship_columns = [
+            "evidence_id",
+            *[column for column in EVIDENCE_COLUMNS if column != "evidence_id"],
+        ]
+        self.evidence_rows[0]["evidence_id"] = "E001"
+        self.evidence_rows[1]["evidence_id"] = "E001"
+        self._write_csv(
+            "literature/evidence.csv", relationship_columns, self.evidence_rows
+        )
+        errors = self._validate().errors
+        self.assertTrue(any("duplicate evidence IDs" in error for error in errors))
 
     def test_unsupported_evidence_status_fails(self) -> None:
         self.evidence_rows[0]["status"] = "unreviewed"
@@ -219,12 +568,114 @@ class ResearchValidationTests(unittest.TestCase):
         self.assertTrue(any("unsupported evidence status" in error for error in errors))
 
     def test_supported_literature_requires_locator_and_verification(self) -> None:
-        self.evidence_rows[0]["status"] = "supported"
+        self.evidence_rows[0].update(
+            {"source_locator": "", "verified_by": "", "verified_at": ""}
+        )
         self._rewrite_evidence()
         errors = self._validate().errors
         self.assertTrue(any("source_locator is required" in error for error in errors))
         self.assertTrue(any("verified_by is required" in error for error in errors))
         self.assertTrue(any("verified_at is required" in error for error in errors))
+
+    def test_citation_requires_claim_marker(self) -> None:
+        self._write("paper/manuscript.qmd", "# Draft\n\nClaim [@seed].\n")
+        errors = self._validate().errors
+        self.assertTrue(any("citation block requires a CLAIM marker" in error for error in errors))
+
+    def test_pending_relationship_cannot_be_cited_as_fact(self) -> None:
+        self.evidence_rows[0]["status"] = "pending"
+        self._rewrite_evidence()
+        errors = self._validate().errors
+        self.assertTrue(any("does not have supported or partial evidence" in error for error in errors))
+
+    def test_claim_marker_and_citation_must_match_relationship(self) -> None:
+        self.reference_rows.append(
+            self._reference_row(
+                citation_key="seed2",
+                reference_status="verified",
+                title="Second Seed",
+                authors="Example, B.",
+                year="2021",
+                venue="Example Journal",
+                doi="10.1000/seed2",
+                doi_status="verified",
+                publisher_url="https://publisher.example/seed2",
+                metadata_source_url="https://doi.org/10.1000/seed2",
+                verified_by="Researcher",
+                verified_at="2026-09-03",
+            )
+        )
+        self._rewrite_references()
+        self._write(
+            "paper/references.bib",
+            "@article{seed,\n  author = {Example, A.},\n  title = {Seed},\n"
+            "  year = {2020},\n  doi = {10.1000/seed}\n}\n"
+            "@article{seed2,\n  author = {Example, B.},\n  title = {Second Seed},\n"
+            "  year = {2021},\n  doi = {10.1000/seed2}\n}\n",
+        )
+        self._write(
+            "paper/manuscript.qmd",
+            "# Draft\n\n<!-- CLAIM: C1 -->\nClaim [@seed2].\n",
+        )
+        errors = self._validate().errors
+        self.assertTrue(any("claim-source relationship is missing" in error for error in errors))
+
+    def test_pending_claim_block_requires_todo_or_planned_marker(self) -> None:
+        self.evidence_rows[0]["status"] = "pending"
+        self._rewrite_evidence()
+        self._write("paper/manuscript.qmd", "# Draft\n\n<!-- CLAIM: C1 -->\nUnqualified claim.\n")
+        errors = self._validate().errors
+        self.assertTrue(any("pending claim block requires TODO-EVIDENCE or PLANNED" in error for error in errors))
+
+    def test_bibliography_rejects_each_forbidden_field(self) -> None:
+        for field_name in ("file", "attachment", "note", "annote", "abstract", "keywords"):
+            with self.subTest(field_name=field_name):
+                self._write(
+                    "paper/references.bib",
+                    "@article{seed,\n  author = {Example, A.},\n  title = {Seed},\n"
+                    "  year = {2020},\n  doi = {10.1000/seed},\n"
+                    f"  {field_name} = {{private export content}}\n}}\n",
+                )
+                errors = self._validate().errors
+                self.assertTrue(
+                    any("forbidden field" in error for error in errors)
+                )
+
+    def test_bibliography_rejects_local_paths_on_supported_platforms(self) -> None:
+        paths = {
+            "file URL": "file:///Users/researcher/Zotero/item.pdf",
+            "macOS user": "/Users/researcher/Zotero/item.pdf",
+            "macOS volume": "/Volumes/Research/item.pdf",
+            "Linux home": "/home/researcher/item.pdf",
+            "private": "/private/var/item.pdf",
+            "temporary": "/tmp/item.pdf",
+            "home shorthand": "~/Zotero/item.pdf",
+            "Windows backslash": "C:\\Users\\researcher\\Zotero\\item.pdf",
+            "Windows slash": "C:/Users/researcher/Zotero/item.pdf",
+        }
+        for label, path in paths.items():
+            with self.subTest(label=label):
+                self._write(
+                    "paper/references.bib",
+                    "@article{seed,\n  author = {Example, A.},\n  title = {Seed},\n"
+                    "  year = {2020},\n  doi = {10.1000/seed},\n"
+                    f"  howpublished = {{{path}}}\n}}\n",
+                )
+                errors = self._validate().errors
+                self.assertTrue(any("local path" in error for error in errors))
+
+    def test_bibliography_allows_normal_web_urls_and_text_slashes(self) -> None:
+        self._write(
+            "paper/references.bib",
+            "@article{seed,\n  author = {Example, A./Example, B.},\n"
+            "  title = {Seed with dry/wet comparison},\n  year = {2020},\n"
+            "  doi = {https://doi.org/10.1000/SEED},\n"
+            "  url = {https://publisher.example/articles/seed}\n}\n",
+        )
+        self.reference_rows[0]["title"] = "Seed with dry/wet comparison"
+        self.reference_rows[0]["authors"] = "Example, A./Example, B."
+        self._rewrite_references()
+        self.assertEqual([], self._validate().errors)
 
     def test_supported_computational_claim_requires_manifest(self) -> None:
         self.evidence_rows[1].update(

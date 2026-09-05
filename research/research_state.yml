@@ -8,6 +8,7 @@ project:
   working_title: AI-Driven Multiscale Discovery of Apatite Surfaces for CO2 Mineralization
   manuscript: paper/manuscript.qmd
   bibliography: paper/references.bib
+  reference_registry: literature/references.csv
   evidence_ledger: literature/evidence.csv
   artifact_inventory: research/artifact_inventory.csv
 
@@ -16,7 +17,7 @@ research_question: >-
   investigation for interfacial CO2 mineralization, and what atomistic mechanisms
   control their behavior under hydration?
 
-current_stage: research_integrity_baseline
+current_stage: phase_2a_literature_metadata_and_outline
 current_decision: quarantine_legacy_results_until_provenance_and_quality_gates_pass
 
 compute:
@@ -40,16 +41,29 @@ manuscript_evidence:
   legacy_artifacts_default: ineligible
   synthetic_fallback_data: forbidden
 
+literature_evidence:
+  seed_references: 8
+  seed_metadata_partial: 0
+  new_candidates: 8
+  human_verified_references: 8
+  supported_literature_relationships: 0
+  zotero_better_bibtex: configured_and_clean_export_validated
+  zotero_version_installed: 10.0.1
+  better_bibtex_xpi_version_downloaded: 9.0.63
+  better_bibtex_xpi_sha256: 3a4d080ec94153a8c24bf8275689c5f946d99e314b6ae0fab5060d6970f56388
+  better_bibtex_skip_fields: "file,attachment,note,annote,abstract,keywords"
+
 known_blockers:
   - eight tracked CP2K or XYZ files contain unresolved Git conflict markers
   - no candidate-generation or adsorption-ranking result set is present
   - existing AIMD trajectories are too short, incomplete, or unstable
   - legacy HAP112 postprocessing lacks raw inputs and reports poor quality
   - no populated MLIP dataset, validated model, scale-up run, or enhanced-sampling run is present
-  - bibliography metadata and claim-specific locators require primary-source verification
+  - no literature claim has a legal full-text source locator
 
 next_actions:
   - review the artifact inventory and ineligibility decisions with the research team
   - resolve legacy conflict markers only after a separate scientific-input review
-  - perform a focused HAP-surface and HAP-CO2 literature search when online research is authorized
+  - screen the eight new HAP-surface and HAP-CO2 candidates without exceeding the current search cap
+  - obtain legal full text and claim-specific locators before promoting any literature relationship
   - define quantitative go/no-go gates before new compute

@@ -49,6 +49,10 @@ paper/_output/
 paper/*.pdf
 paper/*.tex
 literature/pdfs/
+literature/attachments/
+literature/zotero/
+.zotero/
+**/zotero.sqlite*
 research/private/
 workflow/profiles/*.local.yaml
 .research-runs/

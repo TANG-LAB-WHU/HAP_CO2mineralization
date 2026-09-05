@@ -27,7 +27,7 @@ The repository is organized as a nominal pipeline from Phase 0 (Generative Disco
 | **Phase 2-4** | `3.ML_AIMD/` | AIMD data generation, MLIP training, LAMMPS scale-up, and enhanced sampling. | **Partial/planned:** three short legacy AIMD outputs exist; no validated dataset, model, scale-up, or enhanced-sampling result |
 | **Phase 4** | `4.PostProcess_Analysis/` | Analyze qualified LAMMPS outputs and compare materials. | **Legacy analysis, rejected for manuscript use:** source data and adequate quality evidence are missing |
 | **Phase 5** | `5.Figure_Publication/` | Produce provenance-complete publication figures. | **Placeholder:** no qualifying publication figure exists |
-| **Writing** | `paper/`, `literature/`, `research/`, `workflow/` | Maintain the manuscript, bibliography, evidence ledger, state, and provenance contracts. | **Implemented baseline; validation is being strengthened** |
+| **Writing** | `paper/`, `literature/`, `research/`, `workflow/` | Maintain the manuscript, reference registry, bibliography, evidence relationships, state, and provenance contracts. | **Phase 2A validated:** eight seeds human-verified and cleanly BBT-exported; all claim-specific full-text locators remain pending |
 | **Shared** | `utils/` | Shared structure and format utilities. | **Partial:** only selected utilities contain implementations |
 
 ---
