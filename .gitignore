@@ -49,6 +49,7 @@ paper/_output/
 paper/*.pdf
 paper/*.tex
 literature/pdfs/
+tmp/pdfs/
 literature/attachments/
 literature/zotero/
 .zotero/

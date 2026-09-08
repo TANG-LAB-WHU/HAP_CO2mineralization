@@ -37,3 +37,11 @@ Record decisions that change scope, assumptions, data, models, or interpretation
 - **Zotero/BBT state:** The Zotero 10.0.1 and Better BibTeX 9.0.63 GUI gate, collections, native `Citation Key` fields, and automatic export were confirmed. Zotero 10 plus BBT 9 uses the native field, so the legacy pin action is no longer required.
 - **Export finding:** The first automatic export contained six local Zotero attachment paths. They were removed from the repository copy; the BBT field-omission setting must be corrected before the next export. Better BibTeX Git integration remains disabled.
 - **Final export validation:** The user set `Fields to omit from export` to `file,attachment,note,annote,abstract,keywords` and reran the verified-collection auto-export. The regenerated file was checked on 2026-09-05 and contains no forbidden fields, local paths, or Zotero attachment identifiers; the earlier export blocker is resolved.
+
+## 2026-09-05 — Phase 2B-1 machine extraction remains below the human gate
+
+- **Decision:** Rank all 16 registry references by project relevance and use at most four sources to validate the full-text evidence-card workflow.
+- **First wave:** Qomi covers general mineralization/interfacial-water background, Astala is a direct HAP surface/hydration candidate, Nowicki is only a 500 °C scope boundary, and Kühne supports an actually used CP2K method capability.
+- **Acquisition:** Three official PDFs passed fail-closed validation; the RSC PDF request for Nowicki returned HTTP 403 and remains `blocked_fulltext`. No third-party mirror or document conversion is permitted.
+- **Evidence boundary:** Every card remains machine-only and `human_confirmed: false`. The ledger retains its Phase 2A statuses and empty source locators; candidate metadata, machine locator extraction, human card confirmation, ledger promotion, and manuscript citation activation remain separate decisions.
+- **Compute boundary:** Legacy CP2K execution exists, but no legacy calculation is manuscript-eligible. The CP2K paper supports software capability only, not validity of repository results.

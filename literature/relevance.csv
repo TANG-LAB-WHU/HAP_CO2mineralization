@@ -1,0 +1,17 @@
+priority_rank,citation_key,relevance_category,coverage_area,repo_use_status,selection_wave,target_claim_ids,rationale,assessed_at
+1,qomi2022mineralization,core_direct,mineralization_interface_background,not_applicable,phase_2b_1,C001,"General mineralization and interfacial-water background; not HAP-specific and not evidence of HAP performance.",2026-09-05
+2,astala2008hapwater,core_direct,hap_surface_hydration,not_applicable,phase_2b_1,C010,"Direct HAP surface and water-adsorption evidence candidate; broader hydrated-interface wording still requires scope review.",2026-09-05
+3,cheng1998co2,core_direct,hap_CO2_adsorption,not_applicable,later,C011,"Most direct CO2-on-HAP candidate, deferred because an approved accessible full text is not currently available.",2026-09-05
+4,corno2009water,core_direct,hap_surface_hydration,not_applicable,later,C010,"Direct comparison of water adsorption on named HAP facets; reserved for a later extraction wave.",2026-09-05
+5,peccati2018carbonated,core_direct,carbonated_apatite_hydration,not_applicable,later,C010,"Compares water reactivity on carbonated apatite and HAP; carbonate substitution must not be conflated with CO2 reaction.",2026-09-05
+6,mekhemer2019co2,core_direct,apatite_CO2_interaction,not_applicable,later,C011,"Directly relevant spectroscopy and microscopy candidate with HCl, biological-apatite, and maturity scope limits.",2026-09-05
+7,kuhne2020cp2k,method_support,actual_compute_method,legacy_run_unqualified,phase_2b_1,C006,"Supports CP2K electronic-structure and AIMD capabilities; repository runs exist but none are manuscript-eligible.",2026-09-05
+8,wang2018hapsurface,contextual,hap_surface_termination,not_applicable,later,C010,"Potential context for hydroxyl-dependent surface structure, not direct hydrated-interface evidence.",2026-09-05
+9,bouharras2025apatiteco2,contextual,apatite_gas_adsorption,not_applicable,later,C011,"Apatite gas-adsorption context that must not be equated with hydrated mineralization.",2026-09-05
+10,nowicki2024capture,contextual,high_temperature_CO2_capture_boundary,not_applicable,phase_2b_1,C011,"Scope-boundary candidate limited to high-temperature capture and carbonation at 500 °C; not a direct precedent for ambient hydrated interfaces.",2026-09-05
+11,zeni2025mattergen,conditional_on_actual_use,generative_materials,implemented_no_qualified_run,later,C002,"MatterGen invocation code exists, but no campaign output, summary, or qualifying manifest is present.",2026-09-05
+12,batatia2022mace,conditional_on_actual_use,machine_learning_potential,implemented_no_qualified_run,later,C003,"MACE conversion code and input templates exist, but no model or qualifying run artifact is present.",2026-09-05
+13,zhang2018deep,conditional_on_actual_use,machine_learning_potential,implemented_no_qualified_run,later,C005,"DeepMD conversion and training configuration exist, but no populated dataset or validated model is present.",2026-09-05
+14,ong2013pymatgen,conditional_on_actual_use,surface_construction,placeholder_only,later,C007,"The slab script only announces a pymatgen plan and does not import or execute surface construction.",2026-09-05
+15,plimpton1995lammps,conditional_on_actual_use,classical_molecular_dynamics,implemented_no_qualified_run,later,C008,"LAMMPS input templates exist, but no manuscript-eligible production run is present.",2026-09-05
+16,bonomi2019plumed,reject_or_defer,enhanced_sampling,placeholder_only,defer,C009,"Enhanced-sampling and PLUMED files are empty placeholders; reassess only after implementation and actual use.",2026-09-05

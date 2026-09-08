@@ -1,6 +1,6 @@
 PYTHON ?= python3
 
-.PHONY: setup check test paper paper-pdf preview clean
+.PHONY: setup check test evidence-local-check paper paper-pdf preview clean
 
 setup:
 	bash scripts/bootstrap_macos.sh --install
@@ -11,6 +11,9 @@ check:
 
 test:
 	$(PYTHON) -m unittest discover -s tests -p 'test_*.py'
+
+evidence-local-check:
+	$(PYTHON) scripts/check_manuscript.py --check-local-pdfs
 
 paper: check
 	quarto render paper --to html

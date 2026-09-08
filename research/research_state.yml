@@ -1,5 +1,5 @@
 schema_version: 1
-last_updated: 2026-09-03
+last_updated: 2026-09-05
 active_branch: shawn_dev
 workflow_mode: local_writing
 
@@ -9,7 +9,9 @@ project:
   manuscript: paper/manuscript.qmd
   bibliography: paper/references.bib
   reference_registry: literature/references.csv
+  relevance_registry: literature/relevance.csv
   evidence_ledger: literature/evidence.csv
+  evidence_cards: literature/notes
   artifact_inventory: research/artifact_inventory.csv
 
 research_question: >-
@@ -17,7 +19,7 @@ research_question: >-
   investigation for interfacial CO2 mineralization, and what atomistic mechanisms
   control their behavior under hydration?
 
-current_stage: phase_2a_literature_metadata_and_outline
+current_stage: phase_2b_1_machine_fulltext_extraction_pending_human
 current_decision: quarantine_legacy_results_until_provenance_and_quality_gates_pass
 
 compute:
@@ -47,6 +49,11 @@ literature_evidence:
   new_candidates: 8
   human_verified_references: 8
   supported_literature_relationships: 0
+  relevance_rows: 16
+  phase_2b_1_selected_references: 4
+  extracted_pending_human_cards: 3
+  blocked_fulltext_cards: 1
+  human_confirmed_cards: 0
   zotero_better_bibtex: configured_and_clean_export_validated
   zotero_version_installed: 10.0.1
   better_bibtex_xpi_version_downloaded: 9.0.63
@@ -59,11 +66,13 @@ known_blockers:
   - existing AIMD trajectories are too short, incomplete, or unstable
   - legacy HAP112 postprocessing lacks raw inputs and reports poor quality
   - no populated MLIP dataset, validated model, scale-up run, or enhanced-sampling run is present
-  - no literature claim has a legal full-text source locator
+  - no literature claim has a human-confirmed full-text source locator
+  - nowicki2024capture full-text extraction is blocked because the approved RSC PDF endpoint returned HTTP 403
 
 next_actions:
   - review the artifact inventory and ineligibility decisions with the research team
   - resolve legacy conflict markers only after a separate scientific-input review
-  - screen the eight new HAP-surface and HAP-CO2 candidates without exceeding the current search cap
-  - obtain legal full text and claim-specific locators before promoting any literature relationship
+  - Shawn must review the three extracted cards against the exact recorded PDF checksums
+  - resolve the Nowicki full-text blocker only through the approved publisher or a user-supplied licensed copy
+  - keep all claim relationships pending until a separate human evidence-reconciliation decision
   - define quantitative go/no-go gates before new compute

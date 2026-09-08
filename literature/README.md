@@ -5,7 +5,9 @@ The reference registry answers “has this publication's bibliographic identity 
 ## Files and row semantics
 
 - `references.csv`: exactly one row per publication. `reference_status` is one of `candidate`, `metadata_partial`, `verified`, or `rejected`.
+- `relevance.csv`: exactly one row per registry publication. It ranks project relevance and records actual repository-use maturity without copying bibliographic or evidence status.
 - `evidence.csv`: exactly one row per claim-source relationship. `evidence_id` is unique; `claim_id` may repeat when several sources are assessed for one claim.
+- `notes/<citation_key>.md`: a machine evidence card with legal-full-text provenance, checksum, candidate locator, scoped paraphrase, and an explicit human-review gate.
 - `search_log.md`: exact databases/services, queries, dates, screening decisions, and DOI/title de-duplication results.
 - `paper/references.bib`: the only bibliography available to Quarto. It must contain exactly the `verified` reference keys and no attachment paths.
 
@@ -30,6 +32,27 @@ The trace used by the checker is:
 Pending manuscript material must use `TODO-EVIDENCE <claim-id>` or `PLANNED`; candidate and metadata-partial sources are not active citations.
 
 The checker requires a non-empty BibTeX `author` field but does not yet compare creator lists with the registry. Reliable comparison is deferred because consortium authors, LaTeX accent encoding, name particles, and ordered full creator lists require structured parsing; do not replace this with a lossy string comparison.
+
+## Full-text evidence cards
+
+Phase 2B keeps bibliographic identity, project relevance, machine extraction, human confirmation, ledger promotion, and citation activation as separate gates:
+
+The four-source first wave validates this workflow only. It does not claim complete coverage of HAP–CO2 hydrated-interface literature.
+
+```text
+references.csv metadata status
+  -> relevance.csv selection
+  -> notes/<citation_key>.md machine extraction
+  -> Shawn confirms the exact PDF SHA and locator
+  -> separate evidence.csv promotion decision
+  -> separate manuscript citation activation
+```
+
+Downloads fail closed. The final response URL must remain HTTPS; the response must be successful and must not be a login, error, or challenge page; bytes must start with `%PDF-`; `pdfinfo` must report at least one page; and `pdftotext` must yield non-empty text whose title and author identity match the registry. A DOI printed in the PDF is checked directly. When an accepted manuscript or preprint omits the journal DOI, the card must instead name the official landing metadata that associates that exact repository record with the DOI. Record SHA-256 only after all checks pass, and delete invalid bytes rather than converting HTML or XML into a PDF.
+
+All Codex-generated Phase 2B-1 cards use `human_confirmed: false`. Their candidate locators are not copied into `evidence.csv`, and relationships remain `pending` until Shawn reviews the same checksum and explicitly authorizes a later reconciliation. The combined verbatim excerpt allowance is at most 25 words per card and excludes title, abstract, and search-snippet text.
+
+`make check` validates source-controlled records and works in a clean clone without local PDFs. `make evidence-local-check` additionally requires Poppler and validates ignored PDFs through no-follow directory/file descriptors. It hashes the bytes copied from the opened descriptor, runs every Poppler command against that private stable snapshot, renders locator pages in the same atomically created system-temporary directory, and removes the directory on success or failure.
 
 ## Search boundary
 
@@ -59,4 +82,4 @@ With Zotero 10 and Better BibTeX 9:
 
 The Zotero GUI gate was completed on 2026-09-04 with Zotero 10.0.1 and Better BibTeX 9.0.63: the three collections exist, the eight seed items use native `Citation Key` values, and a real automatic export was observed. The export setting `Fields to omit from export` is `file,attachment,note,annote,abstract,keywords`. A regenerated export was validated on 2026-09-05 with no forbidden fields, local paths, or Zotero attachment identifiers. Better BibTeX Git integration remains disabled.
 
-PDFs belong in Zotero-managed storage outside the repository. `literature/pdfs/`, `literature/attachments/`, `literature/zotero/`, `.zotero/`, and `zotero.sqlite*` are defense-in-depth ignore targets and must never be tracked.
+Long-term PDFs belong in Zotero-managed storage outside the repository. During an authorized evidence-extraction pass, local working copies may be kept only in ignored `literature/pdfs/`. Validator snapshots and renders use private system-temporary directories and must leave no residue; ignored `tmp/pdfs/` is only a manual scratch location. `literature/pdfs/`, `tmp/pdfs/`, `literature/attachments/`, `literature/zotero/`, `.zotero/`, and `zotero.sqlite*` must never be tracked.

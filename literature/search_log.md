@@ -98,3 +98,16 @@ Record one row for every screened item, including exclusions, using exactly thes
 ```csv
 query_id,title,doi_or_url,decision,reason,reviewed_at
 ```
+
+## 2026-09-05 — Phase 2B-1 full-text acquisition
+
+This was an acquisition pass for the four references selected in `relevance.csv`, not a new literature search. No new candidate was added.
+
+| Citation key | Landing page | Requested/final PDF URL | Outcome |
+|---|---|---|---|
+| `qomi2022mineralization` | `https://www.osti.gov/biblio/1889464` | `https://www.osti.gov/servlets/purl/1889464` | Valid 47-page PDF, SHA-256 `6974d5c3caaf6719fe63e63ce28b02866c6836d1bf4306f61358e89e3c0daeb2`. OSTI labels the file “Accepted Manuscript (DOE)” and associates the record with DOI `10.1038/s41570-022-00418-1`; the file is not treated as the version of record. |
+| `astala2008hapwater` | `https://journals.aps.org/prb/abstract/10.1103/PhysRevB.78.075427` | `https://harvest.aps.org/v2/journals/articles/10.1103/PhysRevB.78.075427/fulltext` | Valid 11-page APS PDF, SHA-256 `fd022f917fe8043836ff8ebe11c6493d27fc147127e28899d4a78e972684ccb4`; title, authors, and DOI appear in the PDF. |
+| `nowicki2024capture` | `https://pubs.rsc.org/en/content/articlelanding/2024/ma/d3ma00909b` | `https://pubs.rsc.org/en/content/articlepdf/2024/ma/d3ma00909b` | `blocked_fulltext`: three fail-closed attempts returned HTTP 403 and `text/html`; no PDF bytes were retained and no locator was created. No mirror was attempted. |
+| `kuhne2020cp2k` | `https://arxiv.org/abs/2003.03868` | `https://arxiv.org/pdf/2003.03868v2` | Valid 52-page arXiv v2 preprint, SHA-256 `183c9526232048e4f578a5fe08a5a35cf4fc6eb989b00c3a71239df780d57627`. Official arXiv metadata associates the preprint with DOI `10.1063/5.0007045`; it is not treated as the publisher version. |
+
+All successful files passed `%PDF-`, `pdfinfo`, non-empty `pdftotext`, publication-identity, SHA-256, and locator-page rendering checks. These machine records do not promote an evidence relationship or activate a citation.

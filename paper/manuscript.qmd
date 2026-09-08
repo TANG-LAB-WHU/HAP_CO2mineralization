@@ -72,27 +72,27 @@ The intended contributions are a reproducible multiscale pipeline, a screened ca
 ## Generative candidate discovery
 
 <!-- CLAIM: C002 -->
-- **TODO-EVIDENCE C002 — MatterGen method basis:** after full-text verification, cite the exact model capability and keep its use in this repository explicitly **PLANNED**. A future campaign must record model version, seeds, generation counts, filtering definitions, thresholds, and exclusions.
+- **TODO-EVIDENCE C002 — MatterGen method basis:** after full-text verification, cite only the exact model capability. The repository implements a MatterGen CLI invocation, but no campaign output, summary, or qualifying manifest is present; an evidence-eligible campaign remains **PLANNED** and must record model version, seeds, generation counts, filtering definitions, thresholds, and exclusions.
 
 ## Surface construction and rapid screening
 
 <!-- CLAIM: C007 -->
-- **TODO-EVIDENCE C007 — slab construction tooling:** verify whether `ong2013pymatgen` directly supports the surface-construction wording. If not, narrow the claim or locate a more direct primary/software source. The repository implementation remains incomplete.
+- **TODO-EVIDENCE C007 — slab construction tooling:** verify whether `ong2013pymatgen` directly supports the surface-construction wording. The current slab script is a placeholder that announces a pymatgen plan but neither imports pymatgen nor constructs a surface; implementation and use remain **PLANNED**.
 
 <!-- CLAIM: C003 -->
-- **TODO-EVIDENCE C003 — MACE screening basis:** verify the architecture statement at a full-text locator. Any use for pre-relaxation or ranking remains **PLANNED** and requires system-domain checks; foundation-model scores cannot substitute for first-principles validation.
+- **TODO-EVIDENCE C003 — MACE screening basis:** verify the architecture statement at a full-text locator. Conversion code and LAMMPS input templates exist, but no model or qualifying run artifact is present; pre-relaxation or ranking remains **PLANNED** and requires system-domain checks. Foundation-model scores cannot substitute for first-principles validation.
 
 - Predefine Miller indices, termination enumeration, CO₂ placement rules, adsorption-energy convention, charge assumptions, reference energies, relaxation settings, and failed-run handling before producing a ranking.
 
 ## First-principles sampling
 
 <!-- CLAIM: C006 -->
-- **TODO-EVIDENCE C006 — CP2K capability:** obtain a full-text locator before citing package capabilities. CP2K sampling is **PLANNED**; future reporting must include the functional, dispersion, pseudopotentials, basis sets, cutoffs, cell, ensemble controls, timestep, trajectory length, and convergence criteria.
+- **TODO-EVIDENCE C006 — CP2K capability:** a machine-extracted preprint locator awaits human confirmation before any citation is activated. The repository contains legacy CP2K geometry-optimization and short AIMD execution artifacts, but none is manuscript-eligible; any future qualifying sampling campaign remains **PLANNED**. Reporting must include the functional, dispersion, pseudopotentials, basis sets, cutoffs, cell, ensemble controls, timestep, trajectory length, and convergence criteria.
 
 ## Machine-learning interatomic potentials
 
 <!-- CLAIM: C005 -->
-- **TODO-EVIDENCE C005 — Deep Potential basis:** obtain a full-text locator for the exact representation/training claim before citation. Do not infer accuracy for this system from the method paper.
+- **TODO-EVIDENCE C005 — Deep Potential basis:** obtain a full-text locator for the exact representation/training claim before citation. Dataset-conversion code and training configuration exist, but no populated dataset or validated model is present; do not infer accuracy for this system from the method paper.
 
 <!-- CLAIM: C003 -->
 - **TODO-EVIDENCE C003 — MACE alternative:** keep the MACE route **PLANNED** until system-specific data and validation exist.
@@ -102,10 +102,10 @@ The intended contributions are a reproducible multiscale pipeline, a screened ca
 ## Large-scale dynamics and enhanced sampling
 
 <!-- CLAIM: C008 -->
-- **TODO-EVIDENCE C008 — LAMMPS engine basis:** obtain a full-text locator before citing the engine paper. Scale-up simulations and all listed observables remain **PLANNED**.
+- **TODO-EVIDENCE C008 — LAMMPS engine basis:** obtain a full-text locator before citing the engine paper. LAMMPS input configurations exist, but no qualifying production run is present; scale-up simulations and all listed observables remain **PLANNED**.
 
 <!-- CLAIM: C009 -->
-- **TODO-EVIDENCE C009 — PLUMED protocol basis:** consortium-author metadata is bibliographically verified, but a full-text claim locator remains pending. Any enhanced-sampling calculation remains **PLANNED** and must disclose collective variables, bias parameters, convergence diagnostics, and reweighting.
+- **TODO-EVIDENCE C009 — PLUMED protocol basis:** consortium-author metadata is bibliographically verified, but a full-text claim locator remains pending. The tracked enhanced-sampling README, inputs, `plumed.dat`, and analysis script are empty placeholders; implementation and any enhanced-sampling calculation remain **PLANNED** and must disclose collective variables, bias parameters, convergence diagnostics, and reweighting.
 
 ## Reproducibility and evidence control
 
