@@ -1,5 +1,6 @@
 """Contract tests use explicit toy fixtures, never fallback scientific datasets."""
-import sys,tempfile,unittest
+import hashlib,json,sys,tempfile,unittest
+from unittest.mock import patch
 from pathlib import Path
 import numpy as np
 from ase import Atoms
@@ -13,6 +14,20 @@ class RefinementContracts(unittest.TestCase):
         for key,value in [('replicas',9),('timestep_fs',.5),('discard_initial_steps',17)]:
             changed={'sampling':dict(cfg['sampling'],**{key:value})}
             with self.assertRaises(ValueError):rp.validate_sampling_profile(changed)
+
+    def test_capture_manifest_tampering_is_rejected(self):
+        import capture_refinement as capture
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);run=root/'.research-runs/test-case';run.mkdir(parents=True)
+            manifest=run/'reproducibility-manifest.json'
+            manifest.write_text(json.dumps({'artifacts':[], 'external_inputs':[]}))
+            anchor=root/'workflow/validation/records/LOCAL-HAP-TESTCASE.json';anchor.parent.mkdir(parents=True)
+            anchor.write_text(json.dumps({'reproducibility_manifest_sha256':hashlib.sha256(manifest.read_bytes()).hexdigest()}))
+            # A changed manifest must be rejected before it can certify any file list.
+            manifest.write_text(json.dumps({'artifacts':[], 'external_inputs':[], 'changed':True}))
+            with patch.object(capture,'ROOT',root),patch.object(sys,'argv',['capture_refinement.py','--run',str(run),'--verify']):
+                with self.assertRaisesRegex(ValueError,'manifest changed'):
+                    capture.main()
 
     def test_charge_gate_rejects_non_neutral_fragment(self):
         a=Atoms('OH',positions=[[0,0,0],[0,0,.96]],cell=[10,10,10],pbc=True)

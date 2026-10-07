@@ -15,9 +15,9 @@ def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def empty(ax,label):ax.text(.5,.5,'MISSING / NOT COMPLETED\n'+label,ha='center',va='center',transform=ax.transAxes,color='#b42318');ax.set_axis_off()
 def layout(r,name,title,axes=(2,2),size=(10,8)):
     fig,axs=plt.subplots(*axes,figsize=size,squeeze=False);fig.suptitle(f'{r.name} | {title}',fontsize=14,x=.03,ha='left');return fig,axs.ravel()
-def finish(fig,d,name,sources):
+def finish(fig,d,name,sources,top=.94):
     fig.text(.02,.01,'Local diagnostic / pilot evidence only. No production or mineralization claim.',fontsize=8,color='#666666')
-    fig.tight_layout(rect=[0,.035,1,.94]);fig.savefig(d/f'{name}.png',dpi=170);fig.savefig(d/f'{name}.pdf');plt.close(fig)
+    fig.tight_layout(rect=[0,.035,1,top]);fig.savefig(d/f'{name}.png',dpi=170);fig.savefig(d/f'{name}.pdf');plt.close(fig)
     return {'figure':name,'sources':[{'path':str(p),'sha256':sha(p)} for p in sources if p.is_file()]}
 def geom(ax,a,axes,title):
     s=np.array(a.get_chemical_symbols());pos=a.positions
@@ -30,6 +30,7 @@ def geom(ax,a,axes,title):
     ax.set(xlabel='xyz'[axes[0]]+' (A)',ylabel='xyz'[axes[1]]+' (A)',title=title);ax.set_aspect('equal',adjustable='datalim')
 def main():
     p=argparse.ArgumentParser();p.add_argument('--run',type=Path,required=True);p.add_argument('--animate',action='store_true');a=p.parse_args();r=a.run;d=r/'figures';d.mkdir(exist_ok=True);manifest=[]
+    if (r/'reproducibility-manifest.json').exists():raise RuntimeError('Captured evidence is immutable; copy the run to a separate review directory before re-rendering')
     fig,ax=layout(r,'structure','Structure and chemical identity')
     sources=[]
     for k,label in enumerate(['parallel','antiparallel']):
@@ -123,17 +124,21 @@ def main():
             t=q['time_fs'];label=f"R{q['replica']} {q['split']}"
             ax[0].plot(t,q['temperature_K'],label=label);ax[1].plot(t,(np.array(q['conserved_eV'])-q['conserved_eV'][0])*1000/47);ax[2].plot(t,q['fmax_eV_A']);ax[3].plot(t,q['rms_displacement_A']);ax[4].plot(t,q['minimum_distance_A']);ax[5].plot(t,q['potential_acf'])
         for x,y,title in zip(ax,['Temperature (K)','Conserved-energy change (meV/atom)','Maximum force (eV/A)','RMS displacement (A)','Minimum pair distance (A)','Normalized potential autocorrelation'],['NVE: not temperature-controlled','Short-run drift diagnostic','Finite force labels','COM translation removed','Contact check','No decorrelation claim']):x.set(xlabel='Time / lag (fs)',ylabel=y,title=title)
-        ax[0].legend(fontsize=12,ncol=2);ax[4].axhline(.7,color='black',ls=':');sources=[path]
+        handles,labels=ax[0].get_legend_handles_labels();fig.legend(handles,labels,ncol=4,loc='upper center',bbox_to_anchor=(.52,.95),fontsize=10)
+        ax[4].axhline(.7,color='black',ls=':');sources=[path]
     else:
         for x in ax:empty(x,'aligned AIMD labels')
-    manifest.append(finish(fig,d,'04_aimd',sources))
+    manifest.append(finish(fig,d,'04_aimd',sources,top=.90))
     fig,ax=layout(r,'splits','Dataset coverage and leakage audit');path=r/'dataset_audit.json';sources=[]
     if path.exists():
         q=load(path);index=q['index'];roles=['train','valid','test'];colors=['#3975a5','#d49230','#429177'];baseline=np.mean([x['energy_eV'] for x in index if x['role']=='train'])
+        energy_bins=np.histogram_bin_edges([(x['energy_eV']-baseline)*1000/47 for x in index],bins=8);force_bins=np.histogram_bin_edges([x['fmax_eV_A'] for x in index],bins=8)
         for role,c in zip(roles,colors):
-            subset=[x for x in index if x['role']==role];ax[0].hist([(x['energy_eV']-baseline)/47 for x in subset],alpha=.5,label=role,color=c,bins=8);ax[1].hist([x['fmax_eV_A'] for x in subset],alpha=.5,label=role,color=c,bins=8)
-        ax[0].set(xlabel='(E - training mean) / atom (eV)',ylabel='Frames');ax[1].set(xlabel='Maximum force (eV/A)',ylabel='Frames');ax[0].legend();ax[1].legend()
+            subset=[x for x in index if x['role']==role];ax[0].hist([(x['energy_eV']-baseline)*1000/47 for x in subset],alpha=.5,label=role,color=c,bins=energy_bins);ax[1].hist([x['fmax_eV_A'] for x in subset],alpha=.5,label=role,color=c,bins=force_bins)
+        ax[0].set(xlabel='(E - training mean) / atom (meV)',ylabel='Frames');ax[1].set(xlabel='Maximum force (eV/A)',ylabel='Frames');ax[0].legend();ax[1].legend()
         dist=np.load(r/'dataset/geometry_distance_matrix.npy');im=ax[2].imshow(dist,cmap='viridis');fig.colorbar(im,ax=ax[2],label='Pair-distance-vector RMS difference (A)');ax[2].set(xlabel='Frame index (train / valid / test)',ylabel='Frame index')
+        for boundary in np.cumsum([q['frames_per_split'][x] for x in roles])[:-1]-.5:
+            ax[2].axhline(boundary,color='white',lw=.8);ax[2].axvline(boundary,color='white',lw=.8)
         counts=' / '.join(str(q['frames_per_split'][x]) for x in ['train','valid','test'])
         ax[3].text(.05,.9,f"Train / valid / test: {counts}\nDisjoint replicas: {q['replica_disjoint']}\nCross-split minimum: {q['cross_split_min_pair_distance_rms_A']:.4f} A\nPredefined threshold: {q['threshold_A']:.3f} A\n\nWithin-replica frames remain correlated.\nSmall local basin; no broad transfer claim.\nNo virial labels or pressure accuracy claim.",va='top',transform=ax[3].transAxes);ax[3].set_axis_off();sources=[path,r/'dataset/geometry_distance_matrix.npy']
     else:
@@ -145,10 +150,10 @@ def main():
         if path.exists():
             q=np.genfromtxt(path,names=True);names=q.dtype.names
             for key,style in [('rmse_f_trn','-'),('rmse_f_val','--')]:
-                if key in names:ax[0].semilogy(q[names[0]],q[key],style,label=name+'/'+key)
+                if key in names:ax[0].semilogy(q[names[0]],q[key],style,label=name+('/train' if key.endswith('trn') else '/validation'))
             sources.append(path)
     ax[0].axhline(.1,color='black',ls=':');ax[0].set(xlabel='Training update',ylabel='Force RMSE (eV/A)',title='Overfit is a separate implementation check')
-    if sources:ax[0].legend(fontsize=12)
+    if sources:ax[0].legend(fontsize=9)
     else:empty(ax[0],'DeepMD learning curves')
     path=r/'model_evaluation.json'
     if path.exists():

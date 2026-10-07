@@ -43,6 +43,11 @@ def cp_jobs(r,jobs):
         except Exception as e:save(mp,{'status':'failed','input_sha256':sha(d/job['input']),'error':repr(e)});raise
 def main():
     p=argparse.ArgumentParser();p.add_argument('stage',choices=['all','references','aimd','dft','fragments','train','lammps']);p.add_argument('--run',type=Path,required=True);a=p.parse_args();r=a.run.resolve()
+    if (r/'reproducibility-manifest.json').exists():
+        if a.stage!='all':raise RuntimeError('Captured evidence is immutable; use a new run ID for a new calculation')
+        subprocess.run([sys.executable,'workflow/capture_refinement.py','--run',str(r),'--verify'],cwd=ROOT,check=True)
+        print('Captured run verified; no calculations or figures overwritten',flush=True)
+        return
     if a.stage=='all':
         r.mkdir(parents=True,exist_ok=True)
         def stage(name,gpu=False,allow_failed=False):

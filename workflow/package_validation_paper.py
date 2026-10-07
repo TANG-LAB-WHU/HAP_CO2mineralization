@@ -34,16 +34,17 @@ plot inputs. `literature/` records primary-source access limits; `references.bib
 only entries cited by the manuscript. The separately delivered GIF shows actual saved
 LAMMPS frames without interpolation. It is not a mineralization movie.
 
-On the configured Shawn-PC checkout, regenerate the calculations/figures using:
+On the configured Shawn-PC checkout, verify the retained run and rebuild the document using:
 
 ```powershell
 cd D:\\project\\HAP_CO2mineralization
 .\\workflow\\run-refinement.ps1 -Stage all -Run refine-001
-.\\workflow\\run-refinement.ps1 -Stage plots -Run refine-001
 python workflow/build_validation_paper.py --run .research-runs/refine-001
 ```
 
-These simulation commands depend on the pinned local runtime and retained raw outputs,
+A captured run is immutable: the all-stage command verifies hashes without rewriting it.
+Use a new run ID for new calculations, or a separate review copy for figure edits.
+These commands depend on the pinned local runtime and retained raw outputs,
 documented in `workflow/REFINEMENT.md`; the Overleaf project itself is self-contained for
 document compilation, not a redistribution of model weights or all trajectories.
 '''

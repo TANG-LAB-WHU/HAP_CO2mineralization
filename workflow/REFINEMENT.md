@@ -169,3 +169,9 @@ the inventory with publication eligibility disabled.
 The [HPC handoff](HPC_HANDOFF.md) lists disabled scripts, actual pilot settings, restart
 requirements, and the few site-specific details still needed. It makes no cluster-test
 or production-convergence claim.
+
+After final capture, the all-stage entrypoint verifies the frozen artifact manifest and
+returns without rerunning calculations or regenerating figures. Stage-specific commands
+and plotting refuse to overwrite that captured run. Use a new run ID for new physics;
+for presentation-only edits, work on a separate review copy and retain the original
+manifest and figures. This protects a reproducibility record from routine rerendering.

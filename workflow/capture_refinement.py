@@ -16,6 +16,11 @@ def append_row(path,row):
 def main():
     p=argparse.ArgumentParser();p.add_argument('--run',type=Path,required=True);p.add_argument('--verify',action='store_true');a=p.parse_args();r=a.run.resolve()
     if a.verify:
+        tag=r.name.upper().replace('-','').replace('_','')
+        anchor=ROOT/'workflow/validation/records'/f'LOCAL-HAP-{tag}.json'
+        registered=json.loads(anchor.read_text())
+        if sha(r/'reproducibility-manifest.json')!=registered['reproducibility_manifest_sha256']:
+            raise ValueError('Captured manifest changed since evidence registration')
         record=json.loads((r/'reproducibility-manifest.json').read_text())
         for entry in record['artifacts']:
             file=(ROOT/entry['path']).resolve()
