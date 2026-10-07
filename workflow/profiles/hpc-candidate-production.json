@@ -46,12 +46,31 @@
     "timestep_fs": [
       0.125,
       0.25
+    ],
+    "force_label_grid_candidates": [
+      {
+        "cutoff_Ry": 900,
+        "relative_cutoff_Ry": 80
+      },
+      {
+        "cutoff_Ry": 1100,
+        "relative_cutoff_Ry": 100
+      },
+      {
+        "cutoff_Ry": 1300,
+        "relative_cutoff_Ry": 120
+      }
+    ],
+    "scf_epsilon_candidates": [
+      1e-07,
+      1e-08
     ]
   },
   "proposed_gates": {
     "adsorption_difference_change_eV": 0.02,
     "force_rmse_eV_A": 0.1,
-    "energy_rmse_eV_atom": 0.01
+    "energy_rmse_eV_atom": 0.01,
+    "force_grid_component_rmse_change_eV_A": 0.02
   },
   "requires": [
     "scientific OH/termination review",
@@ -60,5 +79,18 @@
     "validated model",
     "autocorrelation-based sampling adequacy"
   ],
-  "job_template": "workflow/hpc/hap-stage.sbatch"
+  "job_template": "workflow/hpc/hap-stage.sbatch",
+  "local_force_label_evidence": {
+    "run": "refine-001",
+    "record": ".research-runs/refine-001/force_grid_audit.json",
+    "selected_cutoff_Ry": 1100,
+    "selected_relative_cutoff_Ry": 100,
+    "selected_scf_epsilon": 1e-08,
+    "scope": "One-geometry 900/80 versus 1100/100 force sensitivity only; the 1300/120 trial and global convergence remain PLANNED."
+  },
+  "job_templates": {
+    "references_and_aimd": "workflow/hpc/hap-stage.sbatch",
+    "training_and_dynamics": "workflow/hpc/hap-mlip.sbatch",
+    "dependencies_print_only": "workflow/hpc/dependencies.sh"
+  }
 }

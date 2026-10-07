@@ -12,6 +12,8 @@ cd D:\project\HAP_CO2mineralization
 .\workflow\run-refinement.ps1 -Stage all -Run refine-001
 # A fresh run uses a new directory; it can take substantial workstation time.
 .\workflow\run-refinement.ps1 -Stage all -Run refine-002
+# Read the recorded progress without starting another calculation.
+python workflow/refinement_status.py --run .research-runs/refine-001
 # Re-render only from actual completed outputs.
 .\workflow\run-refinement.ps1 -Stage plots -Run refine-001
 ```
@@ -147,7 +149,7 @@ threshold is relaxed. `audit_cp2k_restarts.py` compares actual same-state energy
 force values across retained restart boundaries; final capture refreshes its hashes.
 
 In `refine-001`, step 90 passed the force threshold but failed displacement convergence.
-`optimizer_diagnosis-step90.json` records the positive Hessian spectrum, soft internal
+`optimizer_diagnosis-step90.json` records the positive stored BFGS Hessian approximation and its soft internal
 modes, small center-of-mass drift, and remaining OH/CO2 motion. These observations did
 not establish a singular or stalled optimizer. A separate bounded algorithm check,
 `recover-dft-lbfgs.ps1`, archived that attempt and started fresh limited-memory history
@@ -159,7 +161,9 @@ convergence, not a globally optimal surface. The helper is guarded against activ
 and repeated recovery; do not invoke it on the already completed relaxation.
 
 Final evidence capture uses run-specific filenames and refuses to overwrite an existing
-capture. Failed/partial attempts, including the step-90 displacement failure, remain in
+capture. After capture, `python workflow/capture_refinement.py --run .research-runs/refine-001 --verify`
+rechecks every captured raw-file hash and the gate report's source hashes/data without
+rerunning physics or changing gate outcomes. Failed/partial attempts, including the step-90 displacement failure, remain in
 the inventory with publication eligibility disabled.
 
 The [HPC handoff](HPC_HANDOFF.md) lists disabled scripts, actual pilot settings, restart

@@ -44,6 +44,24 @@ equilibration or adequate sampling. The executed five-step runs are even shorter
 No pressure/virial validation can be inferred from DeepMD's printed zero virial errors:
 the tiny training sets intentionally contain no virial labels.
 
+## Refinement follow-up settings
+
+The separate `refine-001` pilot uses MACE fmax 0.03 eV/A and checks all four CP2K
+optimizer criteria plus a 0.05 eV/A maximum-vector-force gate. Its force-label settings
+are PBE 1100/100 Ry and SCF 1e-8, selected after the 500/700 Ry energy test failed to
+certify force convergence. A 900/80 versus 1100/100 comparison passed the 0.02 eV/A
+force-component RMSE sensitivity gate on one geometry. This does not establish global
+grid or basis accuracy. The HPC candidate profile retains the coarse energy sweep and
+adds explicit fine-grid/SCF trials; 1300/120 Ry is a proposed additional point, not an
+executed or recommended universal cutoff.
+
+Eight 16-step replicas at 0.25 fs, a one-frame 1,500-update fit, two 6,000-update model
+comparisons and 250 fs of LAMMPS dynamics define the follow-up's bounded scope. Read
+`REFINEMENT.md` and its final verification record for actual gate outcomes. These values
+are distinct from the earlier smoke table and remain inadequate as a production duration
+or material-wide training set. `HPC_HANDOFF.md` documents the disabled training/dynamics
+templates, restart handling, artifact checks and remaining site-specific inputs.
+
 ## Stress convention
 
 CP2K's printed stress is compressive-positive; ASE uses the opposite sign.

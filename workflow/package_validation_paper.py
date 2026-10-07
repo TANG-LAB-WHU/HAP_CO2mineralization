@@ -64,7 +64,7 @@ document compilation, not a redistribution of model weights or all trajectories.
             if f.is_file():archive.write(f,'figures/'+f.name)
         for name in ['verification.json','structure_audit.json','reference_audit.json','force_grid_audit.json','dft_relaxation.json','cp2k_restart_audit.json','aimd_audit.json','dataset_audit.json','sampling_coverage.json','model_evaluation.json','lammps_audit.json']:
             archive.write(r/name,'records/'+name)
-        for name in ['optimizer_diagnosis-step90.json','dft_lbfgs_recovery.json','reference_interpretation_note.json','reproducibility-manifest.json']:
+        for name in ['optimizer_diagnosis-step90.json','dft_lbfgs_recovery.json','optimizer_trial_audit.json','reference_interpretation_note.json','reproducibility-manifest.json']:
             if (r/name).exists():archive.write(r/name,'records/'+name)
         for name in ['plot_refinement.py','refine_pipeline.py','cp2k_validate.py','aimd_to_deepmd.py','audit_cp2k_restarts.py']:
             archive.write(ROOT/'workflow'/name,'scripts/'+name)
@@ -79,6 +79,21 @@ document compilation, not a redistribution of model weights or all trajectories.
         'This is a dry thin-slab and tiny-model pilot, not mineralization or production evidence.','',
         '| Pilot gate | Actual result |','|---|---|']
     overview.extend('| '+name+' | '+('PASS' if item['passed'] is True else 'FAIL')+' |' for name,item in v['gates'].items())
+    sources={name:item['data'] for name,item in v['sources'].items()}
+    model=sources['model_evaluation.json'];chosen=model['selected'];heldout=model['models'][chosen]['test'];md=sources['lammps_audit.json'];dataset=sources['dataset_audit.json']
+    overview.extend(['','## Measured local outcomes','',
+        f"- DFT maximum force: {sources['dft_relaxation.json']['fmax_eV_A']:.8f} eV/A; all optimizer criteria passed.",
+        '- Dataset frames (training/validation/test): '+ '/'.join(str(dataset['frames_per_split'][x]) for x in ['train','valid','test'])+' from 4/2/2 separately seeded trajectories, each 4 fs. Statistical independence and equilibration are not established.',
+        f"- Validation-selected model: {chosen}. Held-out force RMSE {heldout['force_rmse_eV_A']:.6f} eV/A; energy RMSE {heldout['energy_rmse_eV_atom']*1000:.6f} meV/atom.",
+        f"- Python/LAMMPS same-state maximum force difference: {md['engine_force_max_difference_eV_A']:.6g} eV/A.",
+        f"- Binary-restart maximum position difference: {md['restart_position_max_difference_A']:.6g} A; velocity difference: {md['restart_velocity_max_difference_A_per_ps']:.6g} A/ps.",
+        f"- 250 fs NVE drift slopes: {md['energy_drift_meV_atom_ps']:.6g} (dt=0.25 fs) and {md['half_timestep_drift_meV_atom_ps']:.6g} (dt=0.125 fs), in meV/atom/ps. These are short-run diagnostics.",
+        '', '## Verify on Shawn-PC','',
+        'Raw inputs, logs, models, datasets and trajectories remain under `.research-runs/'+r.name+'` in `D:\\project\\HAP_CO2mineralization`.',
+        '```powershell','cd D:\\project\\HAP_CO2mineralization',
+        'python workflow/capture_refinement.py --run .research-runs/'+r.name+' --verify',
+        '.\\workflow\\run-local.ps1 -Stage check','```',
+        'The first command rechecks retained artifact hashes and gate-report sources; it does not grant scientific eligibility. The second runs static/evidence/integration contracts, not new GPU physics.'])
     (out/'README_local_results.md').write_text('\n'.join(overview)+'\n',encoding='utf-8')
     print('Created Overleaf ZIP, checked PDF, actual GIF, OVITO dump and diagnostic bundle:',out)
 if __name__=='__main__':main()

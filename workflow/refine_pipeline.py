@@ -494,7 +494,16 @@ def evaluate(r,cfg):
         e,f,v=model.eval(coords,box,types);truth_e=np.load(d/'set.000/energy.npy');truth_f=np.load(d/'set.000/force.npy').reshape(f.shape)
         e=e.reshape(-1);diff_f=f-truth_f;diff_e=(e-truth_e)/len(types)
         np.savez(folder/f'{role}_predictions.npz',reference_energy_eV=truth_e,predicted_energy_eV=e,reference_force_eV_A=truth_f,predicted_force_eV_A=f)
-        return {'frames':len(e),'energy_rmse_eV_atom':float(np.sqrt(np.mean(diff_e**2))),'force_rmse_eV_A':float(np.sqrt(np.mean(diff_f**2))),
+        records=load(r/'dataset_audit.json')['index']
+        selected_records=records[:1] if role=='overfit' else [x for x in records if x['role']==role]
+        assert len(selected_records)==len(e),'Prediction/frame provenance length mismatch'
+        replica_ids=np.array([x['replica'] for x in selected_records]);per_replica=[]
+        for replica in np.unique(replica_ids):
+            mask=replica_ids==replica
+            per_replica.append({'replica':int(replica),'frames':int(mask.sum()),
+                'energy_rmse_eV_atom':float(np.sqrt(np.mean(diff_e[mask]**2))),
+                'force_rmse_eV_A':float(np.sqrt(np.mean(diff_f[mask]**2)))})
+        return {'per_replica':per_replica,'frames':len(e),'energy_rmse_eV_atom':float(np.sqrt(np.mean(diff_e**2))),'force_rmse_eV_A':float(np.sqrt(np.mean(diff_f**2))),
           'force_p95_abs_error_eV_A':float(np.quantile(abs(diff_f),.95)),'force_max_abs_error_eV_A':float(abs(diff_f).max()),
           'per_element_force_rmse_eV_A':{el:float(np.sqrt(np.mean(diff_f[:,types==i,:]**2))) for i,el in enumerate(TYPES)}}
     for label in ['overfit','compact','wider']:
@@ -596,6 +605,13 @@ def lammps_audit(r,cfg):
     mapping_t=thermo(d/'mapping.log');energy_error=float(abs(mapping_t[0,3]-e[0,0]));t=thermo(d/'continuous.log');np.save(d/'thermo.npy',t)
     x=np.loadtxt(d/'continuous-final.dump',skiprows=9);y=np.loadtxt(d/'restart-final.dump',skiprows=9);assert np.array_equal(x[:,:2],y[:,:2]),'Restart atom identity mismatch'
     position_difference=float(abs(x[:,2:5]-y[:,2:5]).max());velocity_difference=float(abs(x[:,5:8]-y[:,5:8]).max());restart=max(position_difference,velocity_difference)
+    h=np.loadtxt(d/'halfstep-final.dump',skiprows=9)
+    assert np.array_equal(x[:,:2],h[:,:2]) and np.isfinite(h).all(),'Half-timestep atom/state mismatch'
+    half_position_delta=x[:,2:5]-h[:,2:5]
+    half_state={'final_position_rms_difference_A':float(np.sqrt(np.mean(np.sum(half_position_delta**2,axis=1)))),
+        'final_position_max_component_difference_A':float(abs(half_position_delta).max()),
+        'final_velocity_max_component_difference_A_per_ps':float(abs(x[:,5:8]-h[:,5:8]).max()),
+        'scope':'Same initial state and physical duration, different timesteps; diagnostic values without an after-the-fact acceptance threshold.'}
     traj=ase_read(d/'trajectory.dump',format='lammps-dump-text',index=':',specorder=TYPES)
     assert len(traj)==101 and np.isfinite(t).all();write(d/'trajectory.extxyz',traj)
     metrics=[];base=traj[0]
@@ -607,17 +623,38 @@ def lammps_audit(r,cfg):
     save(r/'lammps_audit.json',{'engine_energy_difference_eV':energy_error,'engine_force_max_difference_eV_A':force_error,
         'mapping_gate':force_error<cfg['gates']['engine_force_max_difference_eV_A'] and energy_error<1e-5,'restart_max_difference':restart,'restart_position_max_difference_A':position_difference,'restart_velocity_max_difference_A_per_ps':velocity_difference,'restart_ID_type_match':True,
         'restart_gate':restart<cfg['gates']['restart_max_difference'],'energy_drift_meV_atom_ps':drift,'drift_gate':abs(drift)<cfg['gates']['nve_drift_meV_atom_ps'],
-        'half_timestep_fs':.125,'half_timestep_drift_meV_atom_ps':halfdrift,'timestep_drift_gate':abs(halfdrift)<cfg['gates']['nve_drift_meV_atom_ps'] and abs(drift)<cfg['gates']['nve_drift_meV_atom_ps'],
+        'half_timestep_state_comparison':half_state,'half_timestep_fs':.125,'half_timestep_drift_meV_atom_ps':halfdrift,'timestep_drift_gate':abs(halfdrift)<cfg['gates']['nve_drift_meV_atom_ps'] and abs(drift)<cfg['gates']['nve_drift_meV_atom_ps'],
         'chemistry_gate':all(m['geometry_gate'] for m in metrics),'frames':metrics,'time_fs':250,'manuscript_eligible':False})
 
+def optimizer_trial_audit(r,cfg):
+    from aimd_to_deepmd import frames
+    d=r/'dft-relax';log=(d/'opt.log').read_text()
+    energies=list(re.finditer(r'ENERGY\| Total FORCE_EVAL.*?energy \[hartree\]\s+([-+\d.Ee]+)',log))
+    force_headers=list(re.finditer(re.escape('FORCES| Atomic forces [hartree/bohr]'),log))
+    previous=r/'dft-relax-attempt3/opt-pos-1.xyz'
+    # CP2K's current trajectory writes the accepted state, not necessarily the initial restart.
+    # The preceding saved frame is independently linked by cp2k_restart_audit.json.
+    saved=np.array([frames(previous)[-1][1]*HARTREE]+[x[1]*HARTREE for x in frames(d/'opt-pos-1.xyz')])
+    forces=forces_from_log(d/'opt.log');evaluations=[]
+    assert len(force_headers)==len(forces)
+    for i,(header,force) in enumerate(zip(force_headers,forces)):
+        preceding=[e for e in energies if e.end()<header.start()];assert preceding
+        energy=float(preceding[-1][1])*HARTREE
+        evaluations.append({'force_evaluation':i+1,'energy_eV':energy,'fmax_eV_A':float(np.linalg.norm(force,axis=1).max()),
+            'matches_initial_or_accepted_saved_energy':bool(np.min(abs(saved-energy))<2e-6)})
+    save(r/'optimizer_trial_audit.json',{'evaluations':evaluations,'saved_energies_eV':saved.tolist(),
+        'interpretation':'Force callbacks include line-search trial points. Evaluations absent from the saved initial/accepted geometry energies are not labeled as accepted configurations. Only the final accepted state passes to AIMD.',
+        'sources':{p.relative_to(r).as_posix():digest(p) for p in [d/'opt.log',d/'opt-pos-1.xyz',previous,r/'cp2k_restart_audit.json']},'manuscript_eligible':False})
+
 def report(r,cfg):
+    if (r/'dft_lbfgs_recovery.json').exists():optimizer_trial_audit(r,cfg)
     required=['structure_audit.json','mace.json','mace_refined.json','reference_audit.json','mace_fragments.json','cp2k_fragments.json','force_grid_audit.json','dft_relaxation.json','cp2k_restart_audit.json','aimd_audit.json','dataset_audit.json','sampling_coverage.json','model_evaluation.json','lammps_audit.json']
     result={'run_id':r.name,'scope':cfg['scope'],'manuscript_eligible':False,'sources':{},'gates':{},'missing':[]}
     for name in required:
         p=r/name
         if p.exists():result['sources'][name]={'sha256':digest(p),'data':load(p)}
         else:result['missing'].append(name)
-    for name in ['optimizer_diagnosis-step90.json','dft_lbfgs_recovery.json','reference_interpretation_note.json']:
+    for name in ['optimizer_diagnosis-step90.json','dft_lbfgs_recovery.json','optimizer_trial_audit.json','reference_interpretation_note.json']:
         if (r/name).exists():result['sources'][name]={'sha256':digest(r/name),'data':load(r/name)}
     def gate(name,file,key,meaning):
         value=result['sources'].get(file,{}).get('data',{}).get(key)

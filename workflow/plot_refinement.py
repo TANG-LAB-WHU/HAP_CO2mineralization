@@ -67,6 +67,14 @@ def main():
             ax[2].plot(np.arange(len(ener))+frame_offset,ener-energy_offset,label=path.parent.name)
             fs=forces_from_log(path.parent/'opt.log')
             ax[3].semilogy(np.arange(len(fs))+force_offset,[np.linalg.norm(x,axis=1).max() for x in fs],label=path.parent.name)
+            if path.parent.name=='dft-relax' and (r/'optimizer_trial_audit.json').exists():
+                trial=load(r/'optimizer_trial_audit.json')
+                rejected=[x for x in trial['evaluations'] if not x['matches_initial_or_accepted_saved_energy']]
+                if rejected:
+                    peak=max(rejected,key=lambda x:x['fmax_eV_A'])
+                    ax[3].annotate('Line-search trial\nnot accepted',xy=(force_offset+peak['force_evaluation']-1,peak['fmax_eV_A']),
+                        xytext=(.73,.72),textcoords='axes fraction',ha='center',fontsize=10,arrowprops={'arrowstyle':'->','color':'#555555'})
+                sources.append(r/'optimizer_trial_audit.json')
             force_offset+=len(fs);frame_offset+=len(ener);sources.extend([path,path.parent/'opt.log'])
         ax[2].set(xlabel='Saved frame (attempts concatenated)',ylabel='E - first saved E (eV)',title='CP2K PBE, force-tested grid');ax[2].legend(fontsize=10)
         ax[3].axhline(.05,color='black',ls=':');ax[3].set(xlabel='Force evaluation (including restart)',ylabel='Maximum force (eV/A)',title='DFT force gate = 0.05 eV/A');ax[3].legend(fontsize=10)
