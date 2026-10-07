@@ -184,7 +184,7 @@ def main():
         for axis,view in zip(axes,[(0,2),(0,1)]):
             scatter=axis.scatter([],[],s=45,edgecolors='white',linewidths=.3);scat.append(scatter);axis.set(xlim=(lo[view[0]],hi[view[0]]),ylim=(lo[view[1]],hi[view[1]]),xlabel='xyz'[view[0]]+' (A)',ylabel='xyz'[view[1]]+' (A)');axis.set_aspect('equal')
         title=fig.suptitle('');fig.legend(handles=[Line2D([],[],marker='o',ls='',color=c,label=s) for s,c in COLORS.items()],ncol=5,loc='upper center',bbox_to_anchor=(.5,.91),fontsize=11)
-        fig.text(.02,.03,'Actual saved frames; unwrapped coordinates, no interpolation. Tiny-model diagnostic, not mineralization evidence.',fontsize=9)
+        fig.text(.02,.03,'Actual saved frames; no interpolation. FAILED force/geometry validation; not mineralization evidence.',fontsize=9,color='#a52323')
         def update(i):
             for scatter,view in zip(scat,[(0,2),(0,1)]):scatter.set_offsets(chosen[i].positions[:,view]);scatter.set_color(colors)
             title.set_text(f'{r.name} | LAMMPS NVE | t = {i*5:.1f} fs | dt = 0.25 fs\nDry HAP + CO2; all atoms mobile; atom IDs preserved')

@@ -1,0 +1,8 @@
+{
+  "artifact_id": "LOCAL-REFINE001-DFT-LBFGS-RECOVERY",
+  "local_raw_path": ".research-runs/refine-001/dft_lbfgs_recovery.json",
+  "status": "completed",
+  "notes": "Fresh limited-memory history, unchanged electronic and convergence criteria; successful final audit is recorded separately.",
+  "reproducibility_manifest": ".research-runs/refine-001/reproducibility-manifest.json",
+  "manuscript_eligible": false
+}

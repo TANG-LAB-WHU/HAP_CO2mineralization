@@ -23,7 +23,7 @@ MatterGen has a separate `.research-runs/mattergen-venv` and official source com
 The installed environments and Windows-to-Docker entrypoint were exercised. A pristine
 full bootstrap from the final locks was not repeated; do not claim that as tested.
 
-## Actual verification matrix
+## Original smoke verification matrix
 
 | Stage | Verified execution | Scientific interpretation |
 |---|---|---|
@@ -35,7 +35,7 @@ full bootstrap from the final locks was not repeated; do not claim that as teste
 | Dataset / DeepMD | Exact coordinate/force/cell step alignment; shared initial geometry removed; 15 unique HAP+CO2 configurations across three splits; 20 GPU updates, freeze, held-out test | Held-out force RMSE 0.375753 eV/A and energy RMSE 0.030304 eV/atom fail provisional production gates; close replicas remain correlated |
 | LAMMPS | Actual HAP+CO2 GPU potential execution; 5+restart+5 vs uninterrupted10, high-precision unwrapped state difference ~1.1e-14 | 2.5 fs is not dynamics validation; trained model is smoke-only |
 | MatterGen | One actual 1000-step sample, seed42, CH2CaO4; MatterSim relaxation and reference evaluation completed; chemistry filter rejects 1/1 and saves zero candidates | Generated structure lacks P and is not an apatite candidate; n=1 cannot establish generator quality |
-| Repository checks | 154 tests pass in local Linux runtime; manuscript/evidence checker passes | Static/evidence checks supplement but do not replace calculations |
+| Repository checks | Original smoke checkpoint: 154 tests passed; final recovery delivery: 170 tests passed | Static/evidence checks supplement but do not replace calculations |
 | HPC | Disabled parameter profiles, job/dependency templates, syntax checks | No HPC connection, submission, or cluster validation |
 
 Raw results: `.research-runs/smoke-final`, `stress-check`, `aimd-adsorbed-{0,1,2}`,
@@ -95,3 +95,11 @@ correction supersedes any earlier fixed-bottom description.
 
 No scientific result or literature claim was promoted. The manuscript remains unsupported
 by new production evidence. No enhanced-sampling calculation was executed.
+
+## Final refinement and recovery handoff
+
+The original smoke measurements above remain unchanged. See `RECOVERY.md` for the final
+bounded recovery, `FINAL_DELIVERY.md` for delivered files/build commands, and
+`NEXT_SAMPLING_PLAN.md` for the disabled future campaign. The recovered model passes a
+250 fs short demonstration and strict restart, but fails the retrospective force gate
+and both full 1 ps geometry tests. No production-ready potential was obtained.

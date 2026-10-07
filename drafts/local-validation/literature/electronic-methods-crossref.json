@@ -1,0 +1,2860 @@
+[
+  {
+    "indexed": {
+      "date-parts": [
+        [
+          2026,
+          10,
+          7
+        ]
+      ],
+      "date-time": "2026-10-07T03:19:34Z",
+      "timestamp": 1791343174246,
+      "version": "4.3.1"
+    },
+    "reference-count": 38,
+    "publisher": "American Physical Society (APS)",
+    "issue": "18",
+    "license": [
+      {
+        "start": {
+          "date-parts": [
+            [
+              1996,
+              10,
+              28
+            ]
+          ],
+          "date-time": "1996-10-28T00:00:00Z",
+          "timestamp": 846460800000
+        },
+        "content-version": "vor",
+        "delay-in-days": 0,
+        "URL": "http://link.aps.org/licenses/aps-default-license"
+      }
+    ],
+    "content-domain": {
+      "domain": [],
+      "crossmark-restriction": false
+    },
+    "short-container-title": [
+      "Phys. Rev. Lett."
+    ],
+    "DOI": "10.1103/physrevlett.77.3865",
+    "type": "journal-article",
+    "created": {
+      "date-parts": [
+        [
+          2002,
+          7,
+          26
+        ]
+      ],
+      "date-time": "2002-07-26T21:36:29Z",
+      "timestamp": 1027719389000
+    },
+    "page": "3865-3868",
+    "source": "Crossref",
+    "is-referenced-by-count": 209551,
+    "title": [
+      "Generalized Gradient Approximation Made Simple"
+    ],
+    "prefix": "10.1103",
+    "volume": "77",
+    "author": [
+      {
+        "given": "John P.",
+        "family": "Perdew",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Kieron",
+        "family": "Burke",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Matthias",
+        "family": "Ernzerhof",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "member": "16",
+    "published-online": {
+      "date-parts": [
+        [
+          1996,
+          10,
+          28
+        ]
+      ]
+    },
+    "reference": [
+      {
+        "key": "PhysRevLett.77.3865Cc1R1",
+        "doi-asserted-by": "crossref",
+        "first-page": "A",
+        "DOI": "10.1103/PhysRev.140.A1133",
+        "volume": "140",
+        "author": "W. Kohn",
+        "year": "1965",
+        "journal-title": "Phys. Rev."
+      },
+      {
+        "key": "PhysRevLett.77.3865Cc2R1",
+        "volume-title": "Density Functional Theory of Atoms and Molecules",
+        "author": "R. M. Dreizler",
+        "year": "1989"
+      },
+      {
+        "key": "PhysRevLett.77.3865Cc3R1",
+        "doi-asserted-by": "crossref",
+        "first-page": "1809",
+        "DOI": "10.1103/PhysRevB.28.1809",
+        "volume": "28",
+        "author": "D. C. Langreth",
+        "year": "1983",
+        "journal-title": "Phys. Rev. B"
+      },
+      {
+        "key": "PhysRevLett.77.3865Cc3R2",
+        "doi-asserted-by": "crossref",
+        "first-page": "3098",
+        "DOI": "10.1103/PhysRevA.38.3098",
+        "volume": "38",
+        "author": "A. D. Becke",
+        "year": "1988",
+        "journal-title": "Phys. Rev. A"
+      },
+      {
+        "key": "PhysRevLett.77.3865Cc4R1",
+        "doi-asserted-by": "crossref",
+        "first-page": "6671",
+        "DOI": "10.1103/PhysRevB.46.6671",
+        "volume": "46",
+        "author": "J. P. Perdew",
+        "year": "1992",
+        "journal-title": "Phys. Rev. B"
+      },
+      {
+        "key": "PhysRevLett.77.3865Cc5R1",
+        "doi-asserted-by": "crossref",
+        "first-page": "2155",
+        "DOI": "10.1063/1.462066",
+        "volume": "96",
+        "author": "A. D. Becke",
+        "year": "1992",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "PhysRevLett.77.3865Cc7R1",
+        "doi-asserted-by": "crossref",
+        "first-page": "3971",
+        "DOI": "10.1103/PhysRevLett.70.3971",
+        "volume": "70",
+        "author": "B. Hammer",
+        "year": "1993",
+        "journal-title": "Phys. Rev. Lett."
+      },
+      {
+        "key": "PhysRevLett.77.3865Cc7R2",
+        "doi-asserted-by": "crossref",
+        "first-page": "3487",
+        "DOI": "10.1103/PhysRevLett.74.3487",
+        "volume": "74",
+        "author": "B. Hammer",
+        "year": "1995",
+        "journal-title": "Phys. Rev. Lett."
+      },
+      {
+        "key": "PhysRevLett.77.3865Cc8R1",
+        "doi-asserted-by": "crossref",
+        "first-page": "660",
+        "DOI": "10.1103/PhysRevLett.76.660",
+        "volume": "76",
+        "author": "D. R. Hamann",
+        "year": "1996",
+        "journal-title": "Phys. Rev. Lett."
+      },
+      {
+        "key": "PhysRevLett.77.3865Cc8R2",
+        "doi-asserted-by": "crossref",
+        "first-page": "583",
+        "DOI": "10.1016/0009-2614(94)00735-7",
+        "volume": "226",
+        "author": "P. H. T. Philipsen",
+        "year": "1994",
+        "journal-title": "Chem. Phys. Lett."
+      },
+      {
+        "key": "PhysRevLett.77.3865Cc10R1",
+        "doi-asserted-by": "crossref",
+        "first-page": "18",
+        "DOI": "10.1103/PhysRevA.48.R18",
+        "volume": "48",
+        "author": "V. Ozolins",
+        "year": "1993",
+        "journal-title": "Phys. Rev. B"
+      },
+      {
+        "key": "PhysRevLett.77.3865Cc11R1",
+        "doi-asserted-by": "crossref",
+        "first-page": "14",
+        "DOI": "10.1103/PhysRevB.50.14947",
+        "volume": "50",
+        "author": "C. Filippi",
+        "year": "1994",
+        "journal-title": "Phys. Rev. B"
+      },
+      {
+        "key": "PhysRevLett.77.3865Cc12R1",
+        "doi-asserted-by": "crossref",
+        "first-page": "13",
+        "DOI": "10.1103/PhysRevB.45.13244",
+        "volume": "45",
+        "author": "J. P. Perdew",
+        "year": "1992",
+        "journal-title": "Phys. Rev. B"
+      },
+      {
+        "key": "PhysRevLett.77.3865Cc13R1",
+        "author": "J. P. Perdew",
+        "journal-title": "Phys. Rev. B"
+      },
+      {
+        "key": "PhysRevLett.77.3865Cc14R1",
+        "volume-title": "Electronic Structure of Solids `91,",
+        "author": "J. P. Perdew",
+        "year": "1991"
+      },
+      {
+        "key": "PhysRevLett.77.3865Cc15R1",
+        "first-page": "13",
+        "volume": "47",
+        "author": "E. Engel",
+        "year": "1993",
+        "journal-title": "Phys. Rev. B"
+      },
+      {
+        "key": "PhysRevLett.77.3865Cc16R1",
+        "doi-asserted-by": "crossref",
+        "first-page": "1290",
+        "DOI": "10.1063/1.466658",
+        "volume": "100",
+        "author": "C. Filippi",
+        "year": "1994",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "PhysRevLett.77.3865Cc17R1",
+        "doi-asserted-by": "crossref",
+        "first-page": "1",
+        "DOI": "10.1080/00268979600100011",
+        "volume": "87",
+        "author": "R. Neumann",
+        "year": "1996",
+        "journal-title": "Mol. Phys."
+      },
+      {
+        "key": "PhysRevLett.77.3865Cc18R1",
+        "doi-asserted-by": "crossref",
+        "first-page": "6376",
+        "DOI": "10.1103/PhysRevB.43.6376",
+        "volume": "43",
+        "author": "G. Ortiz",
+        "year": "1991",
+        "journal-title": "Phys. Rev. B"
+      },
+      {
+        "key": "PhysRevLett.77.3865Cc19R1",
+        "doi-asserted-by": "crossref",
+        "first-page": "1775",
+        "DOI": "10.1103/PhysRevLett.70.1775",
+        "volume": "70",
+        "author": "R. N. Barnett",
+        "year": "1993",
+        "journal-title": "Phys. Rev. Lett."
+      },
+      {
+        "key": "PhysRevLett.77.3865Cc20R1",
+        "doi-asserted-by": "crossref",
+        "first-page": "11",
+        "DOI": "10.1103/PhysRevB.45.11328",
+        "volume": "45",
+        "author": "G. Ortiz",
+        "year": "1992",
+        "journal-title": "Phys. Rev. B"
+      },
+      {
+        "key": "PhysRevLett.77.3865Cc21R1",
+        "first-page": "617",
+        "volume": "S23",
+        "author": "M. Levy",
+        "year": "1989",
+        "journal-title": "Int. J. Quantum Chem."
+      },
+      {
+        "key": "PhysRevLett.77.3865Cc22R1",
+        "volume-title": "High Performance Computing and its Application to the Physical Sciences, Proceedings of the Mardi Gras 1993 Conference,",
+        "author": "C. J. Umrigar",
+        "year": "1993"
+      },
+      {
+        "key": "PhysRevLett.77.3865Cc23R1",
+        "doi-asserted-by": "crossref",
+        "first-page": "14",
+        "DOI": "10.1103/PhysRevB.50.14838",
+        "volume": "50",
+        "author": "C. Bowen",
+        "year": "1994",
+        "journal-title": "Phys. Rev. B"
+      },
+      {
+        "key": "PhysRevLett.77.3865Cc23R2",
+        "doi-asserted-by": "crossref",
+        "first-page": "689",
+        "DOI": "10.1103/PhysRevLett.75.689",
+        "volume": "75",
+        "author": "S. Moroni",
+        "year": "1995",
+        "journal-title": "Phys. Rev. Lett."
+      },
+      {
+        "key": "PhysRevLett.77.3865Cc24R1",
+        "doi-asserted-by": "crossref",
+        "first-page": "8911",
+        "DOI": "10.1103/PhysRevB.43.8911",
+        "volume": "43",
+        "author": "Y. Wang",
+        "year": "1991",
+        "journal-title": "Phys. Rev. B"
+      },
+      {
+        "key": "PhysRevLett.77.3865Cc25R1",
+        "doi-asserted-by": "crossref",
+        "first-page": "18",
+        "DOI": "10.1103/PhysRev.165.18",
+        "volume": "165",
+        "author": "S.-K. Ma",
+        "year": "1968",
+        "journal-title": "Phys. Rev."
+      },
+      {
+        "key": "PhysRevLett.77.3865Cc26R1",
+        "doi-asserted-by": "crossref",
+        "first-page": "1477",
+        "DOI": "10.1103/PhysRevB.13.1477",
+        "volume": "13",
+        "author": "D. J. W. Geldart",
+        "year": "1976",
+        "journal-title": "Phys. Rev. B"
+      },
+      {
+        "key": "PhysRevLett.77.3865Cc26R2",
+        "doi-asserted-by": "crossref",
+        "first-page": "5469",
+        "DOI": "10.1103/PhysRevB.21.5469",
+        "volume": "21",
+        "author": "D. C. Langreth",
+        "year": "1980",
+        "journal-title": "Phys. Rev. B"
+      },
+      {
+        "key": "PhysRevLett.77.3865Cc27R1",
+        "first-page": "11",
+        "volume": "48",
+        "author": "M. Levy",
+        "year": "1993",
+        "journal-title": "Phys. Rev. B"
+      },
+      {
+        "key": "PhysRevLett.77.3865Cc28R1",
+        "doi-asserted-by": "crossref",
+        "first-page": "364",
+        "DOI": "10.1103/PhysRev.106.364",
+        "volume": "106",
+        "author": "M. Gell-Mann",
+        "year": "1957",
+        "journal-title": "Phys. Rev."
+      },
+      {
+        "key": "PhysRevLett.77.3865Cc30R1",
+        "doi-asserted-by": "crossref",
+        "first-page": "2010",
+        "DOI": "10.1103/PhysRevA.32.2010",
+        "volume": "32",
+        "author": "M. Levy",
+        "year": "1985",
+        "journal-title": "Phys. Rev. A"
+      },
+      {
+        "key": "PhysRevLett.77.3865Cc31R1",
+        "doi-asserted-by": "crossref",
+        "first-page": "397",
+        "DOI": "10.1103/PhysRevA.20.397",
+        "volume": "20",
+        "author": "G. L. Oliver",
+        "year": "1979",
+        "journal-title": "Phys. Rev. A"
+      },
+      {
+        "key": "PhysRevLett.77.3865Cc32R1",
+        "doi-asserted-by": "crossref",
+        "first-page": "4524",
+        "DOI": "10.1063/1.450025",
+        "volume": "84",
+        "author": "A. D. Becke",
+        "year": "1986",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "PhysRevLett.77.3865Cc33R1",
+        "volume-title": "Molecular Spectra and Molecular Structure IV: Constants of Diatomic Molecules",
+        "author": "D. J. DeFrees",
+        "year": "1979"
+      },
+      {
+        "key": "PhysRevLett.77.3865Cc34R1",
+        "doi-asserted-by": "crossref",
+        "first-page": "1285",
+        "DOI": "10.1103/PhysRevLett.59.1285",
+        "volume": "59",
+        "author": "F. W. Kutzler",
+        "year": "1987",
+        "journal-title": "Phys. Rev. Lett."
+      },
+      {
+        "key": "PhysRevLett.77.3865Cc36R1",
+        "doi-asserted-by": "crossref",
+        "first-page": "5622",
+        "DOI": "10.1063/1.456415",
+        "volume": "90",
+        "author": "J. A. Pople",
+        "year": "1989",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "PhysRevLett.77.3865Cc36R2",
+        "doi-asserted-by": "crossref",
+        "first-page": "568",
+        "DOI": "10.1063/1.446965",
+        "volume": "80",
+        "author": "L. A. Curtiss",
+        "year": "1984",
+        "journal-title": "J. Chem. Phys."
+      }
+    ],
+    "container-title": [
+      "Physical Review Letters"
+    ],
+    "original-title": [],
+    "language": "en",
+    "link": [
+      {
+        "URL": "http://link.aps.org/article/10.1103/PhysRevLett.77.3865",
+        "content-type": "unspecified",
+        "content-version": "vor",
+        "intended-application": "syndication"
+      },
+      {
+        "URL": "http://harvest.aps.org/v2/journals/articles/10.1103/PhysRevLett.77.3865/fulltext",
+        "content-type": "unspecified",
+        "content-version": "vor",
+        "intended-application": "similarity-checking"
+      }
+    ],
+    "deposited": {
+      "date-parts": [
+        [
+          2025,
+          1,
+          2
+        ]
+      ],
+      "date-time": "2025-01-02T22:08:16Z",
+      "timestamp": 1735855696000
+    },
+    "score": 1,
+    "resource": {
+      "primary": {
+        "URL": "https://link.aps.org/doi/10.1103/PhysRevLett.77.3865"
+      }
+    },
+    "subtitle": [],
+    "short-title": [],
+    "issued": {
+      "date-parts": [
+        [
+          1996,
+          10,
+          28
+        ]
+      ]
+    },
+    "references-count": 38,
+    "journal-issue": {
+      "issue": "18",
+      "published-print": {
+        "date-parts": [
+          [
+            1996,
+            10
+          ]
+        ]
+      }
+    },
+    "URL": "https://doi.org/10.1103/physrevlett.77.3865",
+    "relation": {},
+    "ISSN": [
+      "0031-9007",
+      "1079-7114"
+    ],
+    "issn-type": [
+      {
+        "value": "0031-9007",
+        "type": "print"
+      },
+      {
+        "value": "1079-7114",
+        "type": "electronic"
+      }
+    ],
+    "subject": [],
+    "published": {
+      "date-parts": [
+        [
+          1996,
+          10,
+          28
+        ]
+      ]
+    }
+  },
+  {
+    "indexed": {
+      "date-parts": [
+        [
+          2026,
+          10,
+          7
+        ]
+      ],
+      "date-time": "2026-10-07T01:51:42Z",
+      "timestamp": 1791337902163,
+      "version": "4.3.1"
+    },
+    "reference-count": 25,
+    "publisher": "American Physical Society (APS)",
+    "issue": "3",
+    "license": [
+      {
+        "start": {
+          "date-parts": [
+            [
+              1996,
+              7,
+              15
+            ]
+          ],
+          "date-time": "1996-07-15T00:00:00Z",
+          "timestamp": 837388800000
+        },
+        "content-version": "vor",
+        "delay-in-days": 0,
+        "URL": "http://link.aps.org/licenses/aps-default-license"
+      }
+    ],
+    "content-domain": {
+      "domain": [],
+      "crossmark-restriction": false
+    },
+    "short-container-title": [
+      "Phys. Rev. B"
+    ],
+    "DOI": "10.1103/physrevb.54.1703",
+    "type": "journal-article",
+    "created": {
+      "date-parts": [
+        [
+          2002,
+          7,
+          26
+        ]
+      ],
+      "date-time": "2002-07-26T20:25:17Z",
+      "timestamp": 1027715117000
+    },
+    "page": "1703-1710",
+    "source": "Crossref",
+    "is-referenced-by-count": 7220,
+    "title": [
+      "Separable dual-space Gaussian pseudopotentials"
+    ],
+    "prefix": "10.1103",
+    "volume": "54",
+    "author": [
+      {
+        "given": "S.",
+        "family": "Goedecker",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "M.",
+        "family": "Teter",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "J.",
+        "family": "Hutter",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "member": "16",
+    "published-online": {
+      "date-parts": [
+        [
+          1996,
+          7,
+          15
+        ]
+      ]
+    },
+    "reference": [
+      {
+        "key": "PhysRevB.54.1703Cc1R1",
+        "doi-asserted-by": "crossref",
+        "first-page": "1494",
+        "DOI": "10.1103/PhysRevLett.43.1494",
+        "volume": "43",
+        "author": "D. R. Hamann",
+        "year": "1980",
+        "journal-title": "Phys. Rev. Lett."
+      },
+      {
+        "key": "PhysRevB.54.1703Cc1R2",
+        "doi-asserted-by": "crossref",
+        "first-page": "4199",
+        "DOI": "10.1103/PhysRevB.26.4199",
+        "volume": "26",
+        "author": "G. B. Bachelet",
+        "year": "1982",
+        "journal-title": "Phys. Rev. B"
+      },
+      {
+        "key": "PhysRevB.54.1703Cc2R1",
+        "doi-asserted-by": "crossref",
+        "first-page": "1425",
+        "DOI": "10.1103/PhysRevLett.48.1425",
+        "volume": "48",
+        "author": "L. Kleinmann",
+        "year": "1982",
+        "journal-title": "Phys. Rev. Lett."
+      },
+      {
+        "key": "PhysRevB.54.1703Cc2R2",
+        "doi-asserted-by": "crossref",
+        "first-page": "1136",
+        "DOI": "10.1103/PhysRevLett.59.1136",
+        "volume": "59",
+        "author": "D. C. Allan",
+        "year": "1987",
+        "journal-title": "Phys. Rev. Lett."
+      },
+      {
+        "key": "PhysRevB.54.1703Cc3R1",
+        "doi-asserted-by": "crossref",
+        "first-page": "12t264",
+        "DOI": "10.1103/PhysRevB.41.12264",
+        "volume": "41",
+        "author": "X. Gonze",
+        "year": "1990",
+        "journal-title": "Phys. Rev. B"
+      },
+      {
+        "key": "PhysRevB.54.1703Cc3R2",
+        "doi-asserted-by": "crossref",
+        "first-page": "13t065",
+        "DOI": "10.1103/PhysRevB.46.13065",
+        "volume": "46",
+        "author": "D.J. Singh",
+        "year": "1992",
+        "journal-title": "Phys. Rev. B"
+      },
+      {
+        "key": "PhysRevB.54.1703Cc4R1",
+        "doi-asserted-by": "crossref",
+        "first-page": "13t063",
+        "DOI": "10.1103/PhysRevB.44.13063",
+        "volume": "44",
+        "author": "R. D. King-Smith",
+        "year": "1991",
+        "journal-title": "Phys. Rev. B"
+      },
+      {
+        "key": "PhysRevB.54.1703Cc6R1",
+        "doi-asserted-by": "crossref",
+        "first-page": "3652",
+        "DOI": "10.1103/PhysRevB.40.3652",
+        "volume": "40",
+        "author": "E. L. Shirley",
+        "year": "1989",
+        "journal-title": "Phys. Rev. B"
+      },
+      {
+        "key": "PhysRevB.54.1703Cc7R1",
+        "volume-title": "Density-Functional Theory of Atoms and Molecules",
+        "author": "R. G. Parr",
+        "year": "1989"
+      },
+      {
+        "key": "PhysRevB.54.1703Cc7R2",
+        "doi-asserted-by": "crossref",
+        "first-page": "5031",
+        "DOI": "10.1103/PhysRevB.48.5031",
+        "volume": "48",
+        "author": "M. Teter",
+        "year": "1993",
+        "journal-title": "Phys. Rev. B"
+      },
+      {
+        "key": "PhysRevB.54.1703Cc8R1",
+        "doi-asserted-by": "crossref",
+        "first-page": "3898",
+        "DOI": "10.1063/1.466134",
+        "volume": "99",
+        "author": "R. M. Dickson",
+        "year": "1993",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "PhysRevB.54.1703Cc9R1",
+        "doi-asserted-by": "crossref",
+        "first-page": "88",
+        "DOI": "10.1103/PhysRevA.45.88",
+        "volume": "45",
+        "author": "S. Goedecker",
+        "year": "1992",
+        "journal-title": "Phys. Rev. A"
+      },
+      {
+        "key": "PhysRevB.54.1703Cc10R1",
+        "doi-asserted-by": "crossref",
+        "first-page": "1738",
+        "DOI": "10.1103/PhysRevB.26.1738",
+        "volume": "26",
+        "author": "S. G. Louie",
+        "year": "1982",
+        "journal-title": "Phys. Rev. B"
+      },
+      {
+        "key": "PhysRevB.54.1703Cc12R1",
+        "doi-asserted-by": "crossref",
+        "first-page": "5612",
+        "DOI": "10.1063/1.464906",
+        "volume": "98",
+        "author": "B. G. Johnson",
+        "year": "1992",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "PhysRevB.54.1703Cc13R1",
+        "doi-asserted-by": "crossref",
+        "first-page": "17t953",
+        "DOI": "10.1103/PhysRevB.50.17953",
+        "volume": "50",
+        "author": "P. E. Bl\u00f6chl",
+        "year": "1994",
+        "journal-title": "Phys. Rev. B"
+      },
+      {
+        "key": "PhysRevB.54.1703Cc13R2",
+        "doi-asserted-by": "crossref",
+        "first-page": "2046",
+        "DOI": "10.1103/PhysRevB.48.2046",
+        "volume": "48",
+        "author": "P. A. Serena",
+        "year": "1993",
+        "journal-title": "Phys. Rev. B"
+      },
+      {
+        "key": "PhysRevB.54.1703Cc14R1",
+        "doi-asserted-by": "crossref",
+        "first-page": "3098",
+        "DOI": "10.1103/PhysRevA.38.3098",
+        "volume": "38",
+        "author": "A. D. Becke",
+        "year": "1988",
+        "journal-title": "Phys. Rev. A"
+      },
+      {
+        "key": "PhysRevB.54.1703Cc14R2",
+        "doi-asserted-by": "crossref",
+        "first-page": "785",
+        "DOI": "10.1103/PhysRevB.37.785",
+        "volume": "37",
+        "author": "C. Lee",
+        "year": "1988",
+        "journal-title": "Phys. Rev. B"
+      },
+      {
+        "key": "PhysRevB.54.1703Cc14R3",
+        "doi-asserted-by": "crossref",
+        "first-page": "200",
+        "DOI": "10.1016/0009-2614(89)87234-3",
+        "volume": "157",
+        "author": "B. Miehlich",
+        "year": "1988",
+        "journal-title": "Chem. Phys. Lett."
+      },
+      {
+        "key": "PhysRevB.54.1703Cc15R1",
+        "doi-asserted-by": "crossref",
+        "first-page": "3827",
+        "DOI": "10.1103/PhysRevA.50.3827",
+        "volume": "50",
+        "author": "C. J. Umrigar",
+        "year": "1994",
+        "journal-title": "Phys. Rev. A"
+      },
+      {
+        "key": "PhysRevB.54.1703Cc15R2",
+        "doi-asserted-by": "crossref",
+        "first-page": "14t947",
+        "DOI": "10.1103/PhysRevB.50.14947",
+        "volume": "50",
+        "author": "C. Filippi",
+        "year": "1994",
+        "journal-title": "Phys. Rev. B"
+      },
+      {
+        "key": "PhysRevB.54.1703Cc16R1",
+        "doi-asserted-by": "crossref",
+        "first-page": "13t244",
+        "DOI": "10.1103/PhysRevB.45.13244",
+        "volume": "45",
+        "author": "J. P. Perdew",
+        "year": "1992",
+        "journal-title": "Phys. Rev. B"
+      },
+      {
+        "key": "PhysRevB.54.1703Cc17R1",
+        "first-page": "1391",
+        "volume": "50",
+        "author": "G. Ortiz",
+        "year": "1994",
+        "journal-title": "Phys. Rev. Lett."
+      },
+      {
+        "key": "PhysRevB.54.1703Cc18R1",
+        "doi-asserted-by": "crossref",
+        "first-page": "566",
+        "DOI": "10.1103/PhysRevLett.45.566",
+        "volume": "45",
+        "author": "D. M. Ceperley",
+        "year": "1980",
+        "journal-title": "Phys. Rev. Lett."
+      },
+      {
+        "key": "PhysRevB.54.1703Cc19R1",
+        "doi-asserted-by": "crossref",
+        "first-page": "8503",
+        "DOI": "10.1103/PhysRevB.44.8503",
+        "volume": "44",
+        "author": "X. Gonze",
+        "year": "1991",
+        "journal-title": "Phys. Rev. B"
+      }
+    ],
+    "container-title": [
+      "Physical Review B"
+    ],
+    "original-title": [],
+    "language": "en",
+    "link": [
+      {
+        "URL": "http://link.aps.org/article/10.1103/PhysRevB.54.1703",
+        "content-type": "unspecified",
+        "content-version": "vor",
+        "intended-application": "syndication"
+      },
+      {
+        "URL": "http://harvest.aps.org/v2/journals/articles/10.1103/PhysRevB.54.1703/fulltext",
+        "content-type": "unspecified",
+        "content-version": "vor",
+        "intended-application": "similarity-checking"
+      }
+    ],
+    "deposited": {
+      "date-parts": [
+        [
+          2017,
+          12,
+          9
+        ]
+      ],
+      "date-time": "2017-12-09T18:07:16Z",
+      "timestamp": 1512842836000
+    },
+    "score": 1,
+    "resource": {
+      "primary": {
+        "URL": "https://link.aps.org/doi/10.1103/PhysRevB.54.1703"
+      }
+    },
+    "subtitle": [],
+    "short-title": [],
+    "issued": {
+      "date-parts": [
+        [
+          1996,
+          7,
+          15
+        ]
+      ]
+    },
+    "references-count": 25,
+    "journal-issue": {
+      "issue": "3",
+      "published-print": {
+        "date-parts": [
+          [
+            1996,
+            7
+          ]
+        ]
+      }
+    },
+    "URL": "https://doi.org/10.1103/physrevb.54.1703",
+    "relation": {},
+    "ISSN": [
+      "0163-1829",
+      "1095-3795"
+    ],
+    "issn-type": [
+      {
+        "value": "0163-1829",
+        "type": "print"
+      },
+      {
+        "value": "1095-3795",
+        "type": "electronic"
+      }
+    ],
+    "subject": [],
+    "published": {
+      "date-parts": [
+        [
+          1996,
+          7,
+          15
+        ]
+      ]
+    }
+  },
+  {
+    "indexed": {
+      "date-parts": [
+        [
+          2026,
+          10,
+          7
+        ]
+      ],
+      "date-time": "2026-10-07T02:25:56Z",
+      "timestamp": 1791339956912,
+      "version": "4.3.1"
+    },
+    "reference-count": 43,
+    "publisher": "AIP Publishing",
+    "issue": "11",
+    "content-domain": {
+      "domain": [
+        "pubs.aip.org"
+      ],
+      "crossmark-restriction": true
+    },
+    "short-container-title": [],
+    "published-print": {
+      "date-parts": [
+        [
+          2007,
+          9,
+          21
+        ]
+      ]
+    },
+    "abstract": "<jats:p>We present a library of Gaussian basis sets that has been specifically optimized to perform accurate molecular calculations based on density functional theory. It targets a wide range of chemical environments, including the gas phase, interfaces, and the condensed phase. These generally contracted basis sets, which include diffuse primitives, are obtained minimizing a linear combination of the total energy and the condition number of the overlap matrix for a set of molecules with respect to the exponents and contraction coefficients of the full basis. Typically, for a given accuracy in the total energy, significantly fewer basis functions are needed in this scheme than in the usual split valence scheme, leading to a speedup for systems where the computational cost is dominated by diagonalization. More importantly, binding energies of hydrogen bonded complexes are of similar quality as the ones obtained with augmented basis sets, i.e., have a small (down to 0.2kcal\u2215mol) basis set superposition error, and the monomers have dipoles within 0.1D of the basis set limit. However, contrary to typical augmented basis sets, there are no near linear dependencies in the basis, so that the overlap matrix is always well conditioned, also, in the condensed phase. The basis can therefore be used in first principles molecular dynamics simulations and is well suited for linear scaling calculations.</jats:p>",
+    "DOI": "10.1063/1.2770708",
+    "type": "journal-article",
+    "created": {
+      "date-parts": [
+        [
+          2007,
+          9,
+          20
+        ]
+      ],
+      "date-time": "2007-09-20T14:46:48Z",
+      "timestamp": 1190299608000
+    },
+    "update-policy": "https://doi.org/10.1063/aip-crossmark-policy-page",
+    "source": "Crossref",
+    "is-referenced-by-count": 4538,
+    "title": [
+      "Gaussian basis sets for accurate calculations on molecular systems in gas and condensed phases"
+    ],
+    "prefix": "10.1063",
+    "volume": "127",
+    "author": [
+      {
+        "given": "Joost",
+        "family": "VandeVondele",
+        "sequence": "first",
+        "affiliation": [
+          {
+            "name": "University of Zurich Physical Chemistry Institute, , Winterthurerstrasse 190, CH-8057 Zurich, Switzerland"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "J\u00fcrg",
+        "family": "Hutter",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "University of Zurich Physical Chemistry Institute, , Winterthurerstrasse 190, CH-8057 Zurich, Switzerland"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "member": "317",
+    "published-online": {
+      "date-parts": [
+        [
+          2007,
+          9,
+          18
+        ]
+      ]
+    },
+    "reference": [
+      {
+        "key": "2023063020320852400_c1",
+        "doi-asserted-by": "crossref",
+        "first-page": "4365",
+        "DOI": "10.1063/1.1543154",
+        "volume": "118",
+        "year": "2003",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "2023063020320852400_c2",
+        "doi-asserted-by": "publisher",
+        "first-page": "103",
+        "DOI": "10.1016/j.cpc.2004.12.014",
+        "volume": "167",
+        "year": "2005",
+        "journal-title": "Comput. Phys. Commun."
+      },
+      {
+        "key": "2023063020320852400_c3",
+        "doi-asserted-by": "crossref",
+        "first-page": "3969",
+        "DOI": "10.1021/jp067387y",
+        "volume": "111",
+        "year": "2007",
+        "journal-title": "J. Phys. Chem. B"
+      },
+      {
+        "key": "2023063020320852400_c4",
+        "doi-asserted-by": "publisher",
+        "first-page": "12990",
+        "DOI": "10.1021/jp047788i",
+        "volume": "108",
+        "year": "2004",
+        "journal-title": "J. Phys. Chem. B"
+      },
+      {
+        "key": "2023063020320852400_c5",
+        "doi-asserted-by": "publisher",
+        "first-page": "014515",
+        "DOI": "10.1063/1.1828433",
+        "volume": "122",
+        "year": "2005",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "2023063020320852400_c6",
+        "doi-asserted-by": "publisher",
+        "first-page": "1894",
+        "DOI": "10.1002/cphc.200400580",
+        "volume": "6",
+        "year": "2005",
+        "journal-title": "ChemPhysChem"
+      },
+      {
+        "key": "2023063020320852400_c7",
+        "doi-asserted-by": "publisher",
+        "first-page": "640",
+        "DOI": "10.1021/jp0535947",
+        "volume": "110",
+        "year": "2006",
+        "journal-title": "J. Phys. Chem. A"
+      },
+      {
+        "key": "2023063020320852400_c8",
+        "doi-asserted-by": "crossref",
+        "first-page": "542",
+        "DOI": "10.1098/rspa.1950.0036",
+        "volume": "200",
+        "year": "1950",
+        "journal-title": "Proc. R. Soc. London, Ser. A"
+      },
+      {
+        "key": "2023063020320852400_c9",
+        "doi-asserted-by": "publisher",
+        "first-page": "57",
+        "DOI": "10.1103/PhysRev.36.57",
+        "volume": "36",
+        "year": "1930",
+        "journal-title": "Phys. Rev."
+      },
+      {
+        "key": "2023063020320852400_c10",
+        "doi-asserted-by": "publisher",
+        "first-page": "4409",
+        "DOI": "10.1088/0022-3719/12/21/009",
+        "volume": "12",
+        "year": "1979",
+        "journal-title": "J. Phys. C"
+      },
+      {
+        "key": "2023063020320852400_c11a",
+        "first-page": "329",
+        "volume-title": "Modern Methods and Algorithms of Quantum Chemistry",
+        "author": "Grotendorst",
+        "year": "2000"
+      },
+      {
+        "key": "2023063020320852400_c11b"
+      },
+      {
+        "key": "2023063020320852400_c12",
+        "doi-asserted-by": "publisher",
+        "first-page": "1808",
+        "DOI": "10.1103/PhysRevLett.71.1808",
+        "volume": "71",
+        "year": "1993",
+        "journal-title": "Phys. Rev. Lett."
+      },
+      {
+        "key": "2023063020320852400_c13",
+        "doi-asserted-by": "publisher",
+        "first-page": "508",
+        "DOI": "10.1063/1.458452",
+        "volume": "92",
+        "year": "1990",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "2023063020320852400_c14",
+        "doi-asserted-by": "publisher",
+        "first-page": "681",
+        "DOI": "10.1021/cr00074a002",
+        "volume": "86",
+        "year": "1986",
+        "journal-title": "Chem. Rev. (Washington, D.C.)"
+      },
+      {
+        "key": "2023063020320852400_c15",
+        "volume-title": "Gaussian Basis Sets for Molecular Calculations",
+        "year": "1984"
+      },
+      {
+        "key": "2023063020320852400_c16",
+        "doi-asserted-by": "publisher",
+        "first-page": "9113",
+        "DOI": "10.1063/1.1413524",
+        "volume": "115",
+        "year": "2001",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "2023063020320852400_c17",
+        "doi-asserted-by": "publisher",
+        "first-page": "7372",
+        "DOI": "10.1063/1.1465405",
+        "volume": "116",
+        "year": "2002",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "2023063020320852400_c18",
+        "doi-asserted-by": "publisher",
+        "first-page": "14",
+        "DOI": "10.1109/MCISE.2003.1208637",
+        "volume": "5",
+        "year": "2003",
+        "journal-title": "Comput. Sci. Eng."
+      },
+      {
+        "key": "2023063020320852400_c19",
+        "doi-asserted-by": "crossref",
+        "first-page": "477",
+        "DOI": "10.1080/00268979709482119",
+        "volume": "92",
+        "year": "1997",
+        "journal-title": "Mol. Phys."
+      },
+      {
+        "key": "2023063020320852400_c20",
+        "doi-asserted-by": "publisher",
+        "first-page": "124",
+        "DOI": "10.1007/s002140050523",
+        "volume": "103",
+        "year": "1999",
+        "journal-title": "Theor. Chem. Acc."
+      },
+      {
+        "key": "2023063020320852400_c21",
+        "doi-asserted-by": "publisher",
+        "first-page": "1085",
+        "DOI": "10.1103/RevModPhys.71.1085",
+        "volume": "71",
+        "year": "1999",
+        "journal-title": "Rev. Mod. Phys."
+      },
+      {
+        "key": "2023063020320852400_c22",
+        "doi-asserted-by": "publisher",
+        "first-page": "4452",
+        "DOI": "10.1063/1.1679007",
+        "volume": "58",
+        "year": "1973",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "2023063020320852400_c23",
+        "doi-asserted-by": "publisher",
+        "first-page": "9085",
+        "DOI": "10.1063/1.475199",
+        "volume": "107",
+        "year": "1997",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "2023063020320852400_c24",
+        "doi-asserted-by": "crossref",
+        "first-page": "295",
+        "DOI": "10.1016/S0097-8485(99)00086-8",
+        "volume": "24",
+        "year": "2000",
+        "journal-title": "Computers & Chemistry"
+      },
+      {
+        "key": "2023063020320852400_c25",
+        "doi-asserted-by": "publisher",
+        "first-page": "1800",
+        "DOI": "10.1063/1.1431270",
+        "volume": "116",
+        "year": "2002",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "2023063020320852400_c26",
+        "doi-asserted-by": "publisher",
+        "first-page": "1703",
+        "DOI": "10.1103/PhysRevB.54.1703",
+        "volume": "54",
+        "year": "1996",
+        "journal-title": "Phys. Rev. B"
+      },
+      {
+        "key": "2023063020320852400_c27",
+        "doi-asserted-by": "publisher",
+        "first-page": "3641",
+        "DOI": "10.1103/PhysRevB.58.3641",
+        "volume": "58",
+        "year": "1998",
+        "journal-title": "Phys. Rev. B"
+      },
+      {
+        "key": "2023063020320852400_c28",
+        "doi-asserted-by": "crossref",
+        "first-page": "145",
+        "DOI": "10.1007/s00214-005-0655-y",
+        "volume": "114",
+        "year": "2005",
+        "journal-title": "Theor. Chem. Acc."
+      },
+      {
+        "key": "2023063020320852400_c29",
+        "author": "The CP2K developers group",
+        "year": "2007"
+      },
+      {
+        "key": "2023063020320852400_c30",
+        "doi-asserted-by": "publisher",
+        "first-page": "3865",
+        "DOI": "10.1103/PhysRevLett.77.3865",
+        "volume": "77",
+        "year": "1996",
+        "journal-title": "Phys. Rev. Lett."
+      },
+      {
+        "key": "2023063020320852400_c31",
+        "unstructured": "See EPAPS Document No. E-JCPSA6-127-308733 for the exponents and coefficients of the molecularly optimized basis sets. This document can be reached through a direct link in the online article\u2019s HTML reference section or via the EPAPS homepage (http://www.aip.org/pubservs/epaps.html)."
+      },
+      {
+        "key": "2023063020320852400_c32",
+        "doi-asserted-by": "crossref",
+        "first-page": "6231",
+        "DOI": "10.1021/jp9527766",
+        "volume": "100",
+        "year": "1996",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "2023063020320852400_c33",
+        "doi-asserted-by": "crossref",
+        "first-page": "555",
+        "DOI": "10.1007/s101070100290",
+        "volume": "92",
+        "year": "2002",
+        "journal-title": "Math. Program."
+      },
+      {
+        "key": "2023063020320852400_c34",
+        "year": "1997\u20132001"
+      },
+      {
+        "key": "2023063020320852400_c35",
+        "year": "2004"
+      },
+      {
+        "key": "2023063020320852400_c36",
+        "doi-asserted-by": "publisher",
+        "first-page": "3614",
+        "DOI": "10.1021/jp054841+",
+        "volume": "110",
+        "year": "2006",
+        "journal-title": "J. Phys. Chem. B"
+      },
+      {
+        "key": "2023063020320852400_c37",
+        "doi-asserted-by": "publisher",
+        "first-page": "658",
+        "DOI": "10.1126/science.1092787",
+        "volume": "303",
+        "year": "2004",
+        "journal-title": "Science"
+      },
+      {
+        "key": "2023063020320852400_c38",
+        "doi-asserted-by": "publisher",
+        "first-page": "1282",
+        "DOI": "10.1021/cr040375t",
+        "volume": "106",
+        "year": "2006",
+        "journal-title": "Chem. Rev. (Washington, D.C.)"
+      },
+      {
+        "key": "2023063020320852400_c39",
+        "doi-asserted-by": "crossref",
+        "first-page": "3619",
+        "DOI": "10.1080/00268970601014781",
+        "volume": "104",
+        "year": "2006",
+        "journal-title": "Mol. Phys."
+      },
+      {
+        "key": "2023063020320852400_c40",
+        "doi-asserted-by": "publisher",
+        "first-page": "1936",
+        "DOI": "10.1002/anie.200503581",
+        "volume": "45",
+        "year": "2006",
+        "journal-title": "Angew. Chem., Int. Ed."
+      },
+      {
+        "key": "2023063020320852400_c41a",
+        "doi-asserted-by": "publisher",
+        "first-page": "553",
+        "DOI": "10.1080/00268977000101561",
+        "volume": "19",
+        "year": "1970",
+        "journal-title": "Mol. Phys."
+      },
+      {
+        "key": "2023063020320852400_c41b",
+        "doi-asserted-by": "publisher",
+        "first-page": "65",
+        "DOI": "10.1080/00268970110088901",
+        "volume": "100",
+        "year": "2002",
+        "journal-title": "Mol. Phys."
+      }
+    ],
+    "container-title": [
+      "The Journal of Chemical Physics"
+    ],
+    "original-title": [],
+    "language": "en",
+    "link": [
+      {
+        "URL": "https://pubs.aip.org/aip/jcp/article-pdf/doi/10.1063/1.2770708/14787836/114105_1_online.pdf",
+        "content-type": "application/pdf",
+        "content-version": "vor",
+        "intended-application": "syndication"
+      },
+      {
+        "URL": "https://pubs.aip.org/aip/jcp/article-pdf/doi/10.1063/1.2770708/14787836/114105_1_online.pdf",
+        "content-type": "unspecified",
+        "content-version": "vor",
+        "intended-application": "similarity-checking"
+      }
+    ],
+    "deposited": {
+      "date-parts": [
+        [
+          2023,
+          6,
+          30
+        ]
+      ],
+      "date-time": "2023-06-30T20:32:22Z",
+      "timestamp": 1688157142000
+    },
+    "score": 1,
+    "resource": {
+      "primary": {
+        "URL": "https://pubs.aip.org/jcp/article/127/11/114105/295855/Gaussian-basis-sets-for-accurate-calculations-on"
+      }
+    },
+    "subtitle": [],
+    "short-title": [],
+    "issued": {
+      "date-parts": [
+        [
+          2007,
+          9,
+          18
+        ]
+      ]
+    },
+    "references-count": 43,
+    "journal-issue": {
+      "issue": "11",
+      "published-print": {
+        "date-parts": [
+          [
+            2007,
+            9,
+            21
+          ]
+        ]
+      }
+    },
+    "URL": "https://doi.org/10.1063/1.2770708",
+    "relation": {},
+    "ISSN": [
+      "0021-9606",
+      "1089-7690"
+    ],
+    "issn-type": [
+      {
+        "value": "0021-9606",
+        "type": "print"
+      },
+      {
+        "value": "1089-7690",
+        "type": "electronic"
+      }
+    ],
+    "subject": [],
+    "published-other": {
+      "date-parts": [
+        [
+          2007,
+          9,
+          21
+        ]
+      ]
+    },
+    "published": {
+      "date-parts": [
+        [
+          2007,
+          9,
+          18
+        ]
+      ]
+    },
+    "article-number": "114105"
+  },
+  {
+    "indexed": {
+      "date-parts": [
+        [
+          2026,
+          10,
+          7
+        ]
+      ],
+      "date-time": "2026-10-07T03:19:37Z",
+      "timestamp": 1791343177105,
+      "version": "4.3.1"
+    },
+    "reference-count": 125,
+    "publisher": "AIP Publishing",
+    "issue": "15",
+    "content-domain": {
+      "domain": [
+        "pubs.aip.org"
+      ],
+      "crossmark-restriction": true
+    },
+    "short-container-title": [],
+    "published-print": {
+      "date-parts": [
+        [
+          2010,
+          4,
+          21
+        ]
+      ]
+    },
+    "abstract": "<jats:p>The method of dispersion correction as an add-on to standard Kohn\u2013Sham density functional theory (DFT-D) has been refined regarding higher accuracy, broader range of applicability, and less empiricism. The main new ingredients are atom-pairwise specific dispersion coefficients and cutoff radii that are both computed from first principles. The coefficients for new eighth-order dispersion terms are computed using established recursion relations. System (geometry) dependent information is used for the first time in a DFT-D type approach by employing the new concept of fractional coordination numbers (CN). They are used to interpolate between dispersion coefficients of atoms in different chemical environments. The method only requires adjustment of two global parameters for each density functional, is asymptotically exact for a gas of weakly interacting neutral atoms, and easily allows the computation of atomic forces. Three-body nonadditivity terms are considered. The method has been assessed on standard benchmark sets for inter- and intramolecular noncovalent interactions with a particular emphasis on a consistent description of light and heavy element systems. The mean absolute deviations for the S22 benchmark set of noncovalent interactions for 11 standard density functionals decrease by 15%\u201340% compared to the previous (already accurate) DFT-D version. Spectacular improvements are found for a tripeptide-folding model and all tested metallic systems. The rectification of the long-range behavior and the use of more accurate C6 coefficients also lead to a much better description of large (infinite) systems as shown for graphene sheets and the adsorption of benzene on an Ag(111) surface. For graphene it is found that the inclusion of three-body terms substantially (by about 10%) weakens the interlayer binding. We propose the revised DFT-D method as a general tool for the computation of the dispersion energy in molecules and solids of any kind with DFT and related (low-cost) electronic structure methods for large systems.</jats:p>",
+    "DOI": "10.1063/1.3382344",
+    "type": "journal-article",
+    "created": {
+      "date-parts": [
+        [
+          2010,
+          4,
+          16
+        ]
+      ],
+      "date-time": "2010-04-16T18:22:42Z",
+      "timestamp": 1271442162000
+    },
+    "update-policy": "https://doi.org/10.1063/aip-crossmark-policy-page",
+    "source": "Crossref",
+    "is-referenced-by-count": 59161,
+    "title": [
+      "A consistent and accurate\n                    <i>ab initio</i>\n                    parametrization of density functional dispersion correction (DFT-D) for the 94 elements H-Pu"
+    ],
+    "prefix": "10.1063",
+    "volume": "132",
+    "author": [
+      {
+        "given": "Stefan",
+        "family": "Grimme",
+        "sequence": "first",
+        "affiliation": [
+          {
+            "name": "Universit\u00e4t M\u00fcnster Theoretische Organische Chemie, Organisch-Chemisches Institut, , Corrensstrasse 40, D-48149 M\u00fcnster, Germany"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Jens",
+        "family": "Antony",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Universit\u00e4t M\u00fcnster Theoretische Organische Chemie, Organisch-Chemisches Institut, , Corrensstrasse 40, D-48149 M\u00fcnster, Germany"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Stephan",
+        "family": "Ehrlich",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Universit\u00e4t M\u00fcnster Theoretische Organische Chemie, Organisch-Chemisches Institut, , Corrensstrasse 40, D-48149 M\u00fcnster, Germany"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Helge",
+        "family": "Krieg",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Universit\u00e4t M\u00fcnster Theoretische Organische Chemie, Organisch-Chemisches Institut, , Corrensstrasse 40, D-48149 M\u00fcnster, Germany"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "member": "317",
+    "published-online": {
+      "date-parts": [
+        [
+          2010,
+          4,
+          16
+        ]
+      ]
+    },
+    "reference": [
+      {
+        "key": "2023080201531686600_c1",
+        "volume-title": "The Theory of Intermolecular Forces",
+        "year": "1997"
+      },
+      {
+        "key": "2023080201531686600_c2",
+        "doi-asserted-by": "publisher",
+        "volume-title": "Intermolecular Interactions",
+        "year": "2006",
+        "DOI": "10.1002/047086334X"
+      },
+      {
+        "key": "2023080201531686600_c3",
+        "doi-asserted-by": "publisher",
+        "first-page": "741",
+        "DOI": "10.1039/b615319b",
+        "volume": "5",
+        "year": "2007",
+        "journal-title": "Org. Biomol. Chem."
+      },
+      {
+        "key": "2023080201531686600_c4",
+        "doi-asserted-by": "publisher",
+        "first-page": "124105",
+        "DOI": "10.1063/1.3079822",
+        "volume": "130",
+        "year": "2009",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "2023080201531686600_c5",
+        "doi-asserted-by": "publisher",
+        "first-page": "1127",
+        "DOI": "10.1002/poc.1606",
+        "volume": "22",
+        "year": "2009",
+        "journal-title": "J. Phys. Org. Chem."
+      },
+      {
+        "key": "2023080201531686600_c6",
+        "doi-asserted-by": "publisher",
+        "first-page": "224104",
+        "DOI": "10.1063/1.3269802",
+        "volume": "131",
+        "year": "2009",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "2023080201531686600_c7",
+        "doi-asserted-by": "publisher",
+        "first-page": "5149",
+        "DOI": "10.1063/1.1329889",
+        "volume": "114",
+        "year": "2001",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "2023080201531686600_c8",
+        "doi-asserted-by": "publisher",
+        "first-page": "1463",
+        "DOI": "10.1002/jcc.20078",
+        "volume": "25",
+        "year": "2004",
+        "journal-title": "J. Comput. Chem."
+      },
+      {
+        "key": "2023080201531686600_c9",
+        "doi-asserted-by": "publisher",
+        "first-page": "555",
+        "DOI": "10.1002/jcc.20570",
+        "volume": "28",
+        "year": "2007",
+        "journal-title": "J. Comput. Chem."
+      },
+      {
+        "key": "2023080201531686600_c10",
+        "doi-asserted-by": "publisher",
+        "first-page": "102",
+        "DOI": "10.1103/PhysRevLett.76.102",
+        "volume": "76",
+        "year": "1996",
+        "journal-title": "Phys. Rev. Lett."
+      },
+      {
+        "key": "2023080201531686600_c11",
+        "doi-asserted-by": "publisher",
+        "first-page": "599",
+        "DOI": "10.1002/qua.20315",
+        "volume": "101",
+        "year": "2005",
+        "journal-title": "Int. J. Quantum Chem."
+      },
+      {
+        "key": "2023080201531686600_c12",
+        "doi-asserted-by": "publisher",
+        "first-page": "1151",
+        "DOI": "10.1080/00268970412331333474",
+        "volume": "103",
+        "year": "2005",
+        "journal-title": "Mol. Phys."
+      },
+      {
+        "key": "2023080201531686600_c13",
+        "doi-asserted-by": "publisher",
+        "first-page": "153004",
+        "DOI": "10.1103/PhysRevLett.93.153004",
+        "volume": "93",
+        "year": "2004",
+        "journal-title": "Phys. Rev. Lett."
+      },
+      {
+        "key": "2023080201531686600_c14",
+        "doi-asserted-by": "publisher",
+        "first-page": "154102",
+        "DOI": "10.1063/1.2992078",
+        "volume": "129",
+        "year": "2008",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "2023080201531686600_c15",
+        "doi-asserted-by": "publisher",
+        "first-page": "157",
+        "DOI": "10.1021/ar700111a",
+        "volume": "41",
+        "year": "2008",
+        "journal-title": "Acc. Chem. Res."
+      },
+      {
+        "key": "2023080201531686600_c16",
+        "doi-asserted-by": "crossref",
+        "first-page": "1376",
+        "DOI": "10.1002/0470845015",
+        "volume-title": "Encyclopedia of Computational Chemisty",
+        "author": "von Rague-Schleyer",
+        "year": "1998"
+      },
+      {
+        "key": "2023080201531686600_c17",
+        "doi-asserted-by": "publisher",
+        "first-page": "11156",
+        "DOI": "10.1021/jp0112774",
+        "volume": "105",
+        "year": "2001",
+        "journal-title": "J. Phys. Chem. A"
+      },
+      {
+        "key": "2023080201531686600_c18",
+        "doi-asserted-by": "publisher",
+        "first-page": "168",
+        "DOI": "10.1021/ct9005882",
+        "volume": "6",
+        "year": "2010",
+        "journal-title": "J. Chem. Theory Comput."
+      },
+      {
+        "key": "2023080201531686600_c19",
+        "doi-asserted-by": "publisher",
+        "first-page": "3955",
+        "DOI": "10.1039/b608262a",
+        "volume": "8",
+        "year": "2006",
+        "journal-title": "Phys. Chem. Chem. Phys."
+      },
+      {
+        "key": "2023080201531686600_c20",
+        "doi-asserted-by": "publisher",
+        "first-page": "864",
+        "DOI": "10.1021/ct900536n",
+        "volume": "6",
+        "year": "2010",
+        "journal-title": "J. Chem. Theory Comput."
+      },
+      {
+        "key": "2023080201531686600_c21",
+        "doi-asserted-by": "publisher",
+        "first-page": "094106",
+        "DOI": "10.1063/1.3336452",
+        "volume": "132",
+        "year": "2010",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "2023080201531686600_c22",
+        "doi-asserted-by": "publisher",
+        "first-page": "063004",
+        "DOI": "10.1103/PhysRevLett.103.063004",
+        "volume": "103",
+        "year": "2009",
+        "journal-title": "Phys. Rev. Lett."
+      },
+      {
+        "key": "2023080201531686600_c23",
+        "doi-asserted-by": "publisher",
+        "first-page": "022201",
+        "DOI": "10.1088/0953-8984/22/2/022201",
+        "volume": "22",
+        "year": "2010",
+        "journal-title": "J. Phys.: Condens. Matter"
+      },
+      {
+        "key": "2023080201531686600_c24",
+        "doi-asserted-by": "publisher",
+        "first-page": "81",
+        "DOI": "10.1021/ct900410j",
+        "volume": "6",
+        "year": "2010",
+        "journal-title": "J. Chem. Theory Comput."
+      },
+      {
+        "key": "2023080201531686600_c25",
+        "doi-asserted-by": "publisher",
+        "first-page": "1996",
+        "DOI": "10.1021/ct800308k",
+        "volume": "4",
+        "year": "2008",
+        "journal-title": "J. Chem. Theory Comput."
+      },
+      {
+        "key": "2023080201531686600_c26",
+        "doi-asserted-by": "publisher",
+        "first-page": "1",
+        "DOI": "10.1002/9780470399545.ch1",
+        "volume-title": "Reviews in Computational Chemistry",
+        "author": "Lipkowitz",
+        "year": "2009"
+      },
+      {
+        "key": "2023080201531686600_c27",
+        "doi-asserted-by": "publisher",
+        "first-page": "39",
+        "DOI": "10.1002/9780470399545.ch2",
+        "volume-title": "Reviews in Computational Chemistry",
+        "author": "Lipkowitz",
+        "year": "2009"
+      },
+      {
+        "key": "2023080201531686600_c28",
+        "doi-asserted-by": "publisher",
+        "first-page": "263201",
+        "DOI": "10.1103/PhysRevLett.103.263201",
+        "volume": "103",
+        "year": "2009",
+        "journal-title": "Phys. Rev. Lett."
+      },
+      {
+        "key": "2023080201531686600_c29",
+        "doi-asserted-by": "publisher",
+        "first-page": "3098",
+        "DOI": "10.1103/PhysRevA.38.3098",
+        "volume": "38",
+        "year": "1988",
+        "journal-title": "Phys. Rev. A"
+      },
+      {
+        "key": "2023080201531686600_c30",
+        "doi-asserted-by": "publisher",
+        "first-page": "785",
+        "DOI": "10.1103/PhysRevB.37.785",
+        "volume": "37",
+        "year": "1988",
+        "journal-title": "Phys. Rev. B"
+      },
+      {
+        "key": "2023080201531686600_c31",
+        "doi-asserted-by": "publisher",
+        "first-page": "8822",
+        "DOI": "10.1103/PhysRevB.33.8822",
+        "volume": "33",
+        "year": "1986",
+        "journal-title": "Phys. Rev. B"
+      },
+      {
+        "key": "2023080201531686600_c32",
+        "doi-asserted-by": "publisher",
+        "first-page": "7406",
+        "DOI": "10.1103/PhysRevB.34.7406",
+        "volume": "34",
+        "year": "1986",
+        "journal-title": "Phys. Rev. B"
+      },
+      {
+        "key": "2023080201531686600_c33",
+        "doi-asserted-by": "publisher",
+        "first-page": "3865",
+        "DOI": "10.1103/PhysRevLett.77.3865",
+        "volume": "77",
+        "year": "1996",
+        "journal-title": "Phys. Rev. Lett."
+      },
+      {
+        "key": "2023080201531686600_c34",
+        "doi-asserted-by": "publisher",
+        "first-page": "890",
+        "DOI": "10.1103/PhysRevLett.80.890",
+        "volume": "80",
+        "year": "1998",
+        "journal-title": "Phys. Rev. Lett."
+      },
+      {
+        "key": "2023080201531686600_c35",
+        "doi-asserted-by": "publisher",
+        "first-page": "1787",
+        "DOI": "10.1002/jcc.20495",
+        "volume": "27",
+        "year": "2006",
+        "journal-title": "J. Comput. Chem."
+      },
+      {
+        "key": "2023080201531686600_c36",
+        "doi-asserted-by": "publisher",
+        "first-page": "146401",
+        "DOI": "10.1103/PhysRevLett.91.146401",
+        "volume": "91",
+        "year": "2003",
+        "journal-title": "Phys. Rev. Lett."
+      },
+      {
+        "key": "2023080201531686600_c37",
+        "doi-asserted-by": "publisher",
+        "first-page": "5648",
+        "DOI": "10.1063/1.464913",
+        "volume": "98",
+        "year": "1993",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "2023080201531686600_c38",
+        "doi-asserted-by": "publisher",
+        "first-page": "11623",
+        "DOI": "10.1021/j100096a001",
+        "volume": "98",
+        "year": "1994",
+        "journal-title": "J. Phys. Chem."
+      },
+      {
+        "key": "2023080201531686600_c39",
+        "doi-asserted-by": "publisher",
+        "first-page": "6158",
+        "DOI": "10.1063/1.478522",
+        "volume": "110",
+        "year": "1999",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "2023080201531686600_c40",
+        "doi-asserted-by": "publisher",
+        "first-page": "5656",
+        "DOI": "10.1021/jp050536c",
+        "volume": "109",
+        "year": "2005",
+        "journal-title": "J. Phys. Chem. A"
+      },
+      {
+        "key": "2023080201531686600_c41",
+        "doi-asserted-by": "publisher",
+        "first-page": "034108",
+        "DOI": "10.1063/1.2148954",
+        "volume": "124",
+        "year": "2006",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "2023080201531686600_c42",
+        "doi-asserted-by": "publisher",
+        "first-page": "3067",
+        "DOI": "10.1021/jp050036j",
+        "volume": "109",
+        "year": "2005",
+        "journal-title": "J. Phys. Chem. A"
+      },
+      {
+        "key": "2023080201531686600_c43",
+        "doi-asserted-by": "publisher",
+        "first-page": "154104",
+        "DOI": "10.1063/1.1884601",
+        "volume": "122",
+        "year": "2005",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "2023080201531686600_c44",
+        "doi-asserted-by": "publisher",
+        "first-page": "154101",
+        "DOI": "10.1063/1.2065267",
+        "volume": "123",
+        "year": "2005",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "2023080201531686600_c45",
+        "doi-asserted-by": "publisher",
+        "first-page": "073005",
+        "DOI": "10.1103/PhysRevLett.102.073005",
+        "volume": "102",
+        "year": "2009",
+        "journal-title": "Phys. Rev. Lett."
+      },
+      {
+        "key": "2023080201531686600_c46",
+        "doi-asserted-by": "publisher",
+        "first-page": "86",
+        "DOI": "10.1007/s10910-008-9451-y",
+        "volume": "46",
+        "year": "2009",
+        "journal-title": "J. Math. Chem."
+      },
+      {
+        "key": "2023080201531686600_c47",
+        "doi-asserted-by": "publisher",
+        "first-page": "014104",
+        "DOI": "10.1063/1.2139668",
+        "volume": "124",
+        "year": "2006",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "2023080201531686600_c48",
+        "doi-asserted-by": "publisher",
+        "first-page": "174104",
+        "DOI": "10.1063/1.2190220",
+        "volume": "124",
+        "year": "2006",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "2023080201531686600_c49",
+        "doi-asserted-by": "publisher",
+        "first-page": "024101",
+        "DOI": "10.1063/1.1949201",
+        "volume": "123",
+        "year": "2005",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "2023080201531686600_c50",
+        "doi-asserted-by": "publisher",
+        "first-page": "1985",
+        "DOI": "10.1039/b600027d",
+        "volume": "8",
+        "year": "2006",
+        "journal-title": "Phys. Chem. Chem. Phys."
+      },
+      {
+        "key": "2023080201531686600_c51",
+        "doi-asserted-by": "publisher",
+        "first-page": "042510",
+        "DOI": "10.1103/PhysRevA.79.042510",
+        "volume": "79",
+        "year": "2009",
+        "journal-title": "Phys. Rev. A"
+      },
+      {
+        "key": "2023080201531686600_c52",
+        "doi-asserted-by": "publisher",
+        "first-page": "3011",
+        "DOI": "10.1063/1.1287055",
+        "volume": "113",
+        "year": "2000",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "2023080201531686600_c53",
+        "doi-asserted-by": "publisher",
+        "first-page": "8748",
+        "DOI": "10.1063/1.1412004",
+        "volume": "115",
+        "year": "2001",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "2023080201531686600_c54",
+        "doi-asserted-by": "publisher",
+        "first-page": "515",
+        "DOI": "10.1063/1.1424928",
+        "volume": "116",
+        "year": "2002",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "2023080201531686600_c55",
+        "doi-asserted-by": "publisher",
+        "first-page": "2693",
+        "DOI": "10.1063/1.1637034",
+        "volume": "120",
+        "year": "2004",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "2023080201531686600_c56",
+        "doi-asserted-by": "publisher",
+        "first-page": "9993",
+        "DOI": "10.1021/jp800974k",
+        "volume": "112",
+        "year": "2008",
+        "journal-title": "J. Phys. Chem. A"
+      },
+      {
+        "key": "2023080201531686600_c57",
+        "doi-asserted-by": "publisher",
+        "first-page": "2950",
+        "DOI": "10.1021/ct9002509",
+        "volume": "5",
+        "year": "2009",
+        "journal-title": "J. Chem. Theory Comput."
+      },
+      {
+        "key": "2023080201531686600_c58",
+        "doi-asserted-by": "publisher",
+        "first-page": "3397",
+        "DOI": "10.1039/b704725h",
+        "volume": "9",
+        "year": "2007",
+        "journal-title": "Phys. Chem. Chem. Phys."
+      },
+      {
+        "key": "2023080201531686600_c59",
+        "doi-asserted-by": "publisher",
+        "first-page": "1664",
+        "DOI": "10.2320/matertrans.MF200911",
+        "volume": "50",
+        "year": "2009",
+        "journal-title": "Mater. Trans."
+      },
+      {
+        "key": "2023080201531686600_c60",
+        "doi-asserted-by": "publisher",
+        "first-page": "6615",
+        "DOI": "10.1039/b810189b",
+        "volume": "10",
+        "year": "2008",
+        "journal-title": "Phys. Chem. Chem. Phys."
+      },
+      {
+        "key": "2023080201531686600_c61",
+        "doi-asserted-by": "publisher",
+        "first-page": "3423",
+        "DOI": "10.1002/chem.200400091",
+        "volume": "10",
+        "year": "2004",
+        "journal-title": "Chem.-Eur. J."
+      },
+      {
+        "key": "2023080201531686600_c62",
+        "doi-asserted-by": "publisher",
+        "first-page": "4460",
+        "DOI": "10.1002/anie.200600448",
+        "volume": "45",
+        "year": "2006",
+        "journal-title": "Angew. Chem., Int. Ed."
+      },
+      {
+        "key": "2023080201531686600_c63",
+        "doi-asserted-by": "publisher",
+        "first-page": "360",
+        "DOI": "10.1103/PhysRev.73.360",
+        "volume": "73",
+        "year": "1948",
+        "journal-title": "Phys. Rev."
+      },
+      {
+        "key": "2023080201531686600_c64",
+        "doi-asserted-by": "publisher",
+        "first-page": "12",
+        "DOI": "10.1002/(SICI)1096-987X(19990115)20:1&lt;12::AID-JCC4&gt;3.0.CO;2-U",
+        "volume": "20",
+        "year": "1999",
+        "journal-title": "J. Comput. Chem."
+      },
+      {
+        "key": "2023080201531686600_c65",
+        "doi-asserted-by": "publisher",
+        "first-page": "164708",
+        "DOI": "10.1063/1.3256238",
+        "volume": "131",
+        "year": "2009",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "2023080201531686600_c66",
+        "doi-asserted-by": "publisher",
+        "first-page": "2801",
+        "DOI": "10.1063/1.1677610",
+        "volume": "56",
+        "year": "1972",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "2023080201531686600_c67",
+        "doi-asserted-by": "publisher",
+        "first-page": "3252",
+        "DOI": "10.1063/1.463012",
+        "volume": "97",
+        "year": "1992",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "2023080201531686600_c68",
+        "doi-asserted-by": "publisher",
+        "first-page": "3726",
+        "DOI": "10.1063/1.447150",
+        "volume": "80",
+        "year": "1984",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "2023080201531686600_c69",
+        "doi-asserted-by": "publisher",
+        "first-page": "014110",
+        "DOI": "10.1063/1.3282265",
+        "volume": "132",
+        "year": "2010",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "2023080201531686600_c70",
+        "doi-asserted-by": "publisher",
+        "first-page": "074301",
+        "DOI": "10.1063/1.3315418",
+        "volume": "132",
+        "year": "2010",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "2023080201531686600_c71",
+        "doi-asserted-by": "publisher",
+        "first-page": "10225",
+        "DOI": "10.1021/jp047289h",
+        "volume": "108",
+        "year": "2004",
+        "journal-title": "J. Phys. Chem. A"
+      },
+      {
+        "key": "2023080201531686600_c72",
+        "doi-asserted-by": "publisher",
+        "first-page": "299",
+        "DOI": "10.1063/1.1723844",
+        "volume": "11",
+        "year": "1943",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "2023080201531686600_c73",
+        "first-page": "629",
+        "volume": "17",
+        "year": "1943",
+        "journal-title": "Proc. Phys. Math. Soc. Jpn."
+      },
+      {
+        "key": "2023080201531686600_c74",
+        "doi-asserted-by": "publisher",
+        "first-page": "045116",
+        "DOI": "10.1103/PhysRevB.78.045116",
+        "volume": "78",
+        "year": "2008",
+        "journal-title": "Phys. Rev. B"
+      },
+      {
+        "key": "2023080201531686600_c75",
+        "doi-asserted-by": "publisher",
+        "first-page": "5806",
+        "DOI": "10.1021/jp8111556",
+        "volume": "113",
+        "year": "2009",
+        "journal-title": "J. Phys. Chem. A"
+      },
+      {
+        "key": "2023080201531686600_c76",
+        "doi-asserted-by": "publisher",
+        "first-page": "186",
+        "DOI": "10.1002/chem.200800987",
+        "volume": "15",
+        "year": "2009",
+        "journal-title": "Chem.-Eur. J."
+      },
+      {
+        "key": "2023080201531686600_c77"
+      },
+      {
+        "key": "2023080201531686600_c78",
+        "unstructured": "See supplementary material at http://dx.doi.org/10.1063/1.3382344 for optimized DFT-D3 parameter values for triple-zeta calculations, computational details, and details on the benchmark sets."
+      },
+      {
+        "key": "2023080201531686600_c79",
+        "doi-asserted-by": "publisher",
+        "first-page": "10757",
+        "DOI": "10.1039/b907148b",
+        "volume": "11",
+        "year": "2009",
+        "journal-title": "Phys. Chem. Chem. Phys."
+      },
+      {
+        "key": "2023080201531686600_c80",
+        "doi-asserted-by": "publisher",
+        "first-page": "073201",
+        "DOI": "10.1103/PhysRevLett.96.073201",
+        "volume": "96",
+        "year": "2006",
+        "journal-title": "Phys. Rev. Lett."
+      },
+      {
+        "key": "2023080201531686600_c81",
+        "year": "2009"
+      },
+      {
+        "key": "2023080201531686600_c82",
+        "volume-title": "ORCA\u2014An Ab Initio, Density Functional and Semiempirical Program Package",
+        "year": "2007"
+      },
+      {
+        "key": "2023080201531686600_c83",
+        "year": "2006"
+      },
+      {
+        "key": "2023080201531686600_c84",
+        "doi-asserted-by": "publisher",
+        "first-page": "12753",
+        "DOI": "10.1063/1.1627293",
+        "volume": "119",
+        "year": "2003",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "2023080201531686600_c85",
+        "doi-asserted-by": "publisher",
+        "first-page": "3297",
+        "DOI": "10.1039/b508541a",
+        "volume": "7",
+        "year": "2005",
+        "journal-title": "Phys. Chem. Chem. Phys."
+      },
+      {
+        "key": "2023080201531686600_c86",
+        "doi-asserted-by": "publisher",
+        "first-page": "5829",
+        "DOI": "10.1063/1.467146",
+        "volume": "100",
+        "year": "1994",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "2023080201531686600_c87",
+        "doi-asserted-by": "publisher",
+        "first-page": "2563",
+        "DOI": "10.1063/1.1305880",
+        "volume": "113",
+        "year": "2000",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "2023080201531686600_c88",
+        "doi-asserted-by": "publisher",
+        "first-page": "11113",
+        "DOI": "10.1063/1.1622924",
+        "volume": "119",
+        "year": "2003",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "2023080201531686600_c89",
+        "doi-asserted-by": "publisher",
+        "first-page": "514",
+        "DOI": "10.1016/0009-2614(93)89151-7",
+        "volume": "213",
+        "year": "1993",
+        "journal-title": "Chem. Phys. Lett."
+      },
+      {
+        "key": "2023080201531686600_c90",
+        "doi-asserted-by": "publisher",
+        "first-page": "4285",
+        "DOI": "10.1039/b204199p",
+        "volume": "4",
+        "year": "2002",
+        "journal-title": "Phys. Chem. Chem. Phys."
+      },
+      {
+        "key": "2023080201531686600_c91",
+        "doi-asserted-by": "publisher",
+        "first-page": "331",
+        "DOI": "10.1007/s002140050269",
+        "volume": "97",
+        "year": "1997",
+        "journal-title": "Theor. Chem. Acc."
+      },
+      {
+        "key": "2023080201531686600_c92",
+        "doi-asserted-by": "publisher",
+        "first-page": "143",
+        "DOI": "10.1016/S0009-2614(98)00862-8",
+        "volume": "294",
+        "year": "1998",
+        "journal-title": "Chem. Phys. Lett."
+      },
+      {
+        "key": "2023080201531686600_c93",
+        "doi-asserted-by": "publisher",
+        "first-page": "283",
+        "DOI": "10.1016/0009-2614(95)00621-A",
+        "volume": "240",
+        "year": "1995",
+        "journal-title": "Chem. Phys. Lett."
+      },
+      {
+        "key": "2023080201531686600_c94",
+        "doi-asserted-by": "publisher",
+        "first-page": "587",
+        "DOI": "10.1007/s00214-007-0250-5",
+        "volume": "117",
+        "year": "2007",
+        "journal-title": "Theor. Chem. Acc."
+      },
+      {
+        "key": "2023080201531686600_c95",
+        "volume-title": "Theoretical and Computational Chemistry",
+        "author": "Olivucci",
+        "year": "2005"
+      },
+      {
+        "key": "2023080201531686600_c96",
+        "doi-asserted-by": "publisher",
+        "first-page": "1761",
+        "DOI": "10.1021/ct900126q",
+        "volume": "5",
+        "year": "2009",
+        "journal-title": "J. Chem. Theory Comput."
+      },
+      {
+        "key": "2023080201531686600_c97",
+        "doi-asserted-by": "crossref",
+        "first-page": "559",
+        "DOI": "10.1080/00268979909482993",
+        "volume": "96",
+        "year": "1999",
+        "journal-title": "Mol. Phys."
+      },
+      {
+        "key": "2023080201531686600_c98",
+        "doi-asserted-by": "publisher",
+        "first-page": "107",
+        "DOI": "10.1021/ct900489g",
+        "volume": "6",
+        "year": "2010",
+        "journal-title": "J. Chem. Theory Comput."
+      },
+      {
+        "key": "2023080201531686600_c99",
+        "doi-asserted-by": "publisher",
+        "first-page": "114304",
+        "DOI": "10.1063/1.2178795",
+        "volume": "124",
+        "year": "2006",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "2023080201531686600_c100",
+        "doi-asserted-by": "publisher",
+        "first-page": "3917",
+        "DOI": "10.1039/b509242f",
+        "volume": "7",
+        "year": "2005",
+        "journal-title": "Phys. Chem. Chem. Phys."
+      },
+      {
+        "key": "2023080201531686600_c101",
+        "doi-asserted-by": "publisher",
+        "first-page": "131",
+        "DOI": "10.1002/(SICI)1097-461X(1998)66:2&lt;131::AID-QUA4&gt;3.0.CO;2-W",
+        "volume": "66",
+        "year": "1998",
+        "journal-title": "Int. J. Quantum Chem."
+      },
+      {
+        "key": "2023080201531686600_c102",
+        "doi-asserted-by": "publisher",
+        "first-page": "11199",
+        "DOI": "10.1021/jp0720791",
+        "volume": "111",
+        "year": "2007",
+        "journal-title": "J. Phys. Chem. C"
+      },
+      {
+        "key": "2023080201531686600_c103",
+        "doi-asserted-by": "publisher",
+        "first-page": "2793",
+        "DOI": "10.1080/00268970701635543",
+        "volume": "105",
+        "year": "2007",
+        "journal-title": "Mol. Phys."
+      },
+      {
+        "key": "2023080201531686600_c104",
+        "doi-asserted-by": "publisher",
+        "first-page": "3842",
+        "DOI": "10.1021/ja070616p",
+        "volume": "129",
+        "year": "2007",
+        "journal-title": "J. Am. Chem. Soc."
+      },
+      {
+        "key": "2023080201531686600_c105",
+        "doi-asserted-by": "publisher",
+        "first-page": "569",
+        "DOI": "10.1021/ar700208h",
+        "volume": "41",
+        "year": "2008",
+        "journal-title": "Acc. Chem. Res."
+      },
+      {
+        "key": "2023080201531686600_c106",
+        "doi-asserted-by": "publisher",
+        "first-page": "8440",
+        "DOI": "10.1039/b907260h",
+        "volume": "11",
+        "year": "2009",
+        "journal-title": "Phys. Chem. Chem. Phys."
+      },
+      {
+        "key": "2023080201531686600_c107",
+        "doi-asserted-by": "publisher",
+        "first-page": "174105",
+        "DOI": "10.1063/1.3244209",
+        "volume": "131",
+        "year": "2009",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "2023080201531686600_c108",
+        "doi-asserted-by": "publisher",
+        "first-page": "4061",
+        "DOI": "10.1021/jp710918f",
+        "volume": "112",
+        "year": "2008",
+        "journal-title": "J. Phys. Chem. C"
+      },
+      {
+        "key": "2023080201531686600_c109",
+        "doi-asserted-by": "publisher",
+        "first-page": "993",
+        "DOI": "10.1021/ct800511q",
+        "volume": "5",
+        "year": "2009",
+        "journal-title": "J. Chem. Theory Comput."
+      },
+      {
+        "key": "2023080201531686600_c110",
+        "doi-asserted-by": "publisher",
+        "first-page": "4862",
+        "DOI": "10.1021/jp070589p",
+        "volume": "111",
+        "year": "2007",
+        "journal-title": "J. Phys. Chem. A"
+      },
+      {
+        "key": "2023080201531686600_c111",
+        "doi-asserted-by": "publisher",
+        "first-page": "201105",
+        "DOI": "10.1103/PhysRevB.79.201105",
+        "volume": "79",
+        "year": "2009",
+        "journal-title": "Phys. Rev. B"
+      },
+      {
+        "key": "2023080201531686600_c112",
+        "doi-asserted-by": "publisher",
+        "first-page": "6803",
+        "DOI": "10.1002/chem.200500465",
+        "volume": "11",
+        "year": "2005",
+        "journal-title": "Chem.-Eur. J."
+      },
+      {
+        "key": "2023080201531686600_c113",
+        "doi-asserted-by": "publisher",
+        "first-page": "1146",
+        "DOI": "10.1021/jp066504m",
+        "volume": "111",
+        "year": "2007",
+        "journal-title": "J. Phys. Chem. A"
+      },
+      {
+        "key": "2023080201531686600_c114",
+        "doi-asserted-by": "publisher",
+        "first-page": "155406",
+        "DOI": "10.1103/PhysRevB.69.155406",
+        "volume": "69",
+        "year": "2004",
+        "journal-title": "Phys. Rev. B"
+      },
+      {
+        "key": "2023080201531686600_c115",
+        "doi-asserted-by": "publisher",
+        "first-page": "155425",
+        "DOI": "10.1103/PhysRevB.76.155425",
+        "volume": "76",
+        "year": "2007",
+        "journal-title": "Phys. Rev. B"
+      },
+      {
+        "key": "2023080201531686600_c116",
+        "doi-asserted-by": "publisher",
+        "first-page": "235401",
+        "DOI": "10.1103/PhysRevB.74.235401",
+        "volume": "74",
+        "year": "2006",
+        "journal-title": "Phys. Rev. B"
+      },
+      {
+        "key": "2023080201531686600_c117",
+        "doi-asserted-by": "publisher",
+        "first-page": "51",
+        "DOI": "10.1002/jcc.21022",
+        "volume": "30",
+        "year": "2009",
+        "journal-title": "J. Comput. Chem."
+      },
+      {
+        "key": "2023080201531686600_c118",
+        "doi-asserted-by": "publisher",
+        "first-page": "2813",
+        "DOI": "10.1039/b717744e",
+        "volume": "10",
+        "year": "2008",
+        "journal-title": "Phys. Chem. Chem. Phys."
+      },
+      {
+        "key": "2023080201531686600_c119",
+        "doi-asserted-by": "publisher",
+        "first-page": "204112",
+        "DOI": "10.1063/1.3021474",
+        "volume": "129",
+        "year": "2008",
+        "journal-title": "J. Chem. Phys."
+      },
+      {
+        "key": "2023080201531686600_c120"
+      },
+      {
+        "key": "2023080201531686600_c121",
+        "doi-asserted-by": "publisher",
+        "first-page": "13628",
+        "DOI": "10.1021/jp906086x",
+        "volume": "113",
+        "year": "2009",
+        "journal-title": "J. Phys. Chem. A"
+      },
+      {
+        "key": "2023080201531686600_c122",
+        "doi-asserted-by": "publisher",
+        "first-page": "11414",
+        "DOI": "10.1021/jp002631l",
+        "volume": "104",
+        "year": "2000",
+        "journal-title": "J. Phys. Chem. A"
+      },
+      {
+        "key": "2023080201531686600_c123",
+        "doi-asserted-by": "publisher",
+        "first-page": "11015",
+        "DOI": "10.1021/jp053905d",
+        "volume": "109",
+        "year": "2005",
+        "journal-title": "J. Phys. Chem. A"
+      },
+      {
+        "key": "2023080201531686600_c124",
+        "doi-asserted-by": "publisher",
+        "first-page": "19973",
+        "DOI": "10.1021/jp062225n",
+        "volume": "110",
+        "year": "2006",
+        "journal-title": "J. Phys. Chem. B"
+      },
+      {
+        "key": "2023080201531686600_c125",
+        "doi-asserted-by": "publisher",
+        "first-page": "3327",
+        "DOI": "10.1039/b803508c",
+        "volume": "10",
+        "year": "2008",
+        "journal-title": "Phys. Chem. Chem. Phys."
+      }
+    ],
+    "container-title": [
+      "The Journal of Chemical Physics"
+    ],
+    "original-title": [],
+    "language": "en",
+    "link": [
+      {
+        "URL": "https://pubs.aip.org/aip/jcp/article-pdf/doi/10.1063/1.3382344/15684000/154104_1_online.pdf",
+        "content-type": "application/pdf",
+        "content-version": "vor",
+        "intended-application": "syndication"
+      },
+      {
+        "URL": "https://pubs.aip.org/aip/jcp/article-pdf/doi/10.1063/1.3382344/15684000/154104_1_online.pdf",
+        "content-type": "unspecified",
+        "content-version": "vor",
+        "intended-application": "similarity-checking"
+      }
+    ],
+    "deposited": {
+      "date-parts": [
+        [
+          2024,
+          3,
+          25
+        ]
+      ],
+      "date-time": "2024-03-25T17:58:45Z",
+      "timestamp": 1711389525000
+    },
+    "score": 1,
+    "resource": {
+      "primary": {
+        "URL": "https://pubs.aip.org/jcp/article/132/15/154104/926936/A-consistent-and-accurate-ab-initio"
+      }
+    },
+    "subtitle": [],
+    "short-title": [],
+    "issued": {
+      "date-parts": [
+        [
+          2010,
+          4,
+          16
+        ]
+      ]
+    },
+    "references-count": 125,
+    "journal-issue": {
+      "issue": "15",
+      "published-print": {
+        "date-parts": [
+          [
+            2010,
+            4,
+            21
+          ]
+        ]
+      }
+    },
+    "URL": "https://doi.org/10.1063/1.3382344",
+    "relation": {},
+    "ISSN": [
+      "0021-9606",
+      "1089-7690"
+    ],
+    "issn-type": [
+      {
+        "value": "0021-9606",
+        "type": "print"
+      },
+      {
+        "value": "1089-7690",
+        "type": "electronic"
+      }
+    ],
+    "subject": [],
+    "published-other": {
+      "date-parts": [
+        [
+          2010,
+          4,
+          21
+        ]
+      ]
+    },
+    "published": {
+      "date-parts": [
+        [
+          2010,
+          4,
+          16
+        ]
+      ]
+    },
+    "article-number": "154104"
+  }
+]

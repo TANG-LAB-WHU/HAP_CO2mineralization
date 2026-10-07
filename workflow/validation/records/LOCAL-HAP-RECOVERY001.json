@@ -1,0 +1,10 @@
+{
+  "artifact_id": "LOCAL-HAP-RECOVERY001",
+  "local_raw_path": ".research-runs/recovery-001",
+  "status": "completed",
+  "manuscript_eligible": false,
+  "reproducibility_manifest": ".research-runs/recovery-001/reproducibility-manifest.json",
+  "reproducibility_manifest_sha256": "e52f19e14355430fa33f2dfc5363e4ce68bd256f03baa3576720774164c57fdc",
+  "verification_report": "workflow/validation/recovery-recovery-001.json",
+  "notes": "Completed failure diagnosis and bounded recovery experiments. Original failures and all thresholds retained; no production-valid model claimed."
+}

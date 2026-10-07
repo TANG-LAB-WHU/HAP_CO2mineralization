@@ -1,0 +1,148 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype,amsmath,amssymb,graphicx,booktabs,longtable,array}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{xcolor,hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black}
+\setlength{\parskip}{3pt}
+\setlength{\parindent}{1.2em}
+\newcommand{\COtwo}{CO\textsubscript{2}}
+\newcommand{\HAP}{Ca\textsubscript{10}(PO\textsubscript{4})\textsubscript{6}(OH)\textsubscript{2}}
+\newcommand{\energyunit}{\mathrm{eV}}
+\newcommand{\forceunit}{\,\mathrm{eV}\,\text{\AA}^{-1}}
+\title{A reproducible local validation workflow for atomistic models of dry hydroxyapatite--\COtwo\ interfaces}
+\author{Working draft: authorship and affiliations to be supplied}
+\date{7 October 2026}
+\input{numbers.tex}
+\begin{document}
+\maketitle
+\RunStatusBanner
+\begin{abstract}
+Atomistic workflows for hydroxyapatite (HAP) and carbon dioxide must distinguish successful execution from chemically meaningful structures, consistent labels, and predictive forces. We exercise a local workflow linking explicitly ordered dry HAP slabs, pretrained MACE relaxation, CP2K references and short first-principles trajectories, compact DeepMD models, and LAMMPS dynamics. The audit identifies an earlier constraint-serialization error and separates fixed-geometry molecular interaction from substrate reconstruction in the reference-energy difference. Eight separately seeded trajectories supply disjoint local training, validation, and test groups, with a one-frame fit retained as a distinct implementation check. \QuantitativeAbstract{} Separate failure-diagnosis and optimizer-recovery measurements are reported without replacing the original failures. Failed attempts, predefined gates, real trajectories, and source hashes remain visible. This methods-validation pilot does not establish adsorption thermodynamics, reaction pathways, a transferable reactive potential, or carbon mineralization. Four-femtosecond labeling trajectories do not establish equilibrium or an effective independent sample size, and 250~fs of learned-potential dynamics does not establish long-time stability.
+\end{abstract}
+
+\section{Introduction}
+Hydroxyapatite offers chemically distinct calcium, phosphate, and hydroxyl environments for interactions with \COtwo. These interactions should not be reduced to a single concept of ``capture.'' FTIR work on nonstoichiometric HAP distinguishes reversible adsorption associated with surface P--OH groups from irreversible uptake and carbonate/water formation under the conditions studied \citep{cheng1998co2}. Probe studies further distinguish hydrogenocarbonate, surface carbonate, and A-type carbonate assignments, and show that hydration affects their interpretation \citep{diallogarcia2014sites}. These experimental distinctions motivate separate computational questions about molecular adsorption, chemical conversion, lattice incorporation, and persistent storage.
+
+Atomistic \COtwo--HAP adsorption is not an unexplored subject. Bittencourt and co-workers studied probe adsorption, including \COtwo, on HAP(0001) and discussed cooperative surface motifs involving calcium and neighboring phosphate oxygen \citep{bittencourt2021acidbase}. More recent experimental and DFT work on apatite-based adsorbents interprets the reported behavior as physisorption \citep{bouharras2025adsorption}. Neither result implies that every ideal HAP termination follows the same chemistry. Similarly, high-temperature carbonation/regeneration measurements on substituted apatites demonstrate condition-dependent uptake, not by themselves permanent sequestration \citep{nowicki2024capture}.
+
+The structural environment is therefore part of the scientific question. Periodic calculations distinguish water interactions at stoichiometric (001) and (010) surfaces \citep{corno2009water}. Surface stability and charge states also depend on the aqueous environment and electrostatic model \citep{saito2021surfaces}. Hydroxyl ordering is a meaningful atomistic degree of freedom rather than a detail that can be inferred uniquely from a disorder-averaged crystallographic file \citep{slepko2011ordering}. A dry, ordered slab must consequently be identified as such and cannot silently stand in for a hydrated or nonstoichiometric interface.
+
+The present study addresses a narrower prerequisite: can a small local workflow preserve chemical identity and data meaning through structure preparation, labeling, learning, and dynamics? The goal is a reviewable methods-validation record on a single workstation. Broad screening, reaction kinetics, and mineral-storage claims are outside the tested scope.
+
+\section{Methods}
+\subsection{Scope, provenance, and execution environment}
+All reported calculations were executed on the local Shawn-PC workstation with an NVIDIA RTX 4090 GPU and approximately 64~GiB physical RAM. Linux containers were run through the existing Docker Desktop installation. Immutable image digests, model hashes, input files, seeds, commands, timings, and retained failure logs identify each stage. The baseline and refinement runs occupy separate directories; no earlier trajectory or failed attempt is relabeled as successful. Large calculation files remain outside version control. The supplied source-to-claim map distinguishes technical diagnostics from material-property evidence.
+
+\subsection{Small HAP structural models}
+The repository's ICSD 26205 crystallographic file provides the starting lattice and identifies the Holly Springs refinement of Sudarsanan and Young \citep{Sudarsanan1969}. We audit the local file's stoichiometry and explicit site selection; we do not claim to have re-refined the experimental diffraction data. Half-occupied hydroxyl sites are resolved into explicit ordered configurations rather than simultaneously populated. Both models contain 44 atoms with composition \HAP, Ca/P=10/6, and zero charge under the stated formal-ion bookkeeping. The parallel arrangement selects fractional $z$ coordinates $0.1978/0.6978$ for hydroxyl oxygen and $0.0608/0.5608$ for hydrogen. The antiparallel arrangement uses $0.1978/0.8022$ and $0.0608/0.9392$, respectively. The initial antiparallel slab cancels the formal-charge dipole normal to the surface; this is not a calculation of its electronic polarization or proof of its thermodynamic stability.
+
+One crystallographic repeat forms the dry (001) slab, with 12~\AA\ vacuum on each side and three-dimensional periodic boundary conditions. The in-plane cell and reference-cell geometry are retained consistently. A single molecular \COtwo\ adds three atoms. Phosphate oxygen coordination, O--H distances, minimum contacts, composition, formal charge, and the explicit atom-index map are checked. These tests reject obvious construction errors but do not establish a unique equilibrium termination. No implicit or explicit solvent is included.
+
+All atoms are mobile in the refinement workflow. An audit found that the earlier baseline's intended fixed-bottom constraint was lost during an extended-XYZ round trip. Its actual calculations were therefore unconstrained, contrary to the original description. The correction is recorded without altering the old raw evidence. New trajectories and boundary-condition records make the all-mobile choice explicit at each stage.
+
+\subsection{MACE relaxation and reference-energy bookkeeping}
+The pretrained small MACE-MP checkpoint is used in double precision on the GPU; the architecture and pretrained model are distinct method citations \citep{Batatia2022MACE,Batatia2025MACEMP}. The exact checkpoint checksum is supplied with the run, and no additional dispersion correction is enabled in MACE. FIRE relaxations target a maximum force of $0.03\forceunit$ within 400 steps. A retained nonconverged case is continued with LBFGS, using the same threshold and a bounded 300-step allowance. Passing an optimizer threshold does not validate the potential on a HAP interface.
+
+For a method $m$, a three-reference electronic-energy difference is
+\begin{equation}
+ \Delta E_m=E_m(S+G)-E_m(S)-E_m(G),
+\end{equation}
+where $S$ and $G$ denote the slab and molecular reference. Absolute energies from different methods are never mixed. Because separately relaxed slabs may occupy different reconstructed minima, we also evaluate fragments at the adsorbed geometry, denoted by an asterisk:
+\begin{align}
+ E_{\mathrm{int},m}&=E_m(S^*+G^*)-E_m(S^*)-E_m(G^*),\\
+ \Delta E_m&=E_{\mathrm{int},m}+[E_m(S^*)-E_m(S)]+[E_m(G^*)-E_m(G)].
+\end{align}
+A large negative substrate term identifies a lower-energy substrate configuration relative to the chosen isolated reference; it must not be presented as pure molecular binding. This decomposition does not remove finite-basis or periodic-image errors.
+
+\subsection{CP2K calculations and short trajectory labels}
+CP2K 2025.1 supplies energy/force reference calculations and first-principles dynamics \citep{Kuhne2020CP2K}. The calculations use PBE \citep{PBE1996}, GTH pseudopotentials \citep{GTH1996}, and DZVP-MOLOPT-SR-GTH basis functions from the molecularly optimized family \citep{MOLOPT2007}. The pseudopotentials retain 10, 5, 6, 1, and 4 valence electrons for Ca, P, O, H, and C, respectively. Gamma-point, periodic-XYZ calculations compare cutoffs of 300, 500, and 700~Ry; relative cutoffs are 40, 60, and 60~Ry, respectively. The SCF target is $10^{-7}$. A separate zero-damping PBE-D3 comparison \citep{D32010} uses 500/60~Ry (CP2K reports a 20~bohr pair-potential cutoff, $s_6=1$, $s_{r,6}=1.217$, and $s_8=0.722$); it is a method-sensitivity experiment, not an empirical adjustment to force agreement with MACE. A separate force-grid gate determines the finer plain-PBE settings used consistently for the learned-model labels (\LabelSettings); these are distinct from the 500/60~Ry adsorption-reference comparison.
+
+A selected configuration undergoes bounded DFT geometry refinement with a $0.05\forceunit$ maximum-force gate and all four CP2K optimizer convergence criteria. The first BFGS attempt reaches a wall-time limit; its checkpoint and Hessian are retained. A smaller trust radius (0.05~\AA, previously 0.25~\AA) is used for continuation. The 60- and 90-step attempts remain separate records when they fail geometry convergence. At step 90 the force criteria pass but displacement criteria fail. An explicit force/displacement diagnosis and inspection of the stored BFGS Hessian approximation precede a bounded switch to fresh limited-memory BFGS history (rank 5, at most eight force evaluations per iteration, at most 20 further iterations). Force, displacement, electronic settings and mobile-atom boundaries remain unchanged; no threshold is relaxed. Eight separately seeded initial conditions then vary seed, small coordinate displacement, initial temperature, \COtwo\ azimuth, and height. These are prospective configurations evaluated by CP2K, not fabricated labels. Each short NVE replica uses a 0.25~fs timestep. The realized duration and convergence status are reported below. Coordinate, force, cell, and energy records are matched by step and atom identity. Hartree energies and Hartree/Bohr forces are converted to eV and eV/\AA; duplicate printed records provide an independent alignment check. Missing, truncated, nonfinite, or unconverged outputs fail closed.
+
+\subsection{Splits and compact model experiments}
+Entire initial-condition/trajectory groups are assigned to training, validation, or test before model fitting. Initial frames are excluded and subsequent frames are subsampled. A cross-split distance-vector comparison detects nearby geometries while ignoring uniform translation; the predeclared minimum RMS difference between pair-distance vectors is 0.025~\AA. This check is stronger than comparing file names or exact coordinate hashes, but it does not make nearby local trajectories statistically independent in a broad materials sense. Short-run autocorrelation and coverage diagnostics remain visible.
+
+DeePMD-kit 3.1.0 uses its PyTorch backend \citep{Zeng_JChemTheoryComput_2025_v21_p4375} and the smooth local descriptor \citep{Zhang_BookChap_NIPS_2018_v31_p4436}. Both compact models use a 5~\AA\ cutoff, smoothing beginning at 4.5~\AA, and explicit Ca/P/O/H/C types. The smaller descriptor widths are 8--16--32 with a 32--32 fitting network; the wider alternative uses 16--32--64 and 64--64--64. Double precision and fixed random seeds are used. Energy/force learning is tested separately from a one-frame overfit sanity experiment. The architecture with lower full validation-set force RMSE is selected before evaluating its independent test set. No test-set energy shift or force correction is fitted. Translation, rotation, and equal-element permutation checks assess the expected invariance/covariance of the trained model.
+
+The provisional independent-test gates are force-component RMSE below $0.1\forceunit$ and energy RMSE below 10~meV/atom. The one-frame sanity gate is $0.02\forceunit$. These are predeclared local-development criteria, not universal material-accuracy standards. No virial labels are fitted, and no pressure accuracy is claimed. A finite-cutoff model without an explicit long-range electrostatic treatment is restricted here to the tested composition, cell, and local structural neighborhood.
+
+\subsection{LAMMPS transfer, stability, and visualization}
+The selected frozen model is exercised in LAMMPS \citep{Thompson2022LAMMPS}. Before dynamics, energies and forces on an identical geometry are compared with the Python inference interface, including explicit type and atom-ID checks. \COtwo\ oxygen is selected by its molecule-specific atom IDs rather than by the oxygen element type. An NVE trajectory uses a 0.25~fs timestep; a 1000-step trajectory is compared with 500 steps plus a binary restart and 500 further steps. A separate 2000-step run at 0.125~fs tests timestep sensitivity over the same physical duration. This 250~fs run diagnoses transfer and short-time numerical behavior, not equilibrium or long-term stability. Energy drift, temperature, displacements, contacts, phosphate/OH geometry, and molecular geometry are recorded. The accompanying animations use actual saved frames with unwrapped coordinates and no interpolated dynamics. A separately labeled stable 250 fs demonstration is provided alongside the complete 1 ps failure animation; the short window does not imply long-time validity.
+
+\section{Results: bounded validation findings}
+\input{results.tex}
+\input{recovery.tex}
+
+\begin{figure}[p]
+\centering\includegraphics[width=\textwidth]{figures/09_recovery.pdf}
+\caption{Separate measured recovery diagnostics. Optimizer continuation keeps the original one-frame architecture and labels; the force threshold is unchanged. DFT force differences come from four new displaced single points. Repeat/restart errors quantify numerical sensitivity without replacing the original failed gate. Potential-to-kinetic energy conversion is measured on the failed original trajectory and does not establish physical heating or mineralization.}\label{fig:recovery}
+\end{figure}
+
+\begin{figure}[p]
+\centering\includegraphics[width=\textwidth]{figures/01_structure.pdf}
+\caption{Actual small-model configurations from the refinement run. Parallel and antiparallel hydroxyl arrangements are shown before relaxation, with side and top views of the selected configuration below. Colors identify elements; displayed bonds are geometric guides and do not constitute bond-order analysis. The slab is thin and dry; periodic-image bonds may cross the displayed boundary. This is a construction/geometry diagnostic, not an equilibrium-surface determination.}\label{fig:structure}
+\end{figure}
+\begin{figure}[p]
+\centering\includegraphics[width=\textwidth]{figures/02_relaxation.pdf}
+\caption{Saved optimizer energies and maximum forces. Different initial OH arrangements and optimizer paths are retained. The MACE continuation follows a failed initial force gate. Retained DFT histories include the timeout, 60- and 90-step BFGS failures, and the subsequent successful limited-memory step with unchanged convergence criteria; earlier histories are not replaced. The force history includes a high-force line-search trial that was not accepted; the saved-geometry energy history shows the retained configurations. DFT refinement is shown separately because a stationary MACE structure is not necessarily stationary under PBE. Energy changes are within each method and trajectory.}\label{fig:relaxation}
+\end{figure}
+\begin{figure}[p]
+\centering\includegraphics[width=\textwidth]{figures/03_cp2k_references.pdf}
+\caption{Actual CP2K reference calculations at 300/40, 500/60, and 700/60~Ry, with a separate PBE-D3 comparison. The three-reference difference includes substrate-deformation contributions. The lower-right panel separates molecular interaction, substrate deformation, and molecular deformation using matched references within each method. The shaded sensitivity band is a predefined 0.02~eV numerical criterion, not uncertainty in adsorption physics. Basis, thickness, vacuum, and k-point convergence are not established.}\label{fig:references}
+\end{figure}
+\begin{figure}[p]
+\centering\includegraphics[width=\textwidth]{figures/06_models.pdf}
+\caption{Actual small-model learning curves and independent predictions. The one-frame fit is explicitly separate from generalization. Architecture selection uses validation data; the displayed test errors are calculated afterward without test-set offset fitting. Force points are Cartesian components and are correlated within configurations. The figure therefore reports error diagnostics rather than statistical confidence intervals.}\label{fig:models}
+\end{figure}
+\begin{figure}[p]
+\centering\includegraphics[width=\textwidth]{figures/07_lammps.pdf}
+\caption{Actual LAMMPS short-time dynamics, energy drift, structural diagnostics, and restart/engine-transfer comparisons. Stability of this finite trajectory cannot override a failed independent-force gate or establish long-time sampling. A companion GIF and OVITO-readable trajectory retain the same atom identities and physical time labels.}\label{fig:lammps}
+\end{figure}
+
+\begin{figure}[p]
+\centering\includegraphics[width=\textwidth]{figures/10_recovered_dynamics.pdf}
+\caption{Measured optimizer-recovery improvements with unchanged architecture, labels and gates. The original test is reused retrospectively after validation-only selection; it is not a new untouched holdout. Original and recovery temperature traces have different explicitly labeled durations. The recovery OH and total-energy traces come from real 1 ps and half-timestep runs. Short-time structural stability does not override the failed force gate or establish equilibrated mineralization chemistry.}\label{fig:recovered-dynamics}
+\end{figure}
+
+\begin{figure}[p]
+\centering\includegraphics[width=\textwidth]{figures/12_failure_dft.pdf}
+\caption{An actual CP2K PBE diagnostic at the first failed recovery configuration. Within each method, the energy change uses its own initial energy for the same cell and composition. The force comparison tests the identical coordinates and atom identities. This failure-selected point diagnoses extrapolation; it is neither additional fitted data nor a prospectively untouched test sample.}\label{fig:failure-dft}
+\end{figure}
+
+\section{Discussion and limitations}
+The principal methodological lesson is that passing files between programs is not enough. Constraint serialization, composition, atom order, reference-state choice, units, and split design can each change the scientific meaning of an otherwise successful calculation. Retaining negative attempts makes these distinctions inspectable. In particular, a total reference-energy difference can look favorable because the adsorbed calculation finds a lower-energy substrate configuration. Decomposing that difference helps diagnose the comparison but does not by itself establish an adsorption free energy.
+
+Model convergence also has several meanings. A one-frame force fit tests the ability of an architecture and optimization implementation to reproduce a local label. Validation-set improvement can guide a compact architecture choice. Independent trajectory error tests a more demanding but still narrow neighborhood. A stable LAMMPS trajectory is another check, not a substitute for any of the preceding ones. No confidence interval or effective sample count is inferred from these very short, correlated replicas. Numerical agreement between Python and LAMMPS demonstrates a correct transfer only for the tested state and tolerance.
+
+Several uncertainties remain outside this pilot. The one-repeat slab is not thickness-converged, the OH arrangement is not an established thermodynamic ground state, and the dry periodic geometry omits water, protonation variability, solution chemistry, and long-range electrostatic validation. The numerical cutoff comparison does not substitute for basis, counterpoise, lateral-size, vacuum, dipole-treatment, or k-point studies. The dataset does not intentionally sample carbonation transition states, dissolution, calcium loss, or hydrated reactive environments. Consequently, no capture capacity, reaction barrier, carbonate yield, or persistent storage performance follows from these calculations.
+
+\textbf{PLANNED follow-up.} A defensible next study would first select and converge chemically justified surface environments, then expand independent first-principles sampling and validate on configurations absent from development. Reactive or hydrated applications require their own out-of-domain tests and an appropriate treatment of electrostatics. These are future requirements, not completed results of the present workstation exercise.
+
+\input{future_plan.tex}
+
+\section{Conclusions}
+The local workflow links explicit HAP structures to reference calculations, trajectory labels, compact learned models, and real LAMMPS visualization while keeping numerical gates and scientific limits separate. Optimizer continuation repairs the one-frame sanity check and improves short-time dynamics, but the 1 ps failures and targeted DFT discrepancy show that the recovered local model is unsuitable for production dynamics. The reported findings concern the tested workflow and local models. They do not establish \COtwo\ mineralization or a generally transferable HAP potential. The reproducibility package records the commands, source hashes, failed attempts, and claim-level boundaries needed to reassess the pilot.
+
+\section*{Data, code, and draft status}
+The accompanying source package contains the LaTeX manuscript, only the cited bibliography entries, bundled figures, quantitative tables, a source-to-claim map, and build instructions. The local calculation directory retains raw CP2K outputs, datasets, checkpoints, learning curves, LAMMPS trajectories, and manifests. Raw computational artifacts remain ineligible as production material-property evidence. Figures are included under the user's requested, explicitly limited diagnostic-draft scope; the existing repository manuscript and its evidence-eligibility decisions are not replaced. Authorship, affiliations, funding, and competing-interest statements must be supplied and approved by the research team before submission.
+
+\clearpage
+\bibliographystyle{unsrtnat}
+\bibliography{references}
+\clearpage
+\appendix
+\section{Additional trajectory and dataset diagnostics}
+\begin{figure}[!ht]
+\centering\includegraphics[width=\textwidth]{figures/03b_scf_force_grid.pdf}
+\caption{Actual SCF histories and force-grid sensitivity. The coarser adsorption-energy gate did not establish force convergence. Finer-grid calculations reduce the force-component discrepancy on the same geometry; the comparison does not constitute a global error bound.}\end{figure}
+
+\begin{figure}[h!]
+\centering\includegraphics[width=\textwidth]{figures/04_aimd.pdf}
+\caption{Actual short CP2K trajectories. Energy conservation, temperature, forces, displacement, contact distance, and potential-energy autocorrelation are shown without asserting equilibration or decorrelation.}\end{figure}
+\begin{figure}[p]
+\centering\includegraphics[width=\textwidth]{figures/05_dataset.pdf}
+\caption{Actual split distributions and pair-distance-vector differences. Whole initial-condition trajectories belong to separate splits. The separation gate excludes very similar cross-split geometries but does not turn this small local sample into broad chemical coverage.}\end{figure}
+\end{document}

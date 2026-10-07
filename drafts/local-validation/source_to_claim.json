@@ -1,0 +1,269 @@
+{
+  "run": "refine-001",
+  "generated_at_UTC": "2026-10-07T12:02:16.412585+00:00",
+  "source_commit": "02bef75faa7add9d773afa8ba2ab7ed0f86cb5d8",
+  "working_tree_dirty": true,
+  "builder_sha256": "bbadb39def0b23017c3eeee28462494e450fe9ed8522d56e7fc7ecdfbe4a4405",
+  "main_tex_sha256": "d17644bdb9d606e41642a8d3dd70d42c0cf5742bb5464adffe7b0d30776b6a70",
+  "raw_manuscript_eligible": false,
+  "scope": "Diagnostic working draft only; existing manuscript and eligibility decisions unchanged; new pending diagnostic evidence record added",
+  "computational_claims": [
+    {
+      "id": "01_structure",
+      "claim_scope": "Actual diagnostic outputs of this specific run; no material-property or mineralization inference",
+      "source": ".research-runs\\refine-001\\figures\\01_structure.pdf",
+      "source_sha256": "6b99785365a95b608c6df29ab2856e6344f163b57948b420c0728e7f66379c2e",
+      "raw_manifest": ".research-runs\\refine-001\\figures\\manifest.json",
+      "raw_manuscript_eligible": false,
+      "draft_use": "explicit user-authorized diagnostic/negative-finding presentation; not an eligibility promotion"
+    },
+    {
+      "id": "02_relaxation",
+      "claim_scope": "Actual diagnostic outputs of this specific run; no material-property or mineralization inference",
+      "source": ".research-runs\\refine-001\\figures\\02_relaxation.pdf",
+      "source_sha256": "21172721eacda45e546dd922c6f5de82b1829f51157b48befc418fa9cd00ab5d",
+      "raw_manifest": ".research-runs\\refine-001\\figures\\manifest.json",
+      "raw_manuscript_eligible": false,
+      "draft_use": "explicit user-authorized diagnostic/negative-finding presentation; not an eligibility promotion"
+    },
+    {
+      "id": "03_cp2k_references",
+      "claim_scope": "Actual diagnostic outputs of this specific run; no material-property or mineralization inference",
+      "source": ".research-runs\\refine-001\\figures\\03_cp2k_references.pdf",
+      "source_sha256": "9193a48e734d6f807125d3f0990fc2c2dcb584bbb87aeb2d74368a533700183c",
+      "raw_manifest": ".research-runs\\refine-001\\figures\\manifest.json",
+      "raw_manuscript_eligible": false,
+      "draft_use": "explicit user-authorized diagnostic/negative-finding presentation; not an eligibility promotion"
+    },
+    {
+      "id": "03b_scf_force_grid",
+      "claim_scope": "Actual diagnostic outputs of this specific run; no material-property or mineralization inference",
+      "source": ".research-runs\\refine-001\\figures\\03b_scf_force_grid.pdf",
+      "source_sha256": "2f530177e3ba7d94bb407b19e39857e406fa1986fdf83e773848e9ba2dec548a",
+      "raw_manifest": ".research-runs\\refine-001\\figures\\manifest.json",
+      "raw_manuscript_eligible": false,
+      "draft_use": "explicit user-authorized diagnostic/negative-finding presentation; not an eligibility promotion"
+    },
+    {
+      "id": "04_aimd",
+      "claim_scope": "Actual diagnostic outputs of this specific run; no material-property or mineralization inference",
+      "source": ".research-runs\\refine-001\\figures\\04_aimd.pdf",
+      "source_sha256": "74482e996be0cdec7c0f7acebe1cd130b48ccaa9c1de0cd84523aa32a19bd372",
+      "raw_manifest": ".research-runs\\refine-001\\figures\\manifest.json",
+      "raw_manuscript_eligible": false,
+      "draft_use": "explicit user-authorized diagnostic/negative-finding presentation; not an eligibility promotion"
+    },
+    {
+      "id": "05_dataset",
+      "claim_scope": "Actual diagnostic outputs of this specific run; no material-property or mineralization inference",
+      "source": ".research-runs\\refine-001\\figures\\05_dataset.pdf",
+      "source_sha256": "62a48cdb59353b9ab86cf2b67945a8a65017586abf0ff36017a605b4ce034796",
+      "raw_manifest": ".research-runs\\refine-001\\figures\\manifest.json",
+      "raw_manuscript_eligible": false,
+      "draft_use": "explicit user-authorized diagnostic/negative-finding presentation; not an eligibility promotion"
+    },
+    {
+      "id": "06_models",
+      "claim_scope": "Actual diagnostic outputs of this specific run; no material-property or mineralization inference",
+      "source": ".research-runs\\refine-001\\figures\\06_models.pdf",
+      "source_sha256": "80a8c6d2399d2b3cb74360ddfe9e9679fd75ba65f4e86640c70e44f6add70e6c",
+      "raw_manifest": ".research-runs\\refine-001\\figures\\manifest.json",
+      "raw_manuscript_eligible": false,
+      "draft_use": "explicit user-authorized diagnostic/negative-finding presentation; not an eligibility promotion"
+    },
+    {
+      "id": "07_lammps",
+      "claim_scope": "Actual diagnostic outputs of this specific run; no material-property or mineralization inference",
+      "source": ".research-runs\\refine-001\\figures\\07_lammps.pdf",
+      "source_sha256": "d5784fe094aebedece1648fbacf029d6394e7f3d976439517b025e77c079e312",
+      "raw_manifest": ".research-runs\\refine-001\\figures\\manifest.json",
+      "raw_manuscript_eligible": false,
+      "draft_use": "explicit user-authorized diagnostic/negative-finding presentation; not an eligibility promotion"
+    }
+  ],
+  "numeric_claims": [
+    {
+      "id": "structure_audit.json",
+      "source": ".research-runs\\refine-001\\structure_audit.json",
+      "sha256": "4059b5002bffb3a133b40c99047ce6140951f9c8ac145e71db652af329b5f677",
+      "permitted": "Exact reported output or measured gate of this run only"
+    },
+    {
+      "id": "mace.json",
+      "source": ".research-runs\\refine-001\\mace.json",
+      "sha256": "8b9ff568f6b06b0bcd1eebb700bf87c32b8a95c2b8fc4d29f208a2bce185dee8",
+      "permitted": "Exact reported output or measured gate of this run only"
+    },
+    {
+      "id": "mace_refined.json",
+      "source": ".research-runs\\refine-001\\mace_refined.json",
+      "sha256": "bc0b27ba712dcdae1f8c13c9d15f2fb81a2b7d79c98aa5c05a83200b66586ab0",
+      "permitted": "Exact reported output or measured gate of this run only"
+    },
+    {
+      "id": "reference_audit.json",
+      "source": ".research-runs\\refine-001\\reference_audit.json",
+      "sha256": "ea496bf43fc3072f4115c84f41abf03ff9e7961e9ea33f9b2076bbebf4fc5211",
+      "permitted": "Exact reported output or measured gate of this run only"
+    },
+    {
+      "id": "mace_fragments.json",
+      "source": ".research-runs\\refine-001\\mace_fragments.json",
+      "sha256": "c8855b3c35ba882112dbff68e42b0b20070567e71f02437628d334d5a6d35a8a",
+      "permitted": "Exact reported output or measured gate of this run only"
+    },
+    {
+      "id": "cp2k_fragments.json",
+      "source": ".research-runs\\refine-001\\cp2k_fragments.json",
+      "sha256": "59bbe72c923a45d0678a85276a6e33cfa1b6c96e453f5071ac0db8a13539f2d3",
+      "permitted": "Exact reported output or measured gate of this run only"
+    },
+    {
+      "id": "force_grid_audit.json",
+      "source": ".research-runs\\refine-001\\force_grid_audit.json",
+      "sha256": "82babb7940634dbd66557636b883fdab6b4015a31f09476a1d0dea2d57ba3a0d",
+      "permitted": "Exact reported output or measured gate of this run only"
+    },
+    {
+      "id": "dft_relaxation.json",
+      "source": ".research-runs\\refine-001\\dft_relaxation.json",
+      "sha256": "86622c53d6c14f3f25dde929524d3d8c773e8f42e71ff1a389fbd9784fd7089a",
+      "permitted": "Exact reported output or measured gate of this run only"
+    },
+    {
+      "id": "cp2k_restart_audit.json",
+      "source": ".research-runs\\refine-001\\cp2k_restart_audit.json",
+      "sha256": "7c7663860ea7b0b41e5d0feccf25a8c0c66cc0a012a609dcae42d1239dc77033",
+      "permitted": "Exact reported output or measured gate of this run only"
+    },
+    {
+      "id": "aimd_audit.json",
+      "source": ".research-runs\\refine-001\\aimd_audit.json",
+      "sha256": "fa62bd9b3857106f4585b5c5ab5f0ef889fb04b11116cb46874e640bf2d0537e",
+      "permitted": "Exact reported output or measured gate of this run only"
+    },
+    {
+      "id": "dataset_audit.json",
+      "source": ".research-runs\\refine-001\\dataset_audit.json",
+      "sha256": "20c9bf8a31ac59987e7029e10df8ec882ef2d8f42529869e872010959708624e",
+      "permitted": "Exact reported output or measured gate of this run only"
+    },
+    {
+      "id": "sampling_coverage.json",
+      "source": ".research-runs\\refine-001\\sampling_coverage.json",
+      "sha256": "27a19daf23009f969a29544e7224b85270b002dec39aa149d005f93b3698a221",
+      "permitted": "Exact reported output or measured gate of this run only"
+    },
+    {
+      "id": "model_evaluation.json",
+      "source": ".research-runs\\refine-001\\model_evaluation.json",
+      "sha256": "7bc069db04501a152501fdb57ff425c852b27c2f9eac9c2a2a23685e68166b80",
+      "permitted": "Exact reported output or measured gate of this run only"
+    },
+    {
+      "id": "lammps_audit.json",
+      "source": ".research-runs\\refine-001\\lammps_audit.json",
+      "sha256": "925b193831e65e8a2c51987c1fad57e6187ee2e4f1b071c1520733ce99e6edde",
+      "permitted": "Exact reported output or measured gate of this run only"
+    },
+    {
+      "id": "optimizer_diagnosis-step90.json",
+      "source": ".research-runs\\refine-001\\optimizer_diagnosis-step90.json",
+      "sha256": "8adca39a2b2e23f6db36262aa35da828b3bae5d11165806e1eaec186a6205939",
+      "permitted": "Exact reported output or measured gate of this run only"
+    },
+    {
+      "id": "dft_lbfgs_recovery.json",
+      "source": ".research-runs\\refine-001\\dft_lbfgs_recovery.json",
+      "sha256": "8b859981a4df38bdcfd8a3e816b7fc4073e97ad891fd76e8731f5206256600b4",
+      "permitted": "Exact reported output or measured gate of this run only"
+    },
+    {
+      "id": "optimizer_trial_audit.json",
+      "source": ".research-runs\\refine-001\\optimizer_trial_audit.json",
+      "sha256": "e2d2262c250f5bf7980b7a45be2421016898b717a597bd0696df5c476c65146f",
+      "permitted": "Exact reported output or measured gate of this run only"
+    },
+    {
+      "id": "reference_interpretation_note.json",
+      "source": ".research-runs\\refine-001\\reference_interpretation_note.json",
+      "sha256": "d63953c2421cc0c91053aa40a51efddf53e533f90d5adb4ec8ee2eae018bc1e5",
+      "permitted": "Exact reported output or measured gate of this run only"
+    },
+    {
+      "id": "lammps_restart_diagnosis.json",
+      "source": ".research-runs\\refine-001\\lammps_restart_diagnosis.json",
+      "sha256": "0b85ad07fa828a67c71fa4d5e6926cdf6e33fb0e3c42f87b12aba8b4014be836",
+      "permitted": "Exact reported output or measured gate of this run only"
+    }
+  ],
+  "literature_claims": {
+    "cheng1998co2": "abstract-level adsorption vs carbonate distinction",
+    "diallogarcia2014sites": "abstract-level speciation/hydration",
+    "bittencourt2021acidbase": "prior CO2/probe adsorption work",
+    "bouharras2025adsorption": "prior experimental/DFT work; physisorption interpretation",
+    "nowicki2024capture": "condition-dependent high-temperature capture/regeneration",
+    "corno2009water": "specific ideal surface hydration differences",
+    "saito2021surfaces": "environment/electrostatic dependence",
+    "slepko2011ordering": "OH ordering as structural variable"
+  },
+  "method_citations": [
+    "Sudarsanan1969",
+    "Batatia2022MACE",
+    "Batatia2025MACEMP",
+    "Kuhne2020CP2K",
+    "PBE1996",
+    "GTH1996",
+    "MOLOPT2007",
+    "D32010",
+    "Zeng_JChemTheoryComput_2025_v21_p4375",
+    "Zhang_BookChap_NIPS_2018_v31_p4436",
+    "Thompson2022LAMMPS"
+  ],
+  "method_records": [
+    {
+      "path": ".research-runs\\refine-001\\references\\pbe-d3-500\\adsorbed\\adsorbed.log",
+      "sha256": "1605e12090149a5a827dc5171d58dc34a2d5295b419fe49b8c6e9091c7fa859c",
+      "locator": "vdW POTENTIAL section: zero damping, 20 bohr cutoff and printed scaling factors"
+    },
+    {
+      "path": ".research-runs\\refine-001\\dft-relax\\opt.log",
+      "sha256": "562773ed17688961856c8df264d03b5edef5df34f76054408a9d2b72e7b4b30d",
+      "locator": "OPTIMIZATION STEP records, force blocks and final four convergence tests"
+    }
+  ],
+  "limitations_file": "literature/evidence_notes.md",
+  "no_authorship_inferred": true,
+  "recovery": {
+    "run": "recovery-001",
+    "registered_record": "workflow/validation/records/LOCAL-HAP-RECOVERY001.json",
+    "manifest_sha256": "e52f19e14355430fa33f2dfc5363e4ce68bd256f03baa3576720774164c57fdc",
+    "files": [
+      {
+        "path": ".research-runs/recovery-001/recovery-summary.json",
+        "sha256": "82dd0e220299e1c4395f3a4b134e83683e83e3c69a5d8e3344794e1346402303"
+      },
+      {
+        "path": ".research-runs/recovery-001/recovery.tex",
+        "sha256": "4cbc2cd9e9fa00630560b32dadbfc01873107f50540e3e01ed558b249192fe73"
+      },
+      {
+        "path": ".research-runs/recovery-001/09_recovery.pdf",
+        "sha256": "e60e6397d2ad6870aab318757fda09ebfa0837a31d79adb80b0e74351bdb2dd9"
+      },
+      {
+        "path": ".research-runs/recovery-001/10_recovered_dynamics.pdf",
+        "sha256": "cdba587460a0697e86aaf9b99e1ad6cd531b3e43aecfcaf885f6854a216dba4c"
+      },
+      {
+        "path": ".research-runs/recovery-001/12_failure_dft.pdf",
+        "sha256": "4850da4da7563c9ecd670c19367d1f73a3e8cb74c5fc75e03255a8dedf1f10d2"
+      },
+      {
+        "path": ".research-runs/recovery-001/recovery-figure-manifest.json",
+        "sha256": "ed4c2335ab62fd79382179f44c868cecd6334fc2ddd56501a32944203c9c23ce"
+      }
+    ],
+    "scope": "Separate bounded recovery and negative diagnostics; original gates unchanged; no production or untouched prospective-test claim"
+  }
+}

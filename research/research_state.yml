@@ -1,7 +1,7 @@
 schema_version: 1
-last_updated: 2026-09-05
-active_branch: shawn_dev
-workflow_mode: local_writing
+last_updated: 2026-10-07
+active_branch: integration/shawn-4090-reproducible
+workflow_mode: local_validation_and_diagnostic_draft
 
 project:
   short_name: HAP_CO2mineralization
@@ -19,23 +19,23 @@ research_question: >-
   investigation for interfacial CO2 mineralization, and what atomistic mechanisms
   control their behavior under hydration?
 
-current_stage: phase_2b_1_machine_fulltext_extraction_pending_human
-current_decision: quarantine_legacy_results_until_provenance_and_quality_gates_pass
+current_stage: local_validation_complete_production_gates_failed
+current_decision: preserve_failures_and_require_new_prospective_sampling_before_production
 
 compute:
-  default_backend: local_lightweight
-  local_profile: workflow/profiles/local.yaml
+  default_backend: shawn_pc_local_docker
+  local_profile: workflow/profiles/rtx4090-refine.json
   hpc:
     enabled: false
     profile_template: workflow/profiles/whu-hpc.example.yaml
     credentials_in_repository: forbidden
 
 result_gates:
-  candidate_screening: blocked_missing_results_and_manifest
-  adsorption_ranking: blocked_pipeline_not_implemented
-  geometry_optimization: blocked_incomplete_failed_or_unreviewed_runs
-  aimd_dataset: blocked_insufficient_or_invalid_trajectories
-  mlip_validation: blocked_missing_dataset_and_model
+  candidate_screening: one_smoke_sample_executed_rejected_missing_phosphorus
+  adsorption_ranking: implemented_local_reference_checks_only_no_validated_ranking
+  geometry_optimization: local_optimizer_gate_passed_surface_convergence_unestablished
+  aimd_dataset: real_short_disjoint_replicas_insufficient_for_production
+  mlip_validation: optimizer_recovery_complete_test_force_and_longer_geometry_fail
   enhanced_sampling: blocked_not_implemented
 
 manuscript_evidence:
@@ -62,10 +62,10 @@ literature_evidence:
 
 known_blockers:
   - eight tracked CP2K or XYZ files contain unresolved Git conflict markers
-  - no candidate-generation or adsorption-ranking result set is present
-  - existing AIMD trajectories are too short, incomplete, or unstable
+  - one actual MatterGen smoke sample was rejected for missing phosphorus; no accepted HAP discovery or validated ranking campaign
+  - eight new four-femtosecond AIMD replicas are too short for equilibrium or broad independent coverage; legacy failures remain ineligible
   - legacy HAP112 postprocessing lacks raw inputs and reports poor quality
-  - no populated MLIP dataset, validated model, scale-up run, or enhanced-sampling run is present
+  - real local datasets and models exist, but the recovered model fails retrospective force and both 1 ps geometry tests; no validated scale-up or enhanced sampling
   - no literature claim has a human-confirmed full-text source locator
   - nowicki2024capture full-text extraction is blocked because the approved RSC PDF endpoint returned HTTP 403
 
@@ -75,4 +75,20 @@ next_actions:
   - Shawn must review the three extracted cards against the exact recorded PDF checksums
   - resolve the Nowicki full-text blocker only through the approved publisher or a user-supplied licensed copy
   - keep all claim relationships pending until a separate human evidence-reconciliation decision
-  - define quantitative go/no-go gates before new compute
+  - review workflow/NEXT_SAMPLING_PLAN.md; fixed thresholds and a new sealed holdout are required before any future campaign
+
+# Separate diagnostic scope; no manuscript eligibility or human verification granted.
+local_validation:
+  computer: SHAWN-PC
+  checkout: 'D:\project\HAP_CO2mineralization'
+  baseline_record: workflow/validation/verification.json
+  refinement_record: workflow/validation/records/LOCAL-HAP-REFINE001.json
+  recovery_record: workflow/validation/records/LOCAL-HAP-RECOVERY001.json
+  diagnostic_draft: drafts/local-validation/main.tex
+  handoff: workflow/FINAL_DELIVERY.md
+  production_ready: false
+  original_gates_changed: false
+  recovery_test_status: retrospective_exploratory_not_new_holdout
+  future_plan: workflow/profiles/next-sampling-proposal.json
+  future_plan_executed: false
+  hpc_connected_or_submitted: false

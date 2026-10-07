@@ -17,7 +17,7 @@ def entries(text):
     return result
 def tex_escape(s):return str(s).replace('_',r'\_').replace('%',r'\%').replace('&',r'\&')
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--run',type=Path,required=True);p.add_argument('--draft',type=Path,default=ROOT/'drafts/local-validation');p.add_argument('--allow-incomplete-preview',action='store_true');a=p.parse_args();r=a.run.resolve();d=a.draft.resolve();q=load(r/'verification.json')
+    p=argparse.ArgumentParser();p.add_argument('--run',type=Path,required=True);p.add_argument('--recovery',type=Path);p.add_argument('--draft',type=Path,default=ROOT/'drafts/local-validation');p.add_argument('--allow-incomplete-preview',action='store_true');a=p.parse_args();r=a.run.resolve();d=a.draft.resolve();q=load(r/'verification.json')
     if not q['functional_complete'] and not a.allow_incomplete_preview:raise ValueError('Refusing final manuscript assembly from incomplete stages')
     lit=d/'literature';allentries={}
     for path in lit.glob('*.bib'):allentries.update(entries(path.read_text(encoding='utf-8')))
@@ -54,13 +54,16 @@ def main():
     if md.get('temperature_K'):
         thermal=md['temperature_K']
         quantitative+=f" The 250 fs learned-potential trajectory changes from {thermal['initial']:.0f} to {thermal['final']:.0f} K, while its geometry gate is {'passed' if md['chemistry_gate'] else 'failed'}."
+    if a.recovery:
+        rr=load(a.recovery/'recovery-summary.json');recovery_eval=load(a.recovery/'fullbatch-evaluation.json');rn=load(a.recovery/'numerical-followup-results.json')
+        quantitative+=f" Separate optimizer recovery lowers the one-frame force RMSE to {rr['overfit_final_recovery_eV_A']:.3f} eV/\\AA{{}} and retrospective test error to {recovery_eval['candidate']['test']['force_rmse_eV_A']:.3f} eV/\\AA; the latter still fails its gate. A fixed-model 1 ps follow-up has {rn['one_ps']['geometry_failed_frame_count']} failing geometry frames out of {rn['one_ps']['saved_frames']}."
     numbers+=r'\newcommand{\QuantitativeAbstract}{'+quantitative+'}\n'
     (d/'numbers.tex').write_text(numbers,encoding='utf-8')
     text=[r'\subsection{Structural and numerical checks}',r'The explicit structural audit and optimizer records are illustrated in Figures~\ref{fig:structure} and~\ref{fig:relaxation}. The original baseline constraint description is corrected as described above. All new numerical values below refer to the retained refinement run \texttt{'+tex_escape(r.name)+r'}.']
     if refs:
         text.extend([r'\begin{table}[ht]\centering\small',r'\caption{Matched CP2K single points on the same MACE geometries. The energy difference includes reconstruction, not just molecular interaction.}',r'\begin{tabular}{lrr}\toprule Setting & Three-reference difference (eV) & Adsorbed $F_{\max}$ (eV/\AA)\\\midrule'])
         for name,v in refs['settings'].items():text.append(f"{tex_escape(name)} & {v['adsorption_energy_eV']:.6f} & {v['adsorbed']['fmax_eV_A']:.4f} "+r'\\')
-        text.extend([r'\bottomrule\end{tabular}\end{table}',f"The 500-to-700 Ry total-energy-difference change is {refs['cutoff_change_eV']:.6f}eV. This passes the 0.02 eV pilot energy-sensitivity gate but does not certify forces. "])
+        text.extend([r'\bottomrule\end{tabular}\end{table}',f"The 500-to-700 Ry total-energy-difference change is {refs['cutoff_change_eV']:.6f}eV. This passes the 0.02 eV pilot energy-sensitivity gate but does not certify forces."])
     if grid:text.append(f"The subsequent 900/80 versus 1100/100 Ry force-component RMSE is {grid['force_component_rmse_eV_A']:.5f}eV/\\AA. The force-grid gate is \\textbf{{{'passed' if grid['force_gate'] else 'failed'}}}; selected labels use \\LabelSettings. This comparison concerns one geometry, not global numerical accuracy.")
     for name,title in [('mace_fragments.json','MACE'),('cp2k_fragments.json','CP2K PBE, 500/60 Ry')]:
         if name in src:
@@ -102,7 +105,7 @@ def main():
         chosen=models['selected'];m=models['models'][chosen]['test'];text.append(f"Validation selects the {chosen} architecture. Its independent energy RMSE is {1000*m['energy_rmse_eV_atom']:.4f}meV/atom; the 95th-percentile absolute force-component error is {m['force_p95_abs_error_eV_A']:.4f}eV/\\AA. The force and energy gates are \\textbf{{{'passed' if models['heldout_force_gate'] else 'failed'}}} and \\textbf{{{'passed' if models['heldout_energy_gate'] else 'failed'}}}, respectively. These outcomes concern the sampled local neighborhood only. Figure~\\ref{{fig:models}} displays the underlying prediction diagnostics.")
     if models and not models['overfit_gate']:
         sanity=models['models']['overfit']['overfit']['force_rmse_eV_A']
-        text.append(f"The one-frame run terminates at force RMSE {sanity:.5f} eV/\\AA, above its predefined 0.02 eV/\\AA{{}} sanity criterion. Thus the bounded 1,500-update experiment does not demonstrate accurate reproduction even of that one label. It does not distinguish insufficient optimization from limited model capacity. Longer optimization and capacity studies are PLANNED; the failure is not removed by completing the engine-transfer tests.")
+        text.append(f"The one-frame run terminates at force RMSE {sanity:.5f} eV/\\AA, above its predefined 0.02 eV/\\AA{{}} sanity criterion. Thus the bounded 1,500-update experiment does not demonstrate accurate reproduction even of that one label. It does not distinguish insufficient optimization from limited model capacity. The separate recovery campaign below tests optimizer continuation with unchanged labels and architecture; the original failure remains recorded.")
     if models:
         by_replica=models['models'][models['selected']]['test'].get('per_replica',[])
         if by_replica:
@@ -134,5 +137,22 @@ def main():
            ('dft-relax/opt.log','OPTIMIZATION STEP records, force blocks and final four convergence tests')]],
        'limitations_file':'literature/evidence_notes.md','no_authorship_inferred':True}
     (d/'source_to_claim.json').write_text(json.dumps(claims,indent=2),encoding='utf-8')
-    print('Assembled',len(cited),'cited references and',len(files),'traceable diagnostic figures')
+    if a.recovery:
+        recovery=a.recovery.resolve();tag=recovery.name.upper().replace('-','').replace('_','')
+        registration=ROOT/'workflow/validation/records'/('LOCAL-HAP-'+tag+'.json')
+        registered=load(registration)
+        if sha(recovery/'reproducibility-manifest.json')!=registered['reproducibility_manifest_sha256']:raise ValueError('Recovery evidence must be captured before draft assembly')
+        shutil.copyfile(recovery/'recovery.tex',d/'recovery.tex');shutil.copyfile(recovery/'recovery-summary.json',d/'recovery_summary.json')
+        shutil.copyfile(recovery/'09_recovery.pdf',d/'figures/09_recovery.pdf')
+        shutil.copyfile(recovery/'10_recovered_dynamics.pdf',d/'figures/10_recovered_dynamics.pdf')
+        shutil.copyfile(recovery/'12_failure_dft.pdf',d/'figures/12_failure_dft.pdf')
+        recovery_sources={'run':recovery.name,'registered_record':registration.relative_to(ROOT).as_posix(),'manifest_sha256':registered['reproducibility_manifest_sha256'],
+            'files':[{'path':p.relative_to(ROOT).as_posix(),'sha256':sha(p)} for p in [recovery/'recovery-summary.json',recovery/'recovery.tex',recovery/'09_recovery.pdf',recovery/'10_recovered_dynamics.pdf',recovery/'12_failure_dft.pdf',recovery/'recovery-figure-manifest.json']],
+            'scope':'Separate bounded recovery and negative diagnostics; original gates unchanged; no production or untouched prospective-test claim'}
+        (d/'recovery_sources.json').write_text(json.dumps(recovery_sources,indent=2)+'\n',encoding='utf-8')
+        claims['recovery']=recovery_sources;(d/'source_to_claim.json').write_text(json.dumps(claims,indent=2),encoding='utf-8')
+    elif '\\input{recovery.tex}' in main:raise ValueError('This draft requires --recovery and its captured evidence')
+    shutil.copyfile(ROOT/'workflow/NEXT_SAMPLING_PLAN.md',d/'future_sampling_plan.md')
+    shutil.copyfile(ROOT/'workflow/profiles/next-sampling-proposal.json',d/'future_sampling_profile.json')
+    print('Assembled',len(cited),'cited references and',len(files)+(3 if a.recovery else 0),'traceable diagnostic figures')
 if __name__=='__main__':main()

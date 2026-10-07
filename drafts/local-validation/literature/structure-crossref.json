@@ -1,0 +1,194 @@
+{
+  "indexed": {
+    "date-parts": [
+      [
+        2026,
+        10,
+        6
+      ]
+    ],
+    "date-time": "2026-10-06T02:41:19Z",
+    "timestamp": 1791254479170,
+    "version": "4.1.0"
+  },
+  "reference-count": 0,
+  "publisher": "International Union of Crystallography (IUCr)",
+  "issue": "8",
+  "license": [
+    {
+      "start": {
+        "date-parts": [
+          [
+            1969,
+            8,
+            15
+          ]
+        ],
+        "date-time": "1969-08-15T00:00:00Z",
+        "timestamp": -12009600000
+      },
+      "content-version": "vor",
+      "delay-in-days": 0,
+      "URL": "http://journals.iucr.org/services/copyrightpolicy.html"
+    },
+    {
+      "start": {
+        "date-parts": [
+          [
+            1969,
+            8,
+            15
+          ]
+        ],
+        "date-time": "1969-08-15T00:00:00Z",
+        "timestamp": -12009600000
+      },
+      "content-version": "tdm",
+      "delay-in-days": 0,
+      "URL": "http://journals.iucr.org/services/copyrightpolicy.html#TDM"
+    }
+  ],
+  "content-domain": {
+    "domain": [],
+    "crossmark-restriction": false
+  },
+  "short-container-title": [
+    "Acta Crystallogr B Struct Crystallogr Cryst Chem",
+    "Acta Cryst B",
+    "Acta Cryst Sect B",
+    "Acta Crystallogr B",
+    "Acta Crystallogr Sect B",
+    "Acta Crystallogr Sect B Struct Crystallogr Cryst Chem"
+  ],
+  "published-print": {
+    "date-parts": [
+      [
+        1969,
+        8,
+        15
+      ]
+    ]
+  },
+  "DOI": "10.1107/s0567740869004298",
+  "type": "journal-article",
+  "created": {
+    "date-parts": [
+      [
+        2002,
+        7,
+        27
+      ]
+    ],
+    "date-time": "2002-07-27T01:35:20Z",
+    "timestamp": 1027733720000
+  },
+  "page": "1534-1543",
+  "source": "Crossref",
+  "is-referenced-by-count": 449,
+  "title": [
+    "Significant precision in crystal structural details. Holly Springs hydroxyapatite"
+  ],
+  "prefix": "10.1107",
+  "volume": "25",
+  "author": [
+    {
+      "given": "K.",
+      "family": "Sudarsanan",
+      "sequence": "first",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "R. A.",
+      "family": "Young",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    }
+  ],
+  "member": "329",
+  "container-title": [
+    "Acta Crystallographica Section B Structural Crystallography and Crystal Chemistry"
+  ],
+  "original-title": [],
+  "link": [
+    {
+      "URL": "http://journals.iucr.org/b/issues/1969/08/00/a06841/a06841.pdf",
+      "content-type": "unspecified",
+      "content-version": "vor",
+      "intended-application": "text-mining"
+    },
+    {
+      "URL": "http://journals.iucr.org/b/issues/1969/08/00/a06841/a06841.pdf",
+      "content-type": "unspecified",
+      "content-version": "vor",
+      "intended-application": "similarity-checking"
+    }
+  ],
+  "deposited": {
+    "date-parts": [
+      [
+        2025,
+        1,
+        9
+      ]
+    ],
+    "date-time": "2025-01-09T07:47:31Z",
+    "timestamp": 1736408851000
+  },
+  "score": 1,
+  "resource": {
+    "primary": {
+      "URL": "https://journals.iucr.org/paper?S0567740869004298"
+    }
+  },
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+    "date-parts": [
+      [
+        1969,
+        8,
+        15
+      ]
+    ]
+  },
+  "references-count": 0,
+  "journal-issue": {
+    "issue": "8"
+  },
+  "alternative-id": [
+    "S0567740869004298"
+  ],
+  "URL": "https://doi.org/10.1107/s0567740869004298",
+  "relation": {},
+  "ISSN": [
+    "0567-7408"
+  ],
+  "issn-type": [
+    {
+      "value": "0567-7408",
+      "type": "print"
+    }
+  ],
+  "subject": [],
+  "published": {
+    "date-parts": [
+      [
+        1969,
+        8,
+        15
+      ]
+    ]
+  }
+}

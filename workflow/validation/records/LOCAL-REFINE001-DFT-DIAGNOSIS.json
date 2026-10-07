@@ -1,0 +1,8 @@
+{
+  "artifact_id": "LOCAL-REFINE001-DFT-DIAGNOSIS",
+  "local_raw_path": ".research-runs/refine-001/optimizer_diagnosis-step90.json",
+  "status": "completed",
+  "notes": "Measured force/displacement/Hessian diagnosis preceding the bounded algorithm change; not proof of equilibrium.",
+  "reproducibility_manifest": ".research-runs/refine-001/reproducibility-manifest.json",
+  "manuscript_eligible": false
+}

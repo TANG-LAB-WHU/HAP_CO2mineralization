@@ -1,0 +1,12 @@
+*.aux
+*.log
+*.out
+*.blg
+*.bbl
+*.synctex.gz
+
+*.pdf
+
+# Full generated per-frame reports are rebuilt from immutable local runs.
+/recovery_summary.json
+/verification.json

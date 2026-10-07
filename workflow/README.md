@@ -20,3 +20,9 @@ The required chain is:
 research question → configuration → Git commit → compute run → manifest → evidence row → manuscript claim
 ```
 
+
+## Tested Shawn-PC workflow
+
+`FINAL_DELIVERY.md` is the local handoff index. `LOCAL_VALIDATION.md` retains the original
+smoke results; `RECOVERY.md` records the bounded recovery and remaining failed gates.
+All compute and generated deliverables remain local; HPC profiles remain disabled.

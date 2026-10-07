@@ -1,0 +1,8 @@
+{
+  "artifact_id": "LOCAL-RECOVERY001-LOADER-DIAGNOSIS-FAIL",
+  "local_raw_path": ".research-runs/recovery-001/fit-diagnosis-attempt1.log",
+  "status": "failed",
+  "manuscript_eligible": false,
+  "notes": "Diagnostic reconstruction initially used unresolved input defaults; strict state loading rejected it. Corrected helper uses original resolved out.json. Original training/checkpoints were unaffected.",
+  "reproducibility_manifest": ".research-runs/recovery-001/reproducibility-manifest.json"
+}

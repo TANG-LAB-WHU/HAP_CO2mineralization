@@ -1,0 +1,39 @@
+\subsection{Bounded failure diagnosis and recovery}
+
+The original failed gates above are retained. A separate recovery campaign checks the force labels, model derivatives, optimization and restart behavior before considering further data collection. All atoms and Cartesian force components remain included; no constraints or force thresholds are changed.
+
+The frozen and reconstructed trainable model agree to 8.88e-16 eV/\AA. The force-loss directional derivative agrees with a parameter finite difference to relative error 7.41e-07; descriptor and fitting-network gradients are nonzero. Coordinate finite differences at $10^{-4}$ \AA{} differ from analytic model forces by at most 2.8e-07 eV/\AA{} on the tested components. These checks disfavor a broken force-gradient implementation in the tested path; they are not an exhaustive code proof.
+
+Four new PBE single points displace the original training frame by $\pm0.001$ \AA{} along P11-$y$ and H18-$z$. The cutoff and basis remain those of the labels; the SCF target is tightened to $10^{-9}$ for derivative noise. Central energy differences agree with the original labels within 4.33e-05 eV/\AA, passing the predeclared 0.01 eV/\AA{} check. This tests two force components, not global basis or force convergence.
+
+Keeping the original resolved architecture, 5 \AA{} cutoff, descriptor and training frame, full-batch L-BFGS first lowers force RMSE from 0.16213 to 0.09021 eV/\AA{} in 710 objective evaluations. A prospectively bounded continuation then reaches 0.01648 eV/\AA{} in 5835 additional evaluations. Its unchanged 0.02 eV/\AA{} gate is \textbf{passed}. The objective is force-component MSE plus per-atom energy MSE, in the original physical units. Only training labels enter optimization.
+
+One-frame reproduction is an optimizer diagnosis, not a test of generalization. The original test has already been inspected; all recovery test results are retrospective diagnostics.
+
+The saved velocities independently reconstruct LAMMPS kinetic energies within 1.07e-14 eV and temperatures within 1.36e-12 K, using 138 degrees of freedom and the installed-version metal-unit constants. The run has no thermostat and uses a 0.00025 ps timestep. At peak temperature, model potential energy changes by -23.211 eV while kinetic energy changes by 23.069 eV. The heating is therefore associated with the learned potential-energy surface; it is not a hidden thermostat or temperature-unit conversion. A small fitted drift slope does not establish an adequate potential or a uniformly small instantaneous energy error.
+
+An independent GPU repeat without any restart gives endpoint differences of 2.56e-07 \AA{} in positions and 9.39e-05 \AA/ps in velocity components. The original strict endpoint criterion is failed in this control.
+
+The single-thread CPU continuous/restart control gives endpoint differences of 9.42e-08 \AA{} in positions and 3.47e-05 \AA/ps in velocity components. The original strict endpoint criterion is failed in this control.
+
+A second uninterrupted single-thread CPU run reproduces saved endpoint positions and velocities exactly (maximum differences 0 \AA{} and 0 \AA/ps). Disabling atom sorting and rebuilding neighbors every step reduces the CPU restart discrepancies to 5.35e-09 \AA{} and 1.94e-06 \AA/ps, but still fails the velocity criterion. The independent GPU pair starts with identical coordinates and velocities and a force difference of 1.33e-15 eV/\AA; that small difference grows along the trajectory. This intervention and repeat evidence support amplification of roundoff/order differences, rather than loss of the saved state, as a contributor to the strict endpoint failure.
+
+The repeat and CPU controls use byte-identical original LAMMPS physics inputs. Device and threading change jointly in the CPU control, so no single GPU kernel is identified as the cause. Numerical sensitivity is assessed without relaxing the original restart gate. The failed original trajectory remains visible in the animation and quantitative records.
+
+The conditional full-data continuation uses the original 16 training frames and wider architecture, with no additional test-label fitting. Its validation force RMSE is 0.08289 eV/\AA; the recovery candidate is selected by the recorded validation-only comparison. No new prospectively untouched test set is claimed.
+
+Retrospective test force RMSE is 0.10788 eV/\AA. The separately retained recovery trajectory has maximum temperature 292.8 K and 0 failing geometry frames out of 101. These outcomes do not replace the original failures or establish a production potential.
+
+The full-data optimizer stops at its 1800-evaluation budget, with training force RMSE 0.06540 eV/\AA. It has not reached its internal 0.02 eV/\AA{} training target. The retrospective test force error remains above the original 0.1 eV/\AA{} criterion; it is not relabeled as a pass.
+
+With weights fixed, the recovered model's 500+500 restart gives maximum differences 1.39e-13 \AA{} and 1.04e-11 \AA/ps; the unchanged strict gate is passed. The half-timestep run over 250 fs has drift 0.0012239 meV/atom/ps and an endpoint minimum-image position RMS difference of 0.00092481 \AA. No post hoc coordinate-convergence threshold is assigned.
+
+A separately predeclared 1 ps NVE run at 0.25 fs retains 401 actual saved frames, of which 231 fail the original geometry criteria. Its temperature range is 152.2--7603.3 K, ending at 7216.7 K; the total-energy drift is 53.393 meV/atom/ps. Figure~\ref{fig:recovered-dynamics} compares predictions and dynamics. This bounded improvement does not establish equilibration, transferable forces or production convergence. Both original failed and recovery animations are retained.
+
+A final post hoc CP2K point evaluates the first failing configuration at 395.0 fs. Relative to the same-method initial energy, DFT changes by 5.9658 eV, whereas the learned model changes by -2.2891 eV. Its force-component RMSE against this DFT point is 1.2831 eV/\AA. This directly measures a large local extrapolation error at the onset of failure; the point was selected for diagnosis and never used for fitting or presented as an unbiased test set.
+
+At half timestep over the same full 1 ps, 233 of 401 saved frames fail geometry, beginning at 392.5 fs. The maximum temperature is 4278.8 K and drift is -0.072749 meV/atom/ps. Thus timestep refinement does not restore geometric validity. The late energy-drift behavior and divergent paths are reported separately from the measured model error; energy conservation alone cannot validate the learned surface.
+
+No production-ready learned potential was obtained. The implemented optimizer remedy improves local fitting but does not cure the narrow chemical coverage. Further fitting on these inspected test trajectories would not supply independent validation; a new, prospectively defined DFT sampling and holdout design is required. Figure~\ref{fig:failure-dft} reports the targeted DFT diagnostic.
+
+Figure~\ref{fig:recovery} summarizes the measured controls. No hydration, reaction-path, broad-domain, or long-time validation was added by this bounded campaign.

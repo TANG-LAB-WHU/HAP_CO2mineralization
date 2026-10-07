@@ -1,0 +1,33 @@
+\subsection{Proposed targeted sampling campaign: not executed}
+The next campaign is a prospectively specified plan, not additional completed work.
+It remains restricted to the same dry 47-atom cell. Six single points would first test
+900/80 versus 1100/100 Ry force-grid sensitivity on three distinct geometries, retaining
+the 0.02 eV/\AA{} numerical gate. The proposed initial design contains 48 training
+configurations balanced across hydroxyl restoring-force probes, phosphate/calcium
+distortions, and molecular/interface configurations. Separately seeded parent families
+provide 24 validation and 24 sealed test configurations. Coordinate hashes and roles
+would be fixed before DFT labeling; the existing 0.025 \AA{} cross-split distance-vector
+criterion would be retained. This does not establish thermal statistical independence.
+
+Four fixed training seeds would use the existing wider architecture. At most two
+acquisition rounds would add 24 training labels each, selected from development
+configurations using diversity, structural excursions and a predeclared 0.15 eV/\AA{}
+committee force-disagreement trigger. Such disagreement is a heuristic, not guaranteed
+error detection. The total budget is 159 new DFT attempts, including the six grid
+checks, 96 initial labels, 48 possible acquisitions and nine preselected dynamical
+spot checks. Failed calculations consume slots; no open-ended extra round is authorized.
+
+The existing gates remain fixed: one-frame force RMSE below 0.02 eV/\AA, new sealed-test
+force RMSE below 0.10 eV/\AA{} and energy RMSE below 10 meV/atom without a test-fitted
+offset; same-state engine and strict restart tolerances are unchanged. Three new
+velocity seeds would be examined at both 0.25 and 0.125 fs over identical 1 ps durations,
+with extension to 5 ps only after development gates pass. All saved frames must satisfy
+the original geometry bounds and absolute NVE drift must remain below 5 meV/atom/ps.
+The nine DFT checks are fixed at 0, 0.5 and 1 ps for the three half-step trajectories.
+
+The new sealed test would be opened once after model selection. Any failure ends that
+campaign without changing a threshold; further development requires a new plan and
+untouched holdout. The present 0.10788 eV/\AA{} result is retrospective/exploratory and
+cannot serve that role. The bundled future-work specification records seeds, counts,
+distortion ranges and stopping rules. No new sampling or HPC submission is executed
+by this proposal, and even success would not establish production mineralization.

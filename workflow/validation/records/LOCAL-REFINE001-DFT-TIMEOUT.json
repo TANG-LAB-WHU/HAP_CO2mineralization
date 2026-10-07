@@ -1,0 +1,8 @@
+{
+  "artifact_id": "LOCAL-REFINE001-DFT-TIMEOUT",
+  "local_raw_path": ".research-runs/refine-001/dft-relax-attempt1",
+  "status": "failed",
+  "notes": "First DFT optimization hit 2400-second limit; original checkpoint, log and Hessian retained.",
+  "reproducibility_manifest": ".research-runs/refine-001/reproducibility-manifest.json",
+  "manuscript_eligible": false
+}

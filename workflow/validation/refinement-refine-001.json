@@ -1,0 +1,164 @@
+{
+  "run_id": "refine-001",
+  "scope": "Bounded dry HAP001 small-model validation, not production mineralization",
+  "manuscript_eligible": false,
+  "gates": {
+    "cutoff_reference": {
+      "passed": true,
+      "meaning": "500 vs700 Ry adsorption difference <0.02eV; not basis/slab convergence",
+      "source": "reference_audit.json"
+    },
+    "mace_refined": {
+      "passed": true,
+      "meaning": "Selected MACE geometry satisfies0.03eV/A maximum-force threshold",
+      "source": "mace_refined.json"
+    },
+    "dft_optimizer": {
+      "passed": true,
+      "meaning": "CP2K reports all optimizer convergence criteria satisfied",
+      "source": "dft_relaxation.json"
+    },
+    "dft_force": {
+      "passed": true,
+      "meaning": "Final DFT maximum force <0.05eV/A",
+      "source": "dft_relaxation.json"
+    },
+    "force_grid": {
+      "passed": true,
+      "meaning": "900/80 vs1100/100Ry force-component RMSE <0.02eV/A on selected geometry",
+      "source": "force_grid_audit.json"
+    },
+    "cp2k_restart": {
+      "passed": true,
+      "meaning": "Same-state CP2K restart: E within1e-6eV and force components within1e-4eV/A",
+      "source": "cp2k_restart_audit.json"
+    },
+    "split_leakage": {
+      "passed": true,
+      "meaning": "Disjoint replicas and cross-split pair-distance RMS >=0.025A",
+      "source": "dataset_audit.json"
+    },
+    "overfit_sanity": {
+      "passed": false,
+      "meaning": "One-frame force fit <0.02eV/A; not generalization",
+      "source": "model_evaluation.json"
+    },
+    "independent_force": {
+      "passed": false,
+      "meaning": "Full independent test force RMSE <0.1eV/A",
+      "source": "model_evaluation.json"
+    },
+    "independent_energy": {
+      "passed": true,
+      "meaning": "Full independent test energy RMSE <0.01eV/atom",
+      "source": "model_evaluation.json"
+    },
+    "model_symmetry": {
+      "passed": true,
+      "meaning": "Rigid translation/rotation and equal-element permutation invariance/covariance",
+      "source": "model_evaluation.json"
+    },
+    "engine_mapping": {
+      "passed": true,
+      "meaning": "Python and LAMMPS agree on same geometry, types, energy and forces",
+      "source": "lammps_audit.json"
+    },
+    "lammps_restart": {
+      "passed": false,
+      "meaning": "500+500 restart matches1000 steps: positions within1e-8A and velocities within1e-8A/ps",
+      "source": "lammps_audit.json"
+    },
+    "short_nve_drift": {
+      "passed": true,
+      "meaning": "250fs NVE drift magnitude <5meV/atom/ps; short-duration only",
+      "source": "lammps_audit.json"
+    },
+    "timestep_drift": {
+      "passed": true,
+      "meaning": "Both 0.25fs and0.125fs over250fs NVE drift magnitudes <5meV/atom/ps",
+      "source": "lammps_audit.json"
+    },
+    "trajectory_geometry": {
+      "passed": false,
+      "meaning": "Charge, contact, PO4/OH geometry remain sane during diagnostic trajectory",
+      "source": "lammps_audit.json"
+    }
+  },
+  "missing": [],
+  "functional_complete": true,
+  "all_pilot_gates_pass": false,
+  "production_ready": false,
+  "unmet_production_requirements": [
+    "hydrated environments and termination selection",
+    "slab thickness/lateral size/vacuum/basis/k-point convergence",
+    "electronic polarization and explicit long-range model validation",
+    "independent reaction-path and broad configuration coverage",
+    "long-time dynamics/timestep/ensemble convergence",
+    "review of chemical mechanisms and claim-specific publication eligibility"
+  ],
+  "storage_note": "Compact tracked report. Complete per-frame diagnostics are retained in the immutable local report and delivered diagnostic bundle; no measurements were changed.",
+  "full_report": {
+    "path": ".research-runs/refine-001/verification.json",
+    "sha256": "6a6350c920bc27ca0250bb1bba1a625d6b2814124b70377943e44b6b562fe7de",
+    "bytes": 396042
+  },
+  "sources": {
+    "structure_audit.json": {
+      "sha256": "4059b5002bffb3a133b40c99047ce6140951f9c8ac145e71db652af329b5f677"
+    },
+    "mace.json": {
+      "sha256": "8b9ff568f6b06b0bcd1eebb700bf87c32b8a95c2b8fc4d29f208a2bce185dee8"
+    },
+    "mace_refined.json": {
+      "sha256": "bc0b27ba712dcdae1f8c13c9d15f2fb81a2b7d79c98aa5c05a83200b66586ab0"
+    },
+    "reference_audit.json": {
+      "sha256": "ea496bf43fc3072f4115c84f41abf03ff9e7961e9ea33f9b2076bbebf4fc5211"
+    },
+    "mace_fragments.json": {
+      "sha256": "c8855b3c35ba882112dbff68e42b0b20070567e71f02437628d334d5a6d35a8a"
+    },
+    "cp2k_fragments.json": {
+      "sha256": "59bbe72c923a45d0678a85276a6e33cfa1b6c96e453f5071ac0db8a13539f2d3"
+    },
+    "force_grid_audit.json": {
+      "sha256": "82babb7940634dbd66557636b883fdab6b4015a31f09476a1d0dea2d57ba3a0d"
+    },
+    "dft_relaxation.json": {
+      "sha256": "86622c53d6c14f3f25dde929524d3d8c773e8f42e71ff1a389fbd9784fd7089a"
+    },
+    "cp2k_restart_audit.json": {
+      "sha256": "7c7663860ea7b0b41e5d0feccf25a8c0c66cc0a012a609dcae42d1239dc77033"
+    },
+    "aimd_audit.json": {
+      "sha256": "fa62bd9b3857106f4585b5c5ab5f0ef889fb04b11116cb46874e640bf2d0537e"
+    },
+    "dataset_audit.json": {
+      "sha256": "20c9bf8a31ac59987e7029e10df8ec882ef2d8f42529869e872010959708624e"
+    },
+    "sampling_coverage.json": {
+      "sha256": "27a19daf23009f969a29544e7224b85270b002dec39aa149d005f93b3698a221"
+    },
+    "model_evaluation.json": {
+      "sha256": "7bc069db04501a152501fdb57ff425c852b27c2f9eac9c2a2a23685e68166b80"
+    },
+    "lammps_audit.json": {
+      "sha256": "925b193831e65e8a2c51987c1fad57e6187ee2e4f1b071c1520733ce99e6edde"
+    },
+    "optimizer_diagnosis-step90.json": {
+      "sha256": "8adca39a2b2e23f6db36262aa35da828b3bae5d11165806e1eaec186a6205939"
+    },
+    "dft_lbfgs_recovery.json": {
+      "sha256": "8b859981a4df38bdcfd8a3e816b7fc4073e97ad891fd76e8731f5206256600b4"
+    },
+    "optimizer_trial_audit.json": {
+      "sha256": "e2d2262c250f5bf7980b7a45be2421016898b717a597bd0696df5c476c65146f"
+    },
+    "reference_interpretation_note.json": {
+      "sha256": "d63953c2421cc0c91053aa40a51efddf53e533f90d5adb4ec8ee2eae018bc1e5"
+    },
+    "lammps_restart_diagnosis.json": {
+      "sha256": "0b85ad07fa828a67c71fa4d5e6926cdf6e33fb0e3c42f87b12aba8b4014be836"
+    }
+  }
+}

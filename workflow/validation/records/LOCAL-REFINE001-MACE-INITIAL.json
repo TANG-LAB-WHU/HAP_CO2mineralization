@@ -1,0 +1,8 @@
+{
+  "artifact_id": "LOCAL-REFINE001-MACE-INITIAL",
+  "local_raw_path": ".research-runs/refine-001/mace.json",
+  "status": "partial",
+  "notes": "Initial 400-step adsorbed relaxation failed its force gate; later continuation is separate.",
+  "reproducibility_manifest": ".research-runs/refine-001/reproducibility-manifest.json",
+  "manuscript_eligible": false
+}

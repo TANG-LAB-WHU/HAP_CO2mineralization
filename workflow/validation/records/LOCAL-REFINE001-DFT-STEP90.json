@@ -1,0 +1,8 @@
+{
+  "artifact_id": "LOCAL-REFINE001-DFT-STEP90",
+  "local_raw_path": ".research-runs/refine-001/dft-relax-attempt3",
+  "status": "partial",
+  "notes": "At 90 BFGS steps the force gate passed but displacement criteria failed; preserved separately from the successful limited-memory recovery.",
+  "reproducibility_manifest": ".research-runs/refine-001/reproducibility-manifest.json",
+  "manuscript_eligible": false
+}
