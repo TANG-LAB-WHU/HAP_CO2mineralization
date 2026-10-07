@@ -3,6 +3,8 @@ import pathlib
 import os
 import shutil
 import sys
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
 import traceback
 import numpy as np
 import argparse
@@ -99,7 +101,7 @@ except ImportError:
 
 # Physical conversion factors
 HARTREE_TO_EV = 27.211386245988  # eV / Hartree
-BOHR_TO_ANGSTROM = 0.529177210903  # Å / Bohr
+BOHR_TO_ANGSTROM = 0.529177210903  # A / Bohr
 FORCE_HARTREE_PER_BOHR_TO_EV_PER_ANG = HARTREE_TO_EV / BOHR_TO_ANGSTROM
 
 def detect_ensemble_type(cp2k_dir: pathlib.Path, project: str) -> str:
@@ -312,13 +314,13 @@ def parse_cp2k_forces_file(forces_file, natoms, expected_frames):
             print(f"[DEBUG] Forces shape: {forces_array.shape}")
             print(f"[DEBUG] Expected shape: ({expected_frames}, {natoms}, 3)")
             
-            # Convert from Hartree/Bohr to eV/Å for DeepMD compatibility
+            # Convert from Hartree/Bohr to eV/A for DeepMD compatibility
             forces_array *= FORCE_HARTREE_PER_BOHR_TO_EV_PER_ANG
-            print(f"[DEBUG] Converted forces to eV/Å (factor {FORCE_HARTREE_PER_BOHR_TO_EV_PER_ANG:.6f})")
+            print(f"[DEBUG] Converted forces to eV/A (factor {FORCE_HARTREE_PER_BOHR_TO_EV_PER_ANG:.6f})")
             
             # Check force magnitudes
             force_magnitudes = np.linalg.norm(forces_array, axis=2)
-            print(f"[DEBUG] Force magnitude range (eV/Å): {force_magnitudes.min():.6e} to {force_magnitudes.max():.6e}")
+            print(f"[DEBUG] Force magnitude range (eV/A): {force_magnitudes.min():.6e} to {force_magnitudes.max():.6e}")
             
             return forces_array
         else:
@@ -432,13 +434,13 @@ def parse_cp2k_atomic_forces_file(forces_file, natoms, expected_frames):
             print(f"[DEBUG] Forces shape: {forces_array.shape}")
             print(f"[DEBUG] Expected shape: ({expected_frames}, {natoms}, 3)")
             
-            # Convert from Hartree/Bohr to eV/Å for DeepMD compatibility
+            # Convert from Hartree/Bohr to eV/A for DeepMD compatibility
             forces_array *= FORCE_HARTREE_PER_BOHR_TO_EV_PER_ANG
-            print(f"[DEBUG] Converted forces to eV/Å (factor {FORCE_HARTREE_PER_BOHR_TO_EV_PER_ANG:.6f})")
+            print(f"[DEBUG] Converted forces to eV/A (factor {FORCE_HARTREE_PER_BOHR_TO_EV_PER_ANG:.6f})")
             
             # Check force magnitudes
             force_magnitudes = np.linalg.norm(forces_array, axis=2)
-            print(f"[DEBUG] Force magnitude range (eV/Å): {force_magnitudes.min():.6e} to {force_magnitudes.max():.6e}")
+            print(f"[DEBUG] Force magnitude range (eV/A): {force_magnitudes.min():.6e} to {force_magnitudes.max():.6e}")
             
             return forces_array
         else:
@@ -471,7 +473,7 @@ def parse_standard_forces_file(forces_file, natoms, expected_frames):
                     nframes = total_atoms // natoms
                     forces = data[:, :3].reshape(nframes, natoms, 3)
                     forces *= FORCE_HARTREE_PER_BOHR_TO_EV_PER_ANG
-                    print(f"[DEBUG] Reshaped to {nframes} frames and converted to eV/Å")
+                    print(f"[DEBUG] Reshaped to {nframes} frames and converted to eV/A")
                     return forces
                 else:
                     print(f"[DEBUG] Cannot reshape: {total_atoms} atoms not divisible by {natoms}")
@@ -489,7 +491,7 @@ def parse_standard_forces_file(forces_file, natoms, expected_frames):
         return None
 
 
-def parse_cp2k_virial_file(virial_file, expected_frames):
+def parse_cp2k_virial_file(virial_file, expected_frames, cells=None):
     """Parse CP2K virial tensor file to extract stress information.
     
     CP2K format example:
@@ -521,6 +523,8 @@ def parse_cp2k_virial_file(virial_file, expected_frames):
             
             # Detect start of new stress tensor block
             if line.startswith("STRESS|") and "Analytical stress tensor" in line:
+                if "[bar]" not in line:
+                    raise ValueError("Legacy parser accepts only explicit CP2K [bar] stress")
                 if frame_count < 5:  # Only debug first few frames
                     print(f"[DEBUG] Found stress tensor block at line {i+1}")
                 
@@ -595,12 +599,19 @@ def parse_cp2k_virial_file(virial_file, expected_frames):
             stress_traces = np.trace(virial_array, axis1=1, axis2=2)  # Trace of stress tensor
             print(f"[DEBUG] Stress trace range: {stress_traces.min():.6e} to {stress_traces.max():.6e} bar")
             
-            # Convert from bar to eV/Å³ for DeepMD compatibility
-            # 1 bar = 1e5 Pa = 6.241506e-7 eV/Å³
-            bar_to_ev_per_ang3 = 6.241506e-7
-            virial_array_ev = virial_array * bar_to_ev_per_ang3
+            # Convert from bar to eV/A^3 for DeepMD compatibility
+            # 1 bar = 1e5 Pa = 6.241506e-7 eV/A^3
+            bar_to_ev_per_ang3 = 1e5 / 1.602176634e11
+            if cells is None or len(cells) != expected_frames or len(virial_array) != expected_frames:
+                raise ValueError("Virial requires exact frame alignment and a cell for every stress tensor")
+            volumes = np.abs(np.linalg.det(np.asarray(cells).reshape(-1, 3, 3)))
+            if not np.isfinite(volumes).all() or (volumes <= 0).any():
+                raise ValueError("Invalid cell volumes")
+            # CP2K reports compressive-positive stress. DeepMD virial = +V * CP2K stress;
+            # ASE tensile-positive stress has the opposite sign. Result is eV, not eV/A^3.
+            virial_array_ev = virial_array * bar_to_ev_per_ang3 * volumes[:, None, None]
             
-            print(f"[DEBUG] Converted stress range: {(stress_traces * bar_to_ev_per_ang3).min():.6e} to {(stress_traces * bar_to_ev_per_ang3).max():.6e} eV/Å³")
+            print(f"[DEBUG] Converted stress range: {(stress_traces * bar_to_ev_per_ang3).min():.6e} to {(stress_traces * bar_to_ev_per_ang3).max():.6e} eV/A^3")
             
             # Convert to DeepMD format: flatten to 9 components per frame
             # DeepMD expects virial in the format: [xx, xy, xz, yx, yy, yz, zx, zy, zz]
@@ -613,8 +624,7 @@ def parse_cp2k_virial_file(virial_file, expected_frames):
             
     except Exception as e:
         print(f"[ERROR] Failed to parse virial file: {e}")
-        traceback.print_exc()
-        return None
+        raise
 
 
 def read_energies_from_file_advanced(energy_file, expected_frames):
@@ -777,6 +787,19 @@ def create_deepmd_dataset_v3(output_dir, coords, elements, cells=None, forces=No
     try:
         print(f"[DEBUG] Creating DeepMD v3 dataset...")
         
+        nframes, natoms, _ = coords.shape
+        for label, value, shape in [
+            ("coordinates", coords, (nframes, natoms, 3)),
+            ("cells", cells, (nframes, 3, 3)),
+            ("forces", forces, (nframes, natoms, 3))]:
+            if value is None or np.asarray(value).shape != shape or not np.isfinite(value).all():
+                raise ValueError(f"Missing, nonfinite, or misaligned {label}")
+        if energies is None or np.asarray(energies).size != nframes or not np.isfinite(energies).all():
+            raise ValueError("Exactly one finite energy per frame required")
+        if nframes < 1 or len(elements) != natoms:
+            raise ValueError("Empty dataset or inconsistent atom identities")
+        if virial is not None and (np.asarray(virial).shape != (nframes, 9) or not np.isfinite(virial).all()):
+            raise ValueError("Misaligned or nonfinite virial")
         # Create set.000 directory
         set_dir = output_dir / "set.000"
         set_dir.mkdir(exist_ok=True)
@@ -1087,7 +1110,7 @@ def main():
                     print(f"  Line {i+1}: {line.strip()[:70]}...")
             
             print(f"Attempting to parse virial tensor from: {virial_file}")
-            virial = parse_cp2k_virial_file(virial_file, nframes)
+            virial = parse_cp2k_virial_file(virial_file, nframes, cells)
             
             if virial is not None:
                 print(f"✅ Successfully loaded virial tensor: {virial.shape}")
@@ -1208,10 +1231,10 @@ def main():
             print(f"\n💡 Recommendations:")
             if forces is not None and energies is not None and cells is not None:
                 if virial is not None:
-                    print(f"   🎯 Excellent! All required data present for high-quality training")
+                    print(f"   🎯 Required arrays present; scientific validation still required")
                     print(f"   🚀 Your model will support both NVT and NPT simulations")
                 else:
-                    print(f"   ✅ Good dataset for NVT simulations")
+                    print(f"   ✅ Arrays exported; NVT suitability not established")
                     print(f"   📝 Consider adding virial data for NPT support")
             else:
                 missing = []

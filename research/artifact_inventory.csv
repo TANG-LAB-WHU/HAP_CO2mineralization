@@ -40,3 +40,9 @@ SCALEUP-RUN,scaleup,apatite interface,LAMMPS production run,,missing,none,no,"No
 ENHANCED-RUN,enhanced_sampling,apatite interface,free-energy run,,missing,none,no,"Enhanced-sampling implementation and results are absent."
 POST-HAP112,analysis,HAP(112),legacy postprocessing,4.PostProcess_Analysis/HAP112_DPA_NVTcsvr_Succeeded,invalid,legacy_unverified,no,"Raw inputs are absent; quality report says poor; legacy code could synthesize RDF-like fallback data."
 FIG-PUBLICATION,publication,manuscript,publication figure set,,missing,none,no,"No provenance-complete publication figure is present."
+LOCAL-MACE-12,screening,HAP001+CO2,local run record,workflow/validation/records/LOCAL-MACE-12.json,partial,path_only,no,12 steps; slab/adsorbed unconverged; CP2K sign disagreement retained
+LOCAL-MACE-200,screening,HAP001+CO2,local run record,workflow/validation/records/LOCAL-MACE-200.json,completed,path_only,no,fmax passed; structure ordering/termination and physical convergence unvalidated
+LOCAL-STRESS-CHECK,analysis,CO2,local run record,workflow/validation/records/LOCAL-STRESS-CHECK.json,completed,path_only,no,Real stress sign/volume/unit derivative check passed
+LOCAL-DATASET-V1,mlip_training,HAP001+CO2,local run record,workflow/validation/records/LOCAL-DATASET-V1.json,partial,path_only,no,Shared initial-frame leakage discovered; preserved and superseded by v2
+LOCAL-HAP-MLIP-V2,mlip_training,HAP001+CO2,local run record,workflow/validation/records/LOCAL-HAP-MLIP-V2.json,completed,path_only,no,15 unique frames across 3 replicas; 1.25 fs each; inadequate coverage; force RMSE fails provisional production gate
+LOCAL-MATTERGEN,candidate_generation,Ca-P-O-H-C,local run record,workflow/validation/records/LOCAL-MATTERGEN.json,completed,path_only,no,Generation and evaluation completed; CH2CaO4 lacks P; chemistry filter rejects sample; not a validated apatite candidate

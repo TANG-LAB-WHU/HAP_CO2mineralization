@@ -1,11 +1,5 @@
-#!/usr/bin/env python3
-"""
-Place CO2 adsorbate on generated slabs using AdsorbateSiteFinder.
-"""
-import os
-
-def main():
-    print("Placing CO2 adsorbate on slabs.")
-
-if __name__ == "__main__":
-    main()
+from pathlib import Path
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "workflow"))
+from screening_tools import main
+if __name__ == "__main__": main('place')

@@ -1,0 +1,9 @@
+{
+  "artifact_id": "LOCAL-HAP-MLIP-V2",
+  "local_raw_path": ".research-runs/adsorbed-dataset-v2",
+  "status": "completed",
+  "manuscript_eligible": false,
+  "notes": "15 unique frames across 3 replicas; 1.25 fs each; inadequate coverage; force RMSE fails provisional production gate",
+  "reproducibility_manifest": ".research-runs/reproducibility-manifest.json",
+  "verification_report": "workflow/validation/verification.json"
+}

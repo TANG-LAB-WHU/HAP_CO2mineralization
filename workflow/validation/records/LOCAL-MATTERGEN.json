@@ -1,0 +1,9 @@
+{
+  "artifact_id": "LOCAL-MATTERGEN",
+  "local_raw_path": ".research-runs/mattergen-smoke",
+  "status": "completed",
+  "manuscript_eligible": false,
+  "notes": "Actual generation and evaluation completed; CH2CaO4 lacks phosphorus; chemistry filter rejected 1/1 and saved zero HAP candidates",
+  "reproducibility_manifest": ".research-runs/reproducibility-manifest.json",
+  "verification_report": "workflow/validation/verification.json"
+}

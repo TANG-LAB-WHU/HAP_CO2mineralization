@@ -71,7 +71,7 @@ def main():
     )  
     parser.add_argument(  
         '--record-trajectories',  
-        action='store_true',  
+        action=argparse.BooleanOptionalAction,
         default=True,  
         help='Record denoising trajectories (default: True)'  
     )  
@@ -100,7 +100,13 @@ def main():
         help='Path to pre-computed energies file (.npy format, only used with --skip-relax)'  
     )  
   
-    args = parser.parse_args()  
+    parser.add_argument('--seed', type=int, default=42)
+    parser.add_argument('--model-path', type=Path, default=None, help='Pinned local checkpoint directory')
+    args = parser.parse_args()
+    if args.batch_size < 1 or args.num_batches < 1:
+        parser.error("Batch size and number of batches must be positive")
+    if args.skip_relax and (not args.energies_path or not Path(args.energies_path).is_file()):
+        parser.error("--skip-relax requires an existing --energies-path")
   
     output_path = Path(args.output_path) if args.output_path else Path(f'results/{args.chemical_system}/')
     structures_output_path = (
@@ -136,6 +142,8 @@ def main():
     print("=" * 60)
     print()
 
+    if output_path.exists() and any(output_path.iterdir()):
+        raise RuntimeError("Preserving existing generation outputs; choose a fresh output path")
     # Create output directory if it doesn't exist
     output_path.mkdir(parents=True, exist_ok=True)
     # Ensure parent directory for the relaxed structures file exists
@@ -156,9 +164,11 @@ def main():
         f'--num_batches={args.num_batches}',  
         f'--properties_to_condition_on={properties}',  
         f'--diffusion_guidance_factor={args.guidance_factor}',  
-        f'--record_trajectories={str(args.record_trajectories)}'  
+        f'--record_trajectories={str(args.record_trajectories)}', f'--seed={args.seed}'
     ]  
   
+    if args.model_path:
+        generate_cmd[2] = f'--model_path={args.model_path.resolve()}'
     print("Executing generation command:")  
     print(' '.join(generate_cmd))  
     print()  
@@ -180,11 +190,15 @@ def main():
 
     # Quick statistics on generated structures
     structures_input = output_path / 'generated_crystals.extxyz'
+    if not structures_input.is_file() or structures_input.stat().st_size == 0:
+        raise RuntimeError("Generation reported success but produced no structures")
     if structures_input.exists():
         try:
             from ase.io import read
             from collections import Counter
             frames = read(structures_input, index=':')
+            if not frames:
+                raise RuntimeError('Generation produced no frames')
             print(f"  - Successfully loaded {len(frames)} generated structures")
             
             elements = Counter()
@@ -275,11 +289,19 @@ def main():
   
         result = subprocess.run(evaluate_cmd, check=False)  
   
-        if result.returncode == 0:  
+        if result.returncode == 0:
+            import json
+            for result_file in [output_path/'metrics.json', output_path/'detailed_metrics.json', structures_output_file]:
+                if not result_file.is_file() or result_file.stat().st_size == 0:
+                    raise RuntimeError(f"Evaluation returned success but output is missing: {result_file}")
+            for result_file in [output_path/'metrics.json', output_path/'detailed_metrics.json']:
+                with result_file.open() as handle:
+                    if not isinstance(json.load(handle), dict):
+                        raise RuntimeError(f"Invalid evaluation metrics: {result_file}")
             print("\nEvaluation complete!")  
             print(f"Evaluation results saved at: {output_path}/metrics.json")  
         else:  
-            print(f"\nWarning: Evaluation failed with return code {result.returncode}")  
+            raise RuntimeError(f"Evaluation failed with return code {result.returncode}")
   
     print("\n" + "=" * 60)  
     print("Script execution complete!")  

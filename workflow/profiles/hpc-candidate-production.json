@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "enabled": false,
+  "submit_enabled": false,
+  "name": "hpc-candidate-production",
+  "status": "PLANNED_UNVALIDATED",
+  "site": {
+    "scheduler": null,
+    "account": null,
+    "partition": null,
+    "qos": null,
+    "modules_or_apptainer": null,
+    "gpu_model": null,
+    "cpus": null,
+    "memory_GiB": null,
+    "walltime": null,
+    "shared_repo": null,
+    "scratch": null
+  },
+  "convergence_sweeps": {
+    "cutoff_Ry": [
+      400,
+      600,
+      800
+    ],
+    "relative_cutoff_Ry": [
+      40,
+      60,
+      80
+    ],
+    "vacuum_each_side_A": [
+      12,
+      16,
+      20
+    ],
+    "slab_repetitions": [
+      1,
+      2,
+      3
+    ],
+    "lateral_repetitions": [
+      1,
+      2,
+      3
+    ],
+    "timestep_fs": [
+      0.125,
+      0.25
+    ]
+  },
+  "proposed_gates": {
+    "adsorption_difference_change_eV": 0.02,
+    "force_rmse_eV_A": 0.1,
+    "energy_rmse_eV_atom": 0.01
+  },
+  "requires": [
+    "scientific OH/termination review",
+    "dispersion and functional selection",
+    "independent trajectories",
+    "validated model",
+    "autocorrelation-based sampling adequacy"
+  ],
+  "job_template": "workflow/hpc/hap-stage.sbatch"
+}

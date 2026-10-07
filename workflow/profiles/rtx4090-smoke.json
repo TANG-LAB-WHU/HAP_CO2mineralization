@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "name": "rtx4090-smoke",
+  "purpose": "software integration only",
+  "manuscript_eligible": false,
+  "container": {
+    "deepmd": "deepmodeling/deepmd-kit@sha256:23d23b922459eb49b23f9d4977b6e453fd17feb2ee03a280c70fb7f4a6452e8c",
+    "cp2k": "cp2k/cp2k@sha256:e2912cc9500a42a08b3e057e383182b96f395b7477c8eb55e93db6e29cb1c2ae"
+  },
+  "resources": {
+    "cpus": 4,
+    "memory_GiB": 8,
+    "gpu_device": 0,
+    "mace_torch_vram_fraction": 0.35
+  },
+  "mace": {
+    "fmax_eV_A": 0.05,
+    "max_steps": 200,
+    "dtype": "float64"
+  },
+  "cp2k": {
+    "cutoff_Ry": 300,
+    "relative_cutoff_Ry": 40,
+    "eps_scf": 1e-06
+  },
+  "aimd": {
+    "steps_per_replica": 5,
+    "timestep_fs": 0.25,
+    "seeds": [
+      710,
+      711,
+      712
+    ]
+  },
+  "mlip": {
+    "updates": 20,
+    "exclude_shared_initial_frame": true
+  }
+}

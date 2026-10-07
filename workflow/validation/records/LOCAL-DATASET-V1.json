@@ -1,0 +1,9 @@
+{
+  "artifact_id": "LOCAL-DATASET-V1",
+  "local_raw_path": ".research-runs/adsorbed-dataset",
+  "status": "partial",
+  "manuscript_eligible": false,
+  "notes": "Shared initial-frame leakage discovered; preserved and superseded by v2",
+  "reproducibility_manifest": ".research-runs/reproducibility-manifest.json",
+  "verification_report": "workflow/validation/verification.json"
+}

@@ -1,0 +1,9 @@
+{
+  "artifact_id": "LOCAL-MACE-200",
+  "local_raw_path": ".research-runs/smoke-final",
+  "status": "completed",
+  "manuscript_eligible": false,
+  "notes": "fmax passed; structure ordering/termination and physical convergence unvalidated",
+  "reproducibility_manifest": ".research-runs/reproducibility-manifest.json",
+  "verification_report": "workflow/validation/verification.json"
+}

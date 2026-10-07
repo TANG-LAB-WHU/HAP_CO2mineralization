@@ -25,12 +25,14 @@ def split_systems_by_ratio(
     systems: list[str], train_ratio: float, valid_ratio: float, test_ratio: float
 ) -> tuple[list[str], list[str], list[str]]:
     total = len(systems)
-    if total == 0:
-        return [], [], []
-    if total == 1:
-        return systems[:], systems[:], systems[:]
-    if total == 2:
-        return [systems[0]], [systems[1]], [systems[1]]
+    if total < 3:
+        raise ValueError("Need at least three independent systems; train/validation/test reuse is forbidden")
+    if len(set(systems)) != total:
+        raise ValueError("Duplicate system paths would leak across splits")
+    if not all(math.isfinite(r) and r > 0 for r in (train_ratio, valid_ratio, test_ratio)):
+        raise ValueError("All three split ratios must be finite and positive")
+    norm = train_ratio + valid_ratio + test_ratio
+    train_ratio, valid_ratio, test_ratio = (r / norm for r in (train_ratio, valid_ratio, test_ratio))
 
     train_count = int(math.floor(total * train_ratio))
     valid_count = int(math.floor(total * valid_ratio))

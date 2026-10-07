@@ -87,3 +87,7 @@ The directory reserves a MACE-MH-1 pre-relaxation route for comparison with CP2K
 
 This project is licensed under the MIT License.
 See [LICENSE](LICENSE) for details.
+
+## Tested Shawn-PC local GPU workflow
+
+See [local validation and commands](workflow/LOCAL_VALIDATION.md), [extended reproduction](workflow/REPRODUCE_EXTENDED.md), and [smoke versus proposed production parameters](workflow/PARAMETERS.md). All local results remain manuscript-ineligible; MACE/CP2K adsorption disagreement and inadequate MLIP coverage are explicitly retained. HPC profiles are disabled and no jobs were submitted.
