@@ -160,14 +160,14 @@ def main():
         q=load(path);selected=q['selected'];pred=r/'models'/selected/'test_predictions.npz';z=np.load(pred);ef=(z['predicted_energy_eV']-z['reference_energy_eV'])/47;ff=z['predicted_force_eV_A']-z['reference_force_eV_A'];truth=z['reference_force_eV_A'].ravel();guess=z['predicted_force_eV_A'].ravel()
         ax[1].scatter(truth,guess,s=5,alpha=.35);bounds=[min(truth.min(),guess.min()),max(truth.max(),guess.max())];ax[1].plot(bounds,bounds,'k:',lw=1);ax[1].set(xlabel='CP2K force component (eV/A)',ylabel='DeepMD force component (eV/A)',title=selected+': held-out test')
         ax[2].hist(ff.ravel(),bins=35,color='#3975a5');ax[2].set(xlabel='Force-component error (eV/A)',ylabel='Components')
-        centered=(z['reference_energy_eV']-z['reference_energy_eV'].mean())/47;predcenter=(z['predicted_energy_eV']-z['reference_energy_eV'].mean())/47
-        ax[3].scatter(centered,predcenter);bounds=[min(centered.min(),predcenter.min()),max(centered.max(),predcenter.max())];ax[3].plot(bounds,bounds,'k:');ax[3].set(xlabel='CP2K energy, centered (eV/atom)',ylabel='DeepMD energy, same center (eV/atom)')
+        centered=(z['reference_energy_eV']-z['reference_energy_eV'].mean())*1000/47;predcenter=(z['predicted_energy_eV']-z['reference_energy_eV'].mean())*1000/47
+        ax[3].scatter(centered,predcenter);bounds=[min(centered.min(),predcenter.min()),max(centered.max(),predcenter.max())];ax[3].plot(bounds,bounds,'k:');ax[3].set(xlabel='CP2K energy, centered (meV/atom)',ylabel='DeepMD energy, same center (meV/atom)')
         ax[4].hist(ef*1000,bins=8,color='#d49230');ax[4].axvline(10,color='black',ls=':');ax[4].axvline(-10,color='black',ls=':');ax[4].set(xlabel='Energy error (meV/atom)',ylabel='Frames')
         metrics=q['models'][selected]['test'];ax[5].text(.03,.9,f"Selected on validation: {selected}\nTest force RMSE: {metrics['force_rmse_eV_A']:.4f} eV/A\nTest energy RMSE: {1000*metrics['energy_rmse_eV_atom']:.3f} meV/atom\nForce gate (<0.1): {q['heldout_force_gate']}\nEnergy gate (<10 meV): {q['heldout_energy_gate']}\nSymmetry gate: {q['symmetry_gate']}\n\nNo independent reaction or\ntemperature transfer claim.",transform=ax[5].transAxes,va='top');ax[5].set_axis_off();sources.extend([path,pred])
     else:
         for x in ax[1:]:empty(x,'independent model evaluation')
     manifest.append(finish(fig,d,'06_models',sources))
-    fig,ax=layout(r,'lammps','LAMMPS trajectory stability and transfer');path=r/'lammps_audit.json';sources=[]
+    fig,ax=layout(r,'lammps','LAMMPS trajectory evolution and transfer');path=r/'lammps_audit.json';sources=[]
     if path.exists():
         q=load(path);t=np.load(r/'lammps/thermo.npy');ax[0].plot(t[:,1]*1000,t[:,2]);ax[0].set(xlabel='Time (fs)',ylabel='Temperature (K)',title='NVE; 200 K initial velocities')
         ax[1].plot(t[:,1]*1000,(t[:,5]-t[0,5])*1000/47,label='dt=0.25 fs');half=np.load(r/'lammps/halfstep-thermo.npy');ax[1].plot(half[:,1]*1000,(half[:,5]-half[0,5])*1000/47,label='dt=0.125 fs');ax[1].legend(fontsize=12);ax[1].set(xlabel='Time (fs)',ylabel='Total-energy change (meV/atom)',title=f"0.25 fs drift = {q['energy_drift_meV_atom_ps']:.3f} meV/atom/ps")

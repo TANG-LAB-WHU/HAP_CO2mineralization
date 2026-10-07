@@ -624,6 +624,10 @@ def lammps_audit(r,cfg):
         'mapping_gate':force_error<cfg['gates']['engine_force_max_difference_eV_A'] and energy_error<1e-5,'restart_max_difference':restart,'restart_position_max_difference_A':position_difference,'restart_velocity_max_difference_A_per_ps':velocity_difference,'restart_ID_type_match':True,
         'restart_gate':restart<cfg['gates']['restart_max_difference'],'energy_drift_meV_atom_ps':drift,'drift_gate':abs(drift)<cfg['gates']['nve_drift_meV_atom_ps'],
         'half_timestep_state_comparison':half_state,'half_timestep_fs':.125,'half_timestep_drift_meV_atom_ps':halfdrift,'timestep_drift_gate':abs(halfdrift)<cfg['gates']['nve_drift_meV_atom_ps'] and abs(drift)<cfg['gates']['nve_drift_meV_atom_ps'],
+        'temperature_K':{'initial':float(t[0,2]),'final':float(t[-1,2]),'minimum':float(t[:,2].min()),'maximum':float(t[:,2].max()),
+            'interpretation':'Measured NVE temperature evolution, not temperature control or validation of the physical origin of heating.'},
+        'geometry_failed_frame_count':sum(not m['geometry_gate'] for m in metrics),
+        'first_geometry_failure_time_fs':next((m['time_fs'] for m in metrics if not m['geometry_gate']),None),
         'chemistry_gate':all(m['geometry_gate'] for m in metrics),'frames':metrics,'time_fs':250,'manuscript_eligible':False})
 
 def optimizer_trial_audit(r,cfg):
@@ -654,7 +658,7 @@ def report(r,cfg):
         p=r/name
         if p.exists():result['sources'][name]={'sha256':digest(p),'data':load(p)}
         else:result['missing'].append(name)
-    for name in ['optimizer_diagnosis-step90.json','dft_lbfgs_recovery.json','optimizer_trial_audit.json','reference_interpretation_note.json']:
+    for name in ['optimizer_diagnosis-step90.json','dft_lbfgs_recovery.json','optimizer_trial_audit.json','reference_interpretation_note.json','lammps_restart_diagnosis.json']:
         if (r/name).exists():result['sources'][name]={'sha256':digest(r/name),'data':load(r/name)}
     def gate(name,file,key,meaning):
         value=result['sources'].get(file,{}).get('data',{}).get(key)
@@ -679,6 +683,14 @@ def report(r,cfg):
     result['functional_complete']=not result['missing'];result['all_pilot_gates_pass']=not result['missing'] and all(x['passed'] is True for x in result['gates'].values())
     result['production_ready']=False;result['unmet_production_requirements']=['hydrated environments and termination selection','slab thickness/lateral size/vacuum/basis/k-point convergence','electronic polarization and explicit long-range model validation','independent reaction-path and broad configuration coverage','long-time dynamics/timestep/ensemble convergence','review of chemical mechanisms and claim-specific publication eligibility']
     save(r/'verification.json',result);print(json.dumps({k:v['passed'] for k,v in result['gates'].items()},indent=2))
+
+def report_final(r,cfg):
+    if (r/'reproducibility-manifest.json').exists():raise RuntimeError('Captured evidence is immutable')
+    original=load(r/'verification.json');archive=r/'verification-before-finalization.json'
+    if archive.exists():raise FileExistsError('Preserving previous report finalization')
+    shutil.copyfile(r/'verification.json',archive)
+    report(r,cfg)
+    assert load(r/'verification.json')['gates']==original['gates'],'Supplementary diagnosis must not change original gate outcomes'
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('stage');p.add_argument('--run',type=Path,required=True);p.add_argument('--config',type=Path,default=ROOT/'workflow/profiles/rtx4090-refine.json');a=p.parse_args()

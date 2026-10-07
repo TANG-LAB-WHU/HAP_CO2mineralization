@@ -87,6 +87,7 @@ def main():
         ('DFT-STEP90','dft-relax-attempt3','partial','At 90 BFGS steps the force gate passed but displacement criteria failed; preserved separately from the successful limited-memory recovery.'),
         ('DFT-DIAGNOSIS','optimizer_diagnosis-step90.json','completed','Measured force/displacement/Hessian diagnosis preceding the bounded algorithm change; not proof of equilibrium.'),
         ('TRIAL-AUDIT-INITIAL-FIX','optimizer_trial_audit-attempt1.json','partial','First derived trial classification omitted the initial restart energy from its saved-frame comparison; corrected audit includes the previous saved state. Raw calculations were unchanged.'),
+        ('RESTART-DIAGNOSIS-ENCODING','restart-boundary-diagnosis.log','partial','Zero-step restart probe completed, but the first host-only analysis hit GBK decoding of a UTF-8 log; corrected UTF-8 analysis reused the same probe without new dynamics.'),
         ('DFT-LBFGS-RECOVERY','dft_lbfgs_recovery.json','completed','Fresh limited-memory history, unchanged electronic and convergence criteria; successful final audit is recorded separately.')]:
         if not (r/raw).exists():continue
         identifier='LOCAL-'+tag+'-'+suffix

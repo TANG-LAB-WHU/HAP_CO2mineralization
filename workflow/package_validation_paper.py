@@ -65,8 +65,10 @@ document compilation, not a redistribution of model weights or all trajectories.
             if f.is_file():archive.write(f,'figures/'+f.name)
         for name in ['verification.json','structure_audit.json','reference_audit.json','force_grid_audit.json','dft_relaxation.json','cp2k_restart_audit.json','aimd_audit.json','dataset_audit.json','sampling_coverage.json','model_evaluation.json','lammps_audit.json']:
             archive.write(r/name,'records/'+name)
-        for name in ['optimizer_diagnosis-step90.json','dft_lbfgs_recovery.json','optimizer_trial_audit.json','reference_interpretation_note.json','reproducibility-manifest.json']:
+        for name in ['optimizer_diagnosis-step90.json','dft_lbfgs_recovery.json','optimizer_trial_audit.json','reference_interpretation_note.json','reproducibility-manifest.json','lammps_restart_diagnosis.json']:
             if (r/name).exists():archive.write(r/name,'records/'+name)
+        for file in sorted((r/'source-snapshots').glob('*restart_boundary.py')):
+            archive.write(file,'analysis_sources/'+file.name)
         for name in ['plot_refinement.py','refine_pipeline.py','cp2k_validate.py','aimd_to_deepmd.py','audit_cp2k_restarts.py']:
             archive.write(ROOT/'workflow'/name,'scripts/'+name)
     overview=['# Local HAP validation deliverables','',
@@ -87,6 +89,7 @@ document compilation, not a redistribution of model weights or all trajectories.
         '- Dataset frames (training/validation/test): '+ '/'.join(str(dataset['frames_per_split'][x]) for x in ['train','valid','test'])+' from 4/2/2 separately seeded trajectories, each 4 fs. Statistical independence and equilibration are not established.',
         f"- Validation-selected model: {chosen}. Held-out force RMSE {heldout['force_rmse_eV_A']:.6f} eV/A; energy RMSE {heldout['energy_rmse_eV_atom']*1000:.6f} meV/atom.",
         f"- Python/LAMMPS same-state maximum force difference: {md['engine_force_max_difference_eV_A']:.6g} eV/A.",
+        f"- NVE temperature: {md['temperature_K']['initial']:.1f} K initially, {md['temperature_K']['final']:.1f} K finally, maximum {md['temperature_K']['maximum']:.1f} K. Geometry failures: {md['geometry_failed_frame_count']}/101 saved frames. This does not establish physically valid heating or chemistry.",
         f"- Binary-restart maximum position difference: {md['restart_position_max_difference_A']:.6g} A; velocity difference: {md['restart_velocity_max_difference_A_per_ps']:.6g} A/ps.",
         f"- 250 fs NVE drift slopes: {md['energy_drift_meV_atom_ps']:.6g} (dt=0.25 fs) and {md['half_timestep_drift_meV_atom_ps']:.6g} (dt=0.125 fs), in meV/atom/ps. These are short-run diagnostics.",
         '', '## Verify on Shawn-PC','',
