@@ -179,11 +179,11 @@ def main():
     if a.animate:
         path=r/'lammps/trajectory.extxyz'
         if not path.exists():raise FileNotFoundError('No real trajectory available; refusing animation substitute')
-        frames=read(path,index=':');chosen=frames[::2];fig,axes=plt.subplots(1,2,figsize=(10,6));colors=[COLORS[s] for s in frames[0].get_chemical_symbols()];scat=[]
+        frames=read(path,index=':');chosen=frames[::2];fig,axes=plt.subplots(1,2,figsize=(10,6));fig.subplots_adjust(top=.82,bottom=.14);colors=[COLORS[s] for s in frames[0].get_chemical_symbols()];scat=[]
         allpos=np.concatenate([x.positions for x in chosen]);lo=allpos.min(axis=0)-1;hi=allpos.max(axis=0)+1
         for axis,view in zip(axes,[(0,2),(0,1)]):
             scatter=axis.scatter([],[],s=45,edgecolors='white',linewidths=.3);scat.append(scatter);axis.set(xlim=(lo[view[0]],hi[view[0]]),ylim=(lo[view[1]],hi[view[1]]),xlabel='xyz'[view[0]]+' (A)',ylabel='xyz'[view[1]]+' (A)');axis.set_aspect('equal')
-        title=fig.suptitle('');axes[0].legend(handles=[Line2D([],[],marker='o',ls='',color=c,label=s) for s,c in COLORS.items()],ncol=5,loc='upper center',fontsize=11)
+        title=fig.suptitle('');fig.legend(handles=[Line2D([],[],marker='o',ls='',color=c,label=s) for s,c in COLORS.items()],ncol=5,loc='upper center',bbox_to_anchor=(.5,.91),fontsize=11)
         fig.text(.02,.03,'Actual saved frames; unwrapped coordinates, no interpolation. Tiny-model diagnostic, not mineralization evidence.',fontsize=9)
         def update(i):
             for scatter,view in zip(scat,[(0,2),(0,1)]):scatter.set_offsets(chosen[i].positions[:,view]);scatter.set_color(colors)
