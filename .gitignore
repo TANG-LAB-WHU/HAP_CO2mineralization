@@ -57,3 +57,6 @@ literature/zotero/
 research/private/
 workflow/profiles/*.local.yaml
 .research-runs/
+
+# Packaged local diagnostic artifacts are generated, not source.
+deliverables/

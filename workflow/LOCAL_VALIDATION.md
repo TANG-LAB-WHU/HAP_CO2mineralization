@@ -68,6 +68,13 @@ To reproduce the model download after intentional environment setup:
 The additional executable stage recipes are in `REPRODUCE_EXTENDED.md`. The candidate
 production parameter/convergence plan is in `PARAMETERS.md`; it is deliberately disabled.
 
+## Baseline provenance correction (follow-up audit)
+
+The intended bottom-half FixAtoms constraint did not survive the original extxyz
+save/reload. Actual MACE calculations were all-mobile, as independently inspected
+from saved files and trajectory behavior. The old raw records are preserved; this
+correction supersedes any earlier fixed-bottom description.
+
 ## Failures and recovery retained
 
 - First model-fetch attempt preceded completed installation and failed import; retry succeeded.

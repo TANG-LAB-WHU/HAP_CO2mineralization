@@ -11,11 +11,13 @@ be used as simultaneous full atoms. The smoke model explicitly selects O fractio
 0.1978/0.6978 and H z 0.0608/0.5608, giving Ca10(PO4)6(OH)2 (44 atoms).
 This is a modeling assumption, **not human-reviewed ground truth**. Other OH orderings,
 surface stoichiometries/terminations, polarity, protonation and hydration must be examined.
-The (001) one-cell slab has 12 A vacuum on each side. Bottom-half atoms are fixed for
-MACE relaxation; the three-reference cells and periodicity are identical. One CO2 is
+The (001) one-cell slab has 12 A vacuum on each side. All atoms were actually mobile: the original extxyz round trip dropped the intended
+FixAtoms constraint. The implementation now states that boundary explicitly.
+The three-reference cells and periodicity are identical. One CO2 is
 placed horizontally over a top Ca at 2.8 A. No claim of exhaustive site selection is made.
-The AIMD plumbing examples allow all atoms to move and do not preserve the MACE bottom
-constraint; they intentionally establish execution only, not a surface-physics ensemble.
+The AIMD plumbing examples also allow all atoms to move; they establish execution
+only, not a surface-physics ensemble. This corrects the prior constraint description;
+original raw artifacts and manifests remain unaltered.
 
 Adsorption convention: E(slab+CO2)-E(slab)-E(CO2), in eV per CO2. Negative is favorable
 under this **electronic-energy convention**, not a finite-temperature free energy.

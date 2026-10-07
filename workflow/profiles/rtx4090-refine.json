@@ -1,0 +1,15 @@
+{
+  "scope": "Bounded dry HAP001 small-model validation, not production mineralization",
+  "mace": {"model": ".research-runs/models/mace-mp-small.model", "fmax_eV_A": 0.03, "max_steps": 400},
+  "cp2k": {"reference_settings": [
+    {"id":"pbe-300", "cutoff":300, "relcut":40, "eps":"1e-7", "dispersion":false},
+    {"id":"pbe-500", "cutoff":500, "relcut":60, "eps":"1e-7", "dispersion":false},
+    {"id":"pbe-700", "cutoff":700, "relcut":60, "eps":"1e-7", "dispersion":false},
+    {"id":"pbe-d3-500", "cutoff":500, "relcut":60, "eps":"1e-7", "dispersion":true}
+  ]},
+  "sampling": {"replicas":8,"steps_per_replica":16,"timestep_fs":0.25,"frame_stride":4,"discard_initial_steps":4,"near_geometry_rmsd_A":0.025,"seed":20261008},
+  "training": {"overfit_steps":1500,"compact_steps":6000,"wider_steps":6000},
+  "gates": {"force_rmse_eV_A":0.1,"energy_rmse_eV_atom":0.01,"cutoff_adsorption_change_eV":0.02,"overfit_force_rmse_eV_A":0.02,"restart_max_difference":1e-8,"engine_force_max_difference_eV_A":1e-5,"nve_drift_meV_atom_ps":5},
+  "resource_budget": {"cpus":4,"memory_GiB":10,"max_run_disk_GiB":8,"minimum_free_disk_GiB":40,"single_active_compute_container":true},
+  "manuscript_eligible":false
+}

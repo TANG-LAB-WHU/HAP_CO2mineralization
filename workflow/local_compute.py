@@ -18,7 +18,6 @@ def prepare(out):
     from pymatgen.core import Structure
     from pymatgen.io.ase import AseAtomsAdaptor
     from ase.build import surface, molecule
-    from ase.constraints import FixAtoms
     from ase.io import write
     source = ROOT / '3.ML_AIMD/Step4_lammps_scaleup/HAP_ConventionalCell.cif'
     s = Structure.from_file(source)
@@ -41,7 +40,8 @@ def prepare(out):
     if distance.min() < 0.7:
         raise ValueError('Unphysical bulk contact')
     slab = surface(bulk, (0, 0, 1), 1, vacuum=12, periodic=True)
-    slab.set_constraint(FixAtoms(mask=slab.positions[:, 2] < np.median(slab.positions[:, 2])))
+    # Explicit all-mobile boundary, matching the actual historical extxyz round trip.
+    slab.set_constraint()
     gas = molecule('CO2')
     gas.rotate('z', 'x')
     gas.set_cell(slab.cell)
@@ -51,7 +51,7 @@ def prepare(out):
     adsorbate = gas.copy()
     adsorbate.translate(slab.positions[top] + [0, 0, 2.8] - adsorbate.positions[0])
     combined = slab + adsorbate
-    combined.set_constraint(slab.constraints)
+    combined.set_constraint()
     groups = {'slab_ids': list(range(1, len(slab)+1)), 'co2_ids': list(range(len(slab)+1, len(combined)+1)),
               'co2_oxygen_ids': [len(slab)+i+1 for i, a in enumerate(adsorbate) if a.symbol == 'O']}
     for name, atoms in [('bulk', bulk), ('slab', slab), ('co2', gas), ('adsorbed', combined)]:
@@ -60,7 +60,7 @@ def prepare(out):
     save(out/'structure_review.json', {'source': str(source.relative_to(ROOT)), 'source_sha256': sha(source),
          'formula': bulk.get_chemical_formula(), 'atoms': len(bulk), 'minimum_bulk_distance_A': float(distance.min()),
          'OH_ordering_fractional_z': {'O': [0.1978,0.6978], 'H': [0.0608,0.5608]},
-         'facet': [0,0,1], 'bulk_repetitions': 1, 'vacuum_each_side_A':12,
+         'facet': [0,0,1], 'bulk_repetitions': 1, 'vacuum_each_side_A':12, 'constraints':'all atoms mobile',
          'review': 'computational sanity checks only; human ordering/termination review pending',
          'manuscript_eligible': False})
 

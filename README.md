@@ -91,3 +91,5 @@ See [LICENSE](LICENSE) for details.
 ## Tested Shawn-PC local GPU workflow
 
 See [local validation and commands](workflow/LOCAL_VALIDATION.md), [extended reproduction](workflow/REPRODUCE_EXTENDED.md), and [smoke versus proposed production parameters](workflow/PARAMETERS.md). All local results remain manuscript-ineligible; MACE/CP2K adsorption disagreement and inadequate MLIP coverage are explicitly retained. HPC profiles are disabled and no jobs were submitted.
+
+The separate [bounded structure and model refinement](workflow/REFINEMENT.md) adds explicit OH ordering, force-grid checks, reference decomposition, disjoint small-sample learning tests, and real trajectory diagnostics. Its [working LaTeX draft](drafts/local-validation/main.tex) concerns local technical validation only; it does not replace the living manuscript or promote raw artifact eligibility.
