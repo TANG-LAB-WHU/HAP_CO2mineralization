@@ -1,0 +1,150 @@
+{
+  "schema_version": 1,
+  "hash_scope": "All package files except this manifest; original source identities are separately recorded in provenance.json.",
+  "files": {
+    ".gitattributes": {
+      "bytes": 83,
+      "sha256": "7029adc3f78b7175f3056c0141f653fd1ad26b4a73c0e05cd16ff9bc2904251d"
+    },
+    ".gitignore": {
+      "bytes": 25,
+      "sha256": "be468cb607ead046707cbe0c6d585e4ff1ab2a4eebc4ca6926794c3055903c72"
+    },
+    "cuda-cpu-singlepoint/comparison.json": {
+      "bytes": 1744,
+      "sha256": "882bc5fba689e3a55c42482a80413f5c41259f55e228157b20e36aa084771155"
+    },
+    "cuda-cpu-singlepoint/forces.csv": {
+      "bytes": 11939,
+      "sha256": "434bedf88fbe08256599c75199e2b263325615546c41bb0640bfdd4bfadafa3e"
+    },
+    "cuda-cpu-singlepoint/geometry.extxyz": {
+      "bytes": 4601,
+      "sha256": "1096720325babf4bd774ace72b64766e22e653f098057dbe9d8c4a3fcd690365"
+    },
+    "cuda-cpu-singlepoint/input.inp": {
+      "bytes": 7382,
+      "sha256": "b2adc54c8c934bacc2e7b4b918ee52e41446888965f50d8fad2ca312ef41baa8"
+    },
+    "cuda-cpu-singlepoint/README.md": {
+      "bytes": 1086,
+      "sha256": "be26f89f2dcf08c062bdb4684cb8d9a5edc3e7bcc60c9de32d4c39e206e4a78f"
+    },
+    "cuda-cpu-singlepoint/runtime.json": {
+      "bytes": 2933,
+      "sha256": "2410eea3c8bcac33a95f4055bac3a4bdd6bcbaf40fb5e178b0f21e9fcca63106"
+    },
+    "data/endpoint-10fs-energy.json": {
+      "bytes": 520,
+      "sha256": "3c0f2a3ac931a7f9f01937644df471f05a58589cb6bddc734bbad6452c3e7e74"
+    },
+    "data/endpoint-10fs-forces.csv": {
+      "bytes": 17717,
+      "sha256": "047b4154ff22d0594d9355d941724bbd1584a4745fe15ad65d0996ca366a6b3a"
+    },
+    "data/endpoint-elements.csv": {
+      "bytes": 321,
+      "sha256": "3c39c9a9186df959b1369d36b291451a2ad5464d33ee9795e3a888aecc28d57f"
+    },
+    "data/endpoint-gates.json": {
+      "bytes": 2542,
+      "sha256": "cf4bd437191aa3f8b934ce67328dba262dc2797a42dc575191f5c3752b2dfce7"
+    },
+    "data/force-and-energy.csv": {
+      "bytes": 782,
+      "sha256": "1df16f5b44789b847922d0c91ace9eef41d0e7d46c7e43b9c1afdec2b285a816"
+    },
+    "data/thermo.csv": {
+      "bytes": 7730,
+      "sha256": "9dc31256ef1c519088008442acd6e6e83e993aef54334bb67ecde7eab5488b44"
+    },
+    "figures/force-gates.png": {
+      "bytes": 160891,
+      "sha256": "940fbecd0e19de18c49dd9b0b7e26af4ede81df3ece7c50080f169033292f415"
+    },
+    "figures/nve-diagnostic.png": {
+      "bytes": 153553,
+      "sha256": "e85ab5330c40be2d1ae07ead4456acff12b835f05d0ce9fc7839f78e0fb63093"
+    },
+    "figures/README.md": {
+      "bytes": 1409,
+      "sha256": "ebe09e5d7be8043f5d2f17491fb6169665fbda3bdb72b2ba0df494cf658844b4"
+    },
+    "history/prior-hap91-summary.json": {
+      "bytes": 8530,
+      "sha256": "3b74c3b561046543413fa069e3b883dcedd1d016ed8aeb004f57f1422aa14324"
+    },
+    "inputs/HAP91-converged.extxyz": {
+      "bytes": 4117,
+      "sha256": "93305e7d0e667399f925ab1a861368d37b7b62d34a52421f154595e10a2b0155"
+    },
+    "inputs/md.in": {
+      "bytes": 1308,
+      "sha256": "a00903cd19cca0ee9dd47a0e127e47d44ebc59949e51cc77923e9e994a7b9ac4"
+    },
+    "inputs/probe-step040.extxyz": {
+      "bytes": 5969,
+      "sha256": "b840b0c475c1706ac45d007ae1faad4551074bfd9cb5bc006455dcfb8089e7ae"
+    },
+    "inputs/probe-step040.inp": {
+      "bytes": 8620,
+      "sha256": "54ac833aa551bf3dce0bca71edb77c0c0cf755ab4cd7543289f09f3324246f56"
+    },
+    "inputs/probe-template.inp.template": {
+      "bytes": 2701,
+      "sha256": "0e42e5e82fd082ccd8ecd860f2ba641aed6674032b08951e95594d8660622851"
+    },
+    "inputs/protocol.json": {
+      "bytes": 13862,
+      "sha256": "230cc85fd31bcdfaf8db74c9571f2ad11a40b1f59207990a5a8fb2652fa3110a"
+    },
+    "inputs/run0.in": {
+      "bytes": 580,
+      "sha256": "ee1f40d14756d59df933cb657166a88817527e8355ed892ef0e1915fc37e6065"
+    },
+    "inputs/system.data": {
+      "bytes": 6143,
+      "sha256": "74fbca4fbb5653e0515f54560a9ea61652e857c86b379dbe5338a7c5e2bea028"
+    },
+    "make_figures.py": {
+      "bytes": 4549,
+      "sha256": "fa863bea33e74dee49e6a2f1244fa71f4202cd546b1c42afc86a81423110eb19"
+    },
+    "omitted-artifacts.json": {
+      "bytes": 941,
+      "sha256": "8d575fbc40ce36e9002b967b90d2d8740c2db2c6016078507e677d49ce9bbc85"
+    },
+    "provenance.json": {
+      "bytes": 9841,
+      "sha256": "311f9705a5ed03c42f96ed1f8c7ddadc46e5f56960c5f80295062ae703cae17b"
+    },
+    "README.md": {
+      "bytes": 6109,
+      "sha256": "9cfcb98279dc983f52715460f0ff357b963c62d36515effe2dae2e9adfb75c35"
+    },
+    "recorded-commands.json": {
+      "bytes": 6016,
+      "sha256": "81f6883ba730fda45898d55a65bd22320d853ece7df8f882434d0360d4c86656"
+    },
+    "REPRODUCE.md": {
+      "bytes": 2196,
+      "sha256": "91cb6b52a713377a2a9de950ec9d740c1ec4a7e5e0142e26b177ccbbbd4d39e5"
+    },
+    "runtime.json": {
+      "bytes": 1143,
+      "sha256": "3058e2200a7ccc3a6493986bb6f753369075b17c999de26284f5b57948dc3885"
+    },
+    "sources.json": {
+      "bytes": 2629,
+      "sha256": "59f544dfda1c896c5a4fddce3fdb4381068b586fa477944010359a52b9f052f2"
+    },
+    "summary.json": {
+      "bytes": 22240,
+      "sha256": "9ee59d47e5f3d166cd195af3c427606877324db068dd23e3d6d69fa263e2aadf"
+    },
+    "verify_bundle.py": {
+      "bytes": 2969,
+      "sha256": "80e60da45f7ac43b2bf80bff5055f3ed51cf786947371997f2c6234ac13263d6"
+    }
+  }
+}

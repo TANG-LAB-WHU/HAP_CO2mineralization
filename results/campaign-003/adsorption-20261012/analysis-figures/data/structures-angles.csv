@@ -1,0 +1,5 @@
+frame_id,outer_atom_id_1,center_atom_id,outer_atom_id_2,angle_deg
+A_initial,90,89,91,179.99989764681786
+A_converged,90,89,91,179.99981460132767
+B_initial,90,89,91,179.99989766106225
+B_partial,90,89,91,174.65652388872073

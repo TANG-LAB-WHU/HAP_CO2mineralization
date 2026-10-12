@@ -1,0 +1,168 @@
+{
+  "source_directory": "research/campaign-003-adsorption-results",
+  "source_frozen_at_utc": "2026-10-12T23:15:52.457600+00:00",
+  "source_file_manifest_sha256": "85ac84271fb7c52e023e8d53471e29b727df028eb48a221536f823cefc5765e4",
+  "source_files": {
+    "compact-data.csv": {
+      "bytes": 1151,
+      "sha256": "a05a69d39484cda3e3712b871edd15852a3cd376164244b42e205ebcf98401a0",
+      "included": true
+    },
+    "data/optimization-history.csv": {
+      "bytes": 82501,
+      "sha256": "f30586fe04d96ec26117a3ce29a5baaf7f9e8a03a3e36167cae0c58e2dca5dac",
+      "included": true
+    },
+    "data/optimization-provenance.json": {
+      "bytes": 11570,
+      "sha256": "be6edc90322a7e53df04103af2960976d9d45bc8cf981688494ce13f3d3591f7",
+      "included": true
+    },
+    "data/reference-workflow.json": {
+      "bytes": 3792,
+      "sha256": "7e87d72aacfebe990bfb62316e322f42d01f7602563fb577da7c2c34bb19ed69",
+      "included": true
+    },
+    "data/structures-angles.csv": {
+      "bytes": 225,
+      "sha256": "81a152ffb768f86420c7a8ce27ba5d7e2b91811226483f0bd9bfbfa7d68a5f35",
+      "included": true
+    },
+    "data/structures-atoms.csv": {
+      "bytes": 25264,
+      "sha256": "4012fc5a3d9b4f1a33c84896691bd669bd0ad5f63802f7399b80ebf54063470b",
+      "included": true
+    },
+    "data/structures-cell.csv": {
+      "bytes": 496,
+      "sha256": "e61ed5ae61874a6d017d9556e592b1843530e94b41dc971cbf3758f1334f7e96",
+      "included": true
+    },
+    "data/structures-display-images.csv": {
+      "bytes": 9337,
+      "sha256": "6c18e6cfc57cfb846bde8f7a8b8dbcdbf215be2ec5181f608991c73b142f4ecd",
+      "included": true
+    },
+    "data/structures-distances.csv": {
+      "bytes": 4460,
+      "sha256": "0397575b18d7517e774a2ac4e39c9a0f213d7b73ad70d4af3a11fa1413b11881",
+      "included": true
+    },
+    "data/structures-measurements.json": {
+      "bytes": 22456,
+      "sha256": "56ebcab38a6afdb885c11d22448a4bf005ec2e30e15c77e3a9049359a02d292d",
+      "included": true
+    },
+    "data/structures-source.json": {
+      "bytes": 48334,
+      "sha256": "f6ccf58ee5073b945be69810fabcfcbc261f6c59fd23eb99028b6b830cb89d80",
+      "included": true
+    },
+    "data/structures-validation.json": {
+      "bytes": 3361,
+      "sha256": "6d0cd4703367e08cac23d088c995ff0ec9a3c5d0c491231b248cfcd753024f04",
+      "included": true
+    },
+    "figure-captions.md": {
+      "bytes": 1720,
+      "sha256": "faea6af9090f2c0f2e88c44a5218aa1f638953a771c7fbccedbaf78f7650f02b",
+      "included": true
+    },
+    "figure_manifest.csv": {
+      "bytes": 3152,
+      "sha256": "9ae2336032cebd14818f49ff35766f1fa57045ec69bc71af0ba8d8d4c17fe146",
+      "included": true
+    },
+    "figures/c003-optimization.pdf": {
+      "bytes": 41718,
+      "sha256": "d72d6851c090106503ac37bcda3a2a1464edee5a63dc31d79e65866a1b26bbda",
+      "included": false
+    },
+    "figures/c003-optimization.png": {
+      "bytes": 415215,
+      "sha256": "1535a05391dc02c05f1c9609fc8e3d8da95e5b19cce5d35fd0096a9ac6927849",
+      "included": true
+    },
+    "figures/c003-reference-energy.pdf": {
+      "bytes": 25158,
+      "sha256": "a4cef989514e20b59d90691c0031214e92b726ee41ff607e92ed2692b2e6fe67",
+      "included": false
+    },
+    "figures/c003-reference-energy.png": {
+      "bytes": 124810,
+      "sha256": "6e311377b08bf5e5b11402db1c81f3f2e966e4338f415baa4827ec0f4d3593ec",
+      "included": true
+    },
+    "figures/c003-structures.pdf": {
+      "bytes": 55184,
+      "sha256": "95cfe8938051e6affb19c0b18f71ffa67c5bb569ba68b665312c114d6b510d64",
+      "included": false
+    },
+    "figures/c003-structures.png": {
+      "bytes": 459591,
+      "sha256": "9e8d3a1da24ec29ecb9349c68a7384dad60fdc7c3ca69047bf20570c36c1864a",
+      "included": true
+    },
+    "figures/c003-validation-workflow.pdf": {
+      "bytes": 27860,
+      "sha256": "0a5b2cd4aca5024ba63d12280371bc12467007c4fd21a812afb6f22e17166853",
+      "included": false
+    },
+    "figures/c003-validation-workflow.png": {
+      "bytes": 206692,
+      "sha256": "9aa3b33f72a2414a8b8016f4437dae8ebf322a365991db6ef91f620989f0e2b4",
+      "included": true
+    },
+    "FILE_MANIFEST.sha256": {
+      "bytes": 2716,
+      "sha256": "85ac84271fb7c52e023e8d53471e29b727df028eb48a221536f823cefc5765e4",
+      "included": true
+    },
+    "plot_optimization.py": {
+      "bytes": 23273,
+      "sha256": "d5a2f29f31eb7ee9aefaa9af4bb13caa45099c7ab5d8d4f70cfc11e02e7f8cee",
+      "included": true
+    },
+    "plot_reference_and_workflow.py": {
+      "bytes": 5171,
+      "sha256": "648894a05a4e950a52f4803fd12475f83388fcd70daf5498a8b12c3f525a8831",
+      "included": true
+    },
+    "plot_structures.py": {
+      "bytes": 20981,
+      "sha256": "7b6d8168ff4dbcbfa5ec2b96e557eb547ea093062a60e307c719cefa6bb541d0",
+      "included": true
+    },
+    "README.md": {
+      "bytes": 4405,
+      "sha256": "62f3b4481b283deb3b8895ec511c18fe432d5717e678981ca8dcabe09f1270c4",
+      "included": true
+    },
+    "REPRODUCE.md": {
+      "bytes": 3329,
+      "sha256": "3852017b8afeb41261c73c656d4b12a27ea99ed38b04727c6e5374b9f353eedf",
+      "included": true
+    },
+    "results-summary.json": {
+      "bytes": 9023,
+      "sha256": "3b5413ac04d375ab229b8fc049a8057ad7158d75b9977b0e60ca26aa6e3ac8ed",
+      "included": true
+    },
+    "snapshot.json": {
+      "bytes": 302,
+      "sha256": "9de81905c9837efe0a2111e927aaf078f5436f3a67adee66325bcfcebaec393f",
+      "included": true
+    }
+  },
+  "transformations": [
+    "PDF files omitted under repository policy; four original PNG bytes preserved.",
+    "Generators emit PNG only; figure manifest points to PNG and current generator hashes.",
+    "Machine paths replaced by ${CAMPAIGN_003_ROOT}; runtime invocation made portable.",
+    "Derived source-data hash updated for the portable JSON representation; original validation marked as historical.",
+    "Publication manifests regenerated for this copy."
+  ],
+  "scientific_values_changed": false,
+  "original_worktree_modified": false,
+  "R4_numeric_files_opened_or_hashed": false,
+  "manuscript_eligible": false
+}

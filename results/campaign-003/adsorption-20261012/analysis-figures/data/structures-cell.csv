@@ -1,0 +1,13 @@
+frame_id,vector,x_A,y_A,z_A,periodic
+A_initial,a,9.424,0.0,0.0,True
+A_initial,b,-4.712,8.161423405265,0.0,True
+A_initial,c,0.0,0.0,37.7401146,True
+A_converged,a,9.424,0.0,0.0,True
+A_converged,b,-4.712,8.161423405265,0.0,True
+A_converged,c,0.0,0.0,37.7401146,True
+B_initial,a,9.424,0.0,0.0,True
+B_initial,b,-4.712,8.161423405265,0.0,True
+B_initial,c,0.0,0.0,37.7401146,True
+B_partial,a,9.424,0.0,0.0,True
+B_partial,b,-4.712,8.161423405265,0.0,True
+B_partial,c,0.0,0.0,37.7401146,True

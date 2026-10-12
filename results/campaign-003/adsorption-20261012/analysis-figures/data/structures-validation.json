@@ -1,0 +1,81 @@
+{
+  "scope": "Independent brute-force lattice-image check for all 264 adsorbate-substrate pairs in each frame; source hashes and default redraw checked.",
+  "frames": [
+    {
+      "frame_id": "A_initial",
+      "atom_count": 91,
+      "cell_determinant_A3": 2902.7150266806693,
+      "pairs_checked": 264,
+      "maximum_distance_discrepancy_A": 0.0,
+      "incorrect_naive_fractional_rounding_pairs": 40,
+      "displayed_contact_endpoints_inside_crop": true
+    },
+    {
+      "frame_id": "A_converged",
+      "atom_count": 91,
+      "cell_determinant_A3": 2902.7150266806693,
+      "pairs_checked": 264,
+      "maximum_distance_discrepancy_A": 0.0,
+      "incorrect_naive_fractional_rounding_pairs": 40,
+      "displayed_contact_endpoints_inside_crop": true
+    },
+    {
+      "frame_id": "B_initial",
+      "atom_count": 91,
+      "cell_determinant_A3": 2902.7150266806693,
+      "pairs_checked": 264,
+      "maximum_distance_discrepancy_A": 0.0,
+      "incorrect_naive_fractional_rounding_pairs": 51,
+      "displayed_contact_endpoints_inside_crop": true
+    },
+    {
+      "frame_id": "B_partial",
+      "atom_count": 91,
+      "cell_determinant_A3": 2902.7150266806693,
+      "pairs_checked": 264,
+      "maximum_distance_discrepancy_A": 0.0,
+      "incorrect_naive_fractional_rounding_pairs": 44,
+      "displayed_contact_endpoints_inside_crop": true
+    }
+  ],
+  "source_checks": [
+    {
+      "path": "${CAMPAIGN_003_ROOT}\\first-batch-run\\jobs\\A91\\native\\result.json",
+      "sha256": "9c0f32a19db43ce5090169157e3755681e7a8df0e5f87597145aa4547889da24",
+      "unchanged": true
+    },
+    {
+      "path": "${CAMPAIGN_003_ROOT}\\first-batch-run\\jobs\\A91\\native\\endpoint.extxyz",
+      "sha256": "4e1f557d65703eaffca94cd0f5d8fd93abca6996076090b9c8075ca31ca666e0",
+      "unchanged": true
+    },
+    {
+      "path": "${CAMPAIGN_003_ROOT}\\first-batch-run\\jobs\\A91\\native\\result.json",
+      "sha256": "9c0f32a19db43ce5090169157e3755681e7a8df0e5f87597145aa4547889da24",
+      "unchanged": true
+    },
+    {
+      "path": "${CAMPAIGN_003_ROOT}\\first-batch-run\\jobs\\B91\\native\\result.json",
+      "sha256": "75092ddb764fd53aac23d4bd64776301b28025981e7666d208ae1efcbd2ceb2b",
+      "unchanged": true
+    },
+    {
+      "path": "${CAMPAIGN_003_ROOT}\\B-continuation1-run\\jobs\\B91\\native\\endpoint.extxyz",
+      "sha256": "65b6583f0b31e4051b1e7e2c87d41e8298061c112cffcb4173c306d758c28c14",
+      "unchanged": true
+    },
+    {
+      "path": "${CAMPAIGN_003_ROOT}\\B-continuation1-run\\jobs\\B91\\native\\result.json",
+      "sha256": "b2f8a95f3db77a932a796d3cfbe702b260242b0075cc706e59cb372a58e6d9af",
+      "unchanged": true
+    }
+  ],
+  "raw_independent_default_redraw": {
+    "command": "python plot_structures.py",
+    "exit_code": 0,
+    "identical_pdf_sha256": true,
+    "identical_png_sha256": true
+  },
+  "png_visual_inspection": "First render inspected at full-figure scale: all four panels, atom IDs, geometry tables, periodic-image labels, legend, and scope caption are readable.",
+  "validation_scope": "Checks recorded on the original frozen snapshot; original identities in publication-provenance.json. Local source paths are portable placeholders in this copy."
+}

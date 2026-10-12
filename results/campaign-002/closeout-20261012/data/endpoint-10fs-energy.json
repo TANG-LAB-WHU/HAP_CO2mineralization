@@ -1,0 +1,14 @@
+{
+  "step": 40,
+  "time_fs": 10.0,
+  "energy_Ha": -1692.813153476866,
+  "energy_eV": -46063.79256154797,
+  "ML_potential_energy_eV": -46063.7878512836,
+  "model_sha256": "ce11fb84ab0d26c58b9034e80ab5805e1066a5b16abfd7de8c383cd7c278ef33",
+  "method_identity_sha256": "44f9326f2fcfc77bca017108d66ad92c4b3641b8346c17183c354f8ca0226ebe",
+  "cp2k_log_sha256": "51b69e0e070f85b8e9c5ff9361ad1a864cd93635edaac91047c31d9e5b7eb244",
+  "raw_energy_tokens_hartree": [
+    "-1692.813153476866091"
+  ],
+  "force_correction": "none"
+}

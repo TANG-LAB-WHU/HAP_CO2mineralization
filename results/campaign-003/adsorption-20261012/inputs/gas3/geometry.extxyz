@@ -1,0 +1,5 @@
+3
+Lattice="9.424 0.0 0.0 -4.712 8.161423405265 0.0 0.0 0.0 37.7401146" Properties=species:S:1:pos:R:3 source=HAP91-RELAX-R3-final-complete-force-evaluation pbc="T T T"
+C        2.35600000       4.08071170      18.87005730
+O        2.35600197       4.08071467      17.68906266
+O        2.35600005       4.08070936      20.03775989

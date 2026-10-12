@@ -1,0 +1,265 @@
+{
+  "location_root": "${RESEARCH_RUNS}",
+  "purpose": "Original local raw evidence remains under these relative paths. This package is not the complete raw campaign.",
+  "assets": [
+    {
+      "retained_relative_to_research_runs": "campaign-003/first-batch-run/jobs/A91/native/cp2k.log",
+      "bytes": 190913,
+      "sha256": "008eae9dae216691b31d73c1bb27d0a871680b74e6460d28af0111a5f38dca17",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/first-batch-run/jobs/A91/native/HAP-C003-A91-1.restart",
+      "bytes": 15103,
+      "sha256": "2b630273d27993d2ecc1592ef8fac241c0ad00403076cb06e780dd4ba6a0a70e",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/first-batch-run/jobs/A91/native/HAP-C003-A91-BFGS.Hessian",
+      "bytes": 598416,
+      "sha256": "a8da6d3ea63730a0c715ecb4dba570251e7b5b746f8101fd52fa7db22410144d",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/first-batch-run/jobs/A91/native/HAP-C003-A91-RESTART.wfn",
+      "bytes": 2783028,
+      "sha256": "e5457a72bc60e3e7d2b73d554371c4eac0261e4d6d6c5802a117548564f5dad6",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/first-batch-run/jobs/A91/native/HAP91-relax-frc.xyz",
+      "bytes": 11928,
+      "sha256": "9bc378fb72d4f09098a9454ec5a8aaa7e7c9292821b1d69dc2d79cc604ee411b",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/first-batch-run/jobs/A91/native/HAP91-relax-pos.xyz",
+      "bytes": 11928,
+      "sha256": "af515e381ae0999e46dbeb3a168a41d8a5cb47609b0848b2f43f2ac6435c833b",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/first-batch-run/jobs/A91/native/result.json",
+      "bytes": 106660,
+      "sha256": "9c0f32a19db43ce5090169157e3755681e7a8df0e5f87597145aa4547889da24",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/first-batch-run/jobs/B91/native/cp2k.log",
+      "bytes": 2794365,
+      "sha256": "db96722a34eb21b4483d7bcd5802fbd4715c8b520788b407a4dbfbe0f74cabe0",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/first-batch-run/jobs/B91/native/HAP-C003-B91-1.restart",
+      "bytes": 15105,
+      "sha256": "1c4ca7e88dbc996f1245f3fc52699a77e33804725d345d553929291730dfc537",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/first-batch-run/jobs/B91/native/HAP-C003-B91-BFGS.Hessian",
+      "bytes": 598416,
+      "sha256": "b812ac8615870363cbb95776c4ba7b62b6d825c11f271a553847d58acbc54b06",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/first-batch-run/jobs/B91/native/HAP-C003-B91-RESTART.wfn",
+      "bytes": 2783028,
+      "sha256": "6adef81dd4196fc1ebfd45b8a85fddc0df0df3304f89ffba2e7bd079adf235e6",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/first-batch-run/jobs/B91/native/HAP91-relax-frc.xyz",
+      "bytes": 423444,
+      "sha256": "2c18409a5827845b5f31d6e64f9479edeff92fd5fc7e2c84c2d55925c2d762c2",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/first-batch-run/jobs/B91/native/HAP91-relax-pos.xyz",
+      "bytes": 423444,
+      "sha256": "106ac5d909aa09ec33c2e3432c4cbc6a3639f7678d9065511aa1bf5f05371edb",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/first-batch-run/jobs/B91/native/result.json",
+      "bytes": 2281654,
+      "sha256": "75092ddb764fd53aac23d4bd64776301b28025981e7666d208ae1efcbd2ceb2b",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/first-batch-recovery1/jobs/B91/native/cp2k.log",
+      "bytes": 384477,
+      "sha256": "3ff1419d450a4c368581e607eae042768a21d7060bd6b7c6e3d84d44e486b3e0",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/first-batch-recovery1/jobs/B91/native/HAP-C003-B91-1.restart",
+      "bytes": 15147,
+      "sha256": "c93abefb179c1f662c9f7b080f603079eb32678c1723ea43d207237404a181b1",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/first-batch-recovery1/jobs/B91/native/HAP-C003-B91-BFGS.Hessian",
+      "bytes": 598416,
+      "sha256": "6d0b12b5fddf786a8c05a773eccf8aff59cdea12a64b53910f1cc76707ba98cf",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/first-batch-recovery1/jobs/B91/native/HAP-C003-B91-RESTART.wfn",
+      "bytes": 2783028,
+      "sha256": "1753ca0a57c11ebf81a60ea66cd6b4f6b317d2ff5beb834170f2f5644fee313a",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/first-batch-recovery1/jobs/B91/native/HAP91-relax-frc.xyz",
+      "bytes": 41748,
+      "sha256": "037ad4506c73c238bc83e4b54dad7c02604e364b1fbf45fc0f32943f34ea1b80",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/first-batch-recovery1/jobs/B91/native/HAP91-relax-pos.xyz",
+      "bytes": 41748,
+      "sha256": "989741d3f875c5d4ebfe7567c465a982b423f3ea5796a0fc12ea2a39a7f0f14b",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/first-batch-recovery1/jobs/B91/native/result.json",
+      "bytes": 345051,
+      "sha256": "19fc0a5356c466b784cb3794154f5df798591c4f5e9a85a72ba4e2ae43dca669",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/references-run/jobs/clean88/native/cp2k.log",
+      "bytes": 1372053,
+      "sha256": "aa2916e6eb6a76ed87819905d7241765d9a37812a6d7c5738d710ba23104dce2",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/references-run/jobs/clean88/native/HAP-C003-clean88-1.restart",
+      "bytes": 14281,
+      "sha256": "120ee7977e4b49df1110fd70b1e2b488fc1c28fbe5c420e6c3c7777b043afc43",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/references-run/jobs/clean88/native/HAP-C003-clean88-BFGS.Hessian",
+      "bytes": 559680,
+      "sha256": "e106f9a8ad90177b4e55f095ea517248ea268aafe351d17665d59a1a24c25ec8",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/references-run/jobs/clean88/native/HAP-C003-clean88-RESTART.wfn",
+      "bytes": 2617940,
+      "sha256": "aadd17c6a4a461ed819abfd3fd564a5bc6e92e7e9cc45a7a26c0a29258ca1ef2",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/references-run/jobs/clean88/native/HAP91-relax-frc.xyz",
+      "bytes": 196146,
+      "sha256": "d47e6c2465022ed7e8454ec4f57842080625c7b332c4a2887f0621b065095539",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/references-run/jobs/clean88/native/HAP91-relax-pos.xyz",
+      "bytes": 196146,
+      "sha256": "67cd42573decf4be5ee75f0597ffd4590de3747388df52008a8bc09299198f69",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/references-run/jobs/clean88/native/result.json",
+      "bytes": 1434325,
+      "sha256": "6231cadf62d5b17e4afe6e68e89ce226491a1cf41e7da907642eb1e2f2b8b6cf",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/references-run/jobs/gas3/native/cp2k.log",
+      "bytes": 92466,
+      "sha256": "e19c3fcc57d37243702e46552eb63c490d8cfd669b9c288e1e52b55ea6e03fd9",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/references-run/jobs/gas3/native/HAP-C003-gas3-1.restart",
+      "bytes": 5756,
+      "sha256": "32607d6dffa4e163e5e618cf0eeb9f747ac9194f26b36dae9d4aaf935178a54d",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/references-run/jobs/gas3/native/HAP-C003-gas3-BFGS.Hessian",
+      "bytes": 720,
+      "sha256": "ea63655bf93ac523a0f302285ca1486100eaaddebc895f21bf54af48d0a10ee4",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/references-run/jobs/gas3/native/HAP-C003-gas3-RESTART.wfn",
+      "bytes": 2856,
+      "sha256": "54d17c611d4d322c13871e9ce857e31c22e8fd058631769ddac77f1aa054cb29",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/references-run/jobs/gas3/native/HAP91-relax-frc.xyz",
+      "bytes": 732,
+      "sha256": "2a8d82dff8ca698ed118f6f369242d0731c6ac42e197bbc86a66f271c559123d",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/references-run/jobs/gas3/native/HAP91-relax-pos.xyz",
+      "bytes": 732,
+      "sha256": "9d1dd0d13729d853a89351ce83c2b93c35de7c4fe934cf13a91160710d6de967",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/references-run/jobs/gas3/native/result.json",
+      "bytes": 20543,
+      "sha256": "f25fe487adc9ad91eecc11064cb406561deda23dfcb5eced86bef98b54034db9",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/B-continuation1-run/jobs/B91/native/cp2k.log",
+      "bytes": 873725,
+      "sha256": "8f0406428a45ed12f515e4f5b6f758fe4d03eb875c52b0d9f4b1a1341836395e",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/B-continuation1-run/jobs/B91/native/HAP-C003-B91-1.restart",
+      "bytes": 15149,
+      "sha256": "804a425fe13917ecfd44352e3e1e9b87b5eab6f8881a2f90524a1fb8ff0db578",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/B-continuation1-run/jobs/B91/native/HAP-C003-B91-BFGS.Hessian",
+      "bytes": 598416,
+      "sha256": "5322512fb7993fa07f6db96f6cf6bb1e3ff0dff4c9c303971fa0b7f1697aa964",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/B-continuation1-run/jobs/B91/native/HAP-C003-B91-RESTART.wfn",
+      "bytes": 2783028,
+      "sha256": "a6833d2bbb889307a0133908dfe84e8398d9302252f27d8746b6a2c5d7c7b52e",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/B-continuation1-run/jobs/B91/native/HAP91-relax-frc.xyz",
+      "bytes": 119280,
+      "sha256": "fbaa2f62f08a1a0ad6d2f95a7436b246edea122a462986ddbe8d9ee70cd16814",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/B-continuation1-run/jobs/B91/native/HAP91-relax-pos.xyz",
+      "bytes": 119280,
+      "sha256": "6a54112886434e2d5f2d729e5f6dc62fcd6f9ab5aeaa3982262e2310e2cfd940",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/B-continuation1-run/jobs/B91/native/result.json",
+      "bytes": 902363,
+      "sha256": "b2f8a95f3db77a932a796d3cfbe702b260242b0075cc706e59cb372a58e6d9af",
+      "included": false
+    }
+  ],
+  "other_omissions": [
+    "WFN/Hessian seed copies in prepared input folders",
+    "operational telemetry, private dependency maps and internal communications",
+    "all sealed R4 numerical files",
+    "all document sources/build products"
+  ],
+  "R4_numeric_files_opened_or_hashed": false
+}

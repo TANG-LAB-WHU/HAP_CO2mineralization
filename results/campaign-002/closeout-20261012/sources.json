@@ -1,0 +1,54 @@
+{
+  "terminal": {
+    "campaign_relative_path": "hap91-coverage-v2-exploratory-md/terminal-notice.json",
+    "sha256": "2b8cb19812509c304513c27bee0fb121058d4a8392e2df74d8d748de28cbc450"
+  },
+  "md": {
+    "campaign_relative_path": "hap91-coverage-v2-exploratory-md/jobs/md/native/result.json",
+    "sha256": "e605b14393c1d72828ff751c60ccbbc8ae286f2d3052d61973b791ccc677e25b"
+  },
+  "probe": {
+    "campaign_relative_path": "hap91-coverage-v2-exploratory-md/jobs/probe-040/native/probe-result.json",
+    "sha256": "2fc939297fc8e067d7f73ecd04a4ac232869885fdc9ac5f13300b14d9d0cde3e"
+  },
+  "train": {
+    "campaign_relative_path": "hap91-training-coverage-v2/jobs/train-score/native/train-score/result.json",
+    "sha256": "51134f2f560aec5d26417d050b34264b456f65e14c05da2483eda1c4cd73a081"
+  },
+  "diagnostic": {
+    "campaign_relative_path": "hap91-coverage-v2-diagnostic-validation/jobs/validation-score/native/validation-score/result.json",
+    "sha256": "e99f1ad13f60b9169e23a20866b01e74b4a1c646abaa07da5f6f18c4b419deeb"
+  },
+  "completion": {
+    "campaign_relative_path": "hap91-training-coverage-v2/jobs/train-fit/native/training-completion.json",
+    "sha256": "d0d6d51a9f4876214f770425f46adbfa29dd869b8ef4ccde9bbc89cbbd0784e0"
+  },
+  "QA": {
+    "campaign_relative_path": "hap91-training-coverage-v2/data-QA-attestation.json",
+    "sha256": "d498cd6a027ec55a61b44b42ad4807b91aa9da5c79c26128a42fb672c8a50445"
+  },
+  "thermo": {
+    "campaign_relative_path": "hap91-coverage-v2-exploratory-md/jobs/md/native/thermo.csv",
+    "sha256": "2084dd23c6e26b42f9a094441174a4ee4a36aa9b82d5af6c02a13e020ee18a5a"
+  },
+  "md_execution": {
+    "campaign_relative_path": "hap91-coverage-v2-exploratory-md/jobs/md/execution.json",
+    "sha256": "43f004df2f54e7c0a90f11ce96ab60981648ab869cb944df632668ae46319347"
+  },
+  "probe_execution": {
+    "campaign_relative_path": "hap91-coverage-v2-exploratory-md/jobs/probe-040/execution.json",
+    "sha256": "ef0df7f425237615d45a94b54a205de0c62e93edc31542dec896c561d4458b36"
+  },
+  "runtime_release": {
+    "campaign_relative_path": "hap91-coverage-v2-exploratory-md/runtime-release.json",
+    "sha256": "ddfecc71046fb1665a04e58fc211dd22aa879597bf794e1d475ddcf25ff92330"
+  },
+  "bindings": {
+    "campaign_relative_path": "hap91-coverage-v2-exploratory-md/launch-bindings.json",
+    "sha256": "87a922a7f19542b9e1058d5b57661d7f6aa602c09a7a95568c47ac2d2492eb8c"
+  },
+  "protocol": {
+    "campaign_relative_path": "worktree/research/campaign-002-hap91-finite-temperature/coverage-v2/exploratory-md/protocol.json",
+    "sha256": "09411f34e518bbfbed3b056146a22a2b8edd956eacd3033930cce10aaa843f81"
+  }
+}

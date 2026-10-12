@@ -1,0 +1,80 @@
+{
+  "method": "PBE-D3(BJ),1200/80Ry,DZVP-MOLOPT-SR-GTH/GTH-PBE,EPS_SCF1e-8,neutral closed shell,XYZ periodic,same cell,Z dipole position2.0/switchF,all atoms movable,fresh BFGS trust0.05A",
+  "fixed_cell_A": [
+    [
+      9.424,
+      0.0,
+      0.0
+    ],
+    [
+      -4.712,
+      8.161423405265,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      37.7401146
+    ]
+  ],
+  "pbc": [
+    true,
+    true,
+    true
+  ],
+  "convergence": {
+    "maximum_force_Ha_per_bohr": 0.00019446903811488875,
+    "RMS_force_Ha_per_bohr": 9.723451905744438e-05,
+    "maximum_displacement_bohr": 0.003,
+    "RMS_displacement_bohr": 0.0015,
+    "trust_radius_A": 0.05
+  },
+  "common_assets": {
+    "/opt/cp2k/data/BASIS_MOLOPT": "686dd72e7601ee41d4a173e4c7c3946f1e750f03095090f44d3821c180a81a61",
+    "/opt/cp2k/data/GTH_POTENTIALS": "5a9bfbc3b37a55917ade4fb704b80546d210d843759b94e3915e74acfc3fafb2",
+    "/opt/cp2k/data/dftd3.dat": "1f5041914fb3a7fa6c97602d82da6cb9129c1c1dba675db23522de9c2837dafd"
+  },
+  "device_assets": {
+    "gpu": {
+      "/opt/cp2k/exe/local_cuda/cp2k.psmp": "2b77e60fc8a1f0b11446263ab0389085744ba8ba977a25b70ec93192d03a3c52",
+      "/usr/bin/mpiexec": "aa0a841e787b322075387076e91a860dbf2022afd1907848f8a6bfd825adeb33",
+      "/usr/bin/timeout": "0618e1ae490fafc2fa57664dae2f6f7c11f469f97e7083406f823d9083d43361",
+      "/usr/local/bin/entrypoint.sh": "03a446952c253c3b33e72e0f88fea29145bb36ab74d6159143a30ee09a0e22ab"
+    }
+  },
+  "image_reference": "cp2k/cp2k@sha256:e2912cc9500a42a08b3e057e383182b96f395b7477c8eb55e93db6e29cb1c2ae",
+  "memory_bytes": 25769803776,
+  "energy_definitions": {
+    "E_ads": "E91_relaxed-E88_clean_relaxed-E3_gas_relaxed",
+    "DeltaE_B_A": "E91_B-E91_A",
+    "E_int": "E91_i-E88_extracted_i-E3_extracted_i",
+    "E_def": "E_ads-E_int"
+  },
+  "reporting_limits": [
+    "No energy ranking unless all required endpoints converge.",
+    "A/B same basin: report collapse, no automatic search for alternative minima.",
+    "gas3 remains a periodic molecular reference, not a verified isolated-gas limit.",
+    "No BSSE correction. Old47 results cannot enter this common-reference comparison.",
+    "Optimization convergence does not prove a vibrational minimum."
+  ],
+  "resource_policy": {
+    "container_GiB": 24,
+    "swap_GiB": 0,
+    "logical_cpus": 8,
+    "MPI": 1,
+    "OMP": 8,
+    "GPU_device_used_limit_GiB": 18,
+    "GPU_free_reserve_GiB": 3,
+    "host_live_reserve_GiB": 8,
+    "VM_live_reserve_GiB": 6,
+    "commit_live_reserve_GiB": 4,
+    "GPU_max_C": 80,
+    "CPU_immediate_C": 98,
+    "CPU_sustained_C": 95,
+    "CPU_sustained_seconds": 30,
+    "admission_host_GiB": 32,
+    "admission_VM_GiB": 30,
+    "admission_commit_GiB": 28,
+    "admission_GPU_free_GiB": 21
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "policy": "Keep large scientific binaries and sealed data outside ordinary Git; no LFS upload introduced by this package.",
+  "scientific_replay_complete": false,
+  "R4_numeric_files": {
+    "included": false,
+    "opened_or_hashed_for_this_package": false,
+    "reason": "sealed"
+  },
+  "model": {
+    "sha256": "ce11fb84ab0d26c58b9034e80ab5805e1066a5b16abfd7de8c383cd7c278ef33",
+    "bytes": 2586115,
+    "included": false,
+    "reason": "unqualified model weights retained locally"
+  },
+  "MLMD_trajectory": {
+    "sha256": "ef9742b81475f8fb53ebef3949f4cb2a62416244a49be2381d80f3cb31357340",
+    "bytes": 1850937,
+    "included": false,
+    "reason": "full raw trajectory omitted; all 81 scalar thermo frames are included"
+  },
+  "other_exclusions": [
+    "training arrays",
+    "optimizer checkpoints",
+    "wavefunction restart files",
+    "operational telemetry and internal communications",
+    "PDF/LaTeX/document bundles"
+  ]
+}

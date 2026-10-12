@@ -1,0 +1,154 @@
+[
+  {
+    "segment": "A91",
+    "status": "completed",
+    "elapsed_seconds": 203.7029999999795,
+    "started_utc": "2026-10-12T18:20:07.207064+00:00",
+    "finished_utc": "2026-10-12T18:23:30.909780+00:00",
+    "native_state_at_record_time": {
+      "Status": "exited",
+      "Running": false,
+      "ExitCode": 0,
+      "OOMKilled": false,
+      "StartedAt": "2026-10-12T18:20:16.545680403Z",
+      "FinishedAt": "2026-10-12T18:23:23.624928057Z"
+    },
+    "native_resources": {
+      "GPU_baseline_used_MiB": 1901.0,
+      "GPU_peak_scope": "device-wide sampled lower bound, nominal1s plus command latency; not exact per-process peak",
+      "GPU_sample_count": 166,
+      "GPU_sampled_peak_used_MiB": 4234.0,
+      "command_exit_code": 0,
+      "command_wall_seconds": 184.78865813100128,
+      "error": null,
+      "oom_counters_raw": "oom_kill_disable 0\nunder_oom 0\noom_kill 0\n",
+      "peak_memory_bytes": 13054951424
+    },
+    "state_scope": "Terminal native state"
+  },
+  {
+    "segment": "B91-initial-snapshot",
+    "status": "failed",
+    "elapsed_seconds": 5569.906000000075,
+    "started_utc": "2026-10-12T18:23:31.005616+00:00",
+    "finished_utc": "2026-10-12T19:56:21.009147+00:00",
+    "native_state_at_record_time": {
+      "Status": "running",
+      "Running": true,
+      "ExitCode": 0,
+      "OOMKilled": false,
+      "StartedAt": "2026-10-12T18:24:16.105237548Z",
+      "FinishedAt": "0001-01-01T00:00:00Z"
+    },
+    "native_resources": null,
+    "state_scope": "This early failure snapshot is superseded for final stopping by the orphan-stop receipt in process.json"
+  },
+  {
+    "segment": "B91-recovery1",
+    "status": "completed",
+    "elapsed_seconds": 749.984999999986,
+    "started_utc": "2026-10-12T20:30:10.629938+00:00",
+    "finished_utc": "2026-10-12T20:42:40.624430+00:00",
+    "native_state_at_record_time": {
+      "Status": "exited",
+      "Running": false,
+      "ExitCode": 0,
+      "OOMKilled": false,
+      "StartedAt": "2026-10-12T20:31:34.332718056Z",
+      "FinishedAt": "2026-10-12T20:42:33.571669702Z"
+    },
+    "native_resources": {
+      "GPU_baseline_used_MiB": 1901.0,
+      "GPU_peak_scope": "device-wide sampled lower bound, nominal1s plus command latency; not exact per-process peak",
+      "GPU_sample_count": 578,
+      "GPU_sampled_peak_used_MiB": 4293.0,
+      "command_exit_code": 0,
+      "command_wall_seconds": 657.8138403820049,
+      "error": null,
+      "oom_counters_raw": "oom_kill_disable 0\nunder_oom 0\noom_kill 0\n",
+      "peak_memory_bytes": 12065394688
+    },
+    "state_scope": "Terminal native state"
+  },
+  {
+    "segment": "clean88",
+    "status": "completed",
+    "elapsed_seconds": 3604.359999999986,
+    "started_utc": "2026-10-12T21:06:54.168167+00:00",
+    "finished_utc": "2026-10-12T22:06:58.606537+00:00",
+    "native_state_at_record_time": {
+      "Status": "exited",
+      "Running": false,
+      "ExitCode": 0,
+      "OOMKilled": false,
+      "StartedAt": "2026-10-12T21:07:01.903369597Z",
+      "FinishedAt": "2026-10-12T22:06:55.97697407Z"
+    },
+    "native_resources": {
+      "GPU_baseline_used_MiB": 1901.0,
+      "GPU_peak_scope": "device-wide sampled lower bound, nominal1s plus command latency; not exact per-process peak",
+      "GPU_sample_count": 3088,
+      "GPU_sampled_peak_used_MiB": 4285.0,
+      "command_exit_code": 0,
+      "command_wall_seconds": 3591.680352723022,
+      "error": null,
+      "oom_counters_raw": "oom_kill_disable 0\nunder_oom 0\noom_kill 0\n",
+      "peak_memory_bytes": 13076250624
+    },
+    "state_scope": "Terminal native state"
+  },
+  {
+    "segment": "gas3",
+    "status": "completed",
+    "elapsed_seconds": 273.1720000000205,
+    "started_utc": "2026-10-12T22:06:59.160725+00:00",
+    "finished_utc": "2026-10-12T22:11:32.348739+00:00",
+    "native_state_at_record_time": {
+      "Status": "exited",
+      "Running": false,
+      "ExitCode": 0,
+      "OOMKilled": false,
+      "StartedAt": "2026-10-12T22:07:44.691009877Z",
+      "FinishedAt": "2026-10-12T22:11:27.103761786Z"
+    },
+    "native_resources": {
+      "GPU_baseline_used_MiB": 1901.0,
+      "GPU_peak_scope": "device-wide sampled lower bound, nominal1s plus command latency; not exact per-process peak",
+      "GPU_sample_count": 174,
+      "GPU_sampled_peak_used_MiB": 4097.0,
+      "command_exit_code": 0,
+      "command_wall_seconds": 220.56060032200185,
+      "error": null,
+      "oom_counters_raw": "oom_kill_disable 0\nunder_oom 0\noom_kill 0\n",
+      "peak_memory_bytes": 11455995904
+    },
+    "state_scope": "Terminal native state"
+  },
+  {
+    "segment": "B91-continuation1",
+    "status": "completed",
+    "elapsed_seconds": 1864.1870000000345,
+    "started_utc": "2026-10-12T22:12:21.808129+00:00",
+    "finished_utc": "2026-10-12T22:43:26.039269+00:00",
+    "native_state_at_record_time": {
+      "Status": "exited",
+      "Running": false,
+      "ExitCode": 0,
+      "OOMKilled": false,
+      "StartedAt": "2026-10-12T22:12:29.596824334Z",
+      "FinishedAt": "2026-10-12T22:43:19.991854029Z"
+    },
+    "native_resources": {
+      "GPU_baseline_used_MiB": 1901.0,
+      "GPU_peak_scope": "device-wide sampled lower bound, nominal1s plus command latency; not exact per-process peak",
+      "GPU_sample_count": 1567,
+      "GPU_sampled_peak_used_MiB": 4293.0,
+      "command_exit_code": 0,
+      "command_wall_seconds": 1849.1235732120113,
+      "error": null,
+      "oom_counters_raw": "oom_kill_disable 0\nunder_oom 0\noom_kill 0\n",
+      "peak_memory_bytes": 12064411648
+    },
+    "state_scope": "Terminal native state"
+  }
+]

@@ -1,0 +1,72 @@
+{
+  "step": 40,
+  "time_fs": 10.0,
+  "reference_QA_passed": true,
+  "physical_QA_passed": true,
+  "exploratory_gates_passed": false,
+  "accepted_for_next_probe": false,
+  "metrics": {
+    "energy_abs_error_eV_atom": 5.176114687596315e-05,
+    "force_RMSE_eV_A": 0.08302347651136874,
+    "per_element_force_RMSE_eV_A": {
+      "Ca": 0.0794147657015204,
+      "P": 0.11342363317712964,
+      "O": 0.07283976250659868,
+      "H": 0.12032266173548642,
+      "C": 0.0482316652410243
+    },
+    "max_abs_force_component_error_eV_A": 0.34466945881517264,
+    "CO2_force_RMSE_eV_A": 0.05185223110018927,
+    "CO2_max_abs_force_component_error_eV_A": 0.09038251208887949,
+    "zero_force_baseline_RMSE_eV_A": 0.6170331569630999,
+    "force_to_zero_baseline_ratio": 0.13455269878849274,
+    "force_component_count": 273,
+    "CO2_force_component_count": 9
+  },
+  "exploratory_thresholds": {
+    "energy_abs_error_eV_atom_max": 0.002,
+    "all_atom_force_RMSE_eV_A_max": 0.1,
+    "each_element_force_RMSE_eV_A_max": 0.15,
+    "max_abs_force_component_error_eV_A_max": 0.5,
+    "CO2_force_RMSE_eV_A_max": 0.05,
+    "CO2_max_abs_force_component_error_eV_A_max": 0.2,
+    "force_to_zero_baseline_ratio_max": 0.7
+  },
+  "exploratory_gates": {
+    "energy_abs_error": true,
+    "all_atom_force_RMSE": true,
+    "each_element_force_RMSE": true,
+    "maximum_force_component": true,
+    "CO2_force_RMSE": false,
+    "CO2_maximum_force_component": true,
+    "force_to_zero_baseline_ratio": true
+  },
+  "original_thresholds": {
+    "DFT_max_abs_total_energy_change_meV_per_atom": 1.0,
+    "train_force_component_RMSE_eV_A_max": 0.03,
+    "holdout_energy_RMSE_eV_atom_max": 0.002,
+    "holdout_force_component_RMSE_eV_A_max": 0.05,
+    "holdout_per_element_force_RMSE_eV_A_max": 0.075,
+    "holdout_per_frame_force_RMSE_eV_A_max": 0.1,
+    "holdout_max_abs_force_error_eV_A_max": 0.2,
+    "holdout_force_RMSE_to_zero_force_baseline_ratio_max": 0.7,
+    "LAMMPS_run0_energy_difference_eV_max": 1e-06,
+    "LAMMPS_run0_max_force_difference_eV_A_max": 1e-06
+  },
+  "original_gates": {
+    "holdout_energy_RMSE_per_atom": true,
+    "holdout_force_RMSE": false,
+    "holdout_each_element_force_RMSE": false,
+    "holdout_each_frame_force_RMSE": true,
+    "holdout_max_force_component": false,
+    "holdout_force_to_zero_baseline_ratio": true
+  },
+  "original_endpoint_gates_passed": false,
+  "original_gate_scope": "single endpoint only; prior train/validation failures remain",
+  "force_correction": "none",
+  "CO2_atom_ids_one_based": [
+    89,
+    90,
+    91
+  ]
+}

@@ -1,0 +1,188 @@
+{
+  "status": "COMPLETED_REFERENCE_AND_TRAINING_WITH_FAILED_FIRST_R3_GENERALIZATION",
+  "model_sha256": "019a379ea462be1941a83909c45a874b2cec16b737f194676a5700017f940f71",
+  "manuscript_eligible": false,
+  "sources": {
+    "train_score": {
+      "campaign_relative_path": "hap91-training-angular-a1-continuation/jobs/train-score/native/train-score/result.json",
+      "sha256": "af7efc07abf86cb1a061241f0f91688566a7145bc187e1fbb89004188fb61bce"
+    },
+    "R3_score": {
+      "campaign_relative_path": "hap91-training-angular-a1-continuation/jobs/validation-score/native/validation-score/result.json",
+      "sha256": "0e84b0fb15f4ef8785968df31364da172be871986fb58bf4f347cff909d1c99c"
+    },
+    "training_completion": {
+      "campaign_relative_path": "hap91-training-angular-a1-continuation/jobs/train-fit/native/training-completion.json",
+      "sha256": "2e144513ad274b5de763ca516f9d8070bb61235eff3c7b30d72132479bc386c3"
+    },
+    "public_four_replica_QA": {
+      "campaign_relative_path": "hap91-training-angular-a1-continuation/four-replica-QA-attestation.json",
+      "sha256": "3a50d637ae23aa588737844775911654eb946af0b3205bc48be1d9d1e0d83d60"
+    },
+    "relaxation": {
+      "campaign_relative_path": "original-cif-hap91-relax-r3/jobs/HAP91-RELAX/raw/relaxation/relax-result.json",
+      "sha256": "43bbfd2311d672b2479749cce3b1eee2fc73e3b9f0178641a3c10170751f277a"
+    },
+    "CPU_GPU_singlepoint": {
+      "campaign_relative_path": "cuda91-comparison/comparison.json",
+      "sha256": "882bc5fba689e3a55c42482a80413f5c41259f55e228157b20e36aa084771155"
+    },
+    "R1_canonical": {
+      "campaign_relative_path": "hap91-finite-temperature/replicas/R1-recovery1/jobs/HAP91-MD/raw/train/md-result.json",
+      "sha256": "bc7f491ce8513f3774edd02feb6e7dd199b139c2488750187976eb918ecf0410"
+    },
+    "R2_canonical": {
+      "campaign_relative_path": "hap91-finite-temperature/replicas/R2-gpu-recovery1/jobs/HAP91-MD/raw/train/md-result.json",
+      "sha256": "6aaf066755ba89e982954c3e6da76c8aff7cde70d2323864f710e4dc52b536bf"
+    },
+    "R3_development_canonical": {
+      "campaign_relative_path": "hap91-finite-temperature/replicas/R3-gpu/jobs/HAP91-MD/raw/validation/md-result.json",
+      "sha256": "d56e277c178a4ec2119733bc6c113408d332c307b0a654185709d936d702cf94"
+    },
+    "R2_cost": {
+      "campaign_relative_path": "hap91-finite-temperature/replicas/R2-gpu-recovery1/jobs/HAP91-MD/raw/train/cgroup-outcome.json",
+      "sha256": "0d590c5992d2144864f021daf95f8594ddd6f483ac785bbd4793799b3057445e"
+    },
+    "R3_cost": {
+      "campaign_relative_path": "hap91-finite-temperature/replicas/R3-gpu/jobs/HAP91-MD/raw/validation/cgroup-outcome.json",
+      "sha256": "9cb4e1508d04162898b705669e70ef63efa351586eb7153bfe83bcb6525faf43"
+    }
+  },
+  "DFT": {
+    "fixed_cell_relaxation_four_gates_passed": true,
+    "reference_trajectories": 4,
+    "canonical_frames_per_trajectory": 81,
+    "all_four_reference_and_physical_QA_passed": "Existing public attestation only; R4 numerical files were not read or hashed here.",
+    "R1_R2_R3_max_total_energy_deviation_meV_atom": [
+      0.01339608,
+      0.00787814,
+      0.00886493
+    ],
+    "interpretation": "Short-trajectory reference/physical consistency and a converged optimizer; not equilibrium, vibrational, cutoff/basis/slab or DFT-method accuracy convergence."
+  },
+  "training": {
+    "frames": 16,
+    "new_accepted_calls": 1289,
+    "new_full_objective_evaluations": 3993,
+    "force_RMSE_eV_A": 0.02999198245671563,
+    "energy_RMSE_eV_atom": 4.468720723982467e-05,
+    "max_force_component_error_eV_A": 0.14221052271891801,
+    "original_force_gate_eV_A": 0.03,
+    "gates_passed": true,
+    "interpretation": "Training target reached; not optimizer convergence or generalization."
+  },
+  "first_R3_validation": {
+    "frames": 8,
+    "force_RMSE_eV_A": 0.12061865181425199,
+    "energy_RMSE_eV_atom": 0.00026106600247734603,
+    "max_force_component_error_eV_A": 0.6885265402595291,
+    "gates": {
+      "holdout_energy_RMSE_per_atom": true,
+      "holdout_force_RMSE": false,
+      "holdout_each_element_force_RMSE": false,
+      "holdout_each_frame_force_RMSE": false,
+      "holdout_max_force_component": false,
+      "holdout_force_to_zero_baseline_ratio": true,
+      "fixed_neighbor_capacity": true,
+      "fixed_angular_neighbor_capacity": true
+    },
+    "thresholds": {
+      "DFT_max_abs_total_energy_change_meV_per_atom": 1.0,
+      "train_force_component_RMSE_eV_A_max": 0.03,
+      "holdout_energy_RMSE_eV_atom_max": 0.002,
+      "holdout_force_component_RMSE_eV_A_max": 0.05,
+      "holdout_per_element_force_RMSE_eV_A_max": 0.075,
+      "holdout_per_frame_force_RMSE_eV_A_max": 0.1,
+      "holdout_max_abs_force_error_eV_A_max": 0.2,
+      "holdout_force_RMSE_to_zero_force_baseline_ratio_max": 0.7,
+      "LAMMPS_run0_energy_difference_eV_max": 1e-06,
+      "LAMMPS_run0_max_force_difference_eV_A_max": 1e-06
+    },
+    "failed_frame_count": 6,
+    "failed_element_count": 4,
+    "per_element_errors": {
+      "Ca": {
+        "force_components": 480,
+        "force_RMSE_eV_per_A": 0.11946279804618579,
+        "max_force_component_error_eV_per_A": 0.3427100841320495,
+        "zero_force_baseline_RMSE_eV_per_A": 0.2989519614911835,
+        "force_RMSE_to_zero_force_baseline_ratio": 0.3996053327441001,
+        "zero_force_baseline_informative": true
+      },
+      "P": {
+        "force_components": 288,
+        "force_RMSE_eV_per_A": 0.1846630824634211,
+        "max_force_component_error_eV_per_A": 0.6885265402595291,
+        "zero_force_baseline_RMSE_eV_per_A": 0.9584620294148369,
+        "force_RMSE_to_zero_force_baseline_ratio": 0.19266603871220872,
+        "zero_force_baseline_informative": true
+      },
+      "O": {
+        "force_components": 1296,
+        "force_RMSE_eV_per_A": 0.1026685667464816,
+        "max_force_component_error_eV_per_A": 0.601878526486797,
+        "zero_force_baseline_RMSE_eV_per_A": 0.5517462900848232,
+        "force_RMSE_to_zero_force_baseline_ratio": 0.18607930599895425,
+        "zero_force_baseline_informative": true
+      },
+      "H": {
+        "force_components": 96,
+        "force_RMSE_eV_per_A": 0.12101189911890169,
+        "max_force_component_error_eV_per_A": 0.2812369403673056,
+        "zero_force_baseline_RMSE_eV_per_A": 0.43683304927396355,
+        "force_RMSE_to_zero_force_baseline_ratio": 0.2770209335580927,
+        "zero_force_baseline_informative": true
+      },
+      "C": {
+        "force_components": 24,
+        "force_RMSE_eV_per_A": 0.03915285719849331,
+        "max_force_component_error_eV_per_A": 0.07831162172271833,
+        "zero_force_baseline_RMSE_eV_per_A": 0.35723048730298435,
+        "force_RMSE_to_zero_force_baseline_ratio": 0.10960110794039225,
+        "zero_force_baseline_informative": true
+      }
+    },
+    "CO2_force_errors": {
+      "force_components": 72,
+      "force_RMSE_eV_per_A": 0.15045150756141842,
+      "max_force_component_error_eV_per_A": 0.4140004183056236,
+      "zero_force_baseline_RMSE_eV_per_A": 0.6661192280789954,
+      "force_RMSE_to_zero_force_baseline_ratio": 0.22586273030325482,
+      "zero_force_baseline_informative": true
+    },
+    "candidate_closed": true,
+    "later_role": "development diagnosis only; never reuse as an independent validation claim"
+  },
+  "coverage_diagnosis": {
+    "force_RMSE_validation_to_train_ratio": 4.021696531342288,
+    "adjacent_training_displacement_direction_cosine_range": [
+      0.9869,
+      0.9985
+    ],
+    "interleaved_to_existing_frame_RMS_distance_A_range": [
+      0.00421,
+      0.00656
+    ],
+    "R3_nearest_training_frame_RMS_distance_A_range": [
+      0.0604,
+      0.0974
+    ],
+    "R3_displacement_norm_fraction_outside_training_linear_span_range": [
+      0.905,
+      0.966
+    ],
+    "mass_weighted_initial_velocity_cosines_R1R2_R1R3_R2R3": [
+      -0.0501,
+      -0.0672,
+      -0.0135
+    ],
+    "R3_components_above_0_2_eV_A": 195,
+    "R3_force_components": 2184,
+    "R3_CO2_fraction_of_force_SSE_approx": 0.0513,
+    "method": "Existing canonical coordinates only; triclinic minimum image, remove common translation, Euclidean linear span/nearest-frame geometry. Initial-velocity cosines use mass weighting.",
+    "interpretation": "Strongly correlated two-trajectory training coverage is a supported hypothesis; geometric span is not descriptor coverage and does not uniquely exclude capacity/optimization errors."
+  },
+  "R4_numeric_files_read_or_hashed_in_this_revision": 0,
+  "HAP91_LAMMPS_qualified": false,
+  "new_computation_started": false
+}

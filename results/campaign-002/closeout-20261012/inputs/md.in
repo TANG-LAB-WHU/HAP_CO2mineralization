@@ -1,0 +1,31 @@
+# PLANNED only. Frozen coverage-v2 model; all original failed gates retained.
+# Start only after same-model DeepPot/run0 agreement at the original 1e-6 limits.
+units metal
+atom_style atomic
+boundary p p p
+read_data system.data
+pair_style deepmd model.pth
+pair_coeff * * Ca P O H C
+neighbor 1.0 bin
+neigh_modify every 1 delay 0 check yes
+thermo 1
+thermo_style custom step time atoms temp pe ke etotal
+thermo_modify lost error norm no format float %.17g
+compute_modify thermo_temp extra/dof 3
+reset_timestep 0
+velocity all create 300.0 20261012 mom yes rot no dist gaussian loop all
+timestep 0.00025
+fix integrate all nve
+compute displacement all displace/atom
+compute maxdisp all reduce max c_displacement[4]
+run 0
+variable initial_total equal $(etotal:%.17g)
+variable delta_meV_atom equal abs(etotal-v_initial_total)*1000.0/91.0
+variable current_temp equal temp
+variable max_displacement equal c_maxdisp
+fix stop_temperature all halt 1 v_current_temp >= 1000.0 error hard message yes
+fix stop_energy all halt 1 v_delta_meV_atom > 1.0 error hard message yes
+fix stop_displacement all halt 1 v_max_displacement > 0.3 error hard message yes
+dump trajectory all custom 1 trajectory.dump id type x y z xu yu zu ix iy iz vx vy vz fx fy fz
+dump_modify trajectory sort id first yes pbc yes format float %.17g
+run 80

@@ -1,0 +1,198 @@
+{
+  "schema": "campaign003_report_summary/v1",
+  "date": "2026-10-12",
+  "scope": "Measured development results; reporting only, no new scientific execution",
+  "campaign_root_locator": ".research-runs/campaign-003 relative to the original project root",
+  "A_conditional_electronic_adsorption_energy": {
+    "B_used": false,
+    "E_ads_A_eV_per_cell_and_per_CO2": -0.34611395321154986,
+    "conditions": [
+      "dry parallel-OH specified slab and coverage",
+      "same periodic cell and PBE-D3BJ/Z-dipole settings",
+      "gas reference is periodic, not verified isolated limit",
+      "no BSSE correction",
+      "no vibrational minimum proof",
+      "B remains partial; no A/B ranking"
+    ],
+    "energy_Ha": {
+      "A91": -1692.8637034685598,
+      "clean88": -1655.089499434855,
+      "gas3": -37.76148458052873
+    },
+    "formula": "E_A91_relaxed-E_clean88_relaxed-E_gas3_relaxed",
+    "manuscript_eligible": false,
+    "source_result_sha256": {
+      "A91": "9c0f32a19db43ce5090169157e3755681e7a8df0e5f87597145aa4547889da24",
+      "clean88": "6231cadf62d5b17e4afe6e68e89ce226491a1cf41e7da907642eb1e2f2b8b6cf",
+      "gas3": "f25fe487adc9ad91eecc11064cb406561deda23dfcb5eced86bef98b54034db9"
+    },
+    "status": "conditional_model_specific_electronic_adsorption_energy"
+  },
+  "endpoint_energy_recomputed_eV": -0.34611395321154986,
+  "endpoint_vs_conditional_summary_difference_eV": 0.0,
+  "energy_and_force_roles": "A/clean/gas energies use converged final_energy_only evaluations at identical endpoint geometries; forces/gates use the last complete force evaluation. Final energy-only frames are excluded from force labels.",
+  "conversion_constants": {
+    "hartree_to_eV": 27.211386245988,
+    "bohr_to_A": 0.529177210903
+  },
+  "convergence_limits": {
+    "force_max_component_eV_A": 0.01,
+    "force_RMS_eV_A": 0.005,
+    "maximum_step_bohr": 0.003,
+    "RMS_step_bohr": 0.0015
+  },
+  "records": {
+    "A91": {
+      "status": "converged",
+      "optimization_converged": true,
+      "reference_QA_passed": true,
+      "physical_QA_passed": true,
+      "force_evaluations_in_this_segment": 2,
+      "geometry_updates_in_this_segment": 1,
+      "energy_Ha_last_complete": -1692.8637034685614,
+      "force_max_component_eV_A": 0.009458012895586137,
+      "force_RMS_eV_A": 0.0035873010002417673,
+      "maximum_step_bohr": 0.0018340897,
+      "RMS_step_bohr": 0.0004761383,
+      "four_gates": {
+        "Maximum step size": true,
+        "RMS step size": true,
+        "Maximum gradient": true,
+        "RMS gradient": true
+      },
+      "manuscript_eligible": false,
+      "source_result_sha256": "9c0f32a19db43ce5090169157e3755681e7a8df0e5f87597145aa4547889da24",
+      "endpoint_sha256": "4e1f557d65703eaffca94cd0f5d8fd93abca6996076090b9c8075ca31ca666e0",
+      "energy_Ha_for_report": -1692.8637034685598,
+      "energy_role": "post_optimization_energy_only_at_identical_geometry",
+      "final_energy_geometry_difference_A": 0.0,
+      "final_energy_excluded_from_force_labels": true
+    },
+    "clean88": {
+      "status": "converged",
+      "optimization_converged": true,
+      "reference_QA_passed": true,
+      "physical_QA_passed": true,
+      "force_evaluations_in_this_segment": 34,
+      "geometry_updates_in_this_segment": 33,
+      "energy_Ha_last_complete": -1655.0894994348566,
+      "force_max_component_eV_A": 0.00591587601010703,
+      "force_RMS_eV_A": 0.001425228392897625,
+      "maximum_step_bohr": 0.0023933109,
+      "RMS_step_bohr": 0.0005431134,
+      "four_gates": {
+        "Maximum step size": true,
+        "RMS step size": true,
+        "Maximum gradient": true,
+        "RMS gradient": true
+      },
+      "manuscript_eligible": false,
+      "source_result_sha256": "6231cadf62d5b17e4afe6e68e89ce226491a1cf41e7da907642eb1e2f2b8b6cf",
+      "endpoint_sha256": "f63e3c8685d0d34d0231a790c44ea026b2ebf258224ab495658bd4b16402f7fd",
+      "energy_Ha_for_report": -1655.089499434855,
+      "energy_role": "post_optimization_energy_only_at_identical_geometry",
+      "final_energy_geometry_difference_A": 0.0,
+      "final_energy_excluded_from_force_labels": true,
+      "segment_elapsed_seconds": 3605.0,
+      "segment_finished_utc": "2026-10-12T22:06:59.147668+00:00"
+    },
+    "gas3": {
+      "status": "converged",
+      "optimization_converged": true,
+      "reference_QA_passed": true,
+      "physical_QA_passed": true,
+      "force_evaluations_in_this_segment": 3,
+      "geometry_updates_in_this_segment": 2,
+      "energy_Ha_last_complete": -37.7614845805287,
+      "force_max_component_eV_A": 0.004058669703930127,
+      "force_RMS_eV_A": 0.0021307279803475868,
+      "maximum_step_bohr": 0.0014479232,
+      "RMS_step_bohr": 0.0006528033,
+      "four_gates": {
+        "Maximum step size": true,
+        "RMS step size": true,
+        "Maximum gradient": true,
+        "RMS gradient": true
+      },
+      "manuscript_eligible": false,
+      "source_result_sha256": "f25fe487adc9ad91eecc11064cb406561deda23dfcb5eced86bef98b54034db9",
+      "endpoint_sha256": "3334b29c140aac2622135dc2ea942fc2b4c2016260c8d0ec0ef10f7fab9f884d",
+      "energy_Ha_for_report": -37.76148458052873,
+      "energy_role": "post_optimization_energy_only_at_identical_geometry",
+      "final_energy_geometry_difference_A": 0.0,
+      "final_energy_excluded_from_force_labels": true,
+      "segment_elapsed_seconds": 273.25,
+      "segment_finished_utc": "2026-10-12T22:11:32.398523+00:00"
+    },
+    "B91": {
+      "status": "partial_budget",
+      "optimization_converged": false,
+      "reference_QA_passed": true,
+      "physical_QA_passed": true,
+      "force_evaluations_in_this_segment": 21,
+      "geometry_updates_in_this_segment": 20,
+      "energy_Ha_last_complete": -1692.8860761958879,
+      "force_max_component_eV_A": 0.04825949182005907,
+      "force_RMS_eV_A": 0.006204835769141607,
+      "maximum_step_bohr": 0.0944863066,
+      "RMS_step_bohr": 0.0091575896,
+      "four_gates": {
+        "Maximum step size": false,
+        "RMS step size": false,
+        "Maximum gradient": false,
+        "RMS gradient": false
+      },
+      "manuscript_eligible": false,
+      "source_result_sha256": "b2f8a95f3db77a932a796d3cfbe702b260242b0075cc706e59cb372a58e6d9af",
+      "endpoint_sha256": "65b6583f0b31e4051b1e7e2c87d41e8298061c112cffcb4173c306d758c28c14",
+      "energy_Ha_for_report": -1692.8860761958879,
+      "energy_role": "last_complete_force_evaluation_partial_endpoint",
+      "segment_elapsed_seconds": 1864.5629999999655,
+      "segment_finished_utc": "2026-10-12T22:43:26.339216+00:00"
+    }
+  },
+  "sources": {
+    "conditional_energy": {
+      "campaign_relative_path": "references-run/A-conditional-adsorption-energy.json",
+      "sha256": "20c9cb5ee917e3adbf4cb6b7ab74332f2d4b6f50d84a8adcffaa97e109f9b5a7"
+    },
+    "A91": {
+      "campaign_relative_path": "first-batch-run/jobs/A91/native/result.json",
+      "sha256": "9c0f32a19db43ce5090169157e3755681e7a8df0e5f87597145aa4547889da24",
+      "endpoint_relative_path": "first-batch-run/jobs/A91/native/endpoint.extxyz",
+      "endpoint_sha256": "4e1f557d65703eaffca94cd0f5d8fd93abca6996076090b9c8075ca31ca666e0"
+    },
+    "clean88": {
+      "campaign_relative_path": "references-run/jobs/clean88/native/result.json",
+      "sha256": "6231cadf62d5b17e4afe6e68e89ce226491a1cf41e7da907642eb1e2f2b8b6cf",
+      "endpoint_relative_path": "references-run/jobs/clean88/native/endpoint.extxyz",
+      "endpoint_sha256": "f63e3c8685d0d34d0231a790c44ea026b2ebf258224ab495658bd4b16402f7fd"
+    },
+    "gas3": {
+      "campaign_relative_path": "references-run/jobs/gas3/native/result.json",
+      "sha256": "f25fe487adc9ad91eecc11064cb406561deda23dfcb5eced86bef98b54034db9",
+      "endpoint_relative_path": "references-run/jobs/gas3/native/endpoint.extxyz",
+      "endpoint_sha256": "3334b29c140aac2622135dc2ea942fc2b4c2016260c8d0ec0ef10f7fab9f884d"
+    },
+    "B91": {
+      "campaign_relative_path": "B-continuation1-run/jobs/B91/native/result.json",
+      "sha256": "b2f8a95f3db77a932a796d3cfbe702b260242b0075cc706e59cb372a58e6d9af",
+      "endpoint_relative_path": "B-continuation1-run/jobs/B91/native/endpoint.extxyz",
+      "endpoint_sha256": "65b6583f0b31e4051b1e7e2c87d41e8298061c112cffcb4173c306d758c28c14"
+    },
+    "references_terminal": {
+      "campaign_relative_path": "references-run/terminal-notice.json",
+      "sha256": "972100843c0e6c6c32b6691b558e598d363744941976f2f5b469f08b56667ea0"
+    },
+    "B_terminal": {
+      "campaign_relative_path": "B-continuation1-run/terminal-notice.json",
+      "sha256": "9a484cf9e260f9c1b99b67cb0bde67c24c4ac0c2dca5320152166ba5a0ad3215"
+    }
+  },
+  "B_in_adsorption_energy": false,
+  "A_B_ranking_performed": false,
+  "manuscript_eligible": false,
+  "R4_accessed": false,
+  "new_scientific_computation": false,
+  "development_figure_manifest": "figure_manifest.csv"
+}

@@ -1,0 +1,110 @@
+{
+  "original_global_seconds": 28800,
+  "original_queue_limits": [
+    {
+      "id": "A91",
+      "natoms": 91,
+      "electrons": 592,
+      "seconds": 3600,
+      "max_updates": 30
+    },
+    {
+      "id": "B91",
+      "natoms": 91,
+      "electrons": 592,
+      "seconds": 10800,
+      "max_updates": 80
+    },
+    {
+      "id": "clean88",
+      "natoms": 88,
+      "electrons": 576,
+      "seconds": 10800,
+      "max_updates": 80
+    },
+    {
+      "id": "gas3",
+      "natoms": 3,
+      "electrons": 16,
+      "seconds": 1800,
+      "max_updates": 40
+    }
+  ],
+  "initial_B_failure": {
+    "reason": "CPU-temperature telemetry process creation exceeded its deadline; the inherited stop-name guard then rejected the campaign003 container name. This is not evidence of overheating.",
+    "early_result_snapshot_does_not_cover_later_native_work": true
+  },
+  "orphan_stop": {
+    "started_utc": "2026-10-12T20:25:57.139757+00:00",
+    "finished_utc": "2026-10-12T20:25:57.963399+00:00",
+    "stop_returncode": 0,
+    "new_scientific_calculation_started": false,
+    "native_state_after_stop": {
+      "Status": "exited",
+      "Running": false,
+      "ExitCode": 143,
+      "OOMKilled": false,
+      "StartedAt": "2026-10-12T18:24:16.105237548Z",
+      "FinishedAt": "2026-10-12T20:25:57.63123065Z"
+    }
+  },
+  "recovery_accounting": {
+    "original_B_started_force_evaluations": 73,
+    "original_B_complete_force_evaluations": 72,
+    "checkpoint_step": 71,
+    "new_B_force_evaluations_max": 8,
+    "new_B_updates_max": 7,
+    "cumulative_B_force_evaluations_max": 81,
+    "all_time_since_original_start_including_orphan_gap_and_repair_charged": true,
+    "original_A_reused": {
+      "elapsed_seconds": 203.85900000005495,
+      "finished_utc": "2026-10-12T18:23:30.990600+00:00",
+      "force_evaluations": 2,
+      "geometry_updates": 1,
+      "id": "A91",
+      "limit_seconds": 3600,
+      "optimization_converged": true,
+      "physical_QA_passed": true,
+      "result_sha256": "9c0f32a19db43ce5090169157e3755681e7a8df0e5f87597145aa4547889da24",
+      "started_utc": "2026-10-12T18:20:07.133795+00:00",
+      "status": "converged"
+    },
+    "original_B_failed_evidence_retained": true,
+    "unmonitored_interval_start_utc": "2026-10-12T19:56:15.139051+00:00",
+    "orphan_stopped_utc": "2026-10-12T20:25:57.963399+00:00",
+    "last_complete_force_max_eV_A": 0.07100108496606834,
+    "last_complete_force_RMS_eV_A": 0.010387294396660285,
+    "reason": "One explicit engineering recovery: transient CPU telemetry process startup timeout then faulty container-name stop recognition. Thermal/freshness thresholds unchanged. Continue from native step71 coordinates/WFN/approximate Hessian; repeat evaluation charged; no extra steps/time."
+  },
+  "continuation_accounting": {
+    "prior_B_charged_seconds": 8349.823598,
+    "lightweight_input_preparation_seconds": 0.030999999959021807,
+    "remaining_B_seconds": 2450.14540200004,
+    "B_cumulative_seconds_limit": 10800,
+    "requested_new_segment_max_seconds": 2700,
+    "new_force_evaluations_max": 21,
+    "new_updates_max": 20,
+    "prior_started_force_evaluations": 81,
+    "cumulative_started_force_evaluations_ceiling": 102,
+    "repeated_initial_evaluation_charged": true,
+    "prior_B_charged_interval_utc": [
+      "2026-10-12T18:23:31.003610+00:00",
+      "2026-10-12T20:42:40.827208+00:00"
+    ],
+    "prior_failures_orphan_time_and_repair_wait_preserved_and_charged": true,
+    "old_segment_deadline_utc": "2026-10-12T21:23:31.003610+00:00",
+    "new_stage_deadline_semantics": "Explicit new parent authorization: min(B actual cumulative remainder,45min,global absolute deadline). Old segment deadline is not retroactively rewritten.",
+    "waiting_for_separate_references": "No GPU/B computation; remains charged to global clock, not billed twice to B. New B execution clock starts only after both references converge.",
+    "new_maximum_update_count_is_explicitly_authorized_scope_change_not_threshold_relaxation": true,
+    "further_continuation_forbidden": true
+  },
+  "B_final_cumulative_charged_seconds": 10214.589597999933,
+  "B_final_status": "stopped_preserving_partial_or_failed_evidence",
+  "B_final_stop_reason": "B91 did not pass reference/geometry/four convergence checks; queue stopped",
+  "notes": [
+    "Per-segment initial evaluations can repeat a checkpoint. Do not sum segment rows as distinct configurations.",
+    "The early initial-B result snapshot has 53 complete evaluations; the later recovery accounting records 73 started/72 complete native evaluations and checkpoint step71. Both records are retained; the missing interval is not fabricated.",
+    "B continuation stopped after its 20 additional updates without four-criterion convergence, below its 10800-second cumulative allowance. partial_budget here does not mean that the full wall-time allowance was consumed.",
+    "A,clean88,gas3 converge; B remains partial and cannot enter an adsorption ranking."
+  ]
+}

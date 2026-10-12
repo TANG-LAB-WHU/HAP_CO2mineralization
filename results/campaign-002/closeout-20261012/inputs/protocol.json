@@ -1,0 +1,484 @@
+{
+  "classification": "PLANNED_EXPLORATORY_DIAGNOSTIC_NOT_MODEL_QUALIFICATION",
+  "execution_authorized_by_this_file": false,
+  "new_computation_started": false,
+  "manuscript_eligible": false,
+  "model": {
+    "path": "${CAMPAIGN_ROOT}/hap91-training-coverage-v2/jobs/train-fit/native/model.pth",
+    "sha256": "ce11fb84ab0d26c58b9034e80ab5805e1066a5b16abfd7de8c383cd7c278ef33",
+    "unchanged_weights": true,
+    "additional_training": false
+  },
+  "source_geometry": {
+    "result": "${CAMPAIGN_ROOT}/original-cif-hap91-relax-r3/jobs/HAP91-RELAX/raw/relaxation/relax-result.json",
+    "result_sha256": "43bbfd2311d672b2479749cce3b1eee2fc73e3b9f0178641a3c10170751f277a",
+    "evaluation_index": 1,
+    "geometry_file": "HAP91-converged.extxyz",
+    "geometry_sha256": "93305e7d0e667399f925ab1a861368d37b7b62d34a52421f154595e10a2b0155",
+    "native_reference_input_sha256": "9cc34e0dd46b3dd0689365cc44b32d84d5dd836f6be152142338bec426b10e3e",
+    "wfn": "${CAMPAIGN_ROOT}/original-cif-hap91-relax-r3/jobs/HAP91-RELAX/raw/relaxation/HAP91-PARALLEL-RELAX-R3-RESTART.wfn",
+    "wfn_sha256": "c5638bc72f912d7fd9dc2f142d326833b2440cffebccc05a841dc91afc6ccb8a"
+  },
+  "cell_A": [
+    [
+      9.424,
+      0.0,
+      0.0
+    ],
+    [
+      -4.712,
+      8.161423405265,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      37.7401146
+    ]
+  ],
+  "pbc": [
+    true,
+    true,
+    true
+  ],
+  "type_map": [
+    "Ca",
+    "P",
+    "O",
+    "H",
+    "C"
+  ],
+  "atom_types": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    3,
+    3,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    3,
+    3,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    4,
+    2,
+    2
+  ],
+  "masses_amu": {
+    "Ca": 40.078,
+    "P": 30.973762,
+    "O": 15.9994,
+    "H": 1.00794,
+    "C": 12.0107
+  },
+  "CO2_atom_ids_one_based": [
+    89,
+    90,
+    91
+  ],
+  "purpose": "Observe bounded integration and local CO2 geometry in the common 91-atom basin; test whether force errors grow on an ML-driven trajectory.",
+  "not_supported": [
+    "quantitative mineralization or kinetics",
+    "adsorption free energies or site ranking",
+    "long-time stability or equilibrium300K",
+    "larger systems or transferability",
+    "independent model acceptance"
+  ],
+  "evidence": {
+    "v2_train": {
+      "path": "${CAMPAIGN_ROOT}/hap91-training-coverage-v2/jobs/train-score/native/train-score/result.json",
+      "sha256": "51134f2f560aec5d26417d050b34264b456f65e14c05da2483eda1c4cd73a081"
+    },
+    "v2_completion": {
+      "path": "${CAMPAIGN_ROOT}/hap91-training-coverage-v2/jobs/train-fit/native/training-completion.json",
+      "sha256": "d0d6d51a9f4876214f770425f46adbfa29dd869b8ef4ccde9bbc89cbbd0784e0"
+    },
+    "v2_diagnostic": {
+      "path": "${CAMPAIGN_ROOT}/hap91-coverage-v2-diagnostic-validation/jobs/validation-score/native/validation-score/result.json",
+      "sha256": "e99f1ad13f60b9169e23a20866b01e74b4a1c646abaa07da5f6f18c4b419deeb"
+    },
+    "public_data_QA": {
+      "path": "${CAMPAIGN_ROOT}/hap91-training-coverage-v2/data-QA-attestation.json",
+      "sha256": "d498cd6a027ec55a61b44b42ad4807b91aa9da5c79c26128a42fb672c8a50445"
+    }
+  },
+  "original_decisions": {
+    "train_gates_passed": false,
+    "diagnostic_gates_passed": false,
+    "diagnostic_original_gates": {
+      "holdout_energy_RMSE_per_atom": true,
+      "holdout_force_RMSE": false,
+      "holdout_each_element_force_RMSE": false,
+      "holdout_each_frame_force_RMSE": true,
+      "holdout_max_force_component": false,
+      "holdout_force_to_zero_baseline_ratio": true,
+      "each_validation_replica": false,
+      "fixed_neighbor_capacity": true,
+      "fixed_angular_neighbor_capacity": true
+    },
+    "R9_R10_role": "opened development diagnostics; never reusable as fresh validation",
+    "R4": "sealed and not read or hashed"
+  },
+  "original_thresholds_report_in_parallel": {
+    "DFT_max_abs_total_energy_change_meV_per_atom": 1.0,
+    "train_force_component_RMSE_eV_A_max": 0.03,
+    "holdout_energy_RMSE_eV_atom_max": 0.002,
+    "holdout_force_component_RMSE_eV_A_max": 0.05,
+    "holdout_per_element_force_RMSE_eV_A_max": 0.075,
+    "holdout_per_frame_force_RMSE_eV_A_max": 0.1,
+    "holdout_max_abs_force_error_eV_A_max": 0.2,
+    "holdout_force_RMSE_to_zero_force_baseline_ratio_max": 0.7,
+    "LAMMPS_run0_energy_difference_eV_max": 1e-06,
+    "LAMMPS_run0_max_force_difference_eV_A_max": 1e-06
+  },
+  "MLMD": {
+    "atoms": 91,
+    "seed": 20261012,
+    "steps": 80,
+    "dt_fs": 0.25,
+    "ensemble": "NVE",
+    "initial_temperature_K": 300,
+    "velocity_distribution": "LAMMPS gaussian, loop all, mom yes, rot no; one initial scaling, none during NVE",
+    "degrees_of_freedom": 270,
+    "fixed_cell": true,
+    "all_atoms_mobile": true,
+    "all_81_frames_retained": true,
+    "MPI": 1,
+    "threads": 2,
+    "total_budget_seconds_including_startup_run0_MD_QA_cleanup": 300,
+    "RAM_GiB": 8,
+    "VRAM_GiB": 16,
+    "extra_swap": false,
+    "automatic_retry": false,
+    "interface_before_MD": {
+      "energy_abs_eV_max": 1e-06,
+      "max_abs_force_component_eV_A_max": 1e-06
+    },
+    "native_each_step_hard_stops": {
+      "temperature_K_greater_equal": 1000,
+      "total_energy_deviation_meV_atom_greater": 1.0,
+      "unwrapped_atom_displacement_A_greater": 0.3
+    },
+    "native_displacement_note": "Unwrapped displacement including COM is a conservative extra stop; still report original COM-removed metric separately.",
+    "post_MD_before_any_DFT": {
+      "required_steps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "geometry_QA": {
+        "minimum_any_pair_distance_A": 0.6,
+        "P_O_coordination_cutoff_A": 1.9,
+        "required_P_coordination": 4,
+        "original_OH_pairs_one_based": [
+          [
+            17,
+            43
+          ],
+          [
+            18,
+            44
+          ],
+          [
+            61,
+            87
+          ],
+          [
+            62,
+            88
+          ]
+        ],
+        "OH_distance_A_range": [
+          0.7,
+          1.4
+        ],
+        "CO_bond_A_range": [
+          0.9,
+          1.5
+        ],
+        "OCO_angle_min_degrees": 150,
+        "temperature_stop_K": 1000,
+        "LAMMPS_minimum_pair_to_train_minimum_ratio": 0.8,
+        "LAMMPS_max_unwrapped_COM_removed_displacement_A": 0.3,
+        "LAMMPS_max_total_energy_deviation_meV_per_atom": 1.0,
+        "check_all_raw_frames": true,
+        "failed_replica_policy": "stop whole fixed dataset; no replacement or subset training"
+      },
+      "neighbor_capacity_each_frame": {
+        "radial_sel": [
+          16,
+          12,
+          36,
+          4,
+          4
+        ],
+        "angular_sel": [
+          8,
+          4,
+          12,
+          4,
+          4
+        ]
+      },
+      "train_minimum_pair_baseline": {
+        "frames": 90,
+        "minimum_pair_distance_A": 0.9321564323183837,
+        "frame_id": "R1-S028",
+        "atom_ids_one_based": [
+          62,
+          88
+        ],
+        "original_ratio_0_8_lower_bound_A": 0.7457251458547071,
+        "train_manifest_sha256": "d1839c2d4a138db587ae75d9f74f96fdd40dc56309cbe6ae3e5150623aa34b61",
+        "coordinate_sha256": {
+          "R1": "9151d29d06dceaf0511eff516680edb050e3cc6651f12bd5b2086d9077fb8441",
+          "R2": "0db255fbb5276e40e6f44187505ed06880e05fd3384b3c326eae5d4714971a93",
+          "R5": "7bfd6bae959a0884d4158657abb87a85fd23084f8e1b15bcff8326da1b2d6324",
+          "R6": "527b2ebd23f844d3dfbfd5dc49be5ffa2fefc096f1734670b9ccfff153a99c82",
+          "R7": "0fb52d205963b30114f851faf5e1afdcf83390c24b8554daca1a617e23d073d4",
+          "R8": "cb17bf8565d8c95ac687d48fda6f71e276ebe5b3a463019b8699af42f0aca282"
+        },
+        "method": "Full triclinic minimum image; centered fractional displacement plus all27 adjacent image shifts; exact fixed90 train coordinates only. No force/energy/validation arrays read."
+      },
+      "failure_action": "Preserve failed trajectory; no DFT probes, extension or retry."
+    }
+  },
+  "probes": {
+    "fixed_steps": [
+      40,
+      80
+    ],
+    "time_fs": [
+      10,
+      20
+    ],
+    "execution_order": [
+      40,
+      80
+    ],
+    "maximum_attempts": 2,
+    "native_seconds_each": 1740,
+    "container_seconds_each": 1780,
+    "total_seconds_each_including_cleanup": 1800,
+    "global_seconds_including_all_attempts_startup_cleanup": 3600,
+    "first_probe_failure_action": "Do not run step80; retain any already generated 20fs ML trajectory as failed diagnostic.",
+    "method": "Same 91-atom PBE-D3BJ/Z-dipole1200/80 Ry/EPS_SCF1e-8; no relaxation, force correction or method lowering.",
+    "restart": "Each probe independently starts from the same frozen converged WFN; no step40-to-step80 WFN chaining.",
+    "runtime_image": "cp2k/cp2k@sha256:e2912cc9500a42a08b3e057e383182b96f395b7477c8eb55e93db6e29cb1c2ae",
+    "runtime_assets": {
+      "/opt/cp2k/data/BASIS_MOLOPT": {
+        "sha256": "686dd72e7601ee41d4a173e4c7c3946f1e750f03095090f44d3821c180a81a61"
+      },
+      "/opt/cp2k/data/GTH_POTENTIALS": {
+        "sha256": "5a9bfbc3b37a55917ade4fb704b80546d210d843759b94e3915e74acfc3fafb2"
+      },
+      "/opt/cp2k/data/dftd3.dat": {
+        "sha256": "1f5041914fb3a7fa6c97602d82da6cb9129c1c1dba675db23522de9c2837dafd"
+      },
+      "/opt/cp2k/exe/local_cuda/cp2k.psmp": {
+        "sha256": "2b77e60fc8a1f0b11446263ab0389085744ba8ba977a25b70ec93192d03a3c52"
+      },
+      "/usr/bin/mpiexec": {
+        "sha256": "aa0a841e787b322075387076e91a860dbf2022afd1907848f8a6bfd825adeb33"
+      },
+      "/usr/bin/timeout": {
+        "sha256": "0618e1ae490fafc2fa57664dae2f6f7c11f469f97e7083406f823d9083d43361"
+      },
+      "/usr/local/bin/entrypoint.sh": {
+        "sha256": "03a446952c253c3b33e72e0f88fea29145bb36ab74d6159143a30ee09a0e22ab"
+      }
+    },
+    "MPI": 1,
+    "OMP": 8,
+    "BLAS": 1,
+    "memory_bytes": 25769803776,
+    "extra_swap": false,
+    "reserves_and_thermal": "Inherit successful 91 CUDA profile unchanged, including host8/VM6/commit4GiB; no further relaxation.",
+    "runtime_source": {
+      "path": "${CAMPAIGN_ROOT}/worktree/research/campaign-002-hap91-finite-temperature/runtime-r2-gpu/runtime-config.json",
+      "sha256": "376ee89ceebabd6c6202b2886070bd42f0a49a982508ae3a56cb285a98664541"
+    },
+    "reference_acceptance": "Native exit0/noOOM and converged full-system SCF with complete 91x3 raw finite force block; never subtract net force.",
+    "comparison_definition": "Compare DFT E to recorded ML pe, never etotal/kinetic energy. Force RMSE is over Cartesian components, CO2 IDs 89-91 (9 components). Preserve raw energies/forces; no per-frame bias fitting.",
+    "exploratory_stop_envelope_each_endpoint": {
+      "energy_abs_error_eV_atom_max": 0.002,
+      "all_atom_force_RMSE_eV_A_max": 0.1,
+      "each_element_force_RMSE_eV_A_max": 0.15,
+      "max_abs_force_component_error_eV_A_max": 0.5,
+      "CO2_force_RMSE_eV_A_max": 0.05,
+      "CO2_max_abs_force_component_error_eV_A_max": 0.2,
+      "force_to_zero_baseline_ratio_max": 0.7
+    },
+    "envelope_interpretation": "Purpose-specific stop screen informed by observed development errors; not new independent acceptance. Framework margins flag substantially worse behavior; CO2 retains tighter local accuracy. Original thresholds are reported separately and all prior failures remain.",
+    "terminal_action": "Stop after the fixed endpoints regardless of outcome. No automatic model tuning, MD extension or scale-up."
+  },
+  "required_observables": [
+    "all-frame T/Etotal and maximum drift",
+    "all-frame minimum contact, PO4 coordination, original OH, CO bonds/OCO angle",
+    "CO2 orientation to z and carbon height relative to initial upper-surface reference; geometric traces only",
+    "both endpoint raw energy/forces, full-system/per-element/CO2 error, original gates and exploratory screen side by side",
+    "10-to20fs error change without selective frame replacement"
+  ],
+  "runtime_owner_work": "Bind new guarded one-attempt launch; reuse successful DeepMD initialization and adapt old 47-only parser/dispatch to91. Preserve both limits; legacy47 dispatch is not executable for this protocol.",
+  "input_sha256": {
+    "system.data": "74fbca4fbb5653e0515f54560a9ea61652e857c86b379dbe5338a7c5e2bea028",
+    "run0.in": "ee1f40d14756d59df933cb657166a88817527e8355ed892ef0e1915fc37e6065",
+    "md.in": "a00903cd19cca0ee9dd47a0e127e47d44ebc59949e51cc77923e9e994a7b9ac4",
+    "probe-template.inp.template": "0e42e5e82fd082ccd8ecd860f2ba641aed6674032b08951e95594d8660622851"
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "A": {
+    "source_geometry_sha256": "93305e7d0e667399f925ab1a861368d37b7b62d34a52421f154595e10a2b0155",
+    "old_force_targets_passed": false
+  },
+  "shared": {
+    "natoms": 91,
+    "substrate_natoms": 88,
+    "composition": {
+      "Ca": 20,
+      "P": 12,
+      "O": 54,
+      "H": 4,
+      "C": 1
+    },
+    "cell_A": [
+      [
+        9.424,
+        0.0,
+        0.0
+      ],
+      [
+        -4.712,
+        8.161423405265,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        37.7401146
+      ]
+    ],
+    "pbc": [
+      true,
+      true,
+      true
+    ],
+    "substrate_atom_ids_one_based": [
+      1,
+      88
+    ],
+    "substrate_coordinate_lines_sha256": "d4d5f6db6f2cf71d327ad2dcb560fa4dce6488f162c035c82b1fae2c345a7022",
+    "substrate_coordinate_lines_byte_identical_to_A": true,
+    "CO2_atom_ids_one_based": [
+      89,
+      90,
+      91
+    ],
+    "CO2_species": [
+      "C",
+      "O",
+      "O"
+    ],
+    "CHARGE": 0,
+    "MULTIPLICITY": 1,
+    "UKS": false,
+    "valence_electrons": 592,
+    "new_common_targets": {
+      "maximum_force_component_eV_A": 0.01,
+      "RMS_force_components_eV_A": 0.005,
+      "MAX_DR_bohr": 0.003,
+      "RMS_DR_bohr": 0.0015
+    },
+    "method": "Reuse exact frozen 91-atom PBE-D3(BJ), Z dipole/SURF_DIP_POS2.0, 1200/80 Ry, DZVP-MOLOPT-SR-GTH/GTH-PBE, EPS_SCF1e-8; fixed cell; all atoms movable"
+  },
+  "B": {
+    "geometry_sha256": "888f55db6b46f62093b446c365e49ce477968ea778364f9d55ae1735197e77b4",
+    "anchor_atom_id": 78,
+    "anchor_species": "O",
+    "anchor_position_A": [
+      -1.0011622669,
+      2.1033882448,
+      25.1951795549
+    ],
+    "anchor_phosphate_P_atom_id": 58,
+    "anchor_P_position_A": [
+      -1.7860546515,
+      3.086692679,
+      24.2894811359
+    ],
+    "anchor_P_O_distance_A": 1.5502365277271581,
+    "anchor_is_upper_surface_phosphate_oxygen": true,
+    "rationale": "Choose explicit exposed upper phosphate O78; O78 is in the highest phosphate-O surface family, above its P58. This is one predetermined starting geometry, not an adsorption-site ranking.",
+    "initial_anchor_O_to_C_distance_A": 2.6999999999999993,
+    "anchor_O_to_C_unit_direction": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "C_approach_direction_toward_surface": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "CO2_axis_O90_to_O91_unit_direction": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "CO2_positions_A": [
+      [
+        -1.0011622669,
+        2.1033882448,
+        27.8951795549
+      ],
+      [
+        -2.1821569033049157,
+        2.103388545580713,
+        27.895178550102596
+      ],
+      [
+        0.1665403184018741,
+        2.103388545580713,
+        27.895178550102596
+      ]
+    ],
+    "construction": "Rigidly rotate A CO2 about C89, mapping O90->O91 axis to +x; translate C89 to O78+(0,0,2.70) A. Preserve A molecular geometry and every substrate coordinate.",
+    "rigid_rotation_matrix": [
+      [
+        -8.203271084639141e-07,
+        -2.26023173654268e-06,
+        0.9999999999971092
+      ],
+      [
+        2.26023173654268e-06,
+        0.9999999999948913,
+        2.2602335906670317e-06
+      ],
+      [
+        -0.9999999999971092,
+        2.2602335906670317e-06,
+        -8.203219998836886e-07
+      ]
+    ],
+    "CO_bond_lengths_A": [
+      1.1809946364053814,
+      1.167702585302345
+    ],
+    "OCO_angle_deg": 179.99989766106225,
+    "molecule_substrate_minimum_distance_A": 2.6999999999999993,
+    "molecule_substrate_closest_atom_ids": [
+      89,
+      78
+    ],
+    "minimum_all_pair_distance_A": 0.9728559897037292,
+    "minimum_all_pair_atom_ids": [
+      61,
+      87
+    ],
+    "per_CO2_atom_closest_substrate": [
+      {
+        "atom_id": 89,
+        "substrate_atom_id": 78,
+        "distance_A": 2.6999999999999993
+      },
+      {
+        "atom_id": 90,
+        "substrate_atom_id": 78,
+        "distance_A": 2.946988786085263
+      },
+      {
+        "atom_id": 91,
+        "substrate_atom_id": 78,
+        "distance_A": 2.9416872542498114
+      }
+    ],
+    "legacy_O22_position_A": [
+      6.3734468652,
+      2.6838223174,
+      17.086166448
+    ],
+    "legacy_O22_not_used": "O22 is internal at z17.0862 A, not the selected upper surface oxygen"
+  },
+  "limitations": [
+    "Geometry/contact analysis only; no force, energy, optimization, vibration or stability calculation.",
+    "A/B may relax into the same basin; preserve that result rather than invent another starting site.",
+    "Reference A and B share the A-relaxed substrate, not an independently optimized clean surface."
+  ],
+  "record_scope": "Historical pre-relaxation construction; final statuses are in endpoints-summary.json"
+}

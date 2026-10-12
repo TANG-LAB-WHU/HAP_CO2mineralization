@@ -1,0 +1,32 @@
+{
+  "deepmd_version": "3.1.0",
+  "torch_version": "2.6.0",
+  "actual_torch_threads": {
+    "intra": 1,
+    "inter": 2
+  },
+  "gpu_name": "NVIDIA GeForce RTX 4090",
+  "environment": {
+    "CUDA_VISIBLE_DEVICES": "0",
+    "DP_INTERFACE_PREC": "high",
+    "DP_INTER_OP_PARALLELISM_THREADS": "1",
+    "DP_INTRA_OP_PARALLELISM_THREADS": "2",
+    "HOME": "/tmp",
+    "MKL_NUM_THREADS": "1",
+    "NUM_WORKERS": "0",
+    "NVIDIA_DRIVER_CAPABILITIES": "compute,utility",
+    "OMP_MAX_ACTIVE_LEVELS": "1",
+    "OMP_NUM_THREADS": "2",
+    "OMP_PROC_BIND": "false",
+    "OPENBLAS_NUM_THREADS": "1",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "binary_sha256": {
+    "/opt/deepmd-kit/bin/dp": "3035d5f21b1dea32cfeb258e991caf13a5a4d7975dfe6f3fae173cd495f5bb74",
+    "/opt/deepmd-kit/bin/lmp": "c5c328a5591433b696fcacc53d6085569e5f23d70915939c87336466fef717e4",
+    "/opt/deepmd-kit/bin/python": "cf6e53ef12b866d53abe9c0241bb9421845cf9d7cae1eda75e33ade83d4a5580"
+  },
+  "model_sha256": "ce11fb84ab0d26c58b9034e80ab5805e1066a5b16abfd7de8c383cd7c278ef33",
+  "thread_initializer": "deepmd.pt.utils.env; no manual thread setters",
+  "manuscript_eligible": false
+}

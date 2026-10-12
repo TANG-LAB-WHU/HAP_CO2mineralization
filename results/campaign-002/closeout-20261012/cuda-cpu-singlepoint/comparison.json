@@ -1,0 +1,47 @@
+{
+  "CPU_over_GPU_command_time_ratio": 1.383923710351708,
+  "automatic_mainline_switch": false,
+  "command_timings": {
+    "cpu": {
+      "GPU_baseline_used_MiB": null,
+      "GPU_peak_scope": "device-wide sampled lower bound, nominal1s plus command latency; not exact per-process peak",
+      "GPU_sample_count": 0,
+      "GPU_sampled_peak_used_MiB": null,
+      "command_exit_code": 0,
+      "command_wall_seconds": 569.599220670003,
+      "error": null,
+      "oom_counters_raw": "oom_kill_disable 0\nunder_oom 0\noom_kill 0\n",
+      "peak_memory_bytes": 14259695616
+    },
+    "gpu": {
+      "GPU_baseline_used_MiB": 1900.0,
+      "GPU_peak_scope": "device-wide sampled lower bound, nominal1s plus command latency; not exact per-process peak",
+      "GPU_sample_count": 400,
+      "GPU_sampled_peak_used_MiB": 4222.0,
+      "command_exit_code": 0,
+      "command_wall_seconds": 411.5828180480021,
+      "error": null,
+      "oom_counters_raw": "oom_kill_disable 0\nunder_oom 0\noom_kill 0\n",
+      "peak_memory_bytes": 12973555712
+    }
+  },
+  "end_to_end_seconds": {
+    "cpu": 576.375,
+    "gpu": 421.18799999996554
+  },
+  "force_or_energy_correction": "none",
+  "interpretation": "One matched pair only; performance depends on load and SCF history. No universal speedup or scientific qualification claim.",
+  "limits": {
+    "absolute_total_energy_eV": 0.0001,
+    "force_component_RMSE_eV_per_A": 0.0001,
+    "maximum_force_component_eV_per_A": 0.0005
+  },
+  "manuscript_eligible": false,
+  "observed": {
+    "absolute_total_energy_eV": 7.275957614183426e-12,
+    "force_component_RMSE_eV_per_A": 9.097667948423583e-13,
+    "maximum_force_component_eV_per_A": 3.1624425300691428e-12
+  },
+  "observed_faster": true,
+  "passed": true
+}

@@ -1,0 +1,296 @@
+{
+  "schema": "campaign003-optimization-figure/v1",
+  "raw_root_at_extraction": "${CAMPAIGN_003_ROOT}",
+  "source_access_policy": "Only the 24 listed raw files are read. Raw files are never written.",
+  "source_allowlist": [
+    {
+      "path": "first-batch-run/jobs/B91/native/cp2k.log",
+      "sha256": "db96722a34eb21b4483d7bcd5802fbd4715c8b520788b407a4dbfbe0f74cabe0",
+      "bytes": 2794365
+    },
+    {
+      "path": "first-batch-run/jobs/B91/native/HAP91-relax-pos.xyz",
+      "sha256": "106ac5d909aa09ec33c2e3432c4cbc6a3639f7678d9065511aa1bf5f05371edb",
+      "bytes": 423444
+    },
+    {
+      "path": "first-batch-run/jobs/B91/native/HAP91-relax-frc.xyz",
+      "sha256": "2c18409a5827845b5f31d6e64f9479edeff92fd5fc7e2c84c2d55925c2d762c2",
+      "bytes": 423444
+    },
+    {
+      "path": "first-batch-run/jobs/B91/native/result.json",
+      "sha256": "75092ddb764fd53aac23d4bd64776301b28025981e7666d208ae1efcbd2ceb2b",
+      "bytes": 2281654
+    },
+    {
+      "path": "first-batch-recovery1/jobs/B91/native/cp2k.log",
+      "sha256": "3ff1419d450a4c368581e607eae042768a21d7060bd6b7c6e3d84d44e486b3e0",
+      "bytes": 384477
+    },
+    {
+      "path": "first-batch-recovery1/jobs/B91/native/HAP91-relax-pos.xyz",
+      "sha256": "989741d3f875c5d4ebfe7567c465a982b423f3ea5796a0fc12ea2a39a7f0f14b",
+      "bytes": 41748
+    },
+    {
+      "path": "first-batch-recovery1/jobs/B91/native/HAP91-relax-frc.xyz",
+      "sha256": "037ad4506c73c238bc83e4b54dad7c02604e364b1fbf45fc0f32943f34ea1b80",
+      "bytes": 41748
+    },
+    {
+      "path": "first-batch-recovery1/jobs/B91/native/result.json",
+      "sha256": "19fc0a5356c466b784cb3794154f5df798591c4f5e9a85a72ba4e2ae43dca669",
+      "bytes": 345051
+    },
+    {
+      "path": "B-continuation1-run/jobs/B91/native/cp2k.log",
+      "sha256": "8f0406428a45ed12f515e4f5b6f758fe4d03eb875c52b0d9f4b1a1341836395e",
+      "bytes": 873725
+    },
+    {
+      "path": "B-continuation1-run/jobs/B91/native/HAP91-relax-pos.xyz",
+      "sha256": "6a54112886434e2d5f2d729e5f6dc62fcd6f9ab5aeaa3982262e2310e2cfd940",
+      "bytes": 119280
+    },
+    {
+      "path": "B-continuation1-run/jobs/B91/native/HAP91-relax-frc.xyz",
+      "sha256": "fbaa2f62f08a1a0ad6d2f95a7436b246edea122a462986ddbe8d9ee70cd16814",
+      "bytes": 119280
+    },
+    {
+      "path": "B-continuation1-run/jobs/B91/native/result.json",
+      "sha256": "b2f8a95f3db77a932a796d3cfbe702b260242b0075cc706e59cb372a58e6d9af",
+      "bytes": 902363
+    },
+    {
+      "path": "first-batch-run/jobs/A91/native/cp2k.log",
+      "sha256": "008eae9dae216691b31d73c1bb27d0a871680b74e6460d28af0111a5f38dca17",
+      "bytes": 190913
+    },
+    {
+      "path": "first-batch-run/jobs/A91/native/HAP91-relax-pos.xyz",
+      "sha256": "af515e381ae0999e46dbeb3a168a41d8a5cb47609b0848b2f43f2ac6435c833b",
+      "bytes": 11928
+    },
+    {
+      "path": "first-batch-run/jobs/A91/native/HAP91-relax-frc.xyz",
+      "sha256": "9bc378fb72d4f09098a9454ec5a8aaa7e7c9292821b1d69dc2d79cc604ee411b",
+      "bytes": 11928
+    },
+    {
+      "path": "first-batch-run/jobs/A91/native/result.json",
+      "sha256": "9c0f32a19db43ce5090169157e3755681e7a8df0e5f87597145aa4547889da24",
+      "bytes": 106660
+    },
+    {
+      "path": "references-run/jobs/clean88/native/cp2k.log",
+      "sha256": "aa2916e6eb6a76ed87819905d7241765d9a37812a6d7c5738d710ba23104dce2",
+      "bytes": 1372053
+    },
+    {
+      "path": "references-run/jobs/clean88/native/HAP91-relax-pos.xyz",
+      "sha256": "67cd42573decf4be5ee75f0597ffd4590de3747388df52008a8bc09299198f69",
+      "bytes": 196146
+    },
+    {
+      "path": "references-run/jobs/clean88/native/HAP91-relax-frc.xyz",
+      "sha256": "d47e6c2465022ed7e8454ec4f57842080625c7b332c4a2887f0621b065095539",
+      "bytes": 196146
+    },
+    {
+      "path": "references-run/jobs/clean88/native/result.json",
+      "sha256": "6231cadf62d5b17e4afe6e68e89ce226491a1cf41e7da907642eb1e2f2b8b6cf",
+      "bytes": 1434325
+    },
+    {
+      "path": "references-run/jobs/gas3/native/cp2k.log",
+      "sha256": "e19c3fcc57d37243702e46552eb63c490d8cfd669b9c288e1e52b55ea6e03fd9",
+      "bytes": 92466
+    },
+    {
+      "path": "references-run/jobs/gas3/native/HAP91-relax-pos.xyz",
+      "sha256": "9d1dd0d13729d853a89351ce83c2b93c35de7c4fe934cf13a91160710d6de967",
+      "bytes": 732
+    },
+    {
+      "path": "references-run/jobs/gas3/native/HAP91-relax-frc.xyz",
+      "sha256": "2a8d82dff8ca698ed118f6f369242d0731c6ac42e197bbc86a66f271c559123d",
+      "bytes": 732
+    },
+    {
+      "path": "references-run/jobs/gas3/native/result.json",
+      "sha256": "f25fe487adc9ad91eecc11064cb406561deda23dfcb5eced86bef98b54034db9",
+      "bytes": 20543
+    }
+  ],
+  "constants": {
+    "eV_per_Ha": 27.211386245988,
+    "angstrom_per_bohr": 0.529177210903,
+    "eV_per_A_per_Ha_per_bohr": 51.422067476325886
+  },
+  "definitions": {
+    "maximum_force": "max(abs(F_i,alpha)) over Cartesian force components, not atom-vector norm",
+    "RMS_force": "sqrt(sum(F_i,alpha**2)/(3*N)); no force correction",
+    "energy_reference": "Each system has its own initial energy; only B91 energy is plotted.",
+    "unique_update": "Initial geometry=0; completed B segments add 71+7+20 updates. Restart initial re-evaluations do not add updates.",
+    "lines": "Recorded points joined within each engineering segment only; no line bridges restart boundaries.",
+    "missing_values": "Empty CSV numeric cells are missing, never zero-filled or interpolated."
+  },
+  "thresholds": {
+    "maximum_force_eV_per_A": 0.01,
+    "RMS_force_eV_per_A": 0.005,
+    "maximum_step_bohr": 0.003,
+    "RMS_step_bohr": 0.0015,
+    "maximum_force_native_printed_Ha_per_bohr": 0.000194469,
+    "RMS_force_native_printed_Ha_per_bohr": 9.72345e-05
+  },
+  "segments": [
+    {
+      "system": "B91",
+      "segment": "B-initial",
+      "raw_directory": "first-batch-run/jobs/B91/native",
+      "complete_force_evaluations": 72,
+      "completed_updates": 71,
+      "unique_update_start": 0,
+      "unique_update_end": 71,
+      "incomplete_local_steps": [
+        72
+      ],
+      "max_force_xyz_vs_log_difference_Ha_per_bohr": 4.9999461005940243e-11,
+      "status": "engineering_truncation_then_recovered",
+      "native_optimization_converged": false,
+      "result_json_used_for_initial_evaluation_only": true
+    },
+    {
+      "system": "B91",
+      "segment": "B-recovery",
+      "raw_directory": "first-batch-recovery1/jobs/B91/native",
+      "complete_force_evaluations": 8,
+      "completed_updates": 7,
+      "unique_update_start": 71,
+      "unique_update_end": 78,
+      "incomplete_local_steps": [],
+      "max_force_xyz_vs_log_difference_Ha_per_bohr": 4.999119190100278e-11,
+      "status": "partial_budget",
+      "native_optimization_converged": false,
+      "result_json_used_for_initial_evaluation_only": true
+    },
+    {
+      "system": "B91",
+      "segment": "B-continuation",
+      "raw_directory": "B-continuation1-run/jobs/B91/native",
+      "complete_force_evaluations": 21,
+      "completed_updates": 20,
+      "unique_update_start": 78,
+      "unique_update_end": 98,
+      "incomplete_local_steps": [],
+      "max_force_xyz_vs_log_difference_Ha_per_bohr": 4.9995345598110186e-11,
+      "status": "partial_budget",
+      "native_optimization_converged": false,
+      "result_json_used_for_initial_evaluation_only": true
+    },
+    {
+      "system": "A91",
+      "segment": "A-initial",
+      "raw_directory": "first-batch-run/jobs/A91/native",
+      "complete_force_evaluations": 2,
+      "completed_updates": 1,
+      "unique_update_start": 0,
+      "unique_update_end": 1,
+      "incomplete_local_steps": [],
+      "max_force_xyz_vs_log_difference_Ha_per_bohr": 4.983699099968741e-11,
+      "status": "converged",
+      "native_optimization_converged": true,
+      "result_json_used_for_initial_evaluation_only": true
+    },
+    {
+      "system": "clean88",
+      "segment": "clean-reference",
+      "raw_directory": "references-run/jobs/clean88/native",
+      "complete_force_evaluations": 34,
+      "completed_updates": 33,
+      "unique_update_start": 0,
+      "unique_update_end": 33,
+      "incomplete_local_steps": [],
+      "max_force_xyz_vs_log_difference_Ha_per_bohr": 4.999712950031908e-11,
+      "status": "converged",
+      "native_optimization_converged": true,
+      "result_json_used_for_initial_evaluation_only": true
+    },
+    {
+      "system": "gas3",
+      "segment": "gas-reference",
+      "raw_directory": "references-run/jobs/gas3/native",
+      "complete_force_evaluations": 3,
+      "completed_updates": 2,
+      "unique_update_start": 0,
+      "unique_update_end": 2,
+      "incomplete_local_steps": [],
+      "max_force_xyz_vs_log_difference_Ha_per_bohr": 4.777237617698833e-11,
+      "status": "converged",
+      "native_optimization_converged": true,
+      "result_json_used_for_initial_evaluation_only": true
+    }
+  ],
+  "restart_duplicate_checks": [
+    {
+      "segment": "B-recovery",
+      "unique_update": 71,
+      "maximum_periodic_component_difference_A": 4.9965365178650245e-11,
+      "energy_reevaluation_difference_Ha": 9.094947017729282e-13,
+      "preserved_in_csv": true,
+      "excluded_from_unique_curve": true
+    },
+    {
+      "segment": "B-continuation",
+      "unique_update": 78,
+      "maximum_periodic_component_difference_A": 4.9719339756393304e-11,
+      "energy_reevaluation_difference_Ha": 1.8189894035458565e-12,
+      "preserved_in_csv": true,
+      "excluded_from_unique_curve": true
+    }
+  ],
+  "excluded_final_energy_only": [
+    {
+      "system": "A91",
+      "segment": "A-initial",
+      "local_final_frame": 2,
+      "energy_Ha": -1692.8637034685598,
+      "excluded_from_force_evaluations": true,
+      "reason": "Final energy-only calculation; trajectory force frame can retain old forces."
+    },
+    {
+      "system": "clean88",
+      "segment": "clean-reference",
+      "local_final_frame": 34,
+      "energy_Ha": -1655.089499434855,
+      "excluded_from_force_evaluations": true,
+      "reason": "Final energy-only calculation; trajectory force frame can retain old forces."
+    },
+    {
+      "system": "gas3",
+      "segment": "gas-reference",
+      "local_final_frame": 3,
+      "energy_Ha": -37.76148458052873,
+      "excluded_from_force_evaluations": true,
+      "reason": "Final energy-only calculation; trajectory force frame can retain old forces."
+    }
+  ],
+  "B_counts": {
+    "complete_force_evaluations_including_restarts": 101,
+    "restart_initial_reevaluations": 2,
+    "unique_evaluated_geometries": 99,
+    "completed_updates": 98,
+    "unfinished_scf_attempts": 1
+  },
+  "first_B_snapshot_warning": "The first-run result.json is an obsolete 53-complete-evaluation snapshot; its totals and termination label are not used. Its complete initial evaluation alone supplies initial coordinates, cross-checked against the full raw log.",
+  "scope": "Historical optimization evidence. B is budget-limited and unconverged; no relaxed A/B ranking. Optimizer convergence is not vibrational or method validation.",
+  "scientifically_validated": false,
+  "manuscript_eligible": false,
+  "compact_data": {
+    "path": "optimization-history.csv",
+    "sha256": "f30586fe04d96ec26117a3ce29a5baaf7f9e8a03a3e36167cae0c58e2dca5dac",
+    "rows": 141
+  }
+}

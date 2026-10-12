@@ -1,0 +1,6 @@
+element,force_RMSE_eV_A,original_limit_eV_A,exploratory_limit_eV_A,original_pass,exploratory_pass
+Ca,0.0794147657015204,0.075,0.15,False,True
+P,0.11342363317712964,0.075,0.15,False,True
+O,0.07283976250659868,0.075,0.15,True,True
+H,0.12032266173548642,0.075,0.15,False,True
+C,0.0482316652410243,0.075,0.15,True,True

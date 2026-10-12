@@ -1,0 +1,529 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-12",
+  "classification": "closed_development_diagnostic",
+  "manuscript_eligible": false,
+  "production_released": false,
+  "R4_numeric_read_or_hashed": false,
+  "model_sha256": "ce11fb84ab0d26c58b9034e80ab5805e1066a5b16abfd7de8c383cd7c278ef33",
+  "terminal": {
+    "DFT_seconds": 221.0779999999795,
+    "MD_seconds": 40.93700000003446,
+    "active_stage": null,
+    "elapsed_total_seconds": 262.01500000001397,
+    "finished_utc": "2026-10-12T12:12:21.341064+00:00",
+    "model_sha256": "ce11fb84ab0d26c58b9034e80ab5805e1066a5b16abfd7de8c383cd7c278ef33",
+    "production_released": false,
+    "started_utc": "2026-10-12T12:07:59.342294+00:00",
+    "status": "completed_endpoint_exploratory_screen_failed",
+    "stop_reason": "Fixed endpoint 40 failed reference/physical/exploratory screen; later point skipped"
+  },
+  "MD": {
+    "status": "completed",
+    "classification": "executed_bounded_exploratory_diagnostic_not_model_qualification",
+    "model_sha256": "ce11fb84ab0d26c58b9034e80ab5805e1066a5b16abfd7de8c383cd7c278ef33",
+    "steps": 80,
+    "frames": 81,
+    "atoms": 91,
+    "seed": 20261012,
+    "duration_fs": 20,
+    "timestep_ps": 0.00025,
+    "physical_QA_passed": true,
+    "probes_allowed": true,
+    "duplicate_identical_thermo_step0_removed": true,
+    "initial_DOF": 270,
+    "temperature_K": {
+      "min": 157.34718168671046,
+      "max": 300.0000000000001,
+      "mean": 208.56490271532627
+    },
+    "energy_max_abs_change_eV": 0.0005202718457439914,
+    "energy_max_abs_change_meV_per_atom": 0.005717273030153752,
+    "energy_endpoint_change_eV": 0.0003599296178435907,
+    "energy_drift_OLS_eV_per_ps": 0.004823715436544063,
+    "minimum_contact_A": 0.9466853723649215,
+    "train_contact_lower_bound_A": 0.7457251458547071,
+    "maximum_unwrapped_displacement_A": 0.2761388675678954,
+    "maximum_COM_removed_displacement_A": 0.27613886756789563,
+    "initial_upper_surface_reference_z_A": 25.3906220131,
+    "surface_reference_definition": "maximum initial z of slab IDs 1..88",
+    "alarm_frames": [],
+    "probe_sha256": {
+      "probe-step-040.extxyz": "b840b0c475c1706ac45d007ae1faad4551074bfd9cb5bc006455dcfb8089e7ae",
+      "probe-step-080.extxyz": "c4684c23996dc26bc388166d1fb42b75e29d91c9a669b48ba137c94fb35d8133"
+    },
+    "native_runtime": {
+      "device": "cuda:0",
+      "native_selection": [
+        "gpu 0"
+      ],
+      "console_sha256": "d839d0adc510f66b59936266ca0d6e3ca4282f6f0e1384d1abdd3e881fa575d2",
+      "mpi_ranks": 1,
+      "omp_threads": 2
+    },
+    "probe_DFT_launched": false,
+    "original_train_gate_passed": false,
+    "original_validation_gate_passed": false,
+    "model_qualified": false,
+    "manuscript_eligible": false,
+    "artifacts_sha256": {
+      "trajectory.dump": "ef9742b81475f8fb53ebef3949f4cb2a62416244a49be2381d80f3cb31357340",
+      "md.log": "eb2503ae689284b5b6fc4d132c4daa194a1ea3e432dff98b9400e55995b4bfe0",
+      "frame-diagnostics.json": "53c9e6e3927879962011d8a396a9524b588fba80a54b0cacff8b282510de5ac1",
+      "thermo.csv": "2084dd23c6e26b42f9a094441174a4ee4a36aa9b82d5af6c02a13e020ee18a5a",
+      "endpoints.json": "789481d5a5331bee1b70a67ad198295032f6d19376bc7e4db0dac482388d7e37"
+    },
+    "interface_check": {
+      "energy_absolute_difference_eV": 0.0,
+      "force_max_absolute_component_difference_eV_per_A": 1.3288328770677538e-13,
+      "position_max_error_A": 7.105427357601002e-15,
+      "model_sha256": "ce11fb84ab0d26c58b9034e80ab5805e1066a5b16abfd7de8c383cd7c278ef33",
+      "passed": true,
+      "native_runtime": {
+        "device": "cuda:0",
+        "native_selection": [
+          "gpu 0"
+        ],
+        "console_sha256": "e71ad4d56cf4a864c3a66bc999703c94d2bce64000f708021bfc70d947b5db1f",
+        "mpi_ranks": 1,
+        "omp_threads": 2
+      },
+      "manuscript_eligible": false
+    },
+    "native_exits": [
+      {
+        "stage": "run0",
+        "exit_code": 0,
+        "elapsed_seconds": 6.379697419994045
+      },
+      {
+        "stage": "md",
+        "exit_code": 0,
+        "elapsed_seconds": 15.800692862016149
+      }
+    ],
+    "elapsed_seconds": 30.129000018001534,
+    "downstream_released": false
+  },
+  "endpoint_10fs": {
+    "step": 40,
+    "time_fs": 10.0,
+    "reference_QA_passed": true,
+    "physical_QA_passed": true,
+    "exploratory_gates_passed": false,
+    "accepted_for_next_probe": false,
+    "metrics": {
+      "energy_abs_error_eV_atom": 5.176114687596315e-05,
+      "force_RMSE_eV_A": 0.08302347651136874,
+      "per_element_force_RMSE_eV_A": {
+        "Ca": 0.0794147657015204,
+        "P": 0.11342363317712964,
+        "O": 0.07283976250659868,
+        "H": 0.12032266173548642,
+        "C": 0.0482316652410243
+      },
+      "max_abs_force_component_error_eV_A": 0.34466945881517264,
+      "CO2_force_RMSE_eV_A": 0.05185223110018927,
+      "CO2_max_abs_force_component_error_eV_A": 0.09038251208887949,
+      "zero_force_baseline_RMSE_eV_A": 0.6170331569630999,
+      "force_to_zero_baseline_ratio": 0.13455269878849274,
+      "force_component_count": 273,
+      "CO2_force_component_count": 9
+    },
+    "exploratory_thresholds": {
+      "energy_abs_error_eV_atom_max": 0.002,
+      "all_atom_force_RMSE_eV_A_max": 0.1,
+      "each_element_force_RMSE_eV_A_max": 0.15,
+      "max_abs_force_component_error_eV_A_max": 0.5,
+      "CO2_force_RMSE_eV_A_max": 0.05,
+      "CO2_max_abs_force_component_error_eV_A_max": 0.2,
+      "force_to_zero_baseline_ratio_max": 0.7
+    },
+    "exploratory_gates": {
+      "energy_abs_error": true,
+      "all_atom_force_RMSE": true,
+      "each_element_force_RMSE": true,
+      "maximum_force_component": true,
+      "CO2_force_RMSE": false,
+      "CO2_maximum_force_component": true,
+      "force_to_zero_baseline_ratio": true
+    },
+    "original_thresholds": {
+      "DFT_max_abs_total_energy_change_meV_per_atom": 1.0,
+      "train_force_component_RMSE_eV_A_max": 0.03,
+      "holdout_energy_RMSE_eV_atom_max": 0.002,
+      "holdout_force_component_RMSE_eV_A_max": 0.05,
+      "holdout_per_element_force_RMSE_eV_A_max": 0.075,
+      "holdout_per_frame_force_RMSE_eV_A_max": 0.1,
+      "holdout_max_abs_force_error_eV_A_max": 0.2,
+      "holdout_force_RMSE_to_zero_force_baseline_ratio_max": 0.7,
+      "LAMMPS_run0_energy_difference_eV_max": 1e-06,
+      "LAMMPS_run0_max_force_difference_eV_A_max": 1e-06
+    },
+    "original_gates": {
+      "holdout_energy_RMSE_per_atom": true,
+      "holdout_force_RMSE": false,
+      "holdout_each_element_force_RMSE": false,
+      "holdout_each_frame_force_RMSE": true,
+      "holdout_max_force_component": false,
+      "holdout_force_to_zero_baseline_ratio": true
+    },
+    "original_endpoint_gates_passed": false,
+    "original_gate_scope": "single endpoint only; prior train/validation failures remain",
+    "force_correction": "none",
+    "CO2_atom_ids_one_based": [
+      89,
+      90,
+      91
+    ]
+  },
+  "endpoint_20fs": {
+    "status": "skipped_by_frozen_stop_rule",
+    "DFT_result": null
+  },
+  "train": {
+    "metrics": {
+      "force_components": 24570,
+      "force_RMSE_eV_per_A": 0.04334652583339024,
+      "max_force_component_error_eV_per_A": 0.25860946951554636,
+      "zero_force_baseline_RMSE_eV_per_A": 0.5662369160696933,
+      "force_RMSE_to_zero_force_baseline_ratio": 0.07655192482726628,
+      "zero_force_baseline_informative": true,
+      "frames": 90,
+      "atoms": 91,
+      "energy_RMSE_eV": 0.015502351869793964,
+      "energy_RMSE_per_atom_eV": 0.0001703555150526809,
+      "per_element_errors": {
+        "Ca": {
+          "force_components": 5400,
+          "force_RMSE_eV_per_A": 0.0468645447585573,
+          "max_force_component_error_eV_per_A": 0.22265651983878265,
+          "zero_force_baseline_RMSE_eV_per_A": 0.29072511469273454,
+          "force_RMSE_to_zero_force_baseline_ratio": 0.1611988176807089,
+          "zero_force_baseline_informative": true
+        },
+        "P": {
+          "force_components": 3240,
+          "force_RMSE_eV_per_A": 0.05882660679632098,
+          "max_force_component_error_eV_per_A": 0.25860946951554636,
+          "zero_force_baseline_RMSE_eV_per_A": 0.962834319274077,
+          "force_RMSE_to_zero_force_baseline_ratio": 0.061097330681640985,
+          "zero_force_baseline_informative": true
+        },
+        "O": {
+          "force_components": 14580,
+          "force_RMSE_eV_per_A": 0.03842853478753571,
+          "max_force_component_error_eV_per_A": 0.2196687120329694,
+          "zero_force_baseline_RMSE_eV_per_A": 0.5237683312270481,
+          "force_RMSE_to_zero_force_baseline_ratio": 0.07336933620539447,
+          "zero_force_baseline_informative": true
+        },
+        "H": {
+          "force_components": 1080,
+          "force_RMSE_eV_per_A": 0.03408146345615549,
+          "max_force_component_error_eV_per_A": 0.10365003912743276,
+          "zero_force_baseline_RMSE_eV_per_A": 0.4434331302374664,
+          "force_RMSE_to_zero_force_baseline_ratio": 0.07685818025798896,
+          "zero_force_baseline_informative": true
+        },
+        "C": {
+          "force_components": 270,
+          "force_RMSE_eV_per_A": 0.03374141826787139,
+          "max_force_component_error_eV_per_A": 0.15436469460533672,
+          "zero_force_baseline_RMSE_eV_per_A": 0.8725005903907767,
+          "force_RMSE_to_zero_force_baseline_ratio": 0.03867208645986043,
+          "zero_force_baseline_informative": true
+        }
+      },
+      "CO2_force_errors": {
+        "force_components": 810,
+        "force_RMSE_eV_per_A": 0.03601721231756005,
+        "max_force_component_error_eV_per_A": 0.15436469460533672,
+        "zero_force_baseline_RMSE_eV_per_A": 0.6522467528597657,
+        "force_RMSE_to_zero_force_baseline_ratio": 0.055220224799346476,
+        "zero_force_baseline_informative": true
+      },
+      "CO2_atom_ids_one_based": [
+        89,
+        90,
+        91
+      ]
+    },
+    "gates": {
+      "train_force_RMSE": false,
+      "fixed_neighbor_capacity": true,
+      "fixed_angular_neighbor_capacity": true
+    }
+  },
+  "R9_R10_diagnostic": {
+    "metrics": {
+      "force_components": 4368,
+      "force_RMSE_eV_per_A": 0.07058561753785088,
+      "max_force_component_error_eV_per_A": 0.38159956207132883,
+      "zero_force_baseline_RMSE_eV_per_A": 0.5260367704983588,
+      "force_RMSE_to_zero_force_baseline_ratio": 0.1341838089968106,
+      "zero_force_baseline_informative": true,
+      "frames": 16,
+      "atoms": 91,
+      "energy_RMSE_eV": 0.02291602815513013,
+      "energy_RMSE_per_atom_eV": 0.0002518244852212102,
+      "per_element_errors": {
+        "Ca": {
+          "force_components": 960,
+          "force_RMSE_eV_per_A": 0.06827697053421411,
+          "max_force_component_error_eV_per_A": 0.24640982784166288,
+          "zero_force_baseline_RMSE_eV_per_A": 0.2771558695372406,
+          "force_RMSE_to_zero_force_baseline_ratio": 0.24634863641247887,
+          "zero_force_baseline_informative": true
+        },
+        "P": {
+          "force_components": 576,
+          "force_RMSE_eV_per_A": 0.09918767562776719,
+          "max_force_component_error_eV_per_A": 0.3580572173688248,
+          "zero_force_baseline_RMSE_eV_per_A": 0.7742471276841929,
+          "force_RMSE_to_zero_force_baseline_ratio": 0.12810854839648148,
+          "zero_force_baseline_informative": true
+        },
+        "O": {
+          "force_components": 2592,
+          "force_RMSE_eV_per_A": 0.060675757404990614,
+          "max_force_component_error_eV_per_A": 0.3007829886129464,
+          "zero_force_baseline_RMSE_eV_per_A": 0.5013506209804924,
+          "force_RMSE_to_zero_force_baseline_ratio": 0.12102459808731644,
+          "zero_force_baseline_informative": true
+        },
+        "H": {
+          "force_components": 192,
+          "force_RMSE_eV_per_A": 0.10212189088217409,
+          "max_force_component_error_eV_per_A": 0.38159956207132883,
+          "zero_force_baseline_RMSE_eV_per_A": 0.44109349303699863,
+          "force_RMSE_to_zero_force_baseline_ratio": 0.2315198308164754,
+          "zero_force_baseline_informative": true
+        },
+        "C": {
+          "force_components": 48,
+          "force_RMSE_eV_per_A": 0.03974483938533572,
+          "max_force_component_error_eV_per_A": 0.11754339822366489,
+          "zero_force_baseline_RMSE_eV_per_A": 1.449116773202549,
+          "force_RMSE_to_zero_force_baseline_ratio": 0.027426940409708736,
+          "zero_force_baseline_informative": true
+        }
+      },
+      "CO2_force_errors": {
+        "force_components": 144,
+        "force_RMSE_eV_per_A": 0.033944529879742905,
+        "max_force_component_error_eV_per_A": 0.11754339822366489,
+        "zero_force_baseline_RMSE_eV_per_A": 1.0266485192556694,
+        "force_RMSE_to_zero_force_baseline_ratio": 0.03306343820994651,
+        "zero_force_baseline_informative": true
+      },
+      "CO2_atom_ids_one_based": [
+        89,
+        90,
+        91
+      ]
+    },
+    "gates": {
+      "holdout_energy_RMSE_per_atom": true,
+      "holdout_force_RMSE": false,
+      "holdout_each_element_force_RMSE": false,
+      "holdout_each_frame_force_RMSE": true,
+      "holdout_max_force_component": false,
+      "holdout_force_to_zero_baseline_ratio": true,
+      "each_validation_replica": false,
+      "fixed_neighbor_capacity": true,
+      "fixed_angular_neighbor_capacity": true
+    },
+    "per_replica_metrics": {
+      "R9": {
+        "force_components": 2184,
+        "force_RMSE_eV_per_A": 0.07539974523881797,
+        "max_force_component_error_eV_per_A": 0.3580572173688248,
+        "zero_force_baseline_RMSE_eV_per_A": 0.5382418061931209,
+        "force_RMSE_to_zero_force_baseline_ratio": 0.14008526348427974,
+        "zero_force_baseline_informative": true,
+        "frames": 8,
+        "atoms": 91,
+        "energy_RMSE_eV": 0.03137614463553622,
+        "energy_RMSE_per_atom_eV": 0.00034479279819270574,
+        "per_element_errors": {
+          "Ca": {
+            "force_components": 480,
+            "force_RMSE_eV_per_A": 0.07567127722949524,
+            "max_force_component_error_eV_per_A": 0.23084261846088286,
+            "zero_force_baseline_RMSE_eV_per_A": 0.2971582523385049,
+            "force_RMSE_to_zero_force_baseline_ratio": 0.2546497586184988,
+            "zero_force_baseline_informative": true
+          },
+          "P": {
+            "force_components": 288,
+            "force_RMSE_eV_per_A": 0.11054468839991566,
+            "max_force_component_error_eV_per_A": 0.3580572173688248,
+            "zero_force_baseline_RMSE_eV_per_A": 0.8145752844224289,
+            "force_RMSE_to_zero_force_baseline_ratio": 0.13570837528945762,
+            "zero_force_baseline_informative": true
+          },
+          "O": {
+            "force_components": 1296,
+            "force_RMSE_eV_per_A": 0.06404845902483292,
+            "max_force_component_error_eV_per_A": 0.3007829886129464,
+            "zero_force_baseline_RMSE_eV_per_A": 0.5145585599728776,
+            "force_RMSE_to_zero_force_baseline_ratio": 0.12447263345149465,
+            "zero_force_baseline_informative": true
+          },
+          "H": {
+            "force_components": 96,
+            "force_RMSE_eV_per_A": 0.09013509063799867,
+            "max_force_component_error_eV_per_A": 0.2786577466318092,
+            "zero_force_baseline_RMSE_eV_per_A": 0.4094994593773818,
+            "force_RMSE_to_zero_force_baseline_ratio": 0.220110402038243,
+            "zero_force_baseline_informative": true
+          },
+          "C": {
+            "force_components": 24,
+            "force_RMSE_eV_per_A": 0.046532446456133456,
+            "max_force_component_error_eV_per_A": 0.11754339822366489,
+            "zero_force_baseline_RMSE_eV_per_A": 1.2908384453067583,
+            "force_RMSE_to_zero_force_baseline_ratio": 0.03604823409568915,
+            "zero_force_baseline_informative": true
+          }
+        },
+        "CO2_force_errors": {
+          "force_components": 72,
+          "force_RMSE_eV_per_A": 0.035109075508224036,
+          "max_force_component_error_eV_per_A": 0.11754339822366489,
+          "zero_force_baseline_RMSE_eV_per_A": 0.9104748777237713,
+          "force_RMSE_to_zero_force_baseline_ratio": 0.03856127869886792,
+          "zero_force_baseline_informative": true
+        },
+        "CO2_atom_ids_one_based": [
+          89,
+          90,
+          91
+        ]
+      },
+      "R10": {
+        "force_components": 2184,
+        "force_RMSE_eV_per_A": 0.06541817197324355,
+        "max_force_component_error_eV_per_A": 0.38159956207132883,
+        "zero_force_baseline_RMSE_eV_per_A": 0.5135417469871879,
+        "force_RMSE_to_zero_force_baseline_ratio": 0.12738627844188807,
+        "zero_force_baseline_informative": true,
+        "frames": 8,
+        "atoms": 91,
+        "energy_RMSE_eV": 0.008113337206313133,
+        "energy_RMSE_per_atom_eV": 8.915755171772675e-05,
+        "per_element_errors": {
+          "Ca": {
+            "force_components": 480,
+            "force_RMSE_eV_per_A": 0.05997788936863949,
+            "max_force_component_error_eV_per_A": 0.24640982784166288,
+            "zero_force_baseline_RMSE_eV_per_A": 0.25559288938664415,
+            "force_RMSE_to_zero_force_baseline_ratio": 0.23466180734749972,
+            "zero_force_baseline_informative": true
+          },
+          "P": {
+            "force_components": 288,
+            "force_RMSE_eV_per_A": 0.08634964886694027,
+            "max_force_component_error_eV_per_A": 0.2734027802117531,
+            "zero_force_baseline_RMSE_eV_per_A": 0.7316996210621984,
+            "force_RMSE_to_zero_force_baseline_ratio": 0.118012428025571,
+            "zero_force_baseline_informative": true
+          },
+          "O": {
+            "force_components": 1296,
+            "force_RMSE_eV_per_A": 0.05710420273397437,
+            "max_force_component_error_eV_per_A": 0.25850850382636037,
+            "zero_force_baseline_RMSE_eV_per_A": 0.48778517676707783,
+            "force_RMSE_to_zero_force_baseline_ratio": 0.11706834371730443,
+            "zero_force_baseline_informative": true
+          },
+          "H": {
+            "force_components": 96,
+            "force_RMSE_eV_per_A": 0.11284248592786808,
+            "max_force_component_error_eV_per_A": 0.38159956207132883,
+            "zero_force_baseline_RMSE_eV_per_A": 0.470571070050841,
+            "force_RMSE_to_zero_force_baseline_ratio": 0.23979902954016374,
+            "zero_force_baseline_informative": true
+          },
+          "C": {
+            "force_components": 24,
+            "force_RMSE_eV_per_A": 0.03152833554660537,
+            "max_force_component_error_eV_per_A": 0.06455360114187281,
+            "zero_force_baseline_RMSE_eV_per_A": 1.5917333171332335,
+            "force_RMSE_to_zero_force_baseline_ratio": 0.019807548919934016,
+            "zero_force_baseline_informative": true
+          }
+        },
+        "CO2_force_errors": {
+          "force_components": 72,
+          "force_RMSE_eV_per_A": 0.032738586323653944,
+          "max_force_component_error_eV_per_A": 0.10118382489445787,
+          "zero_force_baseline_RMSE_eV_per_A": 1.1309508659590835,
+          "force_RMSE_to_zero_force_baseline_ratio": 0.028947841421820344,
+          "zero_force_baseline_informative": true
+        },
+        "CO2_atom_ids_one_based": [
+          89,
+          90,
+          91
+        ]
+      }
+    }
+  },
+  "sources": {
+    "terminal": {
+      "campaign_relative_path": "hap91-coverage-v2-exploratory-md/terminal-notice.json",
+      "sha256": "2b8cb19812509c304513c27bee0fb121058d4a8392e2df74d8d748de28cbc450"
+    },
+    "md": {
+      "campaign_relative_path": "hap91-coverage-v2-exploratory-md/jobs/md/native/result.json",
+      "sha256": "e605b14393c1d72828ff751c60ccbbc8ae286f2d3052d61973b791ccc677e25b"
+    },
+    "probe": {
+      "campaign_relative_path": "hap91-coverage-v2-exploratory-md/jobs/probe-040/native/probe-result.json",
+      "sha256": "2fc939297fc8e067d7f73ecd04a4ac232869885fdc9ac5f13300b14d9d0cde3e"
+    },
+    "train": {
+      "campaign_relative_path": "hap91-training-coverage-v2/jobs/train-score/native/train-score/result.json",
+      "sha256": "51134f2f560aec5d26417d050b34264b456f65e14c05da2483eda1c4cd73a081"
+    },
+    "diagnostic": {
+      "campaign_relative_path": "hap91-coverage-v2-diagnostic-validation/jobs/validation-score/native/validation-score/result.json",
+      "sha256": "e99f1ad13f60b9169e23a20866b01e74b4a1c646abaa07da5f6f18c4b419deeb"
+    },
+    "completion": {
+      "campaign_relative_path": "hap91-training-coverage-v2/jobs/train-fit/native/training-completion.json",
+      "sha256": "d0d6d51a9f4876214f770425f46adbfa29dd869b8ef4ccde9bbc89cbbd0784e0"
+    },
+    "QA": {
+      "campaign_relative_path": "hap91-training-coverage-v2/data-QA-attestation.json",
+      "sha256": "d498cd6a027ec55a61b44b42ad4807b91aa9da5c79c26128a42fb672c8a50445"
+    },
+    "thermo": {
+      "campaign_relative_path": "hap91-coverage-v2-exploratory-md/jobs/md/native/thermo.csv",
+      "sha256": "2084dd23c6e26b42f9a094441174a4ee4a36aa9b82d5af6c02a13e020ee18a5a"
+    },
+    "md_execution": {
+      "campaign_relative_path": "hap91-coverage-v2-exploratory-md/jobs/md/execution.json",
+      "sha256": "43f004df2f54e7c0a90f11ce96ab60981648ab869cb944df632668ae46319347"
+    },
+    "probe_execution": {
+      "campaign_relative_path": "hap91-coverage-v2-exploratory-md/jobs/probe-040/execution.json",
+      "sha256": "ef0df7f425237615d45a94b54a205de0c62e93edc31542dec896c561d4458b36"
+    },
+    "runtime_release": {
+      "campaign_relative_path": "hap91-coverage-v2-exploratory-md/runtime-release.json",
+      "sha256": "ddfecc71046fb1665a04e58fc211dd22aa879597bf794e1d475ddcf25ff92330"
+    },
+    "bindings": {
+      "campaign_relative_path": "hap91-coverage-v2-exploratory-md/launch-bindings.json",
+      "sha256": "87a922a7f19542b9e1058d5b57661d7f6aa602c09a7a95568c47ac2d2492eb8c"
+    },
+    "protocol": {
+      "campaign_relative_path": "worktree/research/campaign-002-hap91-finite-temperature/coverage-v2/exploratory-md/protocol.json",
+      "sha256": "09411f34e518bbfbed3b056146a22a2b8edd956eacd3033930cce10aaa843f81"
+    }
+  },
+  "interpretation": "DFT reference data and the software/integration chain succeeded locally; potential force generalization did not meet fixed gates. No production qualification or reaction claim."
+}

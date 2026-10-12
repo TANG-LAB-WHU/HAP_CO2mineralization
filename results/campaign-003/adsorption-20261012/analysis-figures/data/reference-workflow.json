@@ -1,0 +1,81 @@
+{
+  "scope": "Development data and observed decision points; no publication-eligibility promotion.",
+  "A_reference": {
+    "B_used": false,
+    "E_ads_A_eV_per_cell_and_per_CO2": -0.34611395321154986,
+    "conditions": [
+      "dry parallel-OH specified slab and coverage",
+      "same periodic cell and PBE-D3BJ/Z-dipole settings",
+      "gas reference is periodic, not verified isolated limit",
+      "no BSSE correction",
+      "no vibrational minimum proof",
+      "B remains partial; no A/B ranking"
+    ],
+    "energy_Ha": {
+      "A91": -1692.8637034685598,
+      "clean88": -1655.089499434855,
+      "gas3": -37.76148458052873
+    },
+    "formula": "E_A91_relaxed-E_clean88_relaxed-E_gas3_relaxed",
+    "manuscript_eligible": false,
+    "source_result_sha256": {
+      "A91": "9c0f32a19db43ce5090169157e3755681e7a8df0e5f87597145aa4547889da24",
+      "clean88": "6231cadf62d5b17e4afe6e68e89ce226491a1cf41e7da907642eb1e2f2b8b6cf",
+      "gas3": "f25fe487adc9ad91eecc11064cb406561deda23dfcb5eced86bef98b54034db9"
+    },
+    "status": "conditional_model_specific_electronic_adsorption_energy"
+  },
+  "A_source_record": {
+    "campaign_relative_path": "references-run/A-conditional-adsorption-energy.json",
+    "sha256": "20c9cb5ee917e3adbf4cb6b7ab74332f2d4b6f50d84a8adcffaa97e109f9b5a7"
+  },
+  "workflow": {
+    "train_frames": 90,
+    "train_force_RMSE_eV_A": 0.04334652583339024,
+    "train_force_limit_eV_A": 0.03,
+    "diagnostic_frames": 16,
+    "diagnostic_force_RMSE_eV_A": 0.07058561753785088,
+    "diagnostic_force_limit_eV_A": 0.05,
+    "MD_steps": 80,
+    "MD_frames": 81,
+    "MD_duration_fs": 20,
+    "MD_interface_passed": true,
+    "MD_physical_QA_passed": true,
+    "probe_time_fs": 10.0,
+    "probe_CO2_force_RMSE_eV_A": 0.05185223110018927,
+    "probe_CO2_limit_eV_A": 0.05,
+    "probe_reference_QA_passed": true,
+    "probe_exploratory_gates_passed": false,
+    "probe_20fs_status": "skipped_by_frozen_stop_rule",
+    "model_qualified": false,
+    "transition_scope": "The diagnostic and exploration were separately authorized despite prior gate failures; arrows do not mean qualification.",
+    "source_summary_path": "research/campaign-002-hap91-finite-temperature/closeout-20261012/summary.json",
+    "source_summary_sha256": "9ee59d47e5f3d166cd195af3c427606877324db068dd23e3d6d69fa263e2aadf",
+    "underlying_sources": {
+      "train": {
+        "campaign_relative_path": "hap91-training-coverage-v2/jobs/train-score/native/train-score/result.json",
+        "sha256": "51134f2f560aec5d26417d050b34264b456f65e14c05da2483eda1c4cd73a081"
+      },
+      "diagnostic": {
+        "campaign_relative_path": "hap91-coverage-v2-diagnostic-validation/jobs/validation-score/native/validation-score/result.json",
+        "sha256": "e99f1ad13f60b9169e23a20866b01e74b4a1c646abaa07da5f6f18c4b419deeb"
+      },
+      "md": {
+        "campaign_relative_path": "hap91-coverage-v2-exploratory-md/jobs/md/native/result.json",
+        "sha256": "e605b14393c1d72828ff751c60ccbbc8ae286f2d3052d61973b791ccc677e25b"
+      },
+      "probe": {
+        "campaign_relative_path": "hap91-coverage-v2-exploratory-md/jobs/probe-040/native/probe-result.json",
+        "sha256": "2fc939297fc8e067d7f73ecd04a4ac232869885fdc9ac5f13300b14d9d0cde3e"
+      },
+      "terminal": {
+        "campaign_relative_path": "hap91-coverage-v2-exploratory-md/terminal-notice.json",
+        "sha256": "2b8cb19812509c304513c27bee0fb121058d4a8392e2df74d8d748de28cbc450"
+      },
+      "protocol": {
+        "campaign_relative_path": "worktree/research/campaign-002-hap91-finite-temperature/coverage-v2/exploratory-md/protocol.json",
+        "sha256": "09411f34e518bbfbed3b056146a22a2b8edd956eacd3033930cce10aaa843f81"
+      }
+    }
+  }
+}

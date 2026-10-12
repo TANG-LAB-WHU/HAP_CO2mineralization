@@ -1,0 +1,9 @@
+# Report replay and scientific replay boundary
+
+Run `python -B verify_results.py` from this directory. It uses Python's standard library, verifies package hashes and recomputes the conditional adsorption subtraction from the saved three energies. It does not invoke CP2K, a model or R4 data.
+
+The CSV exports retain the terminal parser's per-segment scalar snapshots and all atom-ordered last complete force-evaluation coordinates/forces. Native endpoint structures and every segment's input geometry/CP2K file are provided. `source-records.json` identifies the immutable original result and preparation records by paths relative to `${RESEARCH_RUNS}`; operators may resolve that root to their retained local campaign directory. Personal drive/user paths are intentionally absent.
+
+Original raw results, logs, coordinate/force trajectories and checkpoint identities are indexed in `omitted-artifacts.json`. To reconstruct an exact scientific segment, obtain its matching input geometry, WFN seed and (for B recovery/continuation) BFGS Hessian plus restart state, then use the exact pinned image/data/executable identities and limits in method.json. A typical native command recorded by the worker is `/usr/bin/mpiexec -n 1 -bind-to none /opt/cp2k/exe/local_cuda/cp2k.psmp -i /input/relax.inp -o /output/cp2k.log`, inside the reviewed guarded container with OMP_NUM_THREADS=8 and single-threaded BLAS. The full host monitor and orchestration are not reproduced by that command; launching it alone is not an equivalent safety-controlled replay.
+
+No images, dependencies or models are downloaded by this package. Numerical reproducibility is limited by the stated frozen assets and execution record, and scientific interpretation remains conditional. Raw assets are retained locally, not falsely represented as fully included in Git.

@@ -1,0 +1,25 @@
+{
+  "B_used": false,
+  "E_ads_A_eV_per_cell_and_per_CO2": -0.34611395321154986,
+  "conditions": [
+    "dry parallel-OH specified slab and coverage",
+    "same periodic cell and PBE-D3BJ/Z-dipole settings",
+    "gas reference is periodic, not verified isolated limit",
+    "no BSSE correction",
+    "no vibrational minimum proof",
+    "B remains partial; no A/B ranking"
+  ],
+  "energy_Ha": {
+    "A91": -1692.8637034685598,
+    "clean88": -1655.089499434855,
+    "gas3": -37.76148458052873
+  },
+  "formula": "E_A91_relaxed-E_clean88_relaxed-E_gas3_relaxed",
+  "manuscript_eligible": false,
+  "source_result_sha256": {
+    "A91": "9c0f32a19db43ce5090169157e3755681e7a8df0e5f87597145aa4547889da24",
+    "clean88": "6231cadf62d5b17e4afe6e68e89ce226491a1cf41e7da907642eb1e2f2b8b6cf",
+    "gas3": "f25fe487adc9ad91eecc11064cb406561deda23dfcb5eced86bef98b54034db9"
+  },
+  "status": "conditional_model_specific_electronic_adsorption_energy"
+}

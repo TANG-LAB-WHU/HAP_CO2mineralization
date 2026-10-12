@@ -1,0 +1,374 @@
+{
+  "A91": {
+    "job_id": "HAP-C003-A91",
+    "status": "converged",
+    "termination_classification": "converged",
+    "final": true,
+    "force_evaluation_count": 2,
+    "complete_force_evaluation_count": 2,
+    "geometry_update_count": 1,
+    "geometry_updates_with_optimizer_output": 1,
+    "execution_complete": true,
+    "optimization_converged": true,
+    "physical_QA_passed": true,
+    "endpoint_eligible_for_ranking": true,
+    "reference_QA_passed": true,
+    "reference_QA_scope": "output integrity and bounded execution only; not scientific validation",
+    "convergence_evidence": {
+      "maximum_displacement_bohr": {
+        "flags": [
+          "YES"
+        ],
+        "printed_values": [
+          0.0018340897
+        ],
+        "printed_limits": [
+          0.003
+        ],
+        "configured_limit": 0.003
+      },
+      "RMS_displacement_bohr": {
+        "flags": [
+          "YES"
+        ],
+        "printed_values": [
+          0.0004761383
+        ],
+        "printed_limits": [
+          0.0015
+        ],
+        "configured_limit": 0.0015
+      },
+      "maximum_force_Ha_per_bohr": {
+        "flags": [
+          "YES"
+        ],
+        "printed_values": [
+          0.0001839291
+        ],
+        "printed_limits": [
+          0.000194469
+        ],
+        "configured_limit": 0.00019446903811488875
+      },
+      "RMS_force_Ha_per_bohr": {
+        "flags": [
+          "YES"
+        ],
+        "printed_values": [
+          6.97619e-05
+        ],
+        "printed_limits": [
+          9.72345e-05
+        ],
+        "configured_limit": 9.723451905744438e-05
+      }
+    },
+    "force_correction": "none",
+    "fresh_BFGS_history": true,
+    "manuscript_eligible": false,
+    "scientifically_validated": false,
+    "source": "campaign-003/first-batch-run/jobs/A91/native/result.json",
+    "last_complete_force_evaluation": {
+      "evaluation_index": 1,
+      "optimizer_step": 1,
+      "energy_Ha": -1692.8637034685614,
+      "energy_eV": -46065.16809689672,
+      "maximum_force_Ha_per_bohr": 0.000183929067028285,
+      "maximum_atom_force_norm_Ha_per_bohr": 0.0002491748488180526,
+      "RMS_force_Ha_per_bohr": 6.976189749455948e-05,
+      "net_force_QA_passed": true
+    },
+    "final_energy_only": [
+      {
+        "kind": "final_energy_only",
+        "energy_Ha": -1692.8637034685598,
+        "excluded_from_force_labels": true,
+        "trajectory_step": 2
+      }
+    ],
+    "snapshot_scope": "Terminal segment record"
+  },
+  "B91-initial-snapshot": {
+    "job_id": "HAP-C003-B91",
+    "status": "failed",
+    "termination_classification": "interrupted_or_incomplete",
+    "final": true,
+    "force_evaluation_count": 54,
+    "complete_force_evaluation_count": 53,
+    "geometry_update_count": 53,
+    "geometry_updates_with_optimizer_output": 52,
+    "execution_complete": false,
+    "optimization_converged": false,
+    "physical_QA_passed": true,
+    "endpoint_eligible_for_ranking": false,
+    "reference_QA_passed": false,
+    "reference_QA_scope": "output integrity and bounded execution only; not scientific validation",
+    "convergence_evidence": {},
+    "force_correction": "none",
+    "fresh_BFGS_history": true,
+    "manuscript_eligible": false,
+    "scientifically_validated": false,
+    "source": "campaign-003/first-batch-run/jobs/B91/native/result.json",
+    "last_complete_force_evaluation": {
+      "evaluation_index": 52,
+      "optimizer_step": 52,
+      "energy_Ha": -1692.8849237801626,
+      "energy_eV": -46065.74553099196,
+      "maximum_force_Ha_per_bohr": 0.000980254250633008,
+      "maximum_atom_force_norm_Ha_per_bohr": 0.0011886080667319946,
+      "RMS_force_Ha_per_bohr": 0.0002078330590373107,
+      "net_force_QA_passed": true
+    },
+    "final_energy_only": [],
+    "snapshot_scope": "Early failed parser snapshot; later orphan interval is recorded separately in process.json"
+  },
+  "B91-recovery1": {
+    "job_id": "HAP-C003-B91",
+    "status": "partial_budget",
+    "termination_classification": "partial_budget",
+    "final": true,
+    "force_evaluation_count": 8,
+    "complete_force_evaluation_count": 8,
+    "geometry_update_count": 7,
+    "geometry_updates_with_optimizer_output": 7,
+    "execution_complete": true,
+    "optimization_converged": false,
+    "physical_QA_passed": true,
+    "endpoint_eligible_for_ranking": false,
+    "reference_QA_passed": true,
+    "reference_QA_scope": "output integrity and bounded execution only; not scientific validation",
+    "convergence_evidence": {},
+    "force_correction": "none",
+    "fresh_BFGS_history": false,
+    "manuscript_eligible": false,
+    "scientifically_validated": false,
+    "source": "campaign-003/first-batch-recovery1/jobs/B91/native/result.json",
+    "last_complete_force_evaluation": {
+      "evaluation_index": 7,
+      "optimizer_step": 7,
+      "energy_Ha": -1692.8855462446538,
+      "energy_eV": -46065.76246911365,
+      "maximum_force_Ha_per_bohr": 0.00174702697185475,
+      "maximum_atom_force_norm_Ha_per_bohr": 0.0017743338154646733,
+      "RMS_force_Ha_per_bohr": 0.00024811748167274467,
+      "net_force_QA_passed": true
+    },
+    "final_energy_only": [],
+    "snapshot_scope": "Terminal segment record"
+  },
+  "clean88": {
+    "job_id": "HAP-C003-clean88",
+    "status": "converged",
+    "termination_classification": "converged",
+    "final": true,
+    "force_evaluation_count": 34,
+    "complete_force_evaluation_count": 34,
+    "geometry_update_count": 33,
+    "geometry_updates_with_optimizer_output": 33,
+    "execution_complete": true,
+    "optimization_converged": true,
+    "physical_QA_passed": true,
+    "endpoint_eligible_for_ranking": true,
+    "reference_QA_passed": true,
+    "reference_QA_scope": "output integrity and bounded execution only; not scientific validation",
+    "convergence_evidence": {
+      "maximum_displacement_bohr": {
+        "flags": [
+          "YES"
+        ],
+        "printed_values": [
+          0.0023933109
+        ],
+        "printed_limits": [
+          0.003
+        ],
+        "configured_limit": 0.003
+      },
+      "RMS_displacement_bohr": {
+        "flags": [
+          "YES"
+        ],
+        "printed_values": [
+          0.0005431134
+        ],
+        "printed_limits": [
+          0.0015
+        ],
+        "configured_limit": 0.0015
+      },
+      "maximum_force_Ha_per_bohr": {
+        "flags": [
+          "YES"
+        ],
+        "printed_values": [
+          0.0001150455
+        ],
+        "printed_limits": [
+          0.000194469
+        ],
+        "configured_limit": 0.00019446903811488875
+      },
+      "RMS_force_Ha_per_bohr": {
+        "flags": [
+          "YES"
+        ],
+        "printed_values": [
+          2.77163e-05
+        ],
+        "printed_limits": [
+          9.72345e-05
+        ],
+        "configured_limit": 9.723451905744438e-05
+      }
+    },
+    "force_correction": "none",
+    "fresh_BFGS_history": true,
+    "manuscript_eligible": false,
+    "scientifically_validated": false,
+    "source": "campaign-003/references-run/jobs/clean88/native/result.json",
+    "last_complete_force_evaluation": {
+      "evaluation_index": 33,
+      "optimizer_step": 33,
+      "energy_Ha": -1655.0894994348566,
+      "energy_eV": -45037.27964080082,
+      "maximum_force_Ha_per_bohr": 0.000115045471729246,
+      "maximum_atom_force_norm_Ha_per_bohr": 0.00012708777469848409,
+      "RMS_force_Ha_per_bohr": 2.771627946608299e-05,
+      "net_force_QA_passed": true
+    },
+    "final_energy_only": [
+      {
+        "kind": "final_energy_only",
+        "energy_Ha": -1655.089499434855,
+        "excluded_from_force_labels": true,
+        "trajectory_step": 34
+      }
+    ],
+    "snapshot_scope": "Terminal segment record"
+  },
+  "gas3": {
+    "job_id": "HAP-C003-gas3",
+    "status": "converged",
+    "termination_classification": "converged",
+    "final": true,
+    "force_evaluation_count": 3,
+    "complete_force_evaluation_count": 3,
+    "geometry_update_count": 2,
+    "geometry_updates_with_optimizer_output": 2,
+    "execution_complete": true,
+    "optimization_converged": true,
+    "physical_QA_passed": true,
+    "endpoint_eligible_for_ranking": true,
+    "reference_QA_passed": true,
+    "reference_QA_scope": "output integrity and bounded execution only; not scientific validation",
+    "convergence_evidence": {
+      "maximum_displacement_bohr": {
+        "flags": [
+          "YES"
+        ],
+        "printed_values": [
+          0.0014479232
+        ],
+        "printed_limits": [
+          0.003
+        ],
+        "configured_limit": 0.003
+      },
+      "RMS_displacement_bohr": {
+        "flags": [
+          "YES"
+        ],
+        "printed_values": [
+          0.0006528033
+        ],
+        "printed_limits": [
+          0.0015
+        ],
+        "configured_limit": 0.0015
+      },
+      "maximum_force_Ha_per_bohr": {
+        "flags": [
+          "YES"
+        ],
+        "printed_values": [
+          7.89286e-05
+        ],
+        "printed_limits": [
+          0.000194469
+        ],
+        "configured_limit": 0.00019446903811488875
+      },
+      "RMS_force_Ha_per_bohr": {
+        "flags": [
+          "YES"
+        ],
+        "printed_values": [
+          4.14361e-05
+        ],
+        "printed_limits": [
+          9.72345e-05
+        ],
+        "configured_limit": 9.723451905744438e-05
+      }
+    },
+    "force_correction": "none",
+    "fresh_BFGS_history": true,
+    "manuscript_eligible": false,
+    "scientifically_validated": false,
+    "source": "campaign-003/references-run/jobs/gas3/native/result.json",
+    "last_complete_force_evaluation": {
+      "evaluation_index": 2,
+      "optimizer_step": 2,
+      "energy_Ha": -37.7614845805287,
+      "energy_eV": -1027.5423421426867,
+      "maximum_force_Ha_per_bohr": 7.89285593349332e-05,
+      "maximum_atom_force_norm_Ha_per_bohr": 7.892910748906202e-05,
+      "RMS_force_Ha_per_bohr": 4.1436062082267476e-05,
+      "net_force_QA_passed": true
+    },
+    "final_energy_only": [
+      {
+        "kind": "final_energy_only",
+        "energy_Ha": -37.76148458052873,
+        "excluded_from_force_labels": true,
+        "trajectory_step": 3
+      }
+    ],
+    "snapshot_scope": "Terminal segment record"
+  },
+  "B91-continuation1": {
+    "job_id": "HAP-C003-B91",
+    "status": "partial_budget",
+    "termination_classification": "partial_budget",
+    "final": true,
+    "force_evaluation_count": 21,
+    "complete_force_evaluation_count": 21,
+    "geometry_update_count": 20,
+    "geometry_updates_with_optimizer_output": 20,
+    "execution_complete": true,
+    "optimization_converged": false,
+    "physical_QA_passed": true,
+    "endpoint_eligible_for_ranking": false,
+    "reference_QA_passed": true,
+    "reference_QA_scope": "output integrity and bounded execution only; not scientific validation",
+    "convergence_evidence": {},
+    "force_correction": "none",
+    "fresh_BFGS_history": false,
+    "manuscript_eligible": false,
+    "scientifically_validated": false,
+    "source": "campaign-003/B-continuation1-run/jobs/B91/native/result.json",
+    "last_complete_force_evaluation": {
+      "evaluation_index": 20,
+      "optimizer_step": 20,
+      "energy_Ha": -1692.8860761958879,
+      "energy_eV": -46065.776889821376,
+      "maximum_force_Ha_per_bohr": 0.000938497695416023,
+      "maximum_atom_force_norm_Ha_per_bohr": 0.0010753402507650339,
+      "RMS_force_Ha_per_bohr": 0.00012066484436858243,
+      "net_force_QA_passed": true
+    },
+    "final_energy_only": [],
+    "snapshot_scope": "Terminal segment record"
+  }
+}
