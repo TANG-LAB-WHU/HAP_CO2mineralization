@@ -1,0 +1,48 @@
+{
+  "status": "two_tilt_points_complete",
+  "started_utc": "2026-10-12T23:56:30.518556+00:00",
+  "total_seconds_cap": 900,
+  "points": [
+    {
+      "variant": "minus5",
+      "status": "completed",
+      "root": "${RESEARCH_RUNS}/campaign-003/A-tilt1-repair1-minus5",
+      "started_utc": "2026-10-12T23:56:30.590402+00:00",
+      "reference_QA_passed": true,
+      "physical_QA_passed": true,
+      "result_sha256": "f940c8f961acf6d38af69849ba2caa451925feb019746bc8ae9cef27a03852dd",
+      "finished_utc": "2026-10-12T23:58:45.488671+00:00",
+      "elapsed_seconds": 134.90599999995902
+    },
+    {
+      "variant": "plus5",
+      "status": "completed",
+      "root": "${RESEARCH_RUNS}/campaign-003/A-tilt1-repair1-plus5",
+      "started_utc": "2026-10-12T23:58:45.502849+00:00",
+      "reference_QA_passed": true,
+      "physical_QA_passed": true,
+      "result_sha256": "1d3ab51d5660413e87765adb5b254c165b9dab46650b4676420c1efc3537a329",
+      "finished_utc": "2026-10-13T00:01:36.970460+00:00",
+      "elapsed_seconds": 171.46900000004098
+    }
+  ],
+  "native_command_seconds_total": 245.05082961102016,
+  "charged_B_direction_seconds": 491.5780000000959,
+  "new_six_hour_research_ceiling_seconds": 21600,
+  "automatic_retry": false,
+  "training_updates": 0,
+  "MD_runs": 0,
+  "sealed_R4_read": false,
+  "manuscript_eligible": false,
+  "release_sha256": "8c1b965bdf8cbbc2ac9955152ae60c107795db60e036c587f63207d287591a18",
+  "original_tilt_started_utc": "2026-10-12T23:53:35.326571+00:00",
+  "original_tilt_deadline_utc": "2026-10-13T00:08:35.326571+00:00",
+  "repair_inherits_original_wall_budget": true,
+  "active_point": null,
+  "charged_seconds": 306.56300000008196,
+  "scientific_classification": "inconclusive",
+  "stop_reason": null,
+  "finished_utc": "2026-10-13T00:01:36.973460+00:00",
+  "original_tilt_charged_seconds": 481.7560170000652,
+  "combined_new_phase_charged_seconds": 973.3340170001611
+}

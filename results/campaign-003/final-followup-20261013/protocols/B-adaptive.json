@@ -1,0 +1,122 @@
+{
+  "common_assets": {
+    "/opt/cp2k/data/BASIS_MOLOPT": "686dd72e7601ee41d4a173e4c7c3946f1e750f03095090f44d3821c180a81a61",
+    "/opt/cp2k/data/GTH_POTENTIALS": "5a9bfbc3b37a55917ade4fb704b80546d210d843759b94e3915e74acfc3fafb2",
+    "/opt/cp2k/data/dftd3.dat": "1f5041914fb3a7fa6c97602d82da6cb9129c1c1dba675db23522de9c2837dafd"
+  },
+  "device_assets": {
+    "gpu": {
+      "/opt/cp2k/exe/local_cuda/cp2k.psmp": "2b77e60fc8a1f0b11446263ab0389085744ba8ba977a25b70ec93192d03a3c52",
+      "/usr/bin/mpiexec": "aa0a841e787b322075387076e91a860dbf2022afd1907848f8a6bfd825adeb33",
+      "/usr/bin/timeout": "0618e1ae490fafc2fa57664dae2f6f7c11f469f97e7083406f823d9083d43361",
+      "/usr/local/bin/entrypoint.sh": "03a446952c253c3b33e72e0f88fea29145bb36ab74d6159143a30ee09a0e22ab"
+    }
+  },
+  "gpu_uuid": "GPU-a0810e21-a5ac-2da4-ec88-793a0357a9a5",
+  "image_reference": "cp2k/cp2k@sha256:e2912cc9500a42a08b3e057e383182b96f395b7477c8eb55e93db6e29cb1c2ae",
+  "memory_bytes": 25769803776,
+  "convergence": {
+    "maximum_force_Ha_per_bohr": 0.00019446903811488875,
+    "RMS_force_Ha_per_bohr": 9.723451905744438e-05,
+    "maximum_displacement_bohr": 0.003,
+    "RMS_displacement_bohr": 0.0015,
+    "trust_radius_A": 0.05
+  },
+  "fixed_cell_A": [
+    [
+      9.424,
+      0.0,
+      0.0
+    ],
+    [
+      -4.712,
+      8.161423405265,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      37.7401146
+    ]
+  ],
+  "pbc": [
+    true,
+    true,
+    true
+  ],
+  "schema": "campaign003-B-adaptive1/v1",
+  "new_phase_wall_seconds_cap": 5400,
+  "segment_seconds_cap": 1800,
+  "maximum_segments": 5,
+  "updates_per_segment": 10,
+  "maximum_force_evaluations": 55,
+  "budget_explanation": "This tranche<=5400seconds all-in driver walltime or50newupdates; preceding973.334017seconds also counted toward21600second umbrella. No budget reset.",
+  "old_B_charged_seconds_preserved": 10214.589597999933,
+  "old_phase_state": {
+    "path": "${RESEARCH_RUNS}/campaign-003/B-continuation1-run/state.json",
+    "sha256": "d21140d2497d6fe5e5e5648d4e71fc3ac1f05e6532586bb274c3830132809cb9"
+  },
+  "initial_checkpoint_root": "${RESEARCH_RUNS}/campaign-003/B-direction1-segment01/jobs/B91/native",
+  "initial_checkpoint_sha256": {
+    "${RESEARCH_RUNS}/campaign-003/B-direction1-segment01/jobs/B91/native/result.json": "8c81bbb9d066a803bf5f524bd3d045b1b01320bc4c8d3ef6dcc1c125fc399f19",
+    "${RESEARCH_RUNS}/campaign-003/B-direction1-segment01/jobs/B91/native/HAP-C003-B91-1.restart": "2224a4db652567ee11e03e1541a108c289301f6a248e684df7eacb9ca19ea117",
+    "${RESEARCH_RUNS}/campaign-003/B-direction1-segment01/jobs/B91/native/HAP-C003-B91-RESTART.wfn": "9a65ab84975ef1c58358d18903eee9355c3c901d66ce58d4755e9a0425d224bf",
+    "${RESEARCH_RUNS}/campaign-003/B-direction1-segment01/jobs/B91/native/HAP-C003-B91-BFGS.Hessian": "ff9b6ae3ed68f084ed8d829ff290d0593ca5d23d77a5ac4c771b27065a84c282"
+  },
+  "reference_results": {
+    "A91": {
+      "path": "${RESEARCH_RUNS}/campaign-003/first-batch-run/jobs/A91/native/result.json",
+      "sha256": "9c0f32a19db43ce5090169157e3755681e7a8df0e5f87597145aa4547889da24"
+    },
+    "clean88": {
+      "path": "${RESEARCH_RUNS}/campaign-003/references-run/jobs/clean88/native/result.json",
+      "sha256": "6231cadf62d5b17e4afe6e68e89ce226491a1cf41e7da907642eb1e2f2b8b6cf"
+    },
+    "gas3": {
+      "path": "${RESEARCH_RUNS}/campaign-003/references-run/jobs/gas3/native/result.json",
+      "sha256": "f25fe487adc9ad91eecc11064cb406561deda23dfcb5eced86bef98b54034db9"
+    }
+  },
+  "progress_policy": {
+    "block_updates": 10,
+    "minimum_relative_excess_improvement": 0.05,
+    "maximum_other_group_relative_worsening": 0.2,
+    "consecutive_stagnant_blocks_to_stop": 2,
+    "energy_for_diagnosis_only": true,
+    "comparison": "Accepted updates first half vs last half; exclude repeatedstep0; median force and displacement normalized by original limits, floors1. Require>=5percent reduction in above-limit excess in either group without>20percent worsening in either group."
+  },
+  "selection_evidence": {
+    "last27_energy_decrease_meV": 19.87964,
+    "last20_RMS_force_relative_decrease": 0.5137,
+    "CO2_C_displacement_last27_A": 0.775802,
+    "CO2_axis_rotation_last27_degrees": 15.33097,
+    "reason": "Continued downhill translation/rotation and decreasing force, current Hessian confirmed read and updated; no demonstrated benefit to optimizer switch or trust enlargement"
+  },
+  "optimizer": {
+    "name": "BFGS",
+    "trust_radius_A": 0.05,
+    "restart_Hessian": true,
+    "use_rat_fun_opt": false,
+    "criteria_changed": false
+  },
+  "automatic_retry": false,
+  "prior_partial_records_immutable": true,
+  "additional_science_jobs": false,
+  "manuscript_eligible": false,
+  "pause_after_first_direction_checkpoint": false,
+  "umbrella_new_research_phase_seconds_limit": 21600,
+  "superseded_unlaunched_preparation": {
+    "path": "${RESEARCH_RUNS}/campaign-003/prepared-B-followup1",
+    "release_sha256": "16a051c2fcfb584b114d22d86c5516ea6c05ab5d92f2105359470fa99e1df80e",
+    "launched": false
+  },
+  "next_scientific_priority": "Finish bounded B continuation and report terminal evidence",
+  "maximum_geometry_updates": 50,
+  "already_charged_new_research_seconds": 973.3340170001611,
+  "prior_budget_state": {
+    "path": "${RESEARCH_RUNS}/campaign-003/A-tilt1-repair1-run/state.json",
+    "sha256": "d859370e3f0da314bc19760292d21d4cd332304eca12ea1425b6c5044de9a046"
+  },
+  "A_followup_permitted": false,
+  "A_tilt_classification": "inconclusive"
+}

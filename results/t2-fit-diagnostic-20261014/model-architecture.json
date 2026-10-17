@@ -1,0 +1,61 @@
+{
+  "type_map": [
+    "Ca",
+    "P",
+    "O",
+    "H",
+    "C"
+  ],
+  "descriptor": {
+    "type": "hybrid",
+    "list": [
+      {
+        "type": "se_e2_a",
+        "sel": [
+          16,
+          12,
+          36,
+          4,
+          4
+        ],
+        "rcut": 5.0,
+        "rcut_smth": 4.5,
+        "neuron": [
+          16,
+          32,
+          64
+        ],
+        "axis_neuron": 8,
+        "precision": "float64",
+        "seed": 2026101321
+      },
+      {
+        "type": "se_e3",
+        "rcut": 3.2,
+        "rcut_smth": 2.8,
+        "sel": [
+          8,
+          4,
+          12,
+          4,
+          4
+        ],
+        "neuron": [
+          8,
+          16,
+          32
+        ],
+        "precision": "float64",
+        "seed": 2026101322
+      }
+    ]
+  },
+  "fitting_net": {
+    "neuron": [
+      64,
+      64
+    ],
+    "precision": "float64",
+    "seed": 2026101321
+  }
+}

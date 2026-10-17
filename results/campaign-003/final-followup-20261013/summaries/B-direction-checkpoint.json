@@ -1,0 +1,47 @@
+{
+  "status": "direction_checkpoint_complete_not_converged",
+  "evaluations": [
+    {
+      "step": 0,
+      "energy_Ha": -1692.8860761958847,
+      "maximum_force_Ha_bohr": 0.000938555054585437,
+      "RMS_force_Ha_bohr": 0.0001206659456440338
+    },
+    {
+      "step": 1,
+      "energy_Ha": -1692.8860814750158,
+      "maximum_force_Ha_bohr": 0.000857320772628345,
+      "RMS_force_Ha_bohr": 9.485127723243279e-05
+    },
+    {
+      "step": 2,
+      "energy_Ha": -1692.886086243318,
+      "maximum_force_Ha_bohr": 0.00034036406114184,
+      "RMS_force_Ha_bohr": 6.29911120985486e-05
+    },
+    {
+      "step": 3,
+      "energy_Ha": -1692.886090163916,
+      "maximum_force_Ha_bohr": 0.000392207701900663,
+      "RMS_force_Ha_bohr": 5.936756174111178e-05
+    },
+    {
+      "step": 4,
+      "energy_Ha": -1692.8860944709872,
+      "maximum_force_Ha_bohr": 0.00066327369313641,
+      "RMS_force_Ha_bohr": 6.783930081402842e-05
+    },
+    {
+      "step": 5,
+      "energy_Ha": -1692.8860962289505,
+      "maximum_force_Ha_bohr": 0.000572656501926061,
+      "RMS_force_Ha_bohr": 5.883783115484573e-05
+    }
+  ],
+  "energy_decrease_meV": 0.5451274902568767,
+  "input_protocol_sha256": "af723c7279ffbb08855de9625d3681561711c3a86083bfaf8fa97bb04c97da1f",
+  "result_sha256": "8c81bbb9d066a803bf5f524bd3d045b1b01320bc4c8d3ef6dcc1c125fc399f19",
+  "original_four_convergence_criteria_unchanged": true,
+  "ranking_permitted": false,
+  "next_action": "Scientific direction review; A symmetry-breaking pair requires fixed protocol first"
+}

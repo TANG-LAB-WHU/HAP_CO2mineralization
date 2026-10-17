@@ -1,0 +1,55 @@
+{
+  "status": "new_clean_converged_conditional_reference_comparison",
+  "new_clean_lower_than_old": true,
+  "new_clean_selected_for_conditional_comparison": true,
+  "energy_Ha": {
+    "A91": -1692.8637034685598,
+    "B91": -1692.8861132685824,
+    "clean88_old": -1655.089499434855,
+    "gas3": -37.76148458052873,
+    "clean88_new": -1655.1006509598847
+  },
+  "source_results": {
+    "A91": {
+      "path": "${RESEARCH_RUNS}/campaign-003/first-batch-run/jobs/A91/native/result.json",
+      "sha256": "9c0f32a19db43ce5090169157e3755681e7a8df0e5f87597145aa4547889da24"
+    },
+    "B91": {
+      "path": "${RESEARCH_RUNS}/campaign-003/B-adaptive1-segment02/jobs/B91/native/result.json",
+      "sha256": "f0874b2d2a39c79865abeede06f216535f6417e224a70ed7b8bee2b5f44e6828"
+    },
+    "clean88_old": {
+      "path": "${RESEARCH_RUNS}/campaign-003/references-run/jobs/clean88/native/result.json",
+      "sha256": "6231cadf62d5b17e4afe6e68e89ce226491a1cf41e7da907642eb1e2f2b8b6cf"
+    },
+    "gas3": {
+      "path": "${RESEARCH_RUNS}/campaign-003/references-run/jobs/gas3/native/result.json",
+      "sha256": "f25fe487adc9ad91eecc11064cb406561deda23dfcb5eced86bef98b54034db9"
+    },
+    "clean88_new": {
+      "path": "${RESEARCH_RUNS}/campaign-003/cleanB1-segment04/jobs/clean88/native/result.json",
+      "sha256": "b6d165f3c376881c1d31dcc089a83aa675f67425470022eeaf33a2a9755b9f21"
+    }
+  },
+  "new_minus_old_clean_eV": -0.30344845481273586,
+  "old_reference_Eads_eV": {
+    "A": -0.34611395321154986,
+    "B": -0.9559156773222758
+  },
+  "new_reference_Eads_eV": {
+    "A": -0.04266549839881405,
+    "B": -0.6524672225095399
+  },
+  "DeltaE_B_minus_A_eV": -0.6098017241107259,
+  "B_minus_A_invariant_verified": true,
+  "original_clean_and_local_basin_preserved": true,
+  "global_minimum_proven": false,
+  "vibrational_minimum_proven": false,
+  "manuscript_eligible": false,
+  "conditions": [
+    "Same dry slab, fixed cell, coverage, electronic method and original four optimizer criteria.",
+    "Old clean retained as a distinct starting-basin reference; lower new clean is not proof of global minimum.",
+    "A tilt test remains inconclusive; A local minimum not proven.",
+    "Periodic gas reference not verified isolated limit; no BSSE or vibrational minimum proof."
+  ]
+}

@@ -1,0 +1,6 @@
+experiment,status,evaluation_scope,frames,accepted_updates,complete_objectives,gates_passed,termination_reason,finished_utc,state_source
+B16-initial,scientific_gate_failed,training,16,300,630,False,accepted_update_limit,2026-10-13T10:38:40.102906+00:00,.research-runs/b-local-candidate1-20261013/route1-run/state.json
+B16-continuation1,scientific_gate_failed,training,16,900,1901,False,accepted_update_limit,2026-10-13T11:18:40.740008+00:00,.research-runs/b-local-candidate1-20261013/continuation1-run/state.json
+B16-continuation2,training_qualified_waiting_handoff,training,16,1097,2317,True,first_training_gates_passed,2026-10-13T11:49:11.224947+00:00,.research-runs/b-local-candidate1-20261013/continuation2-run/state.json
+development40,scientific_gate_failed,training,40,569,1208,False,optimization_time_limit,2026-10-13T15:56:23.523995+00:00,.research-runs/b-local-final-coverage1-20261013/fit-recovery2-run/state.json
+B-H-independent-at-evaluation,completed_test_failed,one independent trajectory; four correlated frames,4,0,,False,Unaccepted scientific result: B_H,2026-10-13T12:26:29.737424+00:00,.research-runs/b-local-candidate1-20261013/continuation2-recovery1-run/state.json

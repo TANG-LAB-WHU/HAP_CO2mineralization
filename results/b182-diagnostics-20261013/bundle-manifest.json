@@ -1,0 +1,149 @@
+{
+  "schema": "hap-b182-bundle-manifest/v1",
+  "files": {
+    ".gitattributes": {
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da",
+      "bytes": 8
+    },
+    "figures/dft4fs.png": {
+      "sha256": "19e2be6ae75597e3d96082316b26c326d4ada6677da4f2681f6dd292765cb1db",
+      "bytes": 228838
+    },
+    "figures/ml85fs.png": {
+      "sha256": "791b5ba191e121dfa3cae95dfd54792fabe607fe189f6d61257278e9941a5d1f",
+      "bytes": 348230
+    },
+    "figures/OH-diagnostic.png": {
+      "sha256": "369b55e2aff37c6a200717efe31643127ec2bd157a873b40a636880c21e1beec",
+      "bytes": 204402
+    },
+    "figures/step340-force-errors.png": {
+      "sha256": "bf3843a23becab11b87fe6cfce10946e55cbaec22b30d5c0652446384fd09d1b",
+      "bytes": 105083
+    },
+    "inputs/atom-map.json": {
+      "sha256": "8d4900e37605fadc9a9756ccae160d4770e9871a5b62cc3fc7b429d9760b3018",
+      "bytes": 33675
+    },
+    "inputs/cp2k/B182-dft4fs.inp": {
+      "sha256": "be8fb7f64e8c5c945d7ce5c82f4ccde45d201f6b1eab5fa2cb6ef4c3085145f4",
+      "bytes": 15189
+    },
+    "inputs/cp2k/B182-static.inp": {
+      "sha256": "64c05499aef351a932c49c8bedf96f2e04cb2b864eca804ff4f06ea2f03c04f0",
+      "bytes": 13847
+    },
+    "inputs/cp2k/B182-step340.inp": {
+      "sha256": "be3ec3de333d63b4c50d86be052b87a1f2a44fe3d40404f8c0eed105381fe557",
+      "bytes": 14625
+    },
+    "inputs/cp2k/clean176-static.inp": {
+      "sha256": "615bdbe42f337bf9af785664de594ec4008137ac24c824a77b7f64f9582a1b89",
+      "bytes": 13433
+    },
+    "inputs/lammps/md-original-control.in": {
+      "sha256": "cef3f4d3a0a4e4e57a40944084f15bc0a2ba92127ba64d446968f07cbf19eee9",
+      "bytes": 8671
+    },
+    "inputs/lammps/md.system.data": {
+      "sha256": "2eca61162d4eda01db6c9fad1c08c7b72b421670cc922e0fe93eee654c51b86c",
+      "bytes": 24241
+    },
+    "inputs/lammps/run0.in": {
+      "sha256": "63b2966f824e73467b3d68228d3c4e6ed54b62bcd41a9c088669454926642bc6",
+      "bytes": 548
+    },
+    "inputs/lammps/system.data": {
+      "sha256": "5520099c466f24e7a7b77961222b1a025d1d6fb7c42244046de3d3295e0b8b1b",
+      "bytes": 12683
+    },
+    "inputs/run-parameters.json": {
+      "sha256": "487d492875ab50339da690856bbd8b0436643ab0ab2d478f7565394c51b3cef1",
+      "bytes": 4468
+    },
+    "provenance.json": {
+      "sha256": "fc099eeb6dadeca34df1b7333e92df409fceed1a58f155ac005861136979bbe8",
+      "bytes": 12915
+    },
+    "README.md": {
+      "sha256": "4ca66da101c50fe13afaf2bbb47777173362b1fe6aeda3510ebabfa7ec4083a5",
+      "bytes": 6518
+    },
+    "REPRODUCE.md": {
+      "sha256": "1e51963c85f183fff66066b3e20bc9ab48116aafb652e30d2e0fd778713677ec",
+      "bytes": 3432
+    },
+    "scripts/plot_results.py": {
+      "sha256": "a9827bbbb74c50ab5c9f2c3144aeb67811fcdb0b510c1a97890f88cafe3b9e36",
+      "bytes": 8622
+    },
+    "snapshots/B182-initial.extxyz": {
+      "sha256": "d5ca21b1fe96cd79f3250c6bf6843540e6af22fa2207f223ab9b93d281d2d36b",
+      "bytes": 10333
+    },
+    "snapshots/clean176-initial.extxyz": {
+      "sha256": "383b234976727fd8b355260afe4605564808985f1ae1db425c4797a8d09fb1f5",
+      "bytes": 10077
+    },
+    "snapshots/DFT4fs-step000.extxyz": {
+      "sha256": "8f628a1a62f04a59bf04736827777ce42628d0d22afd5bf580e6addcf1b6cbca",
+      "bytes": 22579
+    },
+    "snapshots/DFT4fs-step016.extxyz": {
+      "sha256": "382246cc5e104926768673c46d769426180022b2fd2c8cb9e40ea975d3a7db20",
+      "bytes": 21627
+    },
+    "snapshots/ML85fs-step331.extxyz": {
+      "sha256": "3601d131ceb93e274fc03284690a5acebb561c59538395f4cdfa2b620dfa4f19",
+      "bytes": 11207
+    },
+    "snapshots/ML85fs-step340.extxyz": {
+      "sha256": "8d6d77a1097951a35c6c3007655aff11b043c67e3b903a36a6e6cedc2a3ec8f7",
+      "bytes": 11219
+    },
+    "step340-force-analysis.json": {
+      "sha256": "4e837b5e3ccab484b66d7cafcba487d1b1b88549573c6f80c128ec2482ecb83d",
+      "bytes": 13956
+    },
+    "summary.json": {
+      "sha256": "92f2ad2a9cb7acb14e63aba287bafa7e16b744c2b24c0a6359470e319185778b",
+      "bytes": 13268
+    },
+    "tables/B182-static-forces.csv": {
+      "sha256": "a97be918759aac9575698adc237509a90f888332952cf34613bf9625abd53bcf",
+      "bytes": 24826
+    },
+    "tables/clean176-static-forces.csv": {
+      "sha256": "1315e8c8f963d3f5c8c3e06849e5d4f23409253ca477df8bc99d4cd70d3df688",
+      "bytes": 24018
+    },
+    "tables/dft4fs-curve.csv": {
+      "sha256": "fbcf7b54dc994d441875c48aee264c74d0db1c390554283b91ef604c7ca5e3a6",
+      "bytes": 6817
+    },
+    "tables/ml85fs-curve.csv": {
+      "sha256": "bb0d824e1de9c4923bb6b442e7de021a1f04deff0bc59ff191f7bb5483e5e083",
+      "bytes": 102752
+    },
+    "tables/ml85fs-OH-distances.csv": {
+      "sha256": "91c7ad77b741cf083716204c1cc9c518bb249d751fe2151ba08b8da5b9139c78",
+      "bytes": 55003
+    },
+    "tables/static-singlepoints.csv": {
+      "sha256": "6dfc9b238c62ee02fe881d0e45c1e885cfb7bfeae47746604cac486e8b42e6fc",
+      "bytes": 773
+    },
+    "tables/step340-all-atom-forces.csv": {
+      "sha256": "28d5418f37006e5bb352b32398552113ba4e7f1f9048cd0fabcffc9561bbb3ae",
+      "bytes": 73092
+    },
+    "tables/step340-force-metrics.csv": {
+      "sha256": "51b6c9accc3c048fdc8ef89d422e3ee409aa8c1f9255d355c68a512d7c9ed634",
+      "bytes": 458
+    },
+    "tables/step340-local-forces.csv": {
+      "sha256": "1dc1b34ecfe76e9b30d3fc204ab296c4917026eb1710895339175fe88cf3db41",
+      "bytes": 8242
+    }
+  }
+}

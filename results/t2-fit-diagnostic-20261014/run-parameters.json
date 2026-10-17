@@ -1,0 +1,107 @@
+{
+  "scope": "Eight-frame T2 training-fit diagnostic; not independent validation",
+  "frames": 8,
+  "atoms_per_frame": 91,
+  "force_components": 2184,
+  "frame_ids": [
+    "T2-S004",
+    "T2-S008",
+    "T2-S012",
+    "T2-S016",
+    "T2-S020",
+    "T2-S024",
+    "T2-S028",
+    "T2-S032"
+  ],
+  "trajectory_id": "T2-seed2026101402",
+  "precision": "float64",
+  "microbatch_size": 2,
+  "frames_per_complete_objective": 8,
+  "objective": "mean_over_8_frames[energy_weight * (predicted_total_energy-reference_total_energy)^2 / 91 + force_weight * mean_over_273_force_components[(predicted_force-reference_force)^2]]",
+  "energy_weight": 0.9890042191478408,
+  "force_weight": 12.208964358476615,
+  "energy_units": "eV",
+  "force_units": "eV/angstrom",
+  "optimizer": {
+    "lr": 1.0,
+    "history_size": 20,
+    "max_iter": 1,
+    "max_eval": 27,
+    "line_search_fn": "strong_wolfe",
+    "tolerance_grad": 1e-07,
+    "tolerance_change": 1e-12
+  },
+  "optimizer_history": "Fresh LBFGS at the start of the T2 diagnostic; full history restored across subsequent continuations. CPU2 did not start a new optimizer.",
+  "descriptor_statistics_and_energy_bias": "Inherited and frozen; not recomputed on T2",
+  "thresholds": {
+    "force_component_RMSE_eV_A_max": 0.01,
+    "max_abs_force_component_error_eV_A_max": 0.05
+  },
+  "energy_is_gate": false,
+  "stopping_rule": "First accepted state satisfying both force thresholds; alternatively two consecutive completed 100-accepted-update blocks with relative objective improvement below 0.005, or applicable resource/time limits.",
+  "entry_cache": "Accepted objective/gradient may be reused once at LBFGS step entry; all parameter-changing line-search trials require a complete objective.",
+  "final_backend": {
+    "device": "cpu",
+    "threads": 8,
+    "interop_threads": 1,
+    "memory_limit_bytes": 12884901888,
+    "deepmd_version": "3.1.0",
+    "torch_version": "2.6.0",
+    "container_image": "deepmodeling/deepmd-kit@sha256:23d23b922459eb49b23f9d4977b6e453fd17feb2ee03a280c70fb7f4a6452e8c"
+  },
+  "original_recipe_sha256": "051cdb7da7e72c4cc71e77853a0b54c0631c55de7be622998bd8fe98085f5b89",
+  "recipe_note": "Only architecture and constant energy/force coefficients are inherited here. The original recipe Adam schedule, 142-frame system list and 20000-step configuration were not the active T2 LBFGS procedure.",
+  "external_training_assets": {
+    "included": false,
+    "trajectory_id": "T2-seed2026101402",
+    "selected_steps": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24,
+      28,
+      32
+    ],
+    "type_map": [
+      "Ca",
+      "P",
+      "O",
+      "H",
+      "C"
+    ],
+    "cell_A": [
+      [
+        9.424,
+        0.0,
+        0.0
+      ],
+      [
+        -4.712,
+        8.161423405265,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        37.7401146
+      ]
+    ],
+    "pbc": [
+      true,
+      true,
+      true
+    ],
+    "data_files_sha256": {
+      "provenance.jsonl": "063d576bd09f6827408e42d14f50c6948b88a04e094fc89ca275eb0bb047bea7",
+      "set.000/box.npy": "eeeb582ccb82365380c57ade8f9833380f3296920ab694adc82f849ddba39b98",
+      "set.000/coord.npy": "3efa263eb13b52da755ac899dd8bf581729501dc2f778ea85b7ccc3a3baf536a",
+      "set.000/energy.npy": "a6af57cf683d184fde7b0f38ef21dae91ff0a5ac6a6bb232c52db95229a714ba",
+      "set.000/force.npy": "09a7280dced0ddecef42fff581770a28f50665a942212bd89b46d77dab9aad4f",
+      "type.raw": "a87b2a032f6d0a40ac466279339f0c42a110884da949f3723281786d95413b0d",
+      "type_map.raw": "1a7b317ad5902214e42614da9aa436001f23395efec89d2f91f340f98c2a0d5a"
+    },
+    "final_CPU_resume_checkpoint_sha256": "f1f414e24d155de634c3c84ef35def83e4993c1f8da5313b18cd212b7bd5b45b"
+  }
+}

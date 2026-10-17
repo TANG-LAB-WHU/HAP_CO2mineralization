@@ -1,0 +1,140 @@
+{
+  "status": "B_converged_common_reference_energies_available",
+  "started_utc": "2026-10-13T00:11:05.798525+00:00",
+  "budget_scope": "bounded_continuation_with_preceding973seconds_charged_to_six_hour_umbrella",
+  "maximum_charged_seconds": 5400,
+  "charging": "all driver walltime including startup, admission, handoff and cleanup; conservative upper bound on GPU computation",
+  "deadline_utc": "2026-10-13T01:41:05.673525+00:00",
+  "old_B_charged_seconds_preserved": 10214.589597999933,
+  "already_charged_new_research_seconds": 973.3340170001611,
+  "maximum_geometry_updates": 50,
+  "segments": [
+    {
+      "segment_index": 1,
+      "root": "${RESEARCH_RUNS}/campaign-003/B-adaptive1-segment01",
+      "status": "partial_budget",
+      "started_utc": "2026-10-13T00:11:05.889459+00:00",
+      "seconds_cap": 1800,
+      "max_updates": 10,
+      "max_force_evaluations": 11,
+      "result_sha256": "925ebc587eb5b5a43be8752b9c9cb7b68dad11103a03f515d4d8e514f1d558e2",
+      "geometry_updates": 10,
+      "force_evaluations": 11,
+      "optimization_converged": false,
+      "physical_QA_passed": true,
+      "elapsed_seconds": 790.140999999945,
+      "finished_utc": "2026-10-13T00:24:16.007880+00:00",
+      "progress_block": {
+        "updates": 10,
+        "first_steps": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "last_steps": [
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "medians": {
+          "maximum_force_Ha_per_bohr": {
+            "first": 0.000227614358519553,
+            "last": 0.000211398168978041,
+            "limit": 0.00019446903811488875,
+            "relative_decrease": 0.07124414139329871,
+            "first_excess_ratio": 0.17044009023730866,
+            "last_excess_ratio": 0.08705309095605651
+          },
+          "RMS_force_Ha_per_bohr": {
+            "first": 4.656289530294532e-05,
+            "last": 4.531746234210533e-05,
+            "limit": 9.723451905744438e-05,
+            "relative_decrease": 0.026747326443878006,
+            "first_excess_ratio": 0,
+            "last_excess_ratio": 0
+          },
+          "maximum_displacement_bohr": {
+            "first": 0.0075093721,
+            "last": 0.0085217225,
+            "limit": 0.003,
+            "relative_decrease": -0.13481159097176731,
+            "first_excess_ratio": 1.503124033333333,
+            "last_excess_ratio": 1.8405741666666668
+          },
+          "RMS_displacement_bohr": {
+            "first": 0.0013436319,
+            "last": 0.0010781283,
+            "limit": 0.0015,
+            "relative_decrease": 0.1976014412876027,
+            "first_excess_ratio": 0,
+            "last_excess_ratio": 0
+          }
+        },
+        "groups": {
+          "force": {
+            "first_excess_ratio": 0.17044009023730866,
+            "last_excess_ratio": 0.08705309095605651,
+            "improving": true,
+            "worsening": false
+          },
+          "displacement": {
+            "first_excess_ratio": 1.503124033333333,
+            "last_excess_ratio": 1.8405741666666668,
+            "improving": false,
+            "worsening": false
+          }
+        },
+        "improving": true,
+        "stagnant_or_worse": false,
+        "energy_decrease_meV": 0.45021733809357123,
+        "endpoint": {
+          "step": 10,
+          "energy_Ha": -1692.8861127741352,
+          "maximum_force_Ha_per_bohr": 0.000145717706582873,
+          "RMS_force_Ha_per_bohr": 3.358226387340853e-05,
+          "maximum_displacement_bohr": 0.0033449692,
+          "RMS_displacement_bohr": 0.0006361634
+        },
+        "original_four_criteria_unchanged": true,
+        "interpretation": "Budget allocation only, never a substitute for native four-criterion convergence"
+      }
+    },
+    {
+      "segment_index": 2,
+      "root": "${RESEARCH_RUNS}/campaign-003/B-adaptive1-segment02",
+      "status": "converged",
+      "started_utc": "2026-10-13T00:24:16.053391+00:00",
+      "seconds_cap": 1800,
+      "max_updates": 10,
+      "max_force_evaluations": 11,
+      "result_sha256": "f0874b2d2a39c79865abeede06f216535f6417e224a70ed7b8bee2b5f44e6828",
+      "geometry_updates": 1,
+      "force_evaluations": 2,
+      "optimization_converged": true,
+      "physical_QA_passed": true,
+      "elapsed_seconds": 200.78099999995902,
+      "finished_utc": "2026-10-13T00:27:36.800842+00:00"
+    }
+  ],
+  "native_command_seconds_total": 927.6521100480168,
+  "total_force_evaluations": 13,
+  "total_geometry_updates": 11,
+  "automatic_retry": false,
+  "training_updates": 0,
+  "MD_runs": 0,
+  "sealed_R4_read": false,
+  "manuscript_eligible": false,
+  "release_sha256": "957bea0be184c76cbf9c572a63a322e1721ff32758ab557054d5a7d567d280d4",
+  "active_segment": null,
+  "charged_seconds": 991.125,
+  "consecutive_stagnant_blocks": 0,
+  "stop_reason": null,
+  "converged_result": "${RESEARCH_RUNS}/campaign-003/B-adaptive1-segment02/jobs/B91/native/result.json",
+  "combined_new_phase_charged_seconds": 1964.459017000161,
+  "finished_utc": "2026-10-13T00:27:36.824880+00:00",
+  "remaining_seconds": 4408.875
+}

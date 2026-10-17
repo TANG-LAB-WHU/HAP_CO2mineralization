@@ -1,7 +1,7 @@
 schema_version: 1
-last_updated: 2026-09-05
+last_updated: 2026-10-17
 active_branch: shawn_dev
-workflow_mode: local_writing
+workflow_mode: existing_computational_results_publication
 
 project:
   short_name: HAP_CO2mineralization
@@ -19,8 +19,8 @@ research_question: >-
   investigation for interfacial CO2 mineralization, and what atomistic mechanisms
   control their behavior under hydration?
 
-current_stage: phase_2b_1_machine_fulltext_extraction_pending_human
-current_decision: quarantine_legacy_results_until_provenance_and_quality_gates_pass
+current_stage: local_development_results_published_production_unqualified
+current_decision: preserve_negative_results_and_require_independent_validation_before_production
 
 compute:
   default_backend: local_lightweight
@@ -31,11 +31,11 @@ compute:
     credentials_in_repository: forbidden
 
 result_gates:
-  candidate_screening: blocked_missing_results_and_manifest
+  candidate_screening: one_MatterGen_smoke_rejected_missing_P_zero_accepted_HAP_candidates
   adsorption_ranking: blocked_pipeline_not_implemented
-  geometry_optimization: blocked_incomplete_failed_or_unreviewed_runs
-  aimd_dataset: blocked_insufficient_or_invalid_trajectories
-  mlip_validation: blocked_missing_dataset_and_model
+  geometry_optimization: documented_local_optimizations_without_surface_convergence_claim
+  aimd_dataset: short_development_trajectories_insufficient_for_production
+  mlip_validation: development_models_exist_independent_qualification_not_passed
   enhanced_sampling: blocked_not_implemented
 
 manuscript_evidence:
@@ -62,10 +62,10 @@ literature_evidence:
 
 known_blockers:
   - eight tracked CP2K or XYZ files contain unresolved Git conflict markers
-  - no candidate-generation or adsorption-ranking result set is present
+  - one MatterGen smoke sample was rejected for missing phosphorus; no accepted HAP generation or validated adsorption-ranking campaign exists
   - existing AIMD trajectories are too short, incomplete, or unstable
   - legacy HAP112 postprocessing lacks raw inputs and reports poor quality
-  - no populated MLIP dataset, validated model, scale-up run, or enhanced-sampling run is present
+  - development datasets and fitted models exist, but no independently validated production model or qualified scale-up is available
   - no literature claim has a human-confirmed full-text source locator
   - nowicki2024capture full-text extraction is blocked because the approved RSC PDF endpoint returned HTTP 403
 
@@ -76,3 +76,36 @@ next_actions:
   - resolve the Nowicki full-text blocker only through the approved publisher or a user-supplied licensed copy
   - keep all claim relationships pending until a separate human evidence-reconciliation decision
   - define quantitative go/no-go gates before new compute
+
+computational_results_release:
+  release_date: 2026-10-17
+  branch: shawn_dev
+  previous_public_commit: 96d3967eb932495607095bf38a272fab4ebc4c08
+  index: results/RELEASE-20261017.md
+  packages:
+    - results/campaign-003/final-followup-20261013
+    - results/b-local-development-20261013
+    - results/b182-diagnostics-20261013
+    - results/t2-fit-diagnostic-20261014
+  t2_training_fit_diagnostic_passed: true
+  independent_model_validation_passed: false
+  production_qualified: false
+  new_joint40_fit_executed: false
+  scientific_calculations_run_for_publication: false
+  manuscript_files_changed: false
+
+mattergen_status:
+  evidence_archive_time_utc: '2026-10-07T04:06:14Z'
+  workflow: pretrained_chemical_system_generation_then_MatterSim_evaluation
+  generated_samples: 1
+  generated_atoms: 8
+  generated_formula: CH2CaO4
+  accepted_HAP_candidates: 0
+  rejection: missing_phosphorus
+  fine_tuning_completion_evidence_found: false
+  generated_sample_downstream_CP2K_DeepMD_LAMMPS_lineage_found: false
+  original_generation_record: .research-runs/mattergen-smoke/generate.manifest.json
+  original_evaluation_record: .research-runs/mattergen-smoke/evaluate.manifest.json
+  original_filter_record: .research-runs/mattergen-smoke/filter_summary.json
+  evaluation_implementation: .research-runs/environment/mattergen_smoke-tested-v3.py
+  interpretation: Branch names and campaign-003 structures are not evidence of successful MatterGen generation or adaptation.

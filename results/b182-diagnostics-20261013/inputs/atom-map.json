@@ -1,0 +1,1877 @@
+{
+  "schema": "hap-B182-copy-map/v1",
+  "source_geometry_sha256": "d5ca21b1fe96cd79f3250c6bf6843540e6af22fa2207f223ab9b93d281d2d36b",
+  "replication": [
+    2,
+    1,
+    1
+  ],
+  "mapping": [
+    {
+      "atom_id_one_based": 1,
+      "base_atom_id_one_based": 1,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 2,
+      "base_atom_id_one_based": 2,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 3,
+      "base_atom_id_one_based": 3,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 4,
+      "base_atom_id_one_based": 4,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 5,
+      "base_atom_id_one_based": 5,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 6,
+      "base_atom_id_one_based": 6,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 7,
+      "base_atom_id_one_based": 7,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 8,
+      "base_atom_id_one_based": 8,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 9,
+      "base_atom_id_one_based": 9,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 10,
+      "base_atom_id_one_based": 10,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 11,
+      "base_atom_id_one_based": 11,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 12,
+      "base_atom_id_one_based": 12,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 13,
+      "base_atom_id_one_based": 13,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 14,
+      "base_atom_id_one_based": 14,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 15,
+      "base_atom_id_one_based": 15,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 16,
+      "base_atom_id_one_based": 16,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 17,
+      "base_atom_id_one_based": 17,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 18,
+      "base_atom_id_one_based": 18,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 19,
+      "base_atom_id_one_based": 19,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 20,
+      "base_atom_id_one_based": 20,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 21,
+      "base_atom_id_one_based": 21,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 22,
+      "base_atom_id_one_based": 22,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 23,
+      "base_atom_id_one_based": 23,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 24,
+      "base_atom_id_one_based": 24,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 25,
+      "base_atom_id_one_based": 25,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 26,
+      "base_atom_id_one_based": 26,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 27,
+      "base_atom_id_one_based": 27,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 28,
+      "base_atom_id_one_based": 28,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 29,
+      "base_atom_id_one_based": 29,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 30,
+      "base_atom_id_one_based": 30,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 31,
+      "base_atom_id_one_based": 31,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 32,
+      "base_atom_id_one_based": 32,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 33,
+      "base_atom_id_one_based": 33,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 34,
+      "base_atom_id_one_based": 34,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 35,
+      "base_atom_id_one_based": 35,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 36,
+      "base_atom_id_one_based": 36,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 37,
+      "base_atom_id_one_based": 37,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 38,
+      "base_atom_id_one_based": 38,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 39,
+      "base_atom_id_one_based": 39,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 40,
+      "base_atom_id_one_based": 40,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 41,
+      "base_atom_id_one_based": 41,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 42,
+      "base_atom_id_one_based": 42,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 43,
+      "base_atom_id_one_based": 43,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 44,
+      "base_atom_id_one_based": 44,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 45,
+      "base_atom_id_one_based": 45,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 46,
+      "base_atom_id_one_based": 46,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 47,
+      "base_atom_id_one_based": 47,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 48,
+      "base_atom_id_one_based": 48,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 49,
+      "base_atom_id_one_based": 49,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 50,
+      "base_atom_id_one_based": 50,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 51,
+      "base_atom_id_one_based": 51,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 52,
+      "base_atom_id_one_based": 52,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 53,
+      "base_atom_id_one_based": 53,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 54,
+      "base_atom_id_one_based": 54,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 55,
+      "base_atom_id_one_based": 55,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 56,
+      "base_atom_id_one_based": 56,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 57,
+      "base_atom_id_one_based": 57,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 58,
+      "base_atom_id_one_based": 58,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 59,
+      "base_atom_id_one_based": 59,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 60,
+      "base_atom_id_one_based": 60,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 61,
+      "base_atom_id_one_based": 61,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 62,
+      "base_atom_id_one_based": 62,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 63,
+      "base_atom_id_one_based": 63,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 64,
+      "base_atom_id_one_based": 64,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 65,
+      "base_atom_id_one_based": 65,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 66,
+      "base_atom_id_one_based": 66,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 67,
+      "base_atom_id_one_based": 67,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 68,
+      "base_atom_id_one_based": 68,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 69,
+      "base_atom_id_one_based": 69,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 70,
+      "base_atom_id_one_based": 70,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 71,
+      "base_atom_id_one_based": 71,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 72,
+      "base_atom_id_one_based": 72,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 73,
+      "base_atom_id_one_based": 73,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 74,
+      "base_atom_id_one_based": 74,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 75,
+      "base_atom_id_one_based": 75,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 76,
+      "base_atom_id_one_based": 76,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 77,
+      "base_atom_id_one_based": 77,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 78,
+      "base_atom_id_one_based": 78,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 79,
+      "base_atom_id_one_based": 79,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 80,
+      "base_atom_id_one_based": 80,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 81,
+      "base_atom_id_one_based": 81,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 82,
+      "base_atom_id_one_based": 82,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 83,
+      "base_atom_id_one_based": 83,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 84,
+      "base_atom_id_one_based": 84,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 85,
+      "base_atom_id_one_based": 85,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 86,
+      "base_atom_id_one_based": 86,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 87,
+      "base_atom_id_one_based": 87,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 88,
+      "base_atom_id_one_based": 88,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 89,
+      "base_atom_id_one_based": 89,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 90,
+      "base_atom_id_one_based": 90,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 91,
+      "base_atom_id_one_based": 91,
+      "copy_index": 0,
+      "copy_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 92,
+      "base_atom_id_one_based": 1,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 93,
+      "base_atom_id_one_based": 2,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 94,
+      "base_atom_id_one_based": 3,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 95,
+      "base_atom_id_one_based": 4,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 96,
+      "base_atom_id_one_based": 5,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 97,
+      "base_atom_id_one_based": 6,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 98,
+      "base_atom_id_one_based": 7,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 99,
+      "base_atom_id_one_based": 8,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 100,
+      "base_atom_id_one_based": 9,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 101,
+      "base_atom_id_one_based": 10,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 102,
+      "base_atom_id_one_based": 11,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 103,
+      "base_atom_id_one_based": 12,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 104,
+      "base_atom_id_one_based": 13,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 105,
+      "base_atom_id_one_based": 14,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 106,
+      "base_atom_id_one_based": 15,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 107,
+      "base_atom_id_one_based": 16,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 108,
+      "base_atom_id_one_based": 17,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 109,
+      "base_atom_id_one_based": 18,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 110,
+      "base_atom_id_one_based": 19,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 111,
+      "base_atom_id_one_based": 20,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 112,
+      "base_atom_id_one_based": 21,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 113,
+      "base_atom_id_one_based": 22,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 114,
+      "base_atom_id_one_based": 23,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 115,
+      "base_atom_id_one_based": 24,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 116,
+      "base_atom_id_one_based": 25,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 117,
+      "base_atom_id_one_based": 26,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 118,
+      "base_atom_id_one_based": 27,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 119,
+      "base_atom_id_one_based": 28,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 120,
+      "base_atom_id_one_based": 29,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 121,
+      "base_atom_id_one_based": 30,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 122,
+      "base_atom_id_one_based": 31,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 123,
+      "base_atom_id_one_based": 32,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 124,
+      "base_atom_id_one_based": 33,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 125,
+      "base_atom_id_one_based": 34,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 126,
+      "base_atom_id_one_based": 35,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 127,
+      "base_atom_id_one_based": 36,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 128,
+      "base_atom_id_one_based": 37,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 129,
+      "base_atom_id_one_based": 38,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 130,
+      "base_atom_id_one_based": 39,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 131,
+      "base_atom_id_one_based": 40,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 132,
+      "base_atom_id_one_based": 41,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 133,
+      "base_atom_id_one_based": 42,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 134,
+      "base_atom_id_one_based": 43,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 135,
+      "base_atom_id_one_based": 44,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 136,
+      "base_atom_id_one_based": 45,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 137,
+      "base_atom_id_one_based": 46,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 138,
+      "base_atom_id_one_based": 47,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 139,
+      "base_atom_id_one_based": 48,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 140,
+      "base_atom_id_one_based": 49,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 141,
+      "base_atom_id_one_based": 50,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 142,
+      "base_atom_id_one_based": 51,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 143,
+      "base_atom_id_one_based": 52,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 144,
+      "base_atom_id_one_based": 53,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 145,
+      "base_atom_id_one_based": 54,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 146,
+      "base_atom_id_one_based": 55,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 147,
+      "base_atom_id_one_based": 56,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 148,
+      "base_atom_id_one_based": 57,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 149,
+      "base_atom_id_one_based": 58,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 150,
+      "base_atom_id_one_based": 59,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 151,
+      "base_atom_id_one_based": 60,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 152,
+      "base_atom_id_one_based": 61,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 153,
+      "base_atom_id_one_based": 62,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 154,
+      "base_atom_id_one_based": 63,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 155,
+      "base_atom_id_one_based": 64,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 156,
+      "base_atom_id_one_based": 65,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 157,
+      "base_atom_id_one_based": 66,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 158,
+      "base_atom_id_one_based": 67,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 159,
+      "base_atom_id_one_based": 68,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 160,
+      "base_atom_id_one_based": 69,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 161,
+      "base_atom_id_one_based": 70,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 162,
+      "base_atom_id_one_based": 71,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 163,
+      "base_atom_id_one_based": 72,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 164,
+      "base_atom_id_one_based": 73,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 165,
+      "base_atom_id_one_based": 74,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 166,
+      "base_atom_id_one_based": 75,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 167,
+      "base_atom_id_one_based": 76,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 168,
+      "base_atom_id_one_based": 77,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 169,
+      "base_atom_id_one_based": 78,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 170,
+      "base_atom_id_one_based": 79,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 171,
+      "base_atom_id_one_based": 80,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 172,
+      "base_atom_id_one_based": 81,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 173,
+      "base_atom_id_one_based": 82,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 174,
+      "base_atom_id_one_based": 83,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 175,
+      "base_atom_id_one_based": 84,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 176,
+      "base_atom_id_one_based": 85,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 177,
+      "base_atom_id_one_based": 86,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 178,
+      "base_atom_id_one_based": 87,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 179,
+      "base_atom_id_one_based": 88,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 180,
+      "base_atom_id_one_based": 89,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 181,
+      "base_atom_id_one_based": 90,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "atom_id_one_based": 182,
+      "base_atom_id_one_based": 91,
+      "copy_index": 1,
+      "copy_translation": [
+        1,
+        0,
+        0
+      ]
+    }
+  ],
+  "CO2_groups_one_based": [
+    [
+      89,
+      90,
+      91
+    ],
+    [
+      180,
+      181,
+      182
+    ]
+  ],
+  "original_OH_pairs_one_based": [
+    [
+      17,
+      43
+    ],
+    [
+      18,
+      44
+    ],
+    [
+      61,
+      87
+    ],
+    [
+      62,
+      88
+    ],
+    [
+      108,
+      134
+    ],
+    [
+      109,
+      135
+    ],
+    [
+      152,
+      178
+    ],
+    [
+      153,
+      179
+    ]
+  ]
+}

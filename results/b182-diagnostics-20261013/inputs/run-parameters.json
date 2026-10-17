@@ -1,0 +1,161 @@
+{
+  "cell_A": [
+    [
+      18.848,
+      0.0,
+      0.0
+    ],
+    [
+      -4.712,
+      8.161423405265,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      37.7401146
+    ]
+  ],
+  "pbc": [
+    true,
+    true,
+    true
+  ],
+  "B182_composition": {
+    "Ca": 40,
+    "P": 24,
+    "O": 108,
+    "H": 8,
+    "C": 2
+  },
+  "B182_natoms": 182,
+  "clean176_natoms": 176,
+  "replication": [
+    2,
+    1,
+    1
+  ],
+  "coverage": "Two CO2 on 176 substrate atoms; same coverage as parent B91. Slab thickness and vacuum unchanged.",
+  "CP2K": {
+    "version": "2025.1",
+    "image_digest": "cp2k/cp2k@sha256:e2912cc9500a42a08b3e057e383182b96f395b7477c8eb55e93db6e29cb1c2ae",
+    "external_assets_sha256": {
+      "BASIS_MOLOPT": "686dd72e7601ee41d4a173e4c7c3946f1e750f03095090f44d3821c180a81a61",
+      "GTH_POTENTIALS": "5a9bfbc3b37a55917ade4fb704b80546d210d843759b94e3915e74acfc3fafb2",
+      "dftd3.dat": "1f5041914fb3a7fa6c97602d82da6cb9129c1c1dba675db23522de9c2837dafd"
+    },
+    "DFT": "PBE-D3(BJ), GPW, DZVP-MOLOPT-SR-GTH/GTH-PBE, 1200/80 Ry; exact keywords in inputs",
+    "charge": 0,
+    "multiplicity": 1,
+    "UKS": false,
+    "B182_electrons": 1184,
+    "clean176_electrons": 1152,
+    "static_guess": "ATOMIC",
+    "DFT4fs_guess": "ATOMIC",
+    "step340_guess": "RESTART",
+    "step340_external_WFN_sha256": "2702c5071bb3d7acb1f61ada817ec13c19fe231364a701d84ee96aba78ff323e",
+    "step340_WFN_source": "Independent full182 direct DFT trajectory step16; electronic initial guess only"
+  },
+  "direct_DFT4fs": {
+    "seed": 2026101421,
+    "steps": 16,
+    "frames": 17,
+    "dt_fs": 0.25,
+    "ensemble": "NVE",
+    "initial_temperature_K": 300,
+    "temperature_DOF": 543,
+    "initial_COM_removed": true,
+    "all_atoms_movable": true
+  },
+  "exploratory_ML": {
+    "warning": "Unvalidated exploratory ML, model failed validation",
+    "model_validated": false,
+    "model_sha256": "57c4fc2d7b6890dccdb1346c9d5641f18047feeeb3800df94028c0bbd993fe54",
+    "ensemble": "NVE",
+    "initial_T_K": 300,
+    "dt_fs": 0.25,
+    "first_segment_steps": 80,
+    "total_steps": 800,
+    "later_check_interval_steps": 20,
+    "stop_rules": {
+      "min_pair_A": 0.6,
+      "max_force_norm_eV_A": 100,
+      "temperature_K": 1000,
+      "CO_A": [
+        0.9,
+        1.5
+      ],
+      "OCO_min_deg": 150,
+      "OH_A": [
+        0.7,
+        1.4
+      ],
+      "PO4_cutoff_A": 1.9,
+      "energy_departure_meV_atom": 20,
+      "old_energy_threshold_1_meV_atom": "Report only; not a validation claim"
+    },
+    "seed": 2026101343,
+    "temperature_DOF": 543,
+    "velocity_algorithm": "NumPy Generator(PCG64(full frozen seed)); N independent standard-normal triples divided by sqrt(mass); subtract one mass-weighted global COM; scale raw KE to (3N-3)kBT/2 using pinned LAMMPS metal constants; A/ps; no rotation removal",
+    "velocity_numpy_version": "1.26.4",
+    "initial_velocities_sha256": "06480585cb88cea3092ce8956d23403293ff10aead592a5193aabdc36cdcfa7f",
+    "velocity_policy": "Independent complete-N draw after replication; no copied velocities",
+    "masses_amu": {
+      "Ca": 40.078,
+      "P": 30.973762,
+      "O": 15.9994,
+      "H": 1.00794,
+      "C": 12.0107
+    },
+    "neighbor_branches": [
+      {
+        "type": "se_e2_a",
+        "rcut_A": 5.0,
+        "sel": [
+          16,
+          12,
+          36,
+          4,
+          4
+        ]
+      },
+      {
+        "type": "se_e3",
+        "rcut_A": 3.2,
+        "sel": [
+          8,
+          4,
+          12,
+          4,
+          4
+        ]
+      }
+    ],
+    "actual_steps": 340,
+    "actual_frames": 341,
+    "actual_time_fs": 85,
+    "planned_time_fs": 200,
+    "local_slab_reference_atom_ids": [
+      [
+        137,
+        144,
+        52
+      ],
+      [
+        46,
+        53,
+        143
+      ]
+    ],
+    "image_digest": "deepmodeling/deepmd-kit@sha256:23d23b922459eb49b23f9d4977b6e453fd17feb2ee03a280c70fb7f4a6452e8c",
+    "LAMMPS_version": "29 Aug 2024",
+    "control_archive_is_not_a_turnkey_launcher": true,
+    "known_stop_label_error_retained": true
+  },
+  "source_roles": {
+    "static": "representation check only",
+    "DFT4fs": "direct DFT short response only",
+    "ML85fs": "unvalidated exploration stopped at OH alarm",
+    "DFT-step340": "single-frame diagnostic; not independent model qualification"
+  }
+}

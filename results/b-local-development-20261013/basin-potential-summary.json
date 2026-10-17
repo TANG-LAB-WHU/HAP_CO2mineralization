@@ -1,0 +1,291 @@
+{
+  "schema": "publication-review-basin-potential-summary/v1",
+  "scope": "Read-only review of completed basin-potential training/development summaries; no raw trajectory files, array data files, model/checkpoint files or sealed holdouts read or hashed. Aggregate fields only were extracted from the two explicitly authorized training score JSON files; per-frame numerical content was not analyzed or reproduced.",
+  "source_root": ".research-runs/basin-potential-20261013",
+  "source_level_manuscript_eligible": false,
+  "publication_note": "Provenance review only; repository evidence/inventory eligibility must be established before manuscript inclusion. No training result is presented as generalization.",
+  "results": [
+    {
+      "id": "fixed_training_dataset",
+      "status": "final142_data_QA_passed",
+      "frames": 142,
+      "composition": [
+        {
+          "id": "R1",
+          "frame_count": 15,
+          "natoms": 91
+        },
+        {
+          "id": "R2",
+          "frame_count": 15,
+          "natoms": 91
+        },
+        {
+          "id": "R5",
+          "frame_count": 15,
+          "natoms": 91
+        },
+        {
+          "id": "R6",
+          "frame_count": 15,
+          "natoms": 91
+        },
+        {
+          "id": "R7",
+          "frame_count": 15,
+          "natoms": 91
+        },
+        {
+          "id": "R8",
+          "frame_count": 15,
+          "natoms": 91
+        },
+        {
+          "id": "B-optimization",
+          "frame_count": 12,
+          "natoms": 91
+        },
+        {
+          "id": "clean-optimization",
+          "frame_count": 32,
+          "natoms": 88
+        },
+        {
+          "id": "B-T",
+          "frame_count": 4,
+          "natoms": 91
+        },
+        {
+          "id": "clean-T",
+          "frame_count": 4,
+          "natoms": 88
+        }
+      ],
+      "interpretation": "Training/development data only; these counts do not establish independent validation.",
+      "sources": [
+        "dataset_manifest",
+        "dataset_QA"
+      ]
+    },
+    {
+      "id": "B_and_clean_thermal_sampling",
+      "status": "completed; all 17 frames per trajectory passed recorded reference and physical QA",
+      "trajectories": [
+        {
+          "id": "B-T",
+          "status": "completed",
+          "natoms": 91,
+          "seed": 2026101311,
+          "steps": 16,
+          "recorded_frames": 17,
+          "selected_training_frames": 4,
+          "selected_steps": [
+            4,
+            8,
+            12,
+            16
+          ]
+        },
+        {
+          "id": "clean-T",
+          "status": "completed",
+          "natoms": 88,
+          "seed": 2026101312,
+          "steps": 16,
+          "recorded_frames": 17,
+          "selected_training_frames": 4,
+          "selected_steps": [
+            4,
+            8,
+            12,
+            16
+          ]
+        }
+      ],
+      "confirmed_DFT_evaluations": 34,
+      "method": {
+        "ensemble": "NVE",
+        "initial_temperature_K": 300,
+        "time_step_fs": 0.25,
+        "duration_fs_each": 4,
+        "label_method": "PBE-D3(BJ); GPW 1200/80 Ry, NGRIDS4, EPS_DEFAULT1e-10, inner/outer EPS_SCF1e-8; DZVP-MOLOPT-SR-GTH/GTH-PBE Ca10 P5 O6 H1 C4; neutral singlet; periodic XYZ; Z dipole position2.0 switchF; D3 cutoff15A, C9F. Exact basis/potential/dispersion assets and CP2K image inherited from the successful campaign003 release.",
+        "periodicity": "XYZ",
+        "cell_vectors_A": [
+          [
+            9.424,
+            0.0,
+            0.0
+          ],
+          [
+            -4.712,
+            8.161423405265,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            37.7401146
+          ]
+        ],
+        "step_zero_excluded_from_training": true
+      },
+      "interpretation": "Two 300 K-initialized 4 fs local trajectories; not an equilibrated ensemble or evidence of thermal adsorption stability.",
+      "sources": [
+        "B_T_terminal",
+        "clean_T_terminal",
+        "dataset_QA",
+        "protocol",
+        "actual_thermal_methods",
+        "fresh20000_terminal"
+      ]
+    },
+    {
+      "id": "fresh_candidate_20000",
+      "status": "stopped_preserving_evidence",
+      "stop_reason": "Frozen train gates failed",
+      "original_fresh_weights_and_Adam_lineage": true,
+      "retained_optimizer_updates": 20000,
+      "actual_prior_updates_including_lost": 20768,
+      "lost_optimizer_updates": 768,
+      "nonbitwise_sampler_reset_count": 4,
+      "original_training_gates_passed": false,
+      "historical_validation_evaluated": false,
+      "interpretation": "One fresh candidate lineage recovered across engineering interruptions; not an uninterrupted or bitwise-reproducible 20,000-step run. Training gates failed; no generalization claim.",
+      "sources": [
+        "fresh20000_terminal",
+        "fresh20000_completion",
+        "diagnostic_completion",
+        "diagnostic_baseline_score"
+      ]
+    },
+    {
+      "id": "optimization_diagnostic_additional4000",
+      "status": "completed_diagnostic",
+      "additional_retained_updates": 4000,
+      "total_retained_updates": 24000,
+      "learning_rate": 0.0001,
+      "diagnostic_success": false,
+      "relative_criteria_met": false,
+      "original_training_gates_passed": false,
+      "candidate_promoted": false,
+      "H_evaluated": false,
+      "MLMD_started": false,
+      "relative_criteria": {
+        "overall_force_RMSE_reduction_fraction_min": 0.2,
+        "each_macrofamily_force_RMSE_increase_fraction_max": 0.05
+      },
+      "force_results": [
+        {
+          "population": "pooled",
+          "frames": 142,
+          "baseline_20000_force_RMSE_eV_A": 0.1410520676779788,
+          "additional4000_force_RMSE_eV_A": 0.12827147999725796,
+          "recorded_relative_change_fraction": -0.09060900624228241,
+          "recorded_current_to_baseline_ratio": 0.9093909937577176,
+          "recorded_relative_criterion_met": false,
+          "original_train_force_RMSE_limit_eV_A": 0.03,
+          "original_train_force_gate_passed": false,
+          "baseline_max_force_component_error_eV_A": 1.0367465323570346,
+          "additional4000_max_force_component_error_eV_A": 0.9532065862820672
+        },
+        {
+          "population": "old",
+          "frames": 90,
+          "baseline_20000_force_RMSE_eV_A": 0.16978326804965302,
+          "additional4000_force_RMSE_eV_A": 0.15442553032092685,
+          "recorded_relative_change_fraction": -0.09045495416094129,
+          "recorded_current_to_baseline_ratio": 0.9095450458390587,
+          "recorded_relative_criterion_met": true,
+          "original_train_force_RMSE_limit_eV_A": 0.03,
+          "original_train_force_gate_passed": false,
+          "baseline_max_force_component_error_eV_A": 1.0367465323570346,
+          "additional4000_max_force_component_error_eV_A": 0.9532065862820672
+        },
+        {
+          "population": "B",
+          "frames": 16,
+          "baseline_20000_force_RMSE_eV_A": 0.06512940190890437,
+          "additional4000_force_RMSE_eV_A": 0.061942467482354144,
+          "recorded_relative_change_fraction": -0.0489323459626998,
+          "recorded_current_to_baseline_ratio": 0.9510676540373002,
+          "recorded_relative_criterion_met": true,
+          "original_train_force_RMSE_limit_eV_A": 0.03,
+          "original_train_force_gate_passed": false,
+          "baseline_max_force_component_error_eV_A": 0.35152317452198356,
+          "additional4000_max_force_component_error_eV_A": 0.5636078461728731
+        },
+        {
+          "population": "clean",
+          "frames": 36,
+          "baseline_20000_force_RMSE_eV_A": 0.06326383572601996,
+          "additional4000_force_RMSE_eV_A": 0.05601639376746676,
+          "recorded_relative_change_fraction": -0.11455900318690881,
+          "recorded_current_to_baseline_ratio": 0.8854409968130912,
+          "recorded_relative_criterion_met": true,
+          "original_train_force_RMSE_limit_eV_A": 0.03,
+          "original_train_force_gate_passed": false,
+          "baseline_max_force_component_error_eV_A": 0.3516679782257865,
+          "additional4000_max_force_component_error_eV_A": 0.2980310042655541
+        }
+      ],
+      "interpretation": "Recorded pooled force RMSE decreased by 9.06%, below the required 20%; all three macrofamily relative criteria passed, but all original 0.03 eV/A training force gates still failed. B maximum component error increased. Optimization diagnostics are not holdout acceptance.",
+      "sources": [
+        "diagnostic_terminal",
+        "diagnostic_completion",
+        "diagnostic_baseline_score",
+        "diagnostic_final_score",
+        "protocol"
+      ]
+    }
+  ],
+  "sources": {
+    "protocol": {
+      "path": ".research-runs/basin-potential-20261013/prepared1/protocol.json",
+      "sha256_raw_bytes": "275dc832571c28fc5846b8fbad9c904f3fa07c735a16ff682c454ac28832f123"
+    },
+    "dataset_manifest": {
+      "path": ".research-runs/basin-potential-20261013/recovery1-run/training-data/manifest.json",
+      "sha256_raw_bytes": "b3c403faf7cb29c3e91bdbe1b1ea90dc7cf2db5e55a788d7ce910d99608d678e"
+    },
+    "dataset_QA": {
+      "path": ".research-runs/basin-potential-20261013/recovery1-run/training-data/QA-report.json",
+      "sha256_raw_bytes": "2ac74966538bae846a6827a24555d476d195f311c1d4828bbefc8299564c569c"
+    },
+    "actual_thermal_methods": {
+      "path": ".research-runs/basin-potential-20261013/recovery1-run/training-data/thermal-methods.json",
+      "sha256_raw_bytes": "f0c12f39328f8e1ca63f88b366626ba8dab71c17f0da4d5b528e0025591f83b8"
+    },
+    "B_T_terminal": {
+      "path": ".research-runs/basin-potential-20261013/first1-run/stages/B-T/state.json",
+      "sha256_raw_bytes": "72ae7315c41b1a5d11549ad5ca8b88ed709a327b60102966165827409a15c468"
+    },
+    "clean_T_terminal": {
+      "path": ".research-runs/basin-potential-20261013/recovery1-run/stages/clean-T/state.json",
+      "sha256_raw_bytes": "0f6b3e2df4f0c9aeef8f0b76189ccf53ebc2a59cad72153732bec99d61a68c2b"
+    },
+    "fresh20000_terminal": {
+      "path": ".research-runs/basin-potential-20261013/finalize20000-run/state.json",
+      "sha256_raw_bytes": "6bf61eb5e9a0261264620f02a3c38281107208ab5bcc39d98dd43407e7ab4ea1"
+    },
+    "fresh20000_completion": {
+      "path": ".research-runs/basin-potential-20261013/finalize20000-run/stages/train-finalize/jobs/train-fit/native/training-completion.json",
+      "sha256_raw_bytes": "d6d3d1729f00864c44f8cb96e2c186689a0fe9879a5fc8d561e220bec63738c7"
+    },
+    "diagnostic_terminal": {
+      "path": ".research-runs/basin-potential-20261013/optimization-diagnostic1-run/state.json",
+      "sha256_raw_bytes": "949ec7f36020f48ad0238acf7a8468d3ac4903e29c798f74388f9ae5d1032dc5"
+    },
+    "diagnostic_completion": {
+      "path": ".research-runs/basin-potential-20261013/optimization-diagnostic1-run/stages/optimization-diagnostic1/jobs/train-fit/native/diagnostic-completion.json",
+      "sha256_raw_bytes": "270e3d1c86d5a80ec345ecabd37b1d79700d696b07d66c919f269fb800ff180b"
+    },
+    "diagnostic_baseline_score": {
+      "path": ".research-runs/basin-potential-20261013/optimization-diagnostic1-run/stages/optimization-diagnostic1/jobs/train-fit/native/score-0.json",
+      "sha256_raw_bytes": "6017e821d9c1ed9e7d0e6eb1ae4e9bf5d0100c638c1c7c93c135a0090ff191ef"
+    },
+    "diagnostic_final_score": {
+      "path": ".research-runs/basin-potential-20261013/optimization-diagnostic1-run/stages/optimization-diagnostic1/jobs/train-fit/native/score-4000.json",
+      "sha256_raw_bytes": "76d3409c643b550029372b4236adb6668ba7444f06e6045145b37a7aba2746da"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "status": "stopped_preserving_partial_or_failed_evidence",
+  "started_utc": "2026-10-12T23:53:35.326571+00:00",
+  "total_seconds_cap": 900,
+  "points": [
+    {
+      "variant": "minus5",
+      "status": "failed",
+      "root": "${RESEARCH_RUNS}/campaign-003/A-tilt1-minus5",
+      "started_utc": "2026-10-12T23:53:35.397035+00:00",
+      "reference_QA_passed": false,
+      "physical_QA_passed": false,
+      "result_sha256": "cd917104bfc8a590d181c9dc3a53ce6079e41f0768135a9cd69ada4d9646df62",
+      "finished_utc": "2026-10-12T23:53:54.700687+00:00",
+      "elapsed_seconds": 19.328000000095926
+    }
+  ],
+  "native_command_seconds_total": 1.0411865419882815,
+  "charged_B_direction_seconds": 491.5780000000959,
+  "new_six_hour_research_ceiling_seconds": 21600,
+  "automatic_retry": false,
+  "training_updates": 0,
+  "MD_runs": 0,
+  "sealed_R4_read": false,
+  "manuscript_eligible": false,
+  "release_sha256": "b4172d0ab1a3272e02a53d5db623af517ab92e208eeeacbc230ab90942cab52c",
+  "active_point": null,
+  "charged_seconds": 19.578000000095926,
+  "stop_reason": "Native worker/watchdog failure",
+  "error_type": "RuntimeError",
+  "finished_utc": "2026-10-12T23:53:54.701688+00:00",
+  "combined_new_phase_charged_seconds": 511.15600000019185
+}

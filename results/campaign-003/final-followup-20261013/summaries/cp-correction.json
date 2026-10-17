@@ -1,0 +1,349 @@
+{
+  "schema": "campaign003-four-ghost-CP-analysis/v1",
+  "status": "completed_conditional_CP_analysis",
+  "protocol_sha256": "231d604a28d204af2b23f5f9558c651c1d4b8f0d1918472fe4089e4b38ead3db",
+  "analysis_source_sha256": "ba56dd9bab866734b510f840e8a98182cbf36a3c1171d2b74ca9c57f2ace7894",
+  "own_partition_source": {
+    "path": "${RESEARCH_RUNS}/campaign-003/fragments1-repair1-run/fragment-decomposition-postprocessed.json",
+    "sha256": "6ef4f1b4c89a8770a522f17262663ccdc1a613b88f6504be55ae1a7aacc4a5a3"
+  },
+  "frozen_sources": {
+    "B91": {
+      "result_path": "${RESEARCH_RUNS}/campaign-003/B-adaptive1-segment02/jobs/B91/native/result.json",
+      "result_sha256": "f0874b2d2a39c79865abeede06f216535f6417e224a70ed7b8bee2b5f44e6828"
+    },
+    "A91": {
+      "result_path": "${RESEARCH_RUNS}/campaign-003/first-batch-run/jobs/A91/native/result.json",
+      "result_sha256": "9c0f32a19db43ce5090169157e3755681e7a8df0e5f87597145aa4547889da24"
+    },
+    "clean88": {
+      "result_path": "${RESEARCH_RUNS}/campaign-003/references-run/jobs/clean88/native/result.json",
+      "result_sha256": "6231cadf62d5b17e4afe6e68e89ce226491a1cf41e7da907642eb1e2f2b8b6cf"
+    },
+    "gas3": {
+      "result_path": "${RESEARCH_RUNS}/campaign-003/references-run/jobs/gas3/native/result.json",
+      "result_sha256": "f25fe487adc9ad91eecc11064cb406561deda23dfcb5eced86bef98b54034db9"
+    },
+    "B-slab": {
+      "result_path": "${RESEARCH_RUNS}/campaign-003/fragments1-repair1-B-slab/jobs/clean88/native/result.json",
+      "result_sha256": "b66341cd5a9b2aeaba505baf1ca79b72a4d0280af2e40a8ef862747a0372f9d6"
+    },
+    "A-slab": {
+      "result_path": "${RESEARCH_RUNS}/campaign-003/fragments1-repair1-A-slab/jobs/clean88/native/result.json",
+      "result_sha256": "784ee5b7be56ea313e9c1948df608bb3b7f7f8d5376284944e8d1b4092073bf6"
+    },
+    "B-co2": {
+      "result_path": "${RESEARCH_RUNS}/campaign-003/fragments1-repair1-B-co2/jobs/gas3/native/result.json",
+      "result_sha256": "a025e8c01dc5982ed1a5302330a42640813f979615b49737ce0ee4bd04ce3dc0"
+    },
+    "A-co2": {
+      "result_path": "${RESEARCH_RUNS}/campaign-003/fragments1-repair1-A-co2/jobs/gas3/native/result.json",
+      "result_sha256": "815882662e0ac6fa58c305852e71a0698f4cb80d3608376b2bebac2070c73030"
+    }
+  },
+  "CP_sources": {
+    "B-slab-CP": {
+      "result_path": "${RESEARCH_RUNS}/campaign-003/cp1-B-slab-CP/jobs/clean88/native/result.json",
+      "result_sha256": "3671ac3ebe30e43ec0e1a3aaf7d60aa41a84975e70a9c047496e0ed58104cc1d",
+      "log_path": "${RESEARCH_RUNS}/campaign-003/cp1-B-slab-CP/jobs/clean88/native/cp2k.log",
+      "log_sha256": "e1c16b25423ca3e21420f7ac96c164205c07b150b2ba03b0ae2e392754c08717",
+      "input_sha256": "9a4aebbbd893f0031ebb220887d5dd33e24f10e9f244ebe050b9f3c3f74da2e4",
+      "coordinate_reference_sha256": "00b366485b97b67f300885ca354825e8c3e50c1aec5aeb2727cf2d891ddff95d",
+      "parent_endpoint_sha256": "8acafff603bfa32c9515347065fe7a7567f81d11a9b1d0c0f0bb11d45bb24fe6"
+    },
+    "A-slab-CP": {
+      "result_path": "${RESEARCH_RUNS}/campaign-003/cp1-A-slab-CP/jobs/clean88/native/result.json",
+      "result_sha256": "35cf99e78444abd9143119a897eb051e9609543340b06c2ad8523732b2f1cb61",
+      "log_path": "${RESEARCH_RUNS}/campaign-003/cp1-A-slab-CP/jobs/clean88/native/cp2k.log",
+      "log_sha256": "ed5b2ea76fb52fe556e1bbfe723a6f8ba4ecf5c13fd96847b7d06a0688a81587",
+      "input_sha256": "f6c7e88c787d017e48998a3b5cce91693057c1d8db37a1db8558bbd32a7ffca8",
+      "coordinate_reference_sha256": "82f16d241ae943aa97f0efe5c94d1b15b460c79dd93c6f083ca676105d56e99b",
+      "parent_endpoint_sha256": "4e1f557d65703eaffca94cd0f5d8fd93abca6996076090b9c8075ca31ca666e0"
+    },
+    "B-co2-CP": {
+      "result_path": "${RESEARCH_RUNS}/campaign-003/cp1-B-co2-CP/jobs/gas3/native/result.json",
+      "result_sha256": "5121f41c5d64536961daecfde075ca0641cbd2ecac151f1253e999f17372aecf",
+      "log_path": "${RESEARCH_RUNS}/campaign-003/cp1-B-co2-CP/jobs/gas3/native/cp2k.log",
+      "log_sha256": "4ade40b77e6168e8470b4bdb0e67c8ed3883c4c7e45022443d1f4fcbba47c101",
+      "input_sha256": "b65229f9a539d7a8ab344c4433b2cab567851aa068415393e7869554ddf64175",
+      "coordinate_reference_sha256": "00b366485b97b67f300885ca354825e8c3e50c1aec5aeb2727cf2d891ddff95d",
+      "parent_endpoint_sha256": "8acafff603bfa32c9515347065fe7a7567f81d11a9b1d0c0f0bb11d45bb24fe6"
+    },
+    "A-co2-CP": {
+      "result_path": "${RESEARCH_RUNS}/campaign-003/cp1-A-co2-CP/jobs/gas3/native/result.json",
+      "result_sha256": "97daedd8a28b1e75503e977ee7c70f09576ace927c4b6f40b5af09106fc9c23a",
+      "log_path": "${RESEARCH_RUNS}/campaign-003/cp1-A-co2-CP/jobs/gas3/native/cp2k.log",
+      "log_sha256": "9a6433fd7768b4260e9d19f80f17a060843870c8b23d16413ce1bbe58c3f3a16",
+      "input_sha256": "c2ee85939eefeb5b7df680828062bb6bd3d256a54468a80967a9e14e1eecf1af",
+      "coordinate_reference_sha256": "82f16d241ae943aa97f0efe5c94d1b15b460c79dd93c6f083ca676105d56e99b",
+      "parent_endpoint_sha256": "4e1f557d65703eaffca94cd0f5d8fd93abca6996076090b9c8075ca31ca666e0"
+    }
+  },
+  "own_and_complex_energies_Ha": {
+    "B91": -1692.8861132685824,
+    "A91": -1692.8637034685598,
+    "clean88": -1655.089499434855,
+    "gas3": -37.76148458052873,
+    "B-slab": -1655.0993744632024,
+    "A-slab": -1655.0873854408642,
+    "B-co2": -37.76017644881011,
+    "A-co2": -37.761309699509205
+  },
+  "ghost_energies_Ha": {
+    "B-slab-CP": -1655.1002455934715,
+    "A-slab-CP": -1655.087778908309,
+    "B-co2-CP": -37.76088326095755,
+    "A-co2-CP": -37.76159497753185
+  },
+  "fragment_own_minus_ghost_eV": {
+    "B-slab-CP": 0.023704662224707594,
+    "A-slab-CP": 0.010706794616691648,
+    "B-co2-CP": 0.019233338347396062,
+    "A-co2-CP": 0.00776281046167868
+  },
+  "c_A_eV": 0.018469605078370328,
+  "c_B_eV": 0.04293800057210366,
+  "c_B_minus_c_A_eV": 0.024468395493733332,
+  "I_raw_eV": {
+    "A": -0.4083974151879529,
+    "B": -0.7227985442292608
+  },
+  "I_CP_eV": {
+    "A": -0.3899278101095826,
+    "B": -0.6798605436571572
+  },
+  "Delta_I_raw_eV": -0.3144011290413079,
+  "Delta_I_CP_eV": -0.2899327335475746,
+  "Delta_Eads_raw_eV": -0.6098017241107259,
+  "Delta_Eads_CP_eV": -0.5853333286169925,
+  "algebraic_signs": {
+    "interaction": "B_lower",
+    "total_endpoint": "B_lower"
+  },
+  "zero_crossings_in_c_B_minus_c_A_eV": {
+    "interaction": 0.3144011290413079,
+    "total_endpoint": 0.6098017241107259
+  },
+  "absolute_adsorption_energies_by_named_reference": {
+    "original_clean88": {
+      "clean_reference": {
+        "energy_Ha": -1655.089499434855,
+        "result_path": "${RESEARCH_RUNS}/campaign-003/references-run/jobs/clean88/native/result.json",
+        "result_sha256": "6231cadf62d5b17e4afe6e68e89ce226491a1cf41e7da907642eb1e2f2b8b6cf"
+      },
+      "gas_reference": {
+        "result_path": "${RESEARCH_RUNS}/campaign-003/references-run/jobs/gas3/native/result.json",
+        "result_sha256": "f25fe487adc9ad91eecc11064cb406561deda23dfcb5eced86bef98b54034db9"
+      },
+      "systems": {
+        "A": {
+          "Eads_raw_eV": -0.34611395321154986,
+          "c_X_eV": 0.018469605078370328,
+          "Eads_CP_eV": -0.32764434813317955
+        },
+        "B": {
+          "Eads_raw_eV": -0.9559156773222758,
+          "c_X_eV": 0.04293800057210366,
+          "Eads_CP_eV": -0.9129776767501722
+        }
+      },
+      "Delta_Eads_CP_eV": -0.5853333286169925
+    },
+    "B_derived_qualified_clean88": {
+      "clean_reference": {
+        "available": true,
+        "energy_Ha": -1655.1006509598847,
+        "result_path": "${RESEARCH_RUNS}/campaign-003/cleanB1-segment04/jobs/clean88/native/result.json",
+        "result_sha256": "b6d165f3c376881c1d31dcc089a83aa675f67425470022eeaf33a2a9755b9f21",
+        "qualification": "original four optimizer criteria and QA; not vibrational/global minimum proof"
+      },
+      "gas_reference": {
+        "result_path": "${RESEARCH_RUNS}/campaign-003/references-run/jobs/gas3/native/result.json",
+        "result_sha256": "f25fe487adc9ad91eecc11064cb406561deda23dfcb5eced86bef98b54034db9"
+      },
+      "systems": {
+        "A": {
+          "Eads_raw_eV": -0.04266549839881405,
+          "c_X_eV": 0.018469605078370328,
+          "Eads_CP_eV": -0.02419589332044372
+        },
+        "B": {
+          "Eads_raw_eV": -0.6524672225095399,
+          "c_X_eV": 0.04293800057210366,
+          "Eads_CP_eV": -0.6095292219374363
+        }
+      },
+      "Delta_Eads_CP_eV": -0.5853333286169925
+    }
+  },
+  "new_clean_reference_assessment": {
+    "available": true,
+    "energy_Ha": -1655.1006509598847,
+    "result_path": "${RESEARCH_RUNS}/campaign-003/cleanB1-segment04/jobs/clean88/native/result.json",
+    "result_sha256": "b6d165f3c376881c1d31dcc089a83aa675f67425470022eeaf33a2a9755b9f21",
+    "qualification": "original four optimizer criteria and QA; not vibrational/global minimum proof"
+  },
+  "runtime_consistency": {
+    "B-slab-CP": {
+      "center_count": 91,
+      "real_nuclei_count": 88,
+      "ghost_center_count": 3,
+      "D3_ghost_minus_own_Ha": 0.0,
+      "D3_consistency_passed": true,
+      "own_native": {
+        "d3_energy_Ha": -0.54103768075866,
+        "d3_line_number": 1214,
+        "d3_line": "  Dispersion energy:                                           -0.54103768075866",
+        "d3_hit_count": 2,
+        "d3_spread_Ha": 0.0,
+        "selector": "last_consistent_D3_before_only_total_energy",
+        "energy_line_number": 1416,
+        "energy_line": " ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]          -1655.099374463202366",
+        "log_sha256": "2375a3262f3bdcb47d139e1dd43e125a367995455793dc018ee9732dac6b8227"
+      },
+      "ghost_native": {
+        "d3_energy_Ha": -0.54103768075866,
+        "d3_line_number": 1417,
+        "d3_line": "  Dispersion energy:                                           -0.54103768075866",
+        "d3_hit_count": 2,
+        "d3_spread_Ha": 0.0,
+        "selector": "last_consistent_D3_before_only_total_energy",
+        "energy_line_number": 1625,
+        "energy_line": " ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]          -1655.100245593471527",
+        "log_sha256": "e1c16b25423ca3e21420f7ac96c164205c07b150b2ba03b0ae2e392754c08717"
+      },
+      "all_center_derivative_sum_eV_per_A": [
+        0.011930607679958771,
+        0.01631052151110858,
+        0.0009730129701797476
+      ],
+      "net_derivative_scope": "All 91 centers; no real-only force gate; not ML force labels"
+    },
+    "A-slab-CP": {
+      "center_count": 91,
+      "real_nuclei_count": 88,
+      "ghost_center_count": 3,
+      "D3_ghost_minus_own_Ha": 0.0,
+      "D3_consistency_passed": true,
+      "own_native": {
+        "d3_energy_Ha": -0.54065882693626,
+        "d3_line_number": 1218,
+        "d3_line": "  Dispersion energy:                                           -0.54065882693626",
+        "d3_hit_count": 2,
+        "d3_spread_Ha": 0.0,
+        "selector": "last_consistent_D3_before_only_total_energy",
+        "energy_line_number": 1420,
+        "energy_line": " ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]          -1655.087385440864182",
+        "log_sha256": "e1786a6d587fdc4078d9216ecd449ad4a6beb1602c698075c1365fdf325f528e"
+      },
+      "ghost_native": {
+        "d3_energy_Ha": -0.54065882693626,
+        "d3_line_number": 1417,
+        "d3_line": "  Dispersion energy:                                           -0.54065882693626",
+        "d3_hit_count": 2,
+        "d3_spread_Ha": 0.0,
+        "selector": "last_consistent_D3_before_only_total_energy",
+        "energy_line_number": 1625,
+        "energy_line": " ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]          -1655.087778908309019",
+        "log_sha256": "ed5b2ea76fb52fe556e1bbfe723a6f8ba4ecf5c13fd96847b7d06a0688a81587"
+      },
+      "all_center_derivative_sum_eV_per_A": [
+        -2.4865690076912286e-05,
+        -3.6811467930522337e-05,
+        0.01124420461906601
+      ],
+      "net_derivative_scope": "All 91 centers; no real-only force gate; not ML force labels"
+    },
+    "B-co2-CP": {
+      "center_count": 91,
+      "real_nuclei_count": 3,
+      "ghost_center_count": 88,
+      "D3_ghost_minus_own_Ha": 0.0,
+      "D3_consistency_passed": true,
+      "own_native": {
+        "d3_energy_Ha": -0.00095507757111,
+        "d3_line_number": 763,
+        "d3_line": "  Dispersion energy:                                           -0.00095507757111",
+        "d3_hit_count": 1,
+        "d3_spread_Ha": 0.0,
+        "selector": "last_consistent_D3_before_only_total_energy",
+        "energy_line_number": 795,
+        "energy_line": " ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]            -37.760176448810107",
+        "log_sha256": "3e6f92a489187b2f5526249f0821b73bad67211a407e72d36313484205829fdd"
+      },
+      "ghost_native": {
+        "d3_energy_Ha": -0.00095507757111,
+        "d3_line_number": 1190,
+        "d3_line": "  Dispersion energy:                                           -0.00095507757111",
+        "d3_hit_count": 1,
+        "d3_spread_Ha": 0.0,
+        "selector": "last_consistent_D3_before_only_total_energy",
+        "energy_line_number": 1398,
+        "energy_line": " ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]            -37.760883260957549",
+        "log_sha256": "4ade40b77e6168e8470b4bdb0e67c8ed3883c4c7e45022443d1f4fcbba47c101"
+      },
+      "all_center_derivative_sum_eV_per_A": [
+        -0.0019510311035355722,
+        -0.004171616307697171,
+        0.0014004509134221293
+      ],
+      "net_derivative_scope": "All 91 centers; no real-only force gate; not ML force labels"
+    },
+    "A-co2-CP": {
+      "center_count": 91,
+      "real_nuclei_count": 3,
+      "ghost_center_count": 88,
+      "D3_ghost_minus_own_Ha": 0.0,
+      "D3_consistency_passed": true,
+      "own_native": {
+        "d3_energy_Ha": -0.00095140949053,
+        "d3_line_number": 758,
+        "d3_line": "  Dispersion energy:                                           -0.00095140949053",
+        "d3_hit_count": 1,
+        "d3_spread_Ha": 0.0,
+        "selector": "last_consistent_D3_before_only_total_energy",
+        "energy_line_number": 790,
+        "energy_line": " ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]            -37.761309699509205",
+        "log_sha256": "fdde4d2cf29beadb2050c276e963ecafb6d3156566d075a327d46ccfda4a1089"
+      },
+      "ghost_native": {
+        "d3_energy_Ha": -0.00095140949053,
+        "d3_line_number": 1199,
+        "d3_line": "  Dispersion energy:                                           -0.00095140949053",
+        "d3_hit_count": 1,
+        "d3_spread_Ha": 0.0,
+        "selector": "last_consistent_D3_before_only_total_energy",
+        "energy_line_number": 1407,
+        "energy_line": " ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]            -37.761594977531850",
+        "log_sha256": "9a6433fd7768b4260e9d19f80f17a060843870c8b23d16413ce1bbe58c3f3a16"
+      },
+      "all_center_derivative_sum_eV_per_A": [
+        -3.431700524641808e-07,
+        -5.463466231953903e-07,
+        0.0006827189937165549
+      ],
+      "net_derivative_scope": "All 91 centers; no real-only force gate; not ML force labels"
+    }
+  },
+  "warnings": [],
+  "decision_rules": [
+    "Report total-endpoint and interaction sensitivity separately; their algebraiczero crossings are c=0.6098017241107259eV and c=0.3144011290413079eV respectively.",
+    "These crossings are not uncertaintybars or new accuracy thresholds. If a correctedvalue is unresolved relative to observednumericalvariation, report unresolved rather than stableordering.",
+    "Unexpectednegativec_X requires checking basis/ghost/SCF/matching; do not silently clip it tozero or labelchemicaleffect.",
+    "A preserved sign supports survival of this finite-basisCP control only; a changed sign is a valid sensitivityresult. Neither outcome proves basislimit, functionalaccuracy or local/globalminima.",
+    "Stop after fouracceptedpoints andinterpretation. No automatic largerbasis, extraangles, Hessian, trajectories or newMLfit."
+  ],
+  "D3_added_again": false,
+  "ghost_derivatives_are_ML_labels": false,
+  "host_exit0_noOOM": "Verified independently by calling controller for each CP job",
+  "numerical_uncertainty_bound_eV": null,
+  "near_zero_policy": "Algebraic signs are not uncertainty bounds; unresolved against demonstrated numerical variation must remain unresolved",
+  "manuscript_eligible": false,
+  "minimum_proven": false,
+  "limits": [
+    "Finite-basis same-cell conditional counterpoise control only.",
+    "D3 is already included in total energies; density-dependent dipole changes need not cancel.",
+    "Old and qualified new clean references are reported separately and never mixed between A and B.",
+    "A tilt remains inconclusive; no vibrational, global-minimum, basis-limit, isolated-gas or functional-accuracy claim."
+  ]
+}

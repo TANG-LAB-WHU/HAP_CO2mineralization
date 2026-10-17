@@ -1,0 +1,115 @@
+{
+  "convergence": {
+    "maximum_force_Ha_per_bohr": 0.00019446903811488875,
+    "RMS_force_Ha_per_bohr": 9.723451905744438e-05,
+    "maximum_displacement_bohr": 0.003,
+    "RMS_displacement_bohr": 0.0015,
+    "trust_radius_A": 0.05
+  },
+  "common_assets": {
+    "/opt/cp2k/data/BASIS_MOLOPT": "686dd72e7601ee41d4a173e4c7c3946f1e750f03095090f44d3821c180a81a61",
+    "/opt/cp2k/data/GTH_POTENTIALS": "5a9bfbc3b37a55917ade4fb704b80546d210d843759b94e3915e74acfc3fafb2",
+    "/opt/cp2k/data/dftd3.dat": "1f5041914fb3a7fa6c97602d82da6cb9129c1c1dba675db23522de9c2837dafd"
+  },
+  "device_assets": {
+    "gpu": {
+      "/opt/cp2k/exe/local_cuda/cp2k.psmp": "2b77e60fc8a1f0b11446263ab0389085744ba8ba977a25b70ec93192d03a3c52",
+      "/usr/bin/mpiexec": "aa0a841e787b322075387076e91a860dbf2022afd1907848f8a6bfd825adeb33",
+      "/usr/bin/timeout": "0618e1ae490fafc2fa57664dae2f6f7c11f469f97e7083406f823d9083d43361",
+      "/usr/local/bin/entrypoint.sh": "03a446952c253c3b33e72e0f88fea29145bb36ab74d6159143a30ee09a0e22ab"
+    }
+  },
+  "image_reference": "cp2k/cp2k@sha256:e2912cc9500a42a08b3e057e383182b96f395b7477c8eb55e93db6e29cb1c2ae",
+  "gpu_uuid": "GPU-a0810e21-a5ac-2da4-ec88-793a0357a9a5",
+  "memory_bytes": 25769803776,
+  "schema": "campaign003-cleanB1/v1",
+  "approved_scope": "Clean88 basin check from B-extracted frozen slab",
+  "new_phase_wall_seconds_cap": 5400,
+  "segment_seconds_cap": 1800,
+  "maximum_segments": 5,
+  "updates_per_segment": 10,
+  "maximum_geometry_updates": 50,
+  "maximum_force_evaluations": 55,
+  "already_charged_new_research_seconds": 3660.536017000093,
+  "umbrella_new_research_phase_seconds_limit": 21600,
+  "prior_budget_state": {
+    "path": "${RESEARCH_RUNS}/campaign-003/fragments1-repair1-run/state.json",
+    "sha256": "43d75ed7df6d57a9a720e72db7eb7a0c7eb7fc04ddd00e4bc7b989a23ab902ee"
+  },
+  "initial_checkpoint_root": "${RESEARCH_RUNS}/campaign-003/fragments1-repair1-B-slab/jobs/clean88/native",
+  "initial_checkpoint_sha256": {
+    "${RESEARCH_RUNS}/campaign-003/fragments1-repair1-B-slab/jobs/clean88/native/result.json": "b66341cd5a9b2aeaba505baf1ca79b72a4d0280af2e40a8ef862747a0372f9d6",
+    "${RESEARCH_RUNS}/campaign-003/fragments1-repair1-B-slab/jobs/clean88/native/HAP-C003-fragment-B-slab-RESTART.wfn": "ea4694bd13dd60cfa06fa3de65387667deb0d41564c7602e7c7d1b3f8c04665c"
+  },
+  "initial_geometry": {
+    "path": "${RESEARCH_RUNS}/campaign-003/prepared-fragments1-repair1/inputs/B-slab/geometry.extxyz",
+    "sha256": "36cf61345ac5f6d79b20305510000a5065cd2a8f2e1ebc5b69f299bd6222aa2d"
+  },
+  "progress_policy": {
+    "block_updates": 10,
+    "minimum_relative_excess_improvement": 0.05,
+    "maximum_other_group_relative_worsening": 0.2,
+    "consecutive_stagnant_blocks_to_stop": 2,
+    "energy_for_diagnosis_only": true,
+    "comparison": "Accepted updates first half vs last half; exclude repeatedstep0; median force and displacement normalized by original limits, floors1. Require>=5percent reduction in above-limit excess in either group without>20percent worsening in either group."
+  },
+  "fixed_cell_A": [
+    [
+      9.424,
+      0.0,
+      0.0
+    ],
+    [
+      -4.712,
+      8.161423405265,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      37.7401146
+    ]
+  ],
+  "pbc": [
+    true,
+    true,
+    true
+  ],
+  "method": "PBE-D3(BJ),1200/80Ry,DZVP-MOLOPT-SR-GTH/GTH-PBE,EPS_SCF1e-8,neutral closed shell,XYZ periodic,same cell,Z dipole position2.0/switchF,all atoms movable,fresh BFGS trust0.05A",
+  "first_hessian": "Fresh BFGS264-dimensional approximation for88 atoms; no91-atom or old-clean Hessian reuse",
+  "continuation_hessian": "Only this new clean88 series checkpoint, verified coordinates/order/cell",
+  "SCF_initialization": "Existing converged B-slab88 WFN; no atomic fallback",
+  "original_clean_source": {
+    "input": "${RESEARCH_RUNS}/campaign-003/prepared-references/inputs/clean88/relax.inp",
+    "input_sha256": "784ce469a7da79757b65d922aac4c78a9bbc17f8ebdaa4e6f2b83e827156fe32",
+    "result": "${RESEARCH_RUNS}/campaign-003/references-run/jobs/clean88/native/result.json",
+    "result_sha256": "6231cadf62d5b17e4afe6e68e89ce226491a1cf41e7da907642eb1e2f2b8b6cf"
+  },
+  "repaired_monitor_sha256": {
+    "campaign_telemetry.py": "00e9695ec72adea443ab6e296fc726829d2951bd9c74422804328adf5ead62e3",
+    "hap91_thermal_watchdog.py": "3f230cfb563dcc0f1572080c544a2ab39ffadd2c37af9d92110ee7f420987912"
+  },
+  "budget_explanation": "All driver walltime including initial hash verification, admission, computation, handoff and cleanup charged; no reset of prior3660.536017seconds. First tranche<=5400seconds or50updates, whichever first.",
+  "manuscript_eligible": false,
+  "sealed_R4_read": false,
+  "training_updates": 0,
+  "MD_runs": 0,
+  "reference_results": {
+    "A91": {
+      "path": "${RESEARCH_RUNS}/campaign-003/first-batch-run/jobs/A91/native/result.json",
+      "sha256": "9c0f32a19db43ce5090169157e3755681e7a8df0e5f87597145aa4547889da24"
+    },
+    "B91": {
+      "path": "${RESEARCH_RUNS}/campaign-003/B-adaptive1-segment02/jobs/B91/native/result.json",
+      "sha256": "f0874b2d2a39c79865abeede06f216535f6417e224a70ed7b8bee2b5f44e6828"
+    },
+    "clean88_old": {
+      "path": "${RESEARCH_RUNS}/campaign-003/references-run/jobs/clean88/native/result.json",
+      "sha256": "6231cadf62d5b17e4afe6e68e89ce226491a1cf41e7da907642eb1e2f2b8b6cf"
+    },
+    "gas3": {
+      "path": "${RESEARCH_RUNS}/campaign-003/references-run/jobs/gas3/native/result.json",
+      "sha256": "f25fe487adc9ad91eecc11064cb406561deda23dfcb5eced86bef98b54034db9"
+    }
+  }
+}

@@ -1,0 +1,665 @@
+[
+  {
+    "point_id": "B-direction",
+    "source_relative_to_research_runs": "campaign-003/B-direction1-segment01/jobs/B91/execution.json",
+    "source_sha256": "7989e975c0d49f7c6e67f51593bc9f69f889910ed6dd17e6bb10db03efc129cc",
+    "status": "completed",
+    "started_utc": "2026-10-12T23:36:44.688404+00:00",
+    "finished_utc": "2026-10-12T23:44:55.811028+00:00",
+    "elapsed_seconds": 491.10899999993853,
+    "native_start_requested_utc": "2026-10-12T23:36:53.228526+00:00",
+    "native_resources": {
+      "GPU_baseline_used_MiB": 1901.0,
+      "GPU_peak_scope": "device-wide sampled lower bound, nominal1s plus command latency; not exact per-process peak",
+      "GPU_sample_count": 395,
+      "GPU_sampled_peak_used_MiB": 4291.0,
+      "command_exit_code": 0,
+      "command_wall_seconds": 478.968633520999,
+      "error": null,
+      "oom_counters_raw": "oom_kill_disable 0\nunder_oom 0\noom_kill 0\n",
+      "peak_memory_bytes": 13092155392
+    },
+    "native_container_state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-10-12T23:44:54.536710434Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-10-12T23:36:53.376962283Z",
+      "Status": "exited"
+    },
+    "memory_bytes": 25769803776,
+    "watchdog_done": {
+      "source_relative_to_research_runs": "campaign-003/B-direction1-segment01/jobs/B91/watchdog-done.json",
+      "source_sha256": "bb5deb401d5a420eec77e78cfbed6282919f747229d016f5b85e3275f6bfb9e6"
+    }
+  },
+  {
+    "point_id": "B-adaptive-01",
+    "source_relative_to_research_runs": "campaign-003/B-adaptive1-segment01/jobs/B91/execution.json",
+    "source_sha256": "ecdca70f09e1692c063c578ea678baf47ca2339edcb3331fee699399e93ebdb2",
+    "status": "completed",
+    "started_utc": "2026-10-13T00:11:05.943526+00:00",
+    "finished_utc": "2026-10-13T00:24:15.795381+00:00",
+    "elapsed_seconds": 789.8279999999795,
+    "native_start_requested_utc": "2026-10-13T00:11:13.892692+00:00",
+    "native_resources": {
+      "GPU_baseline_used_MiB": 1901.0,
+      "GPU_peak_scope": "device-wide sampled lower bound, nominal1s plus command latency; not exact per-process peak",
+      "GPU_sample_count": 655,
+      "GPU_sampled_peak_used_MiB": 4239.0,
+      "command_exit_code": 0,
+      "command_wall_seconds": 778.3865068170126,
+      "error": null,
+      "oom_counters_raw": "oom_kill_disable 0\nunder_oom 0\noom_kill 0\n",
+      "peak_memory_bytes": 12076789760
+    },
+    "native_container_state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-10-13T00:24:14.116400698Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-10-13T00:11:14.022698646Z",
+      "Status": "exited"
+    },
+    "memory_bytes": 25769803776,
+    "watchdog_done": {
+      "source_relative_to_research_runs": "campaign-003/B-adaptive1-segment01/jobs/B91/watchdog-done.json",
+      "source_sha256": "29465fa0d1c5a46dca70716673e792914f8a9f29cc945e6bd521fc2560a635ad"
+    }
+  },
+  {
+    "point_id": "B-final",
+    "source_relative_to_research_runs": "campaign-003/B-adaptive1-segment02/jobs/B91/execution.json",
+    "source_sha256": "6e14b1dead5334161966dc2b3ba459686d151ceacf6a716b496a98e276d47990",
+    "status": "completed",
+    "started_utc": "2026-10-13T00:24:16.120747+00:00",
+    "finished_utc": "2026-10-13T00:27:36.719906+00:00",
+    "elapsed_seconds": 200.59399999992456,
+    "native_start_requested_utc": "2026-10-13T00:25:01.258818+00:00",
+    "native_resources": {
+      "GPU_baseline_used_MiB": 1901.0,
+      "GPU_peak_scope": "device-wide sampled lower bound, nominal1s plus command latency; not exact per-process peak",
+      "GPU_sample_count": 126,
+      "GPU_sampled_peak_used_MiB": 4229.0,
+      "command_exit_code": 0,
+      "command_wall_seconds": 149.2656032310042,
+      "error": null,
+      "oom_counters_raw": "oom_kill_disable 0\nunder_oom 0\noom_kill 0\n",
+      "peak_memory_bytes": 11991814144
+    },
+    "native_container_state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-10-13T00:27:31.977854619Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-10-13T00:25:01.393806825Z",
+      "Status": "exited"
+    },
+    "memory_bytes": 25769803776,
+    "watchdog_done": {
+      "source_relative_to_research_runs": "campaign-003/B-adaptive1-segment02/jobs/B91/watchdog-done.json",
+      "source_sha256": "ef8a9931750939613a36f2ab5e3d01a7651c3e84d0bd1f5f46c53c59a3e675b1"
+    }
+  },
+  {
+    "point_id": "cleanB-01",
+    "source_relative_to_research_runs": "campaign-003/cleanB1-segment01/jobs/clean88/execution.json",
+    "source_sha256": "c7f6813423270033db98b8df56647fe4490d3094d8955f9698d2e9e455c59b06",
+    "status": "completed",
+    "started_utc": "2026-10-13T01:35:15.043309+00:00",
+    "finished_utc": "2026-10-13T01:51:25.065896+00:00",
+    "elapsed_seconds": 970.0,
+    "native_start_requested_utc": "2026-10-13T01:35:23.782431+00:00",
+    "native_resources": {
+      "GPU_baseline_used_MiB": 1901.0,
+      "GPU_peak_scope": "device-wide sampled lower bound, nominal1s plus command latency; not exact per-process peak",
+      "GPU_sample_count": 779,
+      "GPU_sampled_peak_used_MiB": 4285.0,
+      "command_exit_code": 0,
+      "command_wall_seconds": 956.4355958430097,
+      "error": null,
+      "oom_counters_raw": "oom_kill_disable 0\nunder_oom 0\noom_kill 0\n",
+      "peak_memory_bytes": 12025044992
+    },
+    "native_container_state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-10-13T01:51:21.526783263Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-10-13T01:35:23.921379345Z",
+      "Status": "exited"
+    },
+    "memory_bytes": 25769803776,
+    "watchdog_done": {
+      "source_relative_to_research_runs": "campaign-003/cleanB1-segment01/jobs/clean88/watchdog-done.json",
+      "source_sha256": "70d01c0be6868e6338c1f5c95d75cce62a355db198d155eaeb86a269e96c6557"
+    }
+  },
+  {
+    "point_id": "cleanB-02",
+    "source_relative_to_research_runs": "campaign-003/cleanB1-segment02/jobs/clean88/execution.json",
+    "source_sha256": "1d42ffd54aa470e01d4a335e6b4c066c00b4a144cbe83598cdd90f6288dae28c",
+    "status": "completed",
+    "started_utc": "2026-10-13T01:51:25.413208+00:00",
+    "finished_utc": "2026-10-13T02:08:15.168802+00:00",
+    "elapsed_seconds": 1009.7339999999385,
+    "native_start_requested_utc": "2026-10-13T01:52:11.860038+00:00",
+    "native_resources": {
+      "GPU_baseline_used_MiB": 1901.0,
+      "GPU_peak_scope": "device-wide sampled lower bound, nominal1s plus command latency; not exact per-process peak",
+      "GPU_sample_count": 805,
+      "GPU_sampled_peak_used_MiB": 4285.0,
+      "command_exit_code": 0,
+      "command_wall_seconds": 960.064750081976,
+      "error": null,
+      "oom_counters_raw": "oom_kill_disable 0\nunder_oom 0\noom_kill 0\n",
+      "peak_memory_bytes": 12051079168
+    },
+    "native_container_state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-10-13T02:08:13.324819888Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-10-13T01:52:11.9978046Z",
+      "Status": "exited"
+    },
+    "memory_bytes": 25769803776,
+    "watchdog_done": {
+      "source_relative_to_research_runs": "campaign-003/cleanB1-segment02/jobs/clean88/watchdog-done.json",
+      "source_sha256": "9d0ea147d734a681bb742ea3dd3aabcaf2befe2760ac4f710921365b5fe56064"
+    }
+  },
+  {
+    "point_id": "cleanB-03",
+    "source_relative_to_research_runs": "campaign-003/cleanB1-segment03/jobs/clean88/execution.json",
+    "source_sha256": "59e22d26f481c498a5b0419bc2ee652bba12c7439009f8421bf84dba1a1077c3",
+    "status": "completed",
+    "started_utc": "2026-10-13T02:08:15.513788+00:00",
+    "finished_utc": "2026-10-13T02:23:22.126888+00:00",
+    "elapsed_seconds": 906.594000000041,
+    "native_start_requested_utc": "2026-10-13T02:09:01.112763+00:00",
+    "native_resources": {
+      "GPU_baseline_used_MiB": 1901.0,
+      "GPU_peak_scope": "device-wide sampled lower bound, nominal1s plus command latency; not exact per-process peak",
+      "GPU_sample_count": 720,
+      "GPU_sampled_peak_used_MiB": 4285.0,
+      "command_exit_code": 0,
+      "command_wall_seconds": 855.1575028419902,
+      "error": null,
+      "oom_counters_raw": "oom_kill_disable 0\nunder_oom 0\noom_kill 0\n",
+      "peak_memory_bytes": 12019650560
+    },
+    "native_container_state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-10-13T02:23:17.830073461Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-10-13T02:09:01.239821517Z",
+      "Status": "exited"
+    },
+    "memory_bytes": 25769803776,
+    "watchdog_done": {
+      "source_relative_to_research_runs": "campaign-003/cleanB1-segment03/jobs/clean88/watchdog-done.json",
+      "source_sha256": "03ce02bb52b352df210464f518eec37f599237132a9614c616366d478d9fc67b"
+    }
+  },
+  {
+    "point_id": "cleanB-04",
+    "source_relative_to_research_runs": "campaign-003/cleanB1-segment04/jobs/clean88/execution.json",
+    "source_sha256": "85268abcff1a2a9dc1296d9a99dba50f79c65d226c964643c1eeb13d3aa10b86",
+    "status": "completed",
+    "started_utc": "2026-10-13T02:23:22.438056+00:00",
+    "finished_utc": "2026-10-13T02:26:32.096746+00:00",
+    "elapsed_seconds": 189.65700000000652,
+    "native_start_requested_utc": "2026-10-13T02:24:07.652713+00:00",
+    "native_resources": {
+      "GPU_baseline_used_MiB": 1901.0,
+      "GPU_peak_scope": "device-wide sampled lower bound, nominal1s plus command latency; not exact per-process peak",
+      "GPU_sample_count": 123,
+      "GPU_sampled_peak_used_MiB": 4221.0,
+      "command_exit_code": 0,
+      "command_wall_seconds": 139.63968619698426,
+      "error": null,
+      "oom_counters_raw": "oom_kill_disable 0\nunder_oom 0\noom_kill 0\n",
+      "peak_memory_bytes": 11944333312
+    },
+    "native_container_state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-10-13T02:26:28.615590046Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-10-13T02:24:07.785684095Z",
+      "Status": "exited"
+    },
+    "memory_bytes": 25769803776,
+    "watchdog_done": {
+      "source_relative_to_research_runs": "campaign-003/cleanB1-segment04/jobs/clean88/watchdog-done.json",
+      "source_sha256": "bd198dfc2a9a7878ec995a2a51ba8130d69ce1f611747011387b96b63ab6ae23"
+    }
+  },
+  {
+    "point_id": "A-tilt-minus5",
+    "source_relative_to_research_runs": "campaign-003/A-tilt1-repair1-minus5/jobs/A91/execution.json",
+    "source_sha256": "c54ec4fcd89d9d658eb4e4ff128fa11c5d9bcf3aae99c6896ae086622d48d5d1",
+    "status": "completed",
+    "started_utc": "2026-10-12T23:56:30.674488+00:00",
+    "finished_utc": "2026-10-12T23:58:44.941088+00:00",
+    "elapsed_seconds": 134.26500000001397,
+    "native_start_requested_utc": "2026-10-12T23:56:38.571706+00:00",
+    "native_resources": {
+      "GPU_baseline_used_MiB": 1901.0,
+      "GPU_peak_scope": "device-wide sampled lower bound, nominal1s plus command latency; not exact per-process peak",
+      "GPU_sample_count": 104,
+      "GPU_sampled_peak_used_MiB": 4223.0,
+      "command_exit_code": 0,
+      "command_wall_seconds": 121.94437157601351,
+      "error": null,
+      "oom_counters_raw": "oom_kill_disable 0\nunder_oom 0\noom_kill 0\n",
+      "peak_memory_bytes": 12973285376
+    },
+    "native_container_state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-10-12T23:58:42.667286067Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-10-12T23:56:38.710849872Z",
+      "Status": "exited"
+    },
+    "memory_bytes": 25769803776,
+    "watchdog_done": {
+      "source_relative_to_research_runs": "campaign-003/A-tilt1-repair1-minus5/jobs/A91/watchdog-done.json",
+      "source_sha256": "060ea2eca23e52e9107ffc95ad6a68e5ceb9d96d2494549fd78eb3a72a86a54d"
+    }
+  },
+  {
+    "point_id": "A-tilt-plus5",
+    "source_relative_to_research_runs": "campaign-003/A-tilt1-repair1-plus5/jobs/A91/execution.json",
+    "source_sha256": "7eac4c5f6f4c855e09a84485e6f1e250a7393857a85cb930b44a101abeab9587",
+    "status": "completed",
+    "started_utc": "2026-10-12T23:58:45.593196+00:00",
+    "finished_utc": "2026-10-13T00:01:36.917558+00:00",
+    "elapsed_seconds": 171.3279999999795,
+    "native_start_requested_utc": "2026-10-12T23:59:30.469129+00:00",
+    "native_resources": {
+      "GPU_baseline_used_MiB": 1901.0,
+      "GPU_peak_scope": "device-wide sampled lower bound, nominal1s plus command latency; not exact per-process peak",
+      "GPU_sample_count": 107,
+      "GPU_sampled_peak_used_MiB": 4221.0,
+      "command_exit_code": 0,
+      "command_wall_seconds": 123.10645803500665,
+      "error": null,
+      "oom_counters_raw": "oom_kill_disable 0\nunder_oom 0\noom_kill 0\n",
+      "peak_memory_bytes": 11926118400
+    },
+    "native_container_state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-10-13T00:01:35.550519455Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-10-12T23:59:30.602702696Z",
+      "Status": "exited"
+    },
+    "memory_bytes": 25769803776,
+    "watchdog_done": {
+      "source_relative_to_research_runs": "campaign-003/A-tilt1-repair1-plus5/jobs/A91/watchdog-done.json",
+      "source_sha256": "2f227ec7a17be29eb7607349e7d2d2a4649ee9c05bba96457c7cb259ccd55063"
+    }
+  },
+  {
+    "point_id": "B-slab",
+    "source_relative_to_research_runs": "campaign-003/fragments1-repair1-B-slab/jobs/clean88/execution.json",
+    "source_sha256": "eeabfcfea23d56d3dddc03d60481f9d216f483d24a5cd19f8ab757e5f3fd9943",
+    "status": "completed",
+    "started_utc": "2026-10-13T01:00:25.965582+00:00",
+    "finished_utc": "2026-10-13T01:09:27.775571+00:00",
+    "elapsed_seconds": 541.7970000000205,
+    "native_start_requested_utc": "2026-10-13T01:00:33.775187+00:00",
+    "native_resources": {
+      "GPU_baseline_used_MiB": 1901.0,
+      "GPU_peak_scope": "device-wide sampled lower bound, nominal1s plus command latency; not exact per-process peak",
+      "GPU_sample_count": 465,
+      "GPU_sampled_peak_used_MiB": 4277.0,
+      "command_exit_code": 0,
+      "command_wall_seconds": 529.5374934719875,
+      "error": null,
+      "oom_counters_raw": "oom_kill_disable 0\nunder_oom 0\noom_kill 0\n",
+      "peak_memory_bytes": 11889487872
+    },
+    "native_container_state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-10-13T01:09:25.825007419Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-10-13T01:00:34.269498459Z",
+      "Status": "exited"
+    },
+    "memory_bytes": 25769803776,
+    "watchdog_done": {
+      "source_relative_to_research_runs": "campaign-003/fragments1-repair1-B-slab/jobs/clean88/watchdog-done.json",
+      "source_sha256": "41ad5d16c8dc0de9d593967a1acf09c980d4403a71465bcb6c5afbd2d2967ab5"
+    }
+  },
+  {
+    "point_id": "B-slab-CP",
+    "source_relative_to_research_runs": "campaign-003/cp1-B-slab-CP/jobs/clean88/execution.json",
+    "source_sha256": "f52363c3b57a263d9659c7545f57f765ce6107fa26b23f4c5cf4f09b18b1a0ac",
+    "status": "completed",
+    "started_utc": "2026-10-13T02:44:29.195673+00:00",
+    "finished_utc": "2026-10-13T02:54:03.066003+00:00",
+    "elapsed_seconds": 573.859000000055,
+    "native_start_requested_utc": "2026-10-13T02:44:37.272767+00:00",
+    "native_resources": {
+      "GPU_baseline_used_MiB": 1901.0,
+      "GPU_peak_scope": "device-wide sampled lower bound, nominal1s plus command latency; not exact per-process peak",
+      "GPU_sample_count": 454,
+      "GPU_sampled_peak_used_MiB": 4281.0,
+      "command_exit_code": 0,
+      "command_wall_seconds": 562.0380953460117,
+      "error": null,
+      "oom_counters_raw": "oom_kill_disable 0\nunder_oom 0\noom_kill 0\n",
+      "peak_memory_bytes": 12975661056
+    },
+    "native_container_state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-10-13T02:54:01.871853201Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-10-13T02:44:37.404104286Z",
+      "Status": "exited"
+    },
+    "memory_bytes": 25769803776,
+    "watchdog_done": {
+      "source_relative_to_research_runs": "campaign-003/cp1-B-slab-CP/jobs/clean88/watchdog-done.json",
+      "source_sha256": "5821e07fb0c055a4de8f9b30485316fb1c2670c206dcf3a87f81523491a826f0"
+    }
+  },
+  {
+    "point_id": "A-slab",
+    "source_relative_to_research_runs": "campaign-003/fragments1-repair1-A-slab/jobs/clean88/execution.json",
+    "source_sha256": "62aa10c954dd2f82bc48b0a474b4c433e7a1a8569b7947ef2e864ee6f7c16c2a",
+    "status": "completed",
+    "started_utc": "2026-10-13T01:09:28.429925+00:00",
+    "finished_utc": "2026-10-13T01:19:19.748676+00:00",
+    "elapsed_seconds": 591.295999999973,
+    "native_start_requested_utc": "2026-10-13T01:10:13.701577+00:00",
+    "native_resources": {
+      "GPU_baseline_used_MiB": 1901.0,
+      "GPU_peak_scope": "device-wide sampled lower bound, nominal1s plus command latency; not exact per-process peak",
+      "GPU_sample_count": 471,
+      "GPU_sampled_peak_used_MiB": 4277.0,
+      "command_exit_code": 0,
+      "command_wall_seconds": 538.8382472179946,
+      "error": null,
+      "oom_counters_raw": "oom_kill_disable 0\nunder_oom 0\noom_kill 0\n",
+      "peak_memory_bytes": 11893800960
+    },
+    "native_container_state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-10-13T01:19:14.681759083Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-10-13T01:10:13.832132674Z",
+      "Status": "exited"
+    },
+    "memory_bytes": 25769803776,
+    "watchdog_done": {
+      "source_relative_to_research_runs": "campaign-003/fragments1-repair1-A-slab/jobs/clean88/watchdog-done.json",
+      "source_sha256": "1c506292efcfcee850e68293c9fb3fad4934c185e69fc4e800be8ba705db9c6a"
+    }
+  },
+  {
+    "point_id": "A-slab-CP",
+    "source_relative_to_research_runs": "campaign-003/cp1-A-slab-CP/jobs/clean88/execution.json",
+    "source_sha256": "974169214aee19cc8d21891d52c51777b6bd34e7cd66be19ea3d79ea6bfb378b",
+    "status": "completed",
+    "started_utc": "2026-10-13T02:54:03.859533+00:00",
+    "finished_utc": "2026-10-13T03:08:29.382618+00:00",
+    "elapsed_seconds": 865.5,
+    "native_start_requested_utc": "2026-10-13T02:59:11.532115+00:00",
+    "native_resources": {
+      "GPU_baseline_used_MiB": 1901.0,
+      "GPU_peak_scope": "device-wide sampled lower bound, nominal1s plus command latency; not exact per-process peak",
+      "GPU_sample_count": 451,
+      "GPU_sampled_peak_used_MiB": 4281.0,
+      "command_exit_code": 0,
+      "command_wall_seconds": 554.8711688340118,
+      "error": null,
+      "oom_counters_raw": "oom_kill_disable 0\nunder_oom 0\noom_kill 0\n",
+      "peak_memory_bytes": 11923410944
+    },
+    "native_container_state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-10-13T03:08:28.004687957Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-10-13T02:59:11.669081414Z",
+      "Status": "exited"
+    },
+    "memory_bytes": 25769803776,
+    "watchdog_done": {
+      "source_relative_to_research_runs": "campaign-003/cp1-A-slab-CP/jobs/clean88/watchdog-done.json",
+      "source_sha256": "a5c181c602bdcf04b1eed82a6d9767c9d9a3f91c4da6dbfdeb8275d327e89095"
+    }
+  },
+  {
+    "point_id": "B-co2",
+    "source_relative_to_research_runs": "campaign-003/fragments1-repair1-B-co2/jobs/gas3/execution.json",
+    "source_sha256": "99c2ff436f463b5fb479fb9c14c0ae4abc165c530d8adbf3f77281c82b6b6657",
+    "status": "completed",
+    "started_utc": "2026-10-13T01:19:19.920010+00:00",
+    "finished_utc": "2026-10-13T01:24:10.594384+00:00",
+    "elapsed_seconds": 290.6720000000205,
+    "native_start_requested_utc": "2026-10-13T01:21:57.116648+00:00",
+    "native_resources": {
+      "GPU_baseline_used_MiB": 1901.0,
+      "GPU_peak_scope": "device-wide sampled lower bound, nominal1s plus command latency; not exact per-process peak",
+      "GPU_sample_count": 98,
+      "GPU_sampled_peak_used_MiB": 4097.0,
+      "command_exit_code": 0,
+      "command_wall_seconds": 123.94508675698307,
+      "error": null,
+      "oom_counters_raw": "oom_kill_disable 0\nunder_oom 0\noom_kill 0\n",
+      "peak_memory_bytes": 11434184704
+    },
+    "native_container_state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-10-13T01:24:02.844869093Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-10-13T01:21:57.613482945Z",
+      "Status": "exited"
+    },
+    "memory_bytes": 25769803776,
+    "watchdog_done": {
+      "source_relative_to_research_runs": "campaign-003/fragments1-repair1-B-co2/jobs/gas3/watchdog-done.json",
+      "source_sha256": "a5a1a0ab7a849ab5ba1ec14b033826c6f097e7dca516fa3b862b478b387573f2"
+    }
+  },
+  {
+    "point_id": "B-co2-CP",
+    "source_relative_to_research_runs": "campaign-003/cp1-B-co2-CP/jobs/gas3/execution.json",
+    "source_sha256": "dee6b45d133bc0ddfd3cad513770d30db56e9b6297052a3dad4b2f2772706bb2",
+    "status": "completed",
+    "started_utc": "2026-10-13T03:08:29.571470+00:00",
+    "finished_utc": "2026-10-13T03:22:29.730532+00:00",
+    "elapsed_seconds": 840.140000000014,
+    "native_start_requested_utc": "2026-10-13T03:19:13.948557+00:00",
+    "native_resources": {
+      "GPU_baseline_used_MiB": 1901.0,
+      "GPU_peak_scope": "device-wide sampled lower bound, nominal1s plus command latency; not exact per-process peak",
+      "GPU_sample_count": 149,
+      "GPU_sampled_peak_used_MiB": 4189.0,
+      "command_exit_code": 0,
+      "command_wall_seconds": 184.8910343539901,
+      "error": null,
+      "oom_counters_raw": "oom_kill_disable 0\nunder_oom 0\noom_kill 0\n",
+      "peak_memory_bytes": 12789702656
+    },
+    "native_container_state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-10-13T03:22:21.103732164Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-10-13T03:19:14.094879326Z",
+      "Status": "exited"
+    },
+    "memory_bytes": 25769803776,
+    "watchdog_done": {
+      "source_relative_to_research_runs": "campaign-003/cp1-B-co2-CP/jobs/gas3/watchdog-done.json",
+      "source_sha256": "6b917078efcc8cc180858b6fd3b573bd6a81f4e7a759c32ce801d956bd9cd6da"
+    }
+  },
+  {
+    "point_id": "A-co2",
+    "source_relative_to_research_runs": "campaign-003/fragments1-repair1-A-co2/jobs/gas3/execution.json",
+    "source_sha256": "3b576905c1786b7560125347e73e50a3bc2f43a9479baa277a43bd4c824b2b2e",
+    "status": "completed",
+    "started_utc": "2026-10-13T01:24:10.747253+00:00",
+    "finished_utc": "2026-10-13T01:26:59.249639+00:00",
+    "elapsed_seconds": 168.5,
+    "native_start_requested_utc": "2026-10-13T01:24:55.807896+00:00",
+    "native_resources": {
+      "GPU_baseline_used_MiB": 1901.0,
+      "GPU_peak_scope": "device-wide sampled lower bound, nominal1s plus command latency; not exact per-process peak",
+      "GPU_sample_count": 92,
+      "GPU_sampled_peak_used_MiB": 4097.0,
+      "command_exit_code": 0,
+      "command_wall_seconds": 115.5921606660122,
+      "error": null,
+      "oom_counters_raw": "oom_kill_disable 0\nunder_oom 0\noom_kill 0\n",
+      "peak_memory_bytes": 11443523584
+    },
+    "native_container_state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-10-13T01:26:52.960963758Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-10-13T01:24:55.935767181Z",
+      "Status": "exited"
+    },
+    "memory_bytes": 25769803776,
+    "watchdog_done": {
+      "source_relative_to_research_runs": "campaign-003/fragments1-repair1-A-co2/jobs/gas3/watchdog-done.json",
+      "source_sha256": "83d88b1d9cb1b823cde1fc460b502854cf46dba7ff97945aec0c6a0c01cf69b6"
+    }
+  },
+  {
+    "point_id": "A-co2-CP",
+    "source_relative_to_research_runs": "campaign-003/cp1-A-co2-CP/jobs/gas3/execution.json",
+    "source_sha256": "dd841c395a9f7786be21228dd8ca3e38d94d53063e80f53436d011191f515904",
+    "status": "completed",
+    "started_utc": "2026-10-13T03:22:29.939918+00:00",
+    "finished_utc": "2026-10-13T03:27:12.790156+00:00",
+    "elapsed_seconds": 282.84399999992456,
+    "native_start_requested_utc": "2026-10-13T03:23:16.744843+00:00",
+    "native_resources": {
+      "GPU_baseline_used_MiB": 1901.0,
+      "GPU_peak_scope": "device-wide sampled lower bound, nominal1s plus command latency; not exact per-process peak",
+      "GPU_sample_count": 183,
+      "GPU_sampled_peak_used_MiB": 4189.0,
+      "command_exit_code": 0,
+      "command_wall_seconds": 227.4317002860189,
+      "error": null,
+      "oom_counters_raw": "oom_kill_disable 0\nunder_oom 0\noom_kill 0\n",
+      "peak_memory_bytes": 11740069888
+    },
+    "native_container_state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "2026-10-13T03:27:06.020898286Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-10-13T03:23:16.897064355Z",
+      "Status": "exited"
+    },
+    "memory_bytes": 25769803776,
+    "watchdog_done": {
+      "source_relative_to_research_runs": "campaign-003/cp1-A-co2-CP/jobs/gas3/watchdog-done.json",
+      "source_sha256": "e439afe96e8d84eb0ad19e0417a96dda596d8d7a8bbf3c33856559312df0136f"
+    }
+  }
+]

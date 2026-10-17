@@ -1,0 +1,35 @@
+{
+  "status": "conditional_common_reference_electronic_energies",
+  "energy_Ha": {
+    "B91": -1692.8861132685824,
+    "A91": -1692.8637034685598,
+    "clean88": -1655.089499434855,
+    "gas3": -37.76148458052873
+  },
+  "E_ads_A_eV": -0.34611395321154986,
+  "E_ads_B_eV": -0.9559156773222758,
+  "DeltaE_B_minus_A_eV": -0.6098017241107259,
+  "source_result_sha256": {
+    "B91": "f0874b2d2a39c79865abeede06f216535f6417e224a70ed7b8bee2b5f44e6828",
+    "A91": "9c0f32a19db43ce5090169157e3755681e7a8df0e5f87597145aa4547889da24",
+    "clean88": "6231cadf62d5b17e4afe6e68e89ce226491a1cf41e7da907642eb1e2f2b8b6cf",
+    "gas3": "f25fe487adc9ad91eecc11064cb406561deda23dfcb5eced86bef98b54034db9"
+  },
+  "source_paths": {
+    "B91": "${RESEARCH_RUNS}/campaign-003/B-adaptive1-segment02/jobs/B91/native/result.json",
+    "A91": "${RESEARCH_RUNS}/campaign-003/first-batch-run/jobs/A91/native/result.json",
+    "clean88": "${RESEARCH_RUNS}/campaign-003/references-run/jobs/clean88/native/result.json",
+    "gas3": "${RESEARCH_RUNS}/campaign-003/references-run/jobs/gas3/native/result.json"
+  },
+  "manuscript_eligible": false,
+  "conditions": [
+    "dry specified parallel-OH slab and fixed coverage",
+    "same cell, PBE-D3BJ and Z dipole settings",
+    "periodic gas reference not verified isolated limit",
+    "no BSSE or vibrational minimum proof",
+    "distinct-basin and endpoint interpretation pending scientific review",
+    "A +/-5 degree test remains inconclusive; conditional B-A electronic difference is not proven stable-minimum ranking"
+  ],
+  "A_tilt_classification": "inconclusive",
+  "A_local_minimum_proven": false
+}

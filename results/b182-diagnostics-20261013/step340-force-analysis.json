@@ -1,0 +1,592 @@
+{
+  "step": 340,
+  "time_fs": 85,
+  "natoms": 182,
+  "model_validated": false,
+  "force_correction": "none",
+  "units": {
+    "position": "angstrom",
+    "native_DFT_force": "hartree/bohr",
+    "ML_and_converted_DFT_force": "eV/angstrom",
+    "hartree_to_eV": 27.211386245988,
+    "bohr_to_angstrom": 0.529177210903,
+    "force_conversion_factor": 51.422067476325886,
+    "atomic_mass_kg": 1.6605390666e-27,
+    "eV_J": 1.602176634e-19,
+    "acceleration_factor_A_fs2_per_eV_A_u": 0.009648533215665327
+  },
+  "cell_A": [
+    [
+      18.848,
+      0.0,
+      0.0
+    ],
+    [
+      -4.712,
+      8.161423405265,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      37.7401146
+    ]
+  ],
+  "pbc": [
+    true,
+    true,
+    true
+  ],
+  "groups": {
+    "all_atoms": {
+      "atom_ids_one_based": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182
+      ],
+      "atom_count": 182,
+      "delta_definition": "ML minus DFT",
+      "force_component_RMSE_eV_A": 1.2576037471223829,
+      "force_vector_RMSE_eV_A": 2.1782335858049695,
+      "max_abs_component_eV_A": 17.925892158098478,
+      "max_component_at": {
+        "atom_id": 135,
+        "axis": "z"
+      },
+      "max_atom_vector_difference_eV_A": 18.51258755028698,
+      "max_vector_at_atom_id": 135,
+      "ML_net_force_eV_A": [
+        3.9968028886505635e-15,
+        3.4416913763379853e-15,
+        -3.247402347028583e-15
+      ],
+      "DFT_net_force_eV_A": [
+        -0.013691340638184335,
+        -0.002591923158674153,
+        0.009155067916120127
+      ]
+    },
+    "CO2_1": {
+      "atom_ids_one_based": [
+        89,
+        90,
+        91
+      ],
+      "atom_count": 3,
+      "delta_definition": "ML minus DFT",
+      "force_component_RMSE_eV_A": 0.4225722766221969,
+      "force_vector_RMSE_eV_A": 0.7319166529796951,
+      "max_abs_component_eV_A": 0.6550970798183591,
+      "max_component_at": {
+        "atom_id": 89,
+        "axis": "z"
+      },
+      "max_atom_vector_difference_eV_A": 0.8825230508517483,
+      "max_vector_at_atom_id": 89,
+      "ML_net_force_eV_A": [
+        0.09990317895379419,
+        0.13627159496899488,
+        -0.0663599652226241
+      ],
+      "DFT_net_force_eV_A": [
+        -0.08239526518675211,
+        -0.08722974097865047,
+        -0.2589872492966735
+      ]
+    },
+    "CO2_2": {
+      "atom_ids_one_based": [
+        180,
+        181,
+        182
+      ],
+      "atom_count": 3,
+      "delta_definition": "ML minus DFT",
+      "force_component_RMSE_eV_A": 0.74945801620291,
+      "force_vector_RMSE_eV_A": 1.2980993622032189,
+      "max_abs_component_eV_A": 1.7428390586963083,
+      "max_component_at": {
+        "atom_id": 180,
+        "axis": "x"
+      },
+      "max_atom_vector_difference_eV_A": 1.834917954384286,
+      "max_vector_at_atom_id": 180,
+      "ML_net_force_eV_A": [
+        0.17908972613581742,
+        0.010304806636367514,
+        -0.2696539168089722
+      ],
+      "DFT_net_force_eV_A": [
+        -0.10997117154780944,
+        -0.0991361509114981,
+        -0.05279877689354852
+      ]
+    },
+    "CO2_pooled": {
+      "atom_ids_one_based": [
+        89,
+        90,
+        91,
+        180,
+        181,
+        182
+      ],
+      "atom_count": 6,
+      "delta_definition": "ML minus DFT",
+      "force_component_RMSE_eV_A": 0.608380903308309,
+      "force_vector_RMSE_eV_A": 1.0537466348846394,
+      "max_abs_component_eV_A": 1.7428390586963083,
+      "max_component_at": {
+        "atom_id": 180,
+        "axis": "x"
+      },
+      "max_atom_vector_difference_eV_A": 1.834917954384286,
+      "max_vector_at_atom_id": 180,
+      "ML_net_force_eV_A": [
+        0.2789929050896116,
+        0.14657640160536242,
+        -0.3360138820315963
+      ],
+      "DFT_net_force_eV_A": [
+        -0.19236643673456155,
+        -0.18636589189014854,
+        -0.311786026190222
+      ]
+    },
+    "OH_H109_O135": {
+      "atom_ids_one_based": [
+        109,
+        135
+      ],
+      "atom_count": 2,
+      "delta_definition": "ML minus DFT",
+      "force_component_RMSE_eV_A": 7.60382778081944,
+      "force_vector_RMSE_eV_A": 13.170216048382976,
+      "max_abs_component_eV_A": 17.925892158098478,
+      "max_component_at": {
+        "atom_id": 135,
+        "axis": "z"
+      },
+      "max_atom_vector_difference_eV_A": 18.51258755028698,
+      "max_vector_at_atom_id": 135,
+      "ML_net_force_eV_A": [
+        -0.8397827841722219,
+        -1.8372925518817715,
+        -0.0806747711298168
+      ],
+      "DFT_net_force_eV_A": [
+        -0.07062196947093624,
+        2.148591736266942,
+        -16.29590579554227
+      ]
+    },
+    "local_union_3_5A_including_OH": {
+      "atom_ids_one_based": [
+        5,
+        9,
+        10,
+        32,
+        39,
+        40,
+        41,
+        97,
+        98,
+        99,
+        104,
+        108,
+        109,
+        112,
+        124,
+        128,
+        129,
+        133,
+        134,
+        135
+      ],
+      "atom_count": 20,
+      "delta_definition": "ML minus DFT",
+      "force_component_RMSE_eV_A": 3.108092577006853,
+      "force_vector_RMSE_eV_A": 5.3833742580035535,
+      "max_abs_component_eV_A": 17.925892158098478,
+      "max_component_at": {
+        "atom_id": 135,
+        "axis": "z"
+      },
+      "max_atom_vector_difference_eV_A": 18.51258755028698,
+      "max_vector_at_atom_id": 135,
+      "ML_net_force_eV_A": [
+        -1.1758803432591671,
+        0.8304079516040637,
+        1.088774694074611
+      ],
+      "DFT_net_force_eV_A": [
+        -3.072715188125696,
+        0.7658532390180839,
+        -3.0684727566308396
+      ]
+    },
+    "local_environment_excluding_OH": {
+      "atom_ids_one_based": [
+        5,
+        9,
+        10,
+        32,
+        39,
+        40,
+        41,
+        97,
+        98,
+        99,
+        104,
+        108,
+        112,
+        124,
+        128,
+        129,
+        133,
+        134
+      ],
+      "atom_count": 18,
+      "delta_definition": "ML minus DFT",
+      "force_component_RMSE_eV_A": 2.075898674258386,
+      "force_vector_RMSE_eV_A": 3.5955619751803995,
+      "max_abs_component_eV_A": 11.462840918505794,
+      "max_component_at": {
+        "atom_id": 134,
+        "axis": "z"
+      },
+      "max_atom_vector_difference_eV_A": 11.520740644154161,
+      "max_vector_at_atom_id": 134,
+      "ML_net_force_eV_A": [
+        -0.3360975590869455,
+        2.6677005034858348,
+        1.1694494652044276
+      ],
+      "DFT_net_force_eV_A": [
+        -3.0020932186547595,
+        -1.3827384972488577,
+        13.227433038911432
+      ]
+    }
+  },
+  "OH_axis": {
+    "O_id": 135,
+    "H_id": 109,
+    "bond_length_A": 1.4986458420655033,
+    "O_to_H_MIC_vector_A": [
+      0.36519882628844325,
+      0.8185225239582837,
+      -1.2010787047445
+    ],
+    "unit_vector": [
+      0.2436858769681763,
+      0.5461747538899236,
+      -0.801442656451185
+    ],
+    "masses_u": {
+      "H109": 1.00794,
+      "O135": 15.9994
+    },
+    "projections": {
+      "ML": {
+        "F_H_vector_eV_A": [
+          -0.5655929008237116,
+          -1.642587613170531,
+          0.23111931762836269
+        ],
+        "F_O_vector_eV_A": [
+          -0.27418988334851024,
+          -0.19470493871124045,
+          -0.3117940887581795
+        ],
+        "F_H_on_O_to_H_eV_A": -1.220195767287513,
+        "F_O_on_O_to_H_eV_A": 0.07672595859878378,
+        "F_H_minus_F_O_vector_eV_A": [
+          -0.29140301747520136,
+          -1.4478826744592905,
+          0.5429134063865422
+        ],
+        "F_H_minus_F_O_on_axis_eV_A": -1.2969217258862966,
+        "relative_acceleration_vector_A_fs2": [
+          -0.005248801673263267,
+          -0.0156062968794625,
+          0.002400425266230709
+        ],
+        "relative_acceleration_on_axis_eV_A_per_u": -1.2153792846974785,
+        "relative_acceleration_on_axis_A_fs2": -0.011726627398035186,
+        "reduced_mass_u": 0.9482044362022515,
+        "reduced_mass_weighted_relative_force_on_axis_eV_A": -1.1524280294184683,
+        "force_only_direction": "restoring"
+      },
+      "DFT": {
+        "F_H_vector_eV_A": [
+          -1.664490023099738,
+          -1.8862006577269732,
+          1.941780451314385
+        ],
+        "F_O_vector_eV_A": [
+          1.5938680536288017,
+          4.034792393993915,
+          -18.237686246856658
+        ],
+        "F_H_on_O_to_H_eV_A": -2.9920335741512627,
+        "F_O_on_O_to_H_eV_A": 17.2085645904107,
+        "F_H_minus_F_O_vector_eV_A": [
+          -3.2583580767285394,
+          -5.920993051720888,
+          20.179466698171044
+        ],
+        "F_H_minus_F_O_on_axis_eV_A": -20.20059816456196,
+        "relative_acceleration_vector_A_fs2": [
+          -0.016894567865694272,
+          -0.020488912903076605,
+          0.029586091508568464
+        ],
+        "relative_acceleration_on_axis_eV_A_per_u": -4.044039591214111,
+        "relative_acceleration_on_axis_A_fs2": -0.03901905032129498,
+        "reduced_mass_u": 0.9482044362022515,
+        "reduced_mass_weighted_relative_force_on_axis_eV_A": -3.83457628056676,
+        "force_only_direction": "restoring"
+      },
+      "ML_minus_DFT": {
+        "F_H_vector_eV_A": [
+          1.0988971222760262,
+          0.24361304455644217,
+          -1.7106611336860222
+        ],
+        "F_O_vector_eV_A": [
+          -1.868057936977312,
+          -4.229497332705155,
+          17.925892158098478
+        ],
+        "F_H_on_O_to_H_eV_A": 1.77183780686375,
+        "F_O_on_O_to_H_eV_A": -17.131838631811913,
+        "F_H_minus_F_O_vector_eV_A": [
+          2.9669550592533382,
+          4.473110377261597,
+          -19.6365532917845
+        ],
+        "F_H_minus_F_O_on_axis_eV_A": 18.903676438675667,
+        "relative_acceleration_vector_A_fs2": [
+          0.011645766192431004,
+          0.004882616023614104,
+          -0.02718566624233775
+        ],
+        "relative_acceleration_on_axis_eV_A_per_u": 2.828660306516632,
+        "relative_acceleration_on_axis_A_fs2": 0.027292422923259785,
+        "reduced_mass_u": 0.9482044362022515,
+        "reduced_mass_weighted_relative_force_on_axis_eV_A": 2.682148251148291,
+        "force_only_direction": "elongation"
+      }
+    },
+    "interpretation": "For F_H-F_O and (F_H/m_H-F_O/m_O) projected along O->H: positive is the elongating direction, negative restoring. Individual F_H positive moves H away from O; individual F_O positive moves O toward H and shortens the bond. Unequal masses make the relative acceleration the force-based dynamical comparison.",
+    "limitation": "Instantaneous force-only axial relative acceleration, not the full bond-length second derivative: the positive transverse-velocity kinematic term is not included. One snapshot cannot establish reaction, stability or model validity."
+  },
+  "neighborhood": {
+    "frozen_at": "Original ML step340/85fs coordinates, before examining DFT forces",
+    "cutoff_A": 3.5,
+    "selection": "MIC distance to H109 <= 3.5 A OR distance to O135 <= 3.5 A; includes H109/O135",
+    "atom_ids_one_based": [
+      5,
+      9,
+      10,
+      32,
+      39,
+      40,
+      41,
+      97,
+      98,
+      99,
+      104,
+      108,
+      109,
+      112,
+      124,
+      128,
+      129,
+      133,
+      134,
+      135
+    ]
+  },
+  "source_record": "DFT-step340/force-comparison.json"
+}

@@ -1,0 +1,25 @@
+{
+  "job": {
+    "id": "HAP-C003-fragment-B-co2",
+    "natoms": 3,
+    "electrons": 16,
+    "species": [
+      "C",
+      "O",
+      "O"
+    ],
+    "input": "singlepoint.inp",
+    "input_sha256": "6a41d6a3fc9e9575145f60c7c8cca35e64cc8c66cbb0c713274038dfd78163b1",
+    "geometry": "geometry.extxyz",
+    "geometry_sha256": "f86e0db69635c28e5e739a7ef12e2c8257592d0603696970ea6b05913c0678de"
+  },
+  "seed_sha256": null,
+  "input_files_sha256": {
+    "geometry.extxyz": "f86e0db69635c28e5e739a7ef12e2c8257592d0603696970ea6b05913c0678de",
+    "singlepoint.inp": "6a41d6a3fc9e9575145f60c7c8cca35e64cc8c66cbb0c713274038dfd78163b1"
+  },
+  "SCF_guess": "ATOMIC",
+  "method_identity_sha256": "ea66cf5e4a536576dc37fb1616890b41dbc19d469b32da5d6a0473453e2a57c1",
+  "protocol_sha256": "159ac826301074acf5f639fef64b8c8a02e01eeacef1f750806c392e96e7e7b5",
+  "omitted_dependencies": "WFN/Hessian/runtime assets are not bundled. Hashes describe retained original dependencies, not substitutes."
+}

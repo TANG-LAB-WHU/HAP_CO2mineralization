@@ -1,0 +1,192 @@
+{
+  "schema": "hap-T2-fit-diagnostic-publication/v1",
+  "status": "diagnostic_thresholds_met",
+  "termination_reason": "first_pass",
+  "training_fit_passed": true,
+  "independent_validation_performed": false,
+  "model_validated": false,
+  "manuscript_eligible": false,
+  "deployment_qualified": false,
+  "scope": "Repeated fitting of the same eight T2 frames; training metrics only",
+  "frames": 8,
+  "atoms_per_frame": 91,
+  "force_components": 2184,
+  "frame_ids": [
+    "T2-S004",
+    "T2-S008",
+    "T2-S012",
+    "T2-S016",
+    "T2-S020",
+    "T2-S024",
+    "T2-S028",
+    "T2-S032"
+  ],
+  "thresholds": {
+    "force_component_RMSE_eV_A_max": 0.01,
+    "max_abs_force_component_error_eV_A_max": 0.05
+  },
+  "energy_is_gate": false,
+  "metrics": {
+    "force_component_RMSE_eV_A": 0.008813272371285786,
+    "max_abs_force_component_error_eV_A": 0.049948000646380636,
+    "energy_RMSE_eV": 0.0016318226016640701,
+    "energy_MAE_eV": 0.0015106194387044525,
+    "max_abs_energy_error_eV": 0.0021595425860141404,
+    "energy_RMSE_meV_atom": 0.01793211650180297,
+    "energy_MAE_meV_atom": 0.01660021361213684,
+    "max_abs_energy_error_meV_atom": 0.0237312372089466,
+    "objective": 0.0009483452284553557,
+    "gradient_norm": 0.04799007637074473,
+    "gradient_max_abs": 0.010321887674308501
+  },
+  "initial_metrics": {
+    "force_component_RMSE_eV_A": 0.08300792280411073,
+    "max_abs_force_component_error_eV_A": 0.38403394017487885,
+    "energy_RMSE_eV": 0.0729869182973499,
+    "energy_MAE_eV": 0.0548705737801356,
+    "max_abs_energy_error_eV": 0.1456707389879739,
+    "energy_RMSE_meV_atom": 0.8020540472236253,
+    "energy_MAE_meV_atom": 0.6029733382432484,
+    "max_abs_energy_error_meV_atom": 1.6007773515161967,
+    "objective": 0.08418150905080737,
+    "gradient_norm": 7.232527714068817,
+    "gradient_max_abs": 4.373881712096167
+  },
+  "curve": {
+    "file": "data/curve.csv",
+    "rows": 10979,
+    "accepted_updates": 10978,
+    "first_step": 0,
+    "elapsed_seconds_scope": "Retained prefix through2994 plus current CPU2 host elapsed; all discarded branches remain separately charged.",
+    "elapsed_seconds_is_total_cost": false
+  },
+  "discarded_branches": [
+    {
+      "file": "data/discarded-gpu-continuation.csv",
+      "start_step": 2089,
+      "end_step": 2291,
+      "accepted_updates": 203
+    },
+    {
+      "file": "data/discarded-gpu-recovery.csv",
+      "start_step": 2819,
+      "end_step": 2851,
+      "accepted_updates": 33
+    },
+    {
+      "file": "data/discarded-cpu1.csv",
+      "start_step": 2995,
+      "end_step": 3136,
+      "accepted_updates": 142
+    }
+  ],
+  "discarded_accepted_updates": 378,
+  "counting": {
+    "retained_complete_objective_evaluations": 14215,
+    "actual_lifetime_complete_objective_evaluations": 14833,
+    "discarded_branch_complete_objective_evaluations": 618,
+    "final_CPU_segment_accepted_updates": 7984,
+    "final_CPU_segment_real_complete_objectives": 8817,
+    "final_CPU_segment_optimizer_entry_cache_hits": 7984,
+    "native_optimizer_func_evals": 23099,
+    "native_func_evals_are_physical_evaluations": false
+  },
+  "costs": {
+    "basis": "sum_of_five_host_run_charged_durations",
+    "host_timed_total_seconds": 9789.17100000009,
+    "final_CPU_host_seconds": 5602.4220000000205,
+    "combined_CPU_effective_compute_seconds": 5812.359246015549,
+    "combined_CPU_compute_budget_seconds": 7200,
+    "inter_run_idle_included": false,
+    "inherited_model_training_included": false,
+    "host_wall_time_is_kernel_time": false
+  },
+  "terminal_artifacts": {
+    "exported_model": {
+      "sha256": "56d6205219dd86bb410abb8e62de3c45ebf3009cf547b1d054755d4d12dbd809",
+      "bytes": 2586051,
+      "included": false
+    },
+    "checkpoint": {
+      "sha256": "808b5699e066a2921bec30d213bae2b599f0b45217526b04307d4e5c791f58f4",
+      "bytes": 101481780,
+      "included": false
+    },
+    "export_tensor_equivalence": "Passed in the recorded original run; not repeated for publication",
+    "checkpoint_state": "Recorded complete model, optimizer, gradients and accepted-loss history at accepted step 10978",
+    "terminal_native_exit_code": 0,
+    "terminal_OOM_reported": false,
+    "weights_loaded_for_publication": false
+  },
+  "source_evidence": {
+    "delivered_result": {
+      "sha256": "4b5b7bcf15083f2806f4bfebce28e292d11fd2702b2a49b9230d0cd42055769f"
+    },
+    "train_score": {
+      "sha256": "2e085794f8691739dc4dfc3e332eeacad9a8512952470a6ae6915cfb3d9f8011"
+    },
+    "training_completion": {
+      "sha256": "851495ddf602be74cf52f1011d84076e5d121a78ace81acd61175be829d191aa"
+    },
+    "plot_summary": {
+      "sha256": "8129746bcc7cca3b0872e6b670234e2f639fd3a3be49bc8c2b8a6cc7fc980b2f"
+    },
+    "original_run_worker": {
+      "basename": "t2_fit_cpu_resume_worker.py",
+      "sha256": "5c61074b203d7434eecc7f41c9d0b5f8581ea08781bdb7cd0a9f2afb09cc7b57",
+      "included": false
+    },
+    "original_run_helper": {
+      "basename": "newbasin_common_cpu.py",
+      "sha256": "35b2deff6b7b393047a157483ee78cdaa3ee3e05e993560dda11533a5913b479",
+      "included": false
+    },
+    "original_plot_script": {
+      "basename": "plot_t2_fit_cpu_resume.py",
+      "sha256": "a01284e4d0fe313a4929f5d91338888afaae122e8186c3d62d9762657be0c788",
+      "included": false
+    }
+  },
+  "publication_transformations": [
+    "Four scalar-metric CSV histories and the PNG were copied byte-for-byte and assigned repository-relative names.",
+    "Summary and parameters select existing scalar results and metadata; private machine paths and operational records are omitted.",
+    "model-architecture.json is the model object from the original recipe; it is not a runnable training configuration.",
+    "The portable plotting/checking script is new presentation code, not a modified or substitute training worker.",
+    "No model was loaded, no predictions were recomputed, and no force/energy labels were copied."
+  ],
+  "joint40_compare_and_joint_fit_status": "PLANNED_NOT_EXECUTED",
+  "artifacts": {
+    "data/curve.csv": {
+      "sha256": "5d7deb76a734d56a2df8ad8deb3e0b5f82444c237707f9ad8e69da2464993bc1",
+      "bytes": 2812513
+    },
+    "data/discarded-gpu-continuation.csv": {
+      "sha256": "453bd5f88dc4262a3f7e93ccb708a96e9d1076731b316102bd5531437581483c",
+      "bytes": 51489
+    },
+    "data/discarded-gpu-recovery.csv": {
+      "sha256": "4790275b76dc545a15857e35f689129b0b14a368dc86b10dec55d28ddb09a1f3",
+      "bytes": 8649
+    },
+    "data/discarded-cpu1.csv": {
+      "sha256": "163e6abe18d7ee95474007776e4af216820448619bbc797693e3db84c24ec039",
+      "bytes": 36313
+    },
+    "figures/t2-fit-diagnostic.png": {
+      "sha256": "77d14a50024ac9d802c39aadf99df4de4488d436959798565223e5bde20b8500",
+      "bytes": 520143
+    },
+    "model-architecture.json": {
+      "sha256": "5154a87bd4c2edc15ab5b128f0ecda0b2fa831a0d055f9e17cc3d0c78c42edd7",
+      "bytes": 905
+    },
+    "run-parameters.json": {
+      "sha256": "be74b8bb9441d59e8ed84750a9c41f524efd025004376fec5f0821cc2fd7d91d",
+      "bytes": 3815
+    },
+    "scripts/plot_and_verify.py": {
+      "sha256": "615663a92989834d07b8e9d3a5fe6042dc20b79ba6215215c1271bba64b6504d",
+      "bytes": 12539
+    }
+  }
+}

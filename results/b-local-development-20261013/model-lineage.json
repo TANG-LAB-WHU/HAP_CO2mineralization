@@ -1,0 +1,42 @@
+[
+  {
+    "experiment": "B16-initial",
+    "model_sha256_reported_by_terminal": "400168d3c2add7656b1ef4c5b0ea4a0ba7e08be6f307f793d1a2e85f069448bf",
+    "checkpoint_sha256_reported_by_terminal": "51efa2e181301c4cf78251c39922948d807cd75010632ca32284809d0ad949de",
+    "terminal_source": ".research-runs/b-local-candidate1-20261013/route1-run/stages/B16-LBFGS/jobs/train-fit/native/training-completion.json",
+    "terminal_export_equivalence_passed": true,
+    "model_binary_read_or_rehashed_for_publication": false,
+    "scientifically_validated_potential": false,
+    "optimizer_history_exactly_resumed": null
+  },
+  {
+    "experiment": "B16-continuation1",
+    "model_sha256_reported_by_terminal": "c27b0d7e5c77b19e429b3840eb2610243b0d9b3d21bd1465332b4d0f17899b89",
+    "checkpoint_sha256_reported_by_terminal": "085d921b6f0438052dd59e5c75cf8533de33a84ee8a48b7742d7d8b5af734147",
+    "terminal_source": ".research-runs/b-local-candidate1-20261013/continuation1-run/stages/B16-LBFGS-continuation1/jobs/train-fit/native/training-completion.json",
+    "terminal_export_equivalence_passed": true,
+    "model_binary_read_or_rehashed_for_publication": false,
+    "scientifically_validated_potential": false,
+    "optimizer_history_exactly_resumed": true
+  },
+  {
+    "experiment": "B16-continuation2",
+    "model_sha256_reported_by_terminal": "edee16ecf664fb6f49d835206d42172591634935b4e635ee6c088dba0bf1654b",
+    "checkpoint_sha256_reported_by_terminal": "fbafb96bff0989da8fea957b393c7d9e948cc18907dbe7261a361a36d92ba0b0",
+    "terminal_source": ".research-runs/b-local-candidate1-20261013/continuation2-run/stages/B16-LBFGS-continuation2/jobs/train-fit/native/training-completion.json",
+    "terminal_export_equivalence_passed": true,
+    "model_binary_read_or_rehashed_for_publication": false,
+    "scientifically_validated_potential": false,
+    "optimizer_history_exactly_resumed": true
+  },
+  {
+    "experiment": "development40",
+    "model_sha256_reported_by_terminal": "57c4fc2d7b6890dccdb1346c9d5641f18047feeeb3800df94028c0bbd993fe54",
+    "checkpoint_sha256_reported_by_terminal": "daf9ff552bf3bdccd6036e7c6a659f02d937bd8794b707508658749d03acd7fa",
+    "terminal_source": ".research-runs/b-local-final-coverage1-20261013/fit-recovery2-run/stages/development40-LBFGS/jobs/train-fit/native/training-completion.json",
+    "terminal_export_equivalence_passed": true,
+    "model_binary_read_or_rehashed_for_publication": false,
+    "scientifically_validated_potential": false,
+    "optimizer_history_exactly_resumed": true
+  }
+]

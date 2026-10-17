@@ -1,0 +1,327 @@
+{
+  "status": "clean_converged_common_reference_energies_available",
+  "started_utc": "2026-10-13T01:35:14.894752+00:00",
+  "budget_scope": "bounded_clean_optimization_with_all_preceding_phase_walltime_charged",
+  "maximum_charged_seconds": 5400,
+  "charging": "all driver walltime including startup, admission, handoff and cleanup; conservative upper bound on GPU computation",
+  "deadline_utc": "2026-10-13T03:05:14.785752+00:00",
+  "already_charged_new_research_seconds": 3660.536017000093,
+  "maximum_geometry_updates": 50,
+  "segments": [
+    {
+      "segment_index": 1,
+      "root": "${RESEARCH_RUNS}/campaign-003/cleanB1-segment01",
+      "status": "partial_budget",
+      "started_utc": "2026-10-13T01:35:14.977930+00:00",
+      "seconds_cap": 1800,
+      "max_updates": 10,
+      "max_force_evaluations": 11,
+      "result_sha256": "a9fe8fdf82edf619cc0b8bfff9656c56f90c1811ca76b038c789a4ce7e8c7f85",
+      "geometry_updates": 10,
+      "force_evaluations": 11,
+      "optimization_converged": false,
+      "physical_QA_passed": true,
+      "elapsed_seconds": 970.3279999999795,
+      "finished_utc": "2026-10-13T01:51:25.287506+00:00",
+      "progress_block": {
+        "updates": 10,
+        "first_steps": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "last_steps": [
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "medians": {
+          "maximum_force_Ha_per_bohr": {
+            "first": 0.00196795021389609,
+            "last": 0.00230837504057937,
+            "limit": 0.00019446903811488875,
+            "relative_decrease": -0.1729844709888857,
+            "first_excess_ratio": 9.11960686890147,
+            "last_excess_ratio": 10.870141709733886
+          },
+          "RMS_force_Ha_per_bohr": {
+            "first": 0.0002853685883253462,
+            "last": 0.0002785995936970341,
+            "limit": 9.723451905744438e-05,
+            "relative_decrease": 0.02372018121558228,
+            "first_excess_ratio": 1.9348485608979633,
+            "last_excess_ratio": 1.8652334211931727
+          },
+          "maximum_displacement_bohr": {
+            "first": 0.0241989855,
+            "last": 0.0429401457,
+            "limit": 0.003,
+            "relative_decrease": -0.774460573977368,
+            "first_excess_ratio": 7.066328499999999,
+            "last_excess_ratio": 13.3133819
+          },
+          "RMS_displacement_bohr": {
+            "first": 0.0033178663,
+            "last": 0.0057310781,
+            "limit": 0.0015,
+            "relative_decrease": -0.7273384705104,
+            "first_excess_ratio": 1.211910866666667,
+            "last_excess_ratio": 2.8207187333333335
+          }
+        },
+        "groups": {
+          "force": {
+            "first_excess_ratio": 9.11960686890147,
+            "last_excess_ratio": 10.870141709733886,
+            "improving": false,
+            "worsening": false
+          },
+          "displacement": {
+            "first_excess_ratio": 7.066328499999999,
+            "last_excess_ratio": 13.3133819,
+            "improving": false,
+            "worsening": true
+          }
+        },
+        "improving": false,
+        "stagnant_or_worse": true,
+        "energy_decrease_meV": 25.408445421803467,
+        "endpoint": {
+          "step": 10,
+          "energy_Ha": -1655.10030820635,
+          "maximum_force_Ha_per_bohr": 0.00303615148190541,
+          "RMS_force_Ha_per_bohr": 0.0003263276625399162,
+          "maximum_displacement_bohr": 0.0336480177,
+          "RMS_displacement_bohr": 0.0046241169
+        },
+        "original_four_criteria_unchanged": true,
+        "interpretation": "Budget allocation only, never a substitute for native four-criterion convergence"
+      }
+    },
+    {
+      "segment_index": 2,
+      "root": "${RESEARCH_RUNS}/campaign-003/cleanB1-segment02",
+      "status": "partial_budget",
+      "started_utc": "2026-10-13T01:51:25.340990+00:00",
+      "seconds_cap": 1800,
+      "max_updates": 10,
+      "max_force_evaluations": 11,
+      "result_sha256": "3ad8bcda48ca0654bfa182cf4b71e9f3c9d87c896820533f645828060aa057db",
+      "geometry_updates": 10,
+      "force_evaluations": 11,
+      "optimization_converged": false,
+      "physical_QA_passed": true,
+      "elapsed_seconds": 1010.0629999999655,
+      "finished_utc": "2026-10-13T02:08:15.367948+00:00",
+      "progress_block": {
+        "updates": 10,
+        "first_steps": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "last_steps": [
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "medians": {
+          "maximum_force_Ha_per_bohr": {
+            "first": 0.00108388727784788,
+            "last": 0.000609725750840796,
+            "limit": 0.00019446903811488875,
+            "relative_decrease": 0.4374638735021955,
+            "first_excess_ratio": 4.573572473822487,
+            "last_excess_ratio": 2.1353358701788876
+          },
+          "RMS_force_Ha_per_bohr": {
+            "first": 0.00019443993903370415,
+            "last": 0.00010305705007138288,
+            "limit": 9.723451905744438e-05,
+            "relative_decrease": 0.4699800329935353,
+            "first_excess_ratio": 0.9997007330167653,
+            "last_excess_ratio": 0.059881316536349205
+          },
+          "maximum_displacement_bohr": {
+            "first": 0.0583389935,
+            "last": 0.0229393519,
+            "limit": 0.003,
+            "relative_decrease": 0.6067921209508012,
+            "first_excess_ratio": 18.446331166666667,
+            "last_excess_ratio": 6.646450633333332
+          },
+          "RMS_displacement_bohr": {
+            "first": 0.0077659841,
+            "last": 0.0036028733,
+            "limit": 0.0015,
+            "relative_decrease": 0.536069961822353,
+            "first_excess_ratio": 4.177322733333333,
+            "last_excess_ratio": 1.4019155333333333
+          }
+        },
+        "groups": {
+          "force": {
+            "first_excess_ratio": 4.573572473822487,
+            "last_excess_ratio": 2.1353358701788876,
+            "improving": true,
+            "worsening": false
+          },
+          "displacement": {
+            "first_excess_ratio": 18.446331166666667,
+            "last_excess_ratio": 6.646450633333332,
+            "improving": true,
+            "worsening": false
+          }
+        },
+        "improving": true,
+        "stagnant_or_worse": false,
+        "energy_decrease_meV": 8.481277925700578,
+        "endpoint": {
+          "step": 10,
+          "energy_Ha": -1655.1006198875662,
+          "maximum_force_Ha_per_bohr": 0.000609725750840796,
+          "RMS_force_Ha_per_bohr": 0.00010305705007138288,
+          "maximum_displacement_bohr": 0.0309823794,
+          "RMS_displacement_bohr": 0.0047868727
+        },
+        "original_four_criteria_unchanged": true,
+        "interpretation": "Budget allocation only, never a substitute for native four-criterion convergence"
+      }
+    },
+    {
+      "segment_index": 3,
+      "root": "${RESEARCH_RUNS}/campaign-003/cleanB1-segment03",
+      "status": "partial_budget",
+      "started_utc": "2026-10-13T02:08:15.420700+00:00",
+      "seconds_cap": 1800,
+      "max_updates": 10,
+      "max_force_evaluations": 11,
+      "result_sha256": "d3eabba91e67ba979651351391ee53cbe064e8ceb4e33d55e7f38bc398ffd01b",
+      "geometry_updates": 10,
+      "force_evaluations": 11,
+      "optimization_converged": false,
+      "physical_QA_passed": true,
+      "elapsed_seconds": 906.920999999973,
+      "finished_utc": "2026-10-13T02:23:22.314648+00:00",
+      "progress_block": {
+        "updates": 10,
+        "first_steps": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "last_steps": [
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "medians": {
+          "maximum_force_Ha_per_bohr": {
+            "first": 0.000291451805572774,
+            "last": 0.000186436148194348,
+            "limit": 0.00019446903811488875,
+            "relative_decrease": 0.3603191175022731,
+            "first_excess_ratio": 0.4987054412260197,
+            "last_excess_ratio": 0
+          },
+          "RMS_force_Ha_per_bohr": {
+            "first": 5.1275797765250256e-05,
+            "last": 3.3304369809420376e-05,
+            "limit": 9.723451905744438e-05,
+            "relative_decrease": 0.35048558460477364,
+            "first_excess_ratio": 0,
+            "last_excess_ratio": 0
+          },
+          "maximum_displacement_bohr": {
+            "first": 0.0176893471,
+            "last": 0.0046226763,
+            "limit": 0.003,
+            "relative_decrease": 0.7386745664570062,
+            "first_excess_ratio": 4.896449033333333,
+            "last_excess_ratio": 0.5408920999999998
+          },
+          "RMS_displacement_bohr": {
+            "first": 0.0025483299,
+            "last": 0.0007811684,
+            "limit": 0.0015,
+            "relative_decrease": 0.6934586844505494,
+            "first_excess_ratio": 0.6988866,
+            "last_excess_ratio": 0
+          }
+        },
+        "groups": {
+          "force": {
+            "first_excess_ratio": 0.4987054412260197,
+            "last_excess_ratio": 0,
+            "improving": true,
+            "worsening": false
+          },
+          "displacement": {
+            "first_excess_ratio": 4.896449033333333,
+            "last_excess_ratio": 0.5408920999999998,
+            "improving": true,
+            "worsening": false
+          }
+        },
+        "improving": true,
+        "stagnant_or_worse": false,
+        "energy_decrease_meV": 0.832559944478938,
+        "endpoint": {
+          "step": 10,
+          "energy_Ha": -1655.1006504835796,
+          "maximum_force_Ha_per_bohr": 0.000187215725351887,
+          "RMS_force_Ha_per_bohr": 3.3304369809420376e-05,
+          "maximum_displacement_bohr": 0.0037650399,
+          "RMS_displacement_bohr": 0.0006705706
+        },
+        "original_four_criteria_unchanged": true,
+        "interpretation": "Budget allocation only, never a substitute for native four-criterion convergence"
+      }
+    },
+    {
+      "segment_index": 4,
+      "root": "${RESEARCH_RUNS}/campaign-003/cleanB1-segment04",
+      "status": "converged",
+      "started_utc": "2026-10-13T02:23:22.355975+00:00",
+      "seconds_cap": 1800,
+      "max_updates": 10,
+      "max_force_evaluations": 11,
+      "result_sha256": "b6d165f3c376881c1d31dcc089a83aa675f67425470022eeaf33a2a9755b9f21",
+      "geometry_updates": 1,
+      "force_evaluations": 2,
+      "optimization_converged": true,
+      "physical_QA_passed": true,
+      "elapsed_seconds": 189.85999999998603,
+      "finished_utc": "2026-10-13T02:26:32.185110+00:00"
+    }
+  ],
+  "native_command_seconds_total": 2911.29753496396,
+  "total_force_evaluations": 35,
+  "total_geometry_updates": 31,
+  "automatic_retry": false,
+  "training_updates": 0,
+  "MD_runs": 0,
+  "sealed_R4_read": false,
+  "manuscript_eligible": false,
+  "release_sha256": "52da68102b2109caa20e58a413552532262426874a6e25b9dbb0be01e5d3bcf8",
+  "active_segment": null,
+  "charged_seconds": 3077.359000000055,
+  "consecutive_stagnant_blocks": 0,
+  "stop_reason": null,
+  "converged_result": "${RESEARCH_RUNS}/campaign-003/cleanB1-segment04/jobs/clean88/native/result.json",
+  "combined_new_phase_charged_seconds": 6737.895017000148,
+  "finished_utc": "2026-10-13T02:26:32.203154+00:00",
+  "remaining_seconds": 2322.640999999945
+}

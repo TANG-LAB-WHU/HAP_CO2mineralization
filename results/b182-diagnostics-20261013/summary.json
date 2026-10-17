@@ -1,0 +1,406 @@
+{
+  "schema": "hap-b182-public-diagnostics/v1",
+  "manuscript_eligible": false,
+  "model_validated": false,
+  "static_singlepoints": [
+    {
+      "system": "B182",
+      "natoms": 182,
+      "electron_count": 1184,
+      "occupied_orbitals": 592,
+      "spherical_basis_functions": 2342,
+      "cartesian_basis_functions": 2516,
+      "energy_Ha": -3385.7835616638545,
+      "scf_total_steps": 97,
+      "scf_outer_iterations": 2,
+      "force_evaluation_count": 1,
+      "geometry_updates": 0,
+      "minimum_pair_distance_A": 0.9754897187112006,
+      "maximum_absolute_force_component_eV_per_A": 0.041630752305957336,
+      "RMS_force_component_eV_per_A": 0.010952577170133829,
+      "maximum_atom_force_norm_eV_per_A": 0.04173112850510232,
+      "copy_force_difference_max_component_eV_per_A": 5.210974356807327e-06,
+      "copy_force_difference_RMS_component_eV_per_A": 7.577041817783002e-07,
+      "optimization_converged": false,
+      "scientific_force_threshold_applied": false,
+      "status": "completed",
+      "reference_QA_passed": true,
+      "physical_QA_passed": true,
+      "raw_net_force_eV_per_A": [
+        0.019909589221273876,
+        0.024298450844432537,
+        0.004746988874325835
+      ],
+      "input_sha256": "c2bdd8dd81df899f3336443dae50e1a2491325ad9450c41102aee9a0cc16d048",
+      "geometry_sha256": "d5ca21b1fe96cd79f3250c6bf6843540e6af22fa2207f223ab9b93d281d2d36b",
+      "protocol_sha256": "439baa048bad078a0db646441966735a5aea04b69af1cfa01aae39151e1bfce2",
+      "method_identity_sha256": "8458159cf16f8012b41b57f36f729644e45151177fb18dd23a5ec6168cbd9717",
+      "cp2k_log_sha256": "7b8761729ee117cba5b52e1925b159e60e71494c77078ff72e80c4b18cf219a1"
+    },
+    {
+      "system": "clean176",
+      "natoms": 176,
+      "electron_count": 1152,
+      "occupied_orbitals": 576,
+      "spherical_basis_functions": 2264,
+      "cartesian_basis_functions": 2432,
+      "energy_Ha": -3310.212447034942,
+      "scf_total_steps": 98,
+      "scf_outer_iterations": 2,
+      "force_evaluation_count": 1,
+      "geometry_updates": 0,
+      "minimum_pair_distance_A": 0.9749442707304011,
+      "maximum_absolute_force_component_eV_per_A": 0.04041866534206813,
+      "RMS_force_component_eV_per_A": 0.010787006725250493,
+      "maximum_atom_force_norm_eV_per_A": 0.041228939447053546,
+      "copy_force_difference_max_component_eV_per_A": 4.881402792356743e-06,
+      "copy_force_difference_RMS_component_eV_per_A": 5.59164801992875e-07,
+      "optimization_converged": false,
+      "scientific_force_threshold_applied": false,
+      "status": "completed",
+      "reference_QA_passed": true,
+      "physical_QA_passed": true,
+      "raw_net_force_eV_per_A": [
+        -0.02774317018915956,
+        0.011930656850311385,
+        0.02046154442948721
+      ],
+      "input_sha256": "c140f01d8c8d8790aa8987e76f72f9c6eccb125c78fa63c3491b0b4e605c40a1",
+      "geometry_sha256": "383b234976727fd8b355260afe4605564808985f1ae1db425c4797a8d09fb1f5",
+      "protocol_sha256": "439baa048bad078a0db646441966735a5aea04b69af1cfa01aae39151e1bfce2",
+      "method_identity_sha256": "6c79e2f0cfdd1d2bf26b3f48572e1cee615c1d2045f7a52876bb34c7c21221c9",
+      "cp2k_log_sha256": "3dabd7e5aae4a34216f90283a35725af6cc206e2aa0eab553a4c3a98a3dc3e14"
+    }
+  ],
+  "direct_DFT4fs": {
+    "status": "completed",
+    "execution_complete": true,
+    "reference_QA_passed": true,
+    "physical_QA_passed": true,
+    "natoms": 182,
+    "electron_count": 1184,
+    "frame_count": 17,
+    "force_evaluation_count": 17,
+    "completed_steps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "energy_drift": {
+      "maximum_abs_deviation_meV_per_atom": 0.007424671601522717,
+      "signed_endpoint_change_meV_per_atom": 0.0030896884046481515,
+      "OLS_slope_meV_per_atom_fs": 0.0010475680107245686,
+      "temperature_range_K": [
+        256.718293444,
+        300.0
+      ],
+      "passed": true,
+      "limit_meV_per_atom": 1.0
+    },
+    "protocol_sha256": "16a95c99d3a27cece5dcaeff18a206b9765cf4978656f900618d7a677485abbb",
+    "input_sha256": "af49e7f40ef389c108aa87d3c5aefbaf088eb28986227151ac810f65e4ca9075",
+    "geometry_sha256": "d5ca21b1fe96cd79f3250c6bf6843540e6af22fa2207f223ab9b93d281d2d36b",
+    "method_identity_sha256": "d0781e742d25bf790d39344b1377574f147d8d0b0c3affbf6827465bd3b1cf67"
+  },
+  "exploratory_ML85fs": {
+    "status": "stopped_at_85fs_after_OH_alarm; native_stop_control_label_error_preserved",
+    "warning": "Unvalidated exploratory ML, model failed validation",
+    "model_validated": false,
+    "model_sha256": "57c4fc2d7b6890dccdb1346c9d5641f18047feeeb3800df94028c0bbd993fe54",
+    "geometry_sha256": "d5ca21b1fe96cd79f3250c6bf6843540e6af22fa2207f223ab9b93d281d2d36b",
+    "frames": 341,
+    "steps": 340,
+    "time_fs": 85.0,
+    "initial_T_K": 300.0,
+    "ensemble": "NVE",
+    "dt_fs": 0.25,
+    "seed": 2026101343,
+    "first_alarm_step": 331,
+    "first_alarm_time_fs": 82.75,
+    "actual_stop_checkpoint_step": 340,
+    "first_20fs_check": {
+      "step": 80,
+      "time_fs": 20.0,
+      "continue_allowed": true,
+      "alarms": [],
+      "action": "continue_same_native_process",
+      "model_validated": false
+    },
+    "temperature_range_K": [
+      170.6338527549127,
+      300.0
+    ],
+    "maximum_absolute_total_energy_drift_meV_atom": 0.0073846568229383085,
+    "endpoint_total_energy_drift_meV_atom": 0.0030654796768890716,
+    "minimum_pair_A": 0.9267957290357643,
+    "maximum_force_norm_eV_A": 4.7130784015523295,
+    "PO4_preserved_all_frames": true,
+    "affected_OH": [
+      {
+        "H_id": 109,
+        "O_id": 135,
+        "initial_A": 0.9779931428709461,
+        "first_alarm_A": 1.405479304121929,
+        "final_A": 1.4986458420655033,
+        "nearest_oxygen_at_endpoint": [
+          {
+            "O_id": 135,
+            "distance_A": 1.4986458420655033
+          },
+          {
+            "O_id": 133,
+            "distance_A": 2.2199524056384643
+          },
+          {
+            "O_id": 124,
+            "distance_A": 2.691677143330144
+          },
+          {
+            "O_id": 128,
+            "distance_A": 3.080487763884266
+          }
+        ]
+      }
+    ],
+    "initial": {
+      "step": 0,
+      "time_fs": 0.0,
+      "temperature_K": 300.0,
+      "total_energy_change_meV_atom": 0.0,
+      "minimum_pair_A": 0.9754897187112005,
+      "max_force_eV_A": 0.09137533681091246,
+      "maximum_COM_removed_displacement_A": 1.7681369402454746e-14,
+      "OH_A": [
+        0.9834465100620239,
+        0.9779931428709476,
+        0.9754897187112005,
+        0.9759038030031545,
+        0.9834465100620241,
+        0.9779931428709461,
+        0.9754897187112006,
+        0.975903803003154
+      ],
+      "PO4_preserved": true,
+      "CO2": [
+        {
+          "ids": [
+            89,
+            90,
+            91
+          ],
+          "CO_A": [
+            1.1902250975279711,
+            1.1638686110156011
+          ],
+          "OCO_degrees": 174.5511337849919,
+          "COM_height_local_Ca_A": 2.8317614172139542,
+          "Ca_O_contacts_below_3_2A": [
+            {
+              "Ca_id": 137,
+              "O_id": 90,
+              "distance_A": 2.510648931518112
+            }
+          ],
+          "nearest_Ca_O_A": 2.510648931518112
+        },
+        {
+          "ids": [
+            180,
+            181,
+            182
+          ],
+          "CO_A": [
+            1.1902250975279696,
+            1.1638686110156036
+          ],
+          "OCO_degrees": 174.55113378499203,
+          "COM_height_local_Ca_A": 2.8317614172139542,
+          "Ca_O_contacts_below_3_2A": [
+            {
+              "Ca_id": 46,
+              "O_id": 181,
+              "distance_A": 2.510648931518105
+            }
+          ],
+          "nearest_Ca_O_A": 2.510648931518105
+        }
+      ],
+      "alarms": [],
+      "velocity_QA_passed": true
+    },
+    "final": {
+      "step": 340,
+      "time_fs": 85.0,
+      "temperature_K": 269.56417667509015,
+      "total_energy_change_meV_atom": 0.0030654796768890716,
+      "minimum_pair_A": 0.9267957290357643,
+      "max_force_eV_A": 2.663816900249471,
+      "maximum_COM_removed_displacement_A": 1.046013062400945,
+      "OH_A": [
+        0.9695868493249581,
+        1.0070205336540714,
+        0.9709035644490485,
+        0.9649075767758312,
+        0.9412474636162037,
+        1.4986458420655033,
+        0.9706964106669881,
+        0.9745451915091314
+      ],
+      "PO4_preserved": true,
+      "CO2": [
+        {
+          "ids": [
+            89,
+            90,
+            91
+          ],
+          "CO_A": [
+            1.1798210196950814,
+            1.1715760353128033
+          ],
+          "OCO_degrees": 162.14805030674057,
+          "COM_height_local_Ca_A": 2.81575179368453,
+          "Ca_O_contacts_below_3_2A": [
+            {
+              "Ca_id": 137,
+              "O_id": 90,
+              "distance_A": 2.756725765769104
+            }
+          ],
+          "nearest_Ca_O_A": 2.756725765769104
+        },
+        {
+          "ids": [
+            180,
+            181,
+            182
+          ],
+          "CO_A": [
+            1.2009975860780484,
+            1.1638070970132368
+          ],
+          "OCO_degrees": 173.81968574761768,
+          "COM_height_local_Ca_A": 2.9017133414679463,
+          "Ca_O_contacts_below_3_2A": [
+            {
+              "Ca_id": 46,
+              "O_id": 181,
+              "distance_A": 2.6582635363470546
+            }
+          ],
+          "nearest_Ca_O_A": 2.6582635363470546
+        }
+      ],
+      "alarms": [
+        "Original OH bond outside 0.7-1.4 A"
+      ],
+      "velocity_QA_passed": true
+    },
+    "CO2_ranges": [
+      {
+        "CO_A": [
+          1.1578308806658009,
+          1.1998419908105236
+        ],
+        "OCO_deg": [
+          162.14435544036903,
+          179.49790428605698
+        ],
+        "local_Ca_height_A": [
+          2.814026373581015,
+          2.8317614172139542
+        ]
+      },
+      {
+        "CO_A": [
+          1.1634628668559377,
+          1.2084973660234013
+        ],
+        "OCO_deg": [
+          166.1337255682678,
+          177.3808001130624
+        ],
+        "local_Ca_height_A": [
+          2.8317614172139542,
+          2.925733305297893
+        ]
+      }
+    ],
+    "termination_detail": "OH alarm requested stop at step340. jump SELF was executed inside included decision file; target label was in md.in, so LAMMPS exited1. No subsequent steps or restart were run. Output-only postprocessing preserved this failure and all341 complete raw frames.",
+    "run0_parity": {
+      "passed": true,
+      "absolute_energy_difference_eV": 0.0,
+      "max_force_component_difference_eV_A": 4.062306047103448e-13,
+      "energy_tolerance_eV": 1e-06,
+      "force_tolerance_eV_A": 1e-06,
+      "claim": "Engineering type/unit/mapping parity only; no DFT validation",
+      "model_validated": false
+    }
+  },
+  "step340_DFT_diagnostic": {
+    "natoms": 182,
+    "step": 340,
+    "time_fs": 85,
+    "electron_count": 1184,
+    "energy_Ha": -3384.7718982668025,
+    "SCF_steps": 48,
+    "SCF_outer_iterations": 1,
+    "force_rows": 182,
+    "force_header": "FORCES| Atomic forces [hartree/bohr]",
+    "input_sha256": "e341448ffa6c0bcc34b6c8b0412391e5b73c8825adf97b9c8d367176ff4c3525",
+    "cp2k_log_sha256": "514e10168595c0e40cf6ad99b26c729fbf286472bb1d9122711d78da8e8b06e1",
+    "maximum_input_coordinate_difference_A": 0.0,
+    "groups": {
+      "all_atoms": {
+        "atom_count": 182,
+        "force_component_RMSE_eV_A": 1.2576037471223829,
+        "max_abs_component_eV_A": 17.925892158098478
+      },
+      "CO2_1": {
+        "atom_count": 3,
+        "force_component_RMSE_eV_A": 0.4225722766221969,
+        "max_abs_component_eV_A": 0.6550970798183591
+      },
+      "CO2_2": {
+        "atom_count": 3,
+        "force_component_RMSE_eV_A": 0.74945801620291,
+        "max_abs_component_eV_A": 1.7428390586963083
+      },
+      "CO2_pooled": {
+        "atom_count": 6,
+        "force_component_RMSE_eV_A": 0.608380903308309,
+        "max_abs_component_eV_A": 1.7428390586963083
+      },
+      "OH_H109_O135": {
+        "atom_count": 2,
+        "force_component_RMSE_eV_A": 7.60382778081944,
+        "max_abs_component_eV_A": 17.925892158098478
+      },
+      "local_union_3_5A_including_OH": {
+        "atom_count": 20,
+        "force_component_RMSE_eV_A": 3.108092577006853,
+        "max_abs_component_eV_A": 17.925892158098478
+      },
+      "local_environment_excluding_OH": {
+        "atom_count": 18,
+        "force_component_RMSE_eV_A": 2.075898674258386,
+        "max_abs_component_eV_A": 11.462840918505794
+      }
+    },
+    "claim": "Both ML and DFT axial force-only relative acceleration are restoring; total local forces, not an isolated OH bond force. No reaction claim."
+  }
+}

@@ -1,0 +1,2528 @@
+{
+  "schema": "campaign003-followup-point-summary/v1",
+  "scope": "existing development results; scalar extraction only",
+  "points": [
+    {
+      "schema": "hap91_relax_progress/v1",
+      "job_id": "HAP-C003-B91",
+      "status": "partial_budget",
+      "final": true,
+      "force_evaluation_count": 6,
+      "complete_force_evaluation_count": 6,
+      "geometry_update_count": 5,
+      "geometry_updates_with_optimizer_output": 5,
+      "execution_complete": true,
+      "native_optimization_converged": false,
+      "optimization_converged": false,
+      "partial_budget": true,
+      "termination_classification": "partial_budget",
+      "partial_walltime": false,
+      "acceptable": true,
+      "reference_QA_passed": true,
+      "reference_QA_scope": "output integrity and bounded execution only; not scientific validation",
+      "known_ELPA_warning_count": 0,
+      "manuscript_eligible": false,
+      "scientifically_validated": false,
+      "parser_sha256": "b2e10b61b073f7d2cdf6874a70eff6610db9987d0fb8e94c6a8441f83fc13693",
+      "physical_QA_passed": true,
+      "endpoint_eligible_for_ranking": false,
+      "host_container_exit0_noOOM_required": true,
+      "force_correction": "none",
+      "fresh_BFGS_history": false,
+      "point_id": "B-direction",
+      "source_result": "campaign-003/B-direction1-segment01/jobs/B91/native/result.json",
+      "source_result_sha256": "8c81bbb9d066a803bf5f524bd3d045b1b01320bc4c8d3ef6dcc1c125fc399f19",
+      "errors": [],
+      "pending": [],
+      "unknown_warnings": [],
+      "convergence_evidence": {},
+      "electron_counts": [
+        592,
+        592,
+        592,
+        592,
+        592,
+        592
+      ],
+      "initialization_evidence": {
+        "mode": "RESTART",
+        "read_lines": [
+          " WFN_RESTART| Restart file /seed/HAP91-converged-parent.wfn read\n\n"
+        ],
+        "atomic_lines": [],
+        "errors": []
+      },
+      "retained_endpoint": {
+        "job_id": "HAP-C003-B91",
+        "evaluation_index": 5,
+        "optimizer_step": 5,
+        "geometry_source": "motion_xyz",
+        "converged": false,
+        "eligible_for_ranking": false,
+        "energy_Ha": -1692.8860962289505,
+        "energy_eV": -46065.77743494878,
+        "file": "endpoint.extxyz",
+        "sha256": "f9f85ea4800a5ea38cd9348db04d150d8e803c21f27ec6fad1eaee8246c24375",
+        "final_energy_only": []
+      },
+      "last_complete_force_evaluation": {
+        "evaluation_index": 5,
+        "optimizer_step": 5,
+        "kind": "force_evaluation",
+        "status": "evaluation_complete_optimizer_output_committed",
+        "complete": true,
+        "optimizer_output_committed": true,
+        "energy_Ha": -1692.8860962289505,
+        "energy_eV": -46065.77743494878,
+        "geometry_source": "motion_xyz",
+        "log_start_line": 3470,
+        "log_end_line": 4329,
+        "scientifically_validated": false,
+        "manuscript_eligible": false,
+        "raw_net_force_component_RMSE_floor_eV_per_A": 0.0001519700303647491,
+        "maximum_force_Ha_per_bohr": 0.000572656501926061,
+        "maximum_atom_force_norm_Ha_per_bohr": 0.000577725532054093,
+        "RMS_force_Ha_per_bohr": 5.883783115484573e-05,
+        "net_force_QA_passed": true,
+        "scf": {
+          "converged": true,
+          "inner_blocks": [
+            14
+          ],
+          "total_steps": 14,
+          "outer_iterations": 1,
+          "update_counts": {
+            "DIIS": 14
+          },
+          "outer_summaries": [
+            [
+              1,
+              14
+            ]
+          ]
+        }
+      },
+      "final_energy_only": []
+    },
+    {
+      "schema": "hap91_relax_progress/v1",
+      "job_id": "HAP-C003-B91",
+      "status": "partial_budget",
+      "final": true,
+      "force_evaluation_count": 11,
+      "complete_force_evaluation_count": 11,
+      "geometry_update_count": 10,
+      "geometry_updates_with_optimizer_output": 10,
+      "execution_complete": true,
+      "native_optimization_converged": false,
+      "optimization_converged": false,
+      "partial_budget": true,
+      "termination_classification": "partial_budget",
+      "partial_walltime": false,
+      "acceptable": true,
+      "reference_QA_passed": true,
+      "reference_QA_scope": "output integrity and bounded execution only; not scientific validation",
+      "known_ELPA_warning_count": 0,
+      "manuscript_eligible": false,
+      "scientifically_validated": false,
+      "parser_sha256": "b2e10b61b073f7d2cdf6874a70eff6610db9987d0fb8e94c6a8441f83fc13693",
+      "physical_QA_passed": true,
+      "endpoint_eligible_for_ranking": false,
+      "host_container_exit0_noOOM_required": true,
+      "force_correction": "none",
+      "fresh_BFGS_history": false,
+      "point_id": "B-adaptive-01",
+      "source_result": "campaign-003/B-adaptive1-segment01/jobs/B91/native/result.json",
+      "source_result_sha256": "925ebc587eb5b5a43be8752b9c9cb7b68dad11103a03f515d4d8e514f1d558e2",
+      "errors": [],
+      "pending": [],
+      "unknown_warnings": [],
+      "convergence_evidence": {},
+      "electron_counts": [
+        592,
+        592,
+        592,
+        592,
+        592,
+        592,
+        592,
+        592,
+        592,
+        592,
+        592
+      ],
+      "initialization_evidence": {
+        "mode": "RESTART",
+        "read_lines": [
+          " WFN_RESTART| Restart file /seed/HAP91-converged-parent.wfn read\n\n"
+        ],
+        "atomic_lines": [],
+        "errors": []
+      },
+      "retained_endpoint": {
+        "job_id": "HAP-C003-B91",
+        "evaluation_index": 10,
+        "optimizer_step": 10,
+        "geometry_source": "motion_xyz",
+        "converged": false,
+        "eligible_for_ranking": false,
+        "energy_Ha": -1692.8861127741352,
+        "energy_eV": -46065.77788516619,
+        "file": "endpoint.extxyz",
+        "sha256": "b577b09b48afa230e5316a17275ad0837592803a7c5afb009a22f330a849b8e2",
+        "final_energy_only": []
+      },
+      "last_complete_force_evaluation": {
+        "evaluation_index": 10,
+        "optimizer_step": 10,
+        "kind": "force_evaluation",
+        "status": "evaluation_complete_optimizer_output_committed",
+        "complete": true,
+        "optimizer_output_committed": true,
+        "energy_Ha": -1692.8861127741352,
+        "energy_eV": -46065.77788516619,
+        "geometry_source": "motion_xyz",
+        "log_start_line": 6002,
+        "log_end_line": 6861,
+        "scientifically_validated": false,
+        "manuscript_eligible": false,
+        "raw_net_force_component_RMSE_floor_eV_per_A": 0.0001000930744294047,
+        "maximum_force_Ha_per_bohr": 0.000145717706582873,
+        "maximum_atom_force_norm_Ha_per_bohr": 0.00016032650278767502,
+        "RMS_force_Ha_per_bohr": 3.358226387340853e-05,
+        "net_force_QA_passed": true,
+        "scf": {
+          "converged": true,
+          "inner_blocks": [
+            13
+          ],
+          "total_steps": 13,
+          "outer_iterations": 1,
+          "update_counts": {
+            "DIIS": 13
+          },
+          "outer_summaries": [
+            [
+              1,
+              13
+            ]
+          ]
+        }
+      },
+      "final_energy_only": []
+    },
+    {
+      "schema": "hap91_relax_progress/v1",
+      "job_id": "HAP-C003-B91",
+      "status": "converged",
+      "final": true,
+      "force_evaluation_count": 2,
+      "complete_force_evaluation_count": 2,
+      "geometry_update_count": 1,
+      "geometry_updates_with_optimizer_output": 1,
+      "execution_complete": true,
+      "native_optimization_converged": true,
+      "optimization_converged": true,
+      "partial_budget": false,
+      "termination_classification": "converged",
+      "partial_walltime": false,
+      "acceptable": true,
+      "reference_QA_passed": true,
+      "reference_QA_scope": "output integrity and bounded execution only; not scientific validation",
+      "known_ELPA_warning_count": 0,
+      "manuscript_eligible": false,
+      "scientifically_validated": false,
+      "parser_sha256": "b2e10b61b073f7d2cdf6874a70eff6610db9987d0fb8e94c6a8441f83fc13693",
+      "physical_QA_passed": true,
+      "endpoint_eligible_for_ranking": true,
+      "host_container_exit0_noOOM_required": true,
+      "force_correction": "none",
+      "fresh_BFGS_history": false,
+      "point_id": "B-final",
+      "source_result": "campaign-003/B-adaptive1-segment02/jobs/B91/native/result.json",
+      "source_result_sha256": "f0874b2d2a39c79865abeede06f216535f6417e224a70ed7b8bee2b5f44e6828",
+      "errors": [],
+      "pending": [],
+      "unknown_warnings": [],
+      "convergence_evidence": {
+        "maximum_displacement_bohr": {
+          "flags": [
+            "YES"
+          ],
+          "printed_values": [
+            0.0019407929
+          ],
+          "printed_limits": [
+            0.003
+          ],
+          "configured_limit": 0.003
+        },
+        "RMS_displacement_bohr": {
+          "flags": [
+            "YES"
+          ],
+          "printed_values": [
+            0.000275935
+          ],
+          "printed_limits": [
+            0.0015
+          ],
+          "configured_limit": 0.0015
+        },
+        "maximum_force_Ha_per_bohr": {
+          "flags": [
+            "YES"
+          ],
+          "printed_values": [
+            0.0001515448
+          ],
+          "printed_limits": [
+            0.000194469
+          ],
+          "configured_limit": 0.00019446903811488875
+        },
+        "RMS_force_Ha_per_bohr": {
+          "flags": [
+            "YES"
+          ],
+          "printed_values": [
+            2.85841e-05
+          ],
+          "printed_limits": [
+            9.72345e-05
+          ],
+          "configured_limit": 9.723451905744438e-05
+        }
+      },
+      "electron_counts": [
+        592,
+        592,
+        592
+      ],
+      "initialization_evidence": {
+        "mode": "RESTART",
+        "read_lines": [
+          " WFN_RESTART| Restart file /seed/HAP91-converged-parent.wfn read\n\n"
+        ],
+        "atomic_lines": [],
+        "errors": []
+      },
+      "retained_endpoint": {
+        "job_id": "HAP-C003-B91",
+        "evaluation_index": 1,
+        "optimizer_step": 1,
+        "geometry_source": "motion_xyz",
+        "converged": true,
+        "eligible_for_ranking": true,
+        "energy_Ha": -1692.8861132685834,
+        "energy_eV": -46065.777898620814,
+        "file": "endpoint.extxyz",
+        "sha256": "8acafff603bfa32c9515347065fe7a7567f81d11a9b1d0c0f0bb11d45bb24fe6",
+        "final_energy_only": [
+          {
+            "kind": "final_energy_only",
+            "energy_Ha": -1692.8861132685824,
+            "scf": {
+              "converged": true,
+              "inner_blocks": [
+                10
+              ],
+              "total_steps": 10,
+              "outer_iterations": 1,
+              "update_counts": {
+                "DIIS": 10
+              },
+              "outer_summaries": [
+                [
+                  1,
+                  10
+                ]
+              ]
+            },
+            "positions_A": [
+              [
+                0.2693196129,
+                5.209539451,
+                15.5125544194
+              ],
+              [
+                4.7995481199,
+                2.6431398288,
+                18.9021953399
+              ],
+              [
+                4.6157338397,
+                2.7216043928,
+                15.3499162612
+              ],
+              [
+                -0.1500395194,
+                5.6559386656,
+                12.3343920021
+              ],
+              [
+                3.7133567633,
+                5.9922088981,
+                13.8502382243
+              ],
+              [
+                -1.2146100469,
+                2.0454284202,
+                13.6482971152
+              ],
+              [
+                -2.3665741746,
+                8.1672096363,
+                13.8359262759
+              ],
+              [
+                1.2274294717,
+                1.8545080621,
+                17.1081700311
+              ],
+              [
+                5.8492542973,
+                6.0122755969,
+                17.2099554718
+              ],
+              [
+                6.9489817199,
+                0.0286346128,
+                17.0689019203
+              ],
+              [
+                6.6335596938,
+                5.1418319142,
+                13.6305310062
+              ],
+              [
+                5.8775118304,
+                0.0204574524,
+                13.2766577728
+              ],
+              [
+                1.9931330247,
+                2.9485290705,
+                13.5396433965
+              ],
+              [
+                -1.5836331889,
+                3.1777321192,
+                17.1109236302
+              ],
+              [
+                -1.1119424357,
+                7.9052348832,
+                17.2279674164
+              ],
+              [
+                2.7435312241,
+                5.0898983783,
+                17.2693317402
+              ],
+              [
+                -0.0417622318,
+                -0.0987412739,
+                16.0018300109
+              ],
+              [
+                -0.0112926918,
+                -0.0609307647,
+                13.1788387069
+              ],
+              [
+                -1.4909205884,
+                5.8854760719,
+                14.152214353
+              ],
+              [
+                1.4853864753,
+                6.6410432829,
+                13.5845592599
+              ],
+              [
+                0.7018683693,
+                3.8684218081,
+                13.5888696012
+              ],
+              [
+                6.4123145558,
+                2.5775226769,
+                17.0396977374
+              ],
+              [
+                3.9566679753,
+                1.2510343181,
+                17.2346159329
+              ],
+              [
+                4.0151893297,
+                4.2009598338,
+                17.2199566189
+              ],
+              [
+                7.1578364918,
+                3.9308689539,
+                12.8416556264
+              ],
+              [
+                4.4365381593,
+                -0.0872689318,
+                12.6798288166
+              ],
+              [
+                3.2674416117,
+                3.802840877,
+                13.3430748982
+              ],
+              [
+                -1.5955563013,
+                4.7364131889,
+                17.1935335253
+              ],
+              [
+                0.1726641478,
+                7.0449157106,
+                16.9867668203
+              ],
+              [
+                1.4353740705,
+                4.2384283376,
+                17.3387501179
+              ],
+              [
+                5.6949273192,
+                4.8013403509,
+                14.8417164025
+              ],
+              [
+                5.9190017648,
+                0.8629341733,
+                14.6151525956
+              ],
+              [
+                2.2369900105,
+                2.2331811381,
+                14.9463076756
+              ],
+              [
+                -0.8160597707,
+                2.6325693947,
+                18.3413869791
+              ],
+              [
+                -1.7230485964,
+                7.3889891484,
+                18.5647164289
+              ],
+              [
+                2.7321533291,
+                6.0900914493,
+                18.4451915156
+              ],
+              [
+                -0.7684876626,
+                2.7996610022,
+                15.8328690466
+              ],
+              [
+                -2.1878252872,
+                7.6949574472,
+                16.1351038598
+              ],
+              [
+                2.6629377309,
+                5.9136382852,
+                15.9422211732
+              ],
+              [
+                5.9048055258,
+                6.1807724824,
+                12.7412995339
+              ],
+              [
+                6.9528740696,
+                0.5724015223,
+                12.3389355304
+              ],
+              [
+                1.713174146,
+                1.8441355847,
+                12.5167964966
+              ],
+              [
+                -0.1387280447,
+                -0.1119276524,
+                16.9803956902
+              ],
+              [
+                -0.1142406374,
+                0.0353579916,
+                14.1466200786
+              ],
+              [
+                0.0824147054,
+                5.2721513143,
+                22.4938314132
+              ],
+              [
+                4.8607030119,
+                2.3455934803,
+                25.4750331467
+              ],
+              [
+                4.4839360471,
+                2.8425033372,
+                22.305762294
+              ],
+              [
+                -0.0662651622,
+                5.4233997581,
+                18.9196352283
+              ],
+              [
+                3.4594528842,
+                6.1632108901,
+                20.6966304163
+              ],
+              [
+                -1.0981990088,
+                2.0136046706,
+                20.5865190671
+              ],
+              [
+                -2.2077466743,
+                8.0172445618,
+                20.7894920576
+              ],
+              [
+                1.0471900506,
+                1.9151023613,
+                23.9867877064
+              ],
+              [
+                5.8387695484,
+                6.1108145035,
+                24.1171589888
+              ],
+              [
+                7.2367555412,
+                -0.0774941257,
+                23.9961323412
+              ],
+              [
+                6.3124026912,
+                4.8557902672,
+                20.6714368848
+              ],
+              [
+                5.8561772604,
+                0.1400943991,
+                20.6067338369
+              ],
+              [
+                1.9868521596,
+                2.9451580092,
+                20.5046397881
+              ],
+              [
+                -1.7754901841,
+                3.0002598884,
+                24.0561922225
+              ],
+              [
+                -1.1273077689,
+                8.0725201434,
+                24.3911138603
+              ],
+              [
+                2.7777364079,
+                5.0672127571,
+                24.2855175514
+              ],
+              [
+                0.060340599,
+                -0.1137688218,
+                22.2795341585
+              ],
+              [
+                0.1807767858,
+                -0.0933567898,
+                19.3884539231
+              ],
+              [
+                -1.6849725688,
+                5.4596171636,
+                20.7456454234
+              ],
+              [
+                0.8181987268,
+                6.7849373305,
+                20.5878363825
+              ],
+              [
+                0.7310470673,
+                3.8546094407,
+                20.5215205821
+              ],
+              [
+                6.2773631767,
+                2.2993245997,
+                23.708812183
+              ],
+              [
+                3.3559287622,
+                1.4567465249,
+                24.0441540316
+              ],
+              [
+                4.1176574313,
+                4.2054463157,
+                24.2285605047
+              ],
+              [
+                6.333299538,
+                3.2944515392,
+                20.6671252175
+              ],
+              [
+                4.56555474,
+                0.9847721957,
+                20.855484684
+              ],
+              [
+                3.3022487267,
+                3.7942907277,
+                20.4983964863
+              ],
+              [
+                -2.0388942905,
+                4.4152765235,
+                24.5832537449
+              ],
+              [
+                0.2933045549,
+                8.1037728082,
+                25.0381580036
+              ],
+              [
+                1.5678352503,
+                4.1505419117,
+                24.5553654539
+              ],
+              [
+                5.4740415972,
+                5.3152647879,
+                21.9059564377
+              ],
+              [
+                6.9404459267,
+                0.3586334617,
+                21.6948409452
+              ],
+              [
+                1.9966827006,
+                2.0793857306,
+                21.8026551043
+              ],
+              [
+                -1.1129646314,
+                2.0210357174,
+                25.0729292776
+              ],
+              [
+                -2.2914119938,
+                7.6666306956,
+                25.3119512766
+              ],
+              [
+                3.0917419679,
+                6.2161529935,
+                25.2620831399
+              ],
+              [
+                -0.8314883941,
+                3.0574125008,
+                22.8002866927
+              ],
+              [
+                -1.1954472199,
+                7.2066331039,
+                23.0840209219
+              ],
+              [
+                2.4694932049,
+                5.7530418725,
+                22.8791771708
+              ],
+              [
+                5.5592857524,
+                5.3045095971,
+                19.3940551065
+              ],
+              [
+                6.4462936357,
+                0.6663420101,
+                19.2650826665
+              ],
+              [
+                2.0592111959,
+                1.9771553798,
+                19.3041781896
+              ],
+              [
+                0.1174103809,
+                -0.1156184239,
+                23.2533512924
+              ],
+              [
+                0.1201810707,
+                -0.0570678433,
+                20.3617984173
+              ],
+              [
+                -1.8566786468,
+                3.5128371458,
+                27.3194132795
+              ],
+              [
+                -2.9892057448,
+                3.1521267668,
+                27.256913859
+              ],
+              [
+                -0.7664926935,
+                3.8837328471,
+                27.4882952196
+              ]
+            ],
+            "geometry_source": "motion_xyz",
+            "excluded_from_force_labels": true,
+            "log_start_line": 2045,
+            "trajectory_step": 2,
+            "motion_force_frame": "excluded: energy-only final evaluation may retain old forces",
+            "maximum_geometry_difference_A": 0.0
+          }
+        ]
+      },
+      "last_complete_force_evaluation": {
+        "evaluation_index": 1,
+        "optimizer_step": 1,
+        "kind": "force_evaluation",
+        "status": "evaluation_complete_optimizer_output_committed",
+        "complete": true,
+        "optimizer_output_committed": true,
+        "energy_Ha": -1692.8861132685834,
+        "energy_eV": -46065.777898620814,
+        "geometry_source": "motion_xyz",
+        "log_start_line": 1444,
+        "log_end_line": 2045,
+        "scientifically_validated": false,
+        "manuscript_eligible": false,
+        "raw_net_force_component_RMSE_floor_eV_per_A": 0.0001008893936292654,
+        "maximum_force_Ha_per_bohr": 0.00015154484890283,
+        "maximum_atom_force_norm_Ha_per_bohr": 0.00016560014027005082,
+        "RMS_force_Ha_per_bohr": 2.858406250671884e-05,
+        "net_force_QA_passed": true,
+        "scf": {
+          "converged": true,
+          "inner_blocks": [
+            10
+          ],
+          "total_steps": 10,
+          "outer_iterations": 1,
+          "update_counts": {
+            "DIIS": 10
+          },
+          "outer_summaries": [
+            [
+              1,
+              10
+            ]
+          ]
+        }
+      },
+      "final_energy_only": [
+        {
+          "kind": "final_energy_only",
+          "energy_Ha": -1692.8861132685824,
+          "geometry_source": "motion_xyz",
+          "excluded_from_force_labels": true,
+          "log_start_line": 2045,
+          "trajectory_step": 2,
+          "motion_force_frame": "excluded: energy-only final evaluation may retain old forces",
+          "maximum_geometry_difference_A": 0.0,
+          "scf": {
+            "converged": true,
+            "inner_blocks": [
+              10
+            ],
+            "total_steps": 10,
+            "outer_iterations": 1,
+            "update_counts": {
+              "DIIS": 10
+            },
+            "outer_summaries": [
+              [
+                1,
+                10
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "schema": "hap91_relax_progress/v1",
+      "job_id": "HAP-C003-clean88",
+      "status": "partial_budget",
+      "final": true,
+      "force_evaluation_count": 11,
+      "complete_force_evaluation_count": 11,
+      "geometry_update_count": 10,
+      "geometry_updates_with_optimizer_output": 10,
+      "execution_complete": true,
+      "native_optimization_converged": false,
+      "optimization_converged": false,
+      "partial_budget": true,
+      "termination_classification": "partial_budget",
+      "partial_walltime": false,
+      "acceptable": true,
+      "reference_QA_passed": true,
+      "reference_QA_scope": "output integrity and bounded execution only; not scientific validation",
+      "known_ELPA_warning_count": 0,
+      "manuscript_eligible": false,
+      "scientifically_validated": false,
+      "parser_sha256": "b2e10b61b073f7d2cdf6874a70eff6610db9987d0fb8e94c6a8441f83fc13693",
+      "physical_QA_passed": true,
+      "endpoint_eligible_for_ranking": false,
+      "host_container_exit0_noOOM_required": true,
+      "force_correction": "none",
+      "fresh_BFGS_history": true,
+      "point_id": "cleanB-01",
+      "source_result": "campaign-003/cleanB1-segment01/jobs/clean88/native/result.json",
+      "source_result_sha256": "a9fe8fdf82edf619cc0b8bfff9656c56f90c1811ca76b038c789a4ce7e8c7f85",
+      "errors": [],
+      "pending": [],
+      "unknown_warnings": [],
+      "convergence_evidence": {},
+      "electron_counts": [
+        576,
+        576,
+        576,
+        576,
+        576,
+        576,
+        576,
+        576,
+        576,
+        576,
+        576
+      ],
+      "initialization_evidence": {
+        "mode": "RESTART",
+        "read_lines": [
+          " WFN_RESTART| Restart file /seed/HAP91-converged-parent.wfn read\n\n"
+        ],
+        "atomic_lines": [],
+        "errors": []
+      },
+      "retained_endpoint": {
+        "job_id": "HAP-C003-clean88",
+        "evaluation_index": 10,
+        "optimizer_step": 10,
+        "geometry_source": "motion_xyz",
+        "converged": false,
+        "eligible_for_ranking": false,
+        "energy_Ha": -1655.10030820635,
+        "energy_eV": -45037.57376245677,
+        "file": "endpoint.extxyz",
+        "sha256": "72143a875102960966d9ba5e98a7922aadf79fa364c47371414e1ebdb4db07ea",
+        "final_energy_only": []
+      },
+      "last_complete_force_evaluation": {
+        "evaluation_index": 10,
+        "optimizer_step": 10,
+        "kind": "force_evaluation",
+        "status": "evaluation_complete_optimizer_output_committed",
+        "complete": true,
+        "optimizer_output_committed": true,
+        "energy_Ha": -1655.10030820635,
+        "energy_eV": -45037.57376245677,
+        "geometry_source": "motion_xyz",
+        "log_start_line": 5793,
+        "log_end_line": 6591,
+        "scientifically_validated": false,
+        "manuscript_eligible": false,
+        "raw_net_force_component_RMSE_floor_eV_per_A": 8.716277024568347e-05,
+        "maximum_force_Ha_per_bohr": 0.00303615148190541,
+        "maximum_atom_force_norm_Ha_per_bohr": 0.0036342404565720414,
+        "RMS_force_Ha_per_bohr": 0.0003263276625399162,
+        "net_force_QA_passed": true,
+        "scf": {
+          "converged": true,
+          "inner_blocks": [
+            15
+          ],
+          "total_steps": 15,
+          "outer_iterations": 1,
+          "update_counts": {
+            "DIIS": 15
+          },
+          "outer_summaries": [
+            [
+              1,
+              15
+            ]
+          ]
+        }
+      },
+      "final_energy_only": []
+    },
+    {
+      "schema": "hap91_relax_progress/v1",
+      "job_id": "HAP-C003-clean88",
+      "status": "partial_budget",
+      "final": true,
+      "force_evaluation_count": 11,
+      "complete_force_evaluation_count": 11,
+      "geometry_update_count": 10,
+      "geometry_updates_with_optimizer_output": 10,
+      "execution_complete": true,
+      "native_optimization_converged": false,
+      "optimization_converged": false,
+      "partial_budget": true,
+      "termination_classification": "partial_budget",
+      "partial_walltime": false,
+      "acceptable": true,
+      "reference_QA_passed": true,
+      "reference_QA_scope": "output integrity and bounded execution only; not scientific validation",
+      "known_ELPA_warning_count": 0,
+      "manuscript_eligible": false,
+      "scientifically_validated": false,
+      "parser_sha256": "b2e10b61b073f7d2cdf6874a70eff6610db9987d0fb8e94c6a8441f83fc13693",
+      "physical_QA_passed": true,
+      "endpoint_eligible_for_ranking": false,
+      "host_container_exit0_noOOM_required": true,
+      "force_correction": "none",
+      "fresh_BFGS_history": false,
+      "point_id": "cleanB-02",
+      "source_result": "campaign-003/cleanB1-segment02/jobs/clean88/native/result.json",
+      "source_result_sha256": "3ad8bcda48ca0654bfa182cf4b71e9f3c9d87c896820533f645828060aa057db",
+      "errors": [],
+      "pending": [],
+      "unknown_warnings": [],
+      "convergence_evidence": {},
+      "electron_counts": [
+        576,
+        576,
+        576,
+        576,
+        576,
+        576,
+        576,
+        576,
+        576,
+        576,
+        576
+      ],
+      "initialization_evidence": {
+        "mode": "RESTART",
+        "read_lines": [
+          " WFN_RESTART| Restart file /seed/HAP91-converged-parent.wfn read\n\n"
+        ],
+        "atomic_lines": [],
+        "errors": []
+      },
+      "retained_endpoint": {
+        "job_id": "HAP-C003-clean88",
+        "evaluation_index": 10,
+        "optimizer_step": 10,
+        "geometry_source": "motion_xyz",
+        "converged": false,
+        "eligible_for_ranking": false,
+        "energy_Ha": -1655.1006198875662,
+        "energy_eV": -45037.58224373473,
+        "file": "endpoint.extxyz",
+        "sha256": "ce91a61d6ce25f8e8a15a1a7f16889198472cbfb5b638f18a272b03322ccd7fc",
+        "final_energy_only": []
+      },
+      "last_complete_force_evaluation": {
+        "evaluation_index": 10,
+        "optimizer_step": 10,
+        "kind": "force_evaluation",
+        "status": "evaluation_complete_optimizer_output_committed",
+        "complete": true,
+        "optimizer_output_committed": true,
+        "energy_Ha": -1655.1006198875662,
+        "energy_eV": -45037.58224373473,
+        "geometry_source": "motion_xyz",
+        "log_start_line": 5803,
+        "log_end_line": 6599,
+        "scientifically_validated": false,
+        "manuscript_eligible": false,
+        "raw_net_force_component_RMSE_floor_eV_per_A": 7.698881934716606e-05,
+        "maximum_force_Ha_per_bohr": 0.000609725750840796,
+        "maximum_atom_force_norm_Ha_per_bohr": 0.0008044726102366842,
+        "RMS_force_Ha_per_bohr": 0.00010305705007138288,
+        "net_force_QA_passed": true,
+        "scf": {
+          "converged": true,
+          "inner_blocks": [
+            13
+          ],
+          "total_steps": 13,
+          "outer_iterations": 1,
+          "update_counts": {
+            "DIIS": 13
+          },
+          "outer_summaries": [
+            [
+              1,
+              13
+            ]
+          ]
+        }
+      },
+      "final_energy_only": []
+    },
+    {
+      "schema": "hap91_relax_progress/v1",
+      "job_id": "HAP-C003-clean88",
+      "status": "partial_budget",
+      "final": true,
+      "force_evaluation_count": 11,
+      "complete_force_evaluation_count": 11,
+      "geometry_update_count": 10,
+      "geometry_updates_with_optimizer_output": 10,
+      "execution_complete": true,
+      "native_optimization_converged": false,
+      "optimization_converged": false,
+      "partial_budget": true,
+      "termination_classification": "partial_budget",
+      "partial_walltime": false,
+      "acceptable": true,
+      "reference_QA_passed": true,
+      "reference_QA_scope": "output integrity and bounded execution only; not scientific validation",
+      "known_ELPA_warning_count": 0,
+      "manuscript_eligible": false,
+      "scientifically_validated": false,
+      "parser_sha256": "b2e10b61b073f7d2cdf6874a70eff6610db9987d0fb8e94c6a8441f83fc13693",
+      "physical_QA_passed": true,
+      "endpoint_eligible_for_ranking": false,
+      "host_container_exit0_noOOM_required": true,
+      "force_correction": "none",
+      "fresh_BFGS_history": false,
+      "point_id": "cleanB-03",
+      "source_result": "campaign-003/cleanB1-segment03/jobs/clean88/native/result.json",
+      "source_result_sha256": "d3eabba91e67ba979651351391ee53cbe064e8ceb4e33d55e7f38bc398ffd01b",
+      "errors": [],
+      "pending": [],
+      "unknown_warnings": [],
+      "convergence_evidence": {},
+      "electron_counts": [
+        576,
+        576,
+        576,
+        576,
+        576,
+        576,
+        576,
+        576,
+        576,
+        576,
+        576
+      ],
+      "initialization_evidence": {
+        "mode": "RESTART",
+        "read_lines": [
+          " WFN_RESTART| Restart file /seed/HAP91-converged-parent.wfn read\n\n"
+        ],
+        "atomic_lines": [],
+        "errors": []
+      },
+      "retained_endpoint": {
+        "job_id": "HAP-C003-clean88",
+        "evaluation_index": 10,
+        "optimizer_step": 10,
+        "geometry_source": "motion_xyz",
+        "converged": false,
+        "eligible_for_ranking": false,
+        "energy_Ha": -1655.1006504835796,
+        "energy_eV": -45037.583076294664,
+        "file": "endpoint.extxyz",
+        "sha256": "8125c50929dc9ff14793f320c673a6d602ac0d749c1fbc57317efd5b7f51dc7d",
+        "final_energy_only": []
+      },
+      "last_complete_force_evaluation": {
+        "evaluation_index": 10,
+        "optimizer_step": 10,
+        "kind": "force_evaluation",
+        "status": "evaluation_complete_optimizer_output_committed",
+        "complete": true,
+        "optimizer_output_committed": true,
+        "energy_Ha": -1655.1006504835796,
+        "energy_eV": -45037.583076294664,
+        "geometry_source": "motion_xyz",
+        "log_start_line": 5785,
+        "log_end_line": 6582,
+        "scientifically_validated": false,
+        "manuscript_eligible": false,
+        "raw_net_force_component_RMSE_floor_eV_per_A": 0.00011854682282110072,
+        "maximum_force_Ha_per_bohr": 0.000187215725351887,
+        "maximum_atom_force_norm_Ha_per_bohr": 0.00019641784101822742,
+        "RMS_force_Ha_per_bohr": 3.3304369809420376e-05,
+        "net_force_QA_passed": true,
+        "scf": {
+          "converged": true,
+          "inner_blocks": [
+            12
+          ],
+          "total_steps": 12,
+          "outer_iterations": 1,
+          "update_counts": {
+            "DIIS": 12
+          },
+          "outer_summaries": [
+            [
+              1,
+              12
+            ]
+          ]
+        }
+      },
+      "final_energy_only": []
+    },
+    {
+      "schema": "hap91_relax_progress/v1",
+      "job_id": "HAP-C003-clean88",
+      "status": "converged",
+      "final": true,
+      "force_evaluation_count": 2,
+      "complete_force_evaluation_count": 2,
+      "geometry_update_count": 1,
+      "geometry_updates_with_optimizer_output": 1,
+      "execution_complete": true,
+      "native_optimization_converged": true,
+      "optimization_converged": true,
+      "partial_budget": false,
+      "termination_classification": "converged",
+      "partial_walltime": false,
+      "acceptable": true,
+      "reference_QA_passed": true,
+      "reference_QA_scope": "output integrity and bounded execution only; not scientific validation",
+      "known_ELPA_warning_count": 0,
+      "manuscript_eligible": false,
+      "scientifically_validated": false,
+      "parser_sha256": "b2e10b61b073f7d2cdf6874a70eff6610db9987d0fb8e94c6a8441f83fc13693",
+      "physical_QA_passed": true,
+      "endpoint_eligible_for_ranking": true,
+      "host_container_exit0_noOOM_required": true,
+      "force_correction": "none",
+      "fresh_BFGS_history": false,
+      "point_id": "cleanB-04",
+      "source_result": "campaign-003/cleanB1-segment04/jobs/clean88/native/result.json",
+      "source_result_sha256": "b6d165f3c376881c1d31dcc089a83aa675f67425470022eeaf33a2a9755b9f21",
+      "errors": [],
+      "pending": [],
+      "unknown_warnings": [],
+      "convergence_evidence": {
+        "maximum_displacement_bohr": {
+          "flags": [
+            "YES"
+          ],
+          "printed_values": [
+            0.0008960349
+          ],
+          "printed_limits": [
+            0.003
+          ],
+          "configured_limit": 0.003
+        },
+        "RMS_displacement_bohr": {
+          "flags": [
+            "YES"
+          ],
+          "printed_values": [
+            0.0001929674
+          ],
+          "printed_limits": [
+            0.0015
+          ],
+          "configured_limit": 0.0015
+        },
+        "maximum_force_Ha_per_bohr": {
+          "flags": [
+            "YES"
+          ],
+          "printed_values": [
+            0.0001444169
+          ],
+          "printed_limits": [
+            0.000194469
+          ],
+          "configured_limit": 0.00019446903811488875
+        },
+        "RMS_force_Ha_per_bohr": {
+          "flags": [
+            "YES"
+          ],
+          "printed_values": [
+            2.61774e-05
+          ],
+          "printed_limits": [
+            9.72345e-05
+          ],
+          "configured_limit": 9.723451905744438e-05
+        }
+      },
+      "electron_counts": [
+        576,
+        576,
+        576
+      ],
+      "initialization_evidence": {
+        "mode": "RESTART",
+        "read_lines": [
+          " WFN_RESTART| Restart file /seed/HAP91-converged-parent.wfn read\n\n"
+        ],
+        "atomic_lines": [],
+        "errors": []
+      },
+      "retained_endpoint": {
+        "job_id": "HAP-C003-clean88",
+        "evaluation_index": 1,
+        "optimizer_step": 1,
+        "geometry_source": "motion_xyz",
+        "converged": true,
+        "eligible_for_ranking": true,
+        "energy_Ha": -1655.1006509598851,
+        "energy_eV": -45037.583089255604,
+        "file": "endpoint.extxyz",
+        "sha256": "04c5eec5a3ad4a047d024412039ad0af118072939489173146357e309f7242f3",
+        "final_energy_only": [
+          {
+            "kind": "final_energy_only",
+            "energy_Ha": -1655.1006509598847,
+            "scf": {
+              "converged": true,
+              "inner_blocks": [
+                10
+              ],
+              "total_steps": 10,
+              "outer_iterations": 1,
+              "update_counts": {
+                "DIIS": 10
+              },
+              "outer_summaries": [
+                [
+                  1,
+                  10
+                ]
+              ]
+            },
+            "positions_A": [
+              [
+                0.2704661923,
+                5.215048834,
+                15.5109184222
+              ],
+              [
+                4.8032357612,
+                2.6494686447,
+                18.8988379807
+              ],
+              [
+                4.6155821376,
+                2.7267098981,
+                15.3471537138
+              ],
+              [
+                -0.1511836214,
+                5.6624022069,
+                12.3335707879
+              ],
+              [
+                3.7143169433,
+                5.9947426197,
+                13.8448941986
+              ],
+              [
+                -1.2129242522,
+                2.0506826135,
+                13.6497084935
+              ],
+              [
+                -2.369228663,
+                8.1710876834,
+                13.8359969534
+              ],
+              [
+                1.2312762872,
+                1.8633125118,
+                17.111879806
+              ],
+              [
+                5.8457739608,
+                6.0237277608,
+                17.2165367951
+              ],
+              [
+                6.9484893655,
+                0.0333224447,
+                17.0520982791
+              ],
+              [
+                6.6332518781,
+                5.1459759724,
+                13.6289729877
+              ],
+              [
+                5.8780986397,
+                0.0264019456,
+                13.2766418805
+              ],
+              [
+                1.990511954,
+                2.9533064727,
+                13.5384587765
+              ],
+              [
+                -1.584498047,
+                3.1836521544,
+                17.1115463556
+              ],
+              [
+                -1.1146903132,
+                7.9104762801,
+                17.2265433191
+              ],
+              [
+                2.7491546047,
+                5.0965106925,
+                17.2664723622
+              ],
+              [
+                -0.0358748931,
+                -0.0847355121,
+                16.0011297974
+              ],
+              [
+                -0.0140487384,
+                -0.0553300753,
+                13.1767809684
+              ],
+              [
+                -1.4909453799,
+                5.889031182,
+                14.1511747921
+              ],
+              [
+                1.4858133061,
+                6.6465069401,
+                13.5821011788
+              ],
+              [
+                0.6999521268,
+                3.8741831998,
+                13.5887688653
+              ],
+              [
+                6.4134046553,
+                2.5811584689,
+                17.0349419623
+              ],
+              [
+                3.9512002976,
+                1.2573535983,
+                17.2329022507
+              ],
+              [
+                4.0182115946,
+                4.2034565893,
+                17.2157615336
+              ],
+              [
+                7.1570098306,
+                3.9338653109,
+                12.8415910349
+              ],
+              [
+                4.4355910496,
+                -0.0797103401,
+                12.6834441046
+              ],
+              [
+                3.2648340691,
+                3.8061427431,
+                13.3368101791
+              ],
+              [
+                -1.6006462288,
+                4.743153008,
+                17.1817392985
+              ],
+              [
+                0.1699677874,
+                7.0502945634,
+                16.9846631272
+              ],
+              [
+                1.4392178121,
+                4.2476209344,
+                17.3432342535
+              ],
+              [
+                5.6923398667,
+                4.8065193937,
+                14.8382768603
+              ],
+              [
+                5.9232018762,
+                0.8668914472,
+                14.6168089563
+              ],
+              [
+                2.2363177034,
+                2.2401521879,
+                14.9457736026
+              ],
+              [
+                -0.8213021066,
+                2.6538188601,
+                18.3525127306
+              ],
+              [
+                -1.7280739515,
+                7.3938725036,
+                18.5621402283
+              ],
+              [
+                2.7511518488,
+                6.1014836393,
+                18.4364516879
+              ],
+              [
+                -0.7620323259,
+                2.7988324345,
+                15.839905345
+              ],
+              [
+                -2.1899126437,
+                7.6997995858,
+                16.1327174763
+              ],
+              [
+                2.6636921014,
+                5.914472404,
+                15.9358894772
+              ],
+              [
+                5.9069601947,
+                6.1854351667,
+                12.7380936799
+              ],
+              [
+                6.9514751572,
+                0.5799351785,
+                12.3378357453
+              ],
+              [
+                1.7063851345,
+                1.8476170214,
+                12.5179820747
+              ],
+              [
+                -0.1373888196,
+                -0.0986007492,
+                16.9791807916
+              ],
+              [
+                -0.1170312989,
+                0.0374502958,
+                14.1448851381
+              ],
+              [
+                0.1235243152,
+                5.3137515896,
+                22.4527768575
+              ],
+              [
+                4.9416528241,
+                2.3871842077,
+                25.4279932499
+              ],
+              [
+                4.4769728055,
+                2.8194480536,
+                22.2922664365
+              ],
+              [
+                -0.0764942993,
+                5.4141275558,
+                18.9078648866
+              ],
+              [
+                3.4808020011,
+                6.180318351,
+                20.6875820004
+              ],
+              [
+                -1.0982289601,
+                2.0358145619,
+                20.609938517
+              ],
+              [
+                -2.2056407402,
+                8.0157479001,
+                20.7969260111
+              ],
+              [
+                1.0379148214,
+                1.9382263459,
+                24.0182661657
+              ],
+              [
+                5.8083708891,
+                6.1159609924,
+                24.1691779534
+              ],
+              [
+                7.242449236,
+                -0.0898940611,
+                23.9776513664
+              ],
+              [
+                6.3183679561,
+                4.8651625569,
+                20.6800651809
+              ],
+              [
+                5.8656569572,
+                0.1347717451,
+                20.5781333776
+              ],
+              [
+                1.985393673,
+                2.9465232714,
+                20.5110330469
+              ],
+              [
+                -1.8502439639,
+                2.956374572,
+                24.1244793095
+              ],
+              [
+                -1.1126848758,
+                8.0779453572,
+                24.4240600297
+              ],
+              [
+                2.7894405081,
+                5.0651915162,
+                24.2630612406
+              ],
+              [
+                0.0942474248,
+                -0.1103000597,
+                22.2640958936
+              ],
+              [
+                0.1940974828,
+                -0.0562695609,
+                19.3771811222
+              ],
+              [
+                -1.6763986706,
+                5.4660482445,
+                20.7349684003
+              ],
+              [
+                0.8215907293,
+                6.7807056,
+                20.5517341645
+              ],
+              [
+                0.7186828112,
+                3.8441267469,
+                20.530863771
+              ],
+              [
+                6.2824797343,
+                2.1835672802,
+                23.6232207265
+              ],
+              [
+                3.3646862698,
+                1.4608437024,
+                24.0685013188
+              ],
+              [
+                4.1021374026,
+                4.1769923477,
+                24.1788028083
+              ],
+              [
+                6.3347270117,
+                3.3025498795,
+                20.6749125154
+              ],
+              [
+                4.57568253,
+                0.9738937775,
+                20.8522078447
+              ],
+              [
+                3.2948544555,
+                3.8033500432,
+                20.5016340644
+              ],
+              [
+                -2.358796257,
+                4.2230055344,
+                24.828222673
+              ],
+              [
+                0.3030736446,
+                8.1183606817,
+                25.0814730608
+              ],
+              [
+                1.5612771353,
+                4.185008215,
+                24.5578254603
+              ],
+              [
+                5.4957658515,
+                5.3391103252,
+                21.9170616515
+              ],
+              [
+                6.9706504062,
+                0.3258447853,
+                21.6494522644
+              ],
+              [
+                1.9949231531,
+                2.0844928393,
+                21.8132128233
+              ],
+              [
+                -1.148716194,
+                1.9313385357,
+                25.0617088073
+              ],
+              [
+                -2.2886041768,
+                7.6636137906,
+                25.3245988791
+              ],
+              [
+                3.1637292081,
+                6.2066806434,
+                25.2308243797
+              ],
+              [
+                -0.8816850119,
+                3.2202946849,
+                22.9176319491
+              ],
+              [
+                -1.1570022785,
+                7.1989867594,
+                23.1187966272
+              ],
+              [
+                2.4750133796,
+                5.7638699905,
+                22.8638969372
+              ],
+              [
+                5.5580316857,
+                5.3079417589,
+                19.4027272657
+              ],
+              [
+                6.4349002927,
+                0.680459007,
+                19.2371859263
+              ],
+              [
+                2.063209251,
+                1.9802786983,
+                19.3102977967
+              ],
+              [
+                0.1356022715,
+                -0.0906202968,
+                23.2379638593
+              ],
+              [
+                0.1308761019,
+                -0.0339463497,
+                20.3506288624
+              ]
+            ],
+            "geometry_source": "motion_xyz",
+            "excluded_from_force_labels": true,
+            "log_start_line": 1899,
+            "trajectory_step": 2,
+            "motion_force_frame": "excluded: energy-only final evaluation may retain old forces",
+            "maximum_geometry_difference_A": 0.0
+          }
+        ]
+      },
+      "last_complete_force_evaluation": {
+        "evaluation_index": 1,
+        "optimizer_step": 1,
+        "kind": "force_evaluation",
+        "status": "evaluation_complete_optimizer_output_committed",
+        "complete": true,
+        "optimizer_output_committed": true,
+        "energy_Ha": -1655.1006509598851,
+        "energy_eV": -45037.583089255604,
+        "geometry_source": "motion_xyz",
+        "log_start_line": 1313,
+        "log_end_line": 1899,
+        "scientifically_validated": false,
+        "manuscript_eligible": false,
+        "raw_net_force_component_RMSE_floor_eV_per_A": 0.00011963624955227518,
+        "maximum_force_Ha_per_bohr": 0.000144416905624634,
+        "maximum_atom_force_norm_Ha_per_bohr": 0.00016660653722859096,
+        "RMS_force_Ha_per_bohr": 2.6177379235065243e-05,
+        "net_force_QA_passed": true,
+        "scf": {
+          "converged": true,
+          "inner_blocks": [
+            10
+          ],
+          "total_steps": 10,
+          "outer_iterations": 1,
+          "update_counts": {
+            "DIIS": 10
+          },
+          "outer_summaries": [
+            [
+              1,
+              10
+            ]
+          ]
+        }
+      },
+      "final_energy_only": [
+        {
+          "kind": "final_energy_only",
+          "energy_Ha": -1655.1006509598847,
+          "geometry_source": "motion_xyz",
+          "excluded_from_force_labels": true,
+          "log_start_line": 1899,
+          "trajectory_step": 2,
+          "motion_force_frame": "excluded: energy-only final evaluation may retain old forces",
+          "maximum_geometry_difference_A": 0.0,
+          "scf": {
+            "converged": true,
+            "inner_blocks": [
+              10
+            ],
+            "total_steps": 10,
+            "outer_iterations": 1,
+            "update_counts": {
+              "DIIS": 10
+            },
+            "outer_summaries": [
+              [
+                1,
+                10
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "schema": "campaign003-A-tilt-singlepoint/v1",
+      "status": "completed",
+      "reference_QA_passed": true,
+      "physical_QA_passed": true,
+      "execution_complete": true,
+      "variant": "minus5",
+      "protocol_sha256": "cbb5ba8790814bc7bfd4b157596fff7d90f08a947502c5fa5fd7a09bd08f6b26",
+      "method_identity_sha256": "426c056e76717e7690c46afb914b54fbfe54f3f60c8dce32cec9782c836ff7b6",
+      "force_correction": "none",
+      "geometry_updates": 0,
+      "optimization_converged": false,
+      "manuscript_eligible": false,
+      "host_container_exit0_noOOM_required": true,
+      "automatic_retry": false,
+      "energy_record_count": 1,
+      "force_evaluation_count": 1,
+      "cp2k_log_sha256": "f85bad76b59457028a178cb150bbc44dfe60f8c29ea2bb5fc2798f7cd20fa1d0",
+      "energy_Ha": -1692.863708632991,
+      "energy_eV": -46065.168237428006,
+      "electron_count": 592,
+      "wavefunction_restart_read_verified": true,
+      "seed_sha256": "e5457a72bc60e3e7d2b73d554371c4eac0261e4d6d6c5802a117548564f5dad6",
+      "classification": "frozen_geometry_directional_singlepoint_not_minimum_proof",
+      "point_id": "A-tilt-minus5",
+      "source_result": "campaign-003/A-tilt1-repair1-minus5/jobs/A91/native/result.json",
+      "source_result_sha256": "f940c8f961acf6d38af69849ba2caa451925feb019746bc8ae9cef27a03852dd",
+      "errors": [],
+      "label_summary": {
+        "energy_eV": -46065.168237428006,
+        "scf_converged": true,
+        "output_sha256": "f85bad76b59457028a178cb150bbc44dfe60f8c29ea2bb5fc2798f7cd20fa1d0",
+        "electron_count": 592,
+        "result_classification": "fixed_geometry_DFT_interaction_component",
+        "exclude_from_all_new_test_sets": true,
+        "manuscript_eligible": false,
+        "job_id": "HAP-C003-Atilt-minus5",
+        "method_identity_sha256": "426c056e76717e7690c46afb914b54fbfe54f3f60c8dce32cec9782c836ff7b6",
+        "input_sha256": "875352f9f832d4c251ef256238fd2220448c5f81c2f64c2656c7eb92bb9337a6",
+        "geometry_sha256": "332622ddaa746af35fe7bc3773ce9ec0db751a38656cb0e509300d442cfb3d02",
+        "scf_total_steps": 18,
+        "scf_outer_iterations": 1,
+        "warning_count": 0,
+        "known_ELPA_warning_count": 0,
+        "raw_net_force_component_RMSE_floor_eV_per_A": 7.42628879664245e-05,
+        "force_correction": "none",
+        "CO2_net_force_z_eV_per_A": 0.017750096760494622,
+        "maximum_absolute_force_component_eV_per_A": 0.02192077366791216,
+        "CO2_maximum_absolute_force_component_eV_per_A": 0.02192077366791216,
+        "D3_and_dipole_runtime_information": "recorded_as_printed",
+        "reference_QA_passed": true,
+        "scf_inner_blocks": [
+          18
+        ]
+      }
+    },
+    {
+      "schema": "campaign003-A-tilt-singlepoint/v1",
+      "status": "completed",
+      "reference_QA_passed": true,
+      "physical_QA_passed": true,
+      "execution_complete": true,
+      "variant": "plus5",
+      "protocol_sha256": "cbb5ba8790814bc7bfd4b157596fff7d90f08a947502c5fa5fd7a09bd08f6b26",
+      "method_identity_sha256": "426c056e76717e7690c46afb914b54fbfe54f3f60c8dce32cec9782c836ff7b6",
+      "force_correction": "none",
+      "geometry_updates": 0,
+      "optimization_converged": false,
+      "manuscript_eligible": false,
+      "host_container_exit0_noOOM_required": true,
+      "automatic_retry": false,
+      "energy_record_count": 1,
+      "force_evaluation_count": 1,
+      "cp2k_log_sha256": "8dca7fad52c134c4f10a63d5f3bd35ddd3435535055bbded6a8f235d4a54e560",
+      "energy_Ha": -1692.8637086868157,
+      "energy_eV": -46065.16823889265,
+      "electron_count": 592,
+      "wavefunction_restart_read_verified": true,
+      "seed_sha256": "e5457a72bc60e3e7d2b73d554371c4eac0261e4d6d6c5802a117548564f5dad6",
+      "classification": "frozen_geometry_directional_singlepoint_not_minimum_proof",
+      "point_id": "A-tilt-plus5",
+      "source_result": "campaign-003/A-tilt1-repair1-plus5/jobs/A91/native/result.json",
+      "source_result_sha256": "1d3ab51d5660413e87765adb5b254c165b9dab46650b4676420c1efc3537a329",
+      "errors": [],
+      "label_summary": {
+        "energy_eV": -46065.16823889265,
+        "scf_converged": true,
+        "output_sha256": "8dca7fad52c134c4f10a63d5f3bd35ddd3435535055bbded6a8f235d4a54e560",
+        "electron_count": 592,
+        "result_classification": "fixed_geometry_DFT_interaction_component",
+        "exclude_from_all_new_test_sets": true,
+        "manuscript_eligible": false,
+        "job_id": "HAP-C003-Atilt-plus5",
+        "method_identity_sha256": "426c056e76717e7690c46afb914b54fbfe54f3f60c8dce32cec9782c836ff7b6",
+        "input_sha256": "980253e2fe24eceae9cdba092a7ef84dcf784e98c292357e5c3586dc7383dfbb",
+        "geometry_sha256": "e30a07932c6a5b4ad64b82dd754dc5112cd2470bb4c58149eb9ef9a17a074847",
+        "scf_total_steps": 18,
+        "scf_outer_iterations": 1,
+        "warning_count": 0,
+        "known_ELPA_warning_count": 0,
+        "raw_net_force_component_RMSE_floor_eV_per_A": 7.4320524144131e-05,
+        "force_correction": "none",
+        "CO2_net_force_z_eV_per_A": 0.017742877755421174,
+        "maximum_absolute_force_component_eV_per_A": 0.02216239307455272,
+        "CO2_maximum_absolute_force_component_eV_per_A": 0.02216239307455272,
+        "D3_and_dipole_runtime_information": "recorded_as_printed",
+        "reference_QA_passed": true,
+        "scf_inner_blocks": [
+          18
+        ]
+      }
+    },
+    {
+      "schema": "campaign003-frozen-fragment-singlepoint/v1",
+      "status": "completed",
+      "reference_QA_passed": true,
+      "physical_QA_passed": true,
+      "execution_complete": true,
+      "fragment_id": "B-slab",
+      "protocol_sha256": "159ac826301074acf5f639fef64b8c8a02e01eeacef1f750806c392e96e7e7b5",
+      "input_sha256": "05293a25c72ba70329b14d9215cc1331adf6b83777da20b10621d2072c1c4fd2",
+      "geometry_sha256": "36cf61345ac5f6d79b20305510000a5065cd2a8f2e1ebc5b69f299bd6222aa2d",
+      "d3_energy_Ha": -0.54103768075866,
+      "surface_dipole_energy_Ha": null,
+      "method_identity_sha256": "13651d9306cf23f73fef54aaddb9232e0b2b2db96ae5127f807538b572951164",
+      "force_correction": "none",
+      "geometry_updates": 0,
+      "optimization_converged": false,
+      "manuscript_eligible": false,
+      "host_container_exit0_noOOM_required": true,
+      "automatic_retry": false,
+      "energy_record_count": 1,
+      "force_evaluation_count": 1,
+      "cp2k_log_sha256": "2375a3262f3bdcb47d139e1dd43e125a367995455793dc018ee9732dac6b8227",
+      "energy_Ha": -1655.0993744632024,
+      "energy_eV": -45037.54835401133,
+      "electron_count": 576,
+      "charge": 0,
+      "multiplicity": 1,
+      "uks": false,
+      "atomic_initialization_verified": true,
+      "SCF_guess": "ATOMIC",
+      "seed_sha256": null,
+      "classification": "frozen_own_basis_fragment_singlepoint_not_optimized_reference",
+      "point_id": "B-slab",
+      "source_result": "campaign-003/fragments1-repair1-B-slab/jobs/clean88/native/result.json",
+      "source_result_sha256": "b66341cd5a9b2aeaba505baf1ca79b72a4d0280af2e40a8ef862747a0372f9d6",
+      "errors": [],
+      "initialization_evidence": {
+        "mode": "ATOMIC",
+        "wavefunction_seed": null,
+        "atomic_lines": [
+          " SCF PARAMETERS         Density guess:                                    ATOMIC",
+          " Atomic guess: The first density matrix is obtained in terms of atomic orbitals"
+        ]
+      },
+      "label_summary": {
+        "energy_eV": -45037.54835401133,
+        "scf_converged": true,
+        "output_sha256": "2375a3262f3bdcb47d139e1dd43e125a367995455793dc018ee9732dac6b8227",
+        "electron_count": 576,
+        "result_classification": "fixed_geometry_DFT_interaction_component",
+        "exclude_from_all_new_test_sets": true,
+        "manuscript_eligible": false,
+        "job_id": "HAP-C003-fragment-B-slab",
+        "method_identity_sha256": "13651d9306cf23f73fef54aaddb9232e0b2b2db96ae5127f807538b572951164",
+        "input_sha256": "05293a25c72ba70329b14d9215cc1331adf6b83777da20b10621d2072c1c4fd2",
+        "geometry_sha256": "36cf61345ac5f6d79b20305510000a5065cd2a8f2e1ebc5b69f299bd6222aa2d",
+        "scf_total_steps": 99,
+        "scf_outer_iterations": 2,
+        "warning_count": 0,
+        "known_ELPA_warning_count": 0,
+        "raw_net_force_component_RMSE_floor_eV_per_A": 0.00013268673493967262,
+        "force_correction": "none",
+        "CO2_force_vectors_eV_per_A": null,
+        "CO2_net_force_eV_per_A": null,
+        "CO2_net_force_z_eV_per_A": null,
+        "maximum_absolute_force_component_eV_per_A": 0.467117458107803,
+        "CO2_maximum_absolute_force_component_eV_per_A": null,
+        "D3_and_dipole_runtime_information": "recorded_as_printed",
+        "reference_QA_passed": true,
+        "scf_inner_blocks": [
+          80,
+          19
+        ]
+      }
+    },
+    {
+      "schema": "campaign003-counterpoise-center-derivatives/v1",
+      "status": "completed",
+      "reference_QA_passed": true,
+      "physical_QA_passed": true,
+      "execution_complete": true,
+      "cp_id": "B-slab-CP",
+      "fragment_id": "B-slab-CP",
+      "protocol_sha256": "231d604a28d204af2b23f5f9558c651c1d4b8f0d1918472fe4089e4b38ead3db",
+      "input_sha256": "9a4aebbbd893f0031ebb220887d5dd33e24f10e9f244ebe050b9f3c3f74da2e4",
+      "geometry_sha256": "00b366485b97b67f300885ca354825e8c3e50c1aec5aeb2727cf2d891ddff95d",
+      "method_identity_sha256": "1a23b5f15b8769b254aeae4732374931fdd3a7d5c092e89cb5f217bdc162384a",
+      "geometry_updates": 0,
+      "force_correction": "none",
+      "derivative_semantics": "CP2K FORCES sign: minus energy gradient on all91 centers including ghost basis centers",
+      "ML_label_eligible": false,
+      "real_only_net_force_gate_applied": false,
+      "all_center_net_force_gate_applied": false,
+      "automatic_retry": false,
+      "manuscript_eligible": false,
+      "host_container_exit0_noOOM_required": true,
+      "helper_sha256": "2b6f3d6a40281a8aad0c01d1ad6052bf2e7d09bb80fa9650e1cd30a687ea9556",
+      "energy_record_count": 1,
+      "force_evaluation_count": 1,
+      "cp2k_log_sha256": "e1c16b25423ca3e21420f7ac96c164205c07b150b2ba03b0ae2e392754c08717",
+      "center_count": 91,
+      "spherical_basis_functions": 1171,
+      "cartesian_basis_functions": 1258,
+      "occupied_orbitals": 288,
+      "orbital_functions": 1171,
+      "d3_energy_Ha": -0.54103768075866,
+      "surface_dipole_energy_Ha": null,
+      "energy_Ha": -1655.1002455934715,
+      "energy_eV": -45037.57205867355,
+      "real_nuclei_count": 88,
+      "ghost_center_count": 3,
+      "electron_count": 576,
+      "charge": 0,
+      "multiplicity": 1,
+      "uks": false,
+      "SCF_guess": "ATOMIC",
+      "seed_sha256": null,
+      "scf_converged": true,
+      "scf_total_steps": 101,
+      "scf_outer_iterations": 2,
+      "warning_count": 0,
+      "known_ELPA_warning_count": 0,
+      "own_D3_energy_Ha": -0.54103768075866,
+      "ghost_minus_own_D3_Ha": 0.0,
+      "D3_consistency_tolerance_Ha": 1e-10,
+      "D3_consistency_passed": true,
+      "classification": "frozen_counterpoise_fragment_not_ML_label",
+      "point_id": "B-slab-CP",
+      "source_result": "campaign-003/cp1-B-slab-CP/jobs/clean88/native/result.json",
+      "source_result_sha256": "3671ac3ebe30e43ec0e1a3aaf7d60aa41a84975e70a9c047496e0ed58104cc1d",
+      "errors": [],
+      "unknown_warnings": [],
+      "scf_inner_blocks": [
+        80,
+        21
+      ],
+      "initialization_evidence": {
+        "mode": "ATOMIC",
+        "wavefunction_seed": null,
+        "atomic_lines": [
+          " SCF PARAMETERS         Density guess:                                    ATOMIC",
+          " Atomic guess: The first density matrix is obtained in terms of atomic orbitals"
+        ]
+      }
+    },
+    {
+      "schema": "campaign003-frozen-fragment-singlepoint/v1",
+      "status": "completed",
+      "reference_QA_passed": true,
+      "physical_QA_passed": true,
+      "execution_complete": true,
+      "fragment_id": "A-slab",
+      "protocol_sha256": "159ac826301074acf5f639fef64b8c8a02e01eeacef1f750806c392e96e7e7b5",
+      "input_sha256": "7e60e381d0fda6829a2f92c635a1b1f741f97c477140bdbe48cfc8f0ddf5b026",
+      "geometry_sha256": "6270a1384369d5181ec83e4f6a94317ec03cd5240c83fd6b2cb6c923afb8fdbe",
+      "d3_energy_Ha": -0.54065882693626,
+      "surface_dipole_energy_Ha": null,
+      "method_identity_sha256": "13651d9306cf23f73fef54aaddb9232e0b2b2db96ae5127f807538b572951164",
+      "force_correction": "none",
+      "geometry_updates": 0,
+      "optimization_converged": false,
+      "manuscript_eligible": false,
+      "host_container_exit0_noOOM_required": true,
+      "automatic_retry": false,
+      "energy_record_count": 1,
+      "force_evaluation_count": 1,
+      "cp2k_log_sha256": "e1786a6d587fdc4078d9216ecd449ad4a6beb1602c698075c1365fdf325f528e",
+      "energy_Ha": -1655.0873854408642,
+      "energy_eV": -45037.22211609377,
+      "electron_count": 576,
+      "charge": 0,
+      "multiplicity": 1,
+      "uks": false,
+      "atomic_initialization_verified": true,
+      "SCF_guess": "ATOMIC",
+      "seed_sha256": null,
+      "classification": "frozen_own_basis_fragment_singlepoint_not_optimized_reference",
+      "point_id": "A-slab",
+      "source_result": "campaign-003/fragments1-repair1-A-slab/jobs/clean88/native/result.json",
+      "source_result_sha256": "784ee5b7be56ea313e9c1948df608bb3b7f7f8d5376284944e8d1b4092073bf6",
+      "errors": [],
+      "initialization_evidence": {
+        "mode": "ATOMIC",
+        "wavefunction_seed": null,
+        "atomic_lines": [
+          " SCF PARAMETERS         Density guess:                                    ATOMIC",
+          " Atomic guess: The first density matrix is obtained in terms of atomic orbitals"
+        ]
+      },
+      "label_summary": {
+        "energy_eV": -45037.22211609377,
+        "scf_converged": true,
+        "output_sha256": "e1786a6d587fdc4078d9216ecd449ad4a6beb1602c698075c1365fdf325f528e",
+        "electron_count": 576,
+        "result_classification": "fixed_geometry_DFT_interaction_component",
+        "exclude_from_all_new_test_sets": true,
+        "manuscript_eligible": false,
+        "job_id": "HAP-C003-fragment-A-slab",
+        "method_identity_sha256": "13651d9306cf23f73fef54aaddb9232e0b2b2db96ae5127f807538b572951164",
+        "input_sha256": "7e60e381d0fda6829a2f92c635a1b1f741f97c477140bdbe48cfc8f0ddf5b026",
+        "geometry_sha256": "6270a1384369d5181ec83e4f6a94317ec03cd5240c83fd6b2cb6c923afb8fdbe",
+        "scf_total_steps": 101,
+        "scf_outer_iterations": 2,
+        "warning_count": 0,
+        "known_ELPA_warning_count": 0,
+        "raw_net_force_component_RMSE_floor_eV_per_A": 7.375183118646615e-05,
+        "force_correction": "none",
+        "CO2_force_vectors_eV_per_A": null,
+        "CO2_net_force_eV_per_A": null,
+        "CO2_net_force_z_eV_per_A": null,
+        "maximum_absolute_force_component_eV_per_A": 0.11386420138097142,
+        "CO2_maximum_absolute_force_component_eV_per_A": null,
+        "D3_and_dipole_runtime_information": "recorded_as_printed",
+        "reference_QA_passed": true,
+        "scf_inner_blocks": [
+          80,
+          21
+        ]
+      }
+    },
+    {
+      "schema": "campaign003-counterpoise-center-derivatives/v1",
+      "status": "completed",
+      "reference_QA_passed": true,
+      "physical_QA_passed": true,
+      "execution_complete": true,
+      "cp_id": "A-slab-CP",
+      "fragment_id": "A-slab-CP",
+      "protocol_sha256": "231d604a28d204af2b23f5f9558c651c1d4b8f0d1918472fe4089e4b38ead3db",
+      "input_sha256": "f6c7e88c787d017e48998a3b5cce91693057c1d8db37a1db8558bbd32a7ffca8",
+      "geometry_sha256": "82f16d241ae943aa97f0efe5c94d1b15b460c79dd93c6f083ca676105d56e99b",
+      "method_identity_sha256": "1a23b5f15b8769b254aeae4732374931fdd3a7d5c092e89cb5f217bdc162384a",
+      "geometry_updates": 0,
+      "force_correction": "none",
+      "derivative_semantics": "CP2K FORCES sign: minus energy gradient on all91 centers including ghost basis centers",
+      "ML_label_eligible": false,
+      "real_only_net_force_gate_applied": false,
+      "all_center_net_force_gate_applied": false,
+      "automatic_retry": false,
+      "manuscript_eligible": false,
+      "host_container_exit0_noOOM_required": true,
+      "helper_sha256": "2b6f3d6a40281a8aad0c01d1ad6052bf2e7d09bb80fa9650e1cd30a687ea9556",
+      "energy_record_count": 1,
+      "force_evaluation_count": 1,
+      "cp2k_log_sha256": "ed5b2ea76fb52fe556e1bbfe723a6f8ba4ecf5c13fd96847b7d06a0688a81587",
+      "center_count": 91,
+      "spherical_basis_functions": 1171,
+      "cartesian_basis_functions": 1258,
+      "occupied_orbitals": 288,
+      "orbital_functions": 1171,
+      "d3_energy_Ha": -0.54065882693626,
+      "surface_dipole_energy_Ha": null,
+      "energy_Ha": -1655.087778908309,
+      "energy_eV": -45037.232822888385,
+      "real_nuclei_count": 88,
+      "ghost_center_count": 3,
+      "electron_count": 576,
+      "charge": 0,
+      "multiplicity": 1,
+      "uks": false,
+      "SCF_guess": "ATOMIC",
+      "seed_sha256": null,
+      "scf_converged": true,
+      "scf_total_steps": 101,
+      "scf_outer_iterations": 2,
+      "warning_count": 0,
+      "known_ELPA_warning_count": 0,
+      "own_D3_energy_Ha": -0.54065882693626,
+      "ghost_minus_own_D3_Ha": 0.0,
+      "D3_consistency_tolerance_Ha": 1e-10,
+      "D3_consistency_passed": true,
+      "classification": "frozen_counterpoise_fragment_not_ML_label",
+      "point_id": "A-slab-CP",
+      "source_result": "campaign-003/cp1-A-slab-CP/jobs/clean88/native/result.json",
+      "source_result_sha256": "35cf99e78444abd9143119a897eb051e9609543340b06c2ad8523732b2f1cb61",
+      "errors": [],
+      "unknown_warnings": [],
+      "scf_inner_blocks": [
+        80,
+        21
+      ],
+      "initialization_evidence": {
+        "mode": "ATOMIC",
+        "wavefunction_seed": null,
+        "atomic_lines": [
+          " SCF PARAMETERS         Density guess:                                    ATOMIC",
+          " Atomic guess: The first density matrix is obtained in terms of atomic orbitals"
+        ]
+      }
+    },
+    {
+      "schema": "campaign003-frozen-fragment-singlepoint/v1",
+      "status": "completed",
+      "reference_QA_passed": true,
+      "physical_QA_passed": true,
+      "execution_complete": true,
+      "fragment_id": "B-co2",
+      "protocol_sha256": "159ac826301074acf5f639fef64b8c8a02e01eeacef1f750806c392e96e7e7b5",
+      "input_sha256": "6a41d6a3fc9e9575145f60c7c8cca35e64cc8c66cbb0c713274038dfd78163b1",
+      "geometry_sha256": "f86e0db69635c28e5e739a7ef12e2c8257592d0603696970ea6b05913c0678de",
+      "d3_energy_Ha": -0.00095507757111,
+      "surface_dipole_energy_Ha": null,
+      "method_identity_sha256": "ea66cf5e4a536576dc37fb1616890b41dbc19d469b32da5d6a0473453e2a57c1",
+      "force_correction": "none",
+      "geometry_updates": 0,
+      "optimization_converged": false,
+      "manuscript_eligible": false,
+      "host_container_exit0_noOOM_required": true,
+      "automatic_retry": false,
+      "energy_record_count": 1,
+      "force_evaluation_count": 1,
+      "cp2k_log_sha256": "3e6f92a489187b2f5526249f0821b73bad67211a407e72d36313484205829fdd",
+      "energy_Ha": -37.76017644881011,
+      "energy_eV": -1027.5067460652313,
+      "electron_count": 16,
+      "charge": 0,
+      "multiplicity": 1,
+      "uks": false,
+      "atomic_initialization_verified": true,
+      "SCF_guess": "ATOMIC",
+      "seed_sha256": null,
+      "classification": "frozen_own_basis_fragment_singlepoint_not_optimized_reference",
+      "point_id": "B-co2",
+      "source_result": "campaign-003/fragments1-repair1-B-co2/jobs/gas3/native/result.json",
+      "source_result_sha256": "a025e8c01dc5982ed1a5302330a42640813f979615b49737ce0ee4bd04ce3dc0",
+      "errors": [],
+      "initialization_evidence": {
+        "mode": "ATOMIC",
+        "wavefunction_seed": null,
+        "atomic_lines": [
+          " SCF PARAMETERS         Density guess:                                    ATOMIC",
+          " Atomic guess: The first density matrix is obtained in terms of atomic orbitals"
+        ]
+      },
+      "label_summary": {
+        "energy_eV": -1027.5067460652313,
+        "scf_converged": true,
+        "output_sha256": "3e6f92a489187b2f5526249f0821b73bad67211a407e72d36313484205829fdd",
+        "electron_count": 16,
+        "result_classification": "fixed_geometry_DFT_interaction_component",
+        "exclude_from_all_new_test_sets": true,
+        "manuscript_eligible": false,
+        "job_id": "HAP-C003-fragment-B-co2",
+        "method_identity_sha256": "ea66cf5e4a536576dc37fb1616890b41dbc19d469b32da5d6a0473453e2a57c1",
+        "input_sha256": "6a41d6a3fc9e9575145f60c7c8cca35e64cc8c66cbb0c713274038dfd78163b1",
+        "geometry_sha256": "f86e0db69635c28e5e739a7ef12e2c8257592d0603696970ea6b05913c0678de",
+        "scf_total_steps": 42,
+        "scf_outer_iterations": 1,
+        "warning_count": 0,
+        "known_ELPA_warning_count": 0,
+        "raw_net_force_component_RMSE_floor_eV_per_A": 0.0009201218911122754,
+        "force_correction": "none",
+        "CO2_net_force_z_eV_per_A": 0.0013850392419952617,
+        "maximum_absolute_force_component_eV_per_A": 2.3300150007235056,
+        "CO2_maximum_absolute_force_component_eV_per_A": 2.3300150007235056,
+        "D3_and_dipole_runtime_information": "recorded_as_printed",
+        "reference_QA_passed": true,
+        "scf_inner_blocks": [
+          42
+        ]
+      }
+    },
+    {
+      "schema": "campaign003-counterpoise-center-derivatives/v1",
+      "status": "completed",
+      "reference_QA_passed": true,
+      "physical_QA_passed": true,
+      "execution_complete": true,
+      "cp_id": "B-co2-CP",
+      "fragment_id": "B-co2-CP",
+      "protocol_sha256": "231d604a28d204af2b23f5f9558c651c1d4b8f0d1918472fe4089e4b38ead3db",
+      "input_sha256": "b65229f9a539d7a8ab344c4433b2cab567851aa068415393e7869554ddf64175",
+      "geometry_sha256": "00b366485b97b67f300885ca354825e8c3e50c1aec5aeb2727cf2d891ddff95d",
+      "method_identity_sha256": "6486f7bb831b9bffaf55c36f7fac25659c2d100455aa3d9033c815c572935ac7",
+      "geometry_updates": 0,
+      "force_correction": "none",
+      "derivative_semantics": "CP2K FORCES sign: minus energy gradient on all91 centers including ghost basis centers",
+      "ML_label_eligible": false,
+      "real_only_net_force_gate_applied": false,
+      "all_center_net_force_gate_applied": false,
+      "automatic_retry": false,
+      "manuscript_eligible": false,
+      "host_container_exit0_noOOM_required": true,
+      "helper_sha256": "2b6f3d6a40281a8aad0c01d1ad6052bf2e7d09bb80fa9650e1cd30a687ea9556",
+      "energy_record_count": 1,
+      "force_evaluation_count": 1,
+      "cp2k_log_sha256": "4ade40b77e6168e8470b4bdb0e67c8ed3883c4c7e45022443d1f4fcbba47c101",
+      "center_count": 91,
+      "spherical_basis_functions": 1171,
+      "cartesian_basis_functions": 1258,
+      "occupied_orbitals": 8,
+      "orbital_functions": 1171,
+      "d3_energy_Ha": -0.00095507757111,
+      "surface_dipole_energy_Ha": null,
+      "energy_Ha": -37.76088326095755,
+      "energy_eV": -1027.5259794035787,
+      "real_nuclei_count": 3,
+      "ghost_center_count": 88,
+      "electron_count": 16,
+      "charge": 0,
+      "multiplicity": 1,
+      "uks": false,
+      "SCF_guess": "ATOMIC",
+      "seed_sha256": null,
+      "scf_converged": true,
+      "scf_total_steps": 31,
+      "scf_outer_iterations": 1,
+      "warning_count": 0,
+      "known_ELPA_warning_count": 0,
+      "own_D3_energy_Ha": -0.00095507757111,
+      "ghost_minus_own_D3_Ha": 0.0,
+      "D3_consistency_tolerance_Ha": 1e-10,
+      "D3_consistency_passed": true,
+      "classification": "frozen_counterpoise_fragment_not_ML_label",
+      "point_id": "B-co2-CP",
+      "source_result": "campaign-003/cp1-B-co2-CP/jobs/gas3/native/result.json",
+      "source_result_sha256": "5121f41c5d64536961daecfde075ca0641cbd2ecac151f1253e999f17372aecf",
+      "errors": [],
+      "unknown_warnings": [],
+      "scf_inner_blocks": [
+        31
+      ],
+      "initialization_evidence": {
+        "mode": "ATOMIC",
+        "wavefunction_seed": null,
+        "atomic_lines": [
+          " SCF PARAMETERS         Density guess:                                    ATOMIC",
+          " Atomic guess: The first density matrix is obtained in terms of atomic orbitals"
+        ]
+      }
+    },
+    {
+      "schema": "campaign003-frozen-fragment-singlepoint/v1",
+      "status": "completed",
+      "reference_QA_passed": true,
+      "physical_QA_passed": true,
+      "execution_complete": true,
+      "fragment_id": "A-co2",
+      "protocol_sha256": "159ac826301074acf5f639fef64b8c8a02e01eeacef1f750806c392e96e7e7b5",
+      "input_sha256": "302cc26a051a9a9e3b6217136f3584c2c3a23f11af7e8f768b42840156eb6d9e",
+      "geometry_sha256": "481ec52231a9356503ee10750e66e58a33002331d92bfbfa15cbfdcbb075e04a",
+      "d3_energy_Ha": -0.00095140949053,
+      "surface_dipole_energy_Ha": null,
+      "method_identity_sha256": "ea66cf5e4a536576dc37fb1616890b41dbc19d469b32da5d6a0473453e2a57c1",
+      "force_correction": "none",
+      "geometry_updates": 0,
+      "optimization_converged": false,
+      "manuscript_eligible": false,
+      "host_container_exit0_noOOM_required": true,
+      "automatic_retry": false,
+      "energy_record_count": 1,
+      "force_evaluation_count": 1,
+      "cp2k_log_sha256": "fdde4d2cf29beadb2050c276e963ecafb6d3156566d075a327d46ccfda4a1089",
+      "energy_Ha": -37.761309699509205,
+      "energy_eV": -1027.537583387718,
+      "electron_count": 16,
+      "charge": 0,
+      "multiplicity": 1,
+      "uks": false,
+      "atomic_initialization_verified": true,
+      "SCF_guess": "ATOMIC",
+      "seed_sha256": null,
+      "classification": "frozen_own_basis_fragment_singlepoint_not_optimized_reference",
+      "point_id": "A-co2",
+      "source_result": "campaign-003/fragments1-repair1-A-co2/jobs/gas3/native/result.json",
+      "source_result_sha256": "815882662e0ac6fa58c305852e71a0698f4cb80d3608376b2bebac2070c73030",
+      "errors": [],
+      "initialization_evidence": {
+        "mode": "ATOMIC",
+        "wavefunction_seed": null,
+        "atomic_lines": [
+          " SCF PARAMETERS         Density guess:                                    ATOMIC",
+          " Atomic guess: The first density matrix is obtained in terms of atomic orbitals"
+        ]
+      },
+      "label_summary": {
+        "energy_eV": -1027.537583387718,
+        "scf_converged": true,
+        "output_sha256": "fdde4d2cf29beadb2050c276e963ecafb6d3156566d075a327d46ccfda4a1089",
+        "electron_count": 16,
+        "result_classification": "fixed_geometry_DFT_interaction_component",
+        "exclude_from_all_new_test_sets": true,
+        "manuscript_eligible": false,
+        "job_id": "HAP-C003-fragment-A-co2",
+        "method_identity_sha256": "ea66cf5e4a536576dc37fb1616890b41dbc19d469b32da5d6a0473453e2a57c1",
+        "input_sha256": "302cc26a051a9a9e3b6217136f3584c2c3a23f11af7e8f768b42840156eb6d9e",
+        "geometry_sha256": "481ec52231a9356503ee10750e66e58a33002331d92bfbfa15cbfdcbb075e04a",
+        "scf_total_steps": 39,
+        "scf_outer_iterations": 1,
+        "warning_count": 0,
+        "known_ELPA_warning_count": 0,
+        "raw_net_force_component_RMSE_floor_eV_per_A": 0.0001313831328167077,
+        "force_correction": "none",
+        "CO2_net_force_z_eV_per_A": 0.0006826864811059208,
+        "maximum_absolute_force_component_eV_per_A": 1.2144731189016305,
+        "CO2_maximum_absolute_force_component_eV_per_A": 1.2144731189016305,
+        "D3_and_dipole_runtime_information": "recorded_as_printed",
+        "reference_QA_passed": true,
+        "scf_inner_blocks": [
+          39
+        ]
+      }
+    },
+    {
+      "schema": "campaign003-counterpoise-center-derivatives/v1",
+      "status": "completed",
+      "reference_QA_passed": true,
+      "physical_QA_passed": true,
+      "execution_complete": true,
+      "cp_id": "A-co2-CP",
+      "fragment_id": "A-co2-CP",
+      "protocol_sha256": "231d604a28d204af2b23f5f9558c651c1d4b8f0d1918472fe4089e4b38ead3db",
+      "input_sha256": "c2ee85939eefeb5b7df680828062bb6bd3d256a54468a80967a9e14e1eecf1af",
+      "geometry_sha256": "82f16d241ae943aa97f0efe5c94d1b15b460c79dd93c6f083ca676105d56e99b",
+      "method_identity_sha256": "6486f7bb831b9bffaf55c36f7fac25659c2d100455aa3d9033c815c572935ac7",
+      "geometry_updates": 0,
+      "force_correction": "none",
+      "derivative_semantics": "CP2K FORCES sign: minus energy gradient on all91 centers including ghost basis centers",
+      "ML_label_eligible": false,
+      "real_only_net_force_gate_applied": false,
+      "all_center_net_force_gate_applied": false,
+      "automatic_retry": false,
+      "manuscript_eligible": false,
+      "host_container_exit0_noOOM_required": true,
+      "helper_sha256": "2b6f3d6a40281a8aad0c01d1ad6052bf2e7d09bb80fa9650e1cd30a687ea9556",
+      "energy_record_count": 1,
+      "force_evaluation_count": 1,
+      "cp2k_log_sha256": "9a6433fd7768b4260e9d19f80f17a060843870c8b23d16413ce1bbe58c3f3a16",
+      "center_count": 91,
+      "spherical_basis_functions": 1171,
+      "cartesian_basis_functions": 1258,
+      "occupied_orbitals": 8,
+      "orbital_functions": 1171,
+      "d3_energy_Ha": -0.00095140949053,
+      "surface_dipole_energy_Ha": null,
+      "energy_Ha": -37.76159497753185,
+      "energy_eV": -1027.5453461981797,
+      "real_nuclei_count": 3,
+      "ghost_center_count": 88,
+      "electron_count": 16,
+      "charge": 0,
+      "multiplicity": 1,
+      "uks": false,
+      "SCF_guess": "ATOMIC",
+      "seed_sha256": null,
+      "scf_converged": true,
+      "scf_total_steps": 40,
+      "scf_outer_iterations": 1,
+      "warning_count": 0,
+      "known_ELPA_warning_count": 0,
+      "own_D3_energy_Ha": -0.00095140949053,
+      "ghost_minus_own_D3_Ha": 0.0,
+      "D3_consistency_tolerance_Ha": 1e-10,
+      "D3_consistency_passed": true,
+      "classification": "frozen_counterpoise_fragment_not_ML_label",
+      "point_id": "A-co2-CP",
+      "source_result": "campaign-003/cp1-A-co2-CP/jobs/gas3/native/result.json",
+      "source_result_sha256": "97daedd8a28b1e75503e977ee7c70f09576ace927c4b6f40b5af09106fc9c23a",
+      "errors": [],
+      "unknown_warnings": [],
+      "scf_inner_blocks": [
+        40
+      ],
+      "initialization_evidence": {
+        "mode": "ATOMIC",
+        "wavefunction_seed": null,
+        "atomic_lines": [
+          " SCF PARAMETERS         Density guess:                                    ATOMIC",
+          " Atomic guess: The first density matrix is obtained in terms of atomic orbitals"
+        ]
+      }
+    }
+  ],
+  "manuscript_eligible": false
+}

@@ -1,0 +1,246 @@
+{
+  "location_root": "${RESEARCH_RUNS}",
+  "logs_not_opened_for_this_publication": true,
+  "raw_evidence": [
+    {
+      "retained_relative_to_research_runs": "campaign-003/B-direction1-segment01/jobs/B91/native/cp2k.log",
+      "included": false,
+      "source_hashes_in_existing_result": {
+        "log": {
+          "filename": "cp2k.log",
+          "bytes": 308986,
+          "sha256": "2080cfd9bbaf756f379886edd75c3214b7a1e423d98cfd179dde6a63f03bcaaf"
+        },
+        "positions": {
+          "filename": "HAP91-relax-pos.xyz",
+          "bytes": 29820,
+          "sha256": "639465e0b6df86b5fc62b977cfa599e25477b661df05b9b8029b0d8ba0098469"
+        },
+        "forces": {
+          "filename": "HAP91-relax-frc.xyz",
+          "bytes": 29820,
+          "sha256": "5ed740cc614b904b133905503d7b7189d495dc0ff5d92a798113fe3f0c054164"
+        },
+        "cell": {
+          "filename": "HAP91-relax.cell",
+          "bytes": 1356,
+          "sha256": "988b96b17ae6d9b8187535314a14f726afff396c89b2dbc32b6e7221b884b094"
+        }
+      }
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/B-adaptive1-segment01/jobs/B91/native/cp2k.log",
+      "included": false,
+      "source_hashes_in_existing_result": {
+        "log": {
+          "filename": "cp2k.log",
+          "bytes": 494803,
+          "sha256": "e2a7e8128508a0e0a128ca553a67d33283e938de721d73a8cadcb2a4dfa9ec84"
+        },
+        "positions": {
+          "filename": "HAP91-relax-pos.xyz",
+          "bytes": 59640,
+          "sha256": "ef2f60c598cb8bf94d768aef080db851670d3752fee927e2157bb2befb42520a"
+        },
+        "forces": {
+          "filename": "HAP91-relax-frc.xyz",
+          "bytes": 59640,
+          "sha256": "01741097870639d00045b9ff010f3f1ae37dabff0c68e5e7a1fb84af36367805"
+        },
+        "cell": {
+          "filename": "HAP91-relax.cell",
+          "bytes": 2486,
+          "sha256": "4b90c1691a43c462042029e7bfed9c37a7c5ef0ff28c463f4f0a7a8f7a0f927f"
+        }
+      }
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/B-adaptive1-segment02/jobs/B91/native/cp2k.log",
+      "included": false,
+      "source_hashes_in_existing_result": {
+        "log": {
+          "filename": "cp2k.log",
+          "bytes": 190929,
+          "sha256": "1d01879fa344c12253f05fb36adcc1985122ce90586dc127ff96c59bab572e14"
+        },
+        "positions": {
+          "filename": "HAP91-relax-pos.xyz",
+          "bytes": 11928,
+          "sha256": "0faae4c9d81a84a7019f65c25be3add782992d18d77de2e449d0796eec36e709"
+        },
+        "forces": {
+          "filename": "HAP91-relax-frc.xyz",
+          "bytes": 11928,
+          "sha256": "a6817b6cdadab46f815d6cccc5f76f443b352b466a259aa337566419c2ba0e4e"
+        },
+        "cell": {
+          "filename": "HAP91-relax.cell",
+          "bytes": 452,
+          "sha256": "15e987860f470d8dee16eb05e5f441586b7a4f54e3aee21c593e989d93986f63"
+        }
+      }
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/cleanB1-segment01/jobs/clean88/native/cp2k.log",
+      "included": false,
+      "source_hashes_in_existing_result": {
+        "log": {
+          "filename": "cp2k.log",
+          "bytes": 475128,
+          "sha256": "db2c6eb339af79c060a44eb369315c619452ec43da4b8f9ab3eca5e0ed58e141"
+        },
+        "positions": {
+          "filename": "HAP91-relax-pos.xyz",
+          "bytes": 57690,
+          "sha256": "b6ca05b292449fc3814f2987783393f0845fb1da1b8006b8b935b80b9f0fa474"
+        },
+        "forces": {
+          "filename": "HAP91-relax-frc.xyz",
+          "bytes": 57690,
+          "sha256": "53b0f5294da8f74d0f418a712b46d6b0c57fe4144d859cc448846cc8b12ce336"
+        },
+        "cell": {
+          "filename": "HAP91-relax.cell",
+          "bytes": 2486,
+          "sha256": "4b90c1691a43c462042029e7bfed9c37a7c5ef0ff28c463f4f0a7a8f7a0f927f"
+        }
+      }
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/cleanB1-segment02/jobs/clean88/native/cp2k.log",
+      "included": false,
+      "source_hashes_in_existing_result": {
+        "log": {
+          "filename": "cp2k.log",
+          "bytes": 475630,
+          "sha256": "d2f37e22fa8d64a11e4a95dff024152b2c62f12513531e560ad7b492bbf1beff"
+        },
+        "positions": {
+          "filename": "HAP91-relax-pos.xyz",
+          "bytes": 57690,
+          "sha256": "523891fac61f4f65ff193d37e29913008f19b814d4e044de099d336ce95f97ce"
+        },
+        "forces": {
+          "filename": "HAP91-relax-frc.xyz",
+          "bytes": 57690,
+          "sha256": "d1364ccbbeb41af13ac77d53f2df8d1aee511d87f6dfae7ee74de107c803799d"
+        },
+        "cell": {
+          "filename": "HAP91-relax.cell",
+          "bytes": 2486,
+          "sha256": "4b90c1691a43c462042029e7bfed9c37a7c5ef0ff28c463f4f0a7a8f7a0f927f"
+        }
+      }
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/cleanB1-segment03/jobs/clean88/native/cp2k.log",
+      "included": false,
+      "source_hashes_in_existing_result": {
+        "log": {
+          "filename": "cp2k.log",
+          "bytes": 474253,
+          "sha256": "c6a495477e0a499f40b7f2165dcc04fb192f05f88a3e608beb08bd0f734209ef"
+        },
+        "positions": {
+          "filename": "HAP91-relax-pos.xyz",
+          "bytes": 57690,
+          "sha256": "48a0dabcd3015f2a79ceb6541e060211dd95a105aea1eaae08437e6840733bc5"
+        },
+        "forces": {
+          "filename": "HAP91-relax-frc.xyz",
+          "bytes": 57690,
+          "sha256": "fb906356f85147e3316fc1100494aec35eaf7c5fe44efb0b098c7ec229841604"
+        },
+        "cell": {
+          "filename": "HAP91-relax.cell",
+          "bytes": 2486,
+          "sha256": "4b90c1691a43c462042029e7bfed9c37a7c5ef0ff28c463f4f0a7a8f7a0f927f"
+        }
+      }
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/cleanB1-segment04/jobs/clean88/native/cp2k.log",
+      "included": false,
+      "source_hashes_in_existing_result": {
+        "log": {
+          "filename": "cp2k.log",
+          "bytes": 175938,
+          "sha256": "d67a48f546d30beacb42bc82ae21771f58fc8f5bbff3c1d0f26bdcf0176da96a"
+        },
+        "positions": {
+          "filename": "HAP91-relax-pos.xyz",
+          "bytes": 11538,
+          "sha256": "a9c4f50e80e8791e25ac9f943f077280a45385e8e1390d34f38aadefbcd02e94"
+        },
+        "forces": {
+          "filename": "HAP91-relax-frc.xyz",
+          "bytes": 11538,
+          "sha256": "70503da87c9d5ab27148fafc2125b2ded76751ea3f42bf152ee430a5cbbecc06"
+        },
+        "cell": {
+          "filename": "HAP91-relax.cell",
+          "bytes": 452,
+          "sha256": "15e987860f470d8dee16eb05e5f441586b7a4f54e3aee21c593e989d93986f63"
+        }
+      }
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/A-tilt1-repair1-minus5/jobs/A91/native/cp2k.log",
+      "sha256_from_existing_result": "f85bad76b59457028a178cb150bbc44dfe60f8c29ea2bb5fc2798f7cd20fa1d0",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/A-tilt1-repair1-plus5/jobs/A91/native/cp2k.log",
+      "sha256_from_existing_result": "8dca7fad52c134c4f10a63d5f3bd35ddd3435535055bbded6a8f235d4a54e560",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/fragments1-repair1-B-slab/jobs/clean88/native/cp2k.log",
+      "sha256_from_existing_result": "2375a3262f3bdcb47d139e1dd43e125a367995455793dc018ee9732dac6b8227",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/cp1-B-slab-CP/jobs/clean88/native/cp2k.log",
+      "sha256_from_existing_result": "e1c16b25423ca3e21420f7ac96c164205c07b150b2ba03b0ae2e392754c08717",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/fragments1-repair1-A-slab/jobs/clean88/native/cp2k.log",
+      "sha256_from_existing_result": "e1786a6d587fdc4078d9216ecd449ad4a6beb1602c698075c1365fdf325f528e",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/cp1-A-slab-CP/jobs/clean88/native/cp2k.log",
+      "sha256_from_existing_result": "ed5b2ea76fb52fe556e1bbfe723a6f8ba4ecf5c13fd96847b7d06a0688a81587",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/fragments1-repair1-B-co2/jobs/gas3/native/cp2k.log",
+      "sha256_from_existing_result": "3e6f92a489187b2f5526249f0821b73bad67211a407e72d36313484205829fdd",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/cp1-B-co2-CP/jobs/gas3/native/cp2k.log",
+      "sha256_from_existing_result": "4ade40b77e6168e8470b4bdb0e67c8ed3883c4c7e45022443d1f4fcbba47c101",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/fragments1-repair1-A-co2/jobs/gas3/native/cp2k.log",
+      "sha256_from_existing_result": "fdde4d2cf29beadb2050c276e963ecafb6d3156566d075a327d46ccfda4a1089",
+      "included": false
+    },
+    {
+      "retained_relative_to_research_runs": "campaign-003/cp1-A-co2-CP/jobs/gas3/native/cp2k.log",
+      "sha256_from_existing_result": "9a6433fd7768b4260e9d19f80f17a060843870c8b23d16413ce1bbe58c3f3a16",
+      "included": false
+    }
+  ],
+  "other_omissions": [
+    "Raw trajectories and full force arrays",
+    "WFN and Hessian binaries; hashes retained in dependencies.json where provided",
+    "Operational telemetry and local private dependency maps",
+    "All sealed H/R4 numerical evidence",
+    "Paper/manuscript files and third-party materials"
+  ],
+  "scope": "Reporting only; original evidence remains in the local research archive"
+}

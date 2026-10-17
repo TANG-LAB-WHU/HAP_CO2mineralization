@@ -1,0 +1,42 @@
+{
+  "classification": "inconclusive",
+  "E0_Ha": -1692.8637034685598,
+  "energies_Ha": {
+    "minus5": -1692.863708632991,
+    "plus5": -1692.8637086868157
+  },
+  "delta_E_vs_E0_eV": {
+    "minus5": -0.0001405313282818301,
+    "plus5": -0.00014199597586603182
+  },
+  "D_eV": -0.0002825273041478619,
+  "K_E_eV_per_rad2": -0.03709929712433202,
+  "K_F_eV_per_rad2": -0.0329197410458483,
+  "absolute_curvature_ratio_KE_KF": 1.126961997442894,
+  "projected_torque_eV_per_rad": {
+    "minus5": -0.004295117857634055,
+    "plus5": 0.001450460843905689
+  },
+  "baseline_torque_eV_per_rad": -1.7148761586128864e-06,
+  "curvature_consistent": true,
+  "protocol_sha256": "cbb5ba8790814bc7bfd4b157596fff7d90f08a947502c5fa5fd7a09bd08f6b26",
+  "method": "unchanged A E0 method, raw uncorrected forces",
+  "manuscript_minimum_proven": false,
+  "manuscript_eligible": false,
+  "limits": [
+    "One finite-angle rigid path with fixed substrate, not a Hessian eigenmode or full minimum proof",
+    "SCF threshold and prior repeat are not an independent energy-error bound",
+    "Inconclusive takes precedence over downhill-candidate classification",
+    "No automatic extra angle, tightening batch or optimization"
+  ],
+  "result_sources": {
+    "minus5": {
+      "root": "${RESEARCH_RUNS}/campaign-003/A-tilt1-repair1-minus5",
+      "result_sha256": "f940c8f961acf6d38af69849ba2caa451925feb019746bc8ae9cef27a03852dd"
+    },
+    "plus5": {
+      "root": "${RESEARCH_RUNS}/campaign-003/A-tilt1-repair1-plus5",
+      "result_sha256": "1d3ab51d5660413e87765adb5b254c165b9dab46650b4676420c1efc3537a329"
+    }
+  }
+}

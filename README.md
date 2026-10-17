@@ -1,5 +1,10 @@
 # AI-Driven Materials Discovery for Biomimetic CO2 Mineralization
 
+Latest measured development results: [17 October 2026 result release](results/RELEASE-20261017.md).
+This includes conditional DFT/reference results and failed dynamics/model-validation
+diagnostics, plus a T2 training-fit diagnostic. No production-ready potential or
+mineralization mechanism is established; the new joint 40-frame fit was not run.
+
 ![Project Status](https://img.shields.io/badge/Status-Active-brightgreen)
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
 ![Machine Learning](https://img.shields.io/badge/AI4Science-MatterGen%20%7C%20MACE%20%7C%20DeepMD%20%7C%20CP2K%20%7C%20LAMMPS-orange)

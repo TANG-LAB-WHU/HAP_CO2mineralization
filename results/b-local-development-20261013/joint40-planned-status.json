@@ -1,0 +1,16 @@
+{
+  "status": "PLANNED_NOT_EXECUTED",
+  "observed_date": "2026-10-17",
+  "prepared_release_sha256": "dcab42860b1902742010314e76d0a3b1f5618482b9fb9fbd99a632d6610f0553",
+  "execution_authorized": false,
+  "worker_or_model_executed": false,
+  "deployment": false,
+  "candidate_evaluation_started": false,
+  "training_started": false,
+  "cpu_threads": 8,
+  "memory_bytes": 32000000000,
+  "effective_compute_budget_seconds": 14400,
+  "intended_run_path": ".research-runs/joint40-fit-cpu-20261014/run1",
+  "intended_run_path_exists_at_publication_check": false,
+  "distinction": "This proposed CPU comparison and refit is separate from the completed, unqualified development40 model."
+}

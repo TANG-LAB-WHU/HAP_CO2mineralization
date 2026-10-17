@@ -1,0 +1,476 @@
+{
+  "source_protocol_sha256": "16a95c99d3a27cece5dcaeff18a206b9765cf4978656f900618d7a677485abbb",
+  "cell_A": [
+    [
+      9.424,
+      0.0,
+      0.0
+    ],
+    [
+      -4.712,
+      8.161423405265,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      37.7401146
+    ]
+  ],
+  "pbc": [
+    true,
+    true,
+    true
+  ],
+  "type_map": [
+    "Ca",
+    "P",
+    "O",
+    "H",
+    "C"
+  ],
+  "B91": {
+    "natoms": 91,
+    "composition": {
+      "Ca": 20,
+      "P": 12,
+      "O": 54,
+      "H": 4,
+      "C": 1
+    },
+    "CO2_atom_ids_1based": [
+      89,
+      90,
+      91
+    ]
+  },
+  "label_method": "PBE-D3(BJ); GPW 1200/80 Ry, NGRIDS4, EPS_DEFAULT1e-10, inner/outer EPS_SCF1e-8; DZVP-MOLOPT-SR-GTH/GTH-PBE Ca10 P5 O6 H1 C4; neutral singlet; periodic XYZ; Z dipole position2.0 switchF; D3 cutoff15A, C9F. Exact basis/potential/dispersion assets and CP2K image inherited from the successful campaign003 release.",
+  "thermal_interpretation": "300K-initialized early local dynamics, not equilibrated 300K ensemble or thermal adsorption stability.",
+  "thermal_common": {
+    "ensemble": "NVE",
+    "initial_temperature_K": 300,
+    "time_step_fs": 0.25,
+    "native_energy_drift_meV_atom_max": 1.0
+  },
+  "development_jobs": [
+    {
+      "id": "T1",
+      "natoms": 91,
+      "seed": 2026101401,
+      "steps": 32,
+      "frames": 33,
+      "selected_steps": [
+        4,
+        8,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32
+      ]
+    },
+    {
+      "id": "T2",
+      "natoms": 91,
+      "seed": 2026101402,
+      "steps": 32,
+      "frames": 33,
+      "selected_steps": [
+        4,
+        8,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32
+      ]
+    },
+    {
+      "id": "Pplus",
+      "natoms": 91,
+      "frames": 1,
+      "selected_steps": [
+        0
+      ]
+    },
+    {
+      "id": "Pminus",
+      "natoms": 91,
+      "frames": 1,
+      "selected_steps": [
+        0
+      ]
+    },
+    {
+      "id": "Splus",
+      "natoms": 91,
+      "frames": 1,
+      "selected_steps": [
+        0
+      ]
+    },
+    {
+      "id": "Sminus",
+      "natoms": 91,
+      "frames": 1,
+      "selected_steps": [
+        0
+      ]
+    }
+  ],
+  "perturbations": {
+    "base": "original91atomendpoint",
+    "normal": "unit cross(a,b), positive z",
+    "u90": "unit(C89 to O90), same original molecule image",
+    "u91": "unit(C89 to O91), same original molecule image",
+    "v": "normalize(z - dot(z,u91)*u91)",
+    "Pplus_displacements_A": {
+      "C89": ".010*z",
+      "O90": ".010*z+.005*u90",
+      "O91": ".010*z+.005*u91+.010*v"
+    },
+    "Pminus": "negative of all Pplus displacement vectors; substrate fixed",
+    "S_generator": "NumPy PCG64 seed2026101403, U[-1,1] independent components for88x3; subtract column means; globally scale max row norm to.008A",
+    "Splus": "add those88displacements, CO2 fixed",
+    "Sminus": "subtract same88displacements, CO2 fixed",
+    "failure_policy": "No redraw/geometry reoptimization/seed or sample replacement after failed QA; retain failure."
+  },
+  "B16_training": {
+    "selection": "B16-selection.json",
+    "full_objective": "0.5*mean_over_12_Bopt(L_frame)+0.5*mean_over_4_BT(L_frame), L_frame=.9890042191478408*(delta_total_E)^2/91+12.208964358476615*mean_over_273_components(delta_F^2).",
+    "evaluation": "Deterministic complete objective on every closure. Microbatch2 allowed; accumulate gradients over all16 before optimizer update. Multiply by actual cardinality/family denominator; zero gradients once per closure, not per microbatch. Record family loss/gradient contributions.",
+    "optimizer": {
+      "type": "LBFGS",
+      "lr": 1.0,
+      "history_size": 20,
+      "max_iter": 1,
+      "max_eval": 27,
+      "line_search_fn": "strong_wolfe",
+      "tolerance_grad": 1e-07,
+      "tolerance_change": 1e-12
+    },
+    "maximum_accepted_updates": 300,
+    "maximum_complete_objective_evaluations": 1200,
+    "total_seconds_including_export_score": 2700,
+    "reserve_export_score_seconds": 120,
+    "stop_rules": [
+      "Stop at first accepted state satisfying all B training gates, maximum budget/count, nonfinite result, line-search failure or gradient stop.",
+      "If a budget/count is hit inside strong-Wolfe, restore the last fully accepted parameters before scoring/export. Never export an unaccepted trial point.",
+      "If two consecutive50-accepted-update windows each improve complete objective by<0.5%, stop unqualified unless gates already pass.",
+      "No automatic restart, changed weights, omitted frames, higher capacity or extra budget after failure. Preserve the last accepted state and full negative result."
+    ],
+    "train_checks": "Every10 accepted updates and at termination, evaluate all16 and each family; terminal checkpoint/export exact weight identity required.",
+    "qualification": {
+      "Bopt_force_RMSE_eV_A_max": 0.03,
+      "BT_force_RMSE_eV_A_max": 0.03,
+      "pooled_force_RMSE_eV_A_max": 0.03,
+      "Bopt_CO2_force_RMSE_eV_A_max": 0.05,
+      "BT_CO2_force_RMSE_eV_A_max": 0.05,
+      "CO2_max_component_error_eV_A_max": 0.2
+    },
+    "reporting": "Report energy, forces, elements, maximum components, CO2 and unweighted pooled16 metrics. At frozen terminal candidate, one full142 score may document out-of-domain regression; it cannot promote broad-domain claims or select another checkpoint.",
+    "selection_metadata": "Copied system sampling_probability fields preserve source-manifest history only. They are inactive in this deterministic full-objective fit; the sole active family_weights are0.5/0.5 in B16-selection.json and training.full_objective.",
+    "scope": "initial_segment",
+    "scope_note": "The300 accepted/1200 objective/2700s limits and50-update plateau windows apply only to the initial B16 segment. Authorized continuation overrides below do not change the scientific gates."
+  },
+  "development40_training": {
+    "groups": [
+      {
+        "id": "B-optimization",
+        "frame_count": 12,
+        "weight": 0.25
+      },
+      {
+        "id": "B-T",
+        "frame_count": 4,
+        "weight": 0.15
+      },
+      {
+        "id": "B-H-development",
+        "frame_count": 4,
+        "weight": 0.15
+      },
+      {
+        "id": "T1",
+        "frame_count": 8,
+        "weight": 0.15
+      },
+      {
+        "id": "T2",
+        "frame_count": 8,
+        "weight": 0.15
+      },
+      {
+        "id": "perturbation",
+        "frame_count": 4,
+        "weight": 0.15
+      }
+    ],
+    "total_frames": 40,
+    "microbatch_size": 2,
+    "complete_objective_every_closure": true,
+    "frame_loss": "0.9890042191478408*(delta_total_E)^2/91 + 12.208964358476615*mean_over_273_components(delta_F^2)",
+    "group_weighting": "Sum group.weight * mean(frame_loss within that group); zero gradients once per full40closure",
+    "pooled_metrics": "Unweighted raw SSE/count over all40frames/components; objective weights do not reweight reported pooled RMSE",
+    "optimizer": {
+      "type": "LBFGS",
+      "lr": 1.0,
+      "history_size": 20,
+      "max_iter": 1,
+      "max_eval": 27,
+      "line_search_fn": "strong_wolfe",
+      "tolerance_grad": 1e-07,
+      "tolerance_change": 1e-12
+    },
+    "maximum_accepted_updates": 1200,
+    "maximum_complete_objective_evaluations": 3000,
+    "total_seconds_including_export_score": 3600,
+    "reserve_export_score_seconds": 120,
+    "score_every_accepted_update": true,
+    "report_every_accepted_updates": 100,
+    "plateau": {
+      "block_accepted_updates": 100,
+      "relative_objective_improvement_minimum": 0.005,
+      "consecutive_blocks": 2
+    },
+    "first_all_gates_pass_freeze_stop": true,
+    "restore_last_fully_accepted_on_interrupted_trial": true,
+    "qualification": {
+      "each_group_force_RMSE_eV_A_max": 0.03,
+      "pooled_force_RMSE_eV_A_max": 0.03,
+      "each_group_CO2_force_RMSE_eV_A_max": 0.05,
+      "each_group_CO2_max_component_error_eV_A_max": 0.2
+    },
+    "maximum_training_attempts": 1,
+    "continuation_allowed": false,
+    "automatic_retry": false
+  },
+  "holdout_acceptance": {
+    "DFT_max_abs_total_energy_change_meV_per_atom": 1.0,
+    "train_force_component_RMSE_eV_A_max": 0.03,
+    "holdout_energy_RMSE_eV_atom_max": 0.002,
+    "holdout_force_component_RMSE_eV_A_max": 0.05,
+    "holdout_per_element_force_RMSE_eV_A_max": 0.075,
+    "holdout_per_frame_force_RMSE_eV_A_max": 0.1,
+    "holdout_max_abs_force_error_eV_A_max": 0.2,
+    "holdout_force_RMSE_to_zero_force_baseline_ratio_max": 0.7,
+    "LAMMPS_run0_energy_difference_eV_max": 1e-06,
+    "LAMMPS_run0_max_force_difference_eV_A_max": 1e-06
+  },
+  "CO2_acceptance": {
+    "force_RMSE_eV_A_max": 0.05,
+    "max_abs_force_component_eV_A_max": 0.2
+  },
+  "dataset": {
+    "frames": 40,
+    "random_split": false,
+    "family_weights": {
+      "B-optimization": 0.25,
+      "B-T": 0.15,
+      "B-H-development": 0.15,
+      "T1": 0.15,
+      "T2": 0.15,
+      "perturbation": 0.15
+    },
+    "systems": [
+      {
+        "id": "B-optimization",
+        "natoms": 91,
+        "frame_count": 12,
+        "frame_ids": [
+          "B-adaptive1-segment01-E000",
+          "B-adaptive1-segment01-E001",
+          "B-adaptive1-segment01-E002",
+          "B-adaptive1-segment01-E003",
+          "B-adaptive1-segment01-E004",
+          "B-adaptive1-segment01-E005",
+          "B-adaptive1-segment01-E006",
+          "B-adaptive1-segment01-E007",
+          "B-adaptive1-segment01-E008",
+          "B-adaptive1-segment01-E009",
+          "B-adaptive1-segment01-E010",
+          "B-adaptive1-segment02-E001"
+        ],
+        "QA": {
+          "reference_QA_passed": true,
+          "physical_QA_passed": true,
+          "completeness_checked": true,
+          "ghost_center_count": 0,
+          "same_evaluation_energy_force": true,
+          "raw_units_checked": true,
+          "source_hashes_checked": true,
+          "fixed_neighbor_capacity_checked_by_this_builder": false
+        }
+      },
+      {
+        "id": "B-T",
+        "natoms": 91,
+        "frame_count": 4,
+        "frame_ids": [
+          "B-T-S004",
+          "B-T-S008",
+          "B-T-S012",
+          "B-T-S016"
+        ],
+        "trajectory_id": "B-T-seed2026101311",
+        "QA": {
+          "reference_QA_passed": true,
+          "physical_QA_passed": true,
+          "completeness_checked": true,
+          "ghost_center_count": 0,
+          "same_evaluation_energy_force": true,
+          "raw_units_checked": true,
+          "source_hashes_checked": true,
+          "fixed_neighbor_capacity_checked_by_this_builder": false
+        }
+      },
+      {
+        "id": "B-H-development",
+        "natoms": 91,
+        "frame_count": 4,
+        "frame_ids": [
+          "B-H-development-S004",
+          "B-H-development-S008",
+          "B-H-development-S012",
+          "B-H-development-S016"
+        ],
+        "trajectory_id": "B-H-seed2026101313",
+        "QA": {
+          "reference_QA_passed": true,
+          "physical_QA_passed": true,
+          "completeness_checked": true,
+          "ghost_center_count": 0,
+          "same_evaluation_energy_force": true,
+          "raw_units_checked": true,
+          "source_hashes_checked": true,
+          "fixed_neighbor_capacity_checked_by_this_builder": false
+        }
+      },
+      {
+        "id": "T1",
+        "natoms": 91,
+        "frame_count": 8,
+        "frame_ids": [
+          "T1-S004",
+          "T1-S008",
+          "T1-S012",
+          "T1-S016",
+          "T1-S020",
+          "T1-S024",
+          "T1-S028",
+          "T1-S032"
+        ],
+        "trajectory_id": "T1-seed2026101401",
+        "QA": {
+          "reference_QA_passed": true,
+          "physical_QA_passed": true,
+          "completeness_checked": true,
+          "ghost_center_count": 0,
+          "same_evaluation_energy_force": true,
+          "raw_units_checked": true,
+          "source_hashes_checked": true,
+          "fixed_neighbor_capacity_checked_by_this_builder": false
+        }
+      },
+      {
+        "id": "T2",
+        "natoms": 91,
+        "frame_count": 8,
+        "frame_ids": [
+          "T2-S004",
+          "T2-S008",
+          "T2-S012",
+          "T2-S016",
+          "T2-S020",
+          "T2-S024",
+          "T2-S028",
+          "T2-S032"
+        ],
+        "trajectory_id": "T2-seed2026101402",
+        "QA": {
+          "reference_QA_passed": true,
+          "physical_QA_passed": true,
+          "completeness_checked": true,
+          "ghost_center_count": 0,
+          "same_evaluation_energy_force": true,
+          "raw_units_checked": true,
+          "source_hashes_checked": true,
+          "fixed_neighbor_capacity_checked_by_this_builder": false
+        }
+      },
+      {
+        "id": "perturbation",
+        "natoms": 91,
+        "frame_count": 4,
+        "frame_ids": [
+          "perturbation-Pplus",
+          "perturbation-Pminus",
+          "perturbation-Splus",
+          "perturbation-Sminus"
+        ],
+        "QA": {
+          "reference_QA_passed": true,
+          "physical_QA_passed": true,
+          "completeness_checked": true,
+          "ghost_center_count": 0,
+          "same_evaluation_energy_force": true,
+          "raw_units_checked": true,
+          "source_hashes_checked": true,
+          "fixed_neighbor_capacity_checked_by_this_builder": false
+        }
+      }
+    ],
+    "previous_B_H_is_development": true,
+    "raw_label_arrays_copied": false
+  },
+  "B16_continuation_overrides": [
+    {
+      "scope": "additional_segment",
+      "extension_id": "continuation1",
+      "prior_accepted_updates": 300,
+      "prior_complete_objective_evaluations": 630,
+      "additional_accepted_updates_cap": 600,
+      "additional_complete_objective_evaluations_cap": 1800,
+      "phase_seconds_cap": 2700,
+      "plateau": {
+        "block_accepted_updates": 100,
+        "consecutive_blocks": 2,
+        "relative_improvement_below": 0.005,
+        "metric": "complete_B16_objective"
+      },
+      "maximum_continuation_attempts": 1,
+      "automatic_retry": false,
+      "retain_LBFGS_history": true,
+      "science_gates_unchanged": true,
+      "original_route_started_unix": 1791887138.8568506,
+      "original_route_deadline_unix": 1791901538.8568506,
+      "source_path": ".research-runs/b-local-candidate1-20261013/continuation1-extension.json",
+      "source_sha256": "9930d89c932cd915217becc31eee3f590861b58a9dc9bc3325070c08764cf417"
+    },
+    {
+      "scope": "additional_segment",
+      "extension_id": "continuation2",
+      "prior_accepted_updates": 900,
+      "prior_complete_objective_evaluations": 1901,
+      "additional_accepted_updates_cap": 400,
+      "additional_complete_objective_evaluations_cap": 1000,
+      "phase_seconds_cap": 1500,
+      "plateau": {
+        "block_accepted_updates": 50,
+        "consecutive_blocks": 2,
+        "relative_improvement_below": 0.005,
+        "metric": "complete_B16_objective"
+      },
+      "maximum_continuation_attempts": 1,
+      "automatic_retry": false,
+      "retain_LBFGS_history": true,
+      "science_gates_unchanged": true,
+      "original_route_started_unix": 1791887138.8568506,
+      "original_route_deadline_unix": 1791901538.8568506,
+      "source_path": ".research-runs/b-local-candidate1-20261013/continuation2-extension.json",
+      "source_sha256": "4c0fc587c146b76e53e3ddfac291f58bea57e1429574b98289a1fe625464acb6"
+    }
+  ]
+}

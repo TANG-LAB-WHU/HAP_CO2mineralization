@@ -1,0 +1,305 @@
+{
+  "schema": "hap-publication-provenance/v1",
+  "sources": {
+    "static-B182/result.json": {
+      "sha256": "95194dd24a06affddfdb97183cbec2f914ff628b676c28e5e1fd19f7ebccc8d0",
+      "bytes": 74378,
+      "scope": "completed nonsealed result or scientific input"
+    },
+    "static-clean176/result.json": {
+      "sha256": "dd3db77becd398db9b6d29766f049d79b5de1c4b8ae362f3b9b0c7f734592398",
+      "bytes": 70820,
+      "scope": "completed nonsealed result or scientific input"
+    },
+    "DFT4fs/result.json": {
+      "sha256": "6e8c4b3f8094ce1551133d03ba9f8f365d5e72e163e74fe119da428d747f901c",
+      "bytes": 2787295,
+      "scope": "completed nonsealed result or scientific input"
+    },
+    "ML85fs/result.json": {
+      "sha256": "8085ef62e3e9de8e649410d7a0f6a87466186b9b1fd2a2afb1151430374bdd0e",
+      "bytes": 12420,
+      "scope": "completed nonsealed result or scientific input"
+    },
+    "DFT-step340/force-comparison.json": {
+      "sha256": "e991f2295758afa0bd27c2ebee0717933a614aea321e94c519b7f21d1bf09060",
+      "bytes": 273220,
+      "scope": "completed nonsealed result or scientific input"
+    },
+    "ML85fs/config.json": {
+      "sha256": "f21bf53e0147b98d94cf281ec1e561a5dc4e2a6e098733d7dd42d33e20b9edee",
+      "bytes": 81252,
+      "scope": "completed nonsealed result or scientific input"
+    },
+    "DFT-step340/prepared-release.json": {
+      "sha256": "0010cd40bef65e3eafb37e05570094e75739a0375a38c07e69757b6cfe0c4b1c",
+      "bytes": 9178,
+      "scope": "completed nonsealed result or scientific input"
+    },
+    "DFT-step340/wfn-compatibility.json": {
+      "sha256": "27976e8fca147dd1b4d3339671c1144740cbb55531b7070359aa179bfa4c6914",
+      "bytes": 939,
+      "scope": "completed nonsealed result or scientific input"
+    },
+    "static-B182/geometry.extxyz": {
+      "sha256": "d5ca21b1fe96cd79f3250c6bf6843540e6af22fa2207f223ab9b93d281d2d36b",
+      "bytes": 10333,
+      "scope": "completed nonsealed result or scientific input"
+    },
+    "static-B182/singlepoint.inp": {
+      "sha256": "c2bdd8dd81df899f3336443dae50e1a2491325ad9450c41102aee9a0cc16d048",
+      "bytes": 13585,
+      "scope": "completed nonsealed result or scientific input"
+    },
+    "static-clean176/geometry.extxyz": {
+      "sha256": "383b234976727fd8b355260afe4605564808985f1ae1db425c4797a8d09fb1f5",
+      "bytes": 10077,
+      "scope": "completed nonsealed result or scientific input"
+    },
+    "static-clean176/singlepoint.inp": {
+      "sha256": "c140f01d8c8d8790aa8987e76f72f9c6eccb125c78fa63c3491b0b4e605c40a1",
+      "bytes": 13182,
+      "scope": "completed nonsealed result or scientific input"
+    },
+    "DFT4fs/cp2k.inp": {
+      "sha256": "af49e7f40ef389c108aa87d3c5aefbaf088eb28986227151ac810f65e4ca9075",
+      "bytes": 14952,
+      "scope": "completed nonsealed result or scientific input"
+    },
+    "DFT-step340/probe.inp": {
+      "sha256": "e341448ffa6c0bcc34b6c8b0412391e5b73c8825adf97b9c8d367176ff4c3525",
+      "bytes": 14656,
+      "scope": "completed nonsealed result or scientific input"
+    },
+    "DFT-step340/geometry.extxyz": {
+      "sha256": "8d6d77a1097951a35c6c3007655aff11b043c67e3b903a36a6e6cedc2a3ec8f7",
+      "bytes": 11219,
+      "scope": "completed nonsealed result or scientific input"
+    },
+    "ML85fs/frames.json": {
+      "sha256": "1720a8ec66d60c54890a76c71b1ae249175bed0257778c47aad42e5eda346924",
+      "bytes": 35775914,
+      "scope": "completed nonsealed result or scientific input"
+    },
+    "ML85fs/trajectory-metrics.csv": {
+      "sha256": "bb0d824e1de9c4923bb6b442e7de021a1f04deff0bc59ff191f7bb5483e5e083",
+      "bytes": 102752,
+      "scope": "completed nonsealed result or scientific input"
+    },
+    "ML85fs/OH-distances.csv": {
+      "sha256": "91c7ad77b741cf083716204c1cc9c518bb249d751fe2151ba08b8da5b9139c78",
+      "bytes": 55003,
+      "scope": "completed nonsealed result or scientific input"
+    },
+    "DFT-step340/all-atom-force-differences.csv": {
+      "sha256": "28d5418f37006e5bb352b32398552113ba4e7f1f9048cd0fabcffc9561bbb3ae",
+      "bytes": 73092,
+      "scope": "completed nonsealed result or scientific input"
+    },
+    "DFT-step340/frozen-neighborhood.csv": {
+      "sha256": "1dc1b34ecfe76e9b30d3fc204ab296c4917026eb1710895339175fe88cf3db41",
+      "bytes": 8242,
+      "scope": "completed nonsealed result or scientific input"
+    },
+    "ML85fs/run0.in": {
+      "sha256": "63b2966f824e73467b3d68228d3c4e6ed54b62bcd41a9c088669454926642bc6",
+      "bytes": 548,
+      "scope": "completed nonsealed result or scientific input"
+    },
+    "ML85fs/md.in": {
+      "sha256": "cef3f4d3a0a4e4e57a40944084f15bc0a2ba92127ba64d446968f07cbf19eee9",
+      "bytes": 8671,
+      "scope": "completed nonsealed result or scientific input"
+    },
+    "ML85fs/system.data": {
+      "sha256": "5520099c466f24e7a7b77961222b1a025d1d6fb7c42244046de3d3295e0b8b1b",
+      "bytes": 12683,
+      "scope": "completed nonsealed result or scientific input"
+    },
+    "ML85fs/md.system.data": {
+      "sha256": "2eca61162d4eda01db6c9fad1c08c7b72b421670cc922e0fe93eee654c51b86c",
+      "bytes": 24241,
+      "scope": "completed nonsealed result or scientific input"
+    },
+    "ML85fs/raw/trajectory.dump": {
+      "sha256": "26d3b52623187e4b7ff3fcdbe4bacb5f3b5b281d2f73c2d1481dfde7ed885cf6",
+      "verification": "recorded in completed source summary; raw file not copied"
+    },
+    "ML85fs/raw/md.log": {
+      "sha256": "0fcf81d596990ec735d84f4562a4d359c5c94351c32a02d752a622dbdf9b3a31",
+      "verification": "recorded in completed source summary; raw file not copied"
+    },
+    "ML85fs/raw/md.console.log": {
+      "sha256": "d7d6bfcf368cc3f72d73ef3d6824c715fb065f3abbb45b4bca719ea2dea15aa5",
+      "verification": "recorded in completed source summary; raw file not copied"
+    },
+    "ML85fs/raw/trajectory-checks.json": {
+      "sha256": "64427a66cccb1c2f776bc3b64ffa93478ec1c04a54fe5363116fef9b925775f2",
+      "verification": "recorded in completed source summary; raw file not copied"
+    },
+    "ML85fs/raw/run0-parity.json": {
+      "sha256": "a689bf91592232297c3eafaa9a74be7d7be0182769f01379583d24784084018e",
+      "verification": "recorded in completed source summary; raw file not copied"
+    },
+    "ML85fs/raw/execution.json": {
+      "sha256": "031ac33dea8c4a8a07d305bde5e0686b8d70b8d74c1c40e5a6fd2fb70c258a5e",
+      "verification": "recorded in completed source summary; raw file not copied"
+    },
+    "ML85fs/raw/release.json": {
+      "sha256": "b09b4d1119356bd67764de70eead22b51394000dfe3c4721aad5dbd08ed23459",
+      "verification": "recorded in completed source summary; raw file not copied"
+    },
+    "DFT4fs/raw/cp2k.log": {
+      "bytes": 1038049,
+      "sha256": "bdfe76da6f4284821fc369dc6d7c027bb6a25a277e83b28294aa4365bf6b55dc"
+    },
+    "DFT4fs/raw/B182-fallback-md-pos.xyz": {
+      "bytes": 202300,
+      "sha256": "aad4865621baef1b4258e38e43825d0524f5bf4a703b5dbb1a4fafd40098644c"
+    },
+    "DFT4fs/raw/B182-fallback-md-frc.xyz": {
+      "bytes": 202300,
+      "sha256": "4814daa3932f2433435ca989deb36bef6ce13bcc69fc1e194515034088cb3deb"
+    },
+    "DFT4fs/raw/B182-fallback-md-vel.xyz": {
+      "bytes": 202300,
+      "sha256": "b7999795ec7ded6170acad192515d8f4986bfd76756119f848116164d88af7c9"
+    },
+    "DFT4fs/raw/B182-fallback-md.ener": {
+      "bytes": 2358,
+      "sha256": "f653e0931ec8e7b3f7557603302ef3bb0c148776a8a3b59e9dd54b51763b94a3"
+    },
+    "DFT4fs/raw/B182-fallback-md.cell": {
+      "bytes": 4068,
+      "sha256": "1875089e6197f384c35224230bc14cb99fbce70dc8ffe97dfed6dd49f91fd45a"
+    },
+    "DFT-step340/cp2k.log": {
+      "sha256": "514e10168595c0e40cf6ad99b26c729fbf286472bb1d9122711d78da8e8b06e1",
+      "verification": "recorded in completed force analysis; raw log not copied"
+    }
+  },
+  "transforms": [
+    {
+      "output": "snapshots/B182-initial.extxyz",
+      "source": "static-B182/geometry.extxyz",
+      "operation": "byte-exact copy"
+    },
+    {
+      "output": "inputs/cp2k/B182-static.inp",
+      "source": "static-B182/singlepoint.inp",
+      "operation": "UTF-8 LF serialization; only asset paths and stale preparation comment changed",
+      "path_replacements": {
+        "/opt/cp2k/data/BASIS_MOLOPT": "data/BASIS_MOLOPT",
+        "/opt/cp2k/data/GTH_POTENTIALS": "data/GTH_POTENTIALS",
+        "/opt/cp2k/data/dftd3.dat": "data/dftd3.dat"
+      },
+      "removed_stale_planned_comment": false,
+      "science_keywords_and_coordinates_unchanged": true
+    },
+    {
+      "output": "snapshots/clean176-initial.extxyz",
+      "source": "static-clean176/geometry.extxyz",
+      "operation": "byte-exact copy"
+    },
+    {
+      "output": "inputs/cp2k/clean176-static.inp",
+      "source": "static-clean176/singlepoint.inp",
+      "operation": "UTF-8 LF serialization; only asset paths and stale preparation comment changed",
+      "path_replacements": {
+        "/opt/cp2k/data/BASIS_MOLOPT": "data/BASIS_MOLOPT",
+        "/opt/cp2k/data/GTH_POTENTIALS": "data/GTH_POTENTIALS",
+        "/opt/cp2k/data/dftd3.dat": "data/dftd3.dat"
+      },
+      "removed_stale_planned_comment": false,
+      "science_keywords_and_coordinates_unchanged": true
+    },
+    {
+      "output": "inputs/cp2k/B182-dft4fs.inp",
+      "source": "DFT4fs/cp2k.inp",
+      "operation": "UTF-8 LF serialization; only asset paths and stale preparation comment changed",
+      "path_replacements": {
+        "/opt/cp2k/data/BASIS_MOLOPT": "data/BASIS_MOLOPT",
+        "/opt/cp2k/data/GTH_POTENTIALS": "data/GTH_POTENTIALS",
+        "/opt/cp2k/data/dftd3.dat": "data/dftd3.dat"
+      },
+      "removed_stale_planned_comment": true,
+      "science_keywords_and_coordinates_unchanged": true
+    },
+    {
+      "output": "inputs/cp2k/B182-step340.inp",
+      "source": "DFT-step340/probe.inp",
+      "operation": "UTF-8 LF serialization; only asset paths and stale preparation comment changed",
+      "path_replacements": {
+        "/opt/cp2k/data/BASIS_MOLOPT": "data/BASIS_MOLOPT",
+        "/opt/cp2k/data/GTH_POTENTIALS": "data/GTH_POTENTIALS",
+        "/opt/cp2k/data/dftd3.dat": "data/dftd3.dat",
+        "/seed/parent.wfn": "seed/parent.wfn"
+      },
+      "removed_stale_planned_comment": false,
+      "science_keywords_and_coordinates_unchanged": true
+    },
+    {
+      "output": "snapshots/ML85fs-step340.extxyz",
+      "source": "DFT-step340/geometry.extxyz",
+      "operation": "byte-exact copy"
+    },
+    {
+      "output": "tables/ml85fs-curve.csv",
+      "source": "ML85fs/trajectory-metrics.csv",
+      "operation": "byte-exact copy"
+    },
+    {
+      "output": "tables/ml85fs-OH-distances.csv",
+      "source": "ML85fs/OH-distances.csv",
+      "operation": "byte-exact copy"
+    },
+    {
+      "output": "tables/step340-all-atom-forces.csv",
+      "source": "DFT-step340/all-atom-force-differences.csv",
+      "operation": "byte-exact copy"
+    },
+    {
+      "output": "tables/step340-local-forces.csv",
+      "source": "DFT-step340/frozen-neighborhood.csv",
+      "operation": "byte-exact copy"
+    },
+    {
+      "output": "inputs/lammps/run0.in",
+      "source": "ML85fs/run0.in",
+      "operation": "byte-exact copy"
+    },
+    {
+      "output": "inputs/lammps/md-original-control.in",
+      "source": "ML85fs/md.in",
+      "operation": "byte-exact copy"
+    },
+    {
+      "output": "inputs/lammps/system.data",
+      "source": "ML85fs/system.data",
+      "operation": "byte-exact copy"
+    },
+    {
+      "output": "inputs/lammps/md.system.data",
+      "source": "ML85fs/md.system.data",
+      "operation": "byte-exact copy"
+    }
+  ],
+  "projection_policy": [
+    "No scientific program, model, optimizer, inference or DFT was executed to assemble this bundle.",
+    "Source paths replaced by run-relative artifact identifiers; container IDs, private paths, GPU UUIDs, telemetry and scheduler records omitted.",
+    "Summary JSON is a whitelist projection of completed records. Scientific floats are serialized without rounding.",
+    "CSV curves and step340 force CSVs are byte-exact copies; static forces and DFT4fs curves are column projections of completed records.",
+    "Selected XYZ snapshots serialize existing positions and forces; no geometry reconstruction, relaxation or force recomputation.",
+    "Input path substitutions and stale comment removal are listed per file. The original LAMMPS stop-control bug is retained.",
+    "Figures are redrawn only from bundled compact numerical tables; no smoothing, interpolation or missing-frame filling."
+  ],
+  "excluded": [
+    "model weights",
+    "wavefunctions",
+    "raw holdout or sealed labels",
+    "large raw trajectories",
+    "machine logs",
+    "manuscripts",
+    "temporary diagnostics"
+  ]
+}

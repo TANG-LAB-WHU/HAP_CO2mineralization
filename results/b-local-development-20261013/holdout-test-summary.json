@@ -1,0 +1,35 @@
+{
+  "status": "completed",
+  "stage": "B-H",
+  "gates_passed": false,
+  "single_score_attempt_consumed": true,
+  "native_forward_calls": 4,
+  "candidate_promoted": false,
+  "MD_released": false,
+  "model_sha256": "edee16ecf664fb6f49d835206d42172591634935b4e635ee6c088dba0bf1654b",
+  "source_result_sha256": "35cf186ea4c5199e90bc45f7b4e54b4a313331fb4bf96bc874bba1d912e7d6c1",
+  "parent_train_score_sha256": "24afe3ffd65cc74e7f3b78dc875f611fe06c96237e5481e474e2a2a6653c6604",
+  "terminal_record_sha256": "b3ddd4ed5a22d5351e18e44bbcfa97f6195e100b9cc9eb3e84c5d1c729cf599c",
+  "gates": {
+    "holdout_energy_RMSE_per_atom": true,
+    "holdout_force_RMSE": false,
+    "holdout_each_element_force_RMSE": false,
+    "holdout_each_frame_force_RMSE": false,
+    "holdout_max_force_component": false,
+    "holdout_force_to_zero_baseline_ratio": true,
+    "CO2_force_RMSE": false,
+    "CO2_max_abs_force_component": false,
+    "fixed_neighbor_capacity": true,
+    "fixed_angular_neighbor_capacity": true,
+    "all17_DFT_reference_physical_QA": true,
+    "normal_container_exit_noOOM": true
+  },
+  "effective_independent_trajectories": 1,
+  "selected_steps": [
+    4,
+    8,
+    12,
+    16
+  ],
+  "frame_count": 4
+}

@@ -1,0 +1,41 @@
+{
+  "status": "direction_checkpoint_complete_await_scientific_review",
+  "started_utc": "2026-10-12T23:36:44.505779+00:00",
+  "budget_scope": "new_user_authorized_phase_separate_from_closed_old_budget",
+  "maximum_charged_seconds": 900,
+  "charging": "all driver walltime including startup, admission, handoff and cleanup; conservative upper bound on GPU computation",
+  "deadline_utc": "2026-10-12T23:51:44.365779+00:00",
+  "old_B_charged_seconds_preserved": 10214.589597999933,
+  "segments": [
+    {
+      "segment_index": 1,
+      "root": "${RESEARCH_RUNS}/campaign-003/B-direction1-segment01",
+      "status": "partial_budget",
+      "started_utc": "2026-10-12T23:36:44.607700+00:00",
+      "seconds_cap": 899.7969999999041,
+      "max_updates": 5,
+      "max_force_evaluations": 6,
+      "result_sha256": "8c81bbb9d066a803bf5f524bd3d045b1b01320bc4c8d3ef6dcc1c125fc399f19",
+      "geometry_updates": 5,
+      "force_evaluations": 6,
+      "optimization_converged": false,
+      "physical_QA_passed": true,
+      "elapsed_seconds": 491.375,
+      "finished_utc": "2026-10-12T23:44:55.951983+00:00"
+    }
+  ],
+  "native_command_seconds_total": 478.968633520999,
+  "total_force_evaluations": 6,
+  "total_geometry_updates": 5,
+  "automatic_retry": false,
+  "training_updates": 0,
+  "MD_runs": 0,
+  "sealed_R4_read": false,
+  "manuscript_eligible": false,
+  "release_sha256": "597a383081c181b08ea0ae03d6f7951314abbaa3f0b1e5eb6408cb9451e7bd5a",
+  "active_segment": null,
+  "charged_seconds": 491.5780000000959,
+  "stop_reason": "Five-update direction checkpoint finished; no automatic B continuation",
+  "finished_utc": "2026-10-12T23:44:55.953984+00:00",
+  "remaining_seconds": 408.4219999999041
+}

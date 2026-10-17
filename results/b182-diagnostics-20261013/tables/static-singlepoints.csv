@@ -1,0 +1,3 @@
+system,natoms,electron_count,occupied_orbitals,spherical_basis_functions,cartesian_basis_functions,energy_Ha,scf_total_steps,scf_outer_iterations,force_evaluation_count,geometry_updates,minimum_pair_distance_A,maximum_absolute_force_component_eV_per_A,RMS_force_component_eV_per_A,maximum_atom_force_norm_eV_per_A,copy_force_difference_max_component_eV_per_A,copy_force_difference_RMS_component_eV_per_A
+B182,182,1184,592,2342,2516,-3385.7835616638545,97,2,1,0,0.9754897187112006,0.041630752305957336,0.010952577170133829,0.04173112850510232,5.210974356807327e-06,7.577041817783002e-07
+clean176,176,1152,576,2264,2432,-3310.212447034942,98,2,1,0,0.9749442707304011,0.04041866534206813,0.010787006725250493,0.041228939447053546,4.881402792356743e-06,5.59164801992875e-07

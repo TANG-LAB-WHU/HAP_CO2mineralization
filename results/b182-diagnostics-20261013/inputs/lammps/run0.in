@@ -1,0 +1,16 @@
+units metal
+atom_style atomic
+boundary p p p
+read_data system.data
+pair_style deepmd model.pth
+pair_coeff * * Ca P O H C
+neighbor 1.0 bin
+neigh_modify every 1 delay 0 check yes
+thermo 1
+thermo_style custom step time atoms temp pe ke etotal
+thermo_modify lost error norm no flush yes format float %.17g
+compute_modify thermo_temp extra/dof 3
+velocity all set 0 0 0
+run 0
+print "$(pe:%.17g)" file run0.energy screen no
+write_dump all custom run0.dump id type x y z xu yu zu ix iy iz fx fy fz modify sort id pbc yes format float %.17g

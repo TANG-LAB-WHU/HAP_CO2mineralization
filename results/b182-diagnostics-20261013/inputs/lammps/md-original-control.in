@@ -1,0 +1,170 @@
+units metal
+atom_style atomic
+boundary p p p
+read_data md.system.data
+pair_style deepmd model.pth
+pair_coeff * * Ca P O H C
+neighbor 1.0 bin
+neigh_modify every 1 delay 0 check yes
+thermo 1
+thermo_style custom step time atoms temp pe ke etotal
+thermo_modify lost error norm no flush yes format float %.17g
+compute_modify thermo_temp extra/dof 3
+reset_timestep 0
+timestep .00025
+fix integrate all nve
+variable current_temp equal temp
+fix stop_temperature all halt 1 v_current_temp >= 1000.0 error hard message yes
+dump trajectory all custom 1 trajectory.dump id type mass x y z xu yu zu ix iy iz vx vy vz fx fy fz
+dump_modify trajectory sort id first yes pbc yes flush yes format float %.17g
+run 80
+print "jump SELF stop_exploration" file checkpoint-decision.in screen no
+shell /opt/deepmd-kit/bin/python -B /runner/b182_exploratory_worker.py checkpoint --expected 80
+include checkpoint-decision.in
+run 20
+print "jump SELF stop_exploration" file checkpoint-decision.in screen no
+shell /opt/deepmd-kit/bin/python -B /runner/b182_exploratory_worker.py checkpoint --expected 100
+include checkpoint-decision.in
+run 20
+print "jump SELF stop_exploration" file checkpoint-decision.in screen no
+shell /opt/deepmd-kit/bin/python -B /runner/b182_exploratory_worker.py checkpoint --expected 120
+include checkpoint-decision.in
+run 20
+print "jump SELF stop_exploration" file checkpoint-decision.in screen no
+shell /opt/deepmd-kit/bin/python -B /runner/b182_exploratory_worker.py checkpoint --expected 140
+include checkpoint-decision.in
+run 20
+print "jump SELF stop_exploration" file checkpoint-decision.in screen no
+shell /opt/deepmd-kit/bin/python -B /runner/b182_exploratory_worker.py checkpoint --expected 160
+include checkpoint-decision.in
+run 20
+print "jump SELF stop_exploration" file checkpoint-decision.in screen no
+shell /opt/deepmd-kit/bin/python -B /runner/b182_exploratory_worker.py checkpoint --expected 180
+include checkpoint-decision.in
+run 20
+print "jump SELF stop_exploration" file checkpoint-decision.in screen no
+shell /opt/deepmd-kit/bin/python -B /runner/b182_exploratory_worker.py checkpoint --expected 200
+include checkpoint-decision.in
+run 20
+print "jump SELF stop_exploration" file checkpoint-decision.in screen no
+shell /opt/deepmd-kit/bin/python -B /runner/b182_exploratory_worker.py checkpoint --expected 220
+include checkpoint-decision.in
+run 20
+print "jump SELF stop_exploration" file checkpoint-decision.in screen no
+shell /opt/deepmd-kit/bin/python -B /runner/b182_exploratory_worker.py checkpoint --expected 240
+include checkpoint-decision.in
+run 20
+print "jump SELF stop_exploration" file checkpoint-decision.in screen no
+shell /opt/deepmd-kit/bin/python -B /runner/b182_exploratory_worker.py checkpoint --expected 260
+include checkpoint-decision.in
+run 20
+print "jump SELF stop_exploration" file checkpoint-decision.in screen no
+shell /opt/deepmd-kit/bin/python -B /runner/b182_exploratory_worker.py checkpoint --expected 280
+include checkpoint-decision.in
+run 20
+print "jump SELF stop_exploration" file checkpoint-decision.in screen no
+shell /opt/deepmd-kit/bin/python -B /runner/b182_exploratory_worker.py checkpoint --expected 300
+include checkpoint-decision.in
+run 20
+print "jump SELF stop_exploration" file checkpoint-decision.in screen no
+shell /opt/deepmd-kit/bin/python -B /runner/b182_exploratory_worker.py checkpoint --expected 320
+include checkpoint-decision.in
+run 20
+print "jump SELF stop_exploration" file checkpoint-decision.in screen no
+shell /opt/deepmd-kit/bin/python -B /runner/b182_exploratory_worker.py checkpoint --expected 340
+include checkpoint-decision.in
+run 20
+print "jump SELF stop_exploration" file checkpoint-decision.in screen no
+shell /opt/deepmd-kit/bin/python -B /runner/b182_exploratory_worker.py checkpoint --expected 360
+include checkpoint-decision.in
+run 20
+print "jump SELF stop_exploration" file checkpoint-decision.in screen no
+shell /opt/deepmd-kit/bin/python -B /runner/b182_exploratory_worker.py checkpoint --expected 380
+include checkpoint-decision.in
+run 20
+print "jump SELF stop_exploration" file checkpoint-decision.in screen no
+shell /opt/deepmd-kit/bin/python -B /runner/b182_exploratory_worker.py checkpoint --expected 400
+include checkpoint-decision.in
+run 20
+print "jump SELF stop_exploration" file checkpoint-decision.in screen no
+shell /opt/deepmd-kit/bin/python -B /runner/b182_exploratory_worker.py checkpoint --expected 420
+include checkpoint-decision.in
+run 20
+print "jump SELF stop_exploration" file checkpoint-decision.in screen no
+shell /opt/deepmd-kit/bin/python -B /runner/b182_exploratory_worker.py checkpoint --expected 440
+include checkpoint-decision.in
+run 20
+print "jump SELF stop_exploration" file checkpoint-decision.in screen no
+shell /opt/deepmd-kit/bin/python -B /runner/b182_exploratory_worker.py checkpoint --expected 460
+include checkpoint-decision.in
+run 20
+print "jump SELF stop_exploration" file checkpoint-decision.in screen no
+shell /opt/deepmd-kit/bin/python -B /runner/b182_exploratory_worker.py checkpoint --expected 480
+include checkpoint-decision.in
+run 20
+print "jump SELF stop_exploration" file checkpoint-decision.in screen no
+shell /opt/deepmd-kit/bin/python -B /runner/b182_exploratory_worker.py checkpoint --expected 500
+include checkpoint-decision.in
+run 20
+print "jump SELF stop_exploration" file checkpoint-decision.in screen no
+shell /opt/deepmd-kit/bin/python -B /runner/b182_exploratory_worker.py checkpoint --expected 520
+include checkpoint-decision.in
+run 20
+print "jump SELF stop_exploration" file checkpoint-decision.in screen no
+shell /opt/deepmd-kit/bin/python -B /runner/b182_exploratory_worker.py checkpoint --expected 540
+include checkpoint-decision.in
+run 20
+print "jump SELF stop_exploration" file checkpoint-decision.in screen no
+shell /opt/deepmd-kit/bin/python -B /runner/b182_exploratory_worker.py checkpoint --expected 560
+include checkpoint-decision.in
+run 20
+print "jump SELF stop_exploration" file checkpoint-decision.in screen no
+shell /opt/deepmd-kit/bin/python -B /runner/b182_exploratory_worker.py checkpoint --expected 580
+include checkpoint-decision.in
+run 20
+print "jump SELF stop_exploration" file checkpoint-decision.in screen no
+shell /opt/deepmd-kit/bin/python -B /runner/b182_exploratory_worker.py checkpoint --expected 600
+include checkpoint-decision.in
+run 20
+print "jump SELF stop_exploration" file checkpoint-decision.in screen no
+shell /opt/deepmd-kit/bin/python -B /runner/b182_exploratory_worker.py checkpoint --expected 620
+include checkpoint-decision.in
+run 20
+print "jump SELF stop_exploration" file checkpoint-decision.in screen no
+shell /opt/deepmd-kit/bin/python -B /runner/b182_exploratory_worker.py checkpoint --expected 640
+include checkpoint-decision.in
+run 20
+print "jump SELF stop_exploration" file checkpoint-decision.in screen no
+shell /opt/deepmd-kit/bin/python -B /runner/b182_exploratory_worker.py checkpoint --expected 660
+include checkpoint-decision.in
+run 20
+print "jump SELF stop_exploration" file checkpoint-decision.in screen no
+shell /opt/deepmd-kit/bin/python -B /runner/b182_exploratory_worker.py checkpoint --expected 680
+include checkpoint-decision.in
+run 20
+print "jump SELF stop_exploration" file checkpoint-decision.in screen no
+shell /opt/deepmd-kit/bin/python -B /runner/b182_exploratory_worker.py checkpoint --expected 700
+include checkpoint-decision.in
+run 20
+print "jump SELF stop_exploration" file checkpoint-decision.in screen no
+shell /opt/deepmd-kit/bin/python -B /runner/b182_exploratory_worker.py checkpoint --expected 720
+include checkpoint-decision.in
+run 20
+print "jump SELF stop_exploration" file checkpoint-decision.in screen no
+shell /opt/deepmd-kit/bin/python -B /runner/b182_exploratory_worker.py checkpoint --expected 740
+include checkpoint-decision.in
+run 20
+print "jump SELF stop_exploration" file checkpoint-decision.in screen no
+shell /opt/deepmd-kit/bin/python -B /runner/b182_exploratory_worker.py checkpoint --expected 760
+include checkpoint-decision.in
+run 20
+print "jump SELF stop_exploration" file checkpoint-decision.in screen no
+shell /opt/deepmd-kit/bin/python -B /runner/b182_exploratory_worker.py checkpoint --expected 780
+include checkpoint-decision.in
+run 20
+print "jump SELF stop_exploration" file checkpoint-decision.in screen no
+shell /opt/deepmd-kit/bin/python -B /runner/b182_exploratory_worker.py checkpoint --expected 800
+include checkpoint-decision.in
+label stop_exploration
+write_data final.system.data
+print "Exploratory trajectory ended; model remains unvalidated"

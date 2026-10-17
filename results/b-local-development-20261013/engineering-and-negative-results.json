@@ -1,0 +1,37 @@
+[
+  {
+    "run": ".research-runs/b-local-candidate1-20261013/continuation2-downstream-run",
+    "status": "stopped_preserving_evidence",
+    "description": "GPU telemetry query timed out during first B-H generation; partial frames were not scored or concatenated.",
+    "finished_utc": "2026-10-13T11:56:36.693972+00:00",
+    "source_sha256": "5bb1ac279234d701dfd0c41ff14576fb29ef990f51270dc3cc7dfa3da4bbf1ab"
+  },
+  {
+    "run": ".research-runs/b-local-final-coverage1-20261013/sampling1-run",
+    "status": "stopped_preserving_evidence",
+    "description": "CPU telemetry subprocess timing failure interrupted T1; partial trajectory retained separately.",
+    "finished_utc": "2026-10-13T13:08:58.248984+00:00",
+    "source_sha256": "9a28f2c2a1ecdd2b39c7c52c85cc88bf412a7c1a9a975418139d64abbe915446"
+  },
+  {
+    "run": ".research-runs/b-local-final-coverage1-20261013/recovery1-run",
+    "status": "sampling_qualified_waiting_handoff",
+    "description": "Same-seed T1 rerun and remaining five development jobs completed; this run supplied canonical development frames.",
+    "finished_utc": "2026-10-13T14:47:16.235538+00:00",
+    "source_sha256": "57f271637f5a328d2c900eb0cb1e756bdfef6e7be6ed85674f3ab9e9fe292bda"
+  },
+  {
+    "run": ".research-runs/b-local-final-coverage1-20261013/fit-recovery1-run",
+    "status": "stopped_preserving_evidence",
+    "description": "CPU telemetry artifact sharing/read error interrupted training; 246 accepted updates retained before exact model/optimizer recovery.",
+    "finished_utc": "2026-10-13T15:12:34.430193+00:00",
+    "source_sha256": "a6efdba99534fb0eac12ad86a4d8885f6ade6f81224d827d14224d15d99c41a3"
+  },
+  {
+    "run": ".research-runs/b-local-final-coverage1-20261013/fit-recovery2-run",
+    "status": "scientific_gate_failed",
+    "description": "Exact model and optimizer recovery completed 569 total accepted updates, then failed training gates at the fixed optimization time limit.",
+    "finished_utc": "2026-10-13T15:56:23.523995+00:00",
+    "source_sha256": "9d3e42f671dcbdb4d710c08d7e7f6b09a91b6b44e0415258ab4906810e431ad4"
+  }
+]
