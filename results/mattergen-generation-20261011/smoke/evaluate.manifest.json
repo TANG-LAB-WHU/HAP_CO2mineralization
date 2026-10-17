@@ -1,0 +1,19 @@
+{
+  "stage": "evaluate",
+  "status": "completed",
+  "seed": 42,
+  "batch_size": 1,
+  "num_batches": 1,
+  "chemical_system": "Ca-P-O-H-C",
+  "manuscript_eligible": false,
+  "source_sha256": "dd727877ab3abbe54285f7df18ff8362ce389fd9800e74e9b5af07ead1d4fd42",
+  "compatibility_fixes": [
+    "streaming lossless gzip decompression",
+    "reuse read-only LMDB environment for metadata index",
+    "pymatgen.core.entries serialization alias to installed computed_entries"
+  ],
+  "reference_sha256": "ab1b4426901ff7b0f8af6ee9c3cc0dd2fbe4b65c758ef2a95683071492d1c51d",
+  "mattersim_sha256": "28b0b0b0f13efefee06b47ea4c9105a26bd3e2c8396da193430da96b3b49a8be",
+  "elapsed_seconds": 341.66393518447876,
+  "peak_cuda_allocated_bytes": 55507968
+}

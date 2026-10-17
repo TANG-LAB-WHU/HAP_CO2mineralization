@@ -1,0 +1,15 @@
+{
+  "input_count": 1,
+  "saved_count": 0,
+  "chemistry_rejected": 1,
+  "required_elements": [
+    "Ca",
+    "P",
+    "O",
+    "H"
+  ],
+  "manuscript_eligible": false,
+  "structures_sha256": "d23693010cc93d120a9f23b492d027e48e64131e7ed6588d2a944291003286ae",
+  "metrics_sha256": "8432f5df46f36d9f7035edfa9cb5e8bc1b52d9cfabfe2f2ad1bccfb93929b88e",
+  "note": "Necessary chemistry gate only; apatite structure identification and scientific validation remain required"
+}

@@ -1,0 +1,85 @@
+{
+  "parameter_id": "hap44-four-v1",
+  "science_sha256": "8bb0668289c0c45ee30a5a6d5cb92e2627996d06073e090163d1a1b2d5c83369",
+  "scope": "Exactly four generation + strict periodic screening outcomes. Pending topology stops automatic advancement; no DFT/training/MD.",
+  "image_reference": "deepmodeling/deepmd-kit@sha256:23d23b922459eb49b23f9d4977b6e453fd17feb2ee03a280c70fb7f4a6452e8c",
+  "image_id": "sha256:23d23b922459eb49b23f9d4977b6e453fd17feb2ee03a280c70fb7f4a6452e8c",
+  "execution": {
+    "maximum_concurrent_candidates": 2,
+    "queued_candidates": 4,
+    "shared_cpus": 8,
+    "threads_per_worker": 4,
+    "shared_memory_bytes": 17179869184,
+    "memory_swap_bytes": 17179869184,
+    "per_candidate_compute_seconds": 1800,
+    "candidate_process_timeout_seconds": 1790,
+    "total_charged_compute_seconds": 7200,
+    "maximum_output_bytes": 536870912,
+    "per_candidate_budget_includes": "Full subprocess lifespan, including import, generation and screening; relaxation/evaluation must use the remaining per-candidate AND total budgets.",
+    "resource_estimate_note": "16 GiB is shared by both workers, not 16 GiB each. Import-only cgroup proof does not establish peak inference memory. No automatic retry or silent resource changes.",
+    "gpu_policy": "One GPU lease; max 2 workers in one queue; sampled free VRAM >=3 GiB. No fixed 4/20 GiB growth cap. Sampling and stop latency are not a hard VRAM partition.",
+    "host_admission_GiB": 32,
+    "VM_admission_GiB": 22,
+    "Windows_commit_admission_GiB": 20,
+    "live_reserves_GiB": {
+      "host": 16,
+      "VM": 6,
+      "Windows_commit": 4,
+      "GPU": 3
+    },
+    "cpu_stop_C": 90,
+    "gpu_stop_C": 80
+  },
+  "environment": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "HF_HUB_OFFLINE": "1",
+    "TRANSFORMERS_OFFLINE": "1",
+    "HF_HUB_DISABLE_TELEMETRY": "1",
+    "OMP_NUM_THREADS": "4",
+    "OMP_MAX_ACTIVE_LEVELS": "1",
+    "MKL_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "NUM_WORKERS": "0"
+  },
+  "source_sha256": {
+    "0.Generative_Discovery/hap44_worker.py": "2fa4ce164eb68708cbde973d62f29095b6dec32cf6220d87b2d81ad84db7a83b",
+    "0.Generative_Discovery/run_hap44_four.py": "59fc944fa964cbd3e94becc9dbf41103a5c0ecfcf78cf7c08be7e81ef5d32ccb",
+    "workflow/campaign_supervisor.py": "ab21976690cc7e24906440c94dae47b9dfaacff555cbebdf771595345cf9f7f1",
+    "workflow/campaign_telemetry.py": "36837004cf0d447a65d208fd49dcd9ca3aa4970729328b697b0822287beb8e19",
+    "workflow/campaign_processes.py": "7da71f01a1ae5cfb848960a6c6d8b1bf6abd729327d853519c54755fa4510678",
+    "workflow/campaign_watchdog_heartbeat.py": "3dd07b229a18e919d1f251575f122b2ccd0c5cb285a2e320015fb7a85b448e8b",
+    "workflow/campaign_cgroup.py": "7e1bc1c11e07aa6c8a229d61cf8d02dd5c78daf7d920d785e74309bda84a69d2",
+    "workflow/campaign_uniform_gpu_train.py": "566f3861bd3335ff59b0dd200cb599301a88ceae58851dab3cb8e1290735ff17",
+    "workflow/campaign_uniform_gpu_admission.py": "4f72183b02e9306890499c7bad6e05bff494be2180a10ed37c7b899a4c171d7b",
+    "workflow/campaign_uniform_gpu_recovery.py": "9403e1c7966646eecceeeb19ff9e0a31e123fdb70e40fb4c2f8ce9fec77862aa",
+    "workflow/campaign_terminal_status.py": "322378f80f5d95ea521b64b31ce210cbe8c26bd3d1a9bdfefcb10126c3b8249c",
+    "workflow/campaign_smoke.py": "1e8c7b8e4186882bbde153a6b831b7de08d6d76070e87b030ec23d5948e92e24"
+  },
+  "asset_sha256": {
+    "mattergen/checkpoints/chemical_system/checkpoints/last.ckpt": "4ad21d977c2b776a31c92498c4d1c88d3e1e286deeb941e997af8e082310b80e",
+    "mattergen/checkpoints/chemical_system/config.yaml": "ba660bb33ee2d3f2c74539ce079f24bc2631a67f6548e83224f05a11328a7014",
+    "entrypoint-smoke/bulk.extxyz": "1fa8fc141dd8e5b7705e8f42761c500f43417af3eec98d277117dc6f13ab77ca",
+    "models/mattersim-v1.0.0-1M.pth": "28b0b0b0f13efefee06b47ea4c9105a26bd3e2c8396da193430da96b3b49a8be"
+  },
+  "runtime_files_sha256": {
+    "mattergen-venv/lib/python3.12/site-packages/mattergen/generator.py": "6f22a9d25db3a881db3db34890dae0cf850234a4b11d86f226c2ba31c6a841fd",
+    "mattergen-venv/lib/python3.12/site-packages/mattergen/common/utils/data_classes.py": "e1cd562c32c3fb487b67e056cce6e611c5d432a6f52c0c6fdcf04240eacb9956",
+    "mattergen-venv/lib/python3.12/site-packages/mattergen/common/utils/eval_utils.py": "8c9f8ccd7733a25b36dcbf7ebd6f52040e751f299daf8f258026826482a49289",
+    "mattergen-venv/lib/python3.12/site-packages/mattergen/common/data/num_atoms_distribution.py": "b1c98672c8ac6349c1e20a344ff159ebd33cd41a146d2354b4ee30a0ac3622f7",
+    "mattergen-venv/lib/python3.12/site-packages/mattergen/sampling_conf/default.yaml": "75008f30b014bc61f1279cef60647b5324b21f4c521277e56a191a10d2012430",
+    "mattergen-venv/lib/python3.12/site-packages/mattersim/forcefield/potential.py": "d1778190c9b0581d81289a7ff526d47be276b41a8a18da664fa9b485fc41230a"
+  },
+  "adaptation": {
+    "process_local_atom_count_distribution": {
+      "44": 1.0
+    },
+    "sampling_steps": 1000,
+    "element_mask": "mask_disallowed_elements",
+    "model_weights_updated": false,
+    "fixed_composition_CSP": false,
+    "source_function": "hap44_worker.py:generator, lines 41-51"
+  },
+  "checkpoint_files_bundled": false,
+  "runtime_source_bundled": false,
+  "note": "This parameter record describes the frozen configuration; completed execution is established separately by execution-summary.json and filter_summary.json."
+}

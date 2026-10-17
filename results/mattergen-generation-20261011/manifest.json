@@ -1,0 +1,113 @@
+{
+  "schema": "mattergen-generation-publication/v1",
+  "scope": "existing smoke and HAP44 pilot records; no new scientific execution",
+  "manuscript_eligible": false,
+  "sealed_numeric_accessed": false,
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 19,
+      "sha256": "862263fa1f46c20f0d1e4dac5ffcc75abd55c08211b2c3864c5f8764b9d87793"
+    },
+    {
+      "path": "hap44/budget.json",
+      "bytes": 600,
+      "sha256": "d92c247e8442dc64d8777e03a507338c60502147dbcf5cb7929040d3302ba12c"
+    },
+    {
+      "path": "hap44/execution-summary.json",
+      "bytes": 1630,
+      "sha256": "e3bdfc494c08b3936dc17a7be18149c9c10737616b304cb4ab45f2374deceb0a"
+    },
+    {
+      "path": "hap44/filter_summary.json",
+      "bytes": 5429,
+      "sha256": "69975a0b91a16dbc71cf7372707bb41c9a8eee944353f81ba28cd02e3300c6f1"
+    },
+    {
+      "path": "hap44/hap44-screening.json",
+      "bytes": 8644,
+      "sha256": "8bb0668289c0c45ee30a5a6d5cb92e2627996d06073e090163d1a1b2d5c83369"
+    },
+    {
+      "path": "hap44/MG44-01/generated_crystals.extxyz",
+      "bytes": 2560,
+      "sha256": "0b0ded46838f6651c79f131856092a5cc6a81449ad8cbdf81606608ce86e0449"
+    },
+    {
+      "path": "hap44/MG44-02/generated_crystals.extxyz",
+      "bytes": 2558,
+      "sha256": "8f6160a159eac9415a18ae954fb7dc00117ce5b2688a4042a6f8139a540f0bee"
+    },
+    {
+      "path": "hap44/MG44-03/generated_crystals.extxyz",
+      "bytes": 2560,
+      "sha256": "f3e021909660b3fb3061e4a225c47a275f376d3ca66246efa773fe375efbc502"
+    },
+    {
+      "path": "hap44/MG44-04/generated_crystals.extxyz",
+      "bytes": 2555,
+      "sha256": "e7ca0beb6c2dd000cdad39da9b86b4d6b913fd7999f42f1ff9c7bee3a7f00a14"
+    },
+    {
+      "path": "hap44/runtime-parameters.json",
+      "bytes": 5343,
+      "sha256": "b8372e8130f2a773abbef966d0d0969ff30e7f34031a90f20a201989bfa3abd3"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4016,
+      "sha256": "51e9d3159cb2fb8aaff363078ed977af41e2c3ceab652187e5d2f9abf8afb2d6"
+    },
+    {
+      "path": "REPRODUCE.md",
+      "bytes": 2463,
+      "sha256": "35ba36a9b2c4671e9e0c05e02d85f26f49a034b901dbf07c7c59412e859ee29e"
+    },
+    {
+      "path": "smoke/context.json",
+      "bytes": 1155,
+      "sha256": "2bec283e267be72b96b14f640e1ef861ca88a612fe55409a6ffded9a8cd40b21"
+    },
+    {
+      "path": "smoke/evaluate.manifest.json",
+      "bytes": 733,
+      "sha256": "e5d63df0410db36fede1899c78fe10129a7da2bca55403d81dbe58154cc7bc62"
+    },
+    {
+      "path": "smoke/filter_summary.json",
+      "bytes": 479,
+      "sha256": "5a13b8af52c1c73f867b28da0852c96fb4895a8ecf4c1d91da82d71a9e541ef3"
+    },
+    {
+      "path": "smoke/generate.manifest.json",
+      "bytes": 344,
+      "sha256": "2196c6e7dca5b146a1145bd3456ef02177023e73d02a6d5535748d6c5e57e57b"
+    },
+    {
+      "path": "smoke/generated_crystals.extxyz",
+      "bytes": 610,
+      "sha256": "66ea03b9d7782ce2f2e3ecf0610ea094f21f3d30e233cc2f2bce1ae1da8604a0"
+    },
+    {
+      "path": "smoke/relaxed_structures.extxyz",
+      "bytes": 1333,
+      "sha256": "d23693010cc93d120a9f23b492d027e48e64131e7ed6588d2a944291003286ae"
+    },
+    {
+      "path": "source-provenance.json",
+      "bytes": 10683,
+      "sha256": "bd2c678fcfc01fe2a471f57271156f8be94cdcd35ba871c88bf52e5a7da6aa8e"
+    },
+    {
+      "path": "verify_results.py",
+      "bytes": 3111,
+      "sha256": "312235a1984b813fcf993284d1bee768c866252ada522e784490f3eea6c31dfb"
+    }
+  ]
+}

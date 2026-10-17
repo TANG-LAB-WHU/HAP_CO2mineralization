@@ -4,6 +4,9 @@ Latest measured development results: [17 October 2026 result release](results/RE
 This includes conditional DFT/reference results and failed dynamics/model-validation
 diagnostics, plus a T2 training-fit diagnostic. No production-ready potential or
 mineralization mechanism is established; the new joint 40-frame fit was not run.
+The [MatterGen record](results/mattergen-generation-20261011/README.md) includes
+both the early 8-atom smoke and the later four-candidate 44-atom OOD pilot;
+all candidates were rejected, and neither run was fine-tuning or CSP training.
 
 ![Project Status](https://img.shields.io/badge/Status-Active-brightgreen)
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
@@ -26,7 +29,7 @@ The repository is organized as a nominal pipeline from Phase 0 (Generative Disco
 | Stage | Directory | Intended role | Current status |
 | :--- | :--- | :--- | :--- |
 | **Data** | `data/` | Initial PDB/XYZ structures for 22 HAP facets. | **Present, provenance pending** |
-| **Phase 0** | `0.Generative_Discovery/` | Propose and filter apatite-like bulk candidates with MatterGen. | **Partial:** scripts exist; no tracked result summary or run manifest |
+| **Phase 0** | `0.Generative_Discovery/` | Propose and filter apatite-like bulk candidates with MatterGen. | **Bounded generation tested:** two recorded runs, five rejected samples, zero accepted HAP candidates; no fine-tuning or CSP training |
 | **Phase 1** | `1.HT_Screening/` | Enumerate compositions, build slabs, place CO2, screen, and rank candidates. | **Placeholder:** several core scripts and READMEs are empty; no ranking exists |
 | **Pre-Relax** | `2.GeoOpt_PreRelax/` | CP2K geometry optimization and planned MACE pre-relaxation. | **Legacy artifacts, unqualified:** completion states are mixed and some inputs contain conflict markers |
 | **Phase 2-4** | `3.ML_AIMD/` | AIMD data generation, MLIP training, LAMMPS scale-up, and enhanced sampling. | **Partial/planned:** three short legacy AIMD outputs exist; no validated dataset, model, scale-up, or enhanced-sampling result |
@@ -40,7 +43,7 @@ The repository is organized as a nominal pipeline from Phase 0 (Generative Disco
 ## 🚀 Detailed Workflow Guide
 
 ### Phase 0: Generative Discovery (`0.Generative_Discovery/`)
-The planned generation stage uses **MatterGen** to propose structures in selected chemical systems. Current scripts do not constitute a completed candidate campaign.
+The generation stage uses **MatterGen** to propose structures in selected chemical systems. Two bounded generation records are now archived: an 8-atom smoke and four 44-atom samples. All were rejected before HAP qualification. The 44-atom pilot extends the atom-count distribution locally beyond the recorded native domain; it does not establish exact-composition generation, fine-tuning, or a validated candidate campaign.
 - **Batch scanning interface**: `batch_scan.sh` enumerates configured chemical systems and calls the generation, evaluation, statistics, and filtering scripts.
 - **Filtering interface**: `post_filter.py` reads precomputed detailed metrics and filters by an energy-above-hull threshold and novelty flag. It does not independently establish thermodynamic validity.
 

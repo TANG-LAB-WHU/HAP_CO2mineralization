@@ -1,0 +1,209 @@
+{
+  "schema_version": 1,
+  "id": "hap44-pilot",
+  "status": "approved_scope_execution_not_verified",
+  "research_baseline": {
+    "branch": "feat-mattergen-embedded",
+    "local_snapshot_commit": "c2b961103dfa7b6821e8e156f60d1be13f075280",
+    "remote_latest_verified": false
+  },
+  "generation": {
+    "candidates": [
+      {
+        "id": "MG44-01",
+        "seed": 4201
+      },
+      {
+        "id": "MG44-02",
+        "seed": 4202
+      },
+      {
+        "id": "MG44-03",
+        "seed": 4203
+      },
+      {
+        "id": "MG44-04",
+        "seed": 4204
+      }
+    ],
+    "num_atoms": 44,
+    "chemical_system": "Ca-P-O-H",
+    "batch_size_per_candidate": 1,
+    "diffusion_guidance_factor": 2.0,
+    "diffusion_steps": 1000,
+    "record_trajectories": false,
+    "model": "chemical_system",
+    "checkpoint_under_asset_base": "mattergen/checkpoints/chemical_system/checkpoints/last.ckpt",
+    "checkpoint_sha256": "4ad21d977c2b776a31c92498c4d1c88d3e1e286deeb941e997af8e082310b80e",
+    "asset_base": "Runner supplies the existing original-checkout .research-runs directory; no download.",
+    "num_atoms_distribution": {
+      "44": 1.0
+    },
+    "distribution_scope": "New process-local named distribution only; preserve installed package and default distribution.",
+    "OOD_disclosure": "44 atoms is outside the native1-20 atom sampling/training-size domain. Chemical-system conditioning does not enforce stoichiometry or apatite topology; this is an adaptation feasibility pilot, not established HAP generation.",
+    "fixed_composition_CSP": false,
+    "retry_or_add_candidates_automatically": false
+  },
+  "budgets": {
+    "per_candidate_charged_compute_seconds": 1800,
+    "total_charged_compute_seconds": 7200,
+    "includes": [
+      "generation",
+      "eligible relaxation",
+      "evaluation"
+    ],
+    "parallelism": "B/C select concurrency from measured host/GPU headroom and existing protections; parallelism does not multiply the total compute allowance.",
+    "resume_after_exhaustion_without_new_decision": false
+  },
+  "reference": {
+    "cif": "3.ML_AIMD/Step4_lammps_scaleup/HAP_ConventionalCell.cif",
+    "cif_sha256": "6fcd3fdc2dec40eb35ba8889d827536a8c9c073b5c91a40c65ccb0e44457e766",
+    "ordered_bulk_under_asset_base": "entrypoint-smoke/bulk.extxyz",
+    "ordered_bulk_sha256": "1fa8fc141dd8e5b7705e8f42761c500f43417af3eec98d277117dc6f13ab77ca",
+    "ordering_provenance": "workflow/local_compute.py:prepare; retain the documented parallel OH ordering. Do not treat partially occupied CIF sites as44 fully occupied atoms.",
+    "control_status": "Computational reference, not a human-certified publication reference. Reuse existing file without regenerating it."
+  },
+  "hard_gates": {
+    "atom_count_equals": 44,
+    "element_counts_equal": {
+      "Ca": 10,
+      "P": 6,
+      "O": 26,
+      "H": 2
+    },
+    "extra_elements_allowed": false,
+    "all_positions_and_cell_finite": true,
+    "cell_shape": [
+      3,
+      3
+    ],
+    "cell_rank_equals": 3,
+    "cell_abs_determinant_strictly_greater_than_A3": 1e-08,
+    "pbc_equals": [
+      true,
+      true,
+      true
+    ],
+    "fractional_occupancies_allowed": false,
+    "minimum_nonzero_periodic_distance_strictly_greater_than_A": 0.7,
+    "distance_definition": "Nearest periodic contacts including distinct atoms and nonzero self-images; exclude only the zero self-distance. Do not use Cartesian distances without PBC.",
+    "failure_status": "rejected_hard_gate",
+    "missing_or_unreliable_measurement_status": "pending_review",
+    "repair_by_adding_removing_or_replacing_atoms": false
+  },
+  "local_geometry": {
+    "source": "workflow/refine_pipeline.py:chemistry",
+    "P_O_cutoff_strictly_less_than_A": 1.9,
+    "O_neighbors_per_P_equals": 4,
+    "nearest_O_H_distance_open_interval_A": [
+      0.8,
+      1.2
+    ],
+    "formal_charge_e_equals": 0,
+    "formal_oxidation_states": {
+      "Ca": 2,
+      "P": 5,
+      "O": -2,
+      "H": 1
+    },
+    "necessary_extra_connectivity": [
+      "The2 H atoms have2 distinct hydroxyl O neighbors.",
+      "Each of24 phosphate O atoms belongs to exactly1 P tetrahedron; the2 hydroxyl O atoms are outside those tetrahedra."
+    ],
+    "periodic_images": "Count periodic image neighbors reliably. If nearest-image-only code cannot resolve image multiplicity, return pending_review.",
+    "reliable_failure_status": "rejected_local_geometry",
+    "missing_or_ambiguous_status": "pending_review",
+    "passes_prove_apatite_topology": false
+  },
+  "topology": {
+    "auto_pass_enabled": false,
+    "initial_status": "pending_review",
+    "required_evidence": [
+      "Candidate and ordered-reference hashes",
+      "Explicit comparison of the Ca framework, isolated PO4 arrangement and hydroxyl channels under a documented periodic mapping",
+      "Reviewer identity and a concise structural rationale; a formula, space-group label or coordination count alone is insufficient"
+    ],
+    "allowed_statuses": [
+      "confirmed_apatite_like",
+      "rejected_nonapatite",
+      "pending_review"
+    ],
+    "before_relaxation_required_status": "confirmed_apatite_like",
+    "after_relaxation_recheck_required": true,
+    "unknown_means_pass": false
+  },
+  "relaxation": {
+    "allowed_only_if": [
+      "All hard gates pass",
+      "All local geometry checks pass",
+      "Topology status is confirmed_apatite_like with recorded evidence"
+    ],
+    "model": "MatterSim-v1.0.0-1M",
+    "weights_under_asset_base": "models/mattersim-v1.0.0-1M.pth",
+    "weights_sha256": "28b0b0b0f13efefee06b47ea4c9105a26bd3e2c8396da193430da96b3b49a8be",
+    "optimizer": "FIRE",
+    "cell_filter": "EXPCELLFILTER",
+    "fmax_eV_per_A": 0.05,
+    "max_optimizer_steps": 100,
+    "max_wall_seconds": 600,
+    "effective_budget": "Minimum of600 seconds and remaining per-candidate/global compute budget.",
+    "convergence": "Require actual optimizer convergence, finite energy/forces/stress and post-relaxation composition/geometry/topology checks. The filter includes cell degrees of freedom; atomic fmax alone is insufficient.",
+    "implementation_note": "Installed mattergen-evaluate / BatchRelaxer.relax does not expose a maximum step count. B must count steps in a bounded local wrapper; absent that wrapper, do not launch unbounded relaxation.",
+    "budget_stop_status": "not_converged",
+    "unavailable_status": "not_evaluated"
+  },
+  "hull": {
+    "required_method": "MatterSim energies with the existing compatible TRI2024 correction and reference dataset",
+    "reference_under_asset_base": "mattergen/data-release/alex-mp/reference_TRI2024correction.gz",
+    "reference_sha256": "ab1b4426901ff7b0f8af6ee9c3cc0dd2fbe4b65c758ef2a95683071492d1c51d",
+    "screen_limit_eV_per_atom": 0.1,
+    "comparison": "less_than_or_equal",
+    "label": "ML-predicted screening value, not DFT stability",
+    "identity": "Use relaxed structure/energy pairs in original candidate order; verify coverage, corrections, finite values and identity.",
+    "incompatible_missing_or_unreliable_status": "not_evaluated",
+    "unknown_means_pass": false,
+    "mix_CP2K_and_reference_energies": false,
+    "novelty_required_for_this_feasibility_pilot": false,
+    "novelty_reporting": "Report duplicate/known/new status separately. Rediscovery may demonstrate adaptation feasibility, not novelty."
+  },
+  "decision": {
+    "all_four_hard_or_geometry_rejected": "End the pilot; no automatic extra seeds or relaxed thresholds.",
+    "any_pending_topology_or_missing_hull": "Report pending_review/not_evaluated; do not count as qualified or advance to DFT.",
+    "qualified_for_DFT_consideration_requires": [
+      "Pre-relaxation admission satisfied",
+      "Bounded relaxation actually converged",
+      "Post-relaxation checks pass with confirmed topology",
+      "Compatible evaluated predicted hull<=0.1 eV/atom"
+    ],
+    "DFT_shortlist_max": 1,
+    "HAP_control_max": 1,
+    "DFT_requires_separate_stage_decision": true,
+    "sealed_access": false,
+    "training": false,
+    "learned_potential_MD_release": false,
+    "manuscript_eligible": false
+  },
+  "candidate_record_fields": [
+    "candidate_id",
+    "seed",
+    "input_and_model_hashes",
+    "raw_structure_sha256",
+    "element_counts",
+    "cell_and_contact_metrics",
+    "P_O_counts",
+    "O_H_distances",
+    "phosphate_and_hydroxyl_connectivity",
+    "hard_gate_status",
+    "local_geometry_status",
+    "topology_status",
+    "topology_review_evidence",
+    "relaxation_status",
+    "relaxed_structure_sha256",
+    "hull_status",
+    "hull_eV_per_atom_or_null",
+    "novelty_status",
+    "charged_compute_seconds",
+    "final_status",
+    "reason_codes"
+  ]
+}

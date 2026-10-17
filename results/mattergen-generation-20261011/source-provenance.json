@@ -1,0 +1,189 @@
+{
+  "schema": "mattergen-generation-publication-sources/v1",
+  "source_path_base": "original HAP_CO2mineralization project root",
+  "sources": [
+    {
+      "project_relative_source": ".research-runs/mattergen-smoke/generate.manifest.json",
+      "source_bytes": 344,
+      "source_sha256": "2196c6e7dca5b146a1145bd3456ef02177023e73d02a6d5535748d6c5e57e57b",
+      "publication_path": "smoke/generate.manifest.json",
+      "transformation": "byte-for-byte copy",
+      "publication_sha256": "2196c6e7dca5b146a1145bd3456ef02177023e73d02a6d5535748d6c5e57e57b"
+    },
+    {
+      "project_relative_source": ".research-runs/mattergen-smoke/evaluate.manifest.json",
+      "source_bytes": 733,
+      "source_sha256": "e5d63df0410db36fede1899c78fe10129a7da2bca55403d81dbe58154cc7bc62",
+      "publication_path": "smoke/evaluate.manifest.json",
+      "transformation": "byte-for-byte copy",
+      "publication_sha256": "e5d63df0410db36fede1899c78fe10129a7da2bca55403d81dbe58154cc7bc62"
+    },
+    {
+      "project_relative_source": ".research-runs/mattergen-smoke/filter_summary.json",
+      "source_bytes": 479,
+      "source_sha256": "5a13b8af52c1c73f867b28da0852c96fb4895a8ecf4c1d91da82d71a9e541ef3",
+      "publication_path": "smoke/filter_summary.json",
+      "transformation": "byte-for-byte copy",
+      "publication_sha256": "5a13b8af52c1c73f867b28da0852c96fb4895a8ecf4c1d91da82d71a9e541ef3"
+    },
+    {
+      "project_relative_source": ".research-runs/mattergen-smoke/generated_crystals.extxyz",
+      "source_bytes": 610,
+      "source_sha256": "66ea03b9d7782ce2f2e3ecf0610ea094f21f3d30e233cc2f2bce1ae1da8604a0",
+      "publication_path": "smoke/generated_crystals.extxyz",
+      "transformation": "byte-for-byte copy",
+      "publication_sha256": "66ea03b9d7782ce2f2e3ecf0610ea094f21f3d30e233cc2f2bce1ae1da8604a0"
+    },
+    {
+      "project_relative_source": ".research-runs/mattergen-smoke/relaxed_structures.extxyz",
+      "source_bytes": 1333,
+      "source_sha256": "d23693010cc93d120a9f23b492d027e48e64131e7ed6588d2a944291003286ae",
+      "publication_path": "smoke/relaxed_structures.extxyz",
+      "transformation": "byte-for-byte copy",
+      "publication_sha256": "d23693010cc93d120a9f23b492d027e48e64131e7ed6588d2a944291003286ae"
+    },
+    {
+      "project_relative_source": ".research-runs/campaign-002/mattergen-hap44/jobs/batch/filter_summary.json",
+      "source_bytes": 5429,
+      "source_sha256": "69975a0b91a16dbc71cf7372707bb41c9a8eee944353f81ba28cd02e3300c6f1",
+      "publication_path": "hap44/filter_summary.json",
+      "transformation": "byte-for-byte copy",
+      "publication_sha256": "69975a0b91a16dbc71cf7372707bb41c9a8eee944353f81ba28cd02e3300c6f1"
+    },
+    {
+      "project_relative_source": ".research-runs/campaign-002/mattergen-hap44/jobs/batch/budget.json",
+      "source_bytes": 600,
+      "source_sha256": "d92c247e8442dc64d8777e03a507338c60502147dbcf5cb7929040d3302ba12c",
+      "publication_path": "hap44/budget.json",
+      "transformation": "byte-for-byte copy",
+      "publication_sha256": "d92c247e8442dc64d8777e03a507338c60502147dbcf5cb7929040d3302ba12c"
+    },
+    {
+      "project_relative_source": ".research-runs/campaign-002/mattergen-hap44/input/hap44-screening.json",
+      "source_bytes": 8644,
+      "source_sha256": "8bb0668289c0c45ee30a5a6d5cb92e2627996d06073e090163d1a1b2d5c83369",
+      "publication_path": "hap44/hap44-screening.json",
+      "transformation": "byte-for-byte copy",
+      "publication_sha256": "8bb0668289c0c45ee30a5a6d5cb92e2627996d06073e090163d1a1b2d5c83369"
+    },
+    {
+      "project_relative_source": ".research-runs/campaign-002/mattergen-hap44/jobs/batch/MG44-01/generated_crystals.extxyz",
+      "source_bytes": 2560,
+      "source_sha256": "0b0ded46838f6651c79f131856092a5cc6a81449ad8cbdf81606608ce86e0449",
+      "publication_path": "hap44/MG44-01/generated_crystals.extxyz",
+      "transformation": "byte-for-byte copy",
+      "publication_sha256": "0b0ded46838f6651c79f131856092a5cc6a81449ad8cbdf81606608ce86e0449"
+    },
+    {
+      "project_relative_source": ".research-runs/campaign-002/mattergen-hap44/jobs/batch/MG44-02/generated_crystals.extxyz",
+      "source_bytes": 2558,
+      "source_sha256": "8f6160a159eac9415a18ae954fb7dc00117ce5b2688a4042a6f8139a540f0bee",
+      "publication_path": "hap44/MG44-02/generated_crystals.extxyz",
+      "transformation": "byte-for-byte copy",
+      "publication_sha256": "8f6160a159eac9415a18ae954fb7dc00117ce5b2688a4042a6f8139a540f0bee"
+    },
+    {
+      "project_relative_source": ".research-runs/campaign-002/mattergen-hap44/jobs/batch/MG44-03/generated_crystals.extxyz",
+      "source_bytes": 2560,
+      "source_sha256": "f3e021909660b3fb3061e4a225c47a275f376d3ca66246efa773fe375efbc502",
+      "publication_path": "hap44/MG44-03/generated_crystals.extxyz",
+      "transformation": "byte-for-byte copy",
+      "publication_sha256": "f3e021909660b3fb3061e4a225c47a275f376d3ca66246efa773fe375efbc502"
+    },
+    {
+      "project_relative_source": ".research-runs/campaign-002/mattergen-hap44/jobs/batch/MG44-04/generated_crystals.extxyz",
+      "source_bytes": 2555,
+      "source_sha256": "e7ca0beb6c2dd000cdad39da9b86b4d6b913fd7999f42f1ff9c7bee3a7f00a14",
+      "publication_path": "hap44/MG44-04/generated_crystals.extxyz",
+      "transformation": "byte-for-byte copy",
+      "publication_sha256": "e7ca0beb6c2dd000cdad39da9b86b4d6b913fd7999f42f1ff9c7bee3a7f00a14"
+    },
+    {
+      "project_relative_source": "workflow/validation/records/LOCAL-MATTERGEN.json",
+      "source_bytes": 447,
+      "source_sha256": "feac1177f32a73ed25024e88d8570118a83cbabc1260f92499754741d93f1c85",
+      "publication_path": "smoke/context.json",
+      "transformation": "selected existing validation status and notes; record is limited to the earlier smoke sample",
+      "publication_sha256": "2bec283e267be72b96b14f640e1ef861ca88a612fe55409a6ffded9a8cd40b21"
+    },
+    {
+      "project_relative_source": "workflow/validation/verification.json",
+      "source_bytes": 14146,
+      "source_sha256": "f785903e0d95ff08cdab866cd0da06b9ae325257b087b01416275389edcc1ed9",
+      "publication_path": "smoke/context.json",
+      "transformation": "selected MatterGen smoke formula/chemistry status only; other validation stages omitted",
+      "publication_sha256": "2bec283e267be72b96b14f640e1ef861ca88a612fe55409a6ffded9a8cd40b21"
+    },
+    {
+      "project_relative_source": ".research-runs/reproducibility-manifest.json",
+      "source_bytes": 81170,
+      "source_sha256": "ad2fc18274f129bf2ec1b103f21eca87317b4987aad896d424b57a45e3ef7850",
+      "publication_path": "smoke/context.json",
+      "transformation": "archive recorded_at_UTC only; host inventory and private paths omitted",
+      "publication_sha256": "2bec283e267be72b96b14f640e1ef861ca88a612fe55409a6ffded9a8cd40b21"
+    },
+    {
+      "project_relative_source": ".research-runs/environment/mattergen_smoke-tested-v3.py",
+      "source_bytes": 4396,
+      "source_sha256": "8663db7c0044040adb75b6b7cfe20103b2237f91af520b962230d0690c95cc0a",
+      "publication_path": "smoke/context.json",
+      "transformation": "source hash and generation/evaluation method description only; runtime source not bundled",
+      "publication_sha256": "2bec283e267be72b96b14f640e1ef861ca88a612fe55409a6ffded9a8cd40b21"
+    },
+    {
+      "project_relative_source": ".research-runs/campaign-002/mattergen-hap44/input/hap44-execution.json",
+      "source_bytes": 6730,
+      "source_sha256": "0d33bb1e6e7ce97b407cd8dd13295002900f200b66321f42e12e05da776ded5a",
+      "publication_path": "hap44/runtime-parameters.json",
+      "transformation": "whitelisted scientific/resource configuration and hashes; GPU UUID, owner, private paths, admission/approval/import receipts and runtime code omitted",
+      "publication_sha256": "b8372e8130f2a773abbef966d0d0969ff30e7f34031a90f20a201989bfa3abd3"
+    },
+    {
+      "project_relative_source": ".research-runs/campaign-002/mattergen-hap44/source/hap44_worker.py",
+      "source_bytes": 19069,
+      "source_sha256": "2fa4ce164eb68708cbde973d62f29095b6dec32cf6220d87b2d81ad84db7a83b",
+      "publication_path": "hap44/runtime-parameters.json",
+      "transformation": "worker source hash and operational adaptation description only; source code not bundled",
+      "publication_sha256": "b8372e8130f2a773abbef966d0d0969ff30e7f34031a90f20a201989bfa3abd3"
+    },
+    {
+      "project_relative_source": ".research-runs/campaign-002/mattergen-hap44/jobs/batch/execution.json",
+      "source_bytes": 26161,
+      "source_sha256": "1fa7a58aa3243edb8ce0a315e263c1c0026e98f5abc4923bc4d1e7569ce1a437",
+      "publication_path": "hap44/execution-summary.json",
+      "transformation": "selected terminal state, elapsed time, candidate budget and concurrency; host telemetry/inventory, identifiers, command and mounts omitted",
+      "publication_sha256": "e3bdfc494c08b3936dc17a7be18149c9c10737616b304cb4ab45f2374deceb0a"
+    },
+    {
+      "project_relative_source": ".research-runs/campaign-002/mattergen-hap44/jobs/batch/terminal-inspection.json",
+      "source_bytes": 1082,
+      "source_sha256": "7fcab8ff923f2babd842dc8f7abe2cdc15fa75a2cec856954778d8a1ffa57631",
+      "publication_path": "hap44/execution-summary.json",
+      "transformation": "terminal-confirmed status and terminal container state only; owner, GPU UUID and container identifiers omitted",
+      "publication_sha256": "e3bdfc494c08b3936dc17a7be18149c9c10737616b304cb4ab45f2374deceb0a"
+    },
+    {
+      "project_relative_source": ".research-runs/campaign-002/mattergen-hap44/jobs/batch/cgroup-outcome.json",
+      "source_bytes": 109,
+      "source_sha256": "c7ccdb6bf75305bfc9d8e5ca6772449b90873620aac3e456d5eb02b9d22de832",
+      "publication_path": "hap44/execution-summary.json",
+      "transformation": "existing peak memory and OOM counters only",
+      "publication_sha256": "e3bdfc494c08b3936dc17a7be18149c9c10737616b304cb4ab45f2374deceb0a"
+    }
+  ],
+  "original_identifiers": {
+    "hap44_filter_summary_sha256": "69975a0b91a16dbc71cf7372707bb41c9a8eee944353f81ba28cd02e3300c6f1",
+    "hap44_screening_sha256": "8bb0668289c0c45ee30a5a6d5cb92e2627996d06073e090163d1a1b2d5c83369",
+    "hap44_execution_parameters_sha256": "0d33bb1e6e7ce97b407cd8dd13295002900f200b66321f42e12e05da776ded5a"
+  },
+  "omitted": [
+    "Model checkpoint and third-party weights",
+    "Reference datasets",
+    "Runtime source code",
+    "Full execution-parameter/execution records containing operational details",
+    "Native generation logs and telemetry",
+    "Private approvals, owner/GPU/container identifiers",
+    "All sealed numerical evidence"
+  ],
+  "scientific_execution_performed_for_publication": false
+}

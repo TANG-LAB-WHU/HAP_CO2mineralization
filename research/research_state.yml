@@ -31,7 +31,7 @@ compute:
     credentials_in_repository: forbidden
 
 result_gates:
-  candidate_screening: one_MatterGen_smoke_rejected_missing_P_zero_accepted_HAP_candidates
+  candidate_screening: two_MatterGen_generation_records_five_samples_zero_accepted_HAP_candidates
   adsorption_ranking: blocked_pipeline_not_implemented
   geometry_optimization: documented_local_optimizations_without_surface_convergence_claim
   aimd_dataset: short_development_trajectories_insufficient_for_production
@@ -62,7 +62,7 @@ literature_evidence:
 
 known_blockers:
   - eight tracked CP2K or XYZ files contain unresolved Git conflict markers
-  - one MatterGen smoke sample was rejected for missing phosphorus; no accepted HAP generation or validated adsorption-ranking campaign exists
+  - the early 8-atom MatterGen smoke sample and four later 44-atom OOD samples were rejected; no accepted HAP candidate or validated adsorption-ranking campaign exists
   - existing AIMD trajectories are too short, incomplete, or unstable
   - legacy HAP112 postprocessing lacks raw inputs and reports poor quality
   - development datasets and fitted models exist, but no independently validated production model or qualified scale-up is available
@@ -87,6 +87,7 @@ computational_results_release:
     - results/b-local-development-20261013
     - results/b182-diagnostics-20261013
     - results/t2-fit-diagnostic-20261014
+    - results/mattergen-generation-20261011
   t2_training_fit_diagnostic_passed: true
   independent_model_validation_passed: false
   production_qualified: false
@@ -95,17 +96,51 @@ computational_results_release:
   manuscript_files_changed: false
 
 mattergen_status:
-  evidence_archive_time_utc: '2026-10-07T04:06:14Z'
-  workflow: pretrained_chemical_system_generation_then_MatterSim_evaluation
-  generated_samples: 1
-  generated_atoms: 8
-  generated_formula: CH2CaO4
+  correction_of_commit: 497b64992b22411549052f7749ad3603a5c5ac7c
+  correction: The earlier status omitted the completed four-candidate HAP44 pilot; retain the 8-atom smoke as a separate historical record.
+  result_package: results/mattergen-generation-20261011
+  recorded_generation_runs: 2
+  generated_samples_across_recorded_runs: 5
   accepted_HAP_candidates: 0
-  rejection: missing_phosphorus
   fine_tuning_completion_evidence_found: false
   generated_sample_downstream_CP2K_DeepMD_LAMMPS_lineage_found: false
-  original_generation_record: .research-runs/mattergen-smoke/generate.manifest.json
-  original_evaluation_record: .research-runs/mattergen-smoke/evaluate.manifest.json
-  original_filter_record: .research-runs/mattergen-smoke/filter_summary.json
-  evaluation_implementation: .research-runs/environment/mattergen_smoke-tested-v3.py
-  interpretation: Branch names and campaign-003 structures are not evidence of successful MatterGen generation or adaptation.
+  early_smoke:
+    evidence_archive_time_utc: '2026-10-07T04:06:14Z'
+    workflow: pretrained_chemical_system_generation_then_MatterSim_evaluation
+    seed: 42
+    generated_samples: 1
+    generated_atoms: 8
+    generated_formula: CH2CaO4
+    rejection: missing_phosphorus
+    original_generation_record: .research-runs/mattergen-smoke/generate.manifest.json
+    original_evaluation_record: .research-runs/mattergen-smoke/evaluate.manifest.json
+    original_filter_record: .research-runs/mattergen-smoke/filter_summary.json
+    evaluation_implementation: .research-runs/environment/mattergen_smoke-tested-v3.py
+  hap44_pilot:
+    started_at_utc: '2026-10-11T00:59:13.827641065Z'
+    finished_at_utc: '2026-10-11T01:05:39.622580135Z'
+    generated_samples: 4
+    atoms_per_sample: 44
+    seeds: [4201, 4202, 4203, 4204]
+    diffusion_steps_per_sample: 1000
+    diffusion_guidance_factor: 2
+    chemical_system: Ca-P-O-H
+    maximum_concurrency: 2
+    all_candidate_exit_codes: 0
+    target_formula: Ca10P6O26H2
+    generated_formulas: [Ca4P3O19H18, Ca6P4O23H11, Ca7P4O23H10, Ca4P4O20H16]
+    rejection: exact_composition_mismatch
+    qualified_for_DFT: 0
+    automatic_relaxations: 0
+    geometry_topology_relaxation_hull_evaluation: not_performed_after_composition_rejection
+    method_scope: process_local_atom_count_adaptation_of_pretrained_chemical_system_model
+    native_atom_count_domain_recorded_in_contract: '1-20; 44 atoms is out of distribution'
+    fixed_composition_CSP: false
+    training: false
+    original_filter_record: .research-runs/campaign-002/mattergen-hap44/jobs/batch/filter_summary.json
+    original_filter_sha256: 69975a0b91a16dbc71cf7372707bb41c9a8eee944353f81ba28cd02e3300c6f1
+  CSP_followup:
+    scope: read_only_investigation
+    verified_official_weights_or_sufficient_training_data_established: false
+    training_result: none
+  interpretation: Neither branch names nor campaign-003 structures establish MatterGen provenance; generation completion is not HAP qualification, fine-tuning, or CSP training.

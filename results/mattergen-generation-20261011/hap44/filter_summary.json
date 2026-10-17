@@ -1,0 +1,149 @@
+{
+  "status": "four_candidates_screened",
+  "candidates": [
+    {
+      "candidate_id": "MG44-01",
+      "seed": 4201,
+      "manuscript_eligible": false,
+      "input_and_model_hashes": {
+        "screening": "8bb0668289c0c45ee30a5a6d5cb92e2627996d06073e090163d1a1b2d5c83369",
+        "checkpoint": "4ad21d977c2b776a31c92498c4d1c88d3e1e286deeb941e997af8e082310b80e",
+        "model_config": "ba660bb33ee2d3f2c74539ce079f24bc2631a67f6548e83224f05a11328a7014"
+      },
+      "raw_structure_sha256": "0b0ded46838f6651c79f131856092a5cc6a81449ad8cbdf81606608ce86e0449",
+      "charged_compute_seconds": 193.84551948199805,
+      "final_status": "rejected_hard_gate",
+      "element_counts": {
+        "Ca": 4,
+        "O": 19,
+        "H": 18,
+        "P": 3
+      },
+      "cell_and_contact_metrics": {},
+      "P_O_counts": null,
+      "O_H_distances": null,
+      "phosphate_and_hydroxyl_connectivity": null,
+      "hard_gate_status": "rejected_hard_gate",
+      "local_geometry_status": "pending_review",
+      "topology_status": "pending_review",
+      "topology_review_evidence": null,
+      "relaxation_status": "not_evaluated",
+      "relaxed_structure_sha256": null,
+      "hull_status": "not_evaluated",
+      "hull_eV_per_atom_or_null": null,
+      "novelty_status": "not_evaluated",
+      "reason_codes": [
+        "exact_composition_mismatch"
+      ]
+    },
+    {
+      "candidate_id": "MG44-02",
+      "seed": 4202,
+      "manuscript_eligible": false,
+      "input_and_model_hashes": {
+        "screening": "8bb0668289c0c45ee30a5a6d5cb92e2627996d06073e090163d1a1b2d5c83369",
+        "checkpoint": "4ad21d977c2b776a31c92498c4d1c88d3e1e286deeb941e997af8e082310b80e",
+        "model_config": "ba660bb33ee2d3f2c74539ce079f24bc2631a67f6548e83224f05a11328a7014"
+      },
+      "raw_structure_sha256": "8f6160a159eac9415a18ae954fb7dc00117ce5b2688a4042a6f8139a540f0bee",
+      "charged_compute_seconds": 193.84236503399734,
+      "final_status": "rejected_hard_gate",
+      "element_counts": {
+        "Ca": 6,
+        "O": 23,
+        "H": 11,
+        "P": 4
+      },
+      "cell_and_contact_metrics": {},
+      "P_O_counts": null,
+      "O_H_distances": null,
+      "phosphate_and_hydroxyl_connectivity": null,
+      "hard_gate_status": "rejected_hard_gate",
+      "local_geometry_status": "pending_review",
+      "topology_status": "pending_review",
+      "topology_review_evidence": null,
+      "relaxation_status": "not_evaluated",
+      "relaxed_structure_sha256": null,
+      "hull_status": "not_evaluated",
+      "hull_eV_per_atom_or_null": null,
+      "novelty_status": "not_evaluated",
+      "reason_codes": [
+        "exact_composition_mismatch"
+      ]
+    },
+    {
+      "candidate_id": "MG44-03",
+      "seed": 4203,
+      "manuscript_eligible": false,
+      "input_and_model_hashes": {
+        "screening": "8bb0668289c0c45ee30a5a6d5cb92e2627996d06073e090163d1a1b2d5c83369",
+        "checkpoint": "4ad21d977c2b776a31c92498c4d1c88d3e1e286deeb941e997af8e082310b80e",
+        "model_config": "ba660bb33ee2d3f2c74539ce079f24bc2631a67f6548e83224f05a11328a7014"
+      },
+      "raw_structure_sha256": "f3e021909660b3fb3061e4a225c47a275f376d3ca66246efa773fe375efbc502",
+      "charged_compute_seconds": 191.09574135500588,
+      "final_status": "rejected_hard_gate",
+      "element_counts": {
+        "H": 10,
+        "O": 23,
+        "Ca": 7,
+        "P": 4
+      },
+      "cell_and_contact_metrics": {},
+      "P_O_counts": null,
+      "O_H_distances": null,
+      "phosphate_and_hydroxyl_connectivity": null,
+      "hard_gate_status": "rejected_hard_gate",
+      "local_geometry_status": "pending_review",
+      "topology_status": "pending_review",
+      "topology_review_evidence": null,
+      "relaxation_status": "not_evaluated",
+      "relaxed_structure_sha256": null,
+      "hull_status": "not_evaluated",
+      "hull_eV_per_atom_or_null": null,
+      "novelty_status": "not_evaluated",
+      "reason_codes": [
+        "exact_composition_mismatch"
+      ]
+    },
+    {
+      "candidate_id": "MG44-04",
+      "seed": 4204,
+      "manuscript_eligible": false,
+      "input_and_model_hashes": {
+        "screening": "8bb0668289c0c45ee30a5a6d5cb92e2627996d06073e090163d1a1b2d5c83369",
+        "checkpoint": "4ad21d977c2b776a31c92498c4d1c88d3e1e286deeb941e997af8e082310b80e",
+        "model_config": "ba660bb33ee2d3f2c74539ce079f24bc2631a67f6548e83224f05a11328a7014"
+      },
+      "raw_structure_sha256": "e7ca0beb6c2dd000cdad39da9b86b4d6b913fd7999f42f1ff9c7bee3a7f00a14",
+      "charged_compute_seconds": 191.09261760499794,
+      "final_status": "rejected_hard_gate",
+      "element_counts": {
+        "Ca": 4,
+        "H": 16,
+        "P": 4,
+        "O": 20
+      },
+      "cell_and_contact_metrics": {},
+      "P_O_counts": null,
+      "O_H_distances": null,
+      "phosphate_and_hydroxyl_connectivity": null,
+      "hard_gate_status": "rejected_hard_gate",
+      "local_geometry_status": "pending_review",
+      "topology_status": "pending_review",
+      "topology_review_evidence": null,
+      "relaxation_status": "not_evaluated",
+      "relaxed_structure_sha256": null,
+      "hull_status": "not_evaluated",
+      "hull_eV_per_atom_or_null": null,
+      "novelty_status": "not_evaluated",
+      "reason_codes": [
+        "exact_composition_mismatch"
+      ]
+    }
+  ],
+  "charged_compute_seconds": 769.8762434759992,
+  "qualified_for_DFT": 0,
+  "automatic_relaxations": 0,
+  "manuscript_eligible": false
+}

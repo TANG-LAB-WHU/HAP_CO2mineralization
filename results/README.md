@@ -2,6 +2,7 @@
 
 These packages preserve measured results, data, figure-generation inputs and limitations. They do not release a qualified interatomic potential or establish mineralization mechanisms.
 
+- [MatterGen generation records and correction](mattergen-generation-20261011/README.md): the early 8-atom smoke and the later four-candidate 44-atom pilot are separate completed generation records. All five samples were rejected. The 44-atom run is an out-of-distribution atom-count adaptation, not fine-tuning or fixed-composition CSP training.
 - [17 October release and replay scope](RELEASE-20261017.md): later Campaign 003 optimization/reference/CP results; B-local development and the earlier failed 40-frame fit; 182-atom static, direct-DFT and failed learned-trajectory diagnostics; and the completed T2 training-fit diagnostic. The **new joint 40-frame fit was not executed**.
 - [Campaign 003 final follow-up](campaign-003/final-followup-20261013/README.md): later completion states, conditional reference comparisons, and inconclusive cases, preserved separately from the original snapshot.
 - [B-local development](b-local-development-20261013/README.md): candidate training and failed validation/coverage gates.

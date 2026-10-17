@@ -1,0 +1,19 @@
+{
+  "scope": "Earlier one-sample smoke only; not the later four-candidate HAP44 batch",
+  "archive_recorded_at_UTC": "2026-10-07T04:06:14.326280+00:00",
+  "status": "completed",
+  "notes": "Actual generation and evaluation completed; CH2CaO4 lacks phosphorus; chemistry filter rejected 1/1 and saved zero HAP candidates",
+  "actual_formula": "CH2CaO4",
+  "hap_chemistry_eligible": false,
+  "generation_method": "Pretrained MatterGen chemical_system checkpoint; seed 42; one sample; Ca-P-O-H-C conditioning; guidance 2.0",
+  "evaluation_method": "mattergen.scripts.evaluate with relax=True, MatterSim-v1.0.0-1M.pth and TRI2024 correction/reference",
+  "evaluation_is_CP2K_or_DFT": false,
+  "source_evidence": {
+    "project_relative_path": ".research-runs/environment/mattergen_smoke-tested-v3.py",
+    "generation_line": 21,
+    "evaluation_line": 51
+  },
+  "relaxed_extxyz_semantics": "Recorded MatterSim output, including its stored predicted energy/forces/stress; not CP2K or DFT labels",
+  "metrics_not_bundled": "filter_summary.json retains the existing metrics SHA; no metric or stability claim is recomputed here",
+  "manuscript_eligible": false
+}

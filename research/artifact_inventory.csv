@@ -1,5 +1,5 @@
 artifact_id,stage,system,artifact_type,path,status,provenance_status,manuscript_eligible,notes
-P0-CAMPAIGN,candidate_generation,apatite chemical systems,generation campaign,,missing,none,no,"No results directory, summary, configuration snapshot, or run manifest is present."
+P0-CAMPAIGN,candidate_generation,apatite chemical systems,bounded generation records,results/mattergen-generation-20261011,all_candidates_rejected,source_hashes_and_frozen_contract,no,"Early 8-atom smoke plus four later 44-atom OOD candidates; zero accepted HAP candidates. The latter is process-local atom-count adaptation of a pretrained model rather than fine-tuning or fixed-composition CSP training."
 P1-HT-PIPELINE,screening,apatite candidates,workflow implementation,1.HT_Screening,partial,path_only,no,"Several README and core screening files are empty or placeholders; no adsorption ranking exists."
 GEO-002,geometry_optimization,HAP(002),CP2K log,2.GeoOpt_PreRelax/HAP_002_Perfect/cp2k_run/HAP_002_opt.log,completed,legacy_unverified,no,"Log declares geometry optimization completed; no run manifest or independent convergence review."
 GEO-004,geometry_optimization,HAP(004),CP2K log,2.GeoOpt_PreRelax/HAP_004_Perfect/cp2k_run/HAP_004_opt.log,partial,legacy_unverified,no,"No explicit completion marker found."

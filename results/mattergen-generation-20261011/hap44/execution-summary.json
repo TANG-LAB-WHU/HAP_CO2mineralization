@@ -1,0 +1,53 @@
+{
+  "status": "completed",
+  "parameters_sha256": "0d33bb1e6e7ce97b407cd8dd13295002900f200b66321f42e12e05da776ded5a",
+  "candidates_reserved": 4,
+  "maximum_concurrency": 2,
+  "elapsed_seconds": 387.68700000003446,
+  "native_state": {
+    "Status": "exited",
+    "Running": false,
+    "ExitCode": 0,
+    "OOMKilled": false,
+    "StartedAt": "2026-10-11T00:59:13.827641065Z",
+    "FinishedAt": "2026-10-11T01:05:39.622580135Z",
+    "Error": ""
+  },
+  "terminal_inspection_status": "terminal_confirmed",
+  "shared_memory_bytes": 17179869184,
+  "shared_memory_swap_bytes": 17179869184,
+  "cgroup_outcome": {
+    "peak_memory_bytes": 3871502336,
+    "oom_counters_raw": "oom_kill_disable 0\nunder_oom 0\noom_kill 0\n"
+  },
+  "budget": {
+    "automatic_retry": false,
+    "candidates": [
+      {
+        "candidate_id": "MG44-01",
+        "charged_compute_seconds": 193.84551948199805,
+        "exit_code": 0
+      },
+      {
+        "candidate_id": "MG44-02",
+        "charged_compute_seconds": 193.84236503399734,
+        "exit_code": 0
+      },
+      {
+        "candidate_id": "MG44-03",
+        "charged_compute_seconds": 191.09574135500588,
+        "exit_code": 0
+      },
+      {
+        "candidate_id": "MG44-04",
+        "charged_compute_seconds": 191.09261760499794,
+        "exit_code": 0
+      }
+    ],
+    "charged_compute_seconds": 769.8762434759992,
+    "unstarted": []
+  },
+  "restart_permitted": false,
+  "manuscript_eligible": false,
+  "timing_scope": "elapsed_seconds is the original host execution measurement; charged_compute_seconds sums complete worker lifespans across parallel candidates and is not walltime"
+}

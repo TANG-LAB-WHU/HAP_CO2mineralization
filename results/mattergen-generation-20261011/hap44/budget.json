@@ -1,0 +1,27 @@
+{
+  "charged_compute_seconds": 769.8762434759992,
+  "candidates": [
+    {
+      "candidate_id": "MG44-01",
+      "exit_code": 0,
+      "charged_compute_seconds": 193.84551948199805
+    },
+    {
+      "candidate_id": "MG44-02",
+      "exit_code": 0,
+      "charged_compute_seconds": 193.84236503399734
+    },
+    {
+      "candidate_id": "MG44-03",
+      "exit_code": 0,
+      "charged_compute_seconds": 191.09574135500588
+    },
+    {
+      "candidate_id": "MG44-04",
+      "exit_code": 0,
+      "charged_compute_seconds": 191.09261760499794
+    }
+  ],
+  "unstarted": [],
+  "automatic_retry": false
+}
