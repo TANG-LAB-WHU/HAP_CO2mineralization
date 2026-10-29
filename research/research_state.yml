@@ -1,5 +1,5 @@
 schema_version: 1
-last_updated: 2026-10-07
+last_updated: 2026-10-29
 active_branch: integration/shawn-4090-reproducible
 workflow_mode: local_validation_and_diagnostic_draft
 
@@ -31,11 +31,11 @@ compute:
     credentials_in_repository: forbidden
 
 result_gates:
-  candidate_screening: one_smoke_sample_executed_rejected_missing_phosphorus
+  candidate_screening: gf_scan_s1_363_s2_mlip_committee_149_s3_running_no_dft_hull_yet
   adsorption_ranking: implemented_local_reference_checks_only_no_validated_ranking
   geometry_optimization: local_optimizer_gate_passed_surface_convergence_unestablished
   aimd_dataset: real_short_disjoint_replicas_insufficient_for_production
-  mlip_validation: optimizer_recovery_complete_test_force_and_longer_geometry_fail
+  mlip_validation: v1_failed_v2_active_learning_iteration0_labelling_started
   enhanced_sampling: blocked_not_implemented
 
 manuscript_evidence:
@@ -62,7 +62,7 @@ literature_evidence:
 
 known_blockers:
   - eight tracked CP2K or XYZ files contain unresolved Git conflict markers
-  - one actual MatterGen smoke sample was rejected for missing phosphorus; no accepted HAP discovery or validated ranking campaign
+  - imported MatterGen Ca-P-O-H-C scan has MatterSim-only stability labels, no recorded MatterGen commit or seeds, an inconsistent gf1 RMSD metric, and an empty gf2 trajectory archive; no DFT-validated candidate
   - eight new four-femtosecond AIMD replicas are too short for equilibrium or broad independent coverage; legacy failures remain ineligible
   - legacy HAP112 postprocessing lacks raw inputs and reports poor quality
   - real local datasets and models exist, but the recovered model fails retrospective force and both 1 ps geometry tests; no validated scale-up or enhanced sampling
@@ -70,12 +70,16 @@ known_blockers:
   - nowicki2024capture full-text extraction is blocked because the approved RSC PDF endpoint returned HTTP 403
 
 next_actions:
+  - follow workflow/PIPELINE_V2.md: iteration-0 CP2K labels (216 frames, 800/60 Ry, >= 8 A Gamma cells) then a 4-model DeePMD ensemble and LAMMPS model-deviation exploration
+  - finish the paired 8 A / 12 A finite-size labels and report the Gamma energy bias next to every energy gate
   - review the artifact inventory and ineligibility decisions with the research team
   - resolve legacy conflict markers only after a separate scientific-input review
   - Shawn must review the three extracted cards against the exact recorded PDF checksums
   - resolve the Nowicki full-text blocker only through the approved publisher or a user-supplied licensed copy
   - keep all claim relationships pending until a separate human evidence-reconciliation decision
   - review workflow/NEXT_SAMPLING_PLAN.md; fixed thresholds and a new sealed holdout are required before any future campaign
+  - ask siqi for the MatterGen commit, seeds, and MatterSim version of the gf scan, and whether gf1 metrics.json matches its relaxed_structures.extxyz
+  - re-relax the 52 Ca-CO3-PO4 priority candidates with a second MLIP, then rebuild the hull with the downstream DFT setup before any reaction-free-energy claim
 
 # Separate diagnostic scope; no manuscript eligibility or human verification granted.
 local_validation:

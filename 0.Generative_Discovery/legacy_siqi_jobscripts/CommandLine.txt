@@ -1,0 +1,11 @@
+python predict_ca_p_o_h.py --batch-size=32 --num-batches=20 --repo-root=/home/siqi/documents4projects/Microsoft_MatterGen/mattergen --evaluate --mattersim-model=MatterSim-v1.0.0-5M.pth --output-path=results/Ca-P-O-H_More/ 
+
+python predict_ca_p_o_h.py --output-path=test_test/La-C-O/
+
+python predict_ca_p_o_h.py --batch-size=32 --num-batches=20 --repo-root=/home/siqi/documents4projects/Microsoft_MatterGen/mattergen --evaluate --mattersim-model=MatterSim-v1.0.0-5M.pth --output-path=results/Ca-P-O-H/ 
+
+python predict_la_c_o.py --batch-size=32 --num-batches=20 --repo-root=/home/siqi/documents4projects/Microsoft_MatterGen/mattergen --evaluate --mattersim-model=MatterSim-v1.0.0-5M.pth --output-path=results/La-O-C/
+
+python predict_ca_v_o_ru.py --batch-size=32 --num-batches=20 --repo-root=/home/siqi/documents4projects/Microsoft_MatterGen/mattergen --evaluate --mattersim-model=MatterSim-v1.0.0-5M.pth --output-path=results/Ca-V-O-Ru/
+
+python predict_ca_p_o_h_c.py --batch-size=64 --num-batches=50 --guidance-factor=2.0 --repo-root=/home/siqi/documents4projects/Microsoft_MatterGen/mattergen --evaluate --mattersim-model=MatterSim-v1.0.0-5M.pth --output-path=results/Ca-P-O-H-C_bs64nb50gf2/

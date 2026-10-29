@@ -1,0 +1,50 @@
+{
+  "s1": {
+    "input": 2324,
+    "passed": 363,
+    "classes": {
+      "Ca_carbonate": 177,
+      "Ca_carbonate_phosphate": 52,
+      "Ca_phosphate": 134
+    }
+  },
+  "s2": {
+    "models": [
+      "mace-mpa-0 (medium-mpa-0)",
+      "mattersim-5m (v1.0.0-5M)",
+      "sevennet-mf-ompa (mpa modal)"
+    ],
+    "references": "Alex-MP TRI2024correction, Ca-P-O-H-C subsystems, DFT E_hull <= 0.1 eV/atom (288 phases), relaxed with each model",
+    "gate": "E_hull <= 0.05 eV/atom in >= 2 of 3 models, converged relaxation (fmax 0.02 eV/A), |dV/V| <= 5%",
+    "input": 363,
+    "passed": 149,
+    "unanimous": 131,
+    "passed_classes": {
+      "Ca_carbonate": 70,
+      "Ca_carbonate_phosphate": 20,
+      "Ca_phosphate": 59
+    },
+    "passed_formulas": {
+      "CaPH3O5": 25,
+      "CaCO3": 22,
+      "CaP2(H2O3)3": 14,
+      "CaH2(CO3)2": 13,
+      "Ca2H2CO5": 10,
+      "CaPHO4": 9,
+      "CaH4C2O7": 7,
+      "Ca2PHCO7": 7,
+      "CaPH5CO8": 7,
+      "CaH2CO4": 4,
+      "CaP2(HO2)4": 4,
+      "Ca3H2(CO4)2": 2,
+      "CaH10CO8": 2,
+      "CaH6C3O10": 2,
+      "CaH6CO6": 2,
+      "Ca2P2H4CO11": 2,
+      "Ca2PH3CO8": 2,
+      "Ca2P(HO2)3": 2,
+      "CaP(HO)7": 2,
+      "Ca2H2(CO3)3": 1
+    }
+  }
+}

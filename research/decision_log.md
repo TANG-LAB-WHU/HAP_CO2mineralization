@@ -45,3 +45,20 @@ Record decisions that change scope, assumptions, data, models, or interpretation
 - **Acquisition:** Three official PDFs passed fail-closed validation; the RSC PDF request for Nowicki returned HTTP 403 and remains `blocked_fulltext`. No third-party mirror or document conversion is permitted.
 - **Evidence boundary:** Every card remains machine-only and `human_confirmed: false`. The ledger retains its Phase 2A statuses and empty source locators; candidate metadata, machine locator extraction, human card confirmation, ledger promotion, and manuscript citation activation remain separate decisions.
 - **Compute boundary:** Legacy CP2K execution exists, but no legacy calculation is manuscript-eligible. The CP2K paper supports software capability only, not validity of repository results.
+
+## 2026-10-28 — import the external MatterGen Ca-P-O-H-C guidance-factor scan
+
+- **Decision:** Import siqi's five-run Ca-P-O-H-C scan (gf 0.001, 0.5, 1, 1.5, 2; 3,200 structures each; MatterSim-5M relaxation) as `legacy_unverified` (external import). Raw outputs live untracked in `0.Generative_Discovery/results/`; the tracked summary, SHA-256 manifest, and shortlist live in `0.Generative_Discovery/runs/Ca-P-O-H-C_gfscan_RTX5090_20260329/`.
+- **Use:** The scan completes the small-cell Ca-P-O-H-C phase space and convex hull for judging carbonation products. It is not a route to generating HAP itself: every structure has ≤20 atoms, and the HAP cell has 44.
+- **Finding:** Higher guidance enforces the five-element system (4 → 1,066 per run) at the cost of stability (49.8 % → 8.7 %). Of 2,324 unique S.U.N. structures, 52 are charge-neutral Ca phases with isolated CO3 and PO4.
+- **Boundary:** Stability labels are MatterSim energies against the MP2020 reference with a 0.1 eV/atom window. Every structure stays manuscript-ineligible until a second MLIP and a DFT hull at the downstream level of theory confirm it.
+- **Revisit when:** Provenance gaps (MatterGen commit, seeds, gf1 metrics, empty gf2 trajectory archive) are answered, and DFT hull results exist for the shortlist.
+
+## 2026-10-29 — pipeline v2: CPU CP2K labels, GPU MLIP stages, fixed labelling protocol
+
+- **Decision:** Rebuild the CP2K → DeePMD → LAMMPS pipeline as described in `workflow/PIPELINE_V2.md`. The user asked for GPU acceleration and literature-level accuracy targets rather than maximal accuracy.
+- **CP2K on GPU (measured):** Upstream publishes CUDA images only up to 2025.1 and only for P100. GitHub releases ship source and a CPU-only static `.ssmp`. A CP2K 2026.2 sm_89 image was built (`workflow/environment/Dockerfile.cp2k-cuda-sm89`; DBCSR needed an A40→sm_89 patch). On HAP bulk single points it took 251 s (88 atoms) and 902 s (352 atoms). The official CPU image with 24 MPI ranks took 97 s and 476 s, with identical energies. CP2K labelling therefore runs CPU-only, and the RTX 4090 runs the MLIP stages concurrently.
+- **Protocol (measured):** PBE-D3(BJ)/DZVP-MOLOPT-SR-GTH/GTH-PBE, Γ point, 800/60 Ry. 800 Ry is the lowest tested cutoff within 1 meV/atom and 0.01 eV/Å of 1000 Ry; 600 Ry gave 0.0108 eV/Å.
+- **Recorded deviation:** The 88-atom (8 Å) Γ cell is 2.67 meV/atom above the 528-atom result and fails the 1 meV/atom width gate. The 352-atom cell passes (0.04 meV/atom). Labels nevertheless use ≥ 8 Å cells, because 12 Å interface cells would multiply single-workstation labelling time by roughly 3–4×. Forces differ by only 0.017 eV/Å RMS. The energy bias is measured on paired 8/12 Å labels and reported with every energy gate.
+- **Accuracy targets:** force RMSE ≤ 0.10 eV/Å, energy RMSE ≤ 2 meV/atom on a sealed test set from an independent exploration seed, plus lattice and stability gates. These follow the SCAN-ML CaCO3 Deep Potential (0.4 meV/atom, 101 meV/Å); that reference is not yet entered in `literature/references.csv`.
+- **Boundary:** No v1 labels are reused. Nothing from v2 is manuscript-eligible until a gate report and run manifest are reviewed.

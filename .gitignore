@@ -60,3 +60,6 @@ workflow/profiles/*.local.yaml
 
 # Packaged local diagnostic artifacts are generated, not source.
 deliverables/
+
+# Google Drive sync artifacts
+desktop.ini

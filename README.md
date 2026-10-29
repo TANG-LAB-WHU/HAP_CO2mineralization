@@ -21,7 +21,7 @@ The repository is organized as a nominal pipeline from Phase 0 (Generative Disco
 | Stage | Directory | Intended role | Current status |
 | :--- | :--- | :--- | :--- |
 | **Data** | `data/` | Initial PDB/XYZ structures for 22 HAP facets. | **Present, provenance pending** |
-| **Phase 0** | `0.Generative_Discovery/` | Propose and filter apatite-like bulk candidates with MatterGen. | **Partial:** scripts exist; no tracked result summary or run manifest |
+| **Phase 0** | `0.Generative_Discovery/` | Propose and filter apatite-like bulk candidates with MatterGen. | **Imported, unverified:** Ca-P-O-H-C guidance-factor scan (5 × 3,200, MatterSim-5M) summarized in `runs/`; 52 Ca–CO3–PO4 priority candidates await second-MLIP and DFT hull checks |
 | **Phase 1** | `1.HT_Screening/` | Enumerate compositions, build slabs, place CO2, screen, and rank candidates. | **Placeholder:** several core scripts and READMEs are empty; no ranking exists |
 | **Pre-Relax** | `2.GeoOpt_PreRelax/` | CP2K geometry optimization and planned MACE pre-relaxation. | **Legacy artifacts, unqualified:** completion states are mixed and some inputs contain conflict markers |
 | **Phase 2-4** | `3.ML_AIMD/` | AIMD data generation, MLIP training, LAMMPS scale-up, and enhanced sampling. | **Partial/planned:** three short legacy AIMD outputs exist; no validated dataset, model, scale-up, or enhanced-sampling result |
@@ -35,7 +35,9 @@ The repository is organized as a nominal pipeline from Phase 0 (Generative Disco
 ## 🚀 Detailed Workflow Guide
 
 ### Phase 0: Generative Discovery (`0.Generative_Discovery/`)
-The planned generation stage uses **MatterGen** to propose structures in selected chemical systems. Current scripts do not constitute a completed candidate campaign.
+The generation stage uses **MatterGen** to propose structures in selected chemical systems. One external campaign has been imported: a Ca-P-O-H-C guidance-factor scan (gf 0.001–2, 16,000 structures, MatterSim-5M relaxation). Its tracked summary, manifest, and shortlist are in `runs/Ca-P-O-H-C_gfscan_RTX5090_20260329/`; raw outputs stay untracked in `results/`. Stability labels come from MatterSim, not DFT, and no candidate is validated.
+- **Scan summary**: `summarize_gf_scan.py` classifies S.U.N. structures by CO3/PO4 motifs and charge balance, deduplicates across runs, and writes checksums.
+- **Original job scripts**: `legacy_siqi_jobscripts/` (unrelated Ca-V-O-Ru and La-C-O scripts are in `unrelated_systems/`).
 - **Batch scanning interface**: `batch_scan.sh` enumerates configured chemical systems and calls the generation, evaluation, statistics, and filtering scripts.
 - **Filtering interface**: `post_filter.py` reads precomputed detailed metrics and filters by an energy-above-hull threshold and novelty flag. It does not independently establish thermodynamic validity.
 

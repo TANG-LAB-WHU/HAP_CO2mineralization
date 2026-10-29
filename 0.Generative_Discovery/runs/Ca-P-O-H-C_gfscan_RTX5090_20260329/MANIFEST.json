@@ -1,0 +1,128 @@
+{
+  "Ca-P-O-H-C_bs64nb50gf0dot001": {
+    "extracting_structure.py": {
+      "bytes": 12298,
+      "sha256": "2f05d59b2fcf26e8284dfd5d811ece213cb7dffdc7f1d41a22f53edb0e7f6d75"
+    },
+    "generated_crystals.extxyz": {
+      "bytes": 2256038,
+      "sha256": "d1f1139cfa711f84b6eec797aa4336254c42c4bd5dfc8dbb713632b17b6d3aca"
+    },
+    "generated_crystals_cif.zip": {
+      "bytes": 5077994,
+      "sha256": "e7f3ae7f6ec21a770c231f109eb0bb11eed6dd5c0187afbaf5baaa23d9468905"
+    },
+    "generated_trajectories.zip": {
+      "bytes": 4500177658
+    },
+    "metrics.json": {
+      "bytes": 2885,
+      "sha256": "0ac45fc108d5d67698e2edef4f0f0ec0a7f57ce27b10d49c3fec7cb271fee3e3"
+    },
+    "relaxed_structures.extxyz": {
+      "bytes": 4858272,
+      "sha256": "b035bfef1bc64d580b42cb5b6be42eb5d6a42c177ed315aba41e03572cc31992"
+    }
+  },
+  "Ca-P-O-H-C_bs64nb50gf0dot5": {
+    "extracting_structure.py": {
+      "bytes": 12298,
+      "sha256": "2f05d59b2fcf26e8284dfd5d811ece213cb7dffdc7f1d41a22f53edb0e7f6d75"
+    },
+    "generated_crystals.extxyz": {
+      "bytes": 2231444,
+      "sha256": "107cf965f083e298d48a51ebb3d2e64091b9d29cd48941464812735ec0c0e0a2"
+    },
+    "generated_crystals_cif.zip": {
+      "bytes": 5051723,
+      "sha256": "d0294c216d3e63c3f0988b1b2b89680b59ceb93339e3bad67619059609027d75"
+    },
+    "generated_trajectories.zip": {
+      "bytes": 4451984940
+    },
+    "metrics.json": {
+      "bytes": 2887,
+      "sha256": "84b3ea1aec5e5a9494265ec0ed09aab80f3c27717431b21d8fb50eee8ff20134"
+    },
+    "relaxed_structures.extxyz": {
+      "bytes": 4808214,
+      "sha256": "cb859f3db37a898c16535f3f19e19b2c7e79ae84f3f407ba4190637c885ae958"
+    }
+  },
+  "Ca-P-O-H-C_bs64nb50gf1": {
+    "extracting_structure.py": {
+      "bytes": 12298,
+      "sha256": "2f05d59b2fcf26e8284dfd5d811ece213cb7dffdc7f1d41a22f53edb0e7f6d75"
+    },
+    "generated_crystals.extxyz": {
+      "bytes": 2243140,
+      "sha256": "c56536781d73b95fcf5d188934292468bfc65291e614bd23fd5426a7ca5343df"
+    },
+    "generated_crystals_cif.zip": {
+      "bytes": 5079813,
+      "sha256": "5443a44ec52c77fe7818bfb9f0258160f75c310516a8a8b8f35da1d732fa4a3b"
+    },
+    "generated_trajectories-002.zip": {
+      "bytes": 4476235003
+    },
+    "metrics.json": {
+      "bytes": 2901,
+      "sha256": "2cbdaf599d90697062045406c9ffdff7d691dc023705b3a2dce9a93c5781177c"
+    },
+    "relaxed_structures.extxyz": {
+      "bytes": 4830764,
+      "sha256": "c83d7aad703abb7f1bba6803d0695cf00e0e040e76d02664585588c6aeb38821"
+    }
+  },
+  "Ca-P-O-H-C_bs64nb50gf1dot5": {
+    "extracting_structure.py": {
+      "bytes": 12298,
+      "sha256": "2f05d59b2fcf26e8284dfd5d811ece213cb7dffdc7f1d41a22f53edb0e7f6d75"
+    },
+    "generated_crystals.extxyz": {
+      "bytes": 2247195,
+      "sha256": "daff0de4e99e6769abf7dd2f1f39f3e70e1ca14d5c94f8a03265c47f66520684"
+    },
+    "generated_crystals_cif.zip": {
+      "bytes": 5090866,
+      "sha256": "cc60cf02dda586de510d5a80c9e260b9ee16a4c425aa4a171b584d2238adb445"
+    },
+    "generated_trajectories.zip": {
+      "bytes": 4483848593
+    },
+    "metrics.json": {
+      "bytes": 2886,
+      "sha256": "5a76d738ffae3cc31021f40f877829f9bc293660785343411266940afe9da691"
+    },
+    "relaxed_structures.extxyz": {
+      "bytes": 4838986,
+      "sha256": "1ad3c19b42d81067faa35665ad306ad234c07c14ff04e56a2fbc75c1363eb515"
+    }
+  },
+  "Ca-P-O-H-C_bs64nb50gf2": {
+    "extracting_structure.py": {
+      "bytes": 12298,
+      "sha256": "2f05d59b2fcf26e8284dfd5d811ece213cb7dffdc7f1d41a22f53edb0e7f6d75"
+    },
+    "generated_crystals.extxyz": {
+      "bytes": 2241020,
+      "sha256": "9a505d3170a968ba572e647bd8cc5f4a97e5be0d256a4cf644ab8933e1dc6fbe"
+    },
+    "generated_crystals_cif.zip": {
+      "bytes": 5082304,
+      "sha256": "7c5e9a196212a2fa0f4fe3e3beb1f854ab16d07fdc78993086637d1d91894d54"
+    },
+    "generated_trajectories.zip": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "metrics.json": {
+      "bytes": 2897,
+      "sha256": "a20be4fb68c0f2eefff5f5935445e904c6fe9f31266aa7e535a144e3aa85d54b"
+    },
+    "relaxed_structures.extxyz": {
+      "bytes": 4826583,
+      "sha256": "704c98855503f1cd1e1b510055b44e73f84d2829b0d527aff71c071b8a9ccebe"
+    }
+  }
+}

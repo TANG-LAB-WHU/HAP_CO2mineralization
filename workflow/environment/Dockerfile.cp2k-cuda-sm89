@@ -1,0 +1,78 @@
+# CP2K 2026.2 psmp with CUDA for RTX 4090 (Ada, sm_89).
+# Upstream publishes CUDA images only up to 2025.1 and only for P100 (sm_60), so this
+# follows tools/docker/Dockerfile.test_cuda_A100 from the v2026.2 tag, with the toolchain's
+# A40 slot (sm_86) retargeted to sm_89 and CMake given CMAKE_CUDA_ARCHITECTURES=89.
+# The toolchain is built with --target-cpu=native on the build host (i9-14900K, AVX2).
+# Build: docker build -f workflow/environment/Dockerfile.cp2k-cuda-sm89 -t hap-cp2k:2026.2-cuda-sm89 workflow/environment
+FROM nvidia/cuda:12.9.1-devel-ubuntu24.04
+
+ARG CP2K_TAG=v2026.2
+ARG NPROC=30
+ENV CUDA_PATH=/usr/local/cuda
+ENV LD_LIBRARY_PATH=/usr/local/cuda/lib64
+ENV CUDA_CACHE_DISABLE=1
+
+RUN apt-get update -qq && apt-get install -qq --no-install-recommends \
+    gfortran git ca-certificates \
+   && rm -rf /var/lib/apt/lists/*
+
+RUN git clone --depth 1 --branch ${CP2K_TAG} https://github.com/cp2k/cp2k.git /opt/cp2k
+
+WORKDIR /opt/cp2k-toolchain
+RUN cp -r /opt/cp2k/tools/toolchain/. . \
+ && sed -i 's/export ARCH_NUM="86"/export ARCH_NUM="89"/' install_cp2k_toolchain.sh \
+ && grep -q 'ARCH_NUM="89"' install_cp2k_toolchain.sh \
+ && ./install_requirements.sh ubuntu
+
+RUN ./install_cp2k_toolchain.sh \
+    --with-mpich=install \
+    --mpi-mode=mpich \
+    --enable-cuda=yes \
+    --with-libgint=install \
+    --with-sirius=install \
+    --gpu-ver=A40 \
+    -j ${NPROC} \
+    --dry-run
+
+RUN ./scripts/stage0/install_stage0.sh && rm -rf ./build
+RUN ./scripts/stage1/install_stage1.sh && rm -rf ./build
+RUN ./scripts/stage2/install_stage2.sh && rm -rf ./build
+RUN ./scripts/stage3/install_stage3.sh && rm -rf ./build
+RUN ./scripts/stage4/install_stage4.sh && rm -rf ./build
+RUN ./scripts/stage5/install_stage5.sh && rm -rf ./build
+RUN ./scripts/stage6/install_stage6.sh && rm -rf ./build
+RUN ./scripts/stage7/install_stage7.sh && rm -rf ./build
+RUN ./scripts/stage8/install_stage8.sh && rm -rf ./build
+# DBCSR 2.10 only knows K20X..H100. Mirror the toolchain's own GB10 workaround for the A40
+# slot: register it as sm_89 and reuse the A100 (Ampere) libsmm_acc parameters.
+RUN python3 - <<'EOF'
+from pathlib import Path
+p = Path("scripts/stage9/install_dbcsr.sh")
+s = p.read_text()
+block = '''      if [ "${ENABLE_CUDA}" == "__TRUE__" ] && [ "${GPUVER}" == "A40" ]; then
+        if ! grep -q "A40" CMakeLists.txt; then
+          sed -i "s/    H100)/    H100\\\\n    A40)/" CMakeLists.txt
+          sed -i "/  set(GPU_ARCH_NUMBER_H100 90)/a\\\\  set(GPU_ARCH_NUMBER_A40 89)" CMakeLists.txt
+          cp src/acc/libsmm_acc/parameters/parameters_A100.json \\
+            src/acc/libsmm_acc/parameters/parameters_A40.json
+        fi
+      fi
+'''
+anchor = "      mkdir build-cpu\n"
+assert anchor in s and "GPUVER}\" == \"A40\"" not in s
+p.write_text(s.replace(anchor, block + anchor, 1))
+EOF
+RUN ./scripts/stage9/install_stage9.sh && rm -rf ./build
+
+WORKDIR /opt/cp2k
+RUN cp tools/docker/scripts/build_cp2k.sh tools/docker/scripts/cmake_cp2k.sh . \
+ && sed -i 's/-DCP2K_WITH_GPU="${PROFILE:15}"/-DCMAKE_CUDA_ARCHITECTURES=89/' cmake_cp2k.sh \
+ && grep -q 'CMAKE_CUDA_ARCHITECTURES=89' cmake_cp2k.sh \
+ && ./build_cp2k.sh toolchain_cuda_A40 psmp
+
+RUN printf '#!/bin/bash\nsource /opt/cp2k-toolchain/install/setup\nexport PATH=/opt/cp2k/build/bin:$PATH\nexec "$@"\n' > /usr/local/bin/cp2k-env \
+ && chmod +x /usr/local/bin/cp2k-env
+ENV CP2K_DATA_DIR=/opt/cp2k/data
+WORKDIR /work
+ENTRYPOINT ["/usr/local/bin/cp2k-env"]
+CMD ["cp2k.psmp", "--version"]

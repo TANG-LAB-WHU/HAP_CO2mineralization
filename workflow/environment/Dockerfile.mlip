@@ -1,0 +1,20 @@
+# GPU MLIP screening image: MACE, MatterSim and SevenNet in separate venvs that share the
+# base image's CUDA torch, plus phonopy/pymatgen/lmdb for hull and phonon checks.
+# Build: docker build -f workflow/environment/Dockerfile.mlip -t hap-mlip:2026.10 workflow/environment
+ARG BASE=ghcr.io/deepmodeling/deepmd-kit:3.1.3_cuda129
+FROM ${BASE}
+
+RUN python -m pip install --no-cache-dir "pymatgen>=2024.8" ase phonopy lmdb pandas \
+ && python -c "import torch; open('/opt/torch-constraint.txt','w').write(f'torch=={torch.__version__}\n')"
+
+RUN python -m venv --system-site-packages /opt/venv-mace \
+ && /opt/venv-mace/bin/pip install --no-cache-dir -c /opt/torch-constraint.txt mace-torch cuequivariance-torch cuequivariance-ops-torch-cu12
+RUN python -m venv --system-site-packages /opt/venv-mattersim \
+ && /opt/venv-mattersim/bin/pip install --no-cache-dir -c /opt/torch-constraint.txt mattersim
+RUN python -m venv --system-site-packages /opt/venv-sevenn \
+ && /opt/venv-sevenn/bin/pip install --no-cache-dir -c /opt/torch-constraint.txt sevenn cuequivariance-torch cuequivariance-ops-torch-cu12
+
+ENV OMP_NUM_THREADS=4
+WORKDIR /work
+ENTRYPOINT []
+CMD ["python", "-c", "import torch; print(torch.cuda.get_device_name(0))"]
