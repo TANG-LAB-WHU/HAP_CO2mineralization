@@ -69,10 +69,15 @@ Scripts: `0.Generative_Discovery/screening/`. Tracked results: `screening/screen
 | --- | --- | --- |
 | S1 chemistry | Ca carbonate/phosphate classes, formal-charge neutral, every C in an isolated CO3 and every P in an isolated PO4, no shared O, every H on O | 2,324 → **363** |
 | S2 hull committee | MACE-MPA-0, MatterSim-5M and SevenNet-MF-OMPA each relax the candidates and 288 Alex-MP reference phases (DFT E_hull ≤ 0.1 eV/atom); E_hull ≤ 50 meV/atom in ≥ 2 models | 363 → **149** (131 unanimous; 70 carbonates, 59 phosphates, 20 carbonate-phosphates) |
-| S3 dynamics | MACE phonons (min frequency ≥ −0.3 THz on an 8³ mesh) and 5 ps 300 K NPT with CO3/PO4 intact | running |
+| S3 dynamics | MACE phonons (min frequency ≥ −0.3 THz on an 8³ mesh) and 5 ps 300 K NPT with CO3/PO4 intact; calcite, portlandite, monetite and CaO controls pass | 149 → **10** (`screening/s3_dynamics.csv`) |
 
 The three models agree closely: the median pairwise |ΔE_hull| is 2.5–3.3 meV/atom. That agreement
-does not replace DFT, because all three are trained on similar PBE data. The DFT hull with the v2 CP2K
+does not replace DFT, because all three are trained on similar PBE data.
+
+S3 survivors: CaCO3 ×2 (10 and 20 atoms), Ca2H2CO5, Ca2H6CO7, Ca2PH5O7, CaP2(H2O3)3, Ca3P2H2O9,
+CaP2(HO2)4, CaPH3O5, and one carbonate-phosphate, Ca2P2H4CO11 (formally Ca2(H2PO4)2CO3).
+Six of the ten have a lowest phonon frequency between −0.30 and −0.05 THz, close to the threshold.
+The median over all 149 tested structures is −0.96 THz. The DFT hull with the v2 CP2K
 protocol (`workflow/PIPELINE_V2.md`) remains the next gate for S3 survivors.
 
 ## Status and next gates

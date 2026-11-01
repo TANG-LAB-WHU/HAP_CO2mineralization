@@ -20,11 +20,11 @@ TYPE_MAP = ["Ca", "P", "O", "H", "C"]
 SEEDS = [11, 23, 37, 53]
 
 
-def config(train, valid, seed, steps):
+def config(train, valid, seed, steps, sel="auto"):
     return {
         "model": {
             "type_map": TYPE_MAP,
-            "descriptor": {"type": "se_e2_a", "sel": "auto", "rcut_smth": 0.5, "rcut": 6.0,
+            "descriptor": {"type": "se_e2_a", "sel": sel, "rcut_smth": 0.5, "rcut": 6.0,
                            "neuron": [25, 50, 100], "axis_neuron": 16, "resnet_dt": False,
                            "type_one_side": False, "seed": seed},
             "fitting_net": {"neuron": [240, 240, 240], "resnet_dt": True, "seed": seed},
@@ -54,6 +54,8 @@ def main():
     w.add_argument("--valid", nargs="+", type=Path, required=True)
     w.add_argument("--steps", type=int, default=400_000)
     w.add_argument("--out", type=Path, required=True)
+    w.add_argument("--sel-from", type=Path, default=None,
+                   help="previous ensemble dir: reuse its sel so --init-model weights fit (warm start)")
     t = sub.add_parser("train")
     t.add_argument("--out", type=Path, required=True)
     t.add_argument("--init-from", type=Path, default=None, help="previous iteration dir to restart weights from")
@@ -64,10 +66,13 @@ def main():
     args = parser.parse_args()
 
     if args.cmd == "write":
+        sel = "auto"
+        if args.sel_from:
+            sel = json.loads((args.sel_from / "model-0" / "out.json").read_text())["model"]["descriptor"]["sel"]
         for k, seed in enumerate(SEEDS):
             d = args.out / f"model-{k}"
             d.mkdir(parents=True, exist_ok=True)
-            (d / "input.json").write_text(json.dumps(config(args.train, args.valid, seed, args.steps), indent=2) + "\n")
+            (d / "input.json").write_text(json.dumps(config(args.train, args.valid, seed, args.steps, sel), indent=2) + "\n")
         print(f"wrote {len(SEEDS)} inputs under {args.out}")
     elif args.cmd == "train":
         for k in (args.index if args.index is not None else range(len(SEEDS))):

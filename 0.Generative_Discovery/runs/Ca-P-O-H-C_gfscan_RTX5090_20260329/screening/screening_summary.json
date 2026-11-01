@@ -46,5 +46,24 @@
       "CaP(HO)7": 2,
       "Ca2H2(CO3)3": 1
     }
+  },
+  "s3": {
+    "model": "mace-mpa-0 float64",
+    "gate": "min phonon frequency >= -0.3 THz on an 8x8x8 mesh (supercell widths >= 9 A); then 5 ps 300 K NPT Berendsen with CO3/PO4 intact and |dV/V| <= 5%; NPT skipped for phonon failures",
+    "controls": "calcite, portlandite, monetite, CaO pass (min freq 0.40, 0.40, 0.04, 1.13 THz)",
+    "input": 149,
+    "passed": 10,
+    "passed_keys": [
+      "s1_candidates:14",
+      "s1_candidates:39",
+      "s1_candidates:55",
+      "s1_candidates:70",
+      "s1_candidates:180",
+      "s1_candidates:250",
+      "s1_candidates:262",
+      "s1_candidates:273",
+      "s1_candidates:294",
+      "s1_candidates:302"
+    ]
   }
 }

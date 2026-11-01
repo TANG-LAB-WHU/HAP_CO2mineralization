@@ -91,6 +91,7 @@ def main():
     parser.add_argument("--model", default="mace-mpa-0")
     parser.add_argument("--min-width", type=float, required=True, help="converged Gamma-point width from cp2k_protocol")
     parser.add_argument("--extra", nargs="*", type=Path, default=[], help="extra bulk extxyz (calcite, S3 survivors)")
+    parser.add_argument("--only-extra", action="store_true", help="skip the built-in HAP systems")
     parser.add_argument("--temperatures", nargs="+", type=float, default=[300, 500, 700])
     parser.add_argument("--steps", type=int, default=4000)
     parser.add_argument("--stride", type=int, default=40)
@@ -100,7 +101,7 @@ def main():
     args.out.mkdir(parents=True, exist_ok=True)
     rng = np.random.default_rng(args.seed)
     calc = load_calculator(args.model, "cuda", dtype="float32")
-    systems = build_systems(args.min_width, rng)
+    systems = {} if args.only_extra else build_systems(args.min_width, rng)
     for path in args.extra:
         for k, a in enumerate(read(path, ":")):
             systems[a.info.get("system", f"{path.stem}_{k}")] = a.repeat(repeats_for(a, args.min_width))

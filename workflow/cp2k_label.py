@@ -44,6 +44,16 @@ def prepare(args):
             name = f"{path.stem}_{k:05d}"
             d = args.label_dir / name
             d.mkdir(exist_ok=True)
+            if (d / "done").exists():
+                # Finished label: keep its frame, whose orientation matches output.out
+                atoms = read(d / "frame.extxyz")
+                index.append(dict(name=name, source=str(path), frame=k, natoms=len(atoms),
+                                  system=atoms.info.get("system", path.stem),
+                                  stress="STRESS_TENSOR" in (d / "input.inp").read_text()))
+                continue
+            # CP2K 2026.2 rejects some valid cells (e.g. ASE fcc primitive vectors) with "No meaningful
+            # cell information"; the lower-triangular standard form is accepted and is only a rotation
+            atoms.set_cell(atoms.cell.standard_form()[0], scale_atoms=True)
             # Slabs (vacuum along c) get no stress; every other cell is a periodic bulk or liquid
             periodic_bulk = args.stress or not atoms.info.get("system", path.stem).startswith("hap001")
             text = cp2k_input(atoms, "label", args.cutoff, args.rel_cutoff)

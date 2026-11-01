@@ -75,6 +75,28 @@ class CellAndInputTests(unittest.TestCase):
             self.assertIn(token, text)
 
 
+class PrepareTests(unittest.TestCase):
+    def test_cell_standard_form_and_done_frames_kept(self):
+        from argparse import Namespace
+        from ase.build import bulk
+        from ase.io import read, write
+        from cp2k_label import prepare
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp = Path(tmp)
+            frames = tmp / "lime_selected.extxyz"
+            write(frames, [bulk("CaO", "rocksalt", a=4.81).repeat(3)] * 2)
+            done = tmp / "labels/lime_selected_00001"
+            done.mkdir(parents=True)
+            write(done / "frame.extxyz", read(frames, "1"))
+            (done / "input.inp").write_text("old")
+            (done / "done").touch()
+            prepare(Namespace(frames=[frames], label_dir=tmp / "labels", cutoff=800, rel_cutoff=60, stress=False))
+            cell = read(tmp / "labels/lime_selected_00000/frame.extxyz").cell.array
+            self.assertTrue(np.allclose(np.triu(cell, 1), 0) and np.all(np.diag(cell) > 0))
+            self.assertEqual((done / "input.inp").read_text(), "old")
+            self.assertTrue(np.allclose(read(done / "frame.extxyz").cell.array, read(frames, "1").cell.array))
+
+
 class WaterLayerTests(unittest.TestCase):
     def test_density_and_composition(self):
         from explore_systems import water_layer
@@ -86,6 +108,21 @@ class WaterLayerTests(unittest.TestCase):
         density = n_water / (abs(np.cross(cell_xy[0], cell_xy[1])[2]) * 9.3)
         self.assertGreater(density, 0.025)
         self.assertLess(density, 0.040)
+
+
+class HullTests(unittest.TestCase):
+    def test_hull_energy_without_elemental_references(self):
+        from cp2k_hull import hull_energy
+        # Ca2CO4 = 2 CaO + CO2 by atoms: (4/7)(-1) + (3/7)(-2)
+        e, dec = hull_energy("Ca2CO4", ["CaO", "CO2", "CaCO3"], [-1.0, -2.0, -1.0])
+        self.assertAlmostEqual(e, -10 / 7)
+        self.assertEqual([i for i, _ in dec], [0, 1])
+        # A stable CaCO3 (below the CaO-CO2 line) becomes a hull vertex
+        e, dec = hull_energy("Ca2CO4", ["CaO", "CO2", "CaCO3"], [-1.0, -2.0, -2.0])
+        self.assertEqual(sorted(i for i, _ in dec), [0, 2])
+        self.assertAlmostEqual(e, (2 * -1.0 + 5 * -2.0) / 7)
+        # Composition outside the references
+        self.assertIsNone(hull_energy("Ca2CO5", ["CaO", "CO2"], [-1.0, -2.0]))
 
 
 if __name__ == "__main__":
