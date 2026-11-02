@@ -20,9 +20,11 @@ MatterGen survivors runs beside it (`0.Generative_Discovery/screening/cp2k_hull.
 | Iteration-0 ensemble | trained (4 × 300k steps, one model at a time, about 6.8 h each); sealed test passes, see below |
 | Iteration-0 LAMMPS exploration | first run invalid (see "LAMMPS neighbour skin" below), kept in `iter-000/explore_INVALID_lammps_skin2`; rerun with skin 0 started 2026-10-31 |
 | Finite-size check | 5/20 paired labels done, paused to free the CPU; resume with `run_labels.sh` in `finite-size/labels` |
-| Iteration 1 | 153/153 labels; 4 × 100k warm-start steps (2 models at a time); sealed test passes; LAMMPS exploration (40k steps) started 2026-11-01 00:50, restarted with 3 jobs at once after its 6th job |
-| MatterGen S3 survivors in training | MACE exploration done; 90 + 40 frames labelling on the CPU from 2026-11-01 05:00, expected to join at train-3 (see "MatterGen survivors in the pipeline") |
-| MatterGen S4 DFT hull | 44 structures queued 2026-11-01 01:29; by 05:50, 7 of 10 survivors relaxed (cell optimisation converged, final single point done), references not started (see "MatterGen survivors in the pipeline") |
+| Iteration 1 | 153/153 labels; 4 × 100k warm-start steps (2 models at a time, no virial term, see below); sealed test passes; exploration (40k steps, restarted with 3 jobs at once after its 6th job): accurate 0.723, 253 candidates |
+| Iteration 2 | labelling 253 frames from 2026-11-01 11:15 (about 4 min each at 20 ranks, about 16 h); train-2 adds the virial term; explore-2 uses the TF backend |
+| MatterGen S3 survivors in training | MACE exploration done; training frames 88/90 labelled by 13:00 on 2026-11-01, 0/40 test frames; `seed-s3` paused during label-2; expected to join at train-3 (see "MatterGen survivors in the pipeline") |
+| MatterGen S4 DFT hull | 44 structures queued 2026-11-01 01:29; by 13:45, all 10 survivors and 6 of 34 references relaxed (cell optimisation converged, final single point done), no failures; 1 job × 8 ranks while the pipeline labels (see "MatterGen survivors in the pipeline") |
+| Validation (stage 7) | `dp_validate.py` written and smoke-tested on iteration-1 models; runs automatically after the final ensemble (see "Validation, stage 7") |
 
 ## Why v2
 
@@ -208,6 +210,108 @@ PyTorch LAMMPS plugin in `hap-mlip:2026.10` does not drop periodic neighbours be
 This is an inference and has not been checked upstream. Fix: `neighbor 0.0 bin`, which rebuilds the list
 every step. `dp_explore.py` now re-evaluates 5 frames per run in Python and stops if max_devi_f differs by
 more than 0.005 eV/Å. Production LAMMPS-DeePMD inputs must use the same setting.
+
+### DeePMD inference speed: TensorFlow backend for LAMMPS (2026-11-01)
+
+The PyTorch backend of DeePMD-kit 3.1.3 needs 80–100 ms per energy-and-force evaluation of HAP bulk (88 atoms,
+one compressed model). The time is the same in LAMMPS and in Python, at float32 or float64, and with the CPU
+nearly idle. A `torch.profiler` trace attributes about 75 ms per evaluation to the TorchScript interpreter
+itself (`forward` self time). The trace also shows about 1800 kernel launches and 27 ms of GPU kernels. On the
+CPU alone the same evaluation takes 80 ms. The model is therefore overhead-bound and gains little from the GPU.
+
+`dp convert-backend graph.pth graph.pb` turns the same model into a TensorFlow graph. Measured with LAMMPS on
+HAP bulk, model 0 of iteration 1, while CP2K used 28 cores:
+
+| Backend | 1 model, ms/step | 4 models (model deviation), ms/step |
+| --- | ---: | ---: |
+| PyTorch, compressed (used until now) | 93 | 134 |
+| TensorFlow, uncompressed | 21–25 | 39 |
+| TensorFlow, compressed | 22 | 56 |
+| TensorFlow, uncompressed, CPU only | 55 | — |
+
+The converted model reproduces the PyTorch model. On 12 trajectory frames (HAP(001) + water + CO2, monetite,
+HAP(001) + CO2) the largest differences are 1.3e-10 meV/atom in energy and 2.6e-13 eV/Å in force. TF
+compression keeps the forces (2.6e-7 eV/Å), but the energy is off by about 510 eV/atom: the per-type energy bias
+is lost. The compressed TF graph is not faster either, so it is not used. Three uncompressed TF 4-model jobs at
+once run at about 57 ms/step each (52 job-steps/s). The PyTorch exploration managed 18 job-steps/s.
+
+`dp_explore.py` now defaults to `--backend tf`. It converts `graph.pth` (next to the `graph-compress.pth` it is
+given) for each of the 4 models into `<out>/models/model-k.pb` and evaluates both on every starting structure.
+It stops if they differ by more than 1e-6 eV/atom or 1e-6 eV/Å, and records the check in `explore_summary.json`.
+In a 1000-step side-by-side test (3 systems, same seed), the TF and PyTorch explorations gave identical
+summaries. Along the trajectories, max_devi_f differed by at most 3e-6 eV/Å, and the TF runs took 57–61 s
+against 152–161 s. TensorFlow runs with 2 intra-op threads and 1 inter-op thread per job (`DP_*_PARALLELISM_THREADS`),
+which leaves the CPU to CP2K at the same speed.
+
+Training stays on PyTorch. A TensorFlow run of the iteration-0 model-0 input (same data, seed, sel and schedule) trained at 9.6
+steps/s against 3.9 for PyTorch under the same CPU load. It diverged, though: the energy RMSE rose from 0.7 to
+13 eV/atom between steps 1000 and 5000, and it stopped with NaN at step 6000
+(`benchmarks/tf-train-ab/model-0`, kept as a negative result). The two backends also apply this loss
+differently (next section), so the run is not a like-for-like comparison.
+
+### Virial loss was off in iterations 0–1 (found 2026-11-01)
+
+`dp_ensemble.py` asked for `start_pref_v 0.0, limit_pref_v 0.02`, a virial weight that rises from 0 to 0.02 as
+the learning rate decays. DeePMD-kit 3.1.3 PyTorch keeps a loss term only when both of its prefactors are nonzero
+(`deepmd/pt/loss/ener.py`, `has_v = start_pref_v != 0.0 and limit_pref_v != 0.0`). TensorFlow keeps it when
+either is nonzero. The iteration-0 and iteration-1 ensembles were therefore trained on energies and forces only:
+their `lcurve.out` files have no `rmse_v` column. That holds even though the bulk labels include stress, and the
+strained copies were added for NPT. The sealed-test numbers above are force and energy RMSEs and still stand.
+How well those models predict stress has not been measured. In a 400-step check, iteration-1 model 0 has a
+virial RMSE of about 0.015 eV/atom on its training data. For HAP bulk that is roughly 0.2 GPa.
+
+Fix, effective from train-2: `start_pref_v 2e-4`, which keeps the intended ramp to within 1 % and switches the
+term on. A warm-started PyTorch run now reports `rmse_v`. `tests/test_pipeline_v2.py` checks that every term
+has two nonzero prefactors. The final ensemble trains from scratch with the virial term from the start.
+
+### Validation, stage 7 (`dp_validate.py`, 2026-11-01)
+
+The orchestrator runs the gates after `test-final`, with model 0 of the final ensemble on the TF backend
+(converted and checked as above):
+
+- **Bulk phases:** 0 K `box/relax tri` at 1 atm. Then NPT at 300 K and 1 atm (`tri`, `flip no`), followed by NVE.
+  Both use the exploration cell: the ≥ 8 Å label cell, the same cell as the CP2K reference.
+- **Slabs** (`hap001*`): NVT at 300 K, followed by NVE.
+- **Run lengths:** 500 ps for the w8 systems, which carry the formal gates, and 200 ps for the extra (S3) systems.
+  Every NVE segment is 50 ps.
+- **Lattice references:** `cp2k_hull.py cells`. It picks the DFT-hull structure with the same composition, atom
+  count and lattice-vector order (lengths within 5 %, angles within 3°) that also passes a StructureMatcher fit.
+  It then exports that structure's CP2K-relaxed cell (`opt-1.restart`) with its convergence flag. The pipeline
+  `hap_bulk` matches ref-281 (mp-41472, P6_3), calcite ref-186, portlandite ref-218, monetite ref-272 and
+  CaO ref-118; each S3 survivor matches its own candidate. CaCO3_20 (mp-556235) and the two slabs have no
+  reference.
+- **Gates** (thresholds as in the gate table above):
+  - lattice: lengths, and also volume, of the NPT average after 100 ps, per input cell, within 1 % of the CP2K
+    cell (the formal one is HAP a and c);
+  - geometry on every dumped frame (1 ps): the v1 gate of `refine_pipeline.py`, which needs a minimum distance
+    > 0.7 Å, 4 O within 1.9 Å of every P, and the nearest O of every H at 0.8–1.2 Å. Every C must also have 2 or
+    3 O within 1.6 Å, so both CO2 and CO3 pass;
+  - NVE drift ≤ 1 meV/atom/ps.
+- **Reported, not gated:** the 4-model deviation on 100 dumped frames.
+
+A smoke test with the iteration-1 models (2 ps NPT/NVT, 1 ps NVE; `validation-smoke/iter-001`) ran every stage
+for calcite, portlandite, HAP bulk, HAP(001) + CO2 and s3_055. It found two problems, both fixed:
+
+- NPT flipped the rhombohedral calcite cell into another set of basis vectors. `flip no` keeps the basis, and
+  the volume comparison does not depend on it.
+- The default 8-digit thermo output rounded the NVE total energy to 0.01 eV per cell. The output now has
+  12 digits.
+
+The smoke-test numbers do not test the gates.
+
+Cost: with ≥ 14 Å supercells (640–720 atoms), one model on the TF backend took 50–100 ms per step with 3 jobs at
+once, about 22 h per 500 ps run. On 88-atom HAP bulk, one model ran at 24 ms/step alone. With 3 jobs at once it ran
+at 47 ms/step each (64 job-steps/s, 71 % GPU), and with 6 jobs at 82 ms/step (74 job-steps/s, 91 % GPU); CP2K
+used 28 cores throughout. The validation therefore runs on the exploration cells, 3 jobs at once, and the
+lattice comparison is cell for cell. The w8 set (8 × 550 ps) and the S3 set (10 × 250 ps) together take an
+estimated 2.5 days.
+
+The orchestrator was restarted in label-2 (2026-11-01 13:45) to load this code. One frame in progress was
+recomputed. The restart rules are now:
+
+- a training container still running when the orchestrator restarts is waited for, not restarted;
+- an interrupted LAMMPS exploration run (no "Loop time") is moved to `*.interrupted-<k>` and rerun;
+- a `seed-*` container left paused by a stopped label step is resumed when the next label step ends.
 
 Active learning follows DP-GEN: a 4-model ensemble, with frames whose maximum force deviation
 falls between trust_lo = 0.10 and trust_hi = 0.30 eV/Å sent to CP2K. The DP-GEN water example

@@ -110,6 +110,63 @@ class WaterLayerTests(unittest.TestCase):
         self.assertLess(density, 0.040)
 
 
+class EnsembleConfigTests(unittest.TestCase):
+    def test_every_loss_term_is_active_in_pytorch(self):
+        sys.path.insert(0, str(ROOT / "3.ML_AIMD/Step3_mlip_deepmd"))
+        from dp_ensemble import config
+        loss = config(["a"], ["b"], 11, 1000)["loss"]
+        # DeePMD-kit 3.1.3 PyTorch keeps a term only when both prefactors are nonzero
+        for term in "efv":
+            self.assertTrue(loss[f"start_pref_{term}"] != 0 and loss[f"limit_pref_{term}"] != 0, term)
+
+
+class ValidateTests(unittest.TestCase):
+    def setUp(self):
+        sys.path.insert(0, str(ROOT / "3.ML_AIMD/Step3_mlip_deepmd"))
+
+    def test_thermo_blocks_and_drift(self):
+        from dp_validate import drift, thermo_blocks
+        with tempfile.TemporaryDirectory() as tmp:
+            log = Path(tmp) / "log.lammps"
+            rows = "\n".join(f"{s} 300.0 {-100.0 + 0.002 * s:.12g}" for s in range(0, 2001, 20))
+            log.write_text(f"Step Temp TotEng\n{rows}\nLoop time of 1.0 on 1 procs\n"
+                           "WARNING: x\nStep Temp TotEng\n0 1 2\nLoop time of 1.0\n")
+            blocks = thermo_blocks(log)
+            self.assertEqual(len(blocks), 2)
+            self.assertEqual(len(blocks[0]["Step"]), 101)
+            t = blocks[0]["Step"] * 0.5 / 1000  # ps
+            # 0.002 eV per step = 4 eV/ps; over 100 atoms that is 40 meV/atom/ps
+            self.assertAlmostEqual(drift(t, blocks[0]["TotEng"], 100), 40.0, places=6)
+
+    def test_geometry_gate(self):
+        from ase import Atoms
+        from dp_validate import geometry_gate
+        po4 = [(0, 0, 0)] + [tuple(1.55 * np.array(v) / np.sqrt(3)) for v in ([1, 1, 1], [1, -1, -1], [-1, 1, -1], [-1, -1, 1])]
+        good = Atoms("PO4", positions=np.array(po4) + 5, cell=[10, 10, 10], pbc=True)
+        good += Atoms("OH", positions=[(2, 2, 2), (2.97, 2, 2)])
+        good += Atoms("CO2", positions=[(8, 2, 2), (9.16, 2, 2), (6.84, 2, 2)])
+        self.assertEqual(geometry_gate(good), [])
+        bad = good.copy()
+        bad.positions[1] += [0.6, 0.6, 0.6]  # one P-O bond broken
+        bad.positions[6] = (3.4, 2, 2)  # H 1.4 A from its O
+        fails = geometry_gate(bad)
+        self.assertTrue(any(f.startswith("P0 has 3 O") for f in fails))
+        self.assertTrue(any(f.startswith("H6 nearest O") for f in fails))
+
+    def test_repeats_and_volume(self):
+        from ase.build import bulk
+        from dp_validate import lattice_compare, repeats
+        a = bulk("CaO", "rocksalt", a=4.8)
+        rep = repeats(a, 14.0)
+        widths = [a.cell.volume / np.linalg.norm(np.cross(a.cell[(k + 1) % 3], a.cell[(k + 2) % 3])) for k in range(3)]
+        self.assertTrue(all(r * w >= 14.0 for r, w in zip(rep, widths)))
+        ref = a.cell.cellpar()
+        md = np.r_[ref[:3] * 1.01 * np.array(rep), ref[3:]]
+        cmp_ = lattice_compare(md, ref, rep)
+        self.assertTrue(np.allclose(cmp_["rel_length_dev"], 0.01, atol=1e-6))
+        self.assertAlmostEqual(cmp_["rel_volume_dev"], 1.01 ** 3 - 1, places=4)
+
+
 class HullTests(unittest.TestCase):
     def test_hull_energy_without_elemental_references(self):
         from cp2k_hull import hull_energy

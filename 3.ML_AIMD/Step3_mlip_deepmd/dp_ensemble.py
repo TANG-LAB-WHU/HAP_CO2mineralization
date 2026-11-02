@@ -30,8 +30,11 @@ def config(train, valid, seed, steps, sel="auto"):
             "fitting_net": {"neuron": [240, 240, 240], "resnet_dt": True, "seed": seed},
         },
         "learning_rate": {"type": "exp", "start_lr": 1e-3, "stop_lr": 3e-8, "decay_steps": 5000},
+        # DeePMD-kit 3.1.3 PyTorch drops a loss term unless both its start and limit prefactors are nonzero
+        # (TensorFlow needs either), so start_pref_v 0.0 trained iterations 0-1 without virials. 2e-4 keeps the
+        # intended 0 -> 0.02 ramp to within 1 % and switches the term on
         "loss": {"type": "ener", "start_pref_e": 0.02, "limit_pref_e": 1.0, "start_pref_f": 1000.0,
-                 "limit_pref_f": 1.0, "start_pref_v": 0.0, "limit_pref_v": 0.02},
+                 "limit_pref_f": 1.0, "start_pref_v": 2e-4, "limit_pref_v": 0.02},
         "training": {
             "training_data": {"systems": [Path(p).as_posix() for p in train], "batch_size": "auto"},
             "validation_data": {"systems": [Path(p).as_posix() for p in valid], "batch_size": "auto", "numb_btch": 4},

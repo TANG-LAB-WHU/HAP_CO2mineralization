@@ -50,10 +50,13 @@ def label(run: Path, label_dir: Path, frames, data_out: Path, args, valid_fracti
     if not (label_dir / "index.csv").exists():
         sh([py, ROOT / "workflow/cp2k_label.py", "prepare", "--frames", *frames, "--label-dir", label_dir,
             "--cutoff", args.cutoff, "--rel-cutoff", args.rel_cutoff])
-    # Seed-label containers (seed-<n>) pause while the pipeline labels, so the two never share the CPU
+    # Seed-label containers (seed-<n>) pause while the pipeline labels, so the two never share the CPU. A seed
+    # already paused was left so by an orchestrator stopped during a label step; it resumes here afterwards too
+    paused = seed_containers("paused")
     seeds = seed_containers("running")
     for s in seeds:
         sh(["docker", "pause", s])
+    seeds += paused
     try:
         sh(["docker", "run", "--rm", "--shm-size=4g", "-v", f"{label_dir.resolve().as_posix()}:/data", CP2K_IMAGE,
             "bash", "/data/run_labels.sh", "/data", args.ranks, 1], env={"MSYS_NO_PATHCONV": "1", **os.environ})
@@ -101,8 +104,11 @@ def main():
             if f"label-extra-{n}" in state["done"]:
                 continue
             # A seed-<n> container labels these frames on the CPU while the GPU trains; join the next training
-            # step instead of blocking this one (the final ensemble waits for it)
-            if seed_containers("running", "paused", name=f"seed-{n}$"):
+            # step instead of blocking this one (the final ensemble waits for it). Outside label() nothing should
+            # hold it paused
+            for s in seed_containers("paused", name=f"seed-{n}$"):
+                sh(["docker", "unpause", s])
+            if seed_containers("running", name=f"seed-{n}$"):
                 if not wait:
                     print(f"extra {n}: seed-{n} still labelling; deferred to the next training step", flush=True)
                     continue
@@ -136,6 +142,11 @@ def main():
         for start in range(0, 4, args.gpu_jobs):
             names = [f"dp-{tag}-{k}" for k in range(start, min(4, start + args.gpu_jobs))]
             for name in names:
+                # After an orchestrator restart a model still training keeps going; it is waited for below
+                st = subprocess.run(["docker", "inspect", "-f", "{{.State.Running}}", name], capture_output=True, text=True)
+                if st.stdout.strip() == "true":
+                    print(f"{name} still running; waiting for it", flush=True)
+                    continue
                 subprocess.run(["docker", "rm", "-f", name], capture_output=True)
                 docker_mlip(["python", in_container(dp / "dp_ensemble.py"), "train", "--out", in_container(out),
                              "--index", name.rsplit("-", 1)[1], *extra], name=name, detach=True)
@@ -197,6 +208,27 @@ def main():
     if "test-final" not in state["done"]:
         test_ensemble(run / "final/train")
         mark("test-final")
+
+    # Stage 7: lattice, stability and NVE-drift gates of the final ensemble (dp_validate.py). Lattice references
+    # are the CP2K cell optimisations of the matching DFT-hull structures. The w8 systems carry the formal gates
+    # (500 ps); the extra systems are checked for 200 ps
+    groups = [("w8", sorted((run / "exploration/w8").glob("*_initial.extxyz")), 500)] + [
+        (n, sorted((run / f"exploration/{n}").glob("*_initial.extxyz")), 200) for n in extras()]
+    models = [in_container(run / f"final/train/model-{k}/graph-compress.pth") for k in range(4)]
+    for tag, structures, ps in groups:
+        if f"validate-{tag}" in state["done"]:
+            continue
+        v = run / f"final/validate/{tag}"
+        v.mkdir(parents=True, exist_ok=True)
+        ref = []
+        if (run / "dft-hull/index.json").exists():
+            sh([sys.executable, ROOT / "0.Generative_Discovery/screening/cp2k_hull.py", "cells", "--out", run / "dft-hull",
+                "--match", *structures, "--write", v / "reference_cells.extxyz"])
+            ref = ["--reference", in_container(v / "reference_cells.extxyz")]
+        docker_mlip(["python", in_container(dp / "dp_validate.py"), "--models", *models,
+                     "--structures", *map(in_container, structures), *ref, "--md-ps", str(ps),
+                     "--parallel", str(args.explore_jobs), "--out", in_container(v)])
+        mark(f"validate-{tag}", **json.loads((v / "validation_summary.json").read_text())["formal"])
 
 
 if __name__ == "__main__":

@@ -5,6 +5,11 @@ writes model_devi.out. Frames with trust_lo <= max_devi_f < trust_hi become labe
 candidates (capped per run, evenly spread in time); frames above trust_hi are counted as
 failures and never labelled. Run inside hap-mlip.
 
+With --backend tf (the default) each PyTorch model is converted to the TensorFlow backend
+(`dp convert-backend` of the uncompressed graph.pth next to it) and checked against the original
+before use: the 3.1.3 PyTorch backend spends most of its time in the TorchScript interpreter
+(about 90 ms per step for 88 atoms on the RTX 4090; TensorFlow about 25 ms).
+
   python dp_explore.py --models iter-000/model-*/graph-compress.pth --structures init/*.extxyz \
       --temperatures 300 500 --steps 20000 --out iter-000/explore
 """
@@ -12,6 +17,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import subprocess
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
@@ -23,15 +29,41 @@ from ase.io import read, write
 TYPE_MAP = ["Ca", "P", "O", "H", "C"]
 
 
-def python_devi(models, frames):
-    """DP-GEN max_devi_f evaluated with the Python API, to cross-check the LAMMPS plugin."""
+def eval_ef(pot, a):
+    types = [TYPE_MAP.index(s) for s in a.get_chemical_symbols()]
+    e, f = pot.eval(a.positions.reshape(1, -1), a.cell.array.reshape(1, -1), types)[:2]
+    return float(e.item()), f.reshape(-1, 3)
+
+
+def tf_models(models, out, structures, tol):
+    """Convert the PyTorch models to TensorFlow and check that they give the same energies and forces."""
     from deepmd.infer import DeepPot
-    pots = [DeepPot(str(m)) for m in models]
+    out.mkdir(parents=True, exist_ok=True)
+    pbs, checks = [], []
+    for k, m in enumerate(models):
+        # convert-backend needs the uncompressed model, which dp_ensemble writes next to the compressed one
+        src = m.with_name("graph.pth") if m.name == "graph-compress.pth" else m
+        pb = out / f"model-{k}.pb"
+        if not pb.exists():
+            subprocess.run(["dp", "convert-backend", str(src), str(pb)], check=True,
+                           stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
+        pt, tf = DeepPot(str(src)), DeepPot(str(pb))
+        de, df = 0.0, 0.0
+        for a in structures:
+            (e1, f1), (e2, f2) = eval_ef(pt, a), eval_ef(tf, a)
+            de, df = max(de, abs(e1 - e2) / len(a)), max(df, float(np.abs(f1 - f2).max()))
+        checks.append(dict(source=str(src), converted=str(pb), max_abs_dE_eV_per_atom=de, max_abs_dF_eV_A=df))
+        if de > tol or df > tol:
+            raise SystemExit(f"{pb}: TensorFlow model differs from {src} by {de:.2e} eV/atom, {df:.2e} eV/A")
+        pbs.append(pb)
+    return pbs, checks
+
+
+def python_devi(pots, frames):
+    """DP-GEN max_devi_f evaluated with the Python API, to cross-check the LAMMPS plugin."""
     out = []
     for a in frames:
-        types = [TYPE_MAP.index(s) for s in a.get_chemical_symbols()]
-        f = np.array([p.eval(a.positions.reshape(1, -1), a.cell.array.reshape(1, -1), types)[1].reshape(-1, 3)
-                      for p in pots])
+        f = np.array([eval_ef(p, a)[1] for p in pots])
         out.append(float(np.sqrt(((f - f.mean(0)) ** 2).sum(-1).mean(0)).max()))
     return np.array(out)
 
@@ -72,9 +104,17 @@ def main():
     parser.add_argument("--n-check", type=int, default=5, help="frames re-evaluated in Python per run")
     parser.add_argument("--check-tol", type=float, default=0.005, help="eV/A")
     parser.add_argument("--parallel", type=int, default=1, help="LAMMPS runs at once on the GPU")
+    parser.add_argument("--backend", choices=["tf", "pt"], default="tf", help="DeePMD backend for LAMMPS and the check")
+    parser.add_argument("--convert-tol", type=float, default=1e-6, help="eV/atom and eV/A, TF vs PyTorch")
     parser.add_argument("--out", type=Path, required=True)
     args = parser.parse_args()
-    models = " ".join(str(m.resolve()) for m in args.models)
+    from deepmd.infer import DeepPot
+    model_files, convert = [m.resolve() for m in args.models], []
+    if args.backend == "tf":
+        model_files, convert = tf_models(model_files, args.out.resolve() / "models",
+                                         [read(p) for p in args.structures], args.convert_tol)
+    pots = [DeepPot(str(m)) for m in model_files]
+    models = " ".join(map(str, model_files))
     masses = "\n".join(f"mass {i + 1} {atomic_masses[atomic_numbers[s]]:.4f}" for i, s in enumerate(TYPE_MAP))
     summary, candidates = {}, []
     runs = []
@@ -90,9 +130,25 @@ def main():
             runs.append((name, temp, d, atoms0))
     # The runs are independent (each has its own seed); one leaves the GPU mostly idle, so --parallel share it.
     # Analysis follows in input order
+    # TensorFlow otherwise starts a thread per core in each job; fewer threads leave the CPU to CP2K (same speed)
+    env = {"DP_INTRA_OP_PARALLELISM_THREADS": "2", "DP_INTER_OP_PARALLELISM_THREADS": "1", **os.environ}
+    # A run counts as done once LAMMPS has finished it ("Loop time"); output left by an interrupted run (for
+    # example a stopped orchestrator) is kept under *.interrupted-<k> and the run starts again
+    for _, _, d, _ in runs:
+        log = d / "log.lammps"
+        if (d / "model_devi.out").exists() and not (log.exists() and "Loop time" in log.read_text(errors="replace")):
+            k = 1
+            while d.with_name(f"{d.name}.interrupted-{k}").exists():
+                k += 1
+            keep = d.with_name(f"{d.name}.interrupted-{k}")
+            keep.mkdir()
+            for f in ("model_devi.out", "traj.dump", "log.lammps"):
+                if (d / f).exists():
+                    (d / f).rename(keep / f)
+            print(f"{d.name}: interrupted output kept in {keep.name}; rerunning", flush=True)
     with ThreadPoolExecutor(args.parallel) as pool:
         list(pool.map(lambda d: subprocess.run(["lmp", "-in", "in.lmp", "-log", "log.lammps"], cwd=d, check=False,
-                                               stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT),
+                                               env=env, stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT),
                       [d for _, _, d, _ in runs if not (d / "model_devi.out").exists()]))
     for name, temp, d, atoms0 in runs:
         if not (d / "model_devi.out").exists():
@@ -108,7 +164,7 @@ def main():
         check = np.unique(np.linspace(0, len(frames) - 1, args.n_check).round().astype(int))
         for f in frames:
             f.set_chemical_symbols(symbols)
-        py = python_devi(args.models, [frames[k] for k in check])
+        py = python_devi(pots, [frames[k] for k in check])
         mismatch = float(np.abs(py - fmax[check]).max())
         if mismatch > args.check_tol:
             raise SystemExit(f"{d.name}: LAMMPS max_devi_f differs from Python by {mismatch:.4f} eV/A")
@@ -121,14 +177,17 @@ def main():
             f.calc = None
             f.info = {"system": name, "temperature_K": temp, "step": int(step[k]), "max_devi_f": float(fmax[k])}
             candidates.append(f)
-        summary[d.name] = dict(frames=len(fmax), accurate=float(accurate.mean()), candidate=float(len(cand) / len(fmax)),
+        complete = "Loop time" in (d / "log.lammps").read_text(errors="replace") if (d / "log.lammps").exists() else False
+        summary[d.name] = dict(frames=len(fmax), lammps_complete=complete,
+                               accurate=float(accurate.mean()), candidate=float(len(cand) / len(fmax)),
                                failed=float(failed.mean()), picked=len(pick), max_devi_f_max=float(fmax.max()),
                                python_check_max_abs_diff=mismatch)
         print(d.name, summary[d.name], flush=True)
     write(args.out / "candidates.extxyz", candidates)
     acc = np.mean([s["accurate"] for s in summary.values() if "accurate" in s]) if summary else 0.0
     (args.out / "explore_summary.json").write_text(json.dumps(dict(runs=summary, mean_accurate=acc,
-                                                                    n_candidates=len(candidates)), indent=2) + "\n")
+                                                                    n_candidates=len(candidates), backend=args.backend,
+                                                                    conversion_check=convert), indent=2) + "\n")
     print(f"accurate fraction {acc:.3f}; {len(candidates)} candidates")
 
 

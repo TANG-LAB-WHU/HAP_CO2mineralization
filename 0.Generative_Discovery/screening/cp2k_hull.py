@@ -363,6 +363,49 @@ def collect(args):
             print(f"{r['name']:28s} E_hull {r['ehull_meV_atom']:7.1f} meV/atom  (fs {r.get('ehull_fs_meV_atom', 'n/a')})  -> {r['decomposition']}")
 
 
+def cells(args):
+    """CP2K-relaxed cells of the hull structures that match the given structures (lattice references, dp_validate).
+
+    A match needs the same composition and atom count, lattice vectors in the same order (lengths within 5 %,
+    angles within 3 degrees of the hull start cell) and a pymatgen StructureMatcher fit.
+    """
+    from ase.io import read, write
+    from pymatgen.analysis.structure_matcher import StructureMatcher
+    from pymatgen.io.ase import AseAtomsAdaptor
+    index = json.loads((args.out / "index.json").read_text())
+    starts = {r["name"]: read(args.out / r["name"] / "opt/start.extxyz") for r in index}
+    matcher = StructureMatcher(ltol=0.2, stol=0.3, angle_tol=5)
+    found = []
+    for path in args.match:
+        a = read(path)
+        name = path.stem.replace("_initial", "")
+        hit = None
+        for r in index:
+            b = starts[r["name"]]
+            if len(b) != len(a) or b.get_chemical_formula() != a.get_chemical_formula():
+                continue
+            pa, pb = a.cell.cellpar(), b.cell.cellpar()
+            if np.any(np.abs(pa[:3] - pb[:3]) > 0.05 * pb[:3]) or np.any(np.abs(pa[3:] - pb[3:]) > 3.0):
+                continue
+            if matcher.fit(AseAtomsAdaptor.get_structure(a), AseAtomsAdaptor.get_structure(b)):
+                hit = r
+                break
+        if hit is None:
+            print(f"{name}: no matching hull structure")
+            continue
+        d = args.out / hit["name"] / "opt"
+        if not (d / "done").exists():
+            print(f"{name}: {hit['name']} cell optimisation not finished")
+            continue
+        converged = "GEOMETRY OPTIMIZATION COMPLETED" in "".join(o.read_text(errors="replace") for o in outputs(d))
+        relaxed = last_frame(d)
+        relaxed.info = dict(system=name, source=hit["name"], entry_id=hit["entry_id"], opt_converged=converged)
+        found.append(relaxed)
+        print(f"{name}: {hit['name']} ({hit['entry_id']}), converged {converged}, cell {relaxed.cell.cellpar().round(3).tolist()}")
+    write(args.write, found)
+    print(f"wrote {len(found)} reference cells to {args.write}")
+
+
 def main():
     parser = argparse.ArgumentParser(description="CP2K hull for S3 survivors")
     sub = parser.add_subparsers(dest="cmd", required=True)
@@ -384,10 +427,13 @@ def main():
     for q in (p, r):
         q.add_argument("--cutoff", type=int, default=800)
         q.add_argument("--rel-cutoff", type=int, default=60)
-    for q in (p, r, sub.add_parser("collect")):
+    c = sub.add_parser("cells")
+    c.add_argument("--match", nargs="+", type=Path, required=True, help="structures to find in the hull (extxyz)")
+    c.add_argument("--write", type=Path, required=True)
+    for q in (p, r, c, sub.add_parser("collect")):
         q.add_argument("--out", type=Path, required=True)
     args = parser.parse_args()
-    {"prepare": prepare, "run": run, "collect": collect}[args.cmd](args)
+    {"prepare": prepare, "run": run, "collect": collect, "cells": cells}[args.cmd](args)
 
 
 if __name__ == "__main__":
