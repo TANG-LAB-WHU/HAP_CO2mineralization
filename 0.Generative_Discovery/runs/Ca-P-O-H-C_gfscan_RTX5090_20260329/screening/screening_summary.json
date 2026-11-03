@@ -65,5 +65,51 @@
       "s1_candidates:294",
       "s1_candidates:302"
     ]
+  },
+  "s4": {
+    "method": "CP2K 2026.2 PBE-D3(BJ), DZVP-MOLOPT-SR-GTH, 800/60 Ry, Gamma point, widths >= 8 A; cell optimisation (BFGS, 1 atm) from the S2 MACE geometry, then a final single point; >= 12 A single point at the start geometry for the Gamma finite-size correction (survivors and tier-1 references)",
+    "gate": "E_hull <= 50 meV/atom against the lower convex envelope of the 34 computed references (CaO-P2O5-CO2-H2O)",
+    "references": {
+      "tier1": 10,
+      "tier2": 24
+    },
+    "all_jobs_ok": true,
+    "input": 10,
+    "passed": 8,
+    "passed_keys": [
+      "s1_candidates:14",
+      "s1_candidates:39",
+      "s1_candidates:55",
+      "s1_candidates:70",
+      "s1_candidates:250",
+      "s1_candidates:273",
+      "s1_candidates:294",
+      "s1_candidates:302"
+    ],
+    "ehull_meV_atom": {
+      "s1_candidates:14": 32.8,
+      "s1_candidates:39": 39.7,
+      "s1_candidates:55": 15.8,
+      "s1_candidates:70": 36.1,
+      "s1_candidates:180": 68.0,
+      "s1_candidates:250": 47.0,
+      "s1_candidates:262": 60.9,
+      "s1_candidates:273": 26.3,
+      "s1_candidates:294": 41.7,
+      "s1_candidates:302": 42.5
+    },
+    "ehull_fs_meV_atom": {
+      "s1_candidates:14": 33.8,
+      "s1_candidates:39": 39.8,
+      "s1_candidates:55": 14.9,
+      "s1_candidates:70": 37.4,
+      "s1_candidates:180": 67.2,
+      "s1_candidates:250": 46.9,
+      "s1_candidates:262": 60.9,
+      "s1_candidates:273": 26.1,
+      "s1_candidates:294": 41.3,
+      "s1_candidates:302": 42.2
+    },
+    "run_dir": ".research-runs/pipeline-v2/dft-hull (not in Git); table: screening/s4_dft_hull.csv"
   }
 }

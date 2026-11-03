@@ -19,11 +19,11 @@ MatterGen survivors runs beside it (`0.Generative_Discovery/screening/cp2k_hull.
 | Sealed test labels | done: 83/84 (one portlandite frame with SCF not converged is excluded) |
 | Iteration-0 ensemble | trained (4 × 300k steps, one model at a time, about 6.8 h each); sealed test passes, see below |
 | Iteration-0 LAMMPS exploration | first run invalid (see "LAMMPS neighbour skin" below), kept in `iter-000/explore_INVALID_lammps_skin2`; rerun with skin 0 started 2026-10-31 |
-| Finite-size check | 5/20 paired labels done, paused to free the CPU; resume with `run_labels.sh` in `finite-size/labels` |
+| Finite-size check | 6/20 paired labels done. Resumed 2026-11-02 22:52 as container `seed-fs` (24 ranks) and paused at 23:11 because it halved training speed. It now runs only while a LAMMPS exploration holds the GPU, gated by a watcher logged as `fs-gate` in the pipeline log |
 | Iteration 1 | 153/153 labels; 4 × 100k warm-start steps (2 models at a time, no virial term, see below); sealed test passes; exploration (40k steps, restarted with 3 jobs at once after its 6th job): accurate 0.723, 253 candidates |
-| Iteration 2 | labelling 253 frames from 2026-11-01 11:15 (about 4 min each at 20 ranks, about 16 h); train-2 adds the virial term; explore-2 uses the TF backend |
-| MatterGen S3 survivors in training | MACE exploration done; training frames 88/90 labelled by 13:00 on 2026-11-01, 0/40 test frames; `seed-s3` paused during label-2; expected to join at train-3 (see "MatterGen survivors in the pipeline") |
-| MatterGen S4 DFT hull | 44 structures queued 2026-11-01 01:29; by 13:45, all 10 survivors and 6 of 34 references relaxed (cell optimisation converged, final single point done), no failures; 1 job × 8 ranks while the pipeline labels (see "MatterGen survivors in the pipeline") |
+| Iteration 2 | labels 251/253, done 2026-11-02 07:40 (about 5 min each at 20 ranks while the hull held 8). Two interface frames failed with SCF not converged after 1050 steps (`candidates_00056` hap001_co2, `candidates_00121` hap001_water_co2); kept and excluded. train-2 (virial term on) started 07:40. Models 0–1 trained at 1.0 s/batch while `seed-s3` and the hull held 28 CPU ranks, 0.50–0.56 with the hull's 8 ranks, and 0.32 with the CPU idle (see "DeePMD training and CPU load"); models 2–3 follow |
+| MatterGen S3 survivors in training | MACE exploration done; training frames 90/90 and test frames 40/40 labelled (`seed-s3` exited 2026-11-02 about 11:00); deferred by train-2, joins at train-3 (see "MatterGen survivors in the pipeline") |
+| MatterGen S4 DFT hull | done 2026-11-02 22:51: 44/44 cell optimisations converged, every final single point converged. 8 of 10 survivors pass E_hull ≤ 50 meV/atom; s3_262 (60.9) and s3_180, the only carbonate-phosphate (68.0), fail. None is on the hull. Table and comparison with S2 in the MatterGen run README |
 | Validation (stage 7) | `dp_validate.py` written and smoke-tested on iteration-1 models; runs automatically after the final ensemble (see "Validation, stage 7") |
 
 ## Why v2
@@ -264,6 +264,29 @@ Fix, effective from train-2: `start_pref_v 2e-4`, which keeps the intended ramp 
 term on. A warm-started PyTorch run now reports `rmse_v`. `tests/test_pipeline_v2.py` checks that every term
 has two nonzero prefactors. The final ensemble trains from scratch with the virial term from the start.
 
+### DeePMD training and CPU load (2026-11-02)
+
+Each DeePMD-PyTorch training process keeps one CPU thread busy (`docker stats` about 99 %, GPU about 43 %), so
+any CP2K work on the CPU slows it. Per model, train-2 with two models at once:
+
+| Other CPU work | Batches | s/batch |
+| --- | --- | ---: |
+| `seed-s3` (20 ranks) + hull (8 ranks) | first ~10k | 1.0 |
+| hull (8 ranks) | 29k–90k | 0.50–0.56 |
+| finite-size labels (24 ranks) | 90k–91k | 1.06–1.14 |
+| none | 91k–92k | 0.32–0.33 |
+
+So the plan of labelling on the CPU while the GPU trains cost train-2 about a factor of 2. From now on CPU jobs
+outside the pipeline's own labels run only during LAMMPS exploration. The TF-backend timings above were measured
+while CP2K used 28 cores, though how much that load slows exploration has not been measured. The hull is finished and `seed-s3` has exited, which leaves only the
+finite-size labels, gated to exploration.
+
+With the CPU idle, train-2 still takes 0.32 s/batch against 0.154 in train-1. The difference is not isolated.
+train-2 adds the virial term and has 23 training systems instead of 15, with a mean of 133 atoms per batch
+instead of 124. DeePMD computes the virial in the forward pass whether or not the loss uses it
+(`deepmd/pt/model/model/transform_output.py`), so the loss term alone should add little. A clean A/B needs the
+GPU to itself and has not been run.
+
 ### Validation, stage 7 (`dp_validate.py`, 2026-11-01)
 
 The orchestrator runs the gates after `test-final`, with model 0 of the final ensemble on the TF backend
@@ -370,7 +393,9 @@ Alex-MP phase mp-556235. The 10 survivors now join as the extra system set `s3`.
 - **Scheduling:** 3 jobs × 8 MPI ranks while the pipeline is neither labelling nor training, and 1 × 8 otherwise
   (`seed-s3` counts as labelling; the switch at 05:00 on 2026-11-01 preempted 2 jobs as intended).
   A stopped cell optimisation resumes from its restart file. Tested on CaO: it continued at step 2 with the
-  wavefunction restart.
+  wavefunction restart. The 8 ranks during training were not free: they slowed train-2 from 0.32 to 0.50–0.56
+  s/batch (see "DeePMD training and CPU load").
+- **Result:** see the MatterGen run README (S4 row and table) and `screening/s4_dft_hull.csv` there.
 
 ## Stages
 
