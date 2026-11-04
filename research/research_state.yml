@@ -1,7 +1,7 @@
 schema_version: 1
-last_updated: 2026-10-17
+last_updated: 2026-11-04
 active_branch: shawn_dev
-workflow_mode: existing_computational_results_publication
+workflow_mode: local_gpu_active_learning_with_results_publication
 
 project:
   short_name: HAP_CO2mineralization
@@ -19,23 +19,23 @@ research_question: >-
   investigation for interfacial CO2 mineralization, and what atomistic mechanisms
   control their behavior under hydration?
 
-current_stage: local_development_results_published_production_unqualified
-current_decision: preserve_negative_results_and_require_independent_validation_before_production
+current_stage: pipeline_v2_active_learning_iteration_3_in_progress_production_unqualified
+current_decision: preserve_negative_results_and_require_all_pipeline_v2_gates_on_the_final_ensemble_before_production
 
 compute:
-  default_backend: local_lightweight
-  local_profile: workflow/profiles/local.yaml
+  default_backend: shawn_pc_local_docker
+  local_profile: workflow/profiles/rtx4090-refine.json
   hpc:
     enabled: false
     profile_template: workflow/profiles/whu-hpc.example.yaml
     credentials_in_repository: forbidden
 
 result_gates:
-  candidate_screening: two_MatterGen_generation_records_five_samples_zero_accepted_HAP_candidates
-  adsorption_ranking: blocked_pipeline_not_implemented
-  geometry_optimization: documented_local_optimizations_without_surface_convergence_claim
-  aimd_dataset: short_development_trajectories_insufficient_for_production
-  mlip_validation: development_models_exist_independent_qualification_not_passed
+  candidate_screening: gf_scan_s1_363_s2_149_s3_10_s4_dft_hull_8_of_10_within_50_meV_none_on_hull_no_carbonate_phosphate_survives
+  adsorption_ranking: implemented_local_reference_checks_only_no_validated_ranking
+  geometry_optimization: documented_local_optimizations_surface_convergence_unestablished
+  aimd_dataset: v2_cp2k_labels_620_active_learning_83_sealed_130_s3_iteration_3_labelling
+  mlip_validation: v2_sealed_test_passed_iterations_0_to_2_lattice_stability_convergence_gates_not_run
   enhanced_sampling: blocked_not_implemented
 
 manuscript_evidence:
@@ -46,10 +46,10 @@ manuscript_evidence:
 literature_evidence:
   seed_references: 8
   seed_metadata_partial: 0
-  new_candidates: 8
+  new_candidates: 20
   human_verified_references: 8
   supported_literature_relationships: 0
-  relevance_rows: 16
+  relevance_rows: 28
   phase_2b_1_selected_references: 4
   extracted_pending_human_cards: 3
   blocked_fulltext_cards: 1
@@ -59,23 +59,45 @@ literature_evidence:
   better_bibtex_xpi_version_downloaded: 9.0.63
   better_bibtex_xpi_sha256: 3a4d080ec94153a8c24bf8275689c5f946d99e314b6ae0fab5060d6970f56388
   better_bibtex_skip_fields: "file,attachment,note,annote,abstract,keywords"
+  novelty_check: literature/novelty_check_2026-11.md
 
 known_blockers:
   - eight tracked CP2K or XYZ files contain unresolved Git conflict markers
   - the early 8-atom MatterGen smoke sample and four later 44-atom OOD samples were rejected; no accepted HAP candidate or validated adsorption-ranking campaign exists
-  - existing AIMD trajectories are too short, incomplete, or unstable
+  - imported MatterGen Ca-P-O-H-C scan has no recorded MatterGen commit or seeds, an inconsistent gf1 RMSD metric, and an empty gf2 trajectory archive; its S4 CP2K hull leaves no survivor on the hull and no Ca carbonate-phosphate within 50 meV/atom
+  - eight four-femtosecond AIMD replicas (local validation) are too short for equilibrium or broad independent coverage; legacy failures remain ineligible
   - legacy HAP112 postprocessing lacks raw inputs and reports poor quality
-  - development datasets and fitted models exist, but no independently validated production model or qualified scale-up is available
+  - B91 and local v1 models failed qualification; the pipeline-v2 ensemble passes the sealed test, but its lattice, stability and convergence gates have not run and no final ensemble exists
+  - HAP(001) + water + CO2 stays below target (iteration-2 energy RMSE 2.8-3.9 meV/atom; accurate fraction 0.008 at 300 K and 0.106 at 500 K), and unbiased exploration has sampled no CO2 conversion
   - no literature claim has a human-confirmed full-text source locator
   - nowicki2024capture full-text extraction is blocked because the approved RSC PDF endpoint returned HTTP 403
 
 next_actions:
+  - continue workflow/PIPELINE_V2.md - label-3 (208 frames), train-3 with the ten S3 systems, iterations up to 6, final from-scratch ensemble, then stage-7 validation
+  - report the sealed test per system and the 8 A Gamma bias (2.46 +/- 0.24 meV/atom, HAP bulk) next to every energy gate
+  - plan biased exploration of CO2 conversion (PLANNED, under review) before any mechanism claim
+  - run a database novelty search (Web of Science or Scopus, Google Scholar forward citations, ChemRxiv, CNKI) before any claim of priority; see literature/novelty_check_2026-11.md
+  - human review of the 12 novelty-check candidate references and their two flagged metadata discrepancies
   - review the artifact inventory and ineligibility decisions with the research team
   - resolve legacy conflict markers only after a separate scientific-input review
   - Shawn must review the three extracted cards against the exact recorded PDF checksums
   - resolve the Nowicki full-text blocker only through the approved publisher or a user-supplied licensed copy
   - keep all claim relationships pending until a separate human evidence-reconciliation decision
-  - define quantitative go/no-go gates before new compute
+  - ask siqi for the MatterGen commit, seeds, and MatterSim version of the gf scan, and whether gf1 metrics.json matches its relaxed_structures.extxyz
+
+pipeline_v2_snapshot:
+  package: results/pipeline-v2-20261104
+  verifier: python results/pipeline-v2-20261104/scripts/summarize.py --check
+  run_directory_not_in_git: .research-runs/pipeline-v2
+  method: workflow/PIPELINE_V2.md
+  iterations_complete: [0, 1, 2]
+  label_3: in_progress_at_snapshot
+  sealed_test_gate_passed_iterations: [0, 1, 2]
+  final_ensemble_trained: false
+  stage7_validation_run: false
+  active_learning_converged: false
+  production_qualified: false
+  manuscript_eligible: false
 
 computational_results_release:
   release_date: 2026-10-17
@@ -143,4 +165,21 @@ mattergen_status:
     scope: read_only_investigation
     verified_official_weights_or_sufficient_training_data_established: false
     training_result: none
+  gf_scan_screening: 0.Generative_Discovery/runs/Ca-P-O-H-C_gfscan_RTX5090_20260329/README.md
   interpretation: Neither branch names nor campaign-003 structures establish MatterGen provenance; generation completion is not HAP qualification, fine-tuning, or CSP training.
+
+# Separate diagnostic scope; no manuscript eligibility or human verification granted.
+local_validation:
+  computer: SHAWN-PC
+  checkout: 'D:\project\HAP_CO2mineralization'
+  baseline_record: workflow/validation/verification.json
+  refinement_record: workflow/validation/records/LOCAL-HAP-REFINE001.json
+  recovery_record: workflow/validation/records/LOCAL-HAP-RECOVERY001.json
+  diagnostic_draft: drafts/local-validation/main.tex
+  handoff: workflow/FINAL_DELIVERY.md
+  production_ready: false
+  original_gates_changed: false
+  recovery_test_status: retrospective_exploratory_not_new_holdout
+  future_plan: workflow/profiles/next-sampling-proposal.json
+  future_plan_executed: false
+  hpc_connected_or_submitted: false

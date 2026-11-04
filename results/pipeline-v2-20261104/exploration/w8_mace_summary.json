@@ -1,0 +1,42 @@
+{
+  "hap_bulk": {
+    "natoms": 88,
+    "frames": 225,
+    "formula": "H4Ca20O52P12"
+  },
+  "hap001_co2": {
+    "natoms": 91,
+    "frames": 225,
+    "formula": "CH4Ca20O54P12"
+  },
+  "hap001_water_co2": {
+    "natoms": 169,
+    "frames": 225,
+    "formula": "C2H54Ca20O81P12"
+  },
+  "calcite_CaCO3": {
+    "natoms": 80,
+    "frames": 225,
+    "formula": "C16Ca16O48"
+  },
+  "CaCO3_20": {
+    "natoms": 160,
+    "frames": 225,
+    "formula": "C32Ca32O96"
+  },
+  "portlandite_CaOH2": {
+    "natoms": 90,
+    "frames": 225,
+    "formula": "H36Ca18O36"
+  },
+  "monetite_CaHPO4": {
+    "natoms": 224,
+    "frames": 225,
+    "formula": "H32Ca32O128P32"
+  },
+  "lime_CaO": {
+    "natoms": 54,
+    "frames": 225,
+    "formula": "Ca27O27"
+  }
+}

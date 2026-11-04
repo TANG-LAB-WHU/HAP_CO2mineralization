@@ -1,0 +1,9 @@
+{
+  "artifact_id": "LOCAL-MACE-12",
+  "local_raw_path": ".research-runs/smoke-001",
+  "status": "partial",
+  "manuscript_eligible": false,
+  "notes": "12 steps; slab/adsorbed unconverged; CP2K sign disagreement retained",
+  "reproducibility_manifest": ".research-runs/reproducibility-manifest.json",
+  "verification_report": "workflow/validation/verification.json"
+}

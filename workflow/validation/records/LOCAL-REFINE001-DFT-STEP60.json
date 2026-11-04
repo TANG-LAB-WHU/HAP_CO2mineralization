@@ -1,0 +1,8 @@
+{
+  "artifact_id": "LOCAL-REFINE001-DFT-STEP60",
+  "local_raw_path": ".research-runs/refine-001/dft-relax-attempt2",
+  "status": "partial",
+  "notes": "CP2K reached 60-step limit without geometry convergence; normal electronic termination is not an accepted minimum.",
+  "reproducibility_manifest": ".research-runs/refine-001/reproducibility-manifest.json",
+  "manuscript_eligible": false
+}

@@ -1,0 +1,9 @@
+FROM deepmodeling/deepmd-kit@sha256:23d23b922459eb49b23f9d4977b6e453fd17feb2ee03a280c70fb7f4a6452e8c
+# Build from repository root: docker build -f workflow/environment/Dockerfile.mace -t hap-mace:smoke .
+COPY workflow/environment/requirements-mace.lock /tmp/requirements-mace.lock
+RUN python -m venv --system-site-packages /opt/mace && /opt/mace/bin/python -m pip install --no-cache-dir -r /tmp/requirements-mace.lock
+ENV PATH=/opt/mace/bin:$PATH
+ENV OMP_NUM_THREADS=4
+WORKDIR /work
+ENTRYPOINT []
+CMD ["python", "workflow/local_compute.py", "--help"]

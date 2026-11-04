@@ -1,0 +1,415 @@
+{
+  "manuscript_eligible": false,
+  "checks": {
+    "mace": {
+      "functional_pass": true,
+      "details": {
+        "references": {
+          "slab": {
+            "energy_eV": -302.9830408829099,
+            "initial_energy_eV": -298.3965578151614,
+            "composition": {
+              "Ca": 10,
+              "P": 6,
+              "H": 2,
+              "O": 26
+            },
+            "cell_A": [
+              [
+                9.424,
+                0.0,
+                0.0
+              ],
+              [
+                -4.711999999999999,
+                8.16142340526455,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                30.861114599999997
+              ]
+            ],
+            "max_free_force_eV_A": 0.04924009514595637,
+            "converged": true,
+            "steps": 78,
+            "model_sha256": "2ddb079cee0e131eaaf6912ba581b394551ead283e95c99cfe78c605d10b5736",
+            "reload_energy_difference_eV": -1.4495071809506044e-10
+          },
+          "co2": {
+            "energy_eV": -22.8299391066295,
+            "initial_energy_eV": -22.829907573588464,
+            "composition": {
+              "C": 1,
+              "O": 2
+            },
+            "cell_A": [
+              [
+                9.424,
+                0.0,
+                0.0
+              ],
+              [
+                -4.711999999999999,
+                8.16142340526455,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                30.861114599999997
+              ]
+            ],
+            "max_free_force_eV_A": 0.006354777476116458,
+            "converged": true,
+            "steps": 1,
+            "model_sha256": "2ddb079cee0e131eaaf6912ba581b394551ead283e95c99cfe78c605d10b5736",
+            "reload_energy_difference_eV": -1.9966250874858815e-12
+          },
+          "adsorbed": {
+            "energy_eV": -325.9892677737522,
+            "initial_energy_eV": -321.4777899355123,
+            "composition": {
+              "Ca": 10,
+              "P": 6,
+              "H": 2,
+              "O": 28,
+              "C": 1
+            },
+            "cell_A": [
+              [
+                9.424,
+                0.0,
+                0.0
+              ],
+              [
+                -4.711999999999999,
+                8.16142340526455,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                30.861114599999997
+              ]
+            ],
+            "max_free_force_eV_A": 0.047811956779741115,
+            "converged": true,
+            "steps": 77,
+            "model_sha256": "2ddb079cee0e131eaaf6912ba581b394551ead283e95c99cfe78c605d10b5736",
+            "reload_energy_difference_eV": -5.12216047354741e-10
+          }
+        },
+        "adsorption_energy_eV": -0.1762877842127999,
+        "all_relaxations_converged": true,
+        "peak_cuda_allocated_bytes": 202527744,
+        "manuscript_eligible": false,
+        "interpretation": "functional smoke only; unconverged slab size, vacuum, ordering, sites and ML uncertainty"
+      }
+    },
+    "cp2k": {
+      "functional_pass": true,
+      "details": {
+        "slab": {
+          "energy_eV": -22507.021718648906,
+          "scf_converged": true,
+          "output_sha256": "1a76ba104331712e9085b543b6b2bb3d08a8f0d49f6dc511ecd2a68c33527728",
+          "cp2k_stress": [
+            [
+              4411.97425968,
+              -201.876820322,
+              -0.553291584979
+            ],
+            [
+              -201.876820322,
+              4175.87913425,
+              -0.531494060032
+            ],
+            [
+              -0.553291584979,
+              -0.531494060032,
+              1954.64841788
+            ]
+          ],
+          "stress_unit": "bar"
+        },
+        "co2": {
+          "energy_eV": -1027.519431237664,
+          "scf_converged": true,
+          "output_sha256": "6f01e6d4d9fa8e07bd0b5a8264c4c3bd39639a6d892313a04333a327420cc13f",
+          "cp2k_stress": [
+            [
+              -197.099833791,
+              -4.04464183207,
+              -0.0213930954562
+            ],
+            [
+              -4.04464183207,
+              11.3147049702,
+              -8.74501041103e-06
+            ],
+            [
+              -0.0213930954562,
+              -8.74501041103e-06,
+              -8.93313417141
+            ]
+          ],
+          "stress_unit": "bar"
+        },
+        "adsorbed": {
+          "energy_eV": -23534.432886595238,
+          "scf_converged": true,
+          "output_sha256": "d81c7af479097c5ca11c5d9092ee297ab752a48733d87cd86518c18bdafeb67b",
+          "cp2k_stress": [
+            [
+              4053.39572991,
+              -223.130887283,
+              -14.5268183499
+            ],
+            [
+              -223.130887283,
+              4067.41700003,
+              -5.00861190833
+            ],
+            [
+              -14.5268183499,
+              -5.00861190833,
+              2016.7473988
+            ]
+          ],
+          "stress_unit": "bar"
+        },
+        "adsorption_energy_eV": 0.10826329133283252
+      }
+    },
+    "stress": {
+      "functional_pass": true,
+      "details": {
+        "finite_difference_dE_dstrain_eV": 0.28812970208491606,
+        "minus_trace_virial_eV": 0.28850533693823377,
+        "absolute_error_eV": 0.00037563485331770785,
+        "tolerance_eV": 0.1,
+        "passed": true,
+        "records": {
+          "minus": {
+            "energy_eV": -1027.5195801412174,
+            "scf_converged": true,
+            "output_sha256": "88f38e301e2e975a47c21a3c0c4c3f8c08d49afc9c05e879484b79ab722d2f47",
+            "cp2k_stress": [
+              [
+                -8.56417139244,
+                -3.99542741921,
+                1.49772466798e-05
+              ],
+              [
+                -3.99542741921,
+                11.2473485862,
+                -4.40548668356e-09
+              ],
+              [
+                1.49772466798e-05,
+                -4.40548668356e-09,
+                -8.70974140906
+              ]
+            ],
+            "stress_unit": "bar"
+          },
+          "zero": {
+            "energy_eV": -1027.5194312418246,
+            "scf_converged": true,
+            "output_sha256": "b28392787925a5a51f5a6fa13ab837d7b749e76107059a99f5581e2cfc82276d",
+            "cp2k_stress": [
+              [
+                -197.119944475,
+                -4.03295452115,
+                1.30486326924e-05
+              ],
+              [
+                -4.03295452115,
+                11.3147250651,
+                5.49796406032e-09
+              ],
+              [
+                1.30486326924e-05,
+                5.49796406032e-09,
+                -8.93311504358
+              ]
+            ],
+            "stress_unit": "bar"
+          },
+          "plus": {
+            "energy_eV": -1027.5190038818132,
+            "scf_converged": true,
+            "output_sha256": "45069acb917b92873ea5fd8f92417bcda5e182772ca2a8922401c16268cec60e",
+            "cp2k_stress": [
+              [
+                -383.393967871,
+                -4.06825963186,
+                0.000117320409065
+              ],
+              [
+                -4.06825963186,
+                11.3736569649,
+                6.73841201307e-09
+              ],
+              [
+                0.000117320409065,
+                6.73841201307e-09,
+                -9.14762025855
+              ]
+            ],
+            "stress_unit": "bar"
+          }
+        },
+        "manuscript_eligible": false
+      }
+    },
+    "dataset_and_mlip": {
+      "functional_pass": true,
+      "details": {
+        "frames": {
+          "train": 5,
+          "valid": 5,
+          "test": 5
+        },
+        "unique_geometries": 15,
+        "heldout_force_rmse_eV_A": 0.3757531,
+        "provisional_force_gate_pass": false,
+        "virial_validation": "not performed; no labels"
+      }
+    },
+    "lammps_restart": {
+      "functional_pass": true,
+      "details": {
+        "atoms": 47,
+        "max_saved_state_restart_difference": 1.0658141036401503e-14,
+        "total_steps": 10,
+        "time_fs": 2.5
+      }
+    },
+    "mattergen": {
+      "functional_pass": true,
+      "details": {
+        "generation": {
+          "stage": "generate",
+          "status": "completed",
+          "seed": 42,
+          "batch_size": 1,
+          "num_batches": 1,
+          "chemical_system": "Ca-P-O-H-C",
+          "manuscript_eligible": false,
+          "checkpoint_sha256": "4ad21d977c2b776a31c92498c4d1c88d3e1e286deeb941e997af8e082310b80e",
+          "elapsed_seconds": 176.47064661979675,
+          "peak_cuda_allocated_bytes": 708675072,
+          "actual_formula": "CH2CaO4",
+          "hap_chemistry_eligible": false
+        },
+        "evaluation": {
+          "stage": "evaluate",
+          "status": "completed",
+          "seed": 42,
+          "batch_size": 1,
+          "num_batches": 1,
+          "chemical_system": "Ca-P-O-H-C",
+          "manuscript_eligible": false,
+          "source_sha256": "dd727877ab3abbe54285f7df18ff8362ce389fd9800e74e9b5af07ead1d4fd42",
+          "compatibility_fixes": [
+            "streaming lossless gzip decompression",
+            "reuse read-only LMDB environment for metadata index",
+            "pymatgen.core.entries serialization alias to installed computed_entries"
+          ],
+          "reference_sha256": "ab1b4426901ff7b0f8af6ee9c3cc0dd2fbe4b65c758ef2a95683071492d1c51d",
+          "mattersim_sha256": "28b0b0b0f13efefee06b47ea4c9105a26bd3e2c8396da193430da96b3b49a8be",
+          "elapsed_seconds": 341.66393518447876,
+          "peak_cuda_allocated_bytes": 55507968
+        },
+        "metrics": {
+          "avg_energy_above_hull_per_atom": {
+            "value": 0.041093916506830475,
+            "description": "Average energy above hull per atom (eV/atom) of structures in sampled data."
+          },
+          "avg_rmsd_from_relaxation": {
+            "value": 0.020159194934068682,
+            "description": "root mean square displacements of atoms (Angstrom) from initial to final DFT relaxation steps in sampled data."
+          },
+          "frac_novel_unique_stable_structures": {
+            "value": 1.0,
+            "description": "Fraction of novel unique stable structures in sampled data within 0.1 (eV/atom) above convex hull of TRI2024correction."
+          },
+          "frac_stable_structures": {
+            "value": 1.0,
+            "description": "Fraction of stable structures in sampled data within 0.1 (eV/atom) above convex hull of TRI2024correction."
+          },
+          "frac_successful_jobs": {
+            "value": 1.0,
+            "description": "Fraction of structures whose jobs ran successfully."
+          },
+          "avg_comp_validity": {
+            "value": 1.0,
+            "description": "Average composition validity (according to smact) of structures in sampled data."
+          },
+          "avg_structure_comp_validity": {
+            "value": 1.0,
+            "description": "Average number of structures in sampled data that are both valid structures and have a valid smact compositions."
+          },
+          "avg_structure_validity": {
+            "value": 1.0,
+            "description": "Average structural validity of structures in sampled data. Any atom-atom distances less than 0.5 Angstroms or a volume less than 0.1 Angstrom**3 are considered invalid ."
+          },
+          "frac_novel_structures": {
+            "value": 1.0,
+            "description": "Fraction of novel structures in sampled data."
+          },
+          "frac_novel_systems": {
+            "value": 0.0,
+            "description": "Fraction of distinct chemical systems in sampled data and not in TRI2024correction."
+          },
+          "frac_novel_unique_structures": {
+            "value": 1.0,
+            "description": "Fraction of novel unique structures in sampled data."
+          },
+          "frac_unique_structures": {
+            "value": 1.0,
+            "description": "Fraction of unique structures in sampled data."
+          },
+          "frac_unique_systems": {
+            "value": 1.0,
+            "description": "Fraction of structures in sampled data that have a unique chemical system within this set."
+          },
+          "precision": {
+            "value": 0.0,
+            "description": "Precision of structures in sampled data compared with TRI2024correction. This is the fraction of structures in sampled data that have a matching structure in TRI2024correction."
+          },
+          "recall": {
+            "value": 0.0,
+            "description": "Recall of structures in sampled data compared with structures in TRI2024correction. This is the fraction of structures in sampled data that have a matching structure in TRI2024correction."
+          }
+        },
+        "filter": {
+          "input_count": 1,
+          "saved_count": 0,
+          "chemistry_rejected": 1,
+          "required_elements": [
+            "Ca",
+            "P",
+            "O",
+            "H"
+          ],
+          "manuscript_eligible": false,
+          "structures_sha256": "d23693010cc93d120a9f23b492d027e48e64131e7ed6588d2a944291003286ae",
+          "metrics_sha256": "8432f5df46f36d9f7035edfa9cb5e8bc1b52d9cfabfe2f2ad1bccfb93929b88e",
+          "note": "Necessary chemistry gate only; apatite structure identification and scientific validation remain required"
+        },
+        "sample_size": 1
+      }
+    }
+  },
+  "limitations": [
+    "No production convergence",
+    "OH ordering/termination unreviewed",
+    "AIMD only 1.25 fs/replica",
+    "MLIP statistical/domain validation inadequate"
+  ],
+  "all_functional_stages_complete": true
+}

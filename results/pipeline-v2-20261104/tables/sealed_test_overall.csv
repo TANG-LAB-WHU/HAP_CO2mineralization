@@ -1,0 +1,13 @@
+iteration,model,frames,force_rmse_all_eV_A,force_rmse_interfaces_eV_A,energy_rmse_meV_atom,gate_passed
+iter-000,model-0,83,0.0711,0.1012,1.644,True
+iter-000,model-1,83,0.0702,0.0993,1.741,True
+iter-000,model-2,83,0.0701,0.0991,1.723,True
+iter-000,model-3,83,0.0699,0.1009,1.649,True
+iter-001,model-0,83,0.0719,0.1068,1.673,True
+iter-001,model-1,83,0.0703,0.1032,1.584,True
+iter-001,model-2,83,0.0711,0.1048,1.796,True
+iter-001,model-3,83,0.0706,0.1060,1.820,True
+iter-002,model-0,83,0.0667,0.0982,1.590,True
+iter-002,model-1,83,0.0658,0.0956,1.637,True
+iter-002,model-2,83,0.0665,0.0974,1.331,True
+iter-002,model-3,83,0.0661,0.0979,1.666,True

@@ -1,3 +1,5 @@
+# Requires -var CO2_OXYGEN_IDS "<space-separated initial CO2 oxygen IDs>" when CO2 is present.
+# IDs must come from preparation provenance, never all atoms of oxygen type.
 # ENHANCED LAMMPS input file for comprehensive CO2-HAP adsorption analysis
 # MODIFIED: High-temperature (700 C) reaction conditions with NUMERICAL STABILITY FIXES
 # ENHANCED: Surface model adaptation and comprehensive surface analysis
@@ -60,7 +62,7 @@ group HAP_surface union Ca P O H    # All HAP atoms for thermodynamics
 
 # If CO2 exists, exclude CO2 O atoms from HAP_surface
 if "${has_co2} > 0.5" then "group CO2_mol type 5"
-if "${has_co2} > 0.5" then "group CO2_oxygen type 3"
+if "${has_co2} > 0.5" then "group CO2_oxygen id ${CO2_OXYGEN_IDS}"
 if "${has_co2} > 0.5" then "group CO2_mol_complete union C CO2_oxygen"
 if "${has_co2} > 0.5" then "group HAP_surface_clean subtract HAP_surface CO2_mol_complete"
 if "${has_co2} > 0.5" then "group HAP_surface delete"
@@ -190,7 +192,7 @@ group HAP_surface union Ca P O H
 
 # If CO2 exists, exclude CO2 O atoms from HAP_surface
 if "${has_co2} > 0.5" then "group C type 5"
-if "${has_co2} > 0.5" then "group CO2_oxygen type 3"
+if "${has_co2} > 0.5" then "group CO2_oxygen id ${CO2_OXYGEN_IDS}"
 if "${has_co2} > 0.5" then "group CO2_mol_complete union C CO2_oxygen"
 if "${has_co2} > 0.5" then "group HAP_surface_clean subtract HAP_surface CO2_mol_complete"
 if "${has_co2} > 0.5" then "group HAP_surface delete"

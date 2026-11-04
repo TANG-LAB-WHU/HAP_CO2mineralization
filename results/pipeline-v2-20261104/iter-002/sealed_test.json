@@ -1,0 +1,170 @@
+{
+  "model-0": {
+    "CaCO3_20__C32Ca32O96": {
+      "energy_rmse_eV_atom": 0.0003735504,
+      "force_rmse_eV_A": 0.05217823,
+      "frames": 9
+    },
+    "calcite_CaCO3__C16Ca16O48": {
+      "energy_rmse_eV_atom": 0.0006480385,
+      "force_rmse_eV_A": 0.04004665,
+      "frames": 12
+    },
+    "hap001_co2__CH4Ca20O54P12": {
+      "energy_rmse_eV_atom": 0.001301213,
+      "force_rmse_eV_A": 0.07986843,
+      "frames": 9
+    },
+    "hap001_water_co2__C2H54Ca20O81P12": {
+      "energy_rmse_eV_atom": 0.003663579,
+      "force_rmse_eV_A": 0.106773,
+      "frames": 9
+    },
+    "hap_bulk__H4Ca20O52P12": {
+      "energy_rmse_eV_atom": 0.001396671,
+      "force_rmse_eV_A": 0.04091292,
+      "frames": 12
+    },
+    "lime_CaO__Ca27O27": {
+      "energy_rmse_eV_atom": 0.0005847979,
+      "force_rmse_eV_A": 0.0144187,
+      "frames": 12
+    },
+    "monetite_CaHPO4__H32Ca32O128P32": {
+      "energy_rmse_eV_atom": 0.001372561,
+      "force_rmse_eV_A": 0.07315798,
+      "frames": 9
+    },
+    "portlandite_CaOH2__H36Ca18O36": {
+      "energy_rmse_eV_atom": 0.001450554,
+      "force_rmse_eV_A": 0.03672742,
+      "frames": 11
+    }
+  },
+  "model-1": {
+    "CaCO3_20__C32Ca32O96": {
+      "energy_rmse_eV_atom": 0.0004318383,
+      "force_rmse_eV_A": 0.05261326,
+      "frames": 9
+    },
+    "calcite_CaCO3__C16Ca16O48": {
+      "energy_rmse_eV_atom": 0.0006303628,
+      "force_rmse_eV_A": 0.04053021,
+      "frames": 12
+    },
+    "hap001_co2__CH4Ca20O54P12": {
+      "energy_rmse_eV_atom": 0.001718267,
+      "force_rmse_eV_A": 0.07886077,
+      "frames": 9
+    },
+    "hap001_water_co2__C2H54Ca20O81P12": {
+      "energy_rmse_eV_atom": 0.003555378,
+      "force_rmse_eV_A": 0.103538,
+      "frames": 9
+    },
+    "hap_bulk__H4Ca20O52P12": {
+      "energy_rmse_eV_atom": 0.001770877,
+      "force_rmse_eV_A": 0.04195965,
+      "frames": 12
+    },
+    "lime_CaO__Ca27O27": {
+      "energy_rmse_eV_atom": 0.0005078544,
+      "force_rmse_eV_A": 0.01352677,
+      "frames": 12
+    },
+    "monetite_CaHPO4__H32Ca32O128P32": {
+      "energy_rmse_eV_atom": 0.001290237,
+      "force_rmse_eV_A": 0.07281343,
+      "frames": 9
+    },
+    "portlandite_CaOH2__H36Ca18O36": {
+      "energy_rmse_eV_atom": 0.001341912,
+      "force_rmse_eV_A": 0.03564348,
+      "frames": 11
+    }
+  },
+  "model-2": {
+    "CaCO3_20__C32Ca32O96": {
+      "energy_rmse_eV_atom": 0.0002318953,
+      "force_rmse_eV_A": 0.05306214,
+      "frames": 9
+    },
+    "calcite_CaCO3__C16Ca16O48": {
+      "energy_rmse_eV_atom": 0.0008066466,
+      "force_rmse_eV_A": 0.04117063,
+      "frames": 12
+    },
+    "hap001_co2__CH4Ca20O54P12": {
+      "energy_rmse_eV_atom": 0.001841104,
+      "force_rmse_eV_A": 0.07874658,
+      "frames": 9
+    },
+    "hap001_water_co2__C2H54Ca20O81P12": {
+      "energy_rmse_eV_atom": 0.002843826,
+      "force_rmse_eV_A": 0.1060637,
+      "frames": 9
+    },
+    "hap_bulk__H4Ca20O52P12": {
+      "energy_rmse_eV_atom": 0.001009797,
+      "force_rmse_eV_A": 0.04122003,
+      "frames": 12
+    },
+    "lime_CaO__Ca27O27": {
+      "energy_rmse_eV_atom": 0.0004683627,
+      "force_rmse_eV_A": 0.01427256,
+      "frames": 12
+    },
+    "monetite_CaHPO4__H32Ca32O128P32": {
+      "energy_rmse_eV_atom": 0.0007770159,
+      "force_rmse_eV_A": 0.07280587,
+      "frames": 9
+    },
+    "portlandite_CaOH2__H36Ca18O36": {
+      "energy_rmse_eV_atom": 0.00117407,
+      "force_rmse_eV_A": 0.03594139,
+      "frames": 11
+    }
+  },
+  "model-3": {
+    "CaCO3_20__C32Ca32O96": {
+      "energy_rmse_eV_atom": 0.0004469913,
+      "force_rmse_eV_A": 0.05101925,
+      "frames": 9
+    },
+    "calcite_CaCO3__C16Ca16O48": {
+      "energy_rmse_eV_atom": 0.0006675539,
+      "force_rmse_eV_A": 0.03917658,
+      "frames": 12
+    },
+    "hap001_co2__CH4Ca20O54P12": {
+      "energy_rmse_eV_atom": 0.001889671,
+      "force_rmse_eV_A": 0.07854237,
+      "frames": 9
+    },
+    "hap001_water_co2__C2H54Ca20O81P12": {
+      "energy_rmse_eV_atom": 0.003863436,
+      "force_rmse_eV_A": 0.1068331,
+      "frames": 9
+    },
+    "hap_bulk__H4Ca20O52P12": {
+      "energy_rmse_eV_atom": 0.001352223,
+      "force_rmse_eV_A": 0.04074599,
+      "frames": 12
+    },
+    "lime_CaO__Ca27O27": {
+      "energy_rmse_eV_atom": 0.0004634802,
+      "force_rmse_eV_A": 0.01432215,
+      "frames": 12
+    },
+    "monetite_CaHPO4__H32Ca32O128P32": {
+      "energy_rmse_eV_atom": 0.001034567,
+      "force_rmse_eV_A": 0.07196338,
+      "frames": 9
+    },
+    "portlandite_CaOH2__H36Ca18O36": {
+      "energy_rmse_eV_atom": 0.001435142,
+      "force_rmse_eV_A": 0.03623157,
+      "frames": 11
+    }
+  }
+}

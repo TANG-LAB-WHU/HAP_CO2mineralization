@@ -1,0 +1,115 @@
+{
+  "s1": {
+    "input": 2324,
+    "passed": 363,
+    "classes": {
+      "Ca_carbonate": 177,
+      "Ca_carbonate_phosphate": 52,
+      "Ca_phosphate": 134
+    }
+  },
+  "s2": {
+    "models": [
+      "mace-mpa-0 (medium-mpa-0)",
+      "mattersim-5m (v1.0.0-5M)",
+      "sevennet-mf-ompa (mpa modal)"
+    ],
+    "references": "Alex-MP TRI2024correction, Ca-P-O-H-C subsystems, DFT E_hull <= 0.1 eV/atom (288 phases), relaxed with each model",
+    "gate": "E_hull <= 0.05 eV/atom in >= 2 of 3 models, converged relaxation (fmax 0.02 eV/A), |dV/V| <= 5%",
+    "input": 363,
+    "passed": 149,
+    "unanimous": 131,
+    "passed_classes": {
+      "Ca_carbonate": 70,
+      "Ca_carbonate_phosphate": 20,
+      "Ca_phosphate": 59
+    },
+    "passed_formulas": {
+      "CaPH3O5": 25,
+      "CaCO3": 22,
+      "CaP2(H2O3)3": 14,
+      "CaH2(CO3)2": 13,
+      "Ca2H2CO5": 10,
+      "CaPHO4": 9,
+      "CaH4C2O7": 7,
+      "Ca2PHCO7": 7,
+      "CaPH5CO8": 7,
+      "CaH2CO4": 4,
+      "CaP2(HO2)4": 4,
+      "Ca3H2(CO4)2": 2,
+      "CaH10CO8": 2,
+      "CaH6C3O10": 2,
+      "CaH6CO6": 2,
+      "Ca2P2H4CO11": 2,
+      "Ca2PH3CO8": 2,
+      "Ca2P(HO2)3": 2,
+      "CaP(HO)7": 2,
+      "Ca2H2(CO3)3": 1
+    }
+  },
+  "s3": {
+    "model": "mace-mpa-0 float64",
+    "gate": "min phonon frequency >= -0.3 THz on an 8x8x8 mesh (supercell widths >= 9 A); then 5 ps 300 K NPT Berendsen with CO3/PO4 intact and |dV/V| <= 5%; NPT skipped for phonon failures",
+    "controls": "calcite, portlandite, monetite, CaO pass (min freq 0.40, 0.40, 0.04, 1.13 THz)",
+    "input": 149,
+    "passed": 10,
+    "passed_keys": [
+      "s1_candidates:14",
+      "s1_candidates:39",
+      "s1_candidates:55",
+      "s1_candidates:70",
+      "s1_candidates:180",
+      "s1_candidates:250",
+      "s1_candidates:262",
+      "s1_candidates:273",
+      "s1_candidates:294",
+      "s1_candidates:302"
+    ]
+  },
+  "s4": {
+    "method": "CP2K 2026.2 PBE-D3(BJ), DZVP-MOLOPT-SR-GTH, 800/60 Ry, Gamma point, widths >= 8 A; cell optimisation (BFGS, 1 atm) from the S2 MACE geometry, then a final single point; >= 12 A single point at the start geometry for the Gamma finite-size correction (survivors and tier-1 references)",
+    "gate": "E_hull <= 50 meV/atom against the lower convex envelope of the 34 computed references (CaO-P2O5-CO2-H2O)",
+    "references": {
+      "tier1": 10,
+      "tier2": 24
+    },
+    "all_jobs_ok": true,
+    "input": 10,
+    "passed": 8,
+    "passed_keys": [
+      "s1_candidates:14",
+      "s1_candidates:39",
+      "s1_candidates:55",
+      "s1_candidates:70",
+      "s1_candidates:250",
+      "s1_candidates:273",
+      "s1_candidates:294",
+      "s1_candidates:302"
+    ],
+    "ehull_meV_atom": {
+      "s1_candidates:14": 32.8,
+      "s1_candidates:39": 39.7,
+      "s1_candidates:55": 15.8,
+      "s1_candidates:70": 36.1,
+      "s1_candidates:180": 68.0,
+      "s1_candidates:250": 47.0,
+      "s1_candidates:262": 60.9,
+      "s1_candidates:273": 26.3,
+      "s1_candidates:294": 41.7,
+      "s1_candidates:302": 42.5
+    },
+    "ehull_fs_meV_atom": {
+      "s1_candidates:14": 33.8,
+      "s1_candidates:39": 39.8,
+      "s1_candidates:55": 14.9,
+      "s1_candidates:70": 37.4,
+      "s1_candidates:180": 67.2,
+      "s1_candidates:250": 46.9,
+      "s1_candidates:262": 60.9,
+      "s1_candidates:273": 26.1,
+      "s1_candidates:294": 41.3,
+      "s1_candidates:302": 42.2
+    },
+    "run_dir": ".research-runs/pipeline-v2/dft-hull (not in Git); table: screening/s4_dft_hull.csv"
+  }
+}

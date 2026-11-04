@@ -110,15 +110,18 @@ if not exist "%STEP1_DIR%\%HAP_PREFIX%_md-pos.xyz" (
         echo ERROR: Could not get cp2k_run container id
         exit /b 1
     )
-    docker wait !CP2K_ID!
-    set CP2K_EXIT=!errorlevel!
+    set "CP2K_EXIT="
+    for /f %%e in ('docker wait !CP2K_ID!') do set "CP2K_EXIT=%%e"
+    if not defined CP2K_EXIT exit /b 1
     docker logs !CP2K_ID!
     if !CP2K_EXIT! neq 0 (
         echo ERROR: CP2K stage failed.
         exit /b 1
     )
 ) else (
-    echo CP2K trajectory already exists. Skip CP2K run.
+    echo ERROR: Existing trajectory is unverified. Automatic reuse is disabled.
+    echo Use a fresh run directory and review convergence, frame counts, and the run manifest.
+    exit /b 1
 )
 
 if not exist "%STEP1_DIR%\%HAP_PREFIX%_md-pos.xyz" (

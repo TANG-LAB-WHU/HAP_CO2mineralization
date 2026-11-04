@@ -1,0 +1,8 @@
+{
+  "artifact_id": "LOCAL-REFINE001-RESTART-DIAGNOSIS-ENCODING",
+  "local_raw_path": ".research-runs/refine-001/restart-boundary-diagnosis.log",
+  "status": "partial",
+  "notes": "Zero-step restart probe completed, but the first host-only analysis hit GBK decoding of a UTF-8 log; corrected UTF-8 analysis reused the same probe without new dynamics.",
+  "reproducibility_manifest": ".research-runs/refine-001/reproducibility-manifest.json",
+  "manuscript_eligible": false
+}

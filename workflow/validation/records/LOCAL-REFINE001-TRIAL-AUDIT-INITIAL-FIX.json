@@ -1,0 +1,8 @@
+{
+  "artifact_id": "LOCAL-REFINE001-TRIAL-AUDIT-INITIAL-FIX",
+  "local_raw_path": ".research-runs/refine-001/optimizer_trial_audit-attempt1.json",
+  "status": "partial",
+  "notes": "First derived trial classification omitted the initial restart energy from its saved-frame comparison; corrected audit includes the previous saved state. Raw calculations were unchanged.",
+  "reproducibility_manifest": ".research-runs/refine-001/reproducibility-manifest.json",
+  "manuscript_eligible": false
+}

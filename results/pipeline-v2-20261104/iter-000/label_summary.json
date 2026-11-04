@@ -1,0 +1,15 @@
+{
+  "counts": {
+    "ok": 216
+  },
+  "systems": {
+    "CaCO3_20__C32Ca32O96": 18,
+    "calcite_CaCO3__C16Ca16O48": 33,
+    "hap001_co2__CH4Ca20O54P12": 24,
+    "hap001_water_co2__C2H54Ca20O81P12": 24,
+    "hap_bulk__H4Ca20O52P12": 33,
+    "lime_CaO__Ca27O27": 33,
+    "monetite_CaHPO4__H32Ca32O128P32": 18,
+    "portlandite_CaOH2__H36Ca18O36": 33
+  }
+}

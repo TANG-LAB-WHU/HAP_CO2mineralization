@@ -1,0 +1,193 @@
+{
+  "runs": {
+    "CaCO3_20_T300": {
+      "frames": 1013,
+      "lammps_complete": false,
+      "accurate": 1.0,
+      "candidate": 0.0,
+      "failed": 0.0,
+      "picked": 0,
+      "max_devi_f_max": 0.06469832,
+      "python_check_max_abs_diff": 1.3138993906355867e-05
+    },
+    "CaCO3_20_T500": {
+      "frames": 1201,
+      "lammps_complete": true,
+      "accurate": 0.9900083263946711,
+      "candidate": 0.009991673605328892,
+      "failed": 0.0,
+      "picked": 12,
+      "max_devi_f_max": 0.1182886,
+      "python_check_max_abs_diff": 2.0157829994489618e-05
+    },
+    "calcite_CaCO3_T300": {
+      "frames": 1201,
+      "lammps_complete": true,
+      "accurate": 1.0,
+      "candidate": 0.0,
+      "failed": 0.0,
+      "picked": 0,
+      "max_devi_f_max": 0.06176344,
+      "python_check_max_abs_diff": 1.0246973189062536e-05
+    },
+    "calcite_CaCO3_T500": {
+      "frames": 1201,
+      "lammps_complete": true,
+      "accurate": 0.9933388842631141,
+      "candidate": 0.006661115736885929,
+      "failed": 0.0,
+      "picked": 8,
+      "max_devi_f_max": 0.1402706,
+      "python_check_max_abs_diff": 1.0390550785742414e-05
+    },
+    "hap001_co2_T300": {
+      "frames": 1201,
+      "lammps_complete": true,
+      "accurate": 0.9508742714404663,
+      "candidate": 0.04746044962531224,
+      "failed": 0.0016652789342214821,
+      "picked": 30,
+      "max_devi_f_max": 0.4165469,
+      "python_check_max_abs_diff": 1.5257511325666995e-05
+    },
+    "hap001_co2_T500": {
+      "frames": 1201,
+      "lammps_complete": true,
+      "accurate": 0.8834304746044963,
+      "candidate": 0.11323896752706078,
+      "failed": 0.0033305578684429643,
+      "picked": 30,
+      "max_devi_f_max": 0.4858746,
+      "python_check_max_abs_diff": 1.3161898589381105e-05
+    },
+    "hap001_water_co2_T300": {
+      "frames": 1201,
+      "lammps_complete": true,
+      "accurate": 0.00832639467110741,
+      "candidate": 0.8051623646960866,
+      "failed": 0.186511240632806,
+      "picked": 30,
+      "max_devi_f_max": 0.9781752,
+      "python_check_max_abs_diff": 0.00025382553968866794
+    },
+    "hap001_water_co2_T500": {
+      "frames": 1201,
+      "lammps_complete": true,
+      "accurate": 0.10574521232306411,
+      "candidate": 0.8759367194004996,
+      "failed": 0.018318068276436304,
+      "picked": 30,
+      "max_devi_f_max": 1.847896,
+      "python_check_max_abs_diff": 1.4686902468807883e-05
+    },
+    "hap_bulk_T300": {
+      "frames": 1201,
+      "lammps_complete": true,
+      "accurate": 1.0,
+      "candidate": 0.0,
+      "failed": 0.0,
+      "picked": 0,
+      "max_devi_f_max": 0.06253352,
+      "python_check_max_abs_diff": 2.7029044793857454e-06
+    },
+    "hap_bulk_T500": {
+      "frames": 1201,
+      "lammps_complete": true,
+      "accurate": 0.9983347210657785,
+      "candidate": 0.0016652789342214821,
+      "failed": 0.0,
+      "picked": 2,
+      "max_devi_f_max": 0.1094462,
+      "python_check_max_abs_diff": 6.280443541471781e-06
+    },
+    "lime_CaO_T300": {
+      "frames": 1201,
+      "lammps_complete": true,
+      "accurate": 1.0,
+      "candidate": 0.0,
+      "failed": 0.0,
+      "picked": 0,
+      "max_devi_f_max": 0.02273038,
+      "python_check_max_abs_diff": 3.477883035907733e-06
+    },
+    "lime_CaO_T500": {
+      "frames": 1201,
+      "lammps_complete": true,
+      "accurate": 1.0,
+      "candidate": 0.0,
+      "failed": 0.0,
+      "picked": 0,
+      "max_devi_f_max": 0.03992201,
+      "python_check_max_abs_diff": 9.596396820160669e-06
+    },
+    "monetite_CaHPO4_T300": {
+      "frames": 1201,
+      "lammps_complete": true,
+      "accurate": 0.97751873438801,
+      "candidate": 0.022481265611990008,
+      "failed": 0.0,
+      "picked": 27,
+      "max_devi_f_max": 0.1381195,
+      "python_check_max_abs_diff": 3.5947955277879085e-05
+    },
+    "monetite_CaHPO4_T500": {
+      "frames": 1201,
+      "lammps_complete": true,
+      "accurate": 0.5062447960033306,
+      "candidate": 0.48959200666111574,
+      "failed": 0.004163197335553705,
+      "picked": 30,
+      "max_devi_f_max": 0.5922531,
+      "python_check_max_abs_diff": 1.1900263123868632e-05
+    },
+    "portlandite_CaOH2_T300": {
+      "frames": 1201,
+      "lammps_complete": true,
+      "accurate": 1.0,
+      "candidate": 0.0,
+      "failed": 0.0,
+      "picked": 0,
+      "max_devi_f_max": 0.07140614,
+      "python_check_max_abs_diff": 1.391036366621412e-06
+    },
+    "portlandite_CaOH2_T500": {
+      "frames": 1201,
+      "lammps_complete": true,
+      "accurate": 0.9925062447960034,
+      "candidate": 0.00749375520399667,
+      "failed": 0.0,
+      "picked": 9,
+      "max_devi_f_max": 0.1597008,
+      "python_check_max_abs_diff": 1.363555454796106e-05
+    }
+  },
+  "mean_accurate": 0.8378955037468776,
+  "n_candidates": 208,
+  "backend": "tf",
+  "conversion_check": [
+    {
+      "source": ".research-runs/pipeline-v2/iter-002/train/model-0/graph.pth",
+      "converted": ".research-runs/pipeline-v2/iter-002/explore/models/model-0.pb",
+      "max_abs_dE_eV_per_atom": 9.094947017729283e-14,
+      "max_abs_dF_eV_A": 2.5193735986306365e-13
+    },
+    {
+      "source": ".research-runs/pipeline-v2/iter-002/train/model-1/graph.pth",
+      "converted": ".research-runs/pipeline-v2/iter-002/explore/models/model-1.pb",
+      "max_abs_dE_eV_per_atom": 9.094947017729283e-14,
+      "max_abs_dF_eV_A": 2.5415780591231396e-13
+    },
+    {
+      "source": ".research-runs/pipeline-v2/iter-002/train/model-2/graph.pth",
+      "converted": ".research-runs/pipeline-v2/iter-002/explore/models/model-2.pb",
+      "max_abs_dE_eV_per_atom": 1.8189894035458566e-13,
+      "max_abs_dF_eV_A": 2.4838464618426315e-13
+    },
+    {
+      "source": ".research-runs/pipeline-v2/iter-002/train/model-3/graph.pth",
+      "converted": ".research-runs/pipeline-v2/iter-002/explore/models/model-3.pb",
+      "max_abs_dE_eV_per_atom": 9.094947017729283e-14,
+      "max_abs_dF_eV_A": 2.579603197716551e-13
+    }
+  ]
+}

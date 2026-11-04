@@ -1,0 +1,82 @@
+{
+  "status": "PLANNED_NOT_EXECUTED",
+  "enabled": false,
+  "scope": "Fixed-composition dry HAP001+CO2 local domain; no production or mineralization claim",
+  "maximum_new_DFT_attempts": 159,
+  "budget": {
+    "grid_checks": 6,
+    "initial_training": 48,
+    "validation": 24,
+    "sealed_test": 24,
+    "active_learning_rounds": 2,
+    "labels_per_round": 24,
+    "final_MD_spotchecks": 9
+  },
+  "design_seeds": {
+    "train": 20261021,
+    "validation": 20261022,
+    "sealed_test": 20261023
+  },
+  "fit_seeds": [
+    1101,
+    1102,
+    1103,
+    1104
+  ],
+  "MD_velocity_seeds": [
+    2101,
+    2102,
+    2103
+  ],
+  "test_opening": "Once, after validation-only selection and development stability checks; never acquire from test",
+  "gates": {
+    "one_frame_force_RMSE_eV_A": 0.02,
+    "sealed_test_force_RMSE_eV_A": 0.1,
+    "sealed_test_energy_RMSE_eV_atom": 0.01,
+    "engine_force_max_eV_A": 1e-05,
+    "engine_energy_eV": 1e-05,
+    "restart_position_max_A": 1e-08,
+    "restart_velocity_max_A_ps": 1e-08,
+    "absolute_NVE_drift_meV_atom_ps": 5,
+    "cross_split_pair_distance_RMS_min_A": 0.025,
+    "force_grid_RMSE_eV_A": 0.02,
+    "DFT_MD_snapshot_force_RMSE_eV_A": 0.1
+  },
+  "acquisition_force_std_threshold_eV_A": 0.15,
+  "timesteps_fs": [
+    0.25,
+    0.125
+  ],
+  "first_duration_ps": 1,
+  "conditional_extended_duration_ps": 5,
+  "failed_gate_action": "Stop campaign without threshold changes; new development requires a new plan and untouched holdout",
+  "specification": "workflow/NEXT_SAMPLING_PLAN.md",
+  "training": {
+    "architecture_reference": ".research-runs/refine-001/models/wider/out.json",
+    "adam_updates": 20000,
+    "learning_rate_start": 0.001,
+    "learning_rate_stop": 1e-05,
+    "decay_steps": 1000,
+    "adam_energy_preferences": [
+      0.1,
+      1
+    ],
+    "adam_force_preferences": [
+      100,
+      10
+    ],
+    "virial_preference": 0,
+    "lbfgs_max_objective_evaluations": 6000,
+    "lbfgs_max_seconds": 1800,
+    "lbfgs_loss": "force-component MSE + per-atom energy MSE, equal numerical weights in original physical units"
+  },
+  "geometry": {
+    "minimum_contact_A_exclusive": 0.7,
+    "phosphate_oxygen_count": 4,
+    "phosphate_coordination_cutoff_A": 1.9,
+    "nearest_OH_distance_A_exclusive": [
+      0.8,
+      1.2
+    ]
+  }
+}

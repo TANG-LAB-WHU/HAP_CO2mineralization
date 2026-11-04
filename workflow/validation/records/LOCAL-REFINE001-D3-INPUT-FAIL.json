@@ -1,0 +1,8 @@
+{
+  "artifact_id": "LOCAL-REFINE001-D3-INPUT-FAIL",
+  "local_raw_path": ".research-runs/refine-001/references/pbe-d3-500-attempt1",
+  "status": "failed",
+  "notes": "Malformed first D3 section caused a parser failure; fixed input and rerun are separate.",
+  "reproducibility_manifest": ".research-runs/refine-001/reproducibility-manifest.json",
+  "manuscript_eligible": false
+}

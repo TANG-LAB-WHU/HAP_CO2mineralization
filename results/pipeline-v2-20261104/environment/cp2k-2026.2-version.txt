@@ -1,0 +1,71 @@
+ CP2K version 2026.2
+ Source code revision unknown
+ cp2kflags: omp libint fftw3 libxc elpa parallel scalapack mpi_f08 cosma ace libxs libxsmm plumed2 spglib libdftd4 dftd4_v4_2 s_dftd3 mctc-lib tblite sirius libvori libbqb mimic libvdwxc hdf5 trexio libfci libsmeagol greenx openpmd
+ compiler: GCC version 15.2.0
+ compiler options:
+   -I /opt/cp2k/build/src/start -I /opt/cp2k/src -I /opt/cp2k/build/src
+    -I /opt/cp2k/src/base -I /opt/cp2k/src/common -I /opt/cp2k/src/moti
+   on -I /opt/cp2k/src/dbm -I /opt/cp2k/build/src/mod_files -I /opt/cp2
+   k/spack/spack/opt/spack/view/include -I /opt/cp2k/spack/spack/opt/sp
+   ack/view/include/mctc-lib/modules -I /opt/cp2k/spack/spack/opt/spack
+   /view/include/dftd4/GNU-15.2.0 -I /opt/cp2k/spack/spack/opt/spack/vi
+   ew/include/multicharge/GNU-15.2.0 -I /opt/cp2k/spack/spack/opt/spack
+   /view/include/pace -I /opt/cp2k/spack/spack/opt/spack/view/include/t
+   blite/GNU-15.2.0 -I /opt/cp2k/spack/spack/opt/spack/view/include/tom
+   l-f/modules -I /opt/cp2k/spack/spack/opt/spack/view/include/s-dftd3/
+   GNU-15.2.0 -I /opt/cp2k/spack/spack/opt/spack/view/include/sirius -I
+    /opt/cp2k/spack/spack/opt/spack/__spack_path_placeholder__/__spack_
+   path_placeholder__/__spack_path_placeholder__/__spack_path_pl/linux-
+   sandybridge/elpa-2026.02.002-flkr2cabdysq2v4f3a7zz2uu5ekmbrmt/includ
+   e/elpa_openmp-2026.02.002 -I /opt/cp2k/spack/spack/opt/spack/__spack
+   _path_placeholder__/__spack_path_placeholder__/__spack_path_placehol
+   der__/__spack_path_pl/linux-sandybridge/elpa-2026.02.002-flkr2cabdys
+   q2v4f3a7zz2uu5ekmbrmt/include/elpa_openmp-2026.02.002/modules -I /op
+   t/cp2k/spack/spack/opt/spack/__spack_path_placeholder__/__spack_path
+   _placeholder__/__spack_path_placeholder__/__spack_path_pl/linux-sand
+   ybridge/plumed-2.10.1-gqene6luy46i2a3cumyon7aka3tntlek/include -I /o
+   pt/cp2k/spack/spack/opt/spack/__spack_path_placeholder__/__spack_pat
+   h_placeholder__/__spack_path_placeholder__/__spack_path_pl/linux-san
+   dybridge/fftw-3.3.11-xwkzvo7i3l547r5caef5vcvh7c44jaej/include -I /op
+   t/cp2k/spack/spack/opt/spack/view/include/spla -I /opt/cp2k/spack/sp
+   ack/opt/spack/__spack_path_placeholder__/__spack_path_placeholder__/
+   __spack_path_placeholder__/__spack_path_pl/linux-sandybridge/mpich-5
+   .0.1-truubfgyrto6lfpt6bfe7dr4nzvkbpji/include -I /opt/cp2k/spack/spa
+   ck/opt/spack/view/include/MiMiC -I /opt/cp2k/spack/spack/opt/spack/_
+   _spack_path_placeholder__/__spack_path_placeholder__/__spack_path_pl
+   aceholder__/__spack_path_pl/linux-sandybridge/greenx-2.2-sdvwkbaekvc
+   2u4x57jwlsnv7qiobftjw/include/greenX/GNU-15.2.0/common/modules -I /o
+   pt/cp2k/spack/spack/opt/spack/__spack_path_placeholder__/__spack_pat
+   h_placeholder__/__spack_path_placeholder__/__spack_path_pl/linux-san
+   dybridge/greenx-2.2-sdvwkbaekvc2u4x57jwlsnv7qiobftjw/include/greenX/
+   GNU-15.2.0/AnalyticContinuation/modules -I /opt/cp2k/spack/spack/opt
+   /spack/__spack_path_placeholder__/__spack_path_placeholder__/__spack
+   _path_placeholder__/__spack_path_pl/linux-sandybridge/greenx-2.2-sdv
+   wkbaekvc2u4x57jwlsnv7qiobftjw/include/greenX/GNU-15.2.0/TimeFrequenc
+   y/modules -I /opt/cp2k/spack/spack/opt/spack/view/mod/shared -I /opt
+   /cp2k/spack/spack/opt/spack/view/include/libxs -march=sandybridge -m
+   mmx -mpopcnt -msse -msse2 -msse3 -mssse3 -msse4.1 -msse4.2 -mavx -mn
+   o-avx2 -mno-sse4a -mno-fma4 -mno-xop -mno-fma -mno-avx512f -mno-bmi 
+   -mno-bmi2 -maes -mpclmul -mno-avx512vl -mno-avx512bw -mno-avx512dq -
+   mno-avx512cd -mno-avx512vbmi -mno-avx512ifma -mno-avx512vpopcntdq -m
+   no-avx512vbmi2 -mno-gfni -mno-vpclmulqdq -mno-avx512vnni -mno-avx512
+   bitalg -mno-avx512bf16 -mno-avx512vp2intersect -mno-3dnow -mno-adx -
+   mno-abm -mno-cldemote -mno-clflushopt -mno-clwb -mno-clzero -mcx16 -
+   mno-enqcmd -mno-f16c -mno-fsgsbase -mfxsr -mno-hle -msahf -mno-lwp -
+   mno-lzcnt -mno-movbe -mno-movdir64b -mno-movdiri -mno-mwaitx -mno-pc
+   onfig -mno-pku -mno-prfchw -mno-ptwrite -mno-rdpid -mno-rdrnd -mno-r
+   dseed -mno-rtm -mno-serialize -mno-sgx -mno-sha -mno-shstk -mno-tbm 
+   -mno-tsxldtrk -mno-vaes -mno-waitpkg -mno-wbnoinvd -mxsave -mno-xsav
+   ec -mxsaveopt -mno-xsaves -mno-amx-tile -mno-amx-int8 -mno-amx-bf16 
+   -mno-uintr -mno-hreset -mno-kl -mno-widekl -mno-avxvnni -mno-avx512f
+   p16 -mno-avxifma -mno-avxvnniint8 -mno-avxneconvert -mno-cmpccxadd -
+   mno-amx-fp16 -mno-prefetchi -mno-raoint -mno-amx-complex -mno-avxvnn
+   iint16 -mno-sm3 -mno-sha512 -mno-sm4 -mno-apxf -mno-usermsr -mno-avx
+   10.2 -mno-amx-avx512 -mno-amx-tf32 -mno-amx-transpose -mno-amx-fp8 -
+   mno-movrs -mno-amx-movrs --param=l1-cache-size=32 --param=l1-cache-l
+   ine-size=64 --param=l2-cache-size=8192 -mtune=sandybridge -g -O3 -O3
+    -Wno-deprecated-declarations -Wno-maybe-uninitialized -Wuninitializ
+   ed -Wuse-without-only -std=f2008 -fPIE -ffree-form -fimplicit-none -
+   fno-omit-frame-pointer -fbacktrace -fallow-argument-mismatch -funrol
+   l-loops -fopenmp -fpreprocessed -J src -fpre-include=/usr/include/fi
+   nclude/x86_64-linux-gnu/math-vector-fortran.h

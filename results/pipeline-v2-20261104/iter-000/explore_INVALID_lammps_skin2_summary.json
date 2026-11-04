@@ -1,0 +1,134 @@
+{
+  "runs": {
+    "CaCO3_20_T300": {
+      "frames": 133,
+      "accurate": 0.0,
+      "candidate": 0.0,
+      "failed": 1.0,
+      "picked": 0,
+      "max_devi_f_max": 135.9187
+    },
+    "CaCO3_20_T500": {
+      "frames": 33,
+      "accurate": 0.0,
+      "candidate": 0.0,
+      "failed": 1.0,
+      "picked": 0,
+      "max_devi_f_max": 222.5973
+    },
+    "calcite_CaCO3_T300": {
+      "frames": 82,
+      "accurate": 0.0,
+      "candidate": 0.0,
+      "failed": 1.0,
+      "picked": 0,
+      "max_devi_f_max": 3460.076
+    },
+    "calcite_CaCO3_T500": {
+      "frames": 193,
+      "accurate": 0.0,
+      "candidate": 0.0,
+      "failed": 1.0,
+      "picked": 0,
+      "max_devi_f_max": 72.60667
+    },
+    "hap001_co2_T300": {
+      "frames": 14,
+      "accurate": 0.0,
+      "candidate": 0.0,
+      "failed": 1.0,
+      "picked": 0,
+      "max_devi_f_max": 314.8994
+    },
+    "hap001_co2_T500": {
+      "frames": 22,
+      "accurate": 0.0,
+      "candidate": 0.0,
+      "failed": 1.0,
+      "picked": 0,
+      "max_devi_f_max": 186.0433
+    },
+    "hap001_water_co2_T300": {
+      "frames": 13,
+      "accurate": 0.0,
+      "candidate": 0.0,
+      "failed": 1.0,
+      "picked": 0,
+      "max_devi_f_max": 272.2161
+    },
+    "hap001_water_co2_T500": {
+      "frames": 79,
+      "accurate": 0.0,
+      "candidate": 0.0,
+      "failed": 1.0,
+      "picked": 0,
+      "max_devi_f_max": 2720.219
+    },
+    "hap_bulk_T300": {
+      "frames": 183,
+      "accurate": 0.0,
+      "candidate": 0.0,
+      "failed": 1.0,
+      "picked": 0,
+      "max_devi_f_max": 3295.876
+    },
+    "hap_bulk_T500": {
+      "frames": 401,
+      "accurate": 0.0,
+      "candidate": 0.0,
+      "failed": 1.0,
+      "picked": 0,
+      "max_devi_f_max": 563.1241
+    },
+    "lime_CaO_T300": {
+      "frames": 401,
+      "accurate": 0.0,
+      "candidate": 0.0,
+      "failed": 1.0,
+      "picked": 0,
+      "max_devi_f_max": 567.5665
+    },
+    "lime_CaO_T500": {
+      "frames": 401,
+      "accurate": 0.0,
+      "candidate": 0.0,
+      "failed": 1.0,
+      "picked": 0,
+      "max_devi_f_max": 442.3148
+    },
+    "monetite_CaHPO4_T300": {
+      "frames": 401,
+      "accurate": 0.0,
+      "candidate": 0.0,
+      "failed": 1.0,
+      "picked": 0,
+      "max_devi_f_max": 1366.123
+    },
+    "monetite_CaHPO4_T500": {
+      "frames": 401,
+      "accurate": 0.0,
+      "candidate": 0.0,
+      "failed": 1.0,
+      "picked": 0,
+      "max_devi_f_max": 238.7491
+    },
+    "portlandite_CaOH2_T300": {
+      "frames": 401,
+      "accurate": 0.0,
+      "candidate": 0.0,
+      "failed": 1.0,
+      "picked": 0,
+      "max_devi_f_max": 4879.734
+    },
+    "portlandite_CaOH2_T500": {
+      "frames": 168,
+      "accurate": 0.0,
+      "candidate": 0.0,
+      "failed": 1.0,
+      "picked": 0,
+      "max_devi_f_max": 1311.644
+    }
+  },
+  "mean_accurate": 0.0,
+  "n_candidates": 0
+}

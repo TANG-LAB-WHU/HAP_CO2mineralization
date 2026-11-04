@@ -1,0 +1,83 @@
+{
+  "model": {
+    "type_map": [
+      "Ca",
+      "P",
+      "O",
+      "H",
+      "C"
+    ],
+    "descriptor": {
+      "type": "se_e2_a",
+      "sel": "auto",
+      "rcut_smth": 0.5,
+      "rcut": 6.0,
+      "neuron": [
+        25,
+        50,
+        100
+      ],
+      "axis_neuron": 16,
+      "resnet_dt": false,
+      "type_one_side": false,
+      "seed": 37
+    },
+    "fitting_net": {
+      "neuron": [
+        240,
+        240,
+        240
+      ],
+      "resnet_dt": true,
+      "seed": 37
+    }
+  },
+  "learning_rate": {
+    "type": "exp",
+    "start_lr": 0.001,
+    "stop_lr": 3e-08,
+    "decay_steps": 5000
+  },
+  "loss": {
+    "type": "ener",
+    "start_pref_e": 0.02,
+    "limit_pref_e": 1.0,
+    "start_pref_f": 1000.0,
+    "limit_pref_f": 1.0,
+    "start_pref_v": 0.0,
+    "limit_pref_v": 0.02
+  },
+  "training": {
+    "training_data": {
+      "systems": [
+        ".research-runs/pipeline-v2/iter-000/data/train/CaCO3_20__C32Ca32O96",
+        ".research-runs/pipeline-v2/iter-000/data/train/calcite_CaCO3__C16Ca16O48",
+        ".research-runs/pipeline-v2/iter-000/data/train/hap001_co2__CH4Ca20O54P12",
+        ".research-runs/pipeline-v2/iter-000/data/train/hap001_water_co2__C2H54Ca20O81P12",
+        ".research-runs/pipeline-v2/iter-000/data/train/hap_bulk__H4Ca20O52P12",
+        ".research-runs/pipeline-v2/iter-000/data/train/lime_CaO__Ca27O27",
+        ".research-runs/pipeline-v2/iter-000/data/train/monetite_CaHPO4__H32Ca32O128P32",
+        ".research-runs/pipeline-v2/iter-000/data/train/portlandite_CaOH2__H36Ca18O36"
+      ],
+      "batch_size": "auto"
+    },
+    "validation_data": {
+      "systems": [
+        ".research-runs/pipeline-v2/iter-000/data/valid/CaCO3_20__C32Ca32O96",
+        ".research-runs/pipeline-v2/iter-000/data/valid/calcite_CaCO3__C16Ca16O48",
+        ".research-runs/pipeline-v2/iter-000/data/valid/hap001_co2__CH4Ca20O54P12",
+        ".research-runs/pipeline-v2/iter-000/data/valid/hap001_water_co2__C2H54Ca20O81P12",
+        ".research-runs/pipeline-v2/iter-000/data/valid/hap_bulk__H4Ca20O52P12",
+        ".research-runs/pipeline-v2/iter-000/data/valid/monetite_CaHPO4__H32Ca32O128P32",
+        ".research-runs/pipeline-v2/iter-000/data/valid/portlandite_CaOH2__H36Ca18O36"
+      ],
+      "batch_size": "auto",
+      "numb_btch": 4
+    },
+    "numb_steps": 300000,
+    "seed": 37,
+    "disp_file": "lcurve.out",
+    "disp_freq": 1000,
+    "save_freq": 20000
+  }
+}

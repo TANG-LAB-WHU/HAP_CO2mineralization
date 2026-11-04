@@ -1,5 +1,9 @@
 # 2.ML_AIMD Workflow
 
+> This is the original AIMD-based route. Its local v1 run failed its production gates (`workflow/RECOVERY.md`).
+> The current route is pipeline v2 (`workflow/PIPELINE_V2.md`), which replaces Stage 1 with CP2K labels from
+> active learning and uses `Step3_mlip_deepmd/dp_ensemble.py`, `dp_explore.py` and `dp_validate.py`.
+
 ## Four-stage unified workflow
 
 This workflow is organized as a fixed four-stage pipeline:

@@ -1,0 +1,16 @@
+{
+  "counts": {
+    "ok": 83,
+    "scf_not_converged": 1
+  },
+  "systems": {
+    "CaCO3_20__C32Ca32O96": 9,
+    "calcite_CaCO3__C16Ca16O48": 12,
+    "hap001_co2__CH4Ca20O54P12": 9,
+    "hap001_water_co2__C2H54Ca20O81P12": 9,
+    "hap_bulk__H4Ca20O52P12": 12,
+    "lime_CaO__Ca27O27": 12,
+    "monetite_CaHPO4__H32Ca32O128P32": 9,
+    "portlandite_CaOH2__H36Ca18O36": 11
+  }
+}

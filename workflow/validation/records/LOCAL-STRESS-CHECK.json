@@ -1,0 +1,9 @@
+{
+  "artifact_id": "LOCAL-STRESS-CHECK",
+  "local_raw_path": ".research-runs/stress-check",
+  "status": "completed",
+  "manuscript_eligible": false,
+  "notes": "Real stress sign/volume/unit derivative check passed",
+  "reproducibility_manifest": ".research-runs/reproducibility-manifest.json",
+  "verification_report": "workflow/validation/verification.json"
+}

@@ -1,0 +1,150 @@
+{
+  "runs": {
+    "CaCO3_20_T300": {
+      "frames": 401,
+      "accurate": 1.0,
+      "candidate": 0.0,
+      "failed": 0.0,
+      "picked": 0,
+      "max_devi_f_max": 0.05222379,
+      "python_check_max_abs_diff": 1.6323985764586657e-05
+    },
+    "CaCO3_20_T500": {
+      "frames": 401,
+      "accurate": 0.9850374064837906,
+      "candidate": 0.014962593516209476,
+      "failed": 0.0,
+      "picked": 6,
+      "max_devi_f_max": 0.1597091,
+      "python_check_max_abs_diff": 3.4619051556827873e-06
+    },
+    "calcite_CaCO3_T300": {
+      "frames": 401,
+      "accurate": 1.0,
+      "candidate": 0.0,
+      "failed": 0.0,
+      "picked": 0,
+      "max_devi_f_max": 0.04957742,
+      "python_check_max_abs_diff": 3.5869487578152337e-06
+    },
+    "calcite_CaCO3_T500": {
+      "frames": 401,
+      "accurate": 0.9975062344139651,
+      "candidate": 0.0024937655860349127,
+      "failed": 0.0,
+      "picked": 1,
+      "max_devi_f_max": 0.1004941,
+      "python_check_max_abs_diff": 4.996171508300784e-06
+    },
+    "hap001_co2_T300": {
+      "frames": 401,
+      "accurate": 0.04488778054862843,
+      "candidate": 0.256857855361596,
+      "failed": 0.6982543640897756,
+      "picked": 30,
+      "max_devi_f_max": 2.595883,
+      "python_check_max_abs_diff": 0.00011497356802059322
+    },
+    "hap001_co2_T500": {
+      "frames": 401,
+      "accurate": 0.04239401496259352,
+      "candidate": 0.4139650872817955,
+      "failed": 0.543640897755611,
+      "picked": 30,
+      "max_devi_f_max": 2.50407,
+      "python_check_max_abs_diff": 7.0140391129625e-05
+    },
+    "hap001_water_co2_T300": {
+      "frames": 401,
+      "accurate": 0.0,
+      "candidate": 0.0773067331670823,
+      "failed": 0.9226932668329177,
+      "picked": 30,
+      "max_devi_f_max": 43.2446,
+      "python_check_max_abs_diff": 0.003693753597218574
+    },
+    "hap001_water_co2_T500": {
+      "frames": 401,
+      "accurate": 0.0,
+      "candidate": 0.017456359102244388,
+      "failed": 0.9825436408977556,
+      "picked": 7,
+      "max_devi_f_max": 52.42548,
+      "python_check_max_abs_diff": 0.0006974363655452009
+    },
+    "hap_bulk_T300": {
+      "frames": 401,
+      "accurate": 1.0,
+      "candidate": 0.0,
+      "failed": 0.0,
+      "picked": 0,
+      "max_devi_f_max": 0.05376625,
+      "python_check_max_abs_diff": 6.234368777086052e-06
+    },
+    "hap_bulk_T500": {
+      "frames": 401,
+      "accurate": 1.0,
+      "candidate": 0.0,
+      "failed": 0.0,
+      "picked": 0,
+      "max_devi_f_max": 0.08875418,
+      "python_check_max_abs_diff": 6.234368777176258e-06
+    },
+    "lime_CaO_T300": {
+      "frames": 401,
+      "accurate": 1.0,
+      "candidate": 0.0,
+      "failed": 0.0,
+      "picked": 0,
+      "max_devi_f_max": 0.04177817,
+      "python_check_max_abs_diff": 4.890490093510237e-06
+    },
+    "lime_CaO_T500": {
+      "frames": 401,
+      "accurate": 0.9925187032418953,
+      "candidate": 0.007481296758104738,
+      "failed": 0.0,
+      "picked": 3,
+      "max_devi_f_max": 0.1981848,
+      "python_check_max_abs_diff": 2.2013828063632834e-05
+    },
+    "monetite_CaHPO4_T300": {
+      "frames": 401,
+      "accurate": 0.7182044887780549,
+      "candidate": 0.2817955112219451,
+      "failed": 0.0,
+      "picked": 30,
+      "max_devi_f_max": 0.1849132,
+      "python_check_max_abs_diff": 1.6008488230731532e-05
+    },
+    "monetite_CaHPO4_T500": {
+      "frames": 401,
+      "accurate": 0.004987531172069825,
+      "candidate": 0.02493765586034913,
+      "failed": 0.970074812967581,
+      "picked": 10,
+      "max_devi_f_max": 45.95726,
+      "python_check_max_abs_diff": 0.0015143364547682836
+    },
+    "portlandite_CaOH2_T300": {
+      "frames": 401,
+      "accurate": 1.0,
+      "candidate": 0.0,
+      "failed": 0.0,
+      "picked": 0,
+      "max_devi_f_max": 0.06805164,
+      "python_check_max_abs_diff": 6.900907987515692e-07
+    },
+    "portlandite_CaOH2_T500": {
+      "frames": 401,
+      "accurate": 0.9850374064837906,
+      "candidate": 0.014962593516209476,
+      "failed": 0.0,
+      "picked": 6,
+      "max_devi_f_max": 0.1225998,
+      "python_check_max_abs_diff": 3.6951704780810446e-06
+    }
+  },
+  "mean_accurate": 0.6731608478802993,
+  "n_candidates": 153
+}

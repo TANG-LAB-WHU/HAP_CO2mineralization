@@ -1,0 +1,10 @@
+{
+  "artifact_id": "LOCAL-HAP-REFINE001",
+  "local_raw_path": ".research-runs/refine-001",
+  "status": "completed",
+  "manuscript_eligible": false,
+  "notes": "Bounded structure/force-grid/small-model/engine validation; failed attempts and scientific gates retained. Not converged material predictions.",
+  "reproducibility_manifest": ".research-runs/refine-001/reproducibility-manifest.json",
+  "reproducibility_manifest_sha256": "25ef1b083183b202b734e4d21442adbf6623601d070691aae63aa25add7f890c",
+  "verification_report": "workflow/validation/refinement-refine-001.json"
+}

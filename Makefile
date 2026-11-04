@@ -26,3 +26,7 @@ preview: check
 
 clean:
 	rm -rf paper/_output paper/.quarto
+
+.PHONY: compute-check
+compute-check:
+	$(PYTHON) workflow/verify_local_run.py .research-runs

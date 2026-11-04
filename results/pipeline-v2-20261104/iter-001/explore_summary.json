@@ -1,0 +1,150 @@
+{
+  "runs": {
+    "CaCO3_20_T300": {
+      "frames": 801,
+      "accurate": 1.0,
+      "candidate": 0.0,
+      "failed": 0.0,
+      "picked": 0,
+      "max_devi_f_max": 0.09257877,
+      "python_check_max_abs_diff": 9.557292034480247e-06
+    },
+    "CaCO3_20_T500": {
+      "frames": 801,
+      "accurate": 0.9675405742821473,
+      "candidate": 0.03245942571785269,
+      "failed": 0.0,
+      "picked": 26,
+      "max_devi_f_max": 0.1676572,
+      "python_check_max_abs_diff": 5.138734933324285e-06
+    },
+    "calcite_CaCO3_T300": {
+      "frames": 801,
+      "accurate": 1.0,
+      "candidate": 0.0,
+      "failed": 0.0,
+      "picked": 0,
+      "max_devi_f_max": 0.07683394,
+      "python_check_max_abs_diff": 8.103778032002296e-06
+    },
+    "calcite_CaCO3_T500": {
+      "frames": 801,
+      "accurate": 0.9887640449438202,
+      "candidate": 0.011235955056179775,
+      "failed": 0.0,
+      "picked": 9,
+      "max_devi_f_max": 0.1274622,
+      "python_check_max_abs_diff": 4.024390493018171e-06
+    },
+    "hap001_co2_T300": {
+      "frames": 801,
+      "accurate": 0.7203495630461922,
+      "candidate": 0.1585518102372035,
+      "failed": 0.12109862671660425,
+      "picked": 30,
+      "max_devi_f_max": 2.320807,
+      "python_check_max_abs_diff": 0.0002737953080982347
+    },
+    "hap001_co2_T500": {
+      "frames": 801,
+      "accurate": 0.05742821473158552,
+      "candidate": 0.017478152309612985,
+      "failed": 0.9250936329588015,
+      "picked": 14,
+      "max_devi_f_max": 9.076152,
+      "python_check_max_abs_diff": 0.0002883236305866177
+    },
+    "hap001_water_co2_T300": {
+      "frames": 801,
+      "accurate": 0.012484394506866416,
+      "candidate": 0.9775280898876404,
+      "failed": 0.009987515605493134,
+      "picked": 30,
+      "max_devi_f_max": 0.8087305,
+      "python_check_max_abs_diff": 2.2542928348939784e-05
+    },
+    "hap001_water_co2_T500": {
+      "frames": 801,
+      "accurate": 0.003745318352059925,
+      "candidate": 0.9375780274656679,
+      "failed": 0.05867665418227216,
+      "picked": 30,
+      "max_devi_f_max": 0.7397241,
+      "python_check_max_abs_diff": 2.1876356078420756e-05
+    },
+    "hap_bulk_T300": {
+      "frames": 801,
+      "accurate": 1.0,
+      "candidate": 0.0,
+      "failed": 0.0,
+      "picked": 0,
+      "max_devi_f_max": 0.0592646,
+      "python_check_max_abs_diff": 3.7402817266787847e-06
+    },
+    "hap_bulk_T500": {
+      "frames": 801,
+      "accurate": 0.8901373283395755,
+      "candidate": 0.10736579275905118,
+      "failed": 0.0024968789013732834,
+      "picked": 30,
+      "max_devi_f_max": 0.3124014,
+      "python_check_max_abs_diff": 5.70756786724691e-06
+    },
+    "lime_CaO_T300": {
+      "frames": 801,
+      "accurate": 1.0,
+      "candidate": 0.0,
+      "failed": 0.0,
+      "picked": 0,
+      "max_devi_f_max": 0.02638182,
+      "python_check_max_abs_diff": 3.0314977052511785e-06
+    },
+    "lime_CaO_T500": {
+      "frames": 801,
+      "accurate": 0.9987515605493134,
+      "candidate": 0.0012484394506866417,
+      "failed": 0.0,
+      "picked": 1,
+      "max_devi_f_max": 0.1012605,
+      "python_check_max_abs_diff": 3.031497705255961e-06
+    },
+    "monetite_CaHPO4_T300": {
+      "frames": 801,
+      "accurate": 0.8876404494382022,
+      "candidate": 0.11235955056179775,
+      "failed": 0.0,
+      "picked": 30,
+      "max_devi_f_max": 0.2409841,
+      "python_check_max_abs_diff": 4.112377395915079e-05
+    },
+    "monetite_CaHPO4_T500": {
+      "frames": 801,
+      "accurate": 0.0686641697877653,
+      "candidate": 0.1822721598002497,
+      "failed": 0.7490636704119851,
+      "picked": 30,
+      "max_devi_f_max": 13.64542,
+      "python_check_max_abs_diff": 0.0002986048628574878
+    },
+    "portlandite_CaOH2_T300": {
+      "frames": 801,
+      "accurate": 1.0,
+      "candidate": 0.0,
+      "failed": 0.0,
+      "picked": 0,
+      "max_devi_f_max": 0.08542914,
+      "python_check_max_abs_diff": 1.6324984367238615e-06
+    },
+    "portlandite_CaOH2_T500": {
+      "frames": 801,
+      "accurate": 0.9712858926342073,
+      "candidate": 0.02871410736579276,
+      "failed": 0.0,
+      "picked": 23,
+      "max_devi_f_max": 0.1889403,
+      "python_check_max_abs_diff": 3.3458877710390578e-06
+    }
+  },
+  "mean_accurate": 0.7229244694132335,
+  "n_candidates": 253
+}

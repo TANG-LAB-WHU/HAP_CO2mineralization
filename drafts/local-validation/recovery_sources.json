@@ -1,0 +1,32 @@
+{
+  "run": "recovery-001",
+  "registered_record": "workflow/validation/records/LOCAL-HAP-RECOVERY001.json",
+  "manifest_sha256": "e52f19e14355430fa33f2dfc5363e4ce68bd256f03baa3576720774164c57fdc",
+  "files": [
+    {
+      "path": ".research-runs/recovery-001/recovery-summary.json",
+      "sha256": "82dd0e220299e1c4395f3a4b134e83683e83e3c69a5d8e3344794e1346402303"
+    },
+    {
+      "path": ".research-runs/recovery-001/recovery.tex",
+      "sha256": "4cbc2cd9e9fa00630560b32dadbfc01873107f50540e3e01ed558b249192fe73"
+    },
+    {
+      "path": ".research-runs/recovery-001/09_recovery.pdf",
+      "sha256": "e60e6397d2ad6870aab318757fda09ebfa0837a31d79adb80b0e74351bdb2dd9"
+    },
+    {
+      "path": ".research-runs/recovery-001/10_recovered_dynamics.pdf",
+      "sha256": "cdba587460a0697e86aaf9b99e1ad6cd531b3e43aecfcaf885f6854a216dba4c"
+    },
+    {
+      "path": ".research-runs/recovery-001/12_failure_dft.pdf",
+      "sha256": "4850da4da7563c9ecd670c19367d1f73a3e8cb74c5fc75e03255a8dedf1f10d2"
+    },
+    {
+      "path": ".research-runs/recovery-001/recovery-figure-manifest.json",
+      "sha256": "ed4c2335ab62fd79382179f44c868cecd6334fc2ddd56501a32944203c9c23ce"
+    }
+  ],
+  "scope": "Separate bounded recovery and negative diagnostics; original gates unchanged; no production or untouched prospective-test claim"
+}

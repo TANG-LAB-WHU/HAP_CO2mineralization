@@ -1,0 +1,158 @@
+"""Assemble a diagnostic-only LaTeX project from measured local results and cited records."""
+import argparse,datetime,hashlib,json,re,shutil,subprocess,zipfile
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1]
+def load(p):return json.loads(p.read_text(encoding='utf-8-sig'))
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def entries(text):
+    result={}
+    for m in re.finditer(r'@\w+\s*\{\s*([^,]+),',text):
+        level=1;i=m.end()
+        while level and i<len(text):
+            if text[i]=='{':level+=1
+            elif text[i]=='}':level-=1
+            i+=1
+        if level:raise ValueError('Unbalanced BibTeX entry')
+        result[m[1].strip()]=text[m.start():i]
+    return result
+def tex_escape(s):return str(s).replace('_',r'\_').replace('%',r'\%').replace('&',r'\&')
+def main():
+    p=argparse.ArgumentParser();p.add_argument('--run',type=Path,required=True);p.add_argument('--recovery',type=Path);p.add_argument('--draft',type=Path,default=ROOT/'drafts/local-validation');p.add_argument('--allow-incomplete-preview',action='store_true');a=p.parse_args();r=a.run.resolve();d=a.draft.resolve();q=load(r/'verification.json')
+    if not q['functional_complete'] and not a.allow_incomplete_preview:raise ValueError('Refusing final manuscript assembly from incomplete stages')
+    lit=d/'literature';allentries={}
+    for path in lit.glob('*.bib'):allentries.update(entries(path.read_text(encoding='utf-8')))
+    registry=load(lit/'electronic-methods-crossref.json');keys=['PBE1996','GTH1996','MOLOPT2007','D32010']
+    for key,record in zip(keys,registry):
+        title=re.sub('<[^>]+>','',record['title'][0]);title=' '.join(title.split());authors=' and '.join(x['family']+', '+x.get('given','') for x in record['author'])
+        year=record.get('published',record['issued'])['date-parts'][0][0];page=record.get('page') or record.get('article-number') or {'MOLOPT2007':'114105','D32010':'154104'}[key]
+        allentries[key]='@article{'+key+',\n author={'+authors+'},\n title={'+title+'},\n journal={'+record['container-title'][0]+'},\n year={'+str(year)+'},volume={'+record['volume']+'},pages={'+page.replace('-','--')+'},doi={'+record['DOI']+'}\n}'
+    main=(d/'main.tex').read_text(encoding='utf-8');cited=[]
+    for group in re.findall(r'\\cite\w*\{([^}]+)\}',main):
+        for key in group.split(','):
+            if key not in cited:cited.append(key)
+    if any(key not in allentries for key in cited):raise KeyError('Missing citation: '+str(set(cited)-set(allentries)))
+    (d/'references.bib').write_text('\n\n'.join(allentries[x] for x in cited)+'\n',encoding='utf-8')
+    files=['01_structure','02_relaxation','03_cp2k_references','03b_scf_force_grid','04_aimd','05_dataset','06_models','07_lammps'];(d/'figures').mkdir(exist_ok=True)
+    source_map=[]
+    for name in files:
+        source=r/'figures'/f'{name}.pdf'
+        if not source.exists():raise FileNotFoundError(source)
+        shutil.copyfile(source,d/'figures'/source.name)
+        source_map.append({'id':name,'claim_scope':'Actual diagnostic outputs of this specific run; no material-property or mineralization inference','source':str(source.relative_to(ROOT)),'source_sha256':sha(source),'raw_manifest':str((r/'figures/manifest.json').relative_to(ROOT)),
+            'raw_manuscript_eligible':False,'draft_use':'explicit user-authorized diagnostic/negative-finding presentation; not an eligibility promotion'})
+    src={k:v['data'] for k,v in q['sources'].items()};refs=src.get('reference_audit.json',{});grid=src.get('force_grid_audit.json',{});models=src.get('model_evaluation.json',{});md=src.get('lammps_audit.json',{});data=src.get('dataset_audit.json',{});dft=src.get('dft_relaxation.json',{})
+    settings=grid.get('selected',{'cutoff':'pending','relcut':'pending','eps':'pending'})
+    numbers=r'\newcommand{\LabelSettings}{PBE '+str(settings['cutoff'])+'/'+str(settings['relcut'])+r'\,Ry}'+ '\n'
+    numbers+=r'\newcommand{\RunStatusBanner}{'+(r'\begin{center}\color{red!70!black}\textbf{INCOMPLETE PREVIEW: calculations are still running.}\end{center}' if not q['functional_complete'] else '')+'}\n'
+    quantitative='Quantitative model and trajectory outcomes are pending in this incomplete preview.'
+    if models and dft and md:
+        selected=models['selected'];heldout=models['models'][selected]['test']
+        quantitative=(f"DFT refinement reaches a maximum force of {dft['fmax_eV_A']:.4f}~eV/\\AA. "
+            f"The validation-selected {selected} model gives held-out force RMSE {heldout['force_rmse_eV_A']:.3f}~eV/\\AA{{}} and energy RMSE {heldout['energy_rmse_eV_atom']*1000:.2f}~meV/atom; "
+            f"the predefined force gate is {'passed' if models['heldout_force_gate'] else 'failed'}. "
+            f"Same-state Python/LAMMPS force differences are {md['engine_force_max_difference_eV_A']:.2g}~eV/\\AA, separating transfer correctness from predictive accuracy.")
+    if md.get('temperature_K'):
+        thermal=md['temperature_K']
+        quantitative+=f" The 250 fs learned-potential trajectory changes from {thermal['initial']:.0f} to {thermal['final']:.0f} K, while its geometry gate is {'passed' if md['chemistry_gate'] else 'failed'}."
+    if a.recovery:
+        rr=load(a.recovery/'recovery-summary.json');recovery_eval=load(a.recovery/'fullbatch-evaluation.json');rn=load(a.recovery/'numerical-followup-results.json')
+        quantitative+=f" Separate optimizer recovery lowers the one-frame force RMSE to {rr['overfit_final_recovery_eV_A']:.3f} eV/\\AA{{}} and retrospective test error to {recovery_eval['candidate']['test']['force_rmse_eV_A']:.3f} eV/\\AA; the latter still fails its gate. A fixed-model 1 ps follow-up has {rn['one_ps']['geometry_failed_frame_count']} failing geometry frames out of {rn['one_ps']['saved_frames']}."
+    numbers+=r'\newcommand{\QuantitativeAbstract}{'+quantitative+'}\n'
+    (d/'numbers.tex').write_text(numbers,encoding='utf-8')
+    text=[r'\subsection{Structural and numerical checks}',r'The explicit structural audit and optimizer records are illustrated in Figures~\ref{fig:structure} and~\ref{fig:relaxation}. The original baseline constraint description is corrected as described above. All new numerical values below refer to the retained refinement run \texttt{'+tex_escape(r.name)+r'}.']
+    if refs:
+        text.extend([r'\begin{table}[ht]\centering\small',r'\caption{Matched CP2K single points on the same MACE geometries. The energy difference includes reconstruction, not just molecular interaction.}',r'\begin{tabular}{lrr}\toprule Setting & Three-reference difference (eV) & Adsorbed $F_{\max}$ (eV/\AA)\\\midrule'])
+        for name,v in refs['settings'].items():text.append(f"{tex_escape(name)} & {v['adsorption_energy_eV']:.6f} & {v['adsorbed']['fmax_eV_A']:.4f} "+r'\\')
+        text.extend([r'\bottomrule\end{tabular}\end{table}',f"The 500-to-700 Ry total-energy-difference change is {refs['cutoff_change_eV']:.6f}eV. This passes the 0.02 eV pilot energy-sensitivity gate but does not certify forces."])
+    if grid:text.append(f"The subsequent 900/80 versus 1100/100 Ry force-component RMSE is {grid['force_component_rmse_eV_A']:.5f}eV/\\AA. The force-grid gate is \\textbf{{{'passed' if grid['force_gate'] else 'failed'}}}; selected labels use \\LabelSettings. This comparison concerns one geometry, not global numerical accuracy.")
+    for name,title in [('mace_fragments.json','MACE'),('cp2k_fragments.json','CP2K PBE, 500/60 Ry')]:
+        if name in src:
+            x=src[name];text.append(f"For {title}, the fixed-geometry interaction is {x['vertical_interaction_eV']:.6f}eV, the substrate term is {x['slab_deformation_eV']:.6f}eV, and the molecular deformation term is {x['co2_deformation_eV']:.6f}eV. Their sum is {x['total_reference_difference_eV']:.6f}eV. The negative substrate term shows that the reference geometry has higher same-method energy than the adsorbed-geometry slab fragment. In particular, the PBE single points do not establish DFT stationary basin identities. No strong-binding claim is inferred from the total.")
+    if dft:text.append(f"The DFT-refined structure has maximum force {dft['fmax_eV_A']:.5f}eV/\\AA; its 0.05 eV/\\AA{{}} gate is \\textbf{{{'passed' if dft['force_gate'] else 'failed'}}}. Chemical sanity checks are reported separately from optimizer convergence.")
+    if dft:
+        contact=dft['chemistry']['carbon_oxygen_contacts'][0]
+        if contact['oxygen_ids'][:2]==[46,47]:
+            distances=contact['distances_A']
+            text.append(f"The final intramolecular C--O distances are {distances[0]:.4f} and {distances[1]:.4f} \\AA; the nearest substrate oxygen is {distances[2]:.4f} \\AA{{}} from carbon. The existing 1.6 \\AA{{}} contact criterion counts {contact['oxygen_count_within_1p6A']} oxygen neighbors. This geometric diagnostic is not a bond-order analysis or evidence of carbonate formation.")
+    if 'dft_lbfgs_recovery.json' in src and dft:
+        optimization_log=(r/'dft-relax/opt.log').read_text()
+        iterations=len(re.findall(r'OPTIMIZATION STEP:\s*\d+',optimization_log));evaluations=optimization_log.count('FORCES| Atomic forces [hartree/bohr]')
+        previous=src['dft_lbfgs_recovery.json']['previous_BFGS_steps']
+        text.append(f'The retained {previous}-step BFGS attempt passed force criteria but failed displacement criteria. After the recorded optimizer-Hessian/displacement diagnosis, a fresh limited-memory history reached all four CP2K convergence criteria in {iterations} optimizer iteration(s), with {evaluations} printed force evaluations. This is local optimizer convergence, not proof of a globally stable surface; all original thresholds were retained.')
+    if 'optimizer_trial_audit.json' in src:
+        trials=[x for x in src['optimizer_trial_audit.json']['evaluations'] if not x['matches_initial_or_accepted_saved_energy']]
+        if trials:
+            peak=max(trials,key=lambda x:x['fmax_eV_A'])
+            text.append(f"A line-search trial reached maximum force {peak['fmax_eV_A']:.3f} eV/\\AA. Its energy is absent from the saved initial/accepted geometry sequence. It remains visible in the force-evaluation history but was not the accepted sampling origin.")
+    restarts=src.get('cp2k_restart_audit.json',{}).get('checks',[])
+    if restarts:
+        maximum_energy=max(x['energy_difference_eV'] for x in restarts);maximum_force=max(x['force_component_max_difference_eV_A'] for x in restarts)
+        text.append(f"Across {len(restarts)} actual saved-state CP2K restart boundaries, the largest energy difference is {maximum_energy:.3g} eV and the largest force-component difference is {maximum_force:.3g} eV/\\AA. These compare the same saved geometry before further optimization; they do not assert bitwise identical later optimizer paths.")
+    text.append(r'\subsection{Small-sample model validation}')
+    if data:text.append('The realized training/validation/test frame counts are '+ '/'.join(str(data['frames_per_split'][x]) for x in ['train','valid','test'])+f". The minimum cross-split pair-distance RMS difference is {data['cross_split_min_pair_distance_rms_A']:.5f}\\AA, compared with the 0.025\\AA{{}} criterion. Entire replicas remain disjoint, but short within-replica sequences remain correlated; the nominal frame count is not an effective independent sample size.")
+    coverage=src.get('sampling_coverage.json',{}).get('replicas',[])
+    if coverage:
+        span=max(x['maximum_within_replica_pair_distance_rms_A'] for x in coverage)
+        separation=min(x['minimum_other_replica_pair_distance_rms_A'] for x in coverage)
+        text.append(f"The largest within-replica sampled geometry span is {span:.5f} \\AA, while the closest pair from different replicas differs by {separation:.5f} \\AA{{}} in the same distance-vector metric. These are local structural holdouts. Statistical independence, equilibrium and effective sample size are not established by four-femtosecond trajectories.")
+    if models:
+        text.extend([r'\begin{table}[ht]\centering\small',r'\caption{Measured force-component RMSE. The test set is evaluated only for the validation-selected architecture; a one-frame fit is not a test set.}',r'\begin{tabular}{lrrr}\toprule Model & Training & Validation & Held-out test\\ & \multicolumn{3}{c}{eV/\AA}\\\midrule'])
+        for name,v in models['models'].items():
+            if name=='overfit':values=[f"{v['overfit']['force_rmse_eV_A']:.5f}",'same one frame','not applicable']
+            else:values=[f"{v[x]['force_rmse_eV_A']:.5f}" if x in v else 'not used' for x in ['train','valid','test']]
+            text.append(name+' & '+' & '.join(values)+r'\\')
+        text.extend([r'\bottomrule\end{tabular}\end{table}'])
+        chosen=models['selected'];m=models['models'][chosen]['test'];text.append(f"Validation selects the {chosen} architecture. Its independent energy RMSE is {1000*m['energy_rmse_eV_atom']:.4f}meV/atom; the 95th-percentile absolute force-component error is {m['force_p95_abs_error_eV_A']:.4f}eV/\\AA. The force and energy gates are \\textbf{{{'passed' if models['heldout_force_gate'] else 'failed'}}} and \\textbf{{{'passed' if models['heldout_energy_gate'] else 'failed'}}}, respectively. These outcomes concern the sampled local neighborhood only. Figure~\\ref{{fig:models}} displays the underlying prediction diagnostics.")
+    if models and not models['overfit_gate']:
+        sanity=models['models']['overfit']['overfit']['force_rmse_eV_A']
+        text.append(f"The one-frame run terminates at force RMSE {sanity:.5f} eV/\\AA, above its predefined 0.02 eV/\\AA{{}} sanity criterion. Thus the bounded 1,500-update experiment does not demonstrate accurate reproduction even of that one label. It does not distinguish insufficient optimization from limited model capacity. The separate recovery campaign below tests optimizer continuation with unchanged labels and architecture; the original failure remains recorded.")
+    if models:
+        by_replica=models['models'][models['selected']]['test'].get('per_replica',[])
+        if by_replica:
+            values='; '.join(f"replica {x['replica']}: {x['force_rmse_eV_A']:.4f} eV/\\AA" for x in by_replica)
+            text.append('The selected model has held-out force RMSE '+values+'. Only two test initial-condition groups are present; their correlated frames do not establish a precise generalization uncertainty.')
+    text.append(r'\subsection{Transfer and short-time dynamics}')
+    if md:text.append(f"The same-state Python/LAMMPS force mismatch is {md['engine_force_max_difference_eV_A']:.3g}eV/\\AA{{}} and the energy mismatch is {md['engine_energy_difference_eV']:.3g}eV. After the split restart, the maximum coordinate difference is {md['restart_position_max_difference_A']:.3g}\\AA{{}} and the maximum velocity difference is {md['restart_velocity_max_difference_A_per_ps']:.3g}\\AA{{}}/ps. The measured 250 fs NVE energy-drift slope is {md['energy_drift_meV_atom_ps']:.4f}meV/atom/ps. Figure~\\ref{{fig:lammps}} reports these diagnostics together with structural behavior. This short duration cannot establish long-term stability, and it does not override independent-force errors.")
+    if md and 'temperature_K' in md:
+        thermal=md['temperature_K']
+        text.append(f"The actual NVE temperature changes from {thermal['initial']:.1f} K to {thermal['final']:.1f} K, with a maximum of {thermal['maximum']:.1f} K. This temperature evolution accompanies changes in the learned potential energy; it is not evidence of a validated reaction or thermal ensemble. The trajectory geometry gate is \\textbf{{{'passed' if md['chemistry_gate'] else 'failed'}}}, with {md['geometry_failed_frame_count']} of 101 saved frames failing the stated contact/PO4/OH criteria. Energy conservation cannot override these structural and predictive-accuracy limits.")
+    if md and 'half_timestep_state_comparison' in md:
+        half=md['half_timestep_state_comparison']
+        text.append(f"At the same 250 fs endpoint, halving the timestep changes unwrapped positions by an atom-wise RMS of {half['final_position_rms_difference_A']:.5g} \\AA{{}} and velocities by at most {half['final_velocity_max_component_difference_A_per_ps']:.5g} \\AA/ps per component. These measured differences supplement the two drift slopes; no post hoc coordinate-convergence threshold is imposed.")
+    if 'lammps_restart_diagnosis.json' in src:
+        diagnostic=src['lammps_restart_diagnosis.json'];boundary=diagnostic['continuous_boundary_vs_loaded_binary_state'];mic=diagnostic['half_timestep_endpoint_minimum_image']
+        text.append(f"A separate zero-step binary-restart load preserves the saved boundary to within {boundary['position_max_difference_A']:.3g} \\AA{{}} in positions and {boundary['velocity_max_difference_A_per_ps']:.3g} \\AA/ps in velocity components relative to the separately executed continuous trajectory. Tiny thermo differences already occur before the restart. These observations are compatible with numerical roundoff/order sensitivity; they do not establish a unique cause, and the strict 250 fs endpoint gate remains failed. The half-timestep endpoint minimum-image position RMS difference is {mic['position_RMS_difference_A']:.4f} \\AA. Passing the drift-slope criterion therefore does not establish trajectory agreement or timestep convergence.")
+    text.extend([r'\begin{table}[ht]\centering\small',r'\caption{Machine-readable pilot gates. A failed gate is retained as a finding, not replaced by normal program termination.}',r'\begin{tabular}{lr}\toprule Gate & Result\\\midrule'])
+    for name,v in q['gates'].items():text.append(tex_escape(name)+' & '+('PASS' if v['passed'] is True else ('FAIL' if v['passed'] is False else 'MISSING'))+r'\\')
+    text.extend([r'\bottomrule\end{tabular}\end{table}',r'No production-readiness or mineralization gate is passed by this workflow. Material-wide convergence, hydration, reaction coverage, and long-time sampling remain outside the completed pilot.'])
+    formatted='\n\n'.join(text)+'\n'
+    formatted=re.sub(r'(?<=\d)(?=meV|eV|\\AA)', '~', formatted)
+    (d/'results.tex').write_text(formatted,encoding='utf-8')
+    shutil.copyfile(r/'verification.json',d/'verification.json');shutil.copyfile(r/'figures/manifest.json',d/'figure_sources.json')
+    claims={'run':r.name,'generated_at_UTC':datetime.datetime.now(datetime.timezone.utc).isoformat(),'source_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),'working_tree_dirty':bool(subprocess.check_output(['git','status','--porcelain'],cwd=ROOT,text=True).strip()),'builder_sha256':sha(Path(__file__)),'main_tex_sha256':sha(d/'main.tex'),'raw_manuscript_eligible':False,'scope':'Diagnostic working draft only; existing manuscript and eligibility decisions unchanged; new pending diagnostic evidence record added','computational_claims':source_map,
+       'numeric_claims':[{'id':name,'source':str((r/name).relative_to(ROOT)),'sha256':sha(r/name),'permitted':'Exact reported output or measured gate of this run only'} for name in src],
+       'literature_claims':{'cheng1998co2':'abstract-level adsorption vs carbonate distinction','diallogarcia2014sites':'abstract-level speciation/hydration','bittencourt2021acidbase':'prior CO2/probe adsorption work','bouharras2025adsorption':'prior experimental/DFT work; physisorption interpretation','nowicki2024capture':'condition-dependent high-temperature capture/regeneration','corno2009water':'specific ideal surface hydration differences','saito2021surfaces':'environment/electrostatic dependence','slepko2011ordering':'OH ordering as structural variable'},'method_citations':[x for x in cited if x not in ['cheng1998co2','diallogarcia2014sites','bittencourt2021acidbase','bouharras2025adsorption','nowicki2024capture','corno2009water','saito2021surfaces','slepko2011ordering']],
+       'method_records':[{'path':str((r/name).relative_to(ROOT)),'sha256':sha(r/name),'locator':locator} for name,locator in [
+           ('references/pbe-d3-500/adsorbed/adsorbed.log','vdW POTENTIAL section: zero damping, 20 bohr cutoff and printed scaling factors'),
+           ('dft-relax/opt.log','OPTIMIZATION STEP records, force blocks and final four convergence tests')]],
+       'limitations_file':'literature/evidence_notes.md','no_authorship_inferred':True}
+    (d/'source_to_claim.json').write_text(json.dumps(claims,indent=2),encoding='utf-8')
+    if a.recovery:
+        recovery=a.recovery.resolve();tag=recovery.name.upper().replace('-','').replace('_','')
+        registration=ROOT/'workflow/validation/records'/('LOCAL-HAP-'+tag+'.json')
+        registered=load(registration)
+        if sha(recovery/'reproducibility-manifest.json')!=registered['reproducibility_manifest_sha256']:raise ValueError('Recovery evidence must be captured before draft assembly')
+        shutil.copyfile(recovery/'recovery.tex',d/'recovery.tex');shutil.copyfile(recovery/'recovery-summary.json',d/'recovery_summary.json')
+        shutil.copyfile(recovery/'09_recovery.pdf',d/'figures/09_recovery.pdf')
+        shutil.copyfile(recovery/'10_recovered_dynamics.pdf',d/'figures/10_recovered_dynamics.pdf')
+        shutil.copyfile(recovery/'12_failure_dft.pdf',d/'figures/12_failure_dft.pdf')
+        recovery_sources={'run':recovery.name,'registered_record':registration.relative_to(ROOT).as_posix(),'manifest_sha256':registered['reproducibility_manifest_sha256'],
+            'files':[{'path':p.relative_to(ROOT).as_posix(),'sha256':sha(p)} for p in [recovery/'recovery-summary.json',recovery/'recovery.tex',recovery/'09_recovery.pdf',recovery/'10_recovered_dynamics.pdf',recovery/'12_failure_dft.pdf',recovery/'recovery-figure-manifest.json']],
+            'scope':'Separate bounded recovery and negative diagnostics; original gates unchanged; no production or untouched prospective-test claim'}
+        (d/'recovery_sources.json').write_text(json.dumps(recovery_sources,indent=2)+'\n',encoding='utf-8')
+        claims['recovery']=recovery_sources;(d/'source_to_claim.json').write_text(json.dumps(claims,indent=2),encoding='utf-8')
+    elif '\\input{recovery.tex}' in main:raise ValueError('This draft requires --recovery and its captured evidence')
+    shutil.copyfile(ROOT/'workflow/NEXT_SAMPLING_PLAN.md',d/'future_sampling_plan.md')
+    shutil.copyfile(ROOT/'workflow/profiles/next-sampling-proposal.json',d/'future_sampling_profile.json')
+    print('Assembled',len(cited),'cited references and',len(files)+(3 if a.recovery else 0),'traceable diagnostic figures')
+if __name__=='__main__':main()

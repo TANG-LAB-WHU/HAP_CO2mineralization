@@ -1,0 +1,22 @@
+{
+  "docker_images": {
+    "hap-mlip:2026.10": {
+      "image_id": "sha256:9c1be5f68117760f0e4d08d91a511ee720ab8573aba211256eaa11f69b6376a8",
+      "repo_digests": [],
+      "created": "2026-10-29T07:43:43.403274615Z"
+    },
+    "hap-cp2k:2026.2-cuda-sm89": {
+      "image_id": "sha256:82107bc51af4459871be4760b4c669a71aee4616ce8cb588c5638a055877c4fc",
+      "repo_digests": [],
+      "created": "2026-10-29T06:57:42.078926251Z"
+    },
+    "cp2k/cp2k:2026.2_mpich_generic_psmp": {
+      "image_id": "sha256:f3d9dc68a19277908fa0656c79c7c3f80179b1e909116ae19266d4cd8d5adb0d",
+      "repo_digests": [
+        "cp2k/cp2k@sha256:28e35f63a5253b95cc0f50e786370669185ad9f58eacacf33170cb1257216f36"
+      ],
+      "created": "2026-10-06T02:23:23.984322691Z"
+    }
+  },
+  "gpu": "NVIDIA GeForce RTX 4090, 617.42"
+}

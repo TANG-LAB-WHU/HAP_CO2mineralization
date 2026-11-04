@@ -1,0 +1,115 @@
+\subsection{Structural and numerical checks}
+
+The explicit structural audit and optimizer records are illustrated in Figures~\ref{fig:structure} and~\ref{fig:relaxation}. The original baseline constraint description is corrected as described above. All new numerical values below refer to the retained refinement run \texttt{refine-001}.
+
+\begin{table}[ht]\centering\small
+
+\caption{Matched CP2K single points on the same MACE geometries. The energy difference includes reconstruction, not just molecular interaction.}
+
+\begin{tabular}{lrr}\toprule Setting & Three-reference difference (eV) & Adsorbed $F_{\max}$ (eV/\AA)\\\midrule
+
+pbe-300 & -3.528053 & 0.5968 \\
+
+pbe-500 & -3.585984 & 0.6117 \\
+
+pbe-700 & -3.592924 & 0.7116 \\
+
+pbe-d3-500 & -3.662324 & 0.5874 \\
+
+\bottomrule\end{tabular}\end{table}
+
+The 500-to-700 Ry total-energy-difference change is 0.006940~eV. This passes the 0.02 eV pilot energy-sensitivity gate but does not certify forces.
+
+The subsequent 900/80 versus 1100/100 Ry force-component RMSE is 0.00231~eV/\AA. The force-grid gate is \textbf{passed}; selected labels use \LabelSettings. This comparison concerns one geometry, not global numerical accuracy.
+
+For MACE, the fixed-geometry interaction is -0.425768~eV, the substrate term is -3.364976~eV, and the molecular deformation term is 0.007372~eV. Their sum is -3.783371~eV. The negative substrate term shows that the reference geometry has higher same-method energy than the adsorbed-geometry slab fragment. In particular, the PBE single points do not establish DFT stationary basin identities. No strong-binding claim is inferred from the total.
+
+For CP2K PBE, 500/60 Ry, the fixed-geometry interaction is -0.246973~eV, the substrate term is -3.351786~eV, and the molecular deformation term is 0.012775~eV. Their sum is -3.585984~eV. The negative substrate term shows that the reference geometry has higher same-method energy than the adsorbed-geometry slab fragment. In particular, the PBE single points do not establish DFT stationary basin identities. No strong-binding claim is inferred from the total.
+
+The DFT-refined structure has maximum force 0.03242~eV/\AA; its 0.05 eV/\AA{} gate is \textbf{passed}. Chemical sanity checks are reported separately from optimizer convergence.
+
+The final intramolecular C--O distances are 1.1689 and 1.1846 \AA; the nearest substrate oxygen is 2.7744 \AA{} from carbon. The existing 1.6 \AA{} contact criterion counts 2 oxygen neighbors. This geometric diagnostic is not a bond-order analysis or evidence of carbonate formation.
+
+The retained 90-step BFGS attempt passed force criteria but failed displacement criteria. After the recorded optimizer-Hessian/displacement diagnosis, a fresh limited-memory history reached all four CP2K convergence criteria in 1 optimizer iteration(s), with 3 printed force evaluations. This is local optimizer convergence, not proof of a globally stable surface; all original thresholds were retained.
+
+A line-search trial reached maximum force 54.382 eV/\AA. Its energy is absent from the saved initial/accepted geometry sequence. It remains visible in the force-evaluation history but was not the accepted sampling origin.
+
+Across 3 actual saved-state CP2K restart boundaries, the largest energy difference is 1.19e-09 eV and the largest force-component difference is 1.19e-05 eV/\AA. These compare the same saved geometry before further optimization; they do not assert bitwise identical later optimizer paths.
+
+\subsection{Small-sample model validation}
+
+The realized training/validation/test frame counts are 16/8/8. The minimum cross-split pair-distance RMS difference is 0.05054~\AA, compared with the 0.025~\AA{} criterion. Entire replicas remain disjoint, but short within-replica sequences remain correlated; the nominal frame count is not an effective independent sample size.
+
+The largest within-replica sampled geometry span is 0.02611 \AA, while the closest pair from different replicas differs by 0.05054 \AA{} in the same distance-vector metric. These are local structural holdouts. Statistical independence, equilibrium and effective sample size are not established by four-femtosecond trajectories.
+
+\begin{table}[ht]\centering\small
+
+\caption{Measured force-component RMSE. The test set is evaluated only for the validation-selected architecture; a one-frame fit is not a test set.}
+
+\begin{tabular}{lrrr}\toprule Model & Training & Validation & Held-out test\\ & \multicolumn{3}{c}{eV/\AA}\\\midrule
+
+overfit & 0.16213 & same one frame & not applicable\\
+
+compact & 0.19697 & 0.21905 & not used\\
+
+wider & 0.11553 & 0.13767 & 0.21405\\
+
+\bottomrule\end{tabular}\end{table}
+
+Validation selects the wider architecture. Its independent energy RMSE is 3.1997~meV/atom; the 95th-percentile absolute force-component error is 0.3065~eV/\AA. The force and energy gates are \textbf{failed} and \textbf{passed}, respectively. These outcomes concern the sampled local neighborhood only. Figure~\ref{fig:models} displays the underlying prediction diagnostics.
+
+The one-frame run terminates at force RMSE 0.16213 eV/\AA, above its predefined 0.02 eV/\AA{} sanity criterion. Thus the bounded 1,500-update experiment does not demonstrate accurate reproduction even of that one label. It does not distinguish insufficient optimization from limited model capacity. The separate recovery campaign below tests optimizer continuation with unchanged labels and architecture; the original failure remains recorded.
+
+The selected model has held-out force RMSE replica 6: 0.2679 eV/\AA; replica 7: 0.1409 eV/\AA. Only two test initial-condition groups are present; their correlated frames do not establish a precise generalization uncertainty.
+
+\subsection{Transfer and short-time dynamics}
+
+The same-state Python/LAMMPS force mismatch is 3.04e-13~eV/\AA{} and the energy mismatch is 0~eV. After the split restart, the maximum coordinate difference is 7.65e-08~\AA{} and the maximum velocity difference is 2.85e-05~\AA{}/ps. The measured 250 fs NVE energy-drift slope is -1.8029~meV/atom/ps. Figure~\ref{fig:lammps} reports these diagnostics together with structural behavior. This short duration cannot establish long-term stability, and it does not override independent-force errors.
+
+The actual NVE temperature changes from 200.0 K to 1853.1 K, with a maximum of 4079.8 K. This temperature evolution accompanies changes in the learned potential energy; it is not evidence of a validated reaction or thermal ensemble. The trajectory geometry gate is \textbf{failed}, with 43 of 101 saved frames failing the stated contact/PO4/OH criteria. Energy conservation cannot override these structural and predictive-accuracy limits.
+
+At the same 250 fs endpoint, halving the timestep changes unwrapped positions by an atom-wise RMS of 1.8834 \AA{} and velocities by at most 246.61 \AA/ps per component. These measured differences supplement the two drift slopes; no post hoc coordinate-convergence threshold is imposed.
+
+A separate zero-step binary-restart load preserves the saved boundary to within 2.85e-13 \AA{} in positions and 5.77e-11 \AA/ps in velocity components relative to the separately executed continuous trajectory. Tiny thermo differences already occur before the restart. These observations are compatible with numerical roundoff/order sensitivity; they do not establish a unique cause, and the strict 250 fs endpoint gate remains failed. The half-timestep endpoint minimum-image position RMS difference is 0.8603 \AA. Passing the drift-slope criterion therefore does not establish trajectory agreement or timestep convergence.
+
+\begin{table}[ht]\centering\small
+
+\caption{Machine-readable pilot gates. A failed gate is retained as a finding, not replaced by normal program termination.}
+
+\begin{tabular}{lr}\toprule Gate & Result\\\midrule
+
+cutoff\_reference & PASS\\
+
+mace\_refined & PASS\\
+
+dft\_optimizer & PASS\\
+
+dft\_force & PASS\\
+
+force\_grid & PASS\\
+
+cp2k\_restart & PASS\\
+
+split\_leakage & PASS\\
+
+overfit\_sanity & FAIL\\
+
+independent\_force & FAIL\\
+
+independent\_energy & PASS\\
+
+model\_symmetry & PASS\\
+
+engine\_mapping & PASS\\
+
+lammps\_restart & FAIL\\
+
+short\_nve\_drift & PASS\\
+
+timestep\_drift & PASS\\
+
+trajectory\_geometry & FAIL\\
+
+\bottomrule\end{tabular}\end{table}
+
+No production-readiness or mineralization gate is passed by this workflow. Material-wide convergence, hydration, reaction coverage, and long-time sampling remain outside the completed pilot.

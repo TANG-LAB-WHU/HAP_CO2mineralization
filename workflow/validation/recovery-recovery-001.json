@@ -1,0 +1,149 @@
+{
+  "run_id": "recovery-001",
+  "original_run": "refine-001",
+  "original_gates_changed": false,
+  "production_ready": false,
+  "overfit_original_eV_A": 0.1621328507810372,
+  "overfit_first_recovery_eV_A": 0.09021225975300726,
+  "overfit_final_recovery_eV_A": 0.016475917621395064,
+  "overfit_recovery_gate_pass": true,
+  "DFT_force_checks_pass": true,
+  "full_data_recovery_executed": true,
+  "limitation": "One-frame reproduction is an optimizer diagnosis, not a test of generalization. The original test has already been inspected; all recovery test results are retrospective diagnostics.",
+  "manuscript_eligible": false,
+  "storage_note": "Compact tracked report. Complete per-frame diagnostics are retained in the immutable local report and delivered diagnostic bundle; no measurements were changed.",
+  "full_report": {
+    "path": ".research-runs/recovery-001/recovery-summary.json",
+    "sha256": "82dd0e220299e1c4395f3a4b134e83683e83e3c69a5d8e3344794e1346402303",
+    "bytes": 1572742
+  },
+  "sources": {
+    "fit-diagnosis.json": {
+      "sha256": "d22a6f716a3c63c819c13b2c7ad5d4e017cc5906c29da87d9cf2b43dc35b2a22"
+    },
+    "dft-force-results.json": {
+      "sha256": "d2bada6617b98661964c11c167299a1550401d29cbc4623790f5413657eb5865"
+    },
+    "dynamics-units-audit.json": {
+      "sha256": "4fca77c6ed023dd476fb5dfd0fbd9a583642a840a95c3b0d05515aa8c828ae26"
+    },
+    "restart-control-results.json": {
+      "sha256": "a6482142c8acdb8e0c52c39fd06980956d00bb614833b3abd9da3bbc379d221c"
+    },
+    "overfit-lbfgs/result.json": {
+      "sha256": "66aa83e19a84b24bcc1e4b39e5dc4d4a4d2b070a2ef77d51d8948db8f390a11a"
+    },
+    "overfit-continuation/result.json": {
+      "sha256": "a4c073125a5ffb41c7de975b97126a14cc17c2913f10e0b9a27e0dc0a44f4df5"
+    },
+    "restart-order-results.json": {
+      "sha256": "0209dc56052475175ce6503785bf567950ce59010aa7c9a3ef7e2cf4156856ae"
+    },
+    "fullbatch-evaluation.json": {
+      "sha256": "70bf266b67ddfe4510335a4d59010e8a11ebd2082ce049b329f28c7141333f7e"
+    },
+    "recovered-dynamics.json": {
+      "sha256": "7291b0de8676a1b19a9e6a386d7a48014a444b946df3172727149e92eb5e3efd"
+    },
+    "numerical-followup-results.json": {
+      "sha256": "6d514314c721d30be8dd350f088b7aab70633f4e4be84ff51e58b74a6b8c5bac"
+    },
+    "final-instability-results.json": {
+      "sha256": "e99eda6ace4ebda5f25b60b86ddc2c8de4d0448c70a65b8ee3f4017f9e2e5c52"
+    }
+  },
+  "measured_recovery": {
+    "candidate": {
+      "train": {
+        "frames": 16,
+        "force_rmse_eV_A": 0.06539798452196874,
+        "energy_rmse_eV_atom": 0.0008810591811473212,
+        "per_element_force_rmse_eV_A": {
+          "Ca": 0.07082999431471802,
+          "P": 0.08106660333169807,
+          "O": 0.060504123973587856,
+          "H": 0.04929847824428349,
+          "C": 0.06366185219103147
+        }
+      },
+      "valid": {
+        "frames": 8,
+        "force_rmse_eV_A": 0.08289387494259468,
+        "energy_rmse_eV_atom": 0.0010547896743531642,
+        "per_element_force_rmse_eV_A": {
+          "Ca": 0.08669357436823663,
+          "P": 0.11377274018024676,
+          "O": 0.0741794558193426,
+          "H": 0.054290191830767165,
+          "C": 0.10082136841185976
+        }
+      },
+      "test": {
+        "frames": 8,
+        "force_rmse_eV_A": 0.10788325259346503,
+        "energy_rmse_eV_atom": 0.0007879815773178936,
+        "per_element_force_rmse_eV_A": {
+          "Ca": 0.10601285612591013,
+          "P": 0.11520215151897518,
+          "O": 0.10072140906591488,
+          "H": 0.07556841369593299,
+          "C": 0.2439904032420223
+        }
+      }
+    },
+    "recovery_selected": true,
+    "restart": {
+      "position_max_difference_A": 1.393885007416884e-13,
+      "velocity_max_difference_A_ps": 1.0444978215673473e-11,
+      "strict_original_gate_pass": true
+    },
+    "one_ps": {
+      "duration_fs": 1000,
+      "timestep_fs": 0.25,
+      "saved_frames": 401,
+      "geometry_failed_frame_count": 231,
+      "geometry_gate": false,
+      "first_geometry_failure_time_fs": 395.0,
+      "energy_drift_meV_atom_ps": 53.392878342840184,
+      "drift_gate": false,
+      "maximum_energy_excursion_meV_atom": 114.16154588934002
+    },
+    "first_failure_DFT_probe": {
+      "status": "completed",
+      "selected_frame": {
+        "source_frame_index": 158,
+        "time_fs": 395.0,
+        "selected_by": "first failed predefined geometry gate",
+        "purpose": "Post hoc failure diagnosis only; never used for fitting or an untouched-test claim",
+        "method": "Same plain PBE, DZVP-MOLOPT-SR-GTH,1100/100Ry,EPS_SCF1e-8",
+        "timeout_seconds": 600
+      },
+      "DFT_energy_change_from_start_eV": 5.96576083565742,
+      "model_energy_change_from_start_eV": -2.28911114679795,
+      "energy_change_error_eV": -8.25487198245537,
+      "force_component_RMSE_eV_A": 1.2830810789577443,
+      "force_max_abs_error_eV_A": 8.5736101774422,
+      "DFT_fmax_eV_A": 8.444387149645737,
+      "per_element_force_RMSE_eV_A": {
+        "Ca": 0.4148594140069222,
+        "P": 0.4467517737264114,
+        "O": 1.082289318183889,
+        "H": 2.905595638143791,
+        "C": 4.977406818778582
+      },
+      "DFT_source_sha256": "d6a9cab78d691416683460a216e09da2eef2eac435e73b030fa929b27c790faf",
+      "scope": "One post hoc first-failure snapshot. DFT and model energy changes each use their own same-method initial energy; no mixed-method reference subtraction. Not a prospective generalization estimate and not used for fitting."
+    },
+    "one_ps_halfstep": {
+      "timestep_fs": 0.125,
+      "duration_fs": 1000,
+      "saved_frames": 401,
+      "geometry_failed_frame_count": 233,
+      "geometry_gate": false,
+      "first_geometry_failure_time_fs": 392.5,
+      "energy_drift_meV_atom_ps": -0.0727490097663443,
+      "drift_gate": true,
+      "maximum_energy_excursion_meV_atom": 0.7338597029918171
+    }
+  }
+}

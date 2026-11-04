@@ -1,0 +1,40 @@
+{
+  "snapshot_utc": "2026-11-04T07:26:58+00:00",
+  "stages_done": [
+    "label-0",
+    "sealed_test",
+    "train-0",
+    "test-0",
+    "explore-0",
+    "label-1",
+    "train-1",
+    "test-1",
+    "explore-1",
+    "label-2",
+    "train-2",
+    "test-2",
+    "explore-2"
+  ],
+  "uncollected_label_steps": {
+    "label-3": {
+      "frames": 208,
+      "done_marker": 187,
+      "scf_not_converged": [
+        "candidates_00127"
+      ],
+      "converged_done": 187
+    },
+    "extra-s3": {
+      "frames": 90,
+      "done_marker": 90,
+      "scf_not_converged": [],
+      "converged_done": 90
+    },
+    "extra-s3-test": {
+      "frames": 40,
+      "done_marker": 40,
+      "scf_not_converged": [],
+      "converged_done": 40
+    }
+  }
+}
