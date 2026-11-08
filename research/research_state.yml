@@ -1,5 +1,5 @@
 schema_version: 1
-last_updated: 2026-11-04
+last_updated: 2026-11-08
 active_branch: shawn_dev
 workflow_mode: local_gpu_active_learning_with_results_publication
 
@@ -19,7 +19,7 @@ research_question: >-
   investigation for interfacial CO2 mineralization, and what atomistic mechanisms
   control their behavior under hydration?
 
-current_stage: pipeline_v2_active_learning_iteration_3_in_progress_production_unqualified
+current_stage: pipeline_v2_active_learning_iterations_0_to_4_done_label_5_moving_to_slurm_cluster_production_unqualified
 current_decision: preserve_negative_results_and_require_all_pipeline_v2_gates_on_the_final_ensemble_before_production
 
 compute:
@@ -34,8 +34,8 @@ result_gates:
   candidate_screening: gf_scan_s1_363_s2_149_s3_10_s4_dft_hull_8_of_10_within_50_meV_none_on_hull_no_carbonate_phosphate_survives
   adsorption_ranking: implemented_local_reference_checks_only_no_validated_ranking
   geometry_optimization: documented_local_optimizations_surface_convergence_unestablished
-  aimd_dataset: v2_cp2k_labels_620_active_learning_83_sealed_130_s3_iteration_3_labelling
-  mlip_validation: v2_sealed_test_passed_iterations_0_to_2_lattice_stability_convergence_gates_not_run
+  aimd_dataset: v2_cp2k_labels_iterations_0_to_4_and_s3_collected_label_5_144_of_661_metad_165_of_180_see_workflow_PIPELINE_V2
+  mlip_validation: v2_iteration_4_sealed_test_all_models_pass_83_original_frames_only_model_2_at_energy_gate_on_123_with_s3_lattice_stability_convergence_gates_not_run
   enhanced_sampling: blocked_not_implemented
 
 manuscript_evidence:
@@ -68,14 +68,14 @@ known_blockers:
   - eight four-femtosecond AIMD replicas (local validation) are too short for equilibrium or broad independent coverage; legacy failures remain ineligible
   - legacy HAP112 postprocessing lacks raw inputs and reports poor quality
   - B91 and local v1 models failed qualification; the pipeline-v2 ensemble passes the sealed test, but its lattice, stability and convergence gates have not run and no final ensemble exists
-  - HAP(001) + water + CO2 stays below target (iteration-2 energy RMSE 2.8-3.9 meV/atom; accurate fraction 0.008 at 300 K and 0.106 at 500 K), and unbiased exploration has sampled no CO2 conversion
+  - HAP(001) + water + CO2 stays below target (explore-4 accurate fraction 0.349 at 300 K and 0.026 at 500 K), and unbiased exploration has sampled no CO2 conversion
   - no literature claim has a human-confirmed full-text source locator
   - nowicki2024capture full-text extraction is blocked because the approved RSC PDF endpoint returned HTTP 403
 
 next_actions:
-  - continue workflow/PIPELINE_V2.md - label-3 (208 frames), train-3 with the ten S3 systems, iterations up to 6, final from-scratch ensemble, then stage-7 validation
+  - continue pipeline v2 on a Slurm cluster from label-5 (workflow/hpc/PIPELINE_V2_HPC.md); the workstation run stopped 2026-11-08 at label-5 144/661 with iterations 0-4 done, and --iters is 8, then the final from-scratch ensemble and stage-7 validation
   - report the sealed test per system and the 8 A Gamma bias (2.46 +/- 0.24 meV/atom, HAP bulk) next to every energy gate
-  - plan biased exploration of CO2 conversion (PLANNED, under review) before any mechanism claim
+  - biased exploration round 1 (180 training + 24 sealed-test metad frames) joins training at train-5; no CO2-conversion mechanism claim before it is evaluated
   - run a database novelty search (Web of Science or Scopus, Google Scholar forward citations, ChemRxiv, CNKI) before any claim of priority; see literature/novelty_check_2026-11.md
   - human review of the 12 novelty-check candidate references and their two flagged metadata discrepancies
   - review the artifact inventory and ineligibility decisions with the research team

@@ -1,7 +1,8 @@
 """Active-learning exploration with LAMMPS + DeePMD on the GPU (DP-GEN style).
 
 For each starting structure and temperature, LAMMPS runs NVT with the 4-model ensemble and
-writes model_devi.out. Frames with trust_lo <= max_devi_f < trust_hi become labelling
+writes model_devi.out. At --npt-temperatures a bulk structure (not hap001*) runs NPT at 1 atm instead,
+with every cell length and angle free (tri, as in the stage-7 runs of dp_validate). Frames with trust_lo <= max_devi_f < trust_hi become labelling
 candidates (capped per run, evenly spread in time); frames above trust_hi are counted as
 failures and never labelled. Run inside hap-mlip.
 
@@ -27,6 +28,16 @@ from ase.data import atomic_masses, atomic_numbers
 from ase.io import read, write
 
 TYPE_MAP = ["Ca", "P", "O", "H", "C"]
+
+# 2026-11-06: in the iteration-3 stage-7 preview the S3 phases left their fixed exploration cells in NPT at 300 K
+# (b up to +19 %, angles up to 13 degrees) with 84-99 % of frames above trust_lo, so bulk cells are explored in NPT
+NPT = ("change_box all triclinic\n"
+       "fix 1 all npt temp {temp} {temp} 0.05 tri 1.01325 1.01325 0.5 flip no")
+
+
+def is_slab(name):
+    """Slabs (vacuum along z) keep NVT and carry no stress label, as in cp2k_label."""
+    return name.startswith("hap001")
 
 
 def eval_ef(pot, a):
@@ -80,7 +91,7 @@ pair_coeff * *
 neighbor 0.0 bin
 neigh_modify every 1 delay 0 check yes
 velocity all create {temp} {seed} mom yes rot yes dist gaussian
-fix 1 all nvt temp {temp} {temp} 0.05
+{ensemble}
 timestep 0.0005
 thermo {stride}
 thermo_style custom step temp pe etotal press vol
@@ -95,6 +106,8 @@ def main():
     parser.add_argument("--models", nargs=4, type=Path, required=True)
     parser.add_argument("--structures", nargs="+", type=Path, required=True)
     parser.add_argument("--temperatures", nargs="+", type=float, default=[300, 500])
+    parser.add_argument("--npt-temperatures", nargs="*", type=float, default=[],
+                        help="temperatures (of --temperatures) at which bulk structures run NPT instead of NVT")
     parser.add_argument("--steps", type=int, default=20000, help="0.5 fs steps")
     parser.add_argument("--stride", type=int, default=50)
     parser.add_argument("--trust-lo", type=float, default=0.10)
@@ -122,11 +135,13 @@ def main():
         atoms0 = read(path)
         name = path.stem.replace("_initial", "")
         for temp in args.temperatures:
-            d = (args.out / f"{name}_T{int(temp)}").resolve()
+            npt = temp in args.npt_temperatures and not is_slab(name)
+            d = (args.out / f"{name}_T{int(temp)}{'_npt' if npt else ''}").resolve()
             d.mkdir(parents=True, exist_ok=True)
             write(d / "conf.lmp", atoms0, format="lammps-data", specorder=TYPE_MAP, masses=False)
-            (d / "in.lmp").write_text(LAMMPS_IN.format(masses=masses, models=models, stride=args.stride,
-                                                       temp=temp, seed=args.seed + int(temp), steps=args.steps))
+            ensemble = (NPT if npt else "fix 1 all nvt temp {temp} {temp} 0.05").format(temp=temp)
+            (d / "in.lmp").write_text(LAMMPS_IN.format(masses=masses, models=models, stride=args.stride, temp=temp,
+                                                       ensemble=ensemble, seed=args.seed + int(temp), steps=args.steps))
             runs.append((name, temp, d, atoms0))
     # The runs are independent (each has its own seed); one leaves the GPU mostly idle, so --parallel share it.
     # Analysis follows in input order
@@ -175,7 +190,8 @@ def main():
         for k in pick:
             f = frames[k]
             f.calc = None
-            f.info = {"system": name, "temperature_K": temp, "step": int(step[k]), "max_devi_f": float(fmax[k])}
+            f.info = {"system": name, "temperature_K": temp, "ensemble": "npt" if d.name.endswith("_npt") else "nvt",
+                      "step": int(step[k]), "max_devi_f": float(fmax[k])}
             candidates.append(f)
         complete = "Loop time" in (d / "log.lammps").read_text(errors="replace") if (d / "log.lammps").exists() else False
         summary[d.name] = dict(frames=len(fmax), lammps_complete=complete,
