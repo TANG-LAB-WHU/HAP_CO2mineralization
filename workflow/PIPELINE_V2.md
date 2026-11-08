@@ -696,7 +696,27 @@ the same frames. Δ are relative to each survivor's CP2K-relaxed cell; angles in
 Same early look as `preview-iter3/` on the iteration-4 models (`graph-compress.pth`): `dp_validate.py` unchanged,
 200 ps for every system, 3 jobs at once (`preview-iter4/run_preview.sh <groups>`). Started 2026-11-08 01:33 with
 the S3 group only, about 22 h at the iteration-3 pace; w8 (about 13 h) follows if label-5 still leaves the GPU free,
-so that the preview does not share the GPU with train-5. Not the stage-7 result. Results go here when it ends.
+so that the preview does not share the GPU with train-5. Not the stage-7 result.
+
+Stopped by hand on 2026-11-08 at 13:19, after the move to the cluster, and not rerun: the formal stage 7 runs on the
+final ensemble. Five of the ten S3 systems finished their 200 ps (s3_014, s3_039, s3_055, s3_070, s3_250). s3_180,
+s3_262 and s3_273 were interrupted, s3_294 and s3_302 never started, and w8 did not run. `dp_validate.py` writes
+its gate summary only at the end, so there is none. The MD and relaxation outputs of each system are kept. From the
+NPT trajectories (one frame per ps; volume per atom against the CP2K-relaxed cell of the DFT hull; Ca–O within
+3.0 Å):
+
+| System | V/Vref at start | V/Vref, 150–200 ps (SD) | Ca–O CN: start → 25 ps → 200 ps |
+| --- | ---: | ---: | --- |
+| s3_014 | 1.046 | 1.060 (0.007) | 6.50 → 6.50 → 6.50 |
+| s3_039 | 1.046 | 1.017 (0.009) | 6.50 → 6.44 → 6.50 |
+| s3_055 | 1.017 | 0.925 (0.008) | 6.00 → 8.94 → 8.81 |
+| s3_070 | 1.049 | 1.018 (0.006) | 7.00 → 7.88 → 8.03 |
+| s3_250 | 1.030 | 1.012 (0.007) | 6.00 → 6.00 → 6.00 |
+
+s3_055 changes as in explore-4 (see "NPT exploration of bulk cells"), so this independent 200 ps run reproduces
+the aragonite-type transformation. s3_014 stays about 6 % larger than its DFT cell, as in explore-4. In s3_070 the
+mean Ca–O coordination rises from 7 to 8 while the volume stays within 2 % of the DFT cell; its structure has not
+been analysed.
 
 ### NPT exploration of bulk cells (from explore-4, decided 2026-11-06)
 
