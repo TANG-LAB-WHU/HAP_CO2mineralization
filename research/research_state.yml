@@ -46,10 +46,10 @@ manuscript_evidence:
 literature_evidence:
   seed_references: 8
   seed_metadata_partial: 0
-  new_candidates: 8
+  new_candidates: 20
   human_verified_references: 8
   supported_literature_relationships: 0
-  relevance_rows: 16
+  relevance_rows: 28
   phase_2b_1_selected_references: 4
   extracted_pending_human_cards: 3
   blocked_fulltext_cards: 1
@@ -70,8 +70,8 @@ known_blockers:
   - nowicki2024capture full-text extraction is blocked because the approved RSC PDF endpoint returned HTTP 403
 
 next_actions:
-  - follow workflow/PIPELINE_V2.md: iteration-0 CP2K labels (216 frames, 800/60 Ry, >= 8 A Gamma cells) then a 4-model DeePMD ensemble and LAMMPS model-deviation exploration
-  - finish the paired 8 A / 12 A finite-size labels and report the Gamma energy bias next to every energy gate
+  - continue pipeline v2 on a Slurm cluster from label-5 (workflow/hpc/PIPELINE_V2_HPC.md); the workstation run stopped 2026-11-08 at label-5 144/661 with iterations 0-4 done, and --iters is 8
+  - report the 8 A / 12 A finite-size bias (2.46 +/- 0.24 meV/atom, workflow/PIPELINE_V2.md) next to every energy gate
   - review the artifact inventory and ineligibility decisions with the research team
   - resolve legacy conflict markers only after a separate scientific-input review
   - Shawn must review the three extracted cards against the exact recorded PDF checksums

@@ -1,0 +1,36 @@
+# rsync filter: the part of the local run directory (.research-runs/pipeline-v2) that pipeline v2 needs to
+# continue from label-5 on a cluster. Dry run on 2026-11-08 (rsync 3.2.7): 16,326 entries, 819 MB of the 41 GB
+# run directory, no *.wfn, the four model.ckpt.pt symlinks kept. Used as
+#   rsync -a --filter="merge workflow/hpc/pipeline_v2_transfer.rsync" .research-runs/pipeline-v2/ <dest>/
+# First match wins. -a keeps the model.ckpt.pt symlinks that DeePMD's --init-model follows.
+# Left out: exploration trajectories, earlier training directories, CP2K wavefunctions (a frame without a
+# 'done' marker starts again from the atomic guess), local previews and diagnostics.
+- *.wfn
+- *.wfn.bak-*
+- run_labels.sh.*.new
++ /pipeline_state.json
++ /exploration/***
++ /sealed-test/***
++ /extra/***
+# Stage 7 takes its lattice references from the CP2K cell optimisations of the DFT hull
++ /dft-hull/***
+# Labels of every iteration: the recheck before each training step screens and may relabel all of them
++ /iter-00[0-5]/
++ /iter-00[0-5]/labels/***
++ /iter-00[0-4]/data/***
+# Warm start of train-5 (dp_ensemble.py --init-from: model-k/model.ckpt.pt, out.json for the neighbour sel)
++ /iter-004/train/
++ /iter-004/train/sealed_test.json
++ /iter-004/train/model-[0-3]/
++ /iter-004/train/model-[0-3]/checkpoint
++ /iter-004/train/model-[0-3]/model.ckpt.pt
++ /iter-004/train/model-[0-3]/model.ckpt-100000.pt
++ /iter-004/train/model-[0-3]/input.json
++ /iter-004/train/model-[0-3]/out.json
++ /iter-004/train/model-[0-3]/lcurve.out
+# Label-5 frames and the TF models that screen label-5 and the recheck before train-5
++ /iter-004/explore/
++ /iter-004/explore/models/***
++ /iter-004/explore/candidates.extxyz
++ /iter-004/explore/explore_summary.json
+- *

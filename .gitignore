@@ -63,3 +63,6 @@ deliverables/
 
 # Google Drive sync artifacts
 desktop.ini
+
+# Machine-local orchestrator and job logs (run evidence stays with the run directory)
+logs/

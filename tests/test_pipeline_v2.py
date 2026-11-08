@@ -93,6 +93,8 @@ class PrepareTests(unittest.TestCase):
             prepare(Namespace(frames=[frames], label_dir=tmp / "labels", cutoff=800, rel_cutoff=60, stress=False))
             cell = read(tmp / "labels/lime_selected_00000/frame.extxyz").cell.array
             self.assertTrue(np.allclose(np.triu(cell, 1), 0) and np.all(np.diag(cell) > 0))
+            self.assertIn("        MAX_SCF 6\n      &END OUTER_SCF",
+                          (tmp / "labels/lime_selected_00000/input.inp").read_text())
             self.assertEqual((done / "input.inp").read_text(), "old")
             self.assertTrue(np.allclose(read(done / "frame.extxyz").cell.array, read(frames, "1").cell.array))
 
@@ -146,9 +148,12 @@ class ValidateTests(unittest.TestCase):
         good += Atoms("OH", positions=[(2, 2, 2), (2.97, 2, 2)])
         good += Atoms("CO2", positions=[(8, 2, 2), (9.16, 2, 2), (6.84, 2, 2)])
         self.assertEqual(geometry_gate(good), [])
+        shared = good.copy()
+        shared.positions[6] = (3.25, 2, 2)  # H 1.25 A from its O, as in a short hydrogen bond
+        self.assertEqual(geometry_gate(shared), [])
         bad = good.copy()
         bad.positions[1] += [0.6, 0.6, 0.6]  # one P-O bond broken
-        bad.positions[6] = (3.4, 2, 2)  # H 1.4 A from its O
+        bad.positions[6] = (3.5, 2, 2)  # H 1.5 A from its O
         fails = geometry_gate(bad)
         self.assertTrue(any(f.startswith("P0 has 3 O") for f in fails))
         self.assertTrue(any(f.startswith("H6 nearest O") for f in fails))
@@ -165,6 +170,173 @@ class ValidateTests(unittest.TestCase):
         cmp_ = lattice_compare(md, ref, rep)
         self.assertTrue(np.allclose(cmp_["rel_length_dev"], 0.01, atol=1e-6))
         self.assertAlmostEqual(cmp_["rel_volume_dev"], 1.01 ** 3 - 1, places=4)
+
+
+class LabelScreenTests(unittest.TestCase):
+    def test_flag_needs_agreeing_models_and_no_reproduced_relabel(self):
+        from screen_labels import flag
+        rows = [dict(system="w", residual_meV_atom=1.0 + 0.1 * k, spread_meV_atom=1.0) for k in range(6)]
+        rows.append(dict(system="w", residual_meV_atom=-55.0, spread_meV_atom=1.0))  # wrong SCF state
+        rows.append(dict(system="w", residual_meV_atom=-40.0, spread_meV_atom=12.0))  # models disagree
+        rows.append(dict(system="w", residual_meV_atom=-30.0, spread_meV_atom=1.0, relabel_change_meV_atom=0.4))
+        rows.append(dict(system="s", residual_meV_atom=-50.0, spread_meV_atom=1.0))  # too few frames
+        flag(rows, threshold=10.0, max_spread=5.0, min_frames=5)
+        self.assertEqual([r.get("flagged", False) for r in rows], [False] * 6 + [True, False, False, False])
+
+    def test_robust_scf_and_collect_exclusion(self):
+        import json
+        from argparse import Namespace
+        from ase import Atoms
+        from cp2k_label import collect, relabel, robust_scf
+        text = robust_scf(cp2k_input(Atoms("CO2", positions=[[0, 0, 0], [1.16, 0, 0], [-1.16, 0, 0]],
+                                           cell=[10, 10, 10], pbc=True), "label", cutoff=800, rel_cutoff=60))
+        self.assertIn("MINIMIZER CG\n        LINESEARCH 2PNT\n", text)
+        self.assertIn("PRECONDITIONER FULL_ALL\n", text)
+        self.assertIn("SCF_GUESS ATOMIC", text)
+        with tempfile.TemporaryDirectory() as tmp:
+            lab = Path(tmp) / "labels"
+            from ase.io import write
+            h2 = Atoms("H2", positions=[[0, 0, 0], [0.74, 0, 0]], cell=[8, 8, 8], pbc=True)
+            for name in ("f0", "f1"):
+                (lab / name).mkdir(parents=True)
+                (lab / name / "output.out").write_text(CP2K_2026_SNIPPET)
+                (lab / name / "input.inp").write_text(cp2k_input(h2, "label"))
+                write(lab / name / "frame.extxyz", h2)
+                (lab / name / "done").touch()
+            (lab / "index.csv").write_text("name,source,frame,natoms,system,stress\n"
+                                           "f0,x,0,2,hap001_t,False\nf1,x,1,2,hap001_t,False\n")
+            (lab / "energy_screen.json").write_text(json.dumps({"flagged": ["f1"]}))
+            first = Namespace(label_dir=lab, screen="energy_screen.json", list="relabel.txt")
+            relabel(first)
+            self.assertTrue((lab / "f1/output.suspect.out").exists() and not (lab / "f1/done").exists())
+            self.assertTrue((lab / "energy_screen.first.json").exists())
+            self.assertEqual((lab / "relabel.txt").read_text(), "f1\n")
+            relabel(first)  # interrupted (neither done nor failed): listed again
+            self.assertEqual((lab / "relabel.txt").read_text(), "f1\n")
+            (lab / "f1/output.out").write_text(CP2K_2026_SNIPPET)
+            (lab / "f1/done").touch()
+            relabel(first)  # a frame is relabelled once
+            self.assertEqual((lab / "relabel.txt").read_text(), "")
+            # A later screen (recheck) keeps its own first copy and list; f1 stays relabelled once
+            (lab / "energy_screen.recheck-5.json").write_text(json.dumps({"flagged": ["f0", "f1"]}))
+            relabel(Namespace(label_dir=lab, screen="energy_screen.recheck-5.json", list="relabel.recheck-5.txt"))
+            self.assertTrue((lab / "energy_screen.recheck-5.first.json").exists())
+            self.assertEqual((lab / "relabel.recheck-5.txt").read_text(), "f0\n")
+            self.assertEqual((lab / "relabel.txt").read_text(), "")
+            for f in ("f0/output.out", "f0/done"):
+                (lab / f).write_text(CP2K_2026_SNIPPET)
+            collect(Namespace(label_dir=lab, out=Path(tmp) / "data", max_force=15.0, valid_fraction=0.0,
+                              seed=1, exclude_screen=True, screen=["energy_screen.json"]))
+            audit = (Path(tmp) / "data/label_audit.csv").read_text()
+            self.assertIn("f0,x,0,2,hap001_t,False,ok", audit)
+            self.assertIn("f1,x,1,2,hap001_t,False,energy_outlier", audit)
+            collect(Namespace(label_dir=lab, out=Path(tmp) / "data2", max_force=15.0, valid_fraction=0.0,
+                              seed=1, exclude_screen=True, screen=["energy_screen.json", "energy_screen.recheck-5.json"]))
+            self.assertIn("f0,x,0,2,hap001_t,False,energy_outlier", (Path(tmp) / "data2/label_audit.csv").read_text())
+
+    def test_recheck_acts_only_on_newly_flagged_frames(self):
+        import json
+        from argparse import Namespace
+        from unittest import mock
+        import pipeline_v2
+        with tempfile.TemporaryDirectory() as tmp:
+            lab, data = Path(tmp) / "labels", Path(tmp) / "data"
+            lab.mkdir()
+            data.mkdir()
+            (lab / "energy_screen.json").write_text(json.dumps({"flagged": ["f1"]}))
+            calls = []
+            flagged = [["f1"]]
+            with mock.patch.object(pipeline_v2, "screen", side_effect=lambda *a: flagged[0]), \
+                    mock.patch.object(pipeline_v2, "sh", side_effect=lambda cmd, **kw: calls.append(cmd)), \
+                    mock.patch.object(pipeline_v2, "cp2k", side_effect=lambda *a: calls.append(a)), \
+                    mock.patch.object(pipeline_v2, "seed_containers", return_value=[]):
+                args = Namespace(ranks=20)
+                # Already left out by the screen at labelling time: nothing to do
+                self.assertFalse(pipeline_v2.recheck(lab, data, ["m"] * 4, args, "recheck-5"))
+                self.assertEqual(calls, [])
+                flagged[0] = ["f1", "f2"]
+                self.assertTrue(pipeline_v2.recheck(lab, data, ["m"] * 4, args, "recheck-5"))
+            self.assertTrue((Path(tmp) / "data.pre-recheck-5").is_dir())
+            collect = [c for c in calls if "collect" in map(str, c)][0]
+            self.assertEqual(list(map(str, collect[-3:])), ["--screen", "energy_screen.json",
+                                                            "energy_screen.recheck-5.json"])
+            self.assertIn("relabel.recheck-5.txt", [str(x) for c in calls for x in c])
+
+
+class HpcTests(unittest.TestCase):
+    def tearDown(self):
+        import pipeline_v2
+        pipeline_v2.RUNTIME.update(runtime="docker", cp2k=pipeline_v2.CP2K_IMAGE, mlip=pipeline_v2.MLIP_IMAGE)
+        del pipeline_v2.MOUNTS[:-1]
+
+    def test_apptainer_commands_and_run_mount(self):
+        from argparse import Namespace
+        from unittest import mock
+        import pipeline_v2
+        with tempfile.TemporaryDirectory() as tmp:
+            run = Path(tmp).resolve()
+            pipeline_v2.RUNTIME.update(runtime="apptainer", cp2k="/sif/cp2k.sif", mlip="/sif/mlip.sif")
+            pipeline_v2.MOUNTS.insert(0, (run, "/hap-run"))
+            self.assertEqual(pipeline_v2.in_container(run / "iter-005/labels"), "/hap-run/iter-005/labels")
+            self.assertEqual(pipeline_v2.in_container(ROOT / "workflow/x.py"), "/work/workflow/x.py")
+            calls = []
+            with mock.patch.object(pipeline_v2, "sh", side_effect=lambda cmd, **kw: calls.append(list(map(str, cmd)))):
+                pipeline_v2.mlip(["python", "x.py"])
+                pipeline_v2.cp2k(run / "labels", Namespace(ranks=64), "run_labels.sh", 2, 8)
+            m, c = calls
+            self.assertEqual(m[:3], ["apptainer", "exec", "--nv"])
+            self.assertIn(f"{run.as_posix()}:/hap-run", m)
+            self.assertEqual(m[-3:], ["/sif/mlip.sif", "python", "x.py"])
+            self.assertIn("HYDRA_LAUNCHER=fork,HYDRA_RMK=user", c)
+            self.assertEqual(c[c.index("/sif/cp2k.sif"):], ["/sif/cp2k.sif", pipeline_v2.CP2K_LAUNCH, "bash",
+                                                            "/data/run_labels.sh", "/data", "64", "1", "2", "8"])
+            self.assertEqual(pipeline_v2.seed_containers("running"), [])
+
+    def test_phases_stop_at_the_other_phase(self):
+        import json
+        from unittest import mock
+        import pipeline_v2
+        self.assertEqual([pipeline_v2.step_phase(s) for s in ("label-5", "label-extra-metad", "recheck-5", "sealed_test",
+                                                              "train-5", "test-5", "explore-5", "validate-w8")],
+                         ["cpu"] * 4 + ["gpu"] * 4)
+        with tempfile.TemporaryDirectory() as tmp:
+            run = Path(tmp).resolve()
+            done = ["sealed_test"] + [f"{s}-{k}" for k in range(5) for s in ("label", "train", "test", "explore")]
+            (run / "pipeline_state.json").write_text(json.dumps({"done": done}))
+            (run / "iter-004/explore/models").mkdir(parents=True)
+            for i in range(4):
+                (run / f"iter-004/explore/models/model-{i}.pb").touch()
+            labelled, mlips = [], []
+
+            def fake_mlip(a, **kw):
+                mlips.append(a)
+                if "dp_explore.py" in a[1]:
+                    out = Path(a[-1].replace("/hap-run", str(run)))
+                    out.mkdir(parents=True, exist_ok=True)
+                    (out / "explore_summary.json").write_text(json.dumps({"mean_accurate": 0.8, "n_candidates": 9}))
+
+            def main(phase):
+                argv = ["pipeline_v2.py", "--run", str(run), "--cutoff", "800", "--rel-cutoff", "60", "--iters", "8",
+                        "--runtime", "apptainer", "--cp2k-image", "c.sif", "--mlip-image", "m.sif", "--phase", phase]
+                with mock.patch.object(sys, "argv", argv), \
+                        mock.patch.object(pipeline_v2, "label", side_effect=lambda r, d, *a, **kw: labelled.append(d)), \
+                        mock.patch.object(pipeline_v2, "recheck", return_value=False), \
+                        mock.patch.object(pipeline_v2, "sh"), mock.patch.object(pipeline_v2, "mlip", side_effect=fake_mlip), \
+                        mock.patch.object(pipeline_v2, "mlip_start"), mock.patch.object(pipeline_v2, "mlip_wait", return_value=0):
+                    with self.assertRaises(SystemExit) as stop:
+                        pipeline_v2.main()
+                del pipeline_v2.MOUNTS[:-1]
+                self.assertEqual(stop.exception.code, 0)
+                return json.loads((run / "pipeline_state.json").read_text())["done"], (run / "next_phase").read_text()
+
+            state, nxt = main("cpu")
+            self.assertEqual(state[-2:], ["label-5", "recheck-5"])
+            self.assertEqual(nxt, "gpu\n")
+            self.assertEqual(labelled, [run / "iter-005/labels"])
+            state, nxt = main("gpu")
+            self.assertEqual(state[-3:], ["train-5", "test-5", "explore-5"])
+            self.assertEqual(nxt, "cpu\n")
+            self.assertEqual(len(labelled), 1)
 
 
 class HullTests(unittest.TestCase):

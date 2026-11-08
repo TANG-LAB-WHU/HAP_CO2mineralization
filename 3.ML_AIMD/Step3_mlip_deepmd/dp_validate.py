@@ -10,8 +10,8 @@ Gates (thresholds from PIPELINE_V2.md, never relaxed here):
   lattice   - NPT averages after --equil-ps, per formula cell, within 1 % of the CP2K cell optimisation
               (--reference); the formal gate is HAP a and c, the other phases are reported the same way;
   stability - every dumped frame passes the geometry gate: minimum distance > 0.7 A, every P has 4 O within
-              1.9 A, every H has its nearest O at 0.8-1.2 A (the v1 gate) and every C has 2 or 3 O within 1.6 A
-              (CO2 or CO3); the run must also finish;
+              1.9 A, every H has its nearest O at 0.8-1.45 A (H_O_MAX) and every C has 2 or 3 O within 1.6 A (CO2 or
+              CO3); the run must also finish;
   NVE drift - |slope of the total energy| <= 1 meV/atom/ps.
 The 4-model deviation on the dumped frames is reported, not gated. Run inside hap-mlip.
 
@@ -34,9 +34,13 @@ from ase.data import atomic_masses, atomic_numbers
 from ase.io import read, write
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from dp_explore import TYPE_MAP, python_devi, tf_models  # noqa: E402
+from dp_explore import TYPE_MAP, is_slab, python_devi, tf_models  # noqa: E402
 
 GATES = {"lattice_rel": 0.01, "nve_drift_meV_atom_ps": 1.0}
+# Was 1.2 A (the v1 gate of refine_pipeline.py). Shawn set 1.45 A on 2026-11-06, after the iteration-3 preview and
+# before the formal run: monetite H are shared in short hydrogen bonds (O...O 2.47/2.58 A) and sit at 1.21-1.27 A
+# from their nearest O (workflow/PIPELINE_V2.md, "Stage-7 preview"). Same limit as the metad selection gate.
+H_O_MAX = 1.45
 
 HEAD = """units metal
 boundary p p p
@@ -79,10 +83,6 @@ thermo 20
 fix 2 all nve
 run {nve_steps}
 """
-
-
-def is_slab(name):
-    return name.startswith("hap001")
 
 
 def repeats(atoms, min_width):
@@ -130,7 +130,7 @@ def geometry_gate(a):
             fails.append(f"P{k} has {n} O within 1.9 A")
     for k in np.where(sym == "H")[0]:
         m = d[(i == k) & (sym[j] == "O")]
-        if not len(m) or not 0.8 < m.min() < 1.2:
+        if not len(m) or not 0.8 < m.min() < H_O_MAX:
             fails.append(f"H{k} nearest O {m.min() if len(m) else float('inf'):.2f} A")
     for k in np.where(sym == "C")[0]:
         n = int(np.sum((i == k) & (sym[j] == "O") & (d < 1.6)))
@@ -201,10 +201,17 @@ def main():
             jobs.append(rl)
         (d / "repeat.json").write_text(json.dumps(rep) + "\n")
     env = {"DP_INTRA_OP_PARALLELISM_THREADS": "2", "DP_INTER_OP_PARALLELISM_THREADS": "1", **os.environ}
+
+    # Output and exit code are kept: the preview run of hap001_water_co2 died at 154.6 ps (2026-11-05) with its output
+    # discarded; the kernel log showed the WSL GPU driver failing an allocation (dxg ioctl -12) and lmp aborting.
+    def run_lmp(w):
+        with open(w / "lmp.out", "w") as log:
+            rc = subprocess.run(["lmp", "-in", "in.lmp", "-log", "log.lammps"], cwd=w, env=env, stdout=log,
+                                stderr=subprocess.STDOUT).returncode
+        (w / "exit_code.txt").write_text(f"{rc}\n")
+
     with ThreadPoolExecutor(args.parallel) as pool:
-        list(pool.map(lambda w: subprocess.run(["lmp", "-in", "in.lmp", "-log", "log.lammps"], cwd=w, env=env,
-                                               stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT),
-                      [w for w in jobs if not (w / ("cell.txt" if w.name == "relax" else "nve.log")).exists()]))
+        list(pool.map(run_lmp, [w for w in jobs if not (w / ("cell.txt" if w.name == "relax" else "nve.log")).exists()]))
 
     from deepmd.infer import DeepPot
     pots = [DeepPot(str(m)) for m in pbs]
@@ -218,6 +225,8 @@ def main():
         nve = thermo_blocks(d / "md/nve.log") if (d / "md/nve.log").exists() else []
         finished = len(blocks) >= 1 and len(nve) >= 1 and len(nve[0]["Step"]) > 1
         r["finished"] = finished
+        if (d / "md/exit_code.txt").exists():
+            r["lmp_exit_code"] = int((d / "md/exit_code.txt").read_text())
         frames = read(d / "md/traj.dump", ":", format="lammps-dump-text") if (d / "md/traj.dump").exists() else []
         symbols = a.repeat(rep).get_chemical_symbols()
         fails = []
