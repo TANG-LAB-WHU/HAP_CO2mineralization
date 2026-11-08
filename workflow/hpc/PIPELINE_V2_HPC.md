@@ -15,8 +15,8 @@ MPICH settings are checked locally only as far as stated.
 | `extra/metad-test/labels` | 24/24 done, not yet collected (same step) |
 | Iterations | `--iters` raised 6 → 8 (`pipeline_v2_args.sh`): iterations 5, 6 and 7 remain, then the final ensemble and stage 7 |
 
-The local stage-7 preview of the iteration-4 models (`preview-iter4/`) keeps running on the workstation; it is a
-diagnostic and not part of the pipeline state.
+The local stage-7 preview of the iteration-4 models (`preview-iter4/`) was stopped at 13:19 with 5 of 10 S3
+systems finished; it is a diagnostic and not part of the pipeline state (`PIPELINE_V2.md`).
 
 ## Files in this directory
 
